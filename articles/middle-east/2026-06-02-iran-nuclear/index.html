@@ -26,7 +26,7 @@
     /* Map SVG */
     .map-wrap {
       position: relative; width: 100%; padding-bottom: 48%;
-      background: #0c1520; border-radius: 8px; overflow: hidden;
+      background: #12141a; border-radius: 8px; overflow: hidden;
     }
     .map-wrap svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
     .country-node {
@@ -84,19 +84,19 @@
 
       <!-- Key Points -->
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:#f78166">
+        <div class="key-point" style="--kp-color:var(--accent)">
           <div class="kp-label">イランの濃縮度</div>
           <div class="kp-value">最大 84% に到達（兵器級90%に近接）</div>
         </div>
-        <div class="key-point" style="--kp-color:#e3b341">
+        <div class="key-point" style="--kp-color:var(--accent)">
           <div class="kp-label">交渉状況</div>
           <div class="kp-value">オマーンで間接協議中（第4ラウンド）</div>
         </div>
-        <div class="key-point" style="--kp-color:#58a6ff">
+        <div class="key-point" style="--kp-color:var(--accent)">
           <div class="kp-label">制裁</div>
           <div class="kp-value">米国による石油輸出制裁が継続</div>
         </div>
-        <div class="key-point" style="--kp-color:#56d364">
+        <div class="key-point" style="--kp-color:var(--accent)">
           <div class="kp-label">IAEA査察</div>
           <div class="kp-value">一部施設へのアクセス制限が継続</div>
         </div>
@@ -120,55 +120,55 @@
                 <svg viewBox="0 0 900 432" xmlns="http://www.w3.org/2000/svg" id="worldMap">
                   <!-- Simplified world landmass paths -->
                   <!-- North America -->
-                  <path d="M 80 80 Q 120 60 180 70 Q 220 65 240 90 Q 260 110 250 140 Q 240 160 220 170 Q 200 180 190 200 Q 180 220 170 240 Q 160 260 150 270 Q 130 280 110 260 Q 90 240 85 210 Q 75 180 70 150 Z" fill="#1a2a3a" stroke="#2a3a4a" stroke-width="0.8"/>
+                  <path d="M 80 80 Q 120 60 180 70 Q 220 65 240 90 Q 260 110 250 140 Q 240 160 220 170 Q 200 180 190 200 Q 180 220 170 240 Q 160 260 150 270 Q 130 280 110 260 Q 90 240 85 210 Q 75 180 70 150 Z" fill="#202428" stroke="#2c3038" stroke-width="0.8"/>
                   <!-- South America -->
-                  <path d="M 170 270 Q 190 260 210 270 Q 230 280 240 310 Q 250 340 240 370 Q 230 395 210 405 Q 190 410 175 395 Q 160 375 158 345 Q 155 315 160 290 Z" fill="#1a2a3a" stroke="#2a3a4a" stroke-width="0.8"/>
+                  <path d="M 170 270 Q 190 260 210 270 Q 230 280 240 310 Q 250 340 240 370 Q 230 395 210 405 Q 190 410 175 395 Q 160 375 158 345 Q 155 315 160 290 Z" fill="#202428" stroke="#2c3038" stroke-width="0.8"/>
                   <!-- Europe -->
-                  <path d="M 390 55 Q 430 45 470 55 Q 500 60 510 80 Q 515 95 505 110 Q 490 120 470 118 Q 450 115 430 120 Q 410 125 400 110 Q 390 95 390 80 Z" fill="#1a2a3a" stroke="#2a3a4a" stroke-width="0.8"/>
+                  <path d="M 390 55 Q 430 45 470 55 Q 500 60 510 80 Q 515 95 505 110 Q 490 120 470 118 Q 450 115 430 120 Q 410 125 400 110 Q 390 95 390 80 Z" fill="#202428" stroke="#2c3038" stroke-width="0.8"/>
                   <!-- Africa -->
-                  <path d="M 400 130 Q 440 120 480 130 Q 510 140 520 165 Q 530 195 525 230 Q 520 265 510 295 Q 495 320 475 335 Q 455 345 435 340 Q 415 332 400 310 Q 385 285 380 255 Q 375 220 378 190 Q 382 160 390 145 Z" fill="#1a2a3a" stroke="#2a3a4a" stroke-width="0.8"/>
+                  <path d="M 400 130 Q 440 120 480 130 Q 510 140 520 165 Q 530 195 525 230 Q 520 265 510 295 Q 495 320 475 335 Q 455 345 435 340 Q 415 332 400 310 Q 385 285 380 255 Q 375 220 378 190 Q 382 160 390 145 Z" fill="#202428" stroke="#2c3038" stroke-width="0.8"/>
                   <!-- Middle East -->
-                  <path d="M 510 110 Q 550 100 590 115 Q 620 125 630 148 Q 635 165 620 178 Q 600 185 580 180 Q 555 175 535 165 Q 515 155 510 140 Z" fill="#1a2a3a" stroke="#2a3a4a" stroke-width="0.8"/>
+                  <path d="M 510 110 Q 550 100 590 115 Q 620 125 630 148 Q 635 165 620 178 Q 600 185 580 180 Q 555 175 535 165 Q 515 155 510 140 Z" fill="#202428" stroke="#2c3038" stroke-width="0.8"/>
                   <!-- Russia/Central Asia -->
-                  <path d="M 480 40 Q 560 25 660 35 Q 730 42 770 55 Q 800 65 810 85 Q 815 100 800 110 Q 770 120 730 115 Q 690 110 650 108 Q 610 105 580 100 Q 545 95 515 90 Q 490 85 482 70 Z" fill="#1a2a3a" stroke="#2a3a4a" stroke-width="0.8"/>
+                  <path d="M 480 40 Q 560 25 660 35 Q 730 42 770 55 Q 800 65 810 85 Q 815 100 800 110 Q 770 120 730 115 Q 690 110 650 108 Q 610 105 580 100 Q 545 95 515 90 Q 490 85 482 70 Z" fill="#202428" stroke="#2c3038" stroke-width="0.8"/>
                   <!-- South/East Asia -->
-                  <path d="M 630 90 Q 680 80 740 85 Q 780 90 810 105 Q 835 118 840 140 Q 842 160 825 170 Q 800 178 770 172 Q 735 165 705 155 Q 675 145 650 135 Q 628 125 622 110 Z" fill="#1a2a3a" stroke="#2a3a4a" stroke-width="0.8"/>
+                  <path d="M 630 90 Q 680 80 740 85 Q 780 90 810 105 Q 835 118 840 140 Q 842 160 825 170 Q 800 178 770 172 Q 735 165 705 155 Q 675 145 650 135 Q 628 125 622 110 Z" fill="#202428" stroke="#2c3038" stroke-width="0.8"/>
                   <!-- Japan/Korea area -->
-                  <path d="M 800 95 Q 820 88 840 95 Q 848 102 845 112 Q 838 118 825 115 Q 810 110 803 103 Z" fill="#1a2a3a" stroke="#2a3a4a" stroke-width="0.8"/>
+                  <path d="M 800 95 Q 820 88 840 95 Q 848 102 845 112 Q 838 118 825 115 Q 810 110 803 103 Z" fill="#202428" stroke="#2c3038" stroke-width="0.8"/>
                   <!-- Australia -->
-                  <path d="M 740 290 Q 790 275 840 285 Q 870 295 875 320 Q 878 345 860 360 Q 840 370 815 365 Q 790 358 770 342 Q 748 325 740 308 Z" fill="#1a2a3a" stroke="#2a3a4a" stroke-width="0.8"/>
+                  <path d="M 740 290 Q 790 275 840 285 Q 870 295 875 320 Q 878 345 860 360 Q 840 370 815 365 Q 790 358 770 342 Q 748 325 740 308 Z" fill="#202428" stroke="#2c3038" stroke-width="0.8"/>
 
                   <!-- Connection Lines (relations) -->
                   <!-- Iran - USA: hostile -->
-                  <line x1="555" y1="148" x2="190" y2="120" stroke="#f78166" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
+                  <line x1="555" y1="148" x2="190" y2="120" stroke="#b87868" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
                   <!-- Iran - Israel: hostile -->
-                  <line x1="555" y1="148" x2="522" y2="148" stroke="#f78166" stroke-width="2" opacity="0.7"/>
+                  <line x1="555" y1="148" x2="522" y2="148" stroke="#b87868" stroke-width="2" opacity="0.7"/>
                   <!-- Iran - Russia: friendly -->
-                  <line x1="555" y1="148" x2="600" y2="75" stroke="#56d364" stroke-width="1.5" opacity="0.5"/>
+                  <line x1="555" y1="148" x2="600" y2="75" stroke="#7aaa82" stroke-width="1.5" opacity="0.5"/>
                   <!-- Iran - China: friendly -->
-                  <line x1="555" y1="148" x2="735" y2="130" stroke="#56d364" stroke-width="1.5" opacity="0.4"/>
+                  <line x1="555" y1="148" x2="735" y2="130" stroke="#7aaa82" stroke-width="1.5" opacity="0.4"/>
                   <!-- Iran - Germany: neutral -->
-                  <line x1="555" y1="148" x2="455" y2="80" stroke="#e3b341" stroke-width="1" stroke-dasharray="4,4" opacity="0.4"/>
+                  <line x1="555" y1="148" x2="455" y2="80" stroke="#c4a882" stroke-width="1" stroke-dasharray="4,4" opacity="0.4"/>
                   <!-- Iran - Saudi: cautious -->
-                  <line x1="555" y1="148" x2="565" y2="175" stroke="#e3b341" stroke-width="1" opacity="0.5"/>
+                  <line x1="555" y1="148" x2="565" y2="175" stroke="#c4a882" stroke-width="1" opacity="0.5"/>
 
                   <!-- Country Nodes -->
                   <!-- Iran -->
                   <g class="country-node" data-country="iran">
-                    <circle cx="555" cy="148" r="16" fill="#f78166" opacity="0.25"/>
-                    <circle cx="555" cy="148" r="10" fill="#f78166"/>
+                    <circle cx="555" cy="148" r="16" fill="#b87868" opacity="0.25"/>
+                    <circle cx="555" cy="148" r="10" fill="#b87868"/>
                     <text x="555" y="172" text-anchor="middle" fill="#e6edf3" font-size="11" font-family="sans-serif">🇮🇷 イラン</text>
                   </g>
                   <!-- USA -->
                   <g class="country-node" data-country="usa">
-                    <circle cx="190" cy="120" r="16" fill="#58a6ff" opacity="0.25"/>
-                    <circle cx="190" cy="120" r="10" fill="#58a6ff"/>
+                    <circle cx="190" cy="120" r="16" fill="#9ab4c4" opacity="0.25"/>
+                    <circle cx="190" cy="120" r="10" fill="#9ab4c4"/>
                     <text x="190" y="144" text-anchor="middle" fill="#e6edf3" font-size="11" font-family="sans-serif">🇺🇸 米国</text>
                   </g>
                   <!-- Israel -->
                   <g class="country-node" data-country="israel">
-                    <circle cx="522" cy="148" r="14" fill="#e3b341" opacity="0.25"/>
-                    <circle cx="522" cy="148" r="8" fill="#e3b341"/>
+                    <circle cx="522" cy="148" r="14" fill="#c4a882" opacity="0.25"/>
+                    <circle cx="522" cy="148" r="8" fill="#c4a882"/>
                     <text x="522" y="168" text-anchor="middle" fill="#e6edf3" font-size="11" font-family="sans-serif">🇮🇱 イスラエル</text>
                   </g>
                   <!-- Russia -->
@@ -185,14 +185,14 @@
                   </g>
                   <!-- Germany/EU -->
                   <g class="country-node" data-country="germany">
-                    <circle cx="455" cy="78" r="12" fill="#56d364" opacity="0.25"/>
-                    <circle cx="455" cy="78" r="7" fill="#56d364"/>
-                    <text x="455" y="96" text-anchor="middle" fill="#e6edf3" font-size="11" font-family="sans-serif">🇩🇪 ドイツ/EU</text>
+                    <circle cx="455" cy="78" r="12" fill="#7aaa82" opacity="0.25"/>
+                    <circle cx="455" cy="78" r="7" fill="#7aaa82"/>
+                    <text x="455" y="96" text-anchor="middle" fill="#e6edf3" font-size="11" font-family="sans-serif">🇩🇪 ドイツ・欧州連合</text>
                   </g>
                   <!-- Saudi Arabia -->
                   <g class="country-node" data-country="saudi">
-                    <circle cx="565" cy="178" r="12" fill="#bc8cff" opacity="0.25"/>
-                    <circle cx="565" cy="178" r="7" fill="#bc8cff"/>
+                    <circle cx="565" cy="178" r="12" fill="#9a8ab4" opacity="0.25"/>
+                    <circle cx="565" cy="178" r="7" fill="#9a8ab4"/>
                     <text x="565" y="196" text-anchor="middle" fill="#e6edf3" font-size="11" font-family="sans-serif">🇸🇦 サウジ</text>
                   </g>
                 </svg>
@@ -203,7 +203,7 @@
                 <span><span class="dot dot-yellow"></span>警戒・慎重</span>
                 <span><span class="dot dot-green"></span>支持・協調</span>
                 <span><span class="dot dot-gray"></span>中立・傍観</span>
-                <span><span class="dot dot-gray" style="background:#bc8cff"></span>複雑・利害関係</span>
+                <span><span class="dot dot-gray" style="background:#9a8ab4"></span>複雑・利害関係</span>
               </div>
             </div>
           </section>
@@ -220,7 +220,7 @@
                 <div class="perspectives-grid">
 
                   <!-- Iran -->
-                  <div class="perspective-card" style="--card-color:#f78166;">
+                  <div class="perspective-card" style="--card-color:#b87868;">
                     <div class="country-header">
                       <span class="flag-emoji">🇮🇷</span>
                       <span class="country-name">イラン</span>
@@ -244,7 +244,7 @@
                   </div>
 
                   <!-- USA -->
-                  <div class="perspective-card" style="--card-color:#58a6ff;">
+                  <div class="perspective-card" style="--card-color:var(--accent);">
                     <div class="country-header">
                       <span class="flag-emoji">🇺🇸</span>
                       <span class="country-name">アメリカ</span>
@@ -268,7 +268,7 @@
                   </div>
 
                   <!-- Israel -->
-                  <div class="perspective-card" style="--card-color:#e3b341;">
+                  <div class="perspective-card" style="--card-color:var(--accent);">
                     <div class="country-header">
                       <span class="flag-emoji">🇮🇱</span>
                       <span class="country-name">イスラエル</span>
@@ -308,7 +308,7 @@
                     </div>
                     <div class="tone-meter tone-supportive">
                       <div class="tone-meter-label"><span>イラン支持度</span><span>高</span></div>
-                      <div class="tone-track" style="background:var(--bg-card2);"><div class="tone-fill" style="background:#56d364;" data-width="70%"></div></div>
+                      <div class="tone-track" style="background:var(--bg-card2);"><div class="tone-fill" style="background:var(--accent);" data-width="70%"></div></div>
                     </div>
                     <div class="interests">
                       <strong>背景にある国益：</strong>対米対立の文脈、ウクライナ制裁への対抗、エネルギー・軍事協力
@@ -316,7 +316,7 @@
                   </div>
 
                   <!-- China -->
-                  <div class="perspective-card" style="--card-color:#56d364;">
+                  <div class="perspective-card" style="--card-color:var(--accent);">
                     <div class="country-header">
                       <span class="flag-emoji">🇨🇳</span>
                       <span class="country-name">中国</span>
@@ -340,10 +340,10 @@
                   </div>
 
                   <!-- Germany/EU -->
-                  <div class="perspective-card" style="--card-color:#39d3f5;">
+                  <div class="perspective-card" style="--card-color:var(--accent);">
                     <div class="country-header">
                       <span class="flag-emoji">🇩🇪</span>
-                      <span class="country-name">ドイツ / EU（E3）</span>
+                      <span class="country-name">ドイツ / 欧州連合（英仏独）</span>
                       <span class="stance-label stance-cautious">外交重視</span>
                     </div>
                     <div class="key-claim">
@@ -352,7 +352,7 @@
                     </div>
                     <div class="key-claim">
                       <strong>交渉上の役割</strong>
-                      英仏独（E3）として仲介役を担う。イランへの経済インセンティブを用意しつつ、核関連活動の凍結を求める。スナップバック条項の発動を検討。
+                      英仏独として仲介役を担う。イランへの経済インセンティブを用意しつつ、核関連活動の凍結を求める。スナップバック条項の発動を検討。
                     </div>
                     <div class="tone-meter tone-cautious">
                       <div class="tone-meter-label"><span>外交志向</span><span>高</span></div>
@@ -364,7 +364,7 @@
                   </div>
 
                   <!-- Saudi Arabia -->
-                  <div class="perspective-card" style="--card-color:#bc8cff;">
+                  <div class="perspective-card" style="--card-color:var(--accent);">
                     <div class="country-header">
                       <span class="flag-emoji">🇸🇦</span>
                       <span class="country-name">サウジアラビア</span>
@@ -440,7 +440,7 @@
                         <td>段階的信頼醸成</td>
                       </tr>
                       <tr>
-                        <td>🇩🇪 EU/E3</td>
+                        <td>🇩🇪 欧州連合（英仏独）</td>
                         <td>制限付き平和利用を容認</td>
                         <td>スナップバック検討中</td>
                         <td>反対</td>
@@ -574,22 +574,22 @@
                 <div class="bar-chart">
                   <div class="bar-row">
                     <div class="bar-label">60%濃縮</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:#f78166;" data-width="82%"></div></div>
+                    <div class="bar-track"><div class="bar-fill" style="background:#b87868;" data-width="82%"></div></div>
                     <div class="bar-value">182kg</div>
                   </div>
                   <div class="bar-row">
                     <div class="bar-label">20%濃縮</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:#e3b341;" data-width="55%"></div></div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent4);" data-width="55%"></div></div>
                     <div class="bar-value">150kg</div>
                   </div>
                   <div class="bar-row">
                     <div class="bar-label">3.67%濃縮</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:#56d364;" data-width="100%"></div></div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent);" data-width="100%"></div></div>
                     <div class="bar-value">2,700kg</div>
                   </div>
                   <div class="bar-row">
                     <div class="bar-label">84%（痕跡）</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:#bc8cff;" data-width="15%"></div></div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent);" data-width="15%"></div></div>
                     <div class="bar-value">検出</div>
                   </div>
                 </div>
@@ -602,22 +602,22 @@
                 <div class="bar-chart">
                   <div class="bar-row">
                     <div class="bar-label">石油輸出</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:#58a6ff;" data-width="40%"></div></div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent);" data-width="40%"></div></div>
                     <div class="bar-value">制裁前比40%</div>
                   </div>
                   <div class="bar-row">
                     <div class="bar-label">通貨下落率</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:#f78166;" data-width="90%"></div></div>
+                    <div class="bar-track"><div class="bar-fill" style="background:#b87868;" data-width="90%"></div></div>
                     <div class="bar-value">約90%下落</div>
                   </div>
                   <div class="bar-row">
                     <div class="bar-label">インフレ率</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:#e3b341;" data-width="45%"></div></div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent4);" data-width="45%"></div></div>
                     <div class="bar-value">約40%</div>
                   </div>
                   <div class="bar-row">
                     <div class="bar-label">GDP成長率</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:#56d364;" data-width="35%"></div></div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent);" data-width="35%"></div></div>
                     <div class="bar-value">+3.5%（2024）</div>
                   </div>
                 </div>
@@ -780,7 +780,7 @@ const tooltipData = {
   israel: { name: '🇮🇱 イスラエル', text: '最強硬派。核施設の完全廃棄のみ受け入れ可能とし、単独軍事行動も示唆。米国の外交路線を批判。' },
   russia: { name: '🇷🇺 ロシア', text: 'イランの核利用権を支持。制裁に反対しつつ経済・軍事協力を継続。安保理でのスナップバックに拒否権行使の構え。' },
   china: { name: '🇨🇳 中国', text: '表向き中立・外交解決を支持するが、実態はイラン産石油の最大輸入国として関係深化。経済的影響力を重視。' },
-  germany: { name: '🇩🇪 ドイツ/EU', text: 'JCPOA復活を主張する仲介役。軍事行動に反対し対話路線を堅持。スナップバック条項発動を検討中。' },
+  germany: { name: '🇩🇪 ドイツ・欧州連合', text: 'JCPOA復活を主張する仲介役。軍事行動に反対し対話路線を堅持。スナップバック条項発動を検討中。' },
   saudi: { name: '🇸🇦 サウジアラビア', text: 'イランの核保有に強く反対。中国仲介で国交正常化したが不信感は根強い。米国に安全保障確約を要求。' }
 };
 
@@ -816,7 +816,7 @@ new Chart(ctx, {
     datasets: [{
       label: '強硬度（対イラン核）',
       data: [10, 98, 60, 42, 70, 15, 20],
-      backgroundColor: ['#f78166','#e3b341','#58a6ff','#39d3f5','#bc8cff','#8a9ab0','#56d364'],
+      backgroundColor: ['#b87868','#c4a882','#9ab4c4','#9ab4c4','#9a8ab4','#8a9ab0','#7aaa82'],
       borderWidth: 0, borderRadius: 4,
     }]
   },

@@ -10,7 +10,9 @@
       padding: 5.5rem 0 4.5rem;
       text-align: center;
       border-bottom: 1px solid var(--border-subtle);
-      background: radial-gradient(ellipse at top, rgba(126,184,212,0.06) 0%, transparent 65%);
+      background:
+        radial-gradient(ellipse at top, rgba(154,180,196,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse at 30% 80%, rgba(122,170,130,0.04) 0%, transparent 50%);
       position: relative;
     }
     .hero-eyebrow {
@@ -21,7 +23,13 @@
       font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 700; line-height: 1.2;
       margin-bottom: 1.35rem; letter-spacing: -0.02em; color: var(--text);
     }
-    .hero-title span { color: var(--accent); }
+    .hero-title span {
+      color: var(--accent);
+      text-shadow:
+        0 0 20px rgba(154,180,196,0.7),
+        0 0 40px rgba(154,180,196,0.35),
+        0 0 80px rgba(154,180,196,0.15);
+    }
     .hero-desc {
       font-size: 1rem; color: var(--text-muted); max-width: 560px;
       margin: 0 auto; line-height: 1.85;
@@ -71,7 +79,7 @@
       display: flex; gap: 1.5rem; align-items: flex-start;
       transition: border-color 0.2s, background 0.2s;
     }
-    .article-row:hover { border-color: rgba(126,184,212,0.3); background: var(--bg-card2); }
+    .article-row:hover { border-color: rgba(154,180,196,0.3); background: var(--bg-card2); }
     .article-row a { color: var(--text); }
     .article-row a:hover { text-decoration: none; }
     .ar-left { flex: 1; min-width: 0; }
@@ -136,41 +144,41 @@
         <h2>カテゴリ</h2>
       </div>
       <div class="category-grid">
-        <a class="category-card" href="categories/middle-east/index.html" style="--cc-color: #f78166;">
+        <a class="category-card" href="categories/middle-east/index.html" style="--cc-color: #b87868;">
           <div class="cc-icon">🕌</div>
           <div class="cc-name">中東情勢</div>
           <div class="cc-desc">イラン核問題、イスラエル・パレスチナ紛争、湾岸諸国の動向</div>
           <div class="cc-count"><span class="cc-dot"></span> 記事 1件</div>
         </a>
-        <a class="category-card" href="categories/ai-tech/index.html" style="--cc-color: #58a6ff;">
+        <a class="category-card" href="categories/ai-tech/index.html" style="--cc-color: #9ab4c4;">
           <div class="cc-icon">🤖</div>
           <div class="cc-name">AI・技術覇権</div>
           <div class="cc-desc">米中AI競争、半導体サプライチェーン、各国の規制戦略、AGI開発競争</div>
           <div class="cc-count"><span class="cc-dot"></span> 記事 1件</div>
         </a>
-        <a class="category-card" href="#" style="--cc-color: #56d364;">
+        <a class="category-card" href="#" style="--cc-color: #7aaa82;">
           <div class="cc-icon">🌍</div>
           <div class="cc-name">欧州情勢</div>
           <div class="cc-desc">NATO拡大、EU統合、エネルギー安全保障、移民問題</div>
           <div class="cc-count"><span class="cc-dot"></span> 記事 0件</div>
         </a>
-        <a class="category-card" href="categories/ukraine/index.html" style="--cc-color: #e3b341;">
+        <a class="category-card" href="categories/ukraine/index.html" style="--cc-color: #c4a882;">
           <div class="cc-icon">⚔️</div>
           <div class="cc-name">ウクライナ紛争</div>
           <div class="cc-desc">ロシア・ウクライナ戦争、停戦交渉、西側支援の行方</div>
           <div class="cc-count"><span class="cc-dot"></span> 記事 1件</div>
         </a>
-        <a class="category-card" href="#" style="--cc-color: #bc8cff;">
+        <a class="category-card" href="#" style="--cc-color: #9a8ab4;">
           <div class="cc-icon">💹</div>
           <div class="cc-name">世界経済</div>
           <div class="cc-desc">関税戦争、通貨危機、資源争奪、国際金融</div>
           <div class="cc-count"><span class="cc-dot"></span> 記事 0件</div>
         </a>
-        <a class="category-card" href="#" style="--cc-color: #39d3f5;">
+        <a class="category-card" href="categories/immigration/index.html" style="--cc-color: #9ab4c4;">
           <div class="cc-icon">🌐</div>
-          <div class="cc-name">地政学・安全保障</div>
-          <div class="cc-desc">軍事同盟、核抑止、サイバー戦、宇宙開発競争</div>
-          <div class="cc-count"><span class="cc-dot"></span> 記事 0件</div>
+          <div class="cc-name">移民・難民</div>
+          <div class="cc-desc">締め出す国・呼び込む国・逃げる人々。世界の移民政策を多角的に分析</div>
+          <div class="cc-count"><span class="cc-dot"></span> 記事 1件</div>
         </a>
       </div>
     </section>
@@ -181,6 +189,25 @@
         <h2>最新記事</h2>
       </div>
       <div class="articles-list">
+        <div class="article-row">
+          <div class="ar-left">
+            <div class="ar-meta">
+              <span class="tag tag-blue">移民・難民</span>
+              <span class="ar-date">2026年6月2日</span>
+            </div>
+            <a href="articles/immigration/2026-06-02-immigration-policy/index.html">
+              <div class="ar-title">移民政策の世界地図 — 締め出す国・呼び込む国</div>
+              <div class="ar-summary">世界で1億1700万人が故郷を追われる中、各国の対応は真っ二つに割れている。アメリカ・欧州連合の厳格化とドイツ・カナダの積極受け入れ、日本の二重政策、難民送り出し国の声を多角的に整理。</div>
+            </a>
+            <div class="ar-countries">🇺🇸 🇪🇺 🇯🇵 🇨🇦 🇩🇪 🌍</div>
+          </div>
+          <div class="ar-right">
+            <div class="ar-angle-count">
+              <div class="ar-angle-num">6</div>
+              <div class="ar-angle-label">視点</div>
+            </div>
+          </div>
+        </div>
         <div class="article-row">
           <div class="ar-left">
             <div class="ar-meta">

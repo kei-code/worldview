@@ -4,7 +4,9 @@
 .article-hero {
   padding: 3.5rem 0 2.5rem;
   border-bottom: 1px solid var(--border-subtle);
-  background: linear-gradient(180deg, rgba(126,184,212,0.04) 0%, transparent 100%);
+  background:
+    linear-gradient(180deg, rgba(154,180,196,0.08) 0%, transparent 100%),
+    radial-gradient(ellipse at 70% 0%, rgba(154,180,196,0.06) 0%, transparent 60%);
 }
 .article-meta { display: flex; gap: 0.75rem; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; }
 .article-meta .date { color: var(--text-dim); font-size: 0.82rem; letter-spacing: 0.05em; }
@@ -20,7 +22,9 @@
   max-width: 800px;
   padding: 1.1rem 1.5rem;
   border-left: 2px solid var(--accent);
-  background: rgba(126,184,212,0.05);
+  box-shadow: -2px 0 12px rgba(154,180,196,0.15),
+              -1px 0 4px rgba(154,180,196,0.25);
+  background: rgba(154,180,196,0.05);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
@@ -31,6 +35,8 @@
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 1px 0 rgba(154,180,196,0.08),
+              0 2px 8px rgba(154,180,196,0.04);
   display: flex; align-items: center; gap: 0.6rem;
   text-transform: uppercase; letter-spacing: 0.1em;
   color: var(--text-muted);
@@ -57,6 +63,31 @@
 }
 .key-point .kp-value { font-size: 0.88rem; font-weight: 600; line-height: 1.4; }
 
+/* ===== C: カードボーダースイープグロー ===== */
+.perspective-card::before,
+.data-card::before,
+.key-point::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--accent) 50%,
+    transparent 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s ease;
+  opacity: 0.7;
+  pointer-events: none;
+}
+.perspective-card:hover::before,
+.data-card:hover::before,
+.key-point:hover::before {
+  transform: scaleX(1);
+}
+
+/* タイムライン::beforeはCSS管理に戻す */
+
 /* ===== Perspective Cards ===== */
 .perspectives-grid {
   display: grid;
@@ -73,7 +104,10 @@
 }
 .perspective-card:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+  box-shadow:
+    var(--shadow-lg),
+    0 0 20px rgba(154,180,196,0.08),
+    0 0 1px rgba(154,180,196,0.2);
   background: var(--bg-card2);
 }
 .perspective-card .country-header {
@@ -86,10 +120,11 @@
   padding: 0.2em 0.6em; border-radius: 4px;
   letter-spacing: 0.04em;
 }
-.stance-hostile   { background: rgba(192, 83, 58,0.15); color: var(--accent2); }
-.stance-cautious  { background: rgba(212,169, 71,0.15); color: var(--accent4); }
-.stance-neutral   { background: rgba(138,154,176,0.15); color: var(--text-muted); }
-.stance-supportive{ background: rgba( 79,184,106,0.15); color: var(--accent3); }
+/* スタンスラベルは対比2色のみ：敵対=くすみ赤、それ以外=共通グレー */
+.stance-hostile   { background: rgba(184,120,104,0.12); color: var(--accent2); }
+.stance-cautious  { background: rgba(154,180,196,0.10); color: var(--text-muted); }
+.stance-neutral   { background: rgba(154,180,196,0.10); color: var(--text-muted); }
+.stance-supportive{ background: rgba(154,180,196,0.10); color: var(--text-muted); }
 
 .perspective-card .key-claim {
   font-size: 0.87rem; line-height: 1.65; color: var(--text);
@@ -106,7 +141,7 @@
   line-height: 1.6;
 }
 
-/* Tone meter */
+/* Tone meter — 色は統一。敵対のみ赤 */
 .tone-meter { margin: 0.85rem 0 0.6rem; }
 .tone-meter-label {
   font-size: 0.7rem; color: var(--text-dim); margin-bottom: 0.35rem;
@@ -116,11 +151,8 @@
 .tone-track {
   height: 4px; background: var(--border); border-radius: 2px; overflow: hidden;
 }
-.tone-fill { height: 100%; border-radius: 2px; transition: width 0.7s cubic-bezier(.4,0,.2,1); }
-.tone-hostile  .tone-fill { background: var(--accent2); }
-.tone-cautious .tone-fill { background: var(--accent4); }
-.tone-neutral  .tone-fill { background: var(--text-muted); }
-.tone-supportive .tone-fill { background: var(--accent3); }
+.tone-fill { height: 100%; border-radius: 2px; background: var(--accent); transition: width 0.7s cubic-bezier(.4,0,.2,1); }
+.tone-hostile .tone-fill { background: var(--accent2); }
 
 /* ===== Compare Table ===== */
 .compare-table {
@@ -142,23 +174,70 @@
 .compare-table tr:hover td { background: var(--bg-card2); }
 
 /* ===== Timeline ===== */
-.timeline { position: relative; padding-left: 2rem; }
+@keyframes dot-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 4px rgba(255,255,255,0.9),
+      0 0 10px rgba(255,255,255,0.5),
+      0 0 20px rgba(255,255,255,0.15);
+  }
+  50% {
+    box-shadow:
+      0 0 8px rgba(255,255,255,1),
+      0 0 20px rgba(255,255,255,0.7),
+      0 0 36px rgba(255,255,255,0.25);
+  }
+}
+
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+/* 縦線：scaleY(0)→(1) でアニメーション */
 .timeline::before {
   content: '';
-  position: absolute; left: 0.55rem; top: 0.4rem; bottom: 0;
-  width: 1px;
-  background: linear-gradient(180deg, var(--accent) 0%, var(--border) 100%);
+  position: absolute;
+  left: 0.55rem;          /* 線の左端 */
+  top: 8px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.55) 0%,
+    rgba(255,255,255,0.08) 100%);
+  box-shadow: 0 0 6px rgba(255,255,255,0.15);
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 1.2s cubic-bezier(.4,0,.2,1);
+  z-index: 0;
 }
-.timeline-item { position: relative; margin-bottom: 2.25rem; }
+.timeline.is-visible::before {
+  transform: scaleY(1);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.25rem;
+  z-index: 1;          /* 線より前面 */
+}
+
+/* 丸：left:-2rem + margin-left:0.55rem + translateX(-50%) で線中心に正確に合わせる */
 .timeline-dot {
-  position: absolute; left: -2rem; top: 0.4rem;
-  width: 12px; height: 12px; border-radius: 50%;
-  border: 2px solid var(--bg); background: var(--accent);
-  transform: translateX(-50%); margin-left: 0.55rem;
-  box-shadow: 0 0 8px rgba(126,184,212,0.4);
+  position: absolute;
+  left: -2rem;
+  margin-left: 0.55rem;
+  transform: translateX(-50%);
+  top: 5px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid rgba(255,255,255,0.6);
+  z-index: 2;
+  animation: dot-pulse 2.8s ease-in-out infinite;
 }
-.timeline-dot.dot-event  { background: var(--accent2); box-shadow: 0 0 8px rgba(192,83,58,0.4); }
-.timeline-dot.dot-neutral { background: var(--accent4); box-shadow: 0 0 8px rgba(212,169,71,0.4); }
+.timeline-dot.dot-event,
+.timeline-dot.dot-neutral {
+  background: #ffffff;
+}
 
 .timeline-date {
   font-size: 0.72rem; font-weight: 700; color: var(--accent4);
@@ -198,7 +277,7 @@
   padding: 1.35rem;
   transition: border-color 0.2s;
 }
-.data-card:hover { border-color: rgba(126,184,212,0.3); }
+.data-card:hover { border-color: rgba(154,180,196,0.3); }
 .data-card h4 {
   font-size: 0.72rem; color: var(--text-dim); margin-bottom: 1.1rem;
   text-transform: uppercase; letter-spacing: 0.1em;
@@ -212,7 +291,20 @@
   flex: 1; height: 14px;
   background: var(--bg-card2); border-radius: 3px; overflow: hidden;
 }
-.bar-fill { height: 100%; border-radius: 3px; transition: width 0.8s cubic-bezier(.4,0,.2,1); }
+.bar-fill {
+  height: 100%; border-radius: 3px;
+  transition: width 0.8s cubic-bezier(.4,0,.2,1);
+  position: relative;
+}
+.bar-fill::after {
+  content: '';
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 6px; border-radius: 3px;
+  background: inherit;
+  filter: brightness(1.6);
+  box-shadow: 2px 0 8px currentColor;
+  opacity: 0.7;
+}
 .bar-value { min-width: 72px; font-size: 0.73rem; color: var(--text-muted); text-align: right; white-space: nowrap; }
 
 /* Stat Cards */

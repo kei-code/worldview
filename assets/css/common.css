@@ -2,22 +2,22 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* Slate & Ink カラーパレット */
-  --bg:        #141920;
-  --bg-card:   #1c2533;
-  --bg-card2:  #232f40;
-  --border:    #2a3a50;
-  --border-subtle: #1f2e40;
+  /* Graphite & Mist カラーパレット */
+  --bg:        #1a1e26;
+  --bg-card:   #38404e;
+  --bg-card2:  #424c5c;
+  --border:    #526078;
+  --border-subtle: #424c5c;
 
-  --text:      #e8dcc8;
-  --text-muted: #8a9ab0;
-  --text-dim:  #556070;
+  --text:      #fdfaf5;   /* ほぼ純白・ごくわずかにウォーム */
+  --text-muted: #c8d0da;  /* 明るいグレー */
+  --text-dim:  #8890a0;   /* ディム */
 
-  --accent:    #7eb8d4;   /* アイスブルー — リンク・強調 */
-  --accent2:   #c0533a;   /* テラコッタ — 警戒・敵対 */
-  --accent3:   #4fb86a;   /* グリーン — 支持・肯定 */
-  --accent4:   #d4a947;   /* ゴールド — 注意・日付 */
-  --accent5:   #9b7fd4;   /* パープル — 中立・複合 */
+  --accent:    #9ab4c4;   /* スモーキーブルー — リンク・強調 */
+  --accent2:   #b87868;   /* くすみテラコッタ — 警戒・敵対 */
+  --accent3:   #7aaa82;   /* くすみグリーン — 支持・肯定 */
+  --accent4:   #c4a882;   /* くすみウォームベージュ — 注意・日付 */
+  --accent5:   #9a8ab4;   /* くすみパープル — 中立・複合 */
 
   --radius:    10px;
   --radius-sm: 6px;
@@ -59,11 +59,14 @@ a:hover { text-decoration: underline; }
 }
 .site-logo::before {
   content: '';
-  width: 8px; height: 8px;
+  width: 7px; height: 7px;
   border-radius: 50%;
   background: var(--accent);
   display: inline-block;
-  box-shadow: 0 0 8px var(--accent);
+  box-shadow:
+    0 0 6px rgba(154,180,196,0.9),
+    0 0 14px rgba(154,180,196,0.5),
+    0 0 28px rgba(154,180,196,0.2);
 }
 .site-logo span { color: var(--accent); }
 
