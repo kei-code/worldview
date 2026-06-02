@@ -6,93 +6,99 @@
   <title>WorldView — 多視点で読む世界情勢</title>
   <link rel="stylesheet" href="assets/css/common.css">
   <style>
-    /* Portal-specific */
     .hero {
-      padding: 5rem 0 4rem;
+      padding: 5.5rem 0 4.5rem;
       text-align: center;
-      border-bottom: 1px solid var(--border);
-      background: radial-gradient(ellipse at top, rgba(88,166,255,0.08) 0%, transparent 60%);
+      border-bottom: 1px solid var(--border-subtle);
+      background: radial-gradient(ellipse at top, rgba(126,184,212,0.06) 0%, transparent 65%);
+      position: relative;
     }
     .hero-eyebrow {
-      font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 1rem;
+      font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1.25rem; opacity: 0.8;
     }
     .hero-title {
-      font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 800; line-height: 1.2;
-      margin-bottom: 1.25rem;
+      font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 700; line-height: 1.2;
+      margin-bottom: 1.35rem; letter-spacing: -0.02em; color: var(--text);
     }
     .hero-title span { color: var(--accent); }
-    .hero-desc { font-size: 1.05rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+    .hero-desc {
+      font-size: 1rem; color: var(--text-muted); max-width: 560px;
+      margin: 0 auto; line-height: 1.85;
+    }
 
-    .categories-section { padding: 3rem 0; }
+    .categories-section { padding: 3.5rem 0; }
     .section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
-    .section-head h2 { font-size: 1.1rem; font-weight: 700; }
-    .section-head a { font-size: 0.85rem; color: var(--text-muted); }
+    .section-head h2 {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.15em; color: var(--text-dim);
+    }
 
     .category-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.25rem;
+      gap: 1rem;
     }
     .category-card {
       background: var(--bg-card);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius);
       padding: 1.5rem;
-      border-top: 3px solid var(--cc-color);
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
+      border-left: 2px solid var(--cc-color);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, background 0.2s;
       display: block; color: var(--text);
     }
-    .category-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); text-decoration: none; }
-    .cc-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-    .cc-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .cc-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.6; }
-    .cc-count { font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem; }
-    .cc-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cc-color); }
+    .category-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      background: var(--bg-card2);
+      border-color: var(--cc-color);
+      text-decoration: none;
+    }
+    .cc-icon { font-size: 1.6rem; margin-bottom: 0.85rem; }
+    .cc-name { font-size: 0.97rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .cc-desc { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.65; }
+    .cc-count { font-size: 0.72rem; color: var(--text-dim); display: flex; align-items: center; gap: 0.4rem; }
+    .cc-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--cc-color); }
 
-    /* Latest Articles */
-    .latest-section { padding: 3rem 0; border-top: 1px solid var(--border); }
-    .articles-list { display: flex; flex-direction: column; gap: 1rem; }
+    .latest-section { padding: 3.5rem 0; border-top: 1px solid var(--border-subtle); }
+    .articles-list { display: flex; flex-direction: column; gap: 0.85rem; }
     .article-row {
       background: var(--bg-card);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius);
       padding: 1.25rem 1.5rem;
       display: flex; gap: 1.5rem; align-items: flex-start;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, background 0.2s;
     }
-    .article-row:hover { border-color: var(--accent); }
+    .article-row:hover { border-color: rgba(126,184,212,0.3); background: var(--bg-card2); }
     .article-row a { color: var(--text); }
     .article-row a:hover { text-decoration: none; }
     .ar-left { flex: 1; min-width: 0; }
-    .ar-meta { display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; }
-    .ar-date { font-size: 0.8rem; color: var(--text-muted); }
-    .ar-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.4; }
-    .ar-summary { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
-    .ar-countries { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-top: 0.6rem; font-size: 1.2rem; }
+    .ar-meta { display: flex; gap: 0.65rem; align-items: center; margin-bottom: 0.55rem; flex-wrap: wrap; }
+    .ar-date { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.03em; }
+    .ar-title { font-size: 0.97rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.45; }
+    .ar-summary { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
+    .ar-countries { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-top: 0.65rem; font-size: 1.1rem; }
     .ar-right { flex-shrink: 0; }
     .ar-angle-count {
-      background: var(--bg-card2); border: 1px solid var(--border);
-      border-radius: 8px; padding: 0.75rem 1rem; text-align: center;
+      background: var(--bg-card2); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm); padding: 0.7rem 0.9rem; text-align: center;
     }
-    .ar-angle-num { font-size: 1.5rem; font-weight: 800; color: var(--accent); line-height: 1; }
-    .ar-angle-label { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .ar-angle-num { font-size: 1.4rem; font-weight: 700; color: var(--accent); line-height: 1; }
+    .ar-angle-label { font-size: 0.68rem; color: var(--text-dim); margin-top: 0.2rem; letter-spacing: 0.05em; }
 
-    /* Concept */
-    .concept-section {
-      padding: 3rem 0;
-      border-top: 1px solid var(--border);
-    }
+    .concept-section { padding: 3.5rem 0; border-top: 1px solid var(--border-subtle); }
     .concept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
     .concept-item {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.25rem;
-      text-align: center;
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.35rem;
+      text-align: center; transition: background 0.2s, border-color 0.2s;
     }
-    .concept-item .ci-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-    .concept-item h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .concept-item p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+    .concept-item:hover { background: var(--bg-card2); border-color: var(--border); }
+    .concept-item .ci-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .concept-item h3 { font-size: 0.87rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .concept-item p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
   </style>
 </head>
 <body>
@@ -104,7 +110,7 @@
     <a href="categories/middle-east/index.html">中東情勢</a>
     <a href="#">米中関係</a>
     <a href="#">欧州情勢</a>
-    <a href="#">ウクライナ</a>
+    <a href="categories/ukraine/index.html">ウクライナ</a>
   </nav>
 </header>
 
@@ -148,11 +154,11 @@
           <div class="cc-desc">NATO拡大、EU統合、エネルギー安全保障、移民問題</div>
           <div class="cc-count"><span class="cc-dot"></span> 記事 0件</div>
         </a>
-        <a class="category-card" href="#" style="--cc-color: #e3b341;">
+        <a class="category-card" href="categories/ukraine/index.html" style="--cc-color: #e3b341;">
           <div class="cc-icon">⚔️</div>
           <div class="cc-name">ウクライナ紛争</div>
           <div class="cc-desc">ロシア・ウクライナ戦争、停戦交渉、西側支援の行方</div>
-          <div class="cc-count"><span class="cc-dot"></span> 記事 0件</div>
+          <div class="cc-count"><span class="cc-dot"></span> 記事 1件</div>
         </a>
         <a class="category-card" href="#" style="--cc-color: #bc8cff;">
           <div class="cc-icon">💹</div>
@@ -175,6 +181,25 @@
         <h2>最新記事</h2>
       </div>
       <div class="articles-list">
+        <div class="article-row">
+          <div class="ar-left">
+            <div class="ar-meta">
+              <span class="tag tag-yellow">ウクライナ紛争</span>
+              <span class="ar-date">2026年6月2日</span>
+            </div>
+            <a href="articles/ukraine/2026-06-02-ceasefire/index.html">
+              <div class="ar-title">ウクライナ停戦交渉の現在地 — トランプ仲介・プーチンの思惑・ゼレンスキーの苦境</div>
+              <div class="ar-summary">5月の3日間停戦は双方の攻撃継続で崩壊。領土・NATO加盟・安全保障をめぐる根本的対立は解消されず。中国の「戦略的中立」の実態も分析する。</div>
+            </a>
+            <div class="ar-countries">🇺🇦 🇷🇺 🇺🇸 🇪🇺 🇨🇳 🇯🇵</div>
+          </div>
+          <div class="ar-right">
+            <div class="ar-angle-count">
+              <div class="ar-angle-num">6</div>
+              <div class="ar-angle-label">視点</div>
+            </div>
+          </div>
+        </div>
         <div class="article-row">
           <div class="ar-left">
             <div class="ar-meta">

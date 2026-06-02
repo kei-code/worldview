@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI・技術覇権 — WorldView</title>
+  <title>ウクライナ紛争 — WorldView</title>
   <link rel="stylesheet" href="../../assets/css/common.css">
   <style>
     .cat-hero {
       padding: 3rem 0 2.5rem;
       border-bottom: 1px solid var(--border);
-      background: radial-gradient(ellipse at top left, rgba(88,166,255,0.08) 0%, transparent 55%);
+      background: radial-gradient(ellipse at top left, rgba(227,179,65,0.08) 0%, transparent 55%);
     }
     .cat-breadcrumb { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; }
     .cat-breadcrumb a { color: var(--text-muted); }
@@ -26,7 +26,7 @@
       border: 1px solid var(--border); background: none; color: var(--text-muted);
       cursor: pointer; font-family: var(--font); transition: all 0.2s;
     }
-    .filter-btn.active, .filter-btn:hover { background: var(--accent); border-color: var(--accent); color: #000; }
+    .filter-btn.active, .filter-btn:hover { background: var(--accent4); border-color: var(--accent4); color: #000; }
     .month-group { margin: 2.5rem 0; }
     .month-label {
       font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
@@ -39,20 +39,20 @@
       display: flex; gap: 1.5rem; align-items: flex-start;
       transition: border-color 0.2s, transform 0.2s;
     }
-    .article-card:hover { border-color: var(--accent); transform: translateX(3px); }
+    .article-card:hover { border-color: var(--accent4); transform: translateX(3px); }
     .ac-date-col { flex-shrink: 0; text-align: center; width: 50px; }
-    .ac-day { font-size: 1.6rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .ac-day { font-size: 1.6rem; font-weight: 800; color: var(--accent4); line-height: 1; }
     .ac-month { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; }
     .ac-body { flex: 1; min-width: 0; }
     .ac-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.5rem; }
     .ac-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.4; }
     .ac-title a { color: var(--text); }
-    .ac-title a:hover { color: var(--accent); text-decoration: none; }
+    .ac-title a:hover { color: var(--accent4); text-decoration: none; }
     .ac-summary { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.6rem; }
     .ac-flags { font-size: 1.1rem; letter-spacing: 0.1em; }
-    .ac-right { flex-shrink: 0; text-align: center; }
-    .ac-angle-badge { background: var(--bg-card2); border: 1px solid var(--border); border-radius: 8px; padding: 0.5rem 0.75rem; }
-    .ac-angle-badge .num { font-size: 1.3rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .ac-right { flex-shrink: 0; }
+    .ac-angle-badge { background: var(--bg-card2); border: 1px solid var(--border); border-radius: 8px; padding: 0.5rem 0.75rem; text-align: center; }
+    .ac-angle-badge .num { font-size: 1.3rem; font-weight: 800; color: var(--accent4); line-height: 1; }
     .ac-angle-badge .lbl { font-size: 0.7rem; color: var(--text-muted); }
   </style>
 </head>
@@ -63,8 +63,8 @@
   <nav class="site-nav">
     <a href="../../index.html">ホーム</a>
     <a href="../middle-east/index.html">中東情勢</a>
-    <a href="index.html" style="color:var(--text);">AI・技術覇権</a>
-    <a href="#">欧州情勢</a>
+    <a href="../ai-tech/index.html">AI・技術覇権</a>
+    <a href="index.html" style="color:var(--text);">ウクライナ</a>
   </nav>
 </header>
 
@@ -72,21 +72,21 @@
   <div class="cat-hero">
     <div class="container">
       <div class="cat-breadcrumb">
-        <a href="../../index.html">ホーム</a><span>›</span>AI・技術覇権
+        <a href="../../index.html">ホーム</a><span>›</span>ウクライナ紛争
       </div>
-      <div class="cat-icon">🤖</div>
-      <h1 class="cat-title">AI・技術覇権</h1>
-      <p class="cat-desc">米中AI競争、半導体サプライチェーン、各国の規制戦略、AGI開発競争——テクノロジーをめぐる覇権争いを多角的に分析します。</p>
+      <div class="cat-icon">⚔️</div>
+      <h1 class="cat-title">ウクライナ紛争</h1>
+      <p class="cat-desc">ロシア・ウクライナ戦争の戦況、停戦交渉の経緯、西側支援の行方、各国の思惑を多角的に分析します。</p>
     </div>
   </div>
 
   <div class="container">
     <div class="filter-bar">
       <button class="filter-btn active">すべて</button>
-      <button class="filter-btn">米中競争</button>
-      <button class="filter-btn">AI規制</button>
-      <button class="filter-btn">半導体</button>
-      <button class="filter-btn">AGI</button>
+      <button class="filter-btn">停戦交渉</button>
+      <button class="filter-btn">戦況</button>
+      <button class="filter-btn">欧州安全保障</button>
+      <button class="filter-btn">支援・制裁</button>
     </div>
 
     <div class="month-group">
@@ -99,16 +99,16 @@
           </div>
           <div class="ac-body">
             <div class="ac-meta">
-              <span class="tag tag-blue">米中競争</span>
-              <span class="tag tag-yellow">高関心</span>
+              <span class="tag tag-yellow">停戦交渉</span>
+              <span class="tag tag-red">高関心</span>
             </div>
             <div class="ac-title">
-              <a href="../../articles/ai-tech/2026-06-02-ai-race/index.html">
-                米中AI覇権争いの現在地 — 性能差2.7%まで縮まった技術競争の構図
+              <a href="../../articles/ukraine/2026-06-02-ceasefire/index.html">
+                ウクライナ停戦交渉の現在地 — トランプ仲介・プーチンの思惑・ゼレンスキーの苦境
               </a>
             </div>
-            <div class="ac-summary">Stanford AI Index 2026が明らかにした米中の接近。DeepSeekショック、半導体輸出規制、EUの規制先行、インドの第三極台頭——AIをめぐる世界の勢力図を6カ国の視点から整理する。</div>
-            <div class="ac-flags">🇺🇸 🇨🇳 🇪🇺 🇮🇳 🇯🇵 🇷🇺</div>
+            <div class="ac-summary">5月の3日間停戦は双方の攻撃継続で崩壊。領土・NATO加盟・安全保障をめぐる根本的対立は解消されず。ゼレンスキーはNATO断念を示唆するも「安全の保証なくして停戦なし」と主張。中国の「戦略的中立」の実態も分析。</div>
+            <div class="ac-flags">🇺🇦 🇷🇺 🇺🇸 🇪🇺 🇨🇳 🇯🇵</div>
           </div>
           <div class="ac-right">
             <div class="ac-angle-badge">

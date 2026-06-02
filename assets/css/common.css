@@ -2,44 +2,91 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #0d1117;
-  --bg-card: #161b22;
-  --bg-card2: #1c2230;
-  --border: #30363d;
-  --text: #e6edf3;
-  --text-muted: #8b949e;
-  --accent: #58a6ff;
-  --accent2: #f78166;
-  --accent3: #56d364;
-  --accent4: #e3b341;
-  --radius: 10px;
-  --font: 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+  /* Slate & Ink カラーパレット */
+  --bg:        #141920;
+  --bg-card:   #1c2533;
+  --bg-card2:  #232f40;
+  --border:    #2a3a50;
+  --border-subtle: #1f2e40;
+
+  --text:      #e8dcc8;
+  --text-muted: #8a9ab0;
+  --text-dim:  #556070;
+
+  --accent:    #7eb8d4;   /* アイスブルー — リンク・強調 */
+  --accent2:   #c0533a;   /* テラコッタ — 警戒・敵対 */
+  --accent3:   #4fb86a;   /* グリーン — 支持・肯定 */
+  --accent4:   #d4a947;   /* ゴールド — 注意・日付 */
+  --accent5:   #9b7fd4;   /* パープル — 中立・複合 */
+
+  --radius:    10px;
+  --radius-sm: 6px;
+  --shadow:    0 4px 20px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.5);
+
+  --font: 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic UI', 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', 'Consolas', monospace;
 }
 
 html { font-size: 16px; scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--text); font-family: var(--font); line-height: 1.7; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
 
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* ===== Site Header ===== */
 .site-header {
-  background: rgba(13,17,23,0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
+  background: rgba(20,25,32,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
   position: sticky; top: 0; z-index: 100;
-  padding: 0 2rem;
+  padding: 0 2.5rem;
   display: flex; align-items: center; justify-content: space-between;
-  height: 60px;
+  height: 62px;
 }
-.site-logo { font-size: 1.1rem; font-weight: 700; color: var(--text); letter-spacing: 0.05em; }
+
+.site-logo {
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--text); letter-spacing: 0.08em;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.site-logo::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+  box-shadow: 0 0 8px var(--accent);
+}
 .site-logo span { color: var(--accent); }
-.site-nav { display: flex; gap: 1.5rem; }
-.site-nav a { color: var(--text-muted); font-size: 0.9rem; transition: color 0.2s; }
+
+.site-nav { display: flex; gap: 2rem; }
+.site-nav a {
+  color: var(--text-muted); font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+  position: relative;
+}
+.site-nav a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 1px; background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.25s ease;
+}
 .site-nav a:hover { color: var(--text); text-decoration: none; }
+.site-nav a:hover::after { transform: scaleX(1); }
+.site-nav a[style*="color:var(--text)"]::after { transform: scaleX(1); }
 
 /* ===== Main Container ===== */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
 /* ===== Cards ===== */
 .card {
@@ -51,44 +98,48 @@ a:hover { text-decoration: underline; }
 .card-header {
   padding: 1rem 1.5rem;
   border-bottom: 1px solid var(--border);
-  font-weight: 600; font-size: 0.85rem;
-  text-transform: uppercase; letter-spacing: 0.1em;
+  font-weight: 600; font-size: 0.82rem;
+  text-transform: uppercase; letter-spacing: 0.12em;
   color: var(--text-muted);
 }
 
 /* ===== Tags ===== */
 .tag {
   display: inline-block;
-  padding: 0.2em 0.7em;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  border: 1px solid currentColor;
+  padding: 0.2em 0.75em;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
-.tag-blue { color: var(--accent); border-color: var(--accent); }
-.tag-red { color: var(--accent2); border-color: var(--accent2); }
-.tag-green { color: var(--accent3); border-color: var(--accent3); }
-.tag-yellow { color: var(--accent4); border-color: var(--accent4); }
+.tag-blue   { background: rgba(126,184,212,0.12); color: var(--accent);  border: 1px solid rgba(126,184,212,0.25); }
+.tag-red    { background: rgba(192, 83, 58,0.12); color: var(--accent2); border: 1px solid rgba(192, 83, 58,0.25); }
+.tag-green  { background: rgba( 79,184,106,0.12); color: var(--accent3); border: 1px solid rgba( 79,184,106,0.25); }
+.tag-yellow { background: rgba(212,169, 71,0.12); color: var(--accent4); border: 1px solid rgba(212,169, 71,0.25); }
 
-/* ===== Stance Colors ===== */
-.stance-bar {
-  height: 6px; border-radius: 3px; width: 100%;
-  background: linear-gradient(90deg, #f78166 var(--neg), #30363d var(--neg), #30363d calc(100% - var(--pos)), #56d364 calc(100% - var(--pos)));
-}
-
-/* ===== Footer ===== */
+/* ===== Site Footer ===== */
 .site-footer {
-  margin-top: 4rem;
-  padding: 2rem;
+  margin-top: 5rem;
+  padding: 2.5rem;
   text-align: center;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border-subtle);
+  letter-spacing: 0.02em;
+}
+.site-footer a { color: var(--text-muted); }
+
+/* ===== Divider ===== */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 2rem 0;
 }
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .site-header { padding: 0 1rem; }
-  .site-nav { gap: 1rem; }
-  .container { padding: 0 1rem; }
+  .site-header { padding: 0 1.25rem; }
+  .site-nav { gap: 1.25rem; }
+  .container { padding: 0 1.25rem; }
 }
