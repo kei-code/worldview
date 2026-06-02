@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorldView — 多視点で読む世界情勢</title>
+  <link rel="stylesheet" href="assets/css/common.css">
+  <style>
+    /* Portal-specific */
+    .hero {
+      padding: 5rem 0 4rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(ellipse at top, rgba(88,166,255,0.08) 0%, transparent 60%);
+    }
+    .hero-eyebrow {
+      font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 800; line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title span { color: var(--accent); }
+    .hero-desc { font-size: 1.05rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+
+    .categories-section { padding: 3rem 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    .section-head h2 { font-size: 1.1rem; font-weight: 700; }
+    .section-head a { font-size: 0.85rem; color: var(--text-muted); }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .category-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      border-top: 3px solid var(--cc-color);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      display: block; color: var(--text);
+    }
+    .category-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); text-decoration: none; }
+    .cc-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .cc-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .cc-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.6; }
+    .cc-count { font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem; }
+    .cc-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cc-color); }
+
+    /* Latest Articles */
+    .latest-section { padding: 3rem 0; border-top: 1px solid var(--border); }
+    .articles-list { display: flex; flex-direction: column; gap: 1rem; }
+    .article-row {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+    .article-row:hover { border-color: var(--accent); }
+    .article-row a { color: var(--text); }
+    .article-row a:hover { text-decoration: none; }
+    .ar-left { flex: 1; min-width: 0; }
+    .ar-meta { display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; }
+    .ar-date { font-size: 0.8rem; color: var(--text-muted); }
+    .ar-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.4; }
+    .ar-summary { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+    .ar-countries { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-top: 0.6rem; font-size: 1.2rem; }
+    .ar-right { flex-shrink: 0; }
+    .ar-angle-count {
+      background: var(--bg-card2); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.75rem 1rem; text-align: center;
+    }
+    .ar-angle-num { font-size: 1.5rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .ar-angle-label { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+    /* Concept */
+    .concept-section {
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .concept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+    .concept-item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem;
+      text-align: center;
+    }
+    .concept-item .ci-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .concept-item h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .concept-item p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><span>World</span>View</div>
+  <nav class="site-nav">
+    <a href="index.html">ホーム</a>
+    <a href="categories/middle-east/index.html">中東情勢</a>
+    <a href="#">米中関係</a>
+    <a href="#">欧州情勢</a>
+    <a href="#">ウクライナ</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">多視点・多角的ニュース分析</p>
+      <h1 class="hero-title">世界を、<span>複数の目</span>で読む</h1>
+      <p class="hero-desc">
+        一つの事件を、関係するすべての国の視点から分析。
+        対立する主張を並べて見ることで、情報の偏りに気づき、
+        世界情勢の本質を理解するためのメディアです。
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- Categories -->
+    <section class="categories-section">
+      <div class="section-head">
+        <h2>カテゴリ</h2>
+      </div>
+      <div class="category-grid">
+        <a class="category-card" href="categories/middle-east/index.html" style="--cc-color: #f78166;">
+          <div class="cc-icon">🕌</div>
+          <div class="cc-name">中東情勢</div>
+          <div class="cc-desc">イラン核問題、イスラエル・パレスチナ紛争、湾岸諸国の動向</div>
+          <div class="cc-count"><span class="cc-dot"></span> 記事 1件</div>
+        </a>
+        <a class="category-card" href="#" style="--cc-color: #58a6ff;">
+          <div class="cc-icon">🌏</div>
+          <div class="cc-name">米中関係</div>
+          <div class="cc-desc">貿易摩擦、台湾問題、技術覇権争い、南シナ海</div>
+          <div class="cc-count"><span class="cc-dot"></span> 記事 0件</div>
+        </a>
+        <a class="category-card" href="#" style="--cc-color: #56d364;">
+          <div class="cc-icon">🌍</div>
+          <div class="cc-name">欧州情勢</div>
+          <div class="cc-desc">NATO拡大、EU統合、エネルギー安全保障、移民問題</div>
+          <div class="cc-count"><span class="cc-dot"></span> 記事 0件</div>
+        </a>
+        <a class="category-card" href="#" style="--cc-color: #e3b341;">
+          <div class="cc-icon">⚔️</div>
+          <div class="cc-name">ウクライナ紛争</div>
+          <div class="cc-desc">ロシア・ウクライナ戦争、停戦交渉、西側支援の行方</div>
+          <div class="cc-count"><span class="cc-dot"></span> 記事 0件</div>
+        </a>
+        <a class="category-card" href="#" style="--cc-color: #bc8cff;">
+          <div class="cc-icon">💹</div>
+          <div class="cc-name">世界経済</div>
+          <div class="cc-desc">関税戦争、通貨危機、資源争奪、国際金融</div>
+          <div class="cc-count"><span class="cc-dot"></span> 記事 0件</div>
+        </a>
+        <a class="category-card" href="#" style="--cc-color: #39d3f5;">
+          <div class="cc-icon">🌐</div>
+          <div class="cc-name">地政学・安全保障</div>
+          <div class="cc-desc">軍事同盟、核抑止、サイバー戦、宇宙開発競争</div>
+          <div class="cc-count"><span class="cc-dot"></span> 記事 0件</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Latest Articles -->
+    <section class="latest-section">
+      <div class="section-head">
+        <h2>最新記事</h2>
+      </div>
+      <div class="articles-list">
+        <div class="article-row">
+          <div class="ar-left">
+            <div class="ar-meta">
+              <span class="tag tag-red">中東情勢</span>
+              <span class="ar-date">2026年6月2日</span>
+            </div>
+            <a href="articles/middle-east/2026-06-02-iran-nuclear/index.html">
+              <div class="ar-title">イラン核交渉の最新動向 — 米国・イスラエル・イランの三つ巴</div>
+              <div class="ar-summary">2026年5月の核合意再交渉をめぐり、各国の立場は鮮明に対立。イランは「平和利用の権利」を主張する一方、イスラエルは軍事オプションを示唆。米国は外交圧力と制裁の組み合わせを模索している。</div>
+            </a>
+            <div class="ar-countries">🇮🇷 🇺🇸 🇮🇱 🇷🇺 🇨🇳 🇩🇪 🇸🇦</div>
+          </div>
+          <div class="ar-right">
+            <div class="ar-angle-count">
+              <div class="ar-angle-num">7</div>
+              <div class="ar-angle-label">視点</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Concept -->
+    <section class="concept-section">
+      <div class="section-head">
+        <h2>このサイトについて</h2>
+      </div>
+      <div class="concept-grid">
+        <div class="concept-item">
+          <div class="ci-icon">🔍</div>
+          <h3>多視点分析</h3>
+          <p>一つのトピックについて、関係するすべての国・勢力の公式見解・メディア報道を収集</p>
+        </div>
+        <div class="concept-item">
+          <div class="ci-icon">⚖️</div>
+          <h3>中立的な整理</h3>
+          <p>特定の立場を取らず、各国の主張をそのまま並列提示。読者自身が判断できる構成</p>
+        </div>
+        <div class="concept-item">
+          <div class="ci-icon">📊</div>
+          <h3>データ可視化</h3>
+          <p>対立構造・勢力図・タイムラインをグラフィカルに表示。複雑な関係を直感的に把握</p>
+        </div>
+        <div class="concept-item">
+          <div class="ci-icon">🗂️</div>
+          <h3>体系的アーカイブ</h3>
+          <p>カテゴリ・日付別に記事を整理。過去の経緯を遡って読むことができる</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | 情報は各国メディア・公式発表を基に整理しています</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
