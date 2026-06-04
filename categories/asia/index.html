@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アジア情勢 — WorldView</title>
+  <link rel="stylesheet" href="../../assets/css/common.css">
+  <style>
+    .cat-hero {
+      padding: 3rem 0 2.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      background: radial-gradient(ellipse at top left, rgba(255,153,51,0.06) 0%, transparent 55%);
+    }
+    .cat-breadcrumb { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .cat-breadcrumb a { color: var(--text-muted); }
+    .cat-breadcrumb span { margin: 0 0.4rem; }
+    .cat-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .cat-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 0.75rem; }
+    .cat-desc { font-size: 0.95rem; color: var(--text-muted); max-width: 600px; line-height: 1.8; }
+    .filter-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; padding: 1.5rem 0; border-bottom: 1px solid var(--border-subtle); }
+    .filter-btn {
+      padding: 0.4em 1em; border-radius: 20px; font-size: 0.82rem; font-weight: 600;
+      border: 1px solid var(--border); background: none; color: var(--text-muted);
+      cursor: pointer; font-family: var(--font); transition: all 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover { background: var(--accent); border-color: var(--accent); color: #000; }
+    .month-group { margin: 2.5rem 0; }
+    .month-label {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--text-dim);
+      padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-subtle); margin-bottom: 1rem;
+    }
+    .article-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem;
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    .article-card:hover { border-color: var(--accent); background: var(--bg-card2); transform: translateX(3px); }
+    .ac-date-col { flex-shrink: 0; text-align: center; width: 50px; }
+    .ac-day { font-size: 1.6rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .ac-month { font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; }
+    .ac-body { flex: 1; min-width: 0; }
+    .ac-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.5rem; }
+    .ac-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.4; }
+    .ac-title a { color: var(--text); }
+    .ac-title a:hover { color: var(--accent); text-decoration: none; }
+    .ac-summary { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.6rem; }
+    .ac-flags { font-size: 1.1rem; letter-spacing: 0.1em; }
+    .ac-right { flex-shrink: 0; }
+    .ac-angle-badge { background: var(--bg-card2); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 0.5rem 0.75rem; text-align: center; }
+    .ac-angle-badge .num { font-size: 1.3rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .ac-angle-badge .lbl { font-size: 0.7rem; color: var(--text-dim); }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-logo"><a href="../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../index.html">ホーム</a>
+    <a href="../middle-east/index.html">中東情勢</a>
+    <a href="../economy/index.html">世界経済</a>
+    <a href="index.html" style="color:var(--text);">アジア情勢</a>
+  </nav>
+</header>
+<main>
+  <div class="cat-hero">
+    <div class="container">
+      <div class="cat-breadcrumb"><a href="../../index.html">ホーム</a><span>›</span>アジア情勢</div>
+      <div class="cat-icon">🌏</div>
+      <h1 class="cat-title">アジア情勢</h1>
+      <p class="cat-desc">インド・中国・東南アジア・朝鮮半島——世界の重心が移るアジアの複雑な力学を、関係するすべての国の視点から分析します。</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="filter-bar">
+      <button class="filter-btn active">すべて</button>
+      <button class="filter-btn">インド</button>
+      <button class="filter-btn">中国・台湾</button>
+      <button class="filter-btn">東南アジア</button>
+    </div>
+    <div class="month-group">
+      <div class="month-label">2026年 6月</div>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="article-card">
+          <div class="ac-date-col">
+            <div class="ac-day">04</div>
+            <div class="ac-month">Jun</div>
+          </div>
+          <div class="ac-body">
+            <div class="ac-meta">
+              <span class="tag tag-blue">アジア情勢</span>
+              <span class="tag tag-yellow">地政学</span>
+            </div>
+            <div class="ac-title">
+              <a href="../../articles/asia/2026-06-04-india-strategy/index.html">
+                インドの「全方位外交」— 米中どちらにも付かない14億人の大国
+              </a>
+            </div>
+            <div class="ac-summary">クワッドに参加しながらロシアから石油を買い続け、BRICSの議長国を務めながらアメリカとの「歴史的貿易合意」を発表する。世界第5位の経済大国として急成長するインドが、米中対立の時代に「戦略的自律」をどう実践しているか。6つの視点から整理する。</div>
+            <div class="ac-flags">🇮🇳 🇺🇸 🇨🇳 🇷🇺 🌍 🇯🇵</div>
+          </div>
+          <div class="ac-right">
+            <div class="ac-angle-badge">
+              <div class="num">6</div>
+              <div class="lbl">視点</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="site-footer"><p>WorldView — 多視点で読む世界情勢</p></footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
