@@ -5,239 +5,359 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WorldView — 多視点で読む世界情勢</title>
   <link rel="stylesheet" href="assets/css/common.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ===== Hero: 画像背景 ===== */
+    /* ====================================================================
+       WorldView Home — "Vivid Geopolitical Dashboard" × Cinematic
+       ==================================================================== */
+
+    :root {
+      --home-bg: #0e1117;
+      --glass: rgba(30,36,48,0.55);
+      --glass-border: rgba(255,255,255,0.08);
+      --num-font: 'Space Grotesk', var(--font);
+
+      /* 70-25-5 パレット */
+      --main:      #9ab4c4;   /* メイン25%: スモーキー青 */
+      --main-soft: #6f8696;   /* メインの沈んだ版（淡い用途） */
+      --accent:    #d9a567;   /* アクセント5%: 琥珀（最重要ハイライトのみ） */
+    }
+
+    body { background: var(--home-bg); }
+
+    /* 背景アンビエント発光 */
+    .ambient {
+      position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
+    }
+    .ambient::before, .ambient::after {
+      content: ''; position: absolute; border-radius: 50%;
+      filter: blur(130px); opacity: 0.28;
+    }
+    .ambient::before {
+      width: 600px; height: 600px; top: -200px; left: -150px;
+      background: radial-gradient(circle, var(--main), transparent 70%);
+    }
+    .ambient::after {
+      width: 520px; height: 520px; bottom: -180px; right: -120px;
+      background: radial-gradient(circle, var(--main-soft), transparent 70%);
+    }
+
+    /* ===================== HERO (cinematic) ===================== */
     .hero {
       position: relative;
-      min-height: 520px;
+      min-height: 600px;
       display: flex; align-items: center;
-      border-bottom: 1px solid var(--border-subtle);
       overflow: hidden;
+      border-bottom: 1px solid var(--glass-border);
     }
     .hero-bg {
       position: absolute; inset: 0;
       background-image: url('image/home/1.png');
-      background-size: cover;
-      background-position: center 40%;
-      filter: brightness(0.55) saturate(0.85);
+      background-size: cover; background-position: center 38%;
+      filter: brightness(0.5) saturate(1.05);
+      transform: scale(1.08);
+      animation: kenburns 26s ease-in-out infinite alternate;
       z-index: 0;
     }
-    /* 左側を暗くしてテキストを読みやすく */
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(
-        105deg,
-        rgba(26,30,38,0.92) 0%,
-        rgba(26,30,38,0.75) 45%,
-        rgba(26,30,38,0.15) 75%,
-        transparent 100%
-      );
-      z-index: 1;
+    @keyframes kenburns {
+      from { transform: scale(1.08) translate(0,0); }
+      to   { transform: scale(1.18) translate(-1.5%, -2%); }
     }
-    /* 下端のフェード（コンテンツへの自然な接続） */
-    .hero-overlay-bottom {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 120px;
-      background: linear-gradient(to top, var(--bg), transparent);
-      z-index: 2;
+    /* 暗部方向グラデ＋ごく薄い青の放射1枚 */
+    .hero-tint {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(115deg, rgba(14,17,23,0.95) 0%, rgba(14,17,23,0.7) 40%, rgba(14,17,23,0.15) 70%, transparent 100%),
+        radial-gradient(ellipse at 78% 25%, rgba(154,180,196,0.12), transparent 58%);
     }
-    .hero .container {
-      position: relative; z-index: 3;
-      padding-top: 5rem; padding-bottom: 5rem;
+    .hero-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 140px; z-index: 2;
+      background: linear-gradient(to top, var(--home-bg), transparent);
     }
+    .hero .container { position: relative; z-index: 3; padding: 6rem 2rem; }
+
     .hero-eyebrow {
-      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 1.25rem; opacity: 0.9;
-      display: flex; align-items: center; gap: 0.75rem;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text); font-weight: 600;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--glass-border);
+      padding: 0.5em 1em; border-radius: 100px;
+      backdrop-filter: blur(8px); margin-bottom: 1.75rem;
     }
-    .hero-eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 28px; height: 1px;
-      background: var(--accent);
-      opacity: 0.7;
+    .hero-eyebrow .live-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 0 0 rgba(217,165,103,0.6);
+      animation: pulse 2s infinite;
     }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(217,165,103,0.6); }
+      70%  { box-shadow: 0 0 0 9px rgba(217,165,103,0); }
+      100% { box-shadow: 0 0 0 0 rgba(217,165,103,0); }
+    }
+
     .hero-title {
-      font-size: clamp(2.2rem, 5.5vw, 3.6rem); font-weight: 700; line-height: 1.15;
-      margin-bottom: 1.5rem; letter-spacing: -0.02em; color: var(--text);
-      max-width: 680px;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 800; line-height: 1.12; letter-spacing: -0.02em;
+      margin-bottom: 1.5rem; color: var(--text);
+      white-space: nowrap;
     }
-    .hero-title span {
-      color: var(--accent);
-      text-shadow:
-        0 0 20px rgba(154,180,196,0.7),
-        0 0 40px rgba(154,180,196,0.35),
-        0 0 80px rgba(154,180,196,0.15);
+    .hero-title .grad {
+      background: linear-gradient(100deg, #c2d4de 0%, var(--main) 55%, var(--main-soft) 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+
     .hero-desc {
-      font-size: 1rem; color: var(--text-muted); max-width: 500px;
-      line-height: 1.85; margin-bottom: 2rem;
+      font-size: 1.05rem; color: var(--text-muted);
+      max-width: 540px; line-height: 1.9; margin-bottom: 2.5rem;
     }
-    .hero-stats {
-      display: flex; gap: 2rem; flex-wrap: wrap;
-    }
-    .hero-stat {
-      display: flex; flex-direction: column; gap: 0.2rem;
-    }
+
+    .hero-stats { display: flex; gap: 2.75rem; flex-wrap: wrap; }
+    .hero-stat { display: flex; flex-direction: column; gap: 0.35rem; }
     .hero-stat-num {
-      font-size: 1.4rem; font-weight: 700; color: var(--text);
-      line-height: 1;
+      font-family: var(--num-font);
+      font-size: 2.4rem; font-weight: 700; line-height: 1;
+      color: var(--text);
+      display: flex; align-items: baseline;
     }
+    .hero-stat-num .suffix { color: var(--accent); font-size: 1.5rem; }
     .hero-stat-label {
-      font-size: 0.72rem; color: var(--text-muted);
-      text-transform: uppercase; letter-spacing: 0.08em;
-    }
-    @media (max-width: 640px) {
-      .hero { min-height: 420px; }
-      .hero-bg { background-position: 65% center; }
-      .hero-stats { gap: 1.25rem; }
+      font-size: 0.72rem; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 0.1em;
     }
 
-    .categories-section { padding: 3.5rem 0; }
-    .section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    .scroll-hint {
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 3; color: var(--text-dim); font-size: 1.4rem;
+      animation: bob 1.8s ease-in-out infinite;
+    }
+    @keyframes bob { 0%,100% { transform: translate(-50%,0); } 50% { transform: translate(-50%,8px); } }
+
+    /* ===================== Section shell ===================== */
+    .section-head {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 1.75rem;
+    }
+    .section-head .head-left { display: flex; flex-direction: column; gap: 0.4rem; }
+    .section-eyebrow {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--main);
+    }
     .section-head h2 {
-      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.15em; color: var(--text-dim);
+      font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; color: var(--text);
     }
 
-    .category-grid {
+    .categories-section { padding: 4rem 0 1rem; }
+
+    /* ===================== Bento Category Grid ===================== */
+    .bento {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 200px;
+      grid-auto-flow: dense;
       gap: 1rem;
     }
-    .category-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-      display: block; color: var(--text);
+    .cat-tile {
+      position: relative; overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--glass-border);
+      display: flex; align-items: flex-end;
+      color: var(--text);
+      background: #0e1117;
+      transition: transform 0.35s cubic-bezier(.2,.7,.2,1), box-shadow 0.35s, border-color 0.35s;
     }
-    .category-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--cc-color);
+    .cat-tile.feature { grid-column: span 2; }
+
+    /* 写真＋グラデの背景レイヤー（hoverで拡大） */
+    .cat-tile::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: var(--cc-photo, none),
+        linear-gradient(150deg,
+          color-mix(in srgb, var(--cc-color) 16%, #0e1117) 0%,
+          color-mix(in srgb, var(--cc-color) 7%, #0e1117) 45%,
+          #0e1117 95%);
+      background-size: cover; background-position: center;
+      transition: transform 0.6s cubic-bezier(.2,.7,.2,1);
+    }
+    .cat-tile:hover::before { transform: scale(1.06); }
+
+    /* 文字可読性のための下方シェード */
+    .tile-shade {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to top,
+        rgba(8,10,14,0.92) 0%, rgba(8,10,14,0.45) 45%, transparent 80%);
+    }
+    .cat-tile:hover {
+      transform: translateY(-5px);
+      border-color: color-mix(in srgb, var(--main) 55%, transparent);
+      box-shadow: 0 18px 40px -12px color-mix(in srgb, var(--main) 45%, transparent);
       text-decoration: none;
     }
-    .category-card:hover .cc-thumb img {
-      transform: scale(1.05);
+    .tile-body { position: relative; z-index: 2; padding: 1.25rem 1.35rem; width: 100%; }
+    .tile-kicker {
+      display: inline-block; font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--main-soft); margin-bottom: 0.55rem;
     }
-    /* 全カード共通：16:9 */
-    .category-card {
-      aspect-ratio: 16 / 9;
+    .tile-name {
+      font-size: 1.05rem; font-weight: 800; margin-bottom: 0.4rem;
+      letter-spacing: 0.01em;
     }
+    .cat-tile.feature .tile-name { font-size: 1.6rem; }
+    .tile-desc {
+      font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;
+      margin-bottom: 0.85rem; display: none;
+    }
+    .cat-tile.feature .tile-desc { display: block; max-width: 90%; }
+    .tile-count {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-size: 0.72rem; font-weight: 600; color: var(--text);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--glass-border);
+      padding: 0.28em 0.7em; border-radius: 100px;
+      backdrop-filter: blur(6px);
+    }
+    .tile-count .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--main);
+      box-shadow: 0 0 8px color-mix(in srgb, var(--main) 70%, transparent);
+    }
+    .tile-count.zero { opacity: 0.6; }
 
-    /* 画像背景カード */
-    .cc-image-card {
+    /* ===================== Latest Stories ===================== */
+    .latest-section { padding: 4rem 0 1rem; }
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1.25rem;
+    }
+    .story-card {
       position: relative;
-      display: flex; align-items: flex-end;
-    }
-    .cc-image-card .cc-bg {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center;
-      filter: brightness(0.6) saturate(0.8);
-      transition: filter 0.4s ease, transform 0.5s ease;
-      transform-origin: center;
-    }
-    .cc-image-card:hover .cc-bg {
-      filter: brightness(0.75) saturate(0.9);
-      transform: scale(1.03);
-    }
-    .cc-image-card .cc-bg-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(26,30,38,0.95) 0%,
-        rgba(26,30,38,0.55) 55%,
-        rgba(26,30,38,0.05) 100%
-      );
-    }
-    .cc-image-card .cc-body {
-      position: relative; z-index: 1;
-      padding: 1.1rem 1.25rem;
-      width: 100%;
-    }
-
-    /* 画像なしカード */
-    .cc-no-image {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px; overflow: hidden;
       display: flex; flex-direction: column;
-      justify-content: flex-end;
-      background: var(--bg-card2);
+      color: var(--text);
+      transition: transform 0.3s cubic-bezier(.2,.7,.2,1), box-shadow 0.3s, border-color 0.3s;
     }
-    .cc-no-image .cc-icon-area {
-      flex: 1; display: flex; align-items: center; justify-content: center;
+    .story-card:hover {
+      transform: translateY(-5px);
+      border-color: color-mix(in srgb, var(--main) 55%, transparent);
+      box-shadow: 0 18px 40px -14px color-mix(in srgb, var(--main) 45%, transparent);
+      text-decoration: none;
     }
-    .cc-body {
-      padding: 1rem 1.25rem 1.1rem;
+    .story-thumb {
+      position: relative; height: 150px; overflow: hidden;
+      background-image: var(--cc-photo, none),
+        linear-gradient(135deg,
+          color-mix(in srgb, var(--c) 18%, #0e1117),
+          color-mix(in srgb, var(--c) 7%, #0e1117) 70%, #0e1117);
+      background-size: cover; background-position: center;
+      display: flex; align-items: center; justify-content: center;
     }
-    .cc-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
-    .cc-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.35rem; }
-    .cc-desc { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem; line-height: 1.6; }
-    .cc-count { font-size: 0.7rem; color: var(--text-dim); display: flex; align-items: center; gap: 0.4rem; }
-    .cc-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--cc-color); flex-shrink: 0; }
+    .story-thumb .thumb-emoji {
+      font-size: 3rem; opacity: 0.5;
+      filter: drop-shadow(0 4px 14px rgba(0,0,0,0.5));
+      transition: transform 0.5s cubic-bezier(.2,.7,.2,1);
+    }
+    .story-card:hover .thumb-emoji { transform: scale(1.12) rotate(-3deg); }
+    .story-angle {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      display: flex; flex-direction: column; align-items: center;
+      background: rgba(8,10,14,0.6); backdrop-filter: blur(8px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px; padding: 0.4rem 0.6rem; line-height: 1;
+    }
+    .story-angle .a-num {
+      font-family: var(--num-font); font-size: 1.15rem; font-weight: 700;
+      color: var(--accent);
+    }
+    .story-angle .a-lbl { font-size: 0.58rem; color: var(--text-muted); margin-top: 0.15rem; }
+    .story-content { padding: 1.1rem 1.25rem 1.25rem; display: flex; flex-direction: column; flex: 1; }
+    .story-meta { display: flex; gap: 0.6rem; align-items: center; margin-bottom: 0.6rem; }
+    .story-date { font-size: 0.72rem; color: var(--text-dim); }
+    .story-title { font-size: 1rem; font-weight: 700; line-height: 1.45; margin-bottom: 0.5rem; }
+    .story-sum { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 0.9rem; flex: 1; }
+    .story-flags { font-size: 1.05rem; letter-spacing: 0.08em; }
 
-    .latest-section { padding: 3.5rem 0; border-top: 1px solid var(--border-subtle); }
-    .articles-list { display: flex; flex-direction: column; gap: 0.85rem; }
-    .article-row {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
-      display: flex; gap: 1.5rem; align-items: flex-start;
-      transition: border-color 0.2s, background 0.2s;
+    /* ホーム内のタグは多色をやめ、メイン青の単一スタイルに統一（common.css は不変） */
+    .story-meta .tag {
+      background: color-mix(in srgb, var(--main) 12%, transparent);
+      color: var(--main);
+      border: 1px solid color-mix(in srgb, var(--main) 28%, transparent);
     }
-    .article-row:hover { border-color: rgba(154,180,196,0.3); background: var(--bg-card2); }
-    .article-row a { color: var(--text); }
-    .article-row a:hover { text-decoration: none; }
-    .ar-left { flex: 1; min-width: 0; }
-    .ar-meta { display: flex; gap: 0.65rem; align-items: center; margin-bottom: 0.55rem; flex-wrap: wrap; }
-    .ar-date { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.03em; }
-    .ar-title { font-size: 0.97rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.45; }
-    .ar-summary { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
-    .ar-countries { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-top: 0.65rem; font-size: 1.1rem; }
-    .ar-right { flex-shrink: 0; }
-    .ar-angle-count {
-      background: var(--bg-card2); border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm); padding: 0.7rem 0.9rem; text-align: center;
-    }
-    .ar-angle-num { font-size: 1.4rem; font-weight: 700; color: var(--accent); line-height: 1; }
-    .ar-angle-label { font-size: 0.68rem; color: var(--text-dim); margin-top: 0.2rem; letter-spacing: 0.05em; }
 
-    .concept-section { padding: 3.5rem 0; border-top: 1px solid var(--border-subtle); }
-    .concept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
-    .concept-item {
-      background: var(--bg-card); border: 1px solid var(--border-subtle);
-      border-radius: var(--radius); padding: 1.35rem;
-      text-align: center; transition: background 0.2s, border-color 0.2s;
+    /* ===================== Concept ===================== */
+    .concept-section { padding: 4rem 0; }
+    .concept-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem;
     }
-    .concept-item:hover { background: var(--bg-card2); border-color: var(--border); }
-    .concept-item .ci-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
-    .concept-item h3 { font-size: 0.87rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .concept-item p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
+    .concept-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 16px; padding: 1.6rem 1.4rem; text-align: center;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .concept-card:hover {
+      transform: translateY(-4px);
+      border-color: color-mix(in srgb, var(--main) 50%, transparent);
+      box-shadow: 0 14px 36px -16px color-mix(in srgb, var(--main) 45%, transparent);
+    }
+    .concept-icon {
+      width: 54px; height: 54px; margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; border-radius: 14px;
+      background: color-mix(in srgb, var(--main) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--main) 32%, transparent);
+      box-shadow: inset 0 0 18px color-mix(in srgb, var(--main) 18%, transparent);
+    }
+    .concept-card h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.55rem; }
+    .concept-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ===================== Responsive ===================== */
+    @media (max-width: 1000px) {
+      .bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 168px; }
+      .cat-tile.feature { grid-column: span 2; grid-row: span 1; }
+      .cat-tile.feature .tile-name { font-size: 1.3rem; }
+    }
+    @media (max-width: 640px) {
+      .hero { min-height: 500px; }
+      .hero .container { padding: 4rem 1.25rem; }
+      .hero-bg { background-position: 64% center; }
+      .hero-title { white-space: normal; }
+      .bento { grid-template-columns: 1fr; grid-auto-rows: 156px; }
+      .cat-tile.feature { grid-row: span 1; }
+      .tile-desc { display: none !important; }
+      .hero-stats { gap: 1.75rem; }
+    }
   </style>
 </head>
 <body>
 
+<div class="ambient"></div>
+
 <header class="site-header">
-  <div class="site-logo"><span>World</span>View</div>
+  <div class="site-logo"><a href="index.html" style="color:inherit;"><span>World</span>View</a></div>
   <nav class="site-nav">
     <a href="index.html">ホーム</a>
     <a href="categories/middle-east/index.html">中東情勢</a>
-    <a href="#">米中関係</a>
-    <a href="#">欧州情勢</a>
-    <a href="categories/ukraine/index.html">ウクライナ</a>
+    <a href="categories/economy/index.html">世界経済</a>
+    <a href="categories/asia/index.html">アジア情勢</a>
+    <a href="categories/immigration/index.html">移民・難民</a>
   </nav>
 </header>
 
 <main>
-  <!-- Hero -->
+  <!-- ===================== HERO ===================== -->
   <section class="hero">
     <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-overlay-bottom"></div>
+    <div class="hero-tint"></div>
+    <div class="hero-bottom"></div>
     <div class="container">
-      <p class="hero-eyebrow">多視点・多角的ニュース分析</p>
-      <h1 class="hero-title">世界を、<span>複数の目</span>で読む</h1>
+      <span class="hero-eyebrow"><span class="live-dot"></span> 多視点・多角的ニュース分析</span>
+      <h1 class="hero-title">世界を、<span class="grad">複数の目</span>で読む。</h1>
       <p class="hero-desc">
         一つの事件を、関係するすべての国の視点から分析。
         対立する主張を並べて見ることで、情報の偏りに気づき、
@@ -245,239 +365,240 @@
       </p>
       <div class="hero-stats">
         <div class="hero-stat">
-          <span class="hero-stat-num">6</span>
+          <span class="hero-stat-num" data-count="6">0</span>
           <span class="hero-stat-label">カテゴリ</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-num">6</span>
+          <span class="hero-stat-num" data-count="6">0</span>
           <span class="hero-stat-label">記事</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-num">25+</span>
+          <span class="hero-stat-num" data-count="25" data-suffix="+">0</span>
           <span class="hero-stat-label">国の視点</span>
         </div>
       </div>
     </div>
+    <div class="scroll-hint">⌄</div>
   </section>
 
   <div class="container">
 
-    <!-- Categories -->
+    <!-- ===================== CATEGORIES (Bento) ===================== -->
     <section class="categories-section">
       <div class="section-head">
-        <h2>カテゴリ</h2>
+        <div class="head-left">
+          <span class="section-eyebrow">Categories</span>
+          <h2>テーマで読む</h2>
+        </div>
       </div>
-      <div class="category-grid">
-        <!-- 中東情勢：画像背景 -->
-        <a class="category-card cc-image-card" href="categories/middle-east/index.html" style="--cc-color: #b87868;">
-          <div class="cc-bg" style="background-image:url('image/home/middle-east-oil-refinery-night.png');"></div>
-          <div class="cc-bg-overlay"></div>
-          <div class="cc-body">
-            <div class="cc-name">中東情勢</div>
-            <div class="cc-desc">イラン核問題、イスラエル・パレスチナ紛争、湾岸諸国の動向</div>
-            <div class="cc-count"><span class="cc-dot"></span> 記事 1件</div>
+      <div class="bento">
+
+        <!-- 中東情勢：feature（写真あり） -->
+        <a class="cat-tile feature" href="categories/middle-east/index.html"
+           style="--cc-color:#c08a5e; --cc-photo:url('image/home/middle-east-oil-refinery-night.png');">
+          <span class="tile-shade"></span>
+          <div class="tile-body">
+            <span class="tile-kicker">Middle East</span>
+            <div class="tile-name">中東情勢</div>
+            <div class="tile-desc">イラン核問題、イスラエル・パレスチナ紛争、湾岸諸国の動向を多角的に追う。</div>
+            <span class="tile-count"><i class="dot"></i> 記事 1件</span>
           </div>
         </a>
-        <!-- 以下：画像なし -->
-        <a class="category-card cc-no-image" href="categories/ai-tech/index.html" style="--cc-color: #9ab4c4;">
-          <div class="cc-icon-area"><span style="font-size:2.2rem;opacity:0.4;">🤖</span></div>
-          <div class="cc-body">
-            <div class="cc-name">AI・技術覇権</div>
-            <div class="cc-desc">米中AI競争、半導体サプライチェーン、各国の規制戦略、AGI開発競争</div>
-            <div class="cc-count"><span class="cc-dot"></span> 記事 1件</div>
+
+        <!-- AI・技術覇権 -->
+        <a class="cat-tile" href="categories/ai-tech/index.html"
+           style="--cc-color:#7fa6b8; --cc-photo:url('image/categories/ai-tech.jpg');">
+          <span class="tile-shade"></span>
+          <div class="tile-body">
+            <span class="tile-kicker">AI &amp; Tech</span>
+            <div class="tile-name">AI・技術覇権</div>
+            <span class="tile-count"><i class="dot"></i> 記事 1件</span>
           </div>
         </a>
-        <a class="category-card cc-no-image" href="#" style="--cc-color: #7aaa82;">
-          <div class="cc-icon-area"><span style="font-size:2.2rem;opacity:0.4;">🌍</span></div>
-          <div class="cc-body">
-            <div class="cc-name">欧州情勢</div>
-            <div class="cc-desc">NATO拡大、EU統合、エネルギー安全保障、移民問題</div>
-            <div class="cc-count"><span class="cc-dot"></span> 記事 0件</div>
+
+        <!-- 世界経済 -->
+        <a class="cat-tile" href="categories/economy/index.html"
+           style="--cc-color:#9286b0; --cc-photo:url('image/categories/economy.jpg');">
+          <span class="tile-shade"></span>
+          <div class="tile-body">
+            <span class="tile-kicker">Economy</span>
+            <div class="tile-name">世界経済</div>
+            <span class="tile-count"><i class="dot"></i> 記事 1件</span>
           </div>
         </a>
-        <a class="category-card cc-no-image" href="categories/ukraine/index.html" style="--cc-color: #c4a882;">
-          <div class="cc-icon-area"><span style="font-size:2.2rem;opacity:0.4;">⚔️</span></div>
-          <div class="cc-body">
-            <div class="cc-name">ウクライナ紛争</div>
-            <div class="cc-desc">ロシア・ウクライナ戦争、停戦交渉、西側支援の行方</div>
-            <div class="cc-count"><span class="cc-dot"></span> 記事 1件</div>
+
+        <!-- アジア情勢 -->
+        <a class="cat-tile" href="categories/asia/index.html"
+           style="--cc-color:#b87f8c; --cc-photo:url('image/categories/asia.jpg');">
+          <span class="tile-shade"></span>
+          <div class="tile-body">
+            <span class="tile-kicker">Asia</span>
+            <div class="tile-name">アジア情勢</div>
+            <span class="tile-count"><i class="dot"></i> 記事 1件</span>
           </div>
         </a>
-        <a class="category-card cc-no-image" href="categories/economy/index.html" style="--cc-color: #9a8ab4;">
-          <div class="cc-icon-area"><span style="font-size:2.2rem;opacity:0.4;">💹</span></div>
-          <div class="cc-body">
-            <div class="cc-name">世界経済</div>
-            <div class="cc-desc">関税戦争、通貨危機、資源争奪、国際金融</div>
-            <div class="cc-count"><span class="cc-dot"></span> 記事 1件</div>
+
+        <!-- ウクライナ紛争 -->
+        <a class="cat-tile" href="categories/ukraine/index.html"
+           style="--cc-color:#bfa874; --cc-photo:url('image/categories/ukraine.jpg');">
+          <span class="tile-shade"></span>
+          <div class="tile-body">
+            <span class="tile-kicker">Ukraine</span>
+            <div class="tile-name">ウクライナ紛争</div>
+            <span class="tile-count"><i class="dot"></i> 記事 1件</span>
           </div>
         </a>
-        <a class="category-card cc-no-image" href="categories/immigration/index.html" style="--cc-color: #9ab4c4;">
-          <div class="cc-icon-area"><span style="font-size:2.2rem;opacity:0.4;">🌐</span></div>
-          <div class="cc-body">
-            <div class="cc-name">移民・難民</div>
-            <div class="cc-desc">締め出す国・呼び込む国・逃げる人々。世界の移民政策を多角的に分析</div>
-            <div class="cc-count"><span class="cc-dot"></span> 記事 1件</div>
+
+        <!-- 移民・難民 -->
+        <a class="cat-tile" href="categories/immigration/index.html"
+           style="--cc-color:#79a3bf; --cc-photo:url('image/categories/immigration.jpg');">
+          <span class="tile-shade"></span>
+          <div class="tile-body">
+            <span class="tile-kicker">Migration</span>
+            <div class="tile-name">移民・難民</div>
+            <span class="tile-count"><i class="dot"></i> 記事 1件</span>
           </div>
         </a>
-        <a class="category-card cc-no-image" href="categories/asia/index.html" style="--cc-color: #c4a064;">
-          <div class="cc-icon-area"><span style="font-size:2.2rem;opacity:0.4;">🌏</span></div>
-          <div class="cc-body">
-            <div class="cc-name">アジア情勢</div>
-            <div class="cc-desc">インド・中国・東南アジア・朝鮮半島。世界の重心が移るアジアの力学</div>
-            <div class="cc-count"><span class="cc-dot"></span> 記事 1件</div>
+
+        <!-- 欧州情勢（準備中） -->
+        <a class="cat-tile" href="#"
+           style="--cc-color:#7faa92; --cc-photo:url('image/categories/europe.jpg');">
+          <span class="tile-shade"></span>
+          <div class="tile-body">
+            <span class="tile-kicker">Europe</span>
+            <div class="tile-name">欧州情勢</div>
+            <span class="tile-count zero"><i class="dot"></i> 準備中</span>
           </div>
         </a>
+
       </div>
     </section>
 
-    <!-- Latest Articles -->
+    <!-- ===================== LATEST ===================== -->
     <section class="latest-section">
       <div class="section-head">
-        <h2>最新記事</h2>
+        <div class="head-left">
+          <span class="section-eyebrow">Latest</span>
+          <h2>最新記事</h2>
+        </div>
       </div>
-      <div class="articles-list">
-        <div class="article-row">
-          <div class="ar-left">
-            <div class="ar-meta">
-              <span class="tag tag-blue">アジア情勢</span>
-              <span class="ar-date">2026年6月4日</span>
-            </div>
-            <a href="articles/asia/2026-06-04-india-strategy/index.html">
-              <div class="ar-title">インドの「全方位外交」— 米中どちらにも付かない14億人の大国</div>
-              <div class="ar-summary">クワッドに参加しながらロシアから石油を買い続け、BRICSの議長国を務めながらアメリカとの「歴史的貿易合意」を発表する。「戦略的自律」を掲げるインドの外交の実態を6つの視点から整理する。</div>
-            </a>
-            <div class="ar-countries">🇮🇳 🇺🇸 🇨🇳 🇷🇺 🌍 🇯🇵</div>
+      <div class="story-grid">
+
+        <!-- India -->
+        <a class="story-card" href="articles/asia/2026-06-04-india-strategy/index.html" style="--c:#b87f8c;">
+          <div class="story-thumb" style="--cc-photo:url('image/articles/india-strategy.jpg');">
+            <span class="thumb-emoji">🇮🇳</span>
+            <div class="story-angle"><span class="a-num">6</span><span class="a-lbl">視点</span></div>
           </div>
-          <div class="ar-right">
-            <div class="ar-angle-count">
-              <div class="ar-angle-num">6</div>
-              <div class="ar-angle-label">視点</div>
-            </div>
+          <div class="story-content">
+            <div class="story-meta"><span class="tag tag-blue">アジア情勢</span><span class="story-date">2026.06.04</span></div>
+            <h3 class="story-title">インドの「全方位外交」— 米中どちらにも付かない14億人の大国</h3>
+            <p class="story-sum">クワッドに参加しながらロシアから石油を買い続け、BRICS議長国を務めながら米国と「歴史的貿易合意」を結ぶ。「戦略的自律」の実態を6つの視点から整理。</p>
+            <span class="story-flags">🇮🇳 🇺🇸 🇨🇳 🇷🇺 🌍 🇯🇵</span>
           </div>
-        </div>
-        <div class="article-row">
-          <div class="ar-left">
-            <div class="ar-meta">
-              <span class="tag tag-yellow">世界経済</span>
-              <span class="ar-date">2026年6月3日</span>
-            </div>
-            <a href="articles/economy/2026-06-03-trump-tariffs/index.html">
-              <div class="ar-title">トランプ関税が変えた世界貿易地図 — 就任から1年半、誰が得して誰が損したか</div>
-              <div class="ar-summary">2025年初頭に発動されたトランプ関税は最大27%に達した後、最高裁の違憲判決で一部が無効化。対中貿易赤字は縮小したが穴はベトナム・台湾が埋めた。米国世帯の年間負担は1,500ドル増加、日本のGDPへの影響は最大−1.8%。</div>
-            </a>
-            <div class="ar-countries">🇺🇸 🇨🇳 🇪🇺 🇯🇵 🇻🇳 🌐</div>
+        </a>
+
+        <!-- Tariffs -->
+        <a class="story-card" href="articles/economy/2026-06-03-trump-tariffs/index.html" style="--c:#9286b0;">
+          <div class="story-thumb" style="--cc-photo:url('image/articles/trump-tariffs.jpg');">
+            <span class="thumb-emoji">💹</span>
+            <div class="story-angle"><span class="a-num">6</span><span class="a-lbl">視点</span></div>
           </div>
-          <div class="ar-right">
-            <div class="ar-angle-count">
-              <div class="ar-angle-num">6</div>
-              <div class="ar-angle-label">視点</div>
-            </div>
+          <div class="story-content">
+            <div class="story-meta"><span class="tag tag-yellow">世界経済</span><span class="story-date">2026.06.03</span></div>
+            <h3 class="story-title">トランプ関税が変えた世界貿易地図 — 誰が得して誰が損したか</h3>
+            <p class="story-sum">最大27%まで上がった関税は最高裁判決で一部無効化。対中赤字は縮小したが穴はベトナム・台湾が埋め、米国世帯は年1,500ドルの負担増。</p>
+            <span class="story-flags">🇺🇸 🇨🇳 🇪🇺 🇯🇵 🇻🇳 🌐</span>
           </div>
-        </div>
-        <div class="article-row">
-          <div class="ar-left">
-            <div class="ar-meta">
-              <span class="tag tag-blue">移民・難民</span>
-              <span class="ar-date">2026年6月2日</span>
-            </div>
-            <a href="articles/immigration/2026-06-02-immigration-policy/index.html">
-              <div class="ar-title">移民政策の世界地図 — 締め出す国・呼び込む国</div>
-              <div class="ar-summary">世界で1億1700万人が故郷を追われる中、各国の対応は真っ二つに割れている。アメリカ・欧州連合の厳格化とドイツ・カナダの積極受け入れ、日本の二重政策、難民送り出し国の声を多角的に整理。</div>
-            </a>
-            <div class="ar-countries">🇺🇸 🇪🇺 🇯🇵 🇨🇦 🇩🇪 🌍</div>
+        </a>
+
+        <!-- Immigration -->
+        <a class="story-card" href="articles/immigration/2026-06-02-immigration-policy/index.html" style="--c:#79a3bf;">
+          <div class="story-thumb" style="--cc-photo:url('image/articles/immigration-policy.jpg');">
+            <span class="thumb-emoji">🌐</span>
+            <div class="story-angle"><span class="a-num">6</span><span class="a-lbl">視点</span></div>
           </div>
-          <div class="ar-right">
-            <div class="ar-angle-count">
-              <div class="ar-angle-num">6</div>
-              <div class="ar-angle-label">視点</div>
-            </div>
+          <div class="story-content">
+            <div class="story-meta"><span class="tag tag-blue">移民・難民</span><span class="story-date">2026.06.02</span></div>
+            <h3 class="story-title">移民政策の世界地図 — 締め出す国・呼び込む国</h3>
+            <p class="story-sum">世界で1億1700万人が故郷を追われる中、各国の対応は真っ二つに。厳格化する米欧と受け入れるドイツ・カナダ、日本の二重政策を多角整理。</p>
+            <span class="story-flags">🇺🇸 🇪🇺 🇯🇵 🇨🇦 🇩🇪 🌍</span>
           </div>
-        </div>
-        <div class="article-row">
-          <div class="ar-left">
-            <div class="ar-meta">
-              <span class="tag tag-yellow">ウクライナ紛争</span>
-              <span class="ar-date">2026年6月2日</span>
-            </div>
-            <a href="articles/ukraine/2026-06-02-ceasefire/index.html">
-              <div class="ar-title">ウクライナ停戦交渉の現在地 — トランプ仲介・プーチンの思惑・ゼレンスキーの苦境</div>
-              <div class="ar-summary">5月の3日間停戦は双方の攻撃継続で崩壊。領土・NATO加盟・安全保障をめぐる根本的対立は解消されず。中国の「戦略的中立」の実態も分析する。</div>
-            </a>
-            <div class="ar-countries">🇺🇦 🇷🇺 🇺🇸 🇪🇺 🇨🇳 🇯🇵</div>
+        </a>
+
+        <!-- Ukraine -->
+        <a class="story-card" href="articles/ukraine/2026-06-02-ceasefire/index.html" style="--c:#bfa874;">
+          <div class="story-thumb" style="--cc-photo:url('image/articles/ukraine-ceasefire.jpg');">
+            <span class="thumb-emoji">⚔️</span>
+            <div class="story-angle"><span class="a-num">6</span><span class="a-lbl">視点</span></div>
           </div>
-          <div class="ar-right">
-            <div class="ar-angle-count">
-              <div class="ar-angle-num">6</div>
-              <div class="ar-angle-label">視点</div>
-            </div>
+          <div class="story-content">
+            <div class="story-meta"><span class="tag tag-yellow">ウクライナ紛争</span><span class="story-date">2026.06.02</span></div>
+            <h3 class="story-title">ウクライナ停戦交渉の現在地 — 仲介・思惑・苦境</h3>
+            <p class="story-sum">5月の3日間停戦は双方の攻撃継続で崩壊。領土・NATO加盟・安全保障をめぐる根本対立は未解消。中国の「戦略的中立」の実態も分析。</p>
+            <span class="story-flags">🇺🇦 🇷🇺 🇺🇸 🇪🇺 🇨🇳 🇯🇵</span>
           </div>
-        </div>
-        <div class="article-row">
-          <div class="ar-left">
-            <div class="ar-meta">
-              <span class="tag tag-blue">AI・技術覇権</span>
-              <span class="ar-date">2026年6月2日</span>
-            </div>
-            <a href="articles/ai-tech/2026-06-02-ai-race/index.html">
-              <div class="ar-title">米中AI覇権争いの現在地 — 性能差2.7%まで縮まった技術競争の構図</div>
-              <div class="ar-summary">Stanford AI Index 2026が明らかにした米中の急接近。DeepSeekショック、半導体輸出規制、EUの規制先行、インドの第三極台頭——AIをめぐる世界の勢力図を6カ国の視点から整理する。</div>
-            </a>
-            <div class="ar-countries">🇺🇸 🇨🇳 🇪🇺 🇮🇳 🇯🇵 🇷🇺</div>
+        </a>
+
+        <!-- AI -->
+        <a class="story-card" href="articles/ai-tech/2026-06-02-ai-race/index.html" style="--c:#7fa6b8;">
+          <div class="story-thumb" style="--cc-photo:url('image/articles/ai-race.jpg');">
+            <span class="thumb-emoji">🤖</span>
+            <div class="story-angle"><span class="a-num">6</span><span class="a-lbl">視点</span></div>
           </div>
-          <div class="ar-right">
-            <div class="ar-angle-count">
-              <div class="ar-angle-num">6</div>
-              <div class="ar-angle-label">視点</div>
-            </div>
+          <div class="story-content">
+            <div class="story-meta"><span class="tag tag-blue">AI・技術覇権</span><span class="story-date">2026.06.02</span></div>
+            <h3 class="story-title">米中AI覇権争いの現在地 — 性能差2.7%まで縮まった競争</h3>
+            <p class="story-sum">31.6ポイントあった米中差が2.7%に。DeepSeekショック、半導体規制、EUの規制先行、インドの第三極台頭を6カ国の視点で整理。</p>
+            <span class="story-flags">🇺🇸 🇨🇳 🇪🇺 🇮🇳 🇯🇵 🇷🇺</span>
           </div>
-        </div>
-        <div class="article-row">
-          <div class="ar-left">
-            <div class="ar-meta">
-              <span class="tag tag-red">中東情勢</span>
-              <span class="ar-date">2026年6月2日</span>
-            </div>
-            <a href="articles/middle-east/2026-06-02-iran-nuclear/index.html">
-              <div class="ar-title">イラン核交渉の最新動向 — 米国・イスラエル・イランの三つ巴</div>
-              <div class="ar-summary">2026年5月の核合意再交渉をめぐり、各国の立場は鮮明に対立。イランは「平和利用の権利」を主張する一方、イスラエルは軍事オプションを示唆。米国は外交圧力と制裁の組み合わせを模索している。</div>
-            </a>
-            <div class="ar-countries">🇮🇷 🇺🇸 🇮🇱 🇷🇺 🇨🇳 🇩🇪 🇸🇦</div>
+        </a>
+
+        <!-- Iran -->
+        <a class="story-card" href="articles/middle-east/2026-06-02-iran-nuclear/index.html" style="--c:#c08a5e;">
+          <div class="story-thumb" style="--cc-photo:url('image/articles/iran-nuclear.jpg');">
+            <span class="thumb-emoji">☢️</span>
+            <div class="story-angle"><span class="a-num">7</span><span class="a-lbl">視点</span></div>
           </div>
-          <div class="ar-right">
-            <div class="ar-angle-count">
-              <div class="ar-angle-num">7</div>
-              <div class="ar-angle-label">視点</div>
-            </div>
+          <div class="story-content">
+            <div class="story-meta"><span class="tag tag-red">中東情勢</span><span class="story-date">2026.06.02</span></div>
+            <h3 class="story-title">イラン核交渉の最新動向 — 米国・イスラエル・イランの三つ巴</h3>
+            <p class="story-sum">2026年5月の核合意再交渉で各国の立場が鮮明に対立。イランは「平和利用の権利」、イスラエルは軍事オプション、米国は外交圧力と制裁を模索。</p>
+            <span class="story-flags">🇮🇷 🇺🇸 🇮🇱 🇷🇺 🇨🇳 🇩🇪 🇸🇦</span>
           </div>
-        </div>
+        </a>
+
       </div>
     </section>
 
-    <!-- Concept -->
+    <!-- ===================== CONCEPT ===================== -->
     <section class="concept-section">
       <div class="section-head">
-        <h2>このサイトについて</h2>
+        <div class="head-left">
+          <span class="section-eyebrow">About</span>
+          <h2>このサイトについて</h2>
+        </div>
       </div>
       <div class="concept-grid">
-        <div class="concept-item">
-          <div class="ci-icon">🔍</div>
+        <div class="concept-card" style="--c:#7fa6b8;">
+          <div class="concept-icon">🔍</div>
           <h3>多視点分析</h3>
-          <p>一つのトピックについて、関係するすべての国・勢力の公式見解・メディア報道を収集</p>
+          <p>一つのトピックを、関係するすべての国・勢力の公式見解とメディア報道から収集します。</p>
         </div>
-        <div class="concept-item">
-          <div class="ci-icon">⚖️</div>
+        <div class="concept-card" style="--c:#7faa92;">
+          <div class="concept-icon">⚖️</div>
           <h3>中立的な整理</h3>
-          <p>特定の立場を取らず、各国の主張をそのまま並列提示。読者自身が判断できる構成</p>
+          <p>特定の立場を取らず、各国の主張を並列に提示。読者自身が判断できる構成です。</p>
         </div>
-        <div class="concept-item">
-          <div class="ci-icon">📊</div>
+        <div class="concept-card" style="--c:#9286b0;">
+          <div class="concept-icon">📊</div>
           <h3>データ可視化</h3>
-          <p>対立構造・勢力図・タイムラインをグラフィカルに表示。複雑な関係を直感的に把握</p>
+          <p>対立構造・勢力図・タイムラインをグラフ化。複雑な関係を直感的に把握できます。</p>
         </div>
-        <div class="concept-item">
-          <div class="ci-icon">🗂️</div>
+        <div class="concept-card" style="--c:#b87f8c;">
+          <div class="concept-icon">🗂️</div>
           <h3>体系的アーカイブ</h3>
-          <p>カテゴリ・日付別に記事を整理。過去の経緯を遡って読むことができる</p>
+          <p>カテゴリ・日付別に整理。過去の経緯を遡って読むことができます。</p>
         </div>
       </div>
     </section>
@@ -490,5 +611,52 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
+<script>
+/* ===== Home: 数字カウントアップ ===== */
+(function () {
+  const nums = document.querySelectorAll('.hero-stat-num[data-count]');
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  function run(el) {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const dur = 1300;
+    const start = performance.now();
+    function frame(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const val = Math.round(ease(p) * target);
+      el.innerHTML = val + (p === 1 && suffix ? '<span class="suffix">' + suffix + '</span>' : '');
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
+  }, { threshold: 0.4 });
+  nums.forEach(n => io.observe(n));
+})();
+
+/* ===== Home: タイル/カードのスクロール出現 ===== */
+(function () {
+  const items = document.querySelectorAll('.cat-tile, .story-card, .concept-card');
+  items.forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(26px)';
+    el.style.transition = 'opacity .55s ease, transform .55s cubic-bezier(.2,.7,.2,1)';
+  });
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const sibs = Array.from(el.parentElement.children).indexOf(el);
+        el.style.transitionDelay = (sibs % 8) * 60 + 'ms';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  items.forEach(el => io.observe(el));
+})();
+</script>
 </body>
 </html>
