@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>重要鉱物の囲い込み — レアアース・グリーンランド・コンゴの新争奪戦 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2rem; align-items: start; }
+
+    /* ===== 用途解説カード ===== */
+    .use-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+    .use-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.35rem; position: relative; overflow: hidden;
+      border-top: 3px solid var(--uc-color, var(--accent));
+    }
+    .use-symbol {
+      font-size: 2rem; font-weight: 800; line-height: 1;
+      color: var(--uc-color, var(--accent)); font-family: var(--font-mono);
+      margin-bottom: 0.2rem;
+    }
+    .use-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.85rem; }
+    .use-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .use-list li { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; display: flex; gap: 0.5rem; }
+    .use-list li::before { content: '▸'; color: var(--uc-color, var(--accent)); flex-shrink: 0; }
+    .use-tag {
+      display: inline-block; margin-top: 0.9rem; font-size: 0.68rem; font-weight: 700;
+      padding: 0.25em 0.7em; border-radius: 100px;
+      background: color-mix(in srgb, var(--uc-color) 14%, transparent);
+      color: var(--uc-color); border: 1px solid color-mix(in srgb, var(--uc-color) 30%, transparent);
+    }
+
+    /* ===== 支配率バー ===== */
+    .dom-bar { margin: 1.25rem 0; }
+    .dom-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.9rem; font-size: 0.85rem; }
+    .dom-label { min-width: 150px; font-size: 0.8rem; color: var(--text-muted); }
+    .dom-track { flex: 1; height: 26px; background: var(--bg-card2); border-radius: 6px; overflow: hidden; }
+    .dom-fill {
+      height: 100%; border-radius: 6px; display: flex; align-items: center;
+      padding-left: 0.6rem; font-size: 0.74rem; font-weight: 700; color: #fff;
+      transition: width 0.8s cubic-bezier(.4,0,.2,1);
+    }
+    .dom-value { min-width: 48px; text-align: right; font-weight: 700; font-size: 0.82rem; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .use-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/middle-east/index.html">中東情勢</a>
+    <a href="../../../categories/economy/index.html" style="color:var(--text);">世界経済</a>
+    <a href="../../../categories/asia/index.html">アジア情勢</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero">
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-yellow">世界経済</span>
+        <span class="tag tag-red">資源・安全保障</span>
+        <span class="date">2026年6月4日</span>
+      </div>
+      <h1 class="article-title">重要鉱物の囲い込み<br>— レアアース・グリーンランド・コンゴの新争奪戦</h1>
+      <p class="article-summary">
+        2024年末から中国が次々と打ち出したレアアース・ガリウム・ゲルマニウムの輸出規制は、重要鉱物を「経済問題」から「安全保障問題」へと変えた。
+        中国は世界の精錬能力の約9割を握り、その支配を交渉カードに使う。対する米国はウクライナ・グリーンランド・コンゴへ「資源外交」を展開し、
+        EUは法律で依存低減を急ぐ。EV・風力という脱炭素と、ミサイル・レーダーという防衛——その両方が同じ鉱物に依存している構図を、5つの視点から整理する。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">中国のレアアース精錬シェア</div>
+          <div class="kp-value">世界の約90%（生産では約60%）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">EUの重希土類の対中依存</div>
+          <div class="kp-value">100%（単一国依存）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">コンゴのコバルト埋蔵量</div>
+          <div class="kp-value">世界の約70%</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">脱・中国の現実（McKinsey）</div>
+          <div class="kp-value">Dy・Tbは2035年でも中国外で需要の1/5未満</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 用途解説 -->
+          <section class="section" id="sec-uses">
+            <h2 class="section-title"><span class="icon">🔬</span> そもそも何に使われているのか</h2>
+            <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.9;margin-bottom:1.25rem;">
+              争奪戦を理解する鍵は「これらの鉱物が、現代社会の“急所”に使われている」こと。
+              脱炭素（EV・風力）とハイテク、そして防衛装備が、いずれも同じ少数の元素に依存している。
+            </p>
+            <div class="use-grid">
+
+              <div class="use-card" style="--uc-color:#7aaa82;">
+                <div class="use-symbol">Ga</div>
+                <div class="use-name">ガリウム</div>
+                <ul class="use-list">
+                  <li>窒化ガリウム(GaN)・ガリウムヒ素(GaAs)半導体。シリコンより高周波・高温・高出力に強い</li>
+                  <li>スマホ、衛星通信、高効率太陽電池（宇宙用）、LED・レーザー</li>
+                  <li><strong>レーダー・電子戦システム</strong>など防衛用高周波デバイス</li>
+                </ul>
+                <span class="use-tag">半導体・防衛電子</span>
+              </div>
+
+              <div class="use-card" style="--uc-color:#9ab4c4;">
+                <div class="use-symbol">Ge</div>
+                <div class="use-name">ゲルマニウム</div>
+                <ul class="use-list">
+                  <li><strong>光ファイバー通信</strong>の中核材料</li>
+                  <li>赤外線を透過 → <strong>暗視装置・サーモグラフィ・ミサイル誘導</strong>などの赤外線光学</li>
+                  <li>高速電子部品、高効率太陽電池</li>
+                </ul>
+                <span class="use-tag">通信・赤外線軍事</span>
+              </div>
+
+              <div class="use-card" style="--uc-color:#b87868;">
+                <div class="use-symbol">REE</div>
+                <div class="use-name">レアアース（希土類）</div>
+                <ul class="use-list">
+                  <li><strong>Nd・Pr</strong>＝磁石の「筋力」。EVモーターの約85%、風力タービン</li>
+                  <li><strong>Dy・Tb</strong>＝磁石の「耐熱シールド」。高温でも磁力維持 → EV・<strong>ジェットエンジン・ミサイル</strong></li>
+                  <li>イットリウム＝航空タービン翼コート、スカンジウム＝航空用高強度アルミ</li>
+                </ul>
+                <span class="use-tag">永久磁石・防衛</span>
+              </div>
+
+            </div>
+            <p style="color:var(--text-dim);font-size:0.78rem;margin-top:1rem;">
+              ※核心：「脱炭素（EV・風力）」と「兵器（ミサイル・レーダー）」が同じ鉱物を奪い合う。だから経済と安全保障が直結する。
+              出典: Visual Capitalist, IRENA, USITC（ガリウム・ゲルマニウム用途）
+            </p>
+          </section>
+
+          <!-- Section 2: 支配構造 -->
+          <section class="section" id="sec-dominance">
+            <h2 class="section-title"><span class="icon">⚖️</span> 中国の支配構造 — 「精錬」が急所</h2>
+            <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.9;margin-bottom:1rem;">
+              中国の強さは「掘る」よりも「精錬する」段階にある。鉱石はオーストラリアやアフリカでも採れるが、
+              使える素材に加工する工程をほぼ独占している。これが交渉カードの源泉だ。
+            </p>
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+              <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:0.75rem;">中国の世界シェア（推計）</div>
+              <div class="dom-bar">
+                <div class="dom-row">
+                  <div class="dom-label">レアアース精錬</div>
+                  <div class="dom-track"><div class="dom-fill" style="background:var(--accent2);width:90%;">約90%</div></div>
+                  <div class="dom-value">90%</div>
+                </div>
+                <div class="dom-row">
+                  <div class="dom-label">重要原材料の精錬全般</div>
+                  <div class="dom-track"><div class="dom-fill" style="background:var(--accent2);width:90%;">約90%</div></div>
+                  <div class="dom-value">90%</div>
+                </div>
+                <div class="dom-row">
+                  <div class="dom-label">重要原材料の生産</div>
+                  <div class="dom-track"><div class="dom-fill" style="background:var(--accent4);width:60%;">約60%</div></div>
+                  <div class="dom-value">60%</div>
+                </div>
+                <div class="dom-row">
+                  <div class="dom-label">EUの重希土類の対中依存</div>
+                  <div class="dom-track"><div class="dom-fill" style="background:var(--accent2);width:100%;">100%</div></div>
+                  <div class="dom-value">100%</div>
+                </div>
+              </div>
+              <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">出典: 欧州委員会, CSIS, EU会計検査院 2026年</p>
+            </div>
+          </section>
+
+          <!-- Section 3: Timeline -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="icon">📅</span> タイムライン — 規制と争奪の経緯</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年12月</div>
+                <div class="timeline-content">
+                  <h4>中国、ガリウム・ゲルマニウム等の対米輸出を禁止</h4>
+                  <p>米国の半導体輸出規制への対抗として、ガリウム・ゲルマニウム・アンチモン・超硬材料の対米輸出を禁止。重要鉱物の「武器化」が本格化した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">🇨🇳 「正当な輸出管理」</span>
+                    <span class="reaction-chip">🇺🇸 「サプライチェーンへの脅威」</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年4月</div>
+                <div class="timeline-content">
+                  <h4>重希土類7種を輸出管理リストに追加（※未だ解除されず）</h4>
+                  <p>ジスプロシウム・テルビウム・サマリウム・ガドリニウム・ルテチウム・スカンジウム・イットリウムを規制対象に。高耐熱磁石＝EVモーターと防衛装備の心臓部を直撃した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">🏭 自動車・防衛産業が動揺</span>
+                    <span class="reaction-chip">🇺🇸🇪🇺 「脱・中国」を加速</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2025年5月</div>
+                <div class="timeline-content">
+                  <h4>米・ウクライナ鉱物協定に署名</h4>
+                  <p>米国がウクライナの新規鉱物案件への優先アクセスを確保。共同投資基金を設立し、戦後復興にも充てる。ウクライナは世界の重要原材料の最大5%を保有するとされる。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">🇺🇸 「資源外交」の第一歩</span>
+                    <span class="reaction-chip">🇺🇦 復興財源と引き換えに</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年10月</div>
+                <div class="timeline-content">
+                  <h4>中国、史上最も包括的な規制を発動</h4>
+                  <p>外国製品でも中国産レアアースを0.1%以上含む、または中国の精錬技術を使った製品はライセンス必須に。事実上、世界中の製造業に中国の許可制を及ぼす「域外適用」となった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">🌍 「世界の工場の許可制化」</span>
+                    <span class="reaction-chip">🇺🇸 報復関税で対抗を示唆</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-neutral"></div>
+                <div class="timeline-date">2025年11〜12月</div>
+                <div class="timeline-content">
+                  <h4>米中が一時休戦 — だが重希土類規制は残置</h4>
+                  <p>米中合意でガリウム・ゲルマニウム等の対米規制を2026年11月27日まで一時停止。しかし4月の重希土類7種規制は停止対象に含まれず、最も重要な磁石材料の締め付けは継続。同12月、米はコンゴと戦略的パートナーシップに署名。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">🇨🇳 「対話の余地」を演出</span>
+                    <span class="reaction-chip">🇺🇸 「脆い休戦」と警戒</span>
+                    <span class="reaction-chip">🇨🇩 米中の争奪で交渉力</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot" style="background:var(--accent3)"></div>
+                <div class="timeline-date">2026年2月〜現在</div>
+                <div class="timeline-content">
+                  <h4>米、54カ国と協議 — 備蓄「Project Vault」始動</h4>
+                  <p>米国が同盟国・資源国54カ国＋EUと重要鉱物協議を開催。輸出入銀行の100億ドル融資＋民間20億ドルで備蓄制度「Project Vault」を創設。EUもRESourceEU行動計画で供給確保を急ぐ。だが磁石の自給確立は依然「長い道のり」。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">🇺🇸 同盟国連携＋備蓄で対抗</span>
+                    <span class="reaction-chip">🇪🇺 CRM法で法的に依存低減</span>
+                    <span class="reaction-chip">📉 自給は10年単位の長期戦</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 4: Perspectives -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="icon">💬</span> 各国・各立場の主張</h2>
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- China -->
+                  <div class="perspective-card" style="--card-color:var(--accent2);">
+                    <div class="country-header">
+                      <span class="flag-emoji">🇨🇳</span>
+                      <span class="country-name">中国</span>
+                      <span class="stance-label stance-hostile">資源主権・レバレッジ</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      「輸出管理は主権国家の正当な権利であり、軍民両用品の安全保障上の管理だ」。米国の半導体規制への対抗措置であり、中国だけが一方的に責められる筋合いはない、という立場。
+                    </div>
+                    <div class="key-claim">
+                      <strong>本当の狙い</strong>
+                      数十年かけて築いた精錬の独占を「交渉カード」として温存。全面禁輸ではなく、停止・再開を繰り返して相手の出方を探る“蛇口の開け閉め”戦略。脱炭素と防衛の急所を握り続ける。
+                    </div>
+                    <div class="tone-meter tone-hostile">
+                      <div class="tone-meter-label"><span>レバレッジの強さ</span><span>最高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="92%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>精錬能力の独占維持、半導体規制への報復、ハイテク・防衛での対米優位
+                    </div>
+                  </div>
+
+                  <!-- USA -->
+                  <div class="perspective-card" style="--card-color:var(--accent);">
+                    <div class="country-header">
+                      <span class="flag-emoji">🇺🇸</span>
+                      <span class="country-name">アメリカ（トランプ政権）</span>
+                      <span class="stance-label stance-hostile">資源外交・備蓄</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      「重要鉱物の対中依存は国家安全保障上の脆弱性」。資源そのものを海外で確保する“ディール外交”を前面に。ウクライナ・グリーンランド・コンゴへ同時にアプローチする。
+                    </div>
+                    <div class="key-claim">
+                      <strong>具体策</strong>
+                      ウクライナ鉱物協定（25年5月）、コンゴ戦略的パートナーシップ（25年12月、10億ドル超）、備蓄制度Project Vault（26年2月、計120億ドル規模）、54カ国との協議。だがグリーンランド「買収」発言はデンマークに拒否され、帝国主義的との批判も。
+                    </div>
+                    <div class="tone-meter tone-hostile">
+                      <div class="tone-meter-label"><span>攻めの姿勢</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="82%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>対中依存の解消、防衛産業の維持、AI・EVの川上確保、同盟国の囲い込み
+                    </div>
+                  </div>
+
+                  <!-- EU -->
+                  <div class="perspective-card" style="--card-color:var(--accent);">
+                    <div class="country-header">
+                      <span class="flag-emoji">🇪🇺</span>
+                      <span class="country-name">欧州連合</span>
+                      <span class="stance-label stance-cautious">多国間・法制化</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      「依存の分散こそ解決策」。Critical Raw Materials Act（CRM法）で、2030年までに各戦略鉱物の単一国依存を65%以下にする数値目標を法制化。RESourceEU行動計画（25年12月）で自動車・AI・防衛向け供給を確保する。
+                    </div>
+                    <div class="key-claim">
+                      <strong>厳しい現実</strong>
+                      重希土類は対中依存100%。EU会計検査院は「中国の重要原材料なしに気候目標は達成不能」と警告。米国のような強引な資源外交も、中国のような自前の精錬基盤も持たず、ジレンマが深い。
+                    </div>
+                    <div class="tone-meter tone-cautious">
+                      <div class="tone-meter-label"><span>多国間主義への執着</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="74%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>自動車・グリーン産業の保護、戦略的自律、対米・対中の双方依存の回避
+                    </div>
+                  </div>
+
+                  <!-- Resource countries -->
+                  <div class="perspective-card" style="--card-color:var(--accent3);">
+                    <div class="country-header">
+                      <span class="flag-emoji">🌍</span>
+                      <span class="country-name">資源国（コンゴ・ウクライナ等）</span>
+                      <span class="stance-label stance-supportive">交渉力と従属の間</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      米中の争奪は、資源国にとって「交渉力」のチャンス。コンゴはコバルト埋蔵量の約70%を握り、米とアンゴラのロビト回廊鉄道で西側へ輸送する一方、中国とも2026年に鉱山関係を深化させ、両天秤にかける。
+                    </div>
+                    <div class="key-claim">
+                      <strong>抱えるリスク</strong>
+                      「またも先進国に資源だけ抜かれる新植民地主義では」という懸念。採掘の人権・環境問題、加工は結局国外で行われ付加価値が残らない構造。漁夫の利と従属が紙一重。
+                    </div>
+                    <div class="tone-meter tone-supportive">
+                      <div class="tone-meter-label"><span>交渉力の高まり</span><span>中〜高</span></div>
+                      <div class="tone-track" style="background:var(--bg-card2);"><div class="tone-fill" style="background:var(--accent3);" data-width="60%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>資源収入の最大化、インフラ投資の誘致、特定大国への過度な依存の回避
+                    </div>
+                  </div>
+
+                  <!-- Industry -->
+                  <div class="perspective-card" style="--card-color:var(--accent4);">
+                    <div class="country-header">
+                      <span class="flag-emoji">🏭</span>
+                      <span class="country-name">産業界・専門機関</span>
+                      <span class="stance-label stance-neutral">冷静な現実論</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      EV・風力・防衛が同時に同じ鉱物を奪い合い、需要は今後数十年で4〜6倍に膨らむ見通し。各社は代替材料（レアアース不使用磁石）やリサイクルへ投資を加速するが、即効性はない。
+                    </div>
+                    <div class="key-claim">
+                      <strong>冷静な警告</strong>
+                      McKinseyは「Dy・Tbは2035年でも中国以外が需要の5分の1未満しか賄えない」と試算。シンクタンクIRPPは「米国の戦略は、中国依存を米国依存に置き換えるだけのリスクがある」と指摘する。
+                    </div>
+                    <div class="tone-meter tone-neutral">
+                      <div class="tone-meter-label"><span>自給達成の現実度</span><span>低い</span></div>
+                      <div class="tone-track"><div class="tone-fill" style="background:#8a9ab0;" data-width="30%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>調達コストの安定、技術代替（脱レアアース）、リサイクル循環、地政学リスクの分散
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本姿勢</th>
+                        <th>主な手段</th>
+                        <th>弱点・課題</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>🇨🇳 中国</td>
+                        <td>資源主権・レバレッジ</td>
+                        <td>輸出規制の停止/再開、域外適用</td>
+                        <td>過度な行使で「脱・中国」を促進</td>
+                      </tr>
+                      <tr>
+                        <td>🇺🇸 アメリカ</td>
+                        <td>資源外交・備蓄</td>
+                        <td>ウクライナ・コンゴ協定、Project Vault</td>
+                        <td>精錬能力が乏しい、強引さへの反発</td>
+                      </tr>
+                      <tr>
+                        <td>🇪🇺 欧州連合</td>
+                        <td>多国間・法制化</td>
+                        <td>CRM法、RESourceEU</td>
+                        <td>重希土類は対中依存100%</td>
+                      </tr>
+                      <tr>
+                        <td>🌍 資源国</td>
+                        <td>両天秤・交渉力</td>
+                        <td>米中を競わせる、輸送回廊</td>
+                        <td>新植民地主義・人権/環境の懸念</td>
+                      </tr>
+                      <tr>
+                        <td>🏭 産業界</td>
+                        <td>現実論・技術代替</td>
+                        <td>代替磁石、リサイクル、長期契約</td>
+                        <td>即効性なし、需要が供給を上回る</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 5: Data -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="icon">📊</span> データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- 規制対象の主要鉱物 -->
+              <div class="data-card">
+                <h4>中国の主な規制対象と現状（2026年6月）</h4>
+                <div class="bar-chart">
+                  <div class="bar-row">
+                    <div class="bar-label">重希土類7種</div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent2);" data-width="100%"></div></div>
+                    <div class="bar-value">継続中</div>
+                  </div>
+                  <div class="bar-row">
+                    <div class="bar-label">ガリウム</div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent4);" data-width="55%"></div></div>
+                    <div class="bar-value">一時停止</div>
+                  </div>
+                  <div class="bar-row">
+                    <div class="bar-label">ゲルマニウム</div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent4);" data-width="55%"></div></div>
+                    <div class="bar-value">一時停止</div>
+                  </div>
+                  <div class="bar-row">
+                    <div class="bar-label">アンチモン・黒鉛</div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent4);" data-width="55%"></div></div>
+                    <div class="bar-value">一時停止</div>
+                  </div>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">「一時停止」は2026年11月27日まで。重希土類は停止対象外。出典: Pillsbury Law, CSIS</p>
+              </div>
+
+              <!-- 鉱物需要の見通し -->
+              <div class="data-card">
+                <h4>主要鉱物の世界需要見通し（指数 2024=100）</h4>
+                <div style="position:relative;height:180px;">
+                  <canvas id="demandChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">脱炭素・AI・防衛で需要は数十年で4〜6倍へ。出典: IEA/IRENA 系見通しを基に整理</p>
+              </div>
+
+              <!-- 米国の主な資源外交 -->
+              <div class="data-card">
+                <h4>米国の主な「資源外交」（2025〜2026年）</h4>
+                <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.4rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:baseline;">
+                    <span style="font-size:1.2rem;">🇺🇦</span>
+                    <div><strong style="font-size:0.85rem;">ウクライナ</strong><div style="font-size:0.76rem;color:var(--text-muted);">鉱物協定（25年5月）。新規ライセンス収益の50%を共同基金へ</div></div>
+                  </div>
+                  <div style="display:flex;gap:0.6rem;align-items:baseline;">
+                    <span style="font-size:1.2rem;">🇬🇱</span>
+                    <div><strong style="font-size:0.85rem;">グリーンランド</strong><div style="font-size:0.76rem;color:var(--text-muted);">EU重要鉱物34種中31種が存在。Amaroq社と採掘協議。買収案は拒否</div></div>
+                  </div>
+                  <div style="display:flex;gap:0.6rem;align-items:baseline;">
+                    <span style="font-size:1.2rem;">🇨🇩</span>
+                    <div><strong style="font-size:0.85rem;">コンゴ(DRC)</strong><div style="font-size:0.76rem;color:var(--text-muted);">戦略的パートナーシップ（25年12月）。10億ドル超、ロビト回廊鉄道</div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Key Stats -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">~90%</div>
+                    <div class="stat-label">中国のレアアース<br>精錬シェア</div>
+                    <div class="stat-change stat-down">「掘る」より「精錬」が急所</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">EUの重希土類<br>対中依存度</div>
+                    <div class="stat-change stat-down">単一国依存の極み</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">85%</div>
+                    <div class="stat-label">EVモーターに<br>NdPr磁石が使われる割合</div>
+                    <div class="stat-change stat-up">脱炭素が依存を増幅</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">&lt;1/5</div>
+                    <div class="stat-label">2035年に中国外で賄える<br>Dy・Tbの需要割合</div>
+                    <div class="stat-change stat-down">自給は遠い（McKinsey）</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 6: Sources -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="icon">📰</span> 情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <div class="source-item">
+                <span class="source-icon">🏛️</span>
+                <div class="source-info">
+                  <div class="source-name">CSIS（戦略国際問題研究所）</div>
+                  <div class="source-desc">レアアース規制1年後の評価・米ウクライナ鉱物協定の分析</div>
+                  <div class="source-country">【米国安全保障シンクタンク】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <span class="source-icon">⚖️</span>
+                <div class="source-info">
+                  <div class="source-name">Pillsbury Law / Clark Hill</div>
+                  <div class="source-desc">中国の輸出管理の停止・再開の法的分析</div>
+                  <div class="source-country">【規制の一次解釈】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <span class="source-icon">🇪🇺</span>
+                <div class="source-info">
+                  <div class="source-name">欧州委員会 / EU会計検査院 / Euronews</div>
+                  <div class="source-desc">Critical Raw Materials Act・対中依存の警告</div>
+                  <div class="source-country">【EUの公式方針・監査】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <span class="source-icon">🇺🇸</span>
+                <div class="source-info">
+                  <div class="source-name">米国務省 / Bloomberg / Mining.com</div>
+                  <div class="source-desc">米コンゴ戦略的パートナーシップ・資源外交</div>
+                  <div class="source-country">【米政府発表・資源報道】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <span class="source-icon">🌍</span>
+                <div class="source-info">
+                  <div class="source-name">Chatham House / ODI / openDemocracy</div>
+                  <div class="source-desc">グリーンランド・資源国側の視点、新植民地主義の論点</div>
+                  <div class="source-country">【国際関係・グローバルサウス視点】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <span class="source-icon">📊</span>
+                <div class="source-info">
+                  <div class="source-name">Visual Capitalist / IRENA / USITC / McKinsey</div>
+                  <div class="source-desc">鉱物の用途・需要見通し・自給達成の試算</div>
+                  <div class="source-country">【用途・データの基礎情報】</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-uses"><span class="toc-icon">🔬</span>何に使われるか</a></li>
+            <li><a href="#sec-dominance"><span class="toc-icon">⚖️</span>中国の支配構造</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">📅</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">💬</span>各国の主張</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">📊</span>データ・統計</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">📰</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);">
+            <div style="margin-bottom:0.3rem;">📁 <a href="../../../categories/economy/index.html">世界経済</a></div>
+            <div>📅 2026年6月4日</div>
+            <div style="margin-top:0.5rem;">🌍 5つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/economy/index.html">世界経済一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+const ctx = document.getElementById('demandChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['2024', '2026', '2030', '2035', '2040'],
+    datasets: [
+      {
+        label: 'レアアース磁石(NdFeB)',
+        data: [100, 135, 220, 330, 470],
+        borderColor: '#b87868', backgroundColor: 'rgba(184,120,104,0.1)',
+        tension: 0.3, fill: false, pointRadius: 3,
+      },
+      {
+        label: 'ガリウム',
+        data: [100, 130, 200, 290, 400],
+        borderColor: '#7aaa82', backgroundColor: 'rgba(122,170,130,0.1)',
+        tension: 0.3, fill: false, pointRadius: 3,
+      },
+      {
+        label: 'ゲルマニウム',
+        data: [100, 120, 175, 240, 320],
+        borderColor: '#9ab4c4', backgroundColor: 'rgba(154,180,196,0.1)',
+        tension: 0.3, fill: false, pointRadius: 3,
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#8a9ab0', font: { size: 10 } } } },
+    scales: {
+      y: {
+        min: 80,
+        ticks: { color: '#8890a0', font: { size: 10 } },
+        grid: { color: '#2a3a50' }
+      },
+      x: { ticks: { color: '#8890a0', font: { size: 10 } }, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>
