@@ -229,65 +229,47 @@
 
     /* ===================== Latest Stories ===================== */
     .latest-section { padding: 4rem 0 1rem; }
-    .story-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 1.25rem;
-    }
-    .story-card {
-      position: relative;
+    /* 横長の行を新しい順に縦に積む */
+    .articles-list { display: flex; flex-direction: column; gap: 0.85rem; }
+    .article-row {
       background: var(--glass);
       border: 1px solid var(--glass-border);
-      border-radius: 16px; overflow: hidden;
-      display: flex; flex-direction: column;
+      border-radius: 14px;
+      padding: 1.35rem 1.6rem;
+      display: flex; gap: 1.5rem; align-items: center;
       color: var(--text);
-      transition: transform 0.3s cubic-bezier(.2,.7,.2,1), box-shadow 0.3s, border-color 0.3s;
+      transition: transform 0.3s cubic-bezier(.2,.7,.2,1), border-color 0.3s, box-shadow 0.3s;
     }
-    .story-card:hover {
-      transform: translateY(-5px);
-      border-color: color-mix(in srgb, var(--main) 55%, transparent);
-      box-shadow: 0 18px 40px -14px color-mix(in srgb, var(--main) 45%, transparent);
+    .article-row:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--main) 50%, transparent);
+      box-shadow: 0 14px 34px -16px color-mix(in srgb, var(--main) 45%, transparent);
       text-decoration: none;
     }
-    .story-thumb {
-      position: relative; height: 150px; overflow: hidden;
-      background-image: var(--cc-photo, none),
-        linear-gradient(135deg,
-          color-mix(in srgb, var(--c) 18%, #0e1117),
-          color-mix(in srgb, var(--c) 7%, #0e1117) 70%, #0e1117);
-      background-size: cover; background-position: center;
-      display: flex; align-items: center; justify-content: center;
+    .ar-left { flex: 1; min-width: 0; }
+    .ar-meta { display: flex; gap: 0.65rem; align-items: center; margin-bottom: 0.55rem; flex-wrap: wrap; }
+    .ar-date { font-size: 0.74rem; color: var(--text-dim); letter-spacing: 0.03em; }
+    .ar-title { font-size: 1.08rem; font-weight: 700; line-height: 1.45; margin-bottom: 0.45rem; }
+    .ar-sum { font-size: 0.84rem; color: var(--text-muted); line-height: 1.7; }
+    .ar-right {
+      flex-shrink: 0; display: flex; flex-direction: column; align-items: center;
+      gap: 0.15rem; padding-left: 1rem;
+      border-left: 1px solid var(--glass-border);
     }
-    .story-thumb .thumb-emoji {
-      font-size: 3rem; opacity: 0.5;
-      filter: drop-shadow(0 4px 14px rgba(0,0,0,0.5));
-      transition: transform 0.5s cubic-bezier(.2,.7,.2,1);
-    }
-    .story-card:hover .thumb-emoji { transform: scale(1.12) rotate(-3deg); }
-    .story-angle {
-      position: absolute; top: 0.75rem; right: 0.75rem;
-      display: flex; flex-direction: column; align-items: center;
-      background: rgba(8,10,14,0.6); backdrop-filter: blur(8px);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px; padding: 0.4rem 0.6rem; line-height: 1;
-    }
-    .story-angle .a-num {
-      font-family: var(--num-font); font-size: 1.15rem; font-weight: 700;
-      color: var(--accent);
-    }
-    .story-angle .a-lbl { font-size: 0.58rem; color: var(--text-muted); margin-top: 0.15rem; }
-    .story-content { padding: 1.1rem 1.25rem 1.25rem; display: flex; flex-direction: column; flex: 1; }
-    .story-meta { display: flex; gap: 0.6rem; align-items: center; margin-bottom: 0.6rem; }
-    .story-date { font-size: 0.72rem; color: var(--text-dim); }
-    .story-title { font-size: 1rem; font-weight: 700; line-height: 1.45; margin-bottom: 0.5rem; }
-    .story-sum { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 0.9rem; flex: 1; }
-    .story-flags { font-size: 1.05rem; letter-spacing: 0.08em; }
+    .ar-angle-num { font-family: var(--num-font); font-size: 1.6rem; font-weight: 700; color: var(--accent); line-height: 1; }
+    .ar-angle-label { font-size: 0.62rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; }
 
     /* ホーム内のタグは多色をやめ、メイン青の単一スタイルに統一（common.css は不変） */
-    .story-meta .tag {
+    .ar-meta .tag {
       background: color-mix(in srgb, var(--main) 12%, transparent);
       color: var(--main);
       border: 1px solid color-mix(in srgb, var(--main) 28%, transparent);
+    }
+
+    @media (max-width: 560px) {
+      .article-row { padding: 1.1rem 1.2rem; gap: 1rem; }
+      .ar-title { font-size: 1rem; }
+      .ar-right { padding-left: 0.75rem; }
     }
 
     /* ===================== Concept ===================== */
@@ -393,8 +375,8 @@
       </div>
       <div class="bento">
 
-        <!-- 中東情勢：feature（写真あり） -->
-        <a class="cat-tile feature" href="categories/middle-east/index.html"
+        <!-- 中東情勢 -->
+        <a class="cat-tile" href="categories/middle-east/index.html"
            style="--cc-color:#c08a5e; --cc-photo:url('image/home/middle-east-oil-refinery-night.png');">
           <span class="tile-shade"></span>
           <div class="tile-body">
@@ -407,7 +389,7 @@
 
         <!-- AI・技術覇権 -->
         <a class="cat-tile" href="categories/ai-tech/index.html"
-           style="--cc-color:#7fa6b8; --cc-photo:url('image/categories/ai-tech.jpg');">
+           style="--cc-color:#7fa6b8; --cc-photo:url('image/home/ai-semiconductor-circuit-board.png');">
           <span class="tile-shade"></span>
           <div class="tile-body">
             <span class="tile-kicker">AI &amp; Tech</span>
@@ -418,7 +400,7 @@
 
         <!-- 世界経済 -->
         <a class="cat-tile" href="categories/economy/index.html"
-           style="--cc-color:#9286b0; --cc-photo:url('image/categories/economy.jpg');">
+           style="--cc-color:#9286b0; --cc-photo:url('image/home/global-economy-financial-district-port.png');">
           <span class="tile-shade"></span>
           <div class="tile-body">
             <span class="tile-kicker">Economy</span>
@@ -429,7 +411,7 @@
 
         <!-- アジア情勢 -->
         <a class="cat-tile" href="categories/asia/index.html"
-           style="--cc-color:#b87f8c; --cc-photo:url('image/categories/asia.jpg');">
+           style="--cc-color:#b87f8c; --cc-photo:url('image/home/asia-night-market-street.png');">
           <span class="tile-shade"></span>
           <div class="tile-body">
             <span class="tile-kicker">Asia</span>
@@ -440,7 +422,7 @@
 
         <!-- ウクライナ紛争 -->
         <a class="cat-tile" href="categories/ukraine/index.html"
-           style="--cc-color:#bfa874; --cc-photo:url('image/categories/ukraine.jpg');">
+           style="--cc-color:#bfa874; --cc-photo:url('image/home/ukraine-conflict-wheat-field-church.png');">
           <span class="tile-shade"></span>
           <div class="tile-body">
             <span class="tile-kicker">Ukraine</span>
@@ -451,7 +433,7 @@
 
         <!-- 移民・難民 -->
         <a class="cat-tile" href="categories/immigration/index.html"
-           style="--cc-color:#79a3bf; --cc-photo:url('image/categories/immigration.jpg');">
+           style="--cc-color:#79a3bf; --cc-photo:url('image/home/immigration-refugees-journey-road.png');">
           <span class="tile-shade"></span>
           <div class="tile-body">
             <span class="tile-kicker">Migration</span>
@@ -462,7 +444,7 @@
 
         <!-- 欧州情勢（準備中） -->
         <a class="cat-tile" href="#"
-           style="--cc-color:#7faa92; --cc-photo:url('image/categories/europe.jpg');">
+           style="--cc-color:#7faa92; --cc-photo:url('image/home/europe-neoclassical-plaza-dusk.png');">
           <span class="tile-shade"></span>
           <div class="tile-body">
             <span class="tile-kicker">Europe</span>
@@ -482,117 +464,86 @@
           <h2>最新記事</h2>
         </div>
       </div>
-      <div class="story-grid">
+      <div class="articles-list">
 
         <!-- AI for Science -->
-        <a class="story-card" href="articles/ai-tech/2026-06-04-ai-science/index.html" style="--c:#7faa92;">
-          <div class="story-thumb" style="--cc-photo:url('image/articles/ai-science.jpg');">
-            <div class="story-angle"><span class="a-num">5</span><span class="a-lbl">視点</span></div>
+        <a class="article-row" href="articles/ai-tech/2026-06-04-ai-science/index.html">
+          <div class="ar-left">
+            <div class="ar-meta"><span class="tag tag-blue">AI・技術覇権</span><span class="ar-date">2026.06.04</span></div>
+            <div class="ar-title">AIが変えた科学の速度 — AlphaFold以後の「発見の自動化」</div>
+            <div class="ar-sum">タンパク質構造を解いたAlphaFoldがノーベル化学賞を受賞。生物・材料・創薬で数年の工程が数日に短縮され、自律実験室も現実に。希望と、再現性などの課題を5視点で整理。</div>
           </div>
-          <div class="story-content">
-            <div class="story-meta"><span class="tag tag-blue">AI・技術覇権</span><span class="story-date">2026.06.04</span></div>
-            <h3 class="story-title">AIが変えた科学の速度 — AlphaFold以後の「発見の自動化」</h3>
-            <p class="story-sum">タンパク質構造を解いたAlphaFoldがノーベル化学賞を受賞。生物・材料・創薬で数年の工程が数日に短縮され、自律実験室も現実に。希望と、再現性などの課題を5視点で整理。</p>
-            <span class="story-flags" style="font-size:0.78rem;color:var(--text-dim);letter-spacing:0;">アメリカ・イギリス・中国・欧州連合・日本</span>
-          </div>
+          <div class="ar-right"><div class="ar-angle-num">5</div><div class="ar-angle-label">視点</div></div>
         </a>
 
         <!-- Critical Minerals -->
-        <a class="story-card" href="articles/economy/2026-06-04-critical-minerals/index.html" style="--c:#9286b0;">
-          <div class="story-thumb" style="--cc-photo:url('image/articles/critical-minerals.jpg');">
-            <span class="thumb-emoji">⛏️</span>
-            <div class="story-angle"><span class="a-num">5</span><span class="a-lbl">視点</span></div>
+        <a class="article-row" href="articles/economy/2026-06-04-critical-minerals/index.html">
+          <div class="ar-left">
+            <div class="ar-meta"><span class="tag tag-yellow">世界経済</span><span class="ar-date">2026.06.04</span></div>
+            <div class="ar-title">重要鉱物の囲い込み — レアアース・グリーンランド・コンゴの新争奪戦</div>
+            <div class="ar-sum">中国が精錬能力の約9割を握り、レアアース・ガリウム・ゲルマニウムの輸出規制を交渉カードに。EV・風力と防衛が同じ鉱物を奪い合う構図を、用途解説とともに5視点で整理。</div>
           </div>
-          <div class="story-content">
-            <div class="story-meta"><span class="tag tag-yellow">世界経済</span><span class="story-date">2026.06.04</span></div>
-            <h3 class="story-title">重要鉱物の囲い込み — レアアース・グリーンランド・コンゴの新争奪戦</h3>
-            <p class="story-sum">中国が精錬能力の約9割を握り、レアアース・ガリウム・ゲルマニウムの輸出規制を交渉カードに。EV・風力と防衛が同じ鉱物を奪い合う構図を、用途解説とともに5視点で整理。</p>
-            <span class="story-flags">🇨🇳 🇺🇸 🇪🇺 🇨🇩 🇺🇦 🌍</span>
-          </div>
+          <div class="ar-right"><div class="ar-angle-num">5</div><div class="ar-angle-label">視点</div></div>
         </a>
 
         <!-- India -->
-        <a class="story-card" href="articles/asia/2026-06-04-india-strategy/index.html" style="--c:#b87f8c;">
-          <div class="story-thumb" style="--cc-photo:url('image/articles/india-strategy.jpg');">
-            <span class="thumb-emoji">🇮🇳</span>
-            <div class="story-angle"><span class="a-num">6</span><span class="a-lbl">視点</span></div>
+        <a class="article-row" href="articles/asia/2026-06-04-india-strategy/index.html">
+          <div class="ar-left">
+            <div class="ar-meta"><span class="tag tag-blue">アジア情勢</span><span class="ar-date">2026.06.04</span></div>
+            <div class="ar-title">インドの「全方位外交」— 米中どちらにも付かない14億人の大国</div>
+            <div class="ar-sum">クワッドに参加しながらロシアから石油を買い続け、BRICS議長国を務めながら米国と「歴史的貿易合意」を結ぶ。「戦略的自律」の実態を6つの視点から整理。</div>
           </div>
-          <div class="story-content">
-            <div class="story-meta"><span class="tag tag-blue">アジア情勢</span><span class="story-date">2026.06.04</span></div>
-            <h3 class="story-title">インドの「全方位外交」— 米中どちらにも付かない14億人の大国</h3>
-            <p class="story-sum">クワッドに参加しながらロシアから石油を買い続け、BRICS議長国を務めながら米国と「歴史的貿易合意」を結ぶ。「戦略的自律」の実態を6つの視点から整理。</p>
-            <span class="story-flags">🇮🇳 🇺🇸 🇨🇳 🇷🇺 🌍 🇯🇵</span>
-          </div>
+          <div class="ar-right"><div class="ar-angle-num">6</div><div class="ar-angle-label">視点</div></div>
         </a>
 
         <!-- Tariffs -->
-        <a class="story-card" href="articles/economy/2026-06-03-trump-tariffs/index.html" style="--c:#9286b0;">
-          <div class="story-thumb" style="--cc-photo:url('image/articles/trump-tariffs.jpg');">
-            <span class="thumb-emoji">💹</span>
-            <div class="story-angle"><span class="a-num">6</span><span class="a-lbl">視点</span></div>
+        <a class="article-row" href="articles/economy/2026-06-03-trump-tariffs/index.html">
+          <div class="ar-left">
+            <div class="ar-meta"><span class="tag tag-yellow">世界経済</span><span class="ar-date">2026.06.03</span></div>
+            <div class="ar-title">トランプ関税が変えた世界貿易地図 — 誰が得して誰が損したか</div>
+            <div class="ar-sum">最大27%まで上がった関税は最高裁判決で一部無効化。対中赤字は縮小したが穴はベトナム・台湾が埋め、米国世帯は年1,500ドルの負担増。</div>
           </div>
-          <div class="story-content">
-            <div class="story-meta"><span class="tag tag-yellow">世界経済</span><span class="story-date">2026.06.03</span></div>
-            <h3 class="story-title">トランプ関税が変えた世界貿易地図 — 誰が得して誰が損したか</h3>
-            <p class="story-sum">最大27%まで上がった関税は最高裁判決で一部無効化。対中赤字は縮小したが穴はベトナム・台湾が埋め、米国世帯は年1,500ドルの負担増。</p>
-            <span class="story-flags">🇺🇸 🇨🇳 🇪🇺 🇯🇵 🇻🇳 🌐</span>
-          </div>
+          <div class="ar-right"><div class="ar-angle-num">6</div><div class="ar-angle-label">視点</div></div>
         </a>
 
         <!-- Immigration -->
-        <a class="story-card" href="articles/immigration/2026-06-02-immigration-policy/index.html" style="--c:#79a3bf;">
-          <div class="story-thumb" style="--cc-photo:url('image/articles/immigration-policy.jpg');">
-            <span class="thumb-emoji">🌐</span>
-            <div class="story-angle"><span class="a-num">6</span><span class="a-lbl">視点</span></div>
+        <a class="article-row" href="articles/immigration/2026-06-02-immigration-policy/index.html">
+          <div class="ar-left">
+            <div class="ar-meta"><span class="tag tag-blue">移民・難民</span><span class="ar-date">2026.06.02</span></div>
+            <div class="ar-title">移民政策の世界地図 — 締め出す国・呼び込む国</div>
+            <div class="ar-sum">世界で1億1700万人が故郷を追われる中、各国の対応は真っ二つに。厳格化する米欧と受け入れるドイツ・カナダ、日本の二重政策を多角整理。</div>
           </div>
-          <div class="story-content">
-            <div class="story-meta"><span class="tag tag-blue">移民・難民</span><span class="story-date">2026.06.02</span></div>
-            <h3 class="story-title">移民政策の世界地図 — 締め出す国・呼び込む国</h3>
-            <p class="story-sum">世界で1億1700万人が故郷を追われる中、各国の対応は真っ二つに。厳格化する米欧と受け入れるドイツ・カナダ、日本の二重政策を多角整理。</p>
-            <span class="story-flags">🇺🇸 🇪🇺 🇯🇵 🇨🇦 🇩🇪 🌍</span>
-          </div>
+          <div class="ar-right"><div class="ar-angle-num">6</div><div class="ar-angle-label">視点</div></div>
         </a>
 
         <!-- Ukraine -->
-        <a class="story-card" href="articles/ukraine/2026-06-02-ceasefire/index.html" style="--c:#bfa874;">
-          <div class="story-thumb" style="--cc-photo:url('image/articles/ukraine-ceasefire.jpg');">
-            <span class="thumb-emoji">⚔️</span>
-            <div class="story-angle"><span class="a-num">6</span><span class="a-lbl">視点</span></div>
+        <a class="article-row" href="articles/ukraine/2026-06-02-ceasefire/index.html">
+          <div class="ar-left">
+            <div class="ar-meta"><span class="tag tag-yellow">ウクライナ紛争</span><span class="ar-date">2026.06.02</span></div>
+            <div class="ar-title">ウクライナ停戦交渉の現在地 — 仲介・思惑・苦境</div>
+            <div class="ar-sum">5月の3日間停戦は双方の攻撃継続で崩壊。領土・NATO加盟・安全保障をめぐる根本対立は未解消。中国の「戦略的中立」の実態も分析。</div>
           </div>
-          <div class="story-content">
-            <div class="story-meta"><span class="tag tag-yellow">ウクライナ紛争</span><span class="story-date">2026.06.02</span></div>
-            <h3 class="story-title">ウクライナ停戦交渉の現在地 — 仲介・思惑・苦境</h3>
-            <p class="story-sum">5月の3日間停戦は双方の攻撃継続で崩壊。領土・NATO加盟・安全保障をめぐる根本対立は未解消。中国の「戦略的中立」の実態も分析。</p>
-            <span class="story-flags">🇺🇦 🇷🇺 🇺🇸 🇪🇺 🇨🇳 🇯🇵</span>
-          </div>
+          <div class="ar-right"><div class="ar-angle-num">6</div><div class="ar-angle-label">視点</div></div>
         </a>
 
-        <!-- AI -->
-        <a class="story-card" href="articles/ai-tech/2026-06-02-ai-race/index.html" style="--c:#7fa6b8;">
-          <div class="story-thumb" style="--cc-photo:url('image/articles/ai-race.jpg');">
-            <span class="thumb-emoji">🤖</span>
-            <div class="story-angle"><span class="a-num">6</span><span class="a-lbl">視点</span></div>
+        <!-- AI race -->
+        <a class="article-row" href="articles/ai-tech/2026-06-02-ai-race/index.html">
+          <div class="ar-left">
+            <div class="ar-meta"><span class="tag tag-blue">AI・技術覇権</span><span class="ar-date">2026.06.02</span></div>
+            <div class="ar-title">米中AI覇権争いの現在地 — 性能差2.7%まで縮まった競争</div>
+            <div class="ar-sum">31.6ポイントあった米中差が2.7%に。DeepSeekショック、半導体規制、欧州連合の規制先行、インドの第三極台頭を6カ国の視点で整理。</div>
           </div>
-          <div class="story-content">
-            <div class="story-meta"><span class="tag tag-blue">AI・技術覇権</span><span class="story-date">2026.06.02</span></div>
-            <h3 class="story-title">米中AI覇権争いの現在地 — 性能差2.7%まで縮まった競争</h3>
-            <p class="story-sum">31.6ポイントあった米中差が2.7%に。DeepSeekショック、半導体規制、EUの規制先行、インドの第三極台頭を6カ国の視点で整理。</p>
-            <span class="story-flags">🇺🇸 🇨🇳 🇪🇺 🇮🇳 🇯🇵 🇷🇺</span>
-          </div>
+          <div class="ar-right"><div class="ar-angle-num">6</div><div class="ar-angle-label">視点</div></div>
         </a>
 
         <!-- Iran -->
-        <a class="story-card" href="articles/middle-east/2026-06-02-iran-nuclear/index.html" style="--c:#c08a5e;">
-          <div class="story-thumb" style="--cc-photo:url('image/articles/iran-nuclear.jpg');">
-            <span class="thumb-emoji">☢️</span>
-            <div class="story-angle"><span class="a-num">7</span><span class="a-lbl">視点</span></div>
+        <a class="article-row" href="articles/middle-east/2026-06-02-iran-nuclear/index.html">
+          <div class="ar-left">
+            <div class="ar-meta"><span class="tag tag-red">中東情勢</span><span class="ar-date">2026.06.02</span></div>
+            <div class="ar-title">イラン核交渉の最新動向 — 米国・イスラエル・イランの三つ巴</div>
+            <div class="ar-sum">2026年5月の核合意再交渉で各国の立場が鮮明に対立。イランは「平和利用の権利」、イスラエルは軍事オプション、米国は外交圧力と制裁を模索。</div>
           </div>
-          <div class="story-content">
-            <div class="story-meta"><span class="tag tag-red">中東情勢</span><span class="story-date">2026.06.02</span></div>
-            <h3 class="story-title">イラン核交渉の最新動向 — 米国・イスラエル・イランの三つ巴</h3>
-            <p class="story-sum">2026年5月の核合意再交渉で各国の立場が鮮明に対立。イランは「平和利用の権利」、イスラエルは軍事オプション、米国は外交圧力と制裁を模索。</p>
-            <span class="story-flags">🇮🇷 🇺🇸 🇮🇱 🇷🇺 🇨🇳 🇩🇪 🇸🇦</span>
-          </div>
+          <div class="ar-right"><div class="ar-angle-num">7</div><div class="ar-angle-label">視点</div></div>
         </a>
 
       </div>
@@ -664,7 +615,7 @@
 
 /* ===== Home: タイル/カードのスクロール出現 ===== */
 (function () {
-  const items = document.querySelectorAll('.cat-tile, .story-card, .concept-card');
+  const items = document.querySelectorAll('.cat-tile, .article-row, .concept-card');
   items.forEach((el, i) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(26px)';
