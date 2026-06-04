@@ -351,25 +351,43 @@
 
 /* ===== TOC Sidebar ===== */
 .toc-sidebar {
-  position: sticky; top: 80px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius);
-  padding: 1.25rem;
+  position: sticky; top: 84px;
+  /* 余白＋細い境界線のみの軽量な佇まい（囲みカードをやめる） */
+  padding: 0.25rem 0 0.25rem 1.1rem;
+  border-left: 1px solid var(--border-subtle);
 }
 .toc-title {
-  font-size: 0.68rem; text-transform: uppercase;
-  letter-spacing: 0.12em; color: var(--text-dim); margin-bottom: 0.85rem;
+  font-size: 0.62rem; text-transform: uppercase;
+  letter-spacing: 0.2em; color: var(--text-dim);
+  margin-bottom: 1.1rem; font-weight: 700;
 }
-.toc-list { list-style: none; display: flex; flex-direction: column; gap: 0.2rem; }
+.toc-list { list-style: none; display: flex; flex-direction: column; gap: 0.1rem; }
 .toc-list a {
-  font-size: 0.8rem; color: var(--text-muted);
-  display: flex; gap: 0.5rem; align-items: center;
-  padding: 0.35rem 0.5rem; border-radius: var(--radius-sm);
-  transition: background 0.15s, color 0.15s;
+  position: relative;
+  font-size: 0.8rem; line-height: 1.45; color: var(--text-dim);
+  display: block;
+  padding: 0.45rem 0.2rem 0.45rem 1rem;
+  border-radius: 0;
+  transition: color 0.2s ease, padding 0.2s ease;
 }
-.toc-list a:hover { background: var(--bg-card2); color: var(--text); text-decoration: none; }
-.toc-list .toc-icon { font-size: 0.85rem; }
+/* 各項目の左に細いインジケータライン */
+.toc-list a::before {
+  content: '';
+  position: absolute; left: 0; top: 50%;
+  width: 2px; height: 0;
+  background: var(--accent); border-radius: 2px;
+  transform: translateY(-50%);
+  transition: height 0.25s ease;
+}
+.toc-list a:hover {
+  color: var(--text); text-decoration: none; padding-left: 1.2rem;
+}
+.toc-list a:hover::before { height: 60%; }
+/* スクロール連動の現在地ハイライト（main.js が .is-current を付与） */
+.toc-list a.is-current { color: var(--text); font-weight: 600; }
+.toc-list a.is-current::before { height: 100%; }
+/* 旧・絵文字アイコンは廃止（残っていても非表示） */
+.toc-list .toc-icon { display: none; }
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {

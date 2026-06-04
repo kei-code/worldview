@@ -100,6 +100,40 @@ document.querySelectorAll('.timeline').forEach(timeline => {
   timelineObserver.observe(timeline);
 });
 
+/* ===== 目次（TOC）スクロール連動ハイライト ===== */
+(function () {
+  const tocLinks = Array.from(document.querySelectorAll('.toc-list a[href^="#"]'));
+  if (!tocLinks.length) return;
+
+  const map = new Map(); // section id -> toc link
+  tocLinks.forEach(a => {
+    const id = a.getAttribute('href').slice(1);
+    const sec = document.getElementById(id);
+    if (sec) map.set(sec, a);
+  });
+  if (!map.size) return;
+
+  let current = null;
+  function setCurrent(link) {
+    if (link === current) return;
+    tocLinks.forEach(a => a.classList.remove('is-current'));
+    if (link) link.classList.add('is-current');
+    current = link;
+  }
+
+  const spy = new IntersectionObserver(entries => {
+    // 画面上部に最も近い可視セクションを現在地とする
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if (visible.length) {
+      setCurrent(map.get(visible[0].target));
+    }
+  }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+  map.forEach((_, sec) => spy.observe(sec));
+})();
+
 /* ===== バーグラフ アニメーション ===== */
 document.querySelectorAll('.bar-fill[data-width], .tone-fill[data-width]').forEach(bar => {
   bar.style.width = '0%';
