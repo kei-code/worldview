@@ -31,17 +31,42 @@
     .country-box .cb-tag { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem; }
     .country-box .cb-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
 
-    /* 支出バー */
-    .spend-bar { margin: 1.25rem 0; }
-    .spend-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.9rem; font-size: 0.85rem; }
-    .spend-label { min-width: 130px; font-size: 0.8rem; color: var(--text-muted); }
-    .spend-track { flex: 1; height: 26px; background: var(--bg-card2); border-radius: 6px; overflow: hidden; }
-    .spend-fill {
-      height: 100%; border-radius: 6px; display: flex; align-items: center;
-      padding-left: 0.6rem; font-size: 0.74rem; font-weight: 700; color: #fff;
-      transition: width 0.8s cubic-bezier(.4,0,.2,1);
+    /* 支出バー（狭いカード内でも崩れない縦積みレイアウト） */
+    .spend-bar { margin: 1rem 0 0.25rem; }
+    .spend-row { margin-bottom: 0.95rem; }
+    .spend-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.35rem; }
+    .spend-label { font-size: 0.8rem; color: var(--text-muted); }
+    .spend-value { font-size: 0.8rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+    .spend-track { height: 18px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .spend-fill { height: 100%; border-radius: 5px; transition: width 0.8s cubic-bezier(.4,0,.2,1); }
+
+    /* ヒーロー背景に画像（このページのみ） */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/european-defense-tank-column-dawn.jpg');
+      background-size: cover; background-position: center 35%;
     }
-    .spend-value { min-width: 56px; text-align: right; font-weight: 700; font-size: 0.82rem; }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.78) 0%, rgba(14,17,23,0.72) 40%, rgba(14,17,23,0.92) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* 本文中の図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
 
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
@@ -63,7 +88,8 @@
 </header>
 
 <main>
-  <div class="article-hero">
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
     <div class="container">
       <div class="article-meta">
         <span class="tag tag-green">欧州情勢</span>
@@ -147,6 +173,12 @@
               </div>
             </div>
           </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/european-defense-fighter-jets-airbase.jpg"
+                 alt="ヨーロッパの空軍基地の駐機場に並ぶ第5世代戦闘機の列" loading="lazy">
+            <figcaption>装備の近代化は進む一方、即応性・兵站・人員の整備は道半ばとされる。各国は共同調達でこの穴を埋めようとしている。※イメージ画像（生成AI）</figcaption>
+          </figure>
 
           <!-- Section 3 -->
           <section class="section" id="sec-countries">
@@ -459,24 +491,20 @@
                 <h4>主要国の国防費・GDP比（2025年）</h4>
                 <div class="spend-bar">
                   <div class="spend-row">
-                    <div class="spend-label">ポーランド</div>
-                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent2);width:100%;">4.5%</div></div>
-                    <div class="spend-value">4.5%</div>
+                    <div class="spend-head"><span class="spend-label">ポーランド</span><span class="spend-value">4.5%</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent2);width:90%;"></div></div>
                   </div>
                   <div class="spend-row">
-                    <div class="spend-label">バルト三国（目安）</div>
-                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent4);width:78%;">約3.5%</div></div>
-                    <div class="spend-value">~3.5%</div>
+                    <div class="spend-head"><span class="spend-label">バルト三国（目安）</span><span class="spend-value">約3.5%</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent4);width:70%;"></div></div>
                   </div>
                   <div class="spend-row">
-                    <div class="spend-label">ドイツ（2026目安）</div>
-                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent);width:75%;">約3.4%</div></div>
-                    <div class="spend-value">~3.4%</div>
+                    <div class="spend-head"><span class="spend-label">ドイツ（2026目安）</span><span class="spend-value">約3.4%</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent);width:68%;"></div></div>
                   </div>
                   <div class="spend-row">
-                    <div class="spend-label">NATO新目標（2035）</div>
-                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent3);width:100%;">5.0%</div></div>
-                    <div class="spend-value">5.0%</div>
+                    <div class="spend-head"><span class="spend-label">NATO新目標（2035）</span><span class="spend-value">5.0%</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent3);width:100%;"></div></div>
                   </div>
                 </div>
                 <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">比率は各種報道・SIPRI等を基にした概算。出典: SIPRI / NATO 2025</p>
@@ -496,14 +524,12 @@
                 <h4>ReArm Europe の構成（総額8,000億ユーロ）</h4>
                 <div class="spend-bar">
                   <div class="spend-row">
-                    <div class="spend-label">各国の防衛支出</div>
-                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent);width:100%;">€6,500億</div></div>
-                    <div class="spend-value">81%</div>
+                    <div class="spend-head"><span class="spend-label">各国の防衛支出</span><span class="spend-value">€6,500億（81%）</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent);width:81%;"></div></div>
                   </div>
                   <div class="spend-row">
-                    <div class="spend-label">EU共同債(SAFE)</div>
-                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent4);width:23%;">€1,500億</div></div>
-                    <div class="spend-value">19%</div>
+                    <div class="spend-head"><span class="spend-label">EU共同債（SAFE）</span><span class="spend-value">€1,500億（19%）</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent4);width:19%;"></div></div>
                   </div>
                 </div>
                 <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">各国支出は財政ルールの例外扱い。出典: 欧州議会 / 欧州理事会 2025</p>

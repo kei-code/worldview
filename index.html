@@ -246,6 +246,15 @@
       box-shadow: 0 14px 34px -16px color-mix(in srgb, var(--main) 45%, transparent);
       text-decoration: none;
     }
+    .ar-thumb {
+      flex-shrink: 0; align-self: stretch;
+      width: 136px; min-height: 92px;
+      border-radius: 10px;
+      background-image: var(--thumb, none),
+        linear-gradient(135deg, color-mix(in srgb, var(--c, var(--main)) 30%, #0e1117), #0e1117 82%);
+      background-size: cover; background-position: center;
+      border: 1px solid var(--glass-border);
+    }
     .ar-left { flex: 1; min-width: 0; }
     .ar-meta { display: flex; gap: 0.65rem; align-items: center; margin-bottom: 0.55rem; flex-wrap: wrap; }
     .ar-date { font-size: 0.74rem; color: var(--text-dim); letter-spacing: 0.03em; }
@@ -270,6 +279,7 @@
       .article-row { padding: 1.1rem 1.2rem; gap: 1rem; }
       .ar-title { font-size: 1rem; }
       .ar-right { padding-left: 0.75rem; }
+      .ar-thumb { width: 92px; min-height: 78px; }
     }
 
     /* ===================== Concept ===================== */
@@ -467,7 +477,8 @@
       <div class="articles-list">
 
         <!-- European Defense -->
-        <a class="article-row" href="articles/europe/2026-06-05-european-defense/index.html">
+        <a class="article-row" href="articles/europe/2026-06-05-european-defense/index.html" style="--c:#7faa92; --thumb:url('image/articles/european-defense-tank-column-dawn.jpg');">
+          <div class="ar-thumb"></div>
           <div class="ar-left">
             <div class="ar-meta"><span class="tag tag-green">欧州情勢</span><span class="ar-date">2026.06.05</span></div>
             <div class="ar-title">欧州の「自前防衛」への転換 — アメリカ抜きで大陸を守れるか</div>
@@ -477,7 +488,8 @@
         </a>
 
         <!-- AI for Science -->
-        <a class="article-row" href="articles/ai-tech/2026-06-04-ai-science/index.html">
+        <a class="article-row" href="articles/ai-tech/2026-06-04-ai-science/index.html" style="--c:#7fa6b8;">
+          <div class="ar-thumb"></div>
           <div class="ar-left">
             <div class="ar-meta"><span class="tag tag-blue">AI・技術覇権</span><span class="ar-date">2026.06.04</span></div>
             <div class="ar-title">AIが変えた科学の速度 — AlphaFold以後の「発見の自動化」</div>
@@ -487,7 +499,8 @@
         </a>
 
         <!-- Critical Minerals -->
-        <a class="article-row" href="articles/economy/2026-06-04-critical-minerals/index.html">
+        <a class="article-row" href="articles/economy/2026-06-04-critical-minerals/index.html" style="--c:#9286b0;">
+          <div class="ar-thumb"></div>
           <div class="ar-left">
             <div class="ar-meta"><span class="tag tag-yellow">世界経済</span><span class="ar-date">2026.06.04</span></div>
             <div class="ar-title">重要鉱物の囲い込み — レアアース・グリーンランド・コンゴの新争奪戦</div>
@@ -497,7 +510,8 @@
         </a>
 
         <!-- India -->
-        <a class="article-row" href="articles/asia/2026-06-04-india-strategy/index.html">
+        <a class="article-row" href="articles/asia/2026-06-04-india-strategy/index.html" style="--c:#b87f8c;">
+          <div class="ar-thumb"></div>
           <div class="ar-left">
             <div class="ar-meta"><span class="tag tag-blue">アジア情勢</span><span class="ar-date">2026.06.04</span></div>
             <div class="ar-title">インドの「全方位外交」— 米中どちらにも付かない14億人の大国</div>
@@ -507,7 +521,8 @@
         </a>
 
         <!-- Tariffs -->
-        <a class="article-row" href="articles/economy/2026-06-03-trump-tariffs/index.html">
+        <a class="article-row" href="articles/economy/2026-06-03-trump-tariffs/index.html" style="--c:#9286b0;">
+          <div class="ar-thumb"></div>
           <div class="ar-left">
             <div class="ar-meta"><span class="tag tag-yellow">世界経済</span><span class="ar-date">2026.06.03</span></div>
             <div class="ar-title">トランプ関税が変えた世界貿易地図 — 誰が得して誰が損したか</div>
@@ -517,7 +532,8 @@
         </a>
 
         <!-- Immigration -->
-        <a class="article-row" href="articles/immigration/2026-06-02-immigration-policy/index.html">
+        <a class="article-row" href="articles/immigration/2026-06-02-immigration-policy/index.html" style="--c:#79a3bf;">
+          <div class="ar-thumb"></div>
           <div class="ar-left">
             <div class="ar-meta"><span class="tag tag-blue">移民・難民</span><span class="ar-date">2026.06.02</span></div>
             <div class="ar-title">移民政策の世界地図 — 締め出す国・呼び込む国</div>
@@ -527,7 +543,8 @@
         </a>
 
         <!-- Ukraine -->
-        <a class="article-row" href="articles/ukraine/2026-06-02-ceasefire/index.html">
+        <a class="article-row" href="articles/ukraine/2026-06-02-ceasefire/index.html" style="--c:#bfa874;">
+          <div class="ar-thumb"></div>
           <div class="ar-left">
             <div class="ar-meta"><span class="tag tag-yellow">ウクライナ紛争</span><span class="ar-date">2026.06.02</span></div>
             <div class="ar-title">ウクライナ停戦交渉の現在地 — 仲介・思惑・苦境</div>
@@ -537,7 +554,8 @@
         </a>
 
         <!-- AI race -->
-        <a class="article-row" href="articles/ai-tech/2026-06-02-ai-race/index.html">
+        <a class="article-row" href="articles/ai-tech/2026-06-02-ai-race/index.html" style="--c:#7fa6b8;">
+          <div class="ar-thumb"></div>
           <div class="ar-left">
             <div class="ar-meta"><span class="tag tag-blue">AI・技術覇権</span><span class="ar-date">2026.06.02</span></div>
             <div class="ar-title">米中AI覇権争いの現在地 — 性能差2.7%まで縮まった競争</div>
@@ -547,7 +565,8 @@
         </a>
 
         <!-- Iran -->
-        <a class="article-row" href="articles/middle-east/2026-06-02-iran-nuclear/index.html">
+        <a class="article-row" href="articles/middle-east/2026-06-02-iran-nuclear/index.html" style="--c:#c08a5e;">
+          <div class="ar-thumb"></div>
           <div class="ar-left">
             <div class="ar-meta"><span class="tag tag-red">中東情勢</span><span class="ar-date">2026.06.02</span></div>
             <div class="ar-title">イラン核交渉の最新動向 — 米国・イスラエル・イランの三つ巴</div>

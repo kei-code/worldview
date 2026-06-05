@@ -197,7 +197,8 @@
 .timeline::before {
   content: '';
   position: absolute;
-  left: 0.55rem;          /* 線の左端 */
+  /* レール中心を 9px に固定（線幅2px → 左端8px）。ドット中心と一致させる */
+  left: 8px;
   top: 8px;
   bottom: 0;
   width: 2px;
@@ -223,9 +224,9 @@
 /* 丸：left:-2rem + margin-left:0.55rem + translateX(-50%) で線中心に正確に合わせる */
 .timeline-dot {
   position: absolute;
-  left: -2rem;
-  margin-left: 0.55rem;
-  transform: translateX(-50%);
+  /* 中心をレール(9px)に合わせる: ドット幅10px → 左端を中心-5px=4px に。
+     transform は JS の scale 演出に使うため、横位置は left のみで確定させる */
+  left: calc(-2rem + 4px);
   top: 5px;
   width: 10px; height: 10px;
   border-radius: 50%;
