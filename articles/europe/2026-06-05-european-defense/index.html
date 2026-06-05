@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欧州の「自前防衛」への転換 — アメリカ抜きで大陸を守れるか — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    .section-title .sec-num {
+      font-family: var(--font-mono);
+      font-size: 0.78rem; font-weight: 700;
+      color: var(--accent);
+      border: 1px solid rgba(154,180,196,0.35);
+      border-radius: 4px;
+      padding: 0.1em 0.45em;
+      letter-spacing: 0.04em;
+    }
+
+    /* 国別の取り組みカード */
+    .country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1rem; }
+    .country-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.2rem 1.3rem;
+      border-left: 2px solid var(--accent);
+    }
+    .country-box .cb-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .country-box .cb-tag { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem; }
+    .country-box .cb-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* 支出バー */
+    .spend-bar { margin: 1.25rem 0; }
+    .spend-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.9rem; font-size: 0.85rem; }
+    .spend-label { min-width: 130px; font-size: 0.8rem; color: var(--text-muted); }
+    .spend-track { flex: 1; height: 26px; background: var(--bg-card2); border-radius: 6px; overflow: hidden; }
+    .spend-fill {
+      height: 100%; border-radius: 6px; display: flex; align-items: center;
+      padding-left: 0.6rem; font-size: 0.74rem; font-weight: 700; color: #fff;
+      transition: width 0.8s cubic-bezier(.4,0,.2,1);
+    }
+    .spend-value { min-width: 56px; text-align: right; font-weight: 700; font-size: 0.82rem; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .country-grid { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/europe/index.html" style="color:var(--text);">欧州情勢</a>
+    <a href="../../../categories/economy/index.html">世界経済</a>
+    <a href="../../../categories/asia/index.html">アジア情勢</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero">
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-green">欧州情勢</span>
+        <span class="tag tag-red">安全保障</span>
+        <span class="date">2026年6月5日</span>
+      </div>
+      <h1 class="article-title">欧州の「自前防衛」への転換<br>— アメリカ抜きで大陸を守れるか</h1>
+      <p class="article-summary">
+        2025年12月、アメリカの新たな国家安全保障戦略は「能力ある同盟国が主たる責任を負う」と明言し、自動的な防衛保証の時代を終わらせた。
+        欧州は戦後最大規模の再軍備に動く。ドイツは憲法の制約を外して国防費を欧州最大に押し上げ、ポーランドは「欧州最大の陸軍」を掲げ、
+        フランスは「欧州版・核の傘」を提唱する。だがこれは完全な対米自立ではなく、依存リスクの低減にすぎない。
+        速度・統一・能力という難題と内部対立を抱えながら、大陸は試されている。6つの立場から整理する。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">新NATO国防費目標</div>
+          <div class="kp-value">2035年までにGDP比5%（うち中核3.5%）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">欧州の防衛投資計画</div>
+          <div class="kp-value">ReArm Europe — 総額8,000億ユーロ規模</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">ドイツの国防費</div>
+          <div class="kp-value">2026年 約1,082億ユーロ（欧州最大）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">ポーランドの国防費</div>
+          <div class="kp-value">GDP比4.5% — NATO最高比率</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1 -->
+          <section class="section" id="sec-trigger">
+            <h2 class="section-title"><span class="sec-num">01</span> 引き金：アメリカの関与縮小</h2>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              2025年12月4日に公表されたアメリカの新たな国家安全保障戦略は、「アメリカ第一」を中核に据えた。
+              そこでは、<strong>能力ある同盟国が主たる責任を負える地域では、アメリカは存在を縮小する</strong>と明言された。
+              名指しの撤退ではないものの、欧州にとっては「自動的にアメリカが守ってくれる時代」の終わりを意味する。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              これに先立ち、2025年のハーグでのNATO首脳会議は、<strong>国防費を2035年までに国内総生産比5%</strong>へ引き上げる目標で合意した
+              （うち中核的な軍事能力に3.5%）。欧州とカナダの国防費は2025年に前年比およそ20%増え、全加盟国が2%の基準に到達する見込みだ。
+            </p>
+            <p style="color:var(--text-dim);font-size:0.8rem;line-height:1.8;">
+              ただし専門家が口を揃えるのは、これが「アメリカからの分離」ではなく「依存リスクの低減」だという点だ。
+              欧州はアメリカと決別するのではなく、いざという時に自律的に動ける幅を広げようとしている。
+            </p>
+          </section>
+
+          <!-- Section 2 -->
+          <section class="section" id="sec-framework">
+            <h2 class="section-title"><span class="sec-num">02</span> 欧州の枠組み：ReArm Europe と共同調達</h2>
+            <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.9;margin-bottom:1.1rem;">
+              欧州連合は、加盟国がばらばらに装備を買う非効率を改め、共同で調達・投資する仕組みを整えた。中心が「ReArm Europe（即応2030）」計画だ。
+            </p>
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+                <div>
+                  <div style="font-size:1.6rem;font-weight:800;color:var(--accent);font-family:var(--font-mono);">€8,000億</div>
+                  <div style="font-size:0.82rem;color:var(--text-muted);line-height:1.6;margin-top:0.3rem;">ReArm Europe全体の防衛投資規模。EU共同債1,500億ユーロ＋各国支出6,500億ユーロ（財政ルールの例外扱い）で構成。</div>
+                </div>
+                <div>
+                  <div style="font-size:1.6rem;font-weight:800;color:var(--accent);font-family:var(--font-mono);">€1,500億</div>
+                  <div style="font-size:0.82rem;color:var(--text-muted);line-height:1.6;margin-top:0.3rem;">共同調達ローン制度「SAFE」（2025年5月採択）。長期・低利の融資で大規模な共同調達を支援。ウクライナや候補国も参加可能。</div>
+                </div>
+              </div>
+              <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+              <div style="font-size:0.85rem;color:var(--text-muted);line-height:1.7;">
+                <strong style="color:var(--text);">即応ロードマップ2030（2025年10月）</strong>の4本柱：
+                東部側面の監視、ドローン防衛、防空（エアシールド）、宇宙監視（スペースシールド）。
+                数十年の軍縮で生じた能力の穴を、2020年代末までに埋めることを狙う。
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 3 -->
+          <section class="section" id="sec-countries">
+            <h2 class="section-title"><span class="sec-num">03</span> 主要国の動き</h2>
+            <div class="country-grid">
+              <div class="country-box">
+                <div class="cb-name">ドイツ</div>
+                <div class="cb-tag">歴史的転換</div>
+                <div class="cb-text">2025年3月、メルツ政権が憲法の「債務ブレーキ」から国防費を除外。国防費は2025年の860億ユーロから2026年に約1,082億ユーロへ、2029年には1,520億ユーロを計画。F-35導入で第5世代空軍へ。戦後の抑制を決定的に手放した。</div>
+              </div>
+              <div class="country-box">
+                <div class="cb-name">ポーランド</div>
+                <div class="cb-tag">最前線・最大比率</div>
+                <div class="cb-text">「欧州最大の陸軍」を国家目標に掲げる。2025年の国防費はGDP比4.5%でNATO最高。2016年比で207%増という急拡大で、東部前線の主役を自任する。</div>
+              </div>
+              <div class="country-box">
+                <div class="cb-name">フランス</div>
+                <div class="cb-tag">核の傘</div>
+                <div class="cb-text">欧州連合で唯一の核保有国として「前方抑止」を提唱。ノルウェー・ドイツ・ポーランドなど9カ国が仏の核抑止の計画・演習に関与し、「欧州版・核の傘」の輪郭が見え始めた。</div>
+              </div>
+              <div class="country-box">
+                <div class="cb-name">バルト三国</div>
+                <div class="cb-tag">危機の最前線</div>
+                <div class="cb-text">ロシアと国境を接し、最も切迫した脅威認識を持つ。NATO東部側面の防衛強化と、ドローン・領空侵犯などのハイブリッド攻撃への対処が日常の課題に。</div>
+              </div>
+              <div class="country-box">
+                <div class="cb-name">ハンガリー</div>
+                <div class="cb-tag">懐疑から転換</div>
+                <div class="cb-text">オルバン政権下では対ウクライナ支援を繰り返し拒否し、26カ国対1の構図を生んだ。2026年春の政権交代後、欧州連合・NATOとの関係を「再起動」し、凍結されていた拠出を解除した。</div>
+              </div>
+              <div class="country-box">
+                <div class="cb-name">イギリス</div>
+                <div class="cb-tag">欧州連合外の柱</div>
+                <div class="cb-text">欧州連合を離脱したが、防衛では大陸の主要な柱であり続ける。共同調達への参加や、フランスとともに欧州の核・通常戦力を支える役割を担う。</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 4 -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">04</span> タイムライン</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2025年3月</div>
+                <div class="timeline-content">
+                  <h4>ドイツ、憲法の債務ブレーキから国防費を除外</h4>
+                  <p>メルツ政権が連邦議会の承認を得て、長年にわたり国防投資を縛ってきた財政の上限を国防費について解除。大規模・持続的な再軍備への道を開いた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">歴史的な財政転換</span>
+                    <span class="reaction-chip">欧州最大の国防予算へ</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2025年5月</div>
+                <div class="timeline-content">
+                  <h4>欧州連合、共同調達ローン「SAFE」を採択</h4>
+                  <p>最大1,500億ユーロの融資で加盟国の共同調達を後押し。ReArm Europeの第一の柱として、装備の重複と非効率を減らす狙い。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">共同調達の本格化</span>
+                    <span class="reaction-chip">ウクライナも参加可能</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2025年9月</div>
+                <div class="timeline-content">
+                  <h4>ロシアのハイブリッド攻撃が顕在化</h4>
+                  <p>ポーランドへのドローン侵入、エストニア領空への戦闘機侵入、インフラへの妨害疑い。大規模演習も実施され、東部側面の脆弱さが改めて突きつけられた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">東部側面の緊張</span>
+                    <span class="reaction-chip">グレーゾーンの圧力</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年12月</div>
+                <div class="timeline-content">
+                  <h4>アメリカ新NSS — 「同盟国が主たる責任を」</h4>
+                  <p>「アメリカ第一」を核とする国家安全保障戦略を公表。能力ある同盟国が責任を負える地域での米軍縮小を示唆し、欧州に自立を促した。NATO事務総長は「ロシアは5年以内にNATO加盟国を攻撃しうる」と警告。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">自動保証の時代の終わり</span>
+                    <span class="reaction-chip">欧州に責任移譲</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-neutral"></div>
+                <div class="timeline-date">2026年春</div>
+                <div class="timeline-content">
+                  <h4>ハンガリーが方針転換 — 結束に追い風</h4>
+                  <p>政権交代後のハンガリーが欧州連合・NATOとの関係を「再起動」。凍結されていた拠出を解除し、対ウクライナ支援をめぐる「26対1」の構図が和らいだ。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">内部対立の緩和</span>
+                    <span class="reaction-chip">結束の回復</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot" style="background:var(--accent3)"></div>
+                <div class="timeline-date">2026年6月（現在）</div>
+                <div class="timeline-content">
+                  <h4>「金は出せても戦えるのか」が問われる</h4>
+                  <p>予算と装備調達は急拡大したが、即応性・兵站・人員・産業基盤の整備は道半ば。将軍たちが2029年の戦争を警告する一方、欧州の準備完了は2035年とされ、その時間差が最大の不安要素となっている。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">能力ギャップが焦点</span>
+                    <span class="reaction-chip">米国製装備への依存も残る</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 5 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">05</span> 各立場の主張</h2>
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- USA -->
+                  <div class="perspective-card" style="--card-color:var(--accent);">
+                    <div class="country-header">
+                      <span class="country-name">アメリカ</span>
+                      <span class="stance-label stance-cautious">責任移譲・負担共有</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      「能力ある欧州は、自らの防衛に主たる責任を負うべきだ」。アメリカは関与を完全に断つわけではないが、自動的な保証の時代は終わり、欧州に相応の負担を求める。
+                    </div>
+                    <div class="key-claim">
+                      <strong>狙い</strong>
+                      資源をインド太平洋など他地域へ振り向ける一方、欧州の防衛産業・市場でのアメリカ製装備の優位は維持したい。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>負担共有の要求度</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="82%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>戦略的優先順位の再配分、財政負担の軽減、装備輸出の維持
+                    </div>
+                  </div>
+
+                  <!-- Germany -->
+                  <div class="perspective-card" style="--card-color:var(--accent);">
+                    <div class="country-header">
+                      <span class="country-name">ドイツ</span>
+                      <span class="stance-label stance-cautious">歴史的転換・欧州の主導役候補</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      「もはや傍観者ではいられない」。財政の制約を外し、欧州最大の国防予算で再軍備を主導する姿勢へ転換。NATOの中核として大陸防衛に貢献する。
+                    </div>
+                    <div class="key-claim">
+                      <strong>葛藤</strong>
+                      歴史的経緯から軍事大国化への国内外の警戒は残る。重要装備をアメリカ製に頼る現実もあり、「欧州を率いる覚悟」と「能力の現実」の差が問われる。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>再軍備への転換度</span><span>最高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="88%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>欧州安全保障の中核責任、産業基盤、歴史的制約からの脱却
+                    </div>
+                  </div>
+
+                  <!-- Poland / Baltics -->
+                  <div class="perspective-card" style="--card-color:var(--accent);">
+                    <div class="country-header">
+                      <span class="country-name">ポーランド・バルト三国</span>
+                      <span class="stance-label stance-hostile">最前線・最大の危機感</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      「脅威は理論ではなく国境のすぐ向こうにある」。最も切迫した危機感から、GDP比で突出した国防費を投じ、欧州最大級の陸軍を整える。抑止は速度がすべて。
+                    </div>
+                    <div class="key-claim">
+                      <strong>懸念</strong>
+                      アメリカの関与縮小は死活問題。欧州の自立が間に合わない「空白の数年」に、ロシアが限定的な攻勢に出ることを最も恐れる。
+                    </div>
+                    <div class="tone-meter tone-hostile">
+                      <div class="tone-meter-label"><span>脅威認識</span><span>最高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="95%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>対ロシア最前線の安全、抑止の即応性、同盟の信頼性
+                    </div>
+                  </div>
+
+                  <!-- France -->
+                  <div class="perspective-card" style="--card-color:var(--accent);">
+                    <div class="country-header">
+                      <span class="country-name">フランス</span>
+                      <span class="stance-label stance-cautious">戦略的自律・核の傘</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      「欧州は自らの戦略的自律を持つべきだ」。欧州連合で唯一の核保有国として「前方抑止」を掲げ、欧州版の核の傘で大陸の安全に責任を持つ構想を進める。
+                    </div>
+                    <div class="key-claim">
+                      <strong>論点</strong>
+                      仏の核は最終決定権が大統領に一元化されており、「フランスはドイツやポーランドのために核を使うのか」という信頼性の問いが残る。アメリカの傘の完全な代替にはなりにくい。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>自律志向</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="80%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>欧州における指導的地位、核抑止の価値、防衛産業
+                    </div>
+                  </div>
+
+                  <!-- Skeptics -->
+                  <div class="perspective-card" style="--card-color:var(--accent);">
+                    <div class="country-header">
+                      <span class="country-name">懐疑派（ハンガリー等・ポピュリスト）</span>
+                      <span class="stance-label stance-cautious">コスト・対ロ融和</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      「際限のない軍拡と対ウクライナ支援は、国民の負担とエスカレーションを招く」。財政や対ロシア関係を理由に、共同の軍事支出や対外関与に慎重・反対の立場を取ってきた。
+                    </div>
+                    <div class="key-claim">
+                      <strong>変化</strong>
+                      ハンガリーは2026年春の政権交代で方針を転換したが、各国の親ロ・ポピュリスト勢力は依然として欧州の結束を揺らす要因であり続ける。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>再軍備への慎重さ</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="70%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>財政負担、対ロシア関係、国内世論・主権
+                    </div>
+                  </div>
+
+                  <!-- Russia -->
+                  <div class="perspective-card" style="--card-color:var(--accent2);">
+                    <div class="country-header">
+                      <span class="country-name">ロシア</span>
+                      <span class="stance-label stance-hostile">脅威認識・ハイブリッド戦</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      「欧州の再軍備、とりわけドイツの軍事大国化はロシアへの脅威だ」と非難。一方で、欧州の分断・低成長・準備の遅れを好機と見て、グレーゾーンの圧力を強める。
+                    </div>
+                    <div class="key-claim">
+                      <strong>手段</strong>
+                      ドローン侵入、領空侵犯、インフラ妨害、大規模演習などで「エスカレーション優位」を誇示。欧州の自立が整う前に既成事実を作る狙いがあるとみられる。
+                    </div>
+                    <div class="tone-meter tone-hostile">
+                      <div class="tone-meter-label"><span>圧力の強度</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="84%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>近隣への影響力維持、NATO東方拡大への対抗、欧州の分断
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本姿勢</th>
+                        <th>強調点</th>
+                        <th>課題・懸念</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>アメリカ</td><td>責任移譲・負担共有</td><td>欧州の自立と負担増</td><td>関与縮小への不安</td></tr>
+                      <tr><td>ドイツ</td><td>歴史的転換</td><td>欧州最大の国防予算</td><td>米国製依存・歴史的警戒</td></tr>
+                      <tr><td>ポーランド・バルト</td><td>最前線・危機感</td><td>突出した支出・即応</td><td>「空白の数年」のリスク</td></tr>
+                      <tr><td>フランス</td><td>戦略的自律・核</td><td>欧州版の核の傘</td><td>核使用の信頼性</td></tr>
+                      <tr><td>懐疑派</td><td>コスト・融和</td><td>財政・対ロ関係</td><td>結束を揺らす要因</td></tr>
+                      <tr><td>ロシア</td><td>脅威認識・圧力</td><td>ハイブリッド戦</td><td>欧州の結束強化を誘発</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 6 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">06</span> データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- 主要国の国防費比較 -->
+              <div class="data-card">
+                <h4>主要国の国防費・GDP比（2025年）</h4>
+                <div class="spend-bar">
+                  <div class="spend-row">
+                    <div class="spend-label">ポーランド</div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent2);width:100%;">4.5%</div></div>
+                    <div class="spend-value">4.5%</div>
+                  </div>
+                  <div class="spend-row">
+                    <div class="spend-label">バルト三国（目安）</div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent4);width:78%;">約3.5%</div></div>
+                    <div class="spend-value">~3.5%</div>
+                  </div>
+                  <div class="spend-row">
+                    <div class="spend-label">ドイツ（2026目安）</div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent);width:75%;">約3.4%</div></div>
+                    <div class="spend-value">~3.4%</div>
+                  </div>
+                  <div class="spend-row">
+                    <div class="spend-label">NATO新目標（2035）</div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent3);width:100%;">5.0%</div></div>
+                    <div class="spend-value">5.0%</div>
+                  </div>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">比率は各種報道・SIPRI等を基にした概算。出典: SIPRI / NATO 2025</p>
+              </div>
+
+              <!-- ドイツの国防費推移 -->
+              <div class="data-card">
+                <h4>ドイツの国防費の推移（十億ユーロ）</h4>
+                <div style="position:relative;height:180px;">
+                  <canvas id="germanyChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">特別基金を含む総額ベース。出典: 独政府発表・各種報道 2025–2026</p>
+              </div>
+
+              <!-- ReArm Europe 内訳 -->
+              <div class="data-card">
+                <h4>ReArm Europe の構成（総額8,000億ユーロ）</h4>
+                <div class="spend-bar">
+                  <div class="spend-row">
+                    <div class="spend-label">各国の防衛支出</div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent);width:100%;">€6,500億</div></div>
+                    <div class="spend-value">81%</div>
+                  </div>
+                  <div class="spend-row">
+                    <div class="spend-label">EU共同債(SAFE)</div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent4);width:23%;">€1,500億</div></div>
+                    <div class="spend-value">19%</div>
+                  </div>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">各国支出は財政ルールの例外扱い。出典: 欧州議会 / 欧州理事会 2025</p>
+              </div>
+
+              <!-- Key Stats -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">+20%</div>
+                    <div class="stat-label">欧州・カナダの国防費の伸び（2025年）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">+207%</div>
+                    <div class="stat-label">ポーランドの国防費増（2016年比）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">9カ国</div>
+                    <div class="stat-label">仏「前方抑止」に関与する国の数</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">2035</div>
+                    <div class="stat-label">欧州の準備完了とされる年（警告は2029年）</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 7 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">07</span> 情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">SIPRI / NATO</div>
+                  <div class="source-desc">国防費目標・各国支出の統計と分析</div>
+                  <div class="source-country">【軍事費の基礎データ】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">欧州議会 / 欧州理事会・欧州委員会</div>
+                  <div class="source-desc">ReArm Europe・SAFE・即応ロードマップの一次情報</div>
+                  <div class="source-country">【EUの公式枠組み】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Chatham House / ECFR</div>
+                  <div class="source-desc">ドイツの再軍備、仏の核の傘の分析</div>
+                  <div class="source-country">【欧州の政策シンクタンク】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Wilson Center / Jamestown</div>
+                  <div class="source-desc">ポーランドの軍拡と東部側面</div>
+                  <div class="source-country">【中東欧の安全保障分析】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">CEPA / GLOBSEC / Belfer Center</div>
+                  <div class="source-desc">ロシアの脅威認識・ハイブリッド戦</div>
+                  <div class="source-country">【対ロシア安全保障】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Euronews / Kyiv Independent</div>
+                  <div class="source-desc">ハンガリーの方針転換・EU内部対立</div>
+                  <div class="source-country">【欧州の政治報道】</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-trigger">引き金：米国の縮小</a></li>
+            <li><a href="#sec-framework">欧州の枠組み</a></li>
+            <li><a href="#sec-countries">主要国の動き</a></li>
+            <li><a href="#sec-timeline">タイムライン</a></li>
+            <li><a href="#sec-perspectives">各立場の主張</a></li>
+            <li><a href="#sec-data">データ・統計</a></li>
+            <li><a href="#sec-sources">情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/europe/index.html">欧州情勢</a></div>
+            <div>2026年6月5日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/europe/index.html">欧州情勢一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+const ctx = document.getElementById('germanyChart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['2025', '2026', '2029（計画）'],
+    datasets: [{
+      label: '国防費（十億ユーロ）',
+      data: [86, 108, 152],
+      backgroundColor: ['rgba(154,180,196,0.5)', 'rgba(154,180,196,0.7)', 'rgba(122,170,130,0.7)'],
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: {
+        ticks: { color: '#8890a0', font: { size: 10 }, callback: v => '€' + v + 'B' },
+        grid: { color: '#2a3a50' }
+      },
+      x: { ticks: { color: '#8890a0', font: { size: 11 } }, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>
