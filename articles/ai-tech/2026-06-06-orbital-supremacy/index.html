@@ -52,6 +52,23 @@
       margin-top: 0.6rem; line-height: 1.6;
     }
 
+    /* ヒーロー背景に画像（このページのみ） */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/orbital-supremacy-satellite-constellation.jpg');
+      background-size: cover; background-position: center 40%;
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.78) 0%, rgba(14,17,23,0.72) 40%, rgba(14,17,23,0.92) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
       .const-grid { grid-template-columns: 1fr; }
@@ -72,7 +89,8 @@
 </header>
 
 <main>
-  <div class="article-hero">
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
     <div class="container">
       <div class="article-meta">
         <span class="tag tag-blue">AI・技術覇権</span>
@@ -132,7 +150,11 @@
             </p>
           </section>
 
-          <!-- [IMG-1] 挿入位置：Section 1の直後 / テーマ「夜の地球を覆う衛星コンステレーション網」(コンセプトA) -->
+          <figure class="article-figure">
+            <img src="../../../image/articles/orbital-supremacy-satellite-constellation.jpg"
+                 alt="夜の地球の縁を包む、無数の衛星が織りなす光の通信網" loading="lazy">
+            <figcaption>地球低軌道を埋める衛星群のイメージ。全稼働衛星の約65%を一民間企業のスターリンクが占める。※イメージ画像（生成AI）</figcaption>
+          </figure>
 
           <!-- Section 2 -->
           <section class="section" id="sec-sovereignty">
@@ -204,7 +226,11 @@
             </p>
           </section>
 
-          <!-- [IMG-2] 挿入位置：Section 4の直後 / テーマ「混雑する低軌道のデブリ／対衛星の緊張」(コンセプトB) -->
+          <figure class="article-figure">
+            <img src="../../../image/articles/orbital-supremacy-anti-satellite-threat.jpg"
+                 alt="地球の弧を背に浮かぶ衛星に、暗闇から正体不明の物体が接近する様子" loading="lazy">
+            <figcaption>軌道は通信インフラであると同時に、対衛星兵器の標的にもなりつつある。複数国が対宇宙能力の開発を進める。※イメージ画像（生成AI）</figcaption>
+          </figure>
 
           <!-- Section 5 -->
           <section class="section" id="sec-perspectives">
