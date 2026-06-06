@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>軌道の覇権争い — スターリンクと「宇宙インフラの私物化」 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    .section-title .sec-num {
+      font-family: var(--font-mono);
+      font-size: 0.78rem; font-weight: 700;
+      color: var(--accent);
+      border: 1px solid rgba(154,180,196,0.35);
+      border-radius: 4px;
+      padding: 0.1em 0.45em;
+      letter-spacing: 0.04em;
+    }
+
+    /* コンステレーション比較カード */
+    .const-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 1rem; }
+    .const-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.2rem 1.3rem;
+      border-left: 2px solid var(--accent);
+    }
+    .const-box .cn-op { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem; }
+    .const-box .cn-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .const-box .cn-num { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; }
+    .const-box .cn-text { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* シェアバー（縦積み） */
+    .share-bar { margin: 1rem 0 0.25rem; }
+    .share-row { margin-bottom: 0.95rem; }
+    .share-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.35rem; }
+    .share-label { font-size: 0.8rem; color: var(--text-muted); }
+    .share-value { font-size: 0.8rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+    .share-track { height: 18px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .share-fill { height: 100%; border-radius: 5px; transition: width 0.8s cubic-bezier(.4,0,.2,1); }
+
+    /* 本文中の図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .const-grid { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/ai-tech/index.html" style="color:var(--text);">AI・技術覇権</a>
+    <a href="../../../categories/europe/index.html">欧州情勢</a>
+    <a href="../../../categories/economy/index.html">世界経済</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero">
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-blue">AI・技術覇権</span>
+        <span class="tag tag-red">宇宙・安全保障</span>
+        <span class="date">2026年6月6日</span>
+      </div>
+      <h1 class="article-title">軌道の覇権争い<br>— スターリンクと「宇宙インフラの私物化」</h1>
+      <p class="article-summary">
+        地上の通信・軍事・経済の生命線が、急速に地球低軌道の衛星群へ移っている。その圧倒的な主役が、スペースXのスターリンクだ。
+        全稼働衛星の約3分の2を一民間企業が握り、戦場の通信さえ左右する。各国はこれを「主権の委譲」と警戒し、
+        独自の衛星網、対衛星兵器、規制で対抗する。空が新たな国境になりつつある——
+        「戦略インフラが一企業に集中する世界を、誰がコントロールするのか」という問いを、6つの立場から整理する。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">スターリンクの衛星数</div>
+          <div class="kp-value">2026年3月時点で1万基超</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">全稼働衛星に占める割合</div>
+          <div class="kp-value">約65% — 低軌道の質量の半分超</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">衛星ネット市場での実測シェア</div>
+          <div class="kp-value">97.1%（2025年第3四半期・Speedtest）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">追跡される宇宙ゴミ</div>
+          <div class="kp-value">10cm超で4万3,000個以上</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1 -->
+          <section class="section" id="sec-dominance">
+            <h2 class="section-title"><span class="sec-num">01</span> スターリンクの圧倒的支配</h2>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              地球低軌道（高度およそ550キロ）は、いまや激しい開発の最前線だ。その空間を圧倒的に占めているのが、
+              スペースXの<strong>スターリンク</strong>である。2026年3月時点で<strong>1万基</strong>を超える衛星を運用し、
+              さらに最大3万基規模への拡張を計画している。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              その支配は数字に表れている。地球を回る<strong>全稼働衛星の約65%</strong>がスターリンクであり、
+              低軌道にある人工物の総質量の半分以上を占める。衛星インターネットの通信速度の実測サンプルでは、
+              2025年第3四半期に<strong>97.1%</strong>がスターリンク経由だった。これは「市場の最大手」というより、
+              <strong>市場そのもの</strong>に近い。100カ国以上で約500万の顧客を抱える。
+            </p>
+            <p style="color:var(--text-dim);font-size:0.8rem;line-height:1.8;">
+              かつて宇宙は国家だけの領域だった。だが今、軌道という戦略空間を最も握っているのは、一つの民間企業である。
+            </p>
+          </section>
+
+          <!-- [IMG-1] 挿入位置：Section 1の直後 / テーマ「夜の地球を覆う衛星コンステレーション網」(コンセプトA) -->
+
+          <!-- Section 2 -->
+          <section class="section" id="sec-sovereignty">
+            <h2 class="section-title"><span class="sec-num">02</span> 「主権の委譲」— ウクライナの教訓</h2>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              この集中が何を意味するかを最も鮮明に示したのが、ウクライナだった。ウクライナは2025年初頭までに
+              <strong>約4万7,000台</strong>のスターリンク端末を確保し、戦場の通信やドローン運用の生命線とした。
+              だが2022年、運営者のイーロン・マスクが、クリミア沖の作戦支援のための通信有効化を<strong>拒否</strong>したと報じられた。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              一民間企業の経営者が、前線国家の作戦の可否を事実上左右する——これは「<strong>主権の一部の委譲</strong>」だと指摘された。
+              ある外交誌は2026年に「スターリンクは地政学を私物化した」と評した。民生と軍事の境界をリアルタイムで行き来する
+              インフラを民間が握るのに、その判断に<strong>説明責任を問う仕組みが存在しない</strong>ことが、各国を不安にさせている。
+            </p>
+          </section>
+
+          <!-- Section 3 -->
+          <section class="section" id="sec-rivals">
+            <h2 class="section-title"><span class="sec-num">03</span> 対抗するコンステレーション競争</h2>
+            <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.9;margin-bottom:1.25rem;">
+              一社・一国への依存を避けるため、各国は自前の巨大衛星網（コンステレーション）の構築を急いでいる。
+              「軌道の独占」を崩せるかが、次の10年の通信主権を左右する。
+            </p>
+            <div class="const-grid">
+              <div class="const-box" style="border-left-color:#9ab4c4;">
+                <div class="cn-op">アメリカ・民間</div>
+                <div class="cn-name">スターリンク</div>
+                <div class="cn-num">1万基+</div>
+                <div class="cn-text">スペースX運営。最大3万基規模へ拡張計画。事実上の市場独占。</div>
+              </div>
+              <div class="const-box" style="border-left-color:#b87868;">
+                <div class="cn-op">中国・国家</div>
+                <div class="cn-name">国網（Guowang）</div>
+                <div class="cn-num">1.3万基</div>
+                <div class="cn-text">2024年末に配備開始。2030年代初頭までに約1.3万基を計画する国家プロジェクト。</div>
+              </div>
+              <div class="const-box" style="border-left-color:#b87868;">
+                <div class="cn-op">中国・準国家</div>
+                <div class="cn-name">千帆（Qianfan）</div>
+                <div class="cn-num">1.5万基</div>
+                <div class="cn-text">スターリンク対抗として2024年開始。2026年4月時点で504基を打ち上げ。</div>
+              </div>
+              <div class="const-box" style="border-left-color:#7aaa82;">
+                <div class="cn-op">欧州連合・官民</div>
+                <div class="cn-name">IRIS²</div>
+                <div class="cn-num">282基</div>
+                <div class="cn-text">2030年配備、約100億ユーロ。商業目的ではなく「主権のための」通信網と位置づけ。</div>
+              </div>
+            </div>
+            <p style="color:var(--text-dim);font-size:0.78rem;margin-top:1rem;">
+              このほか、イギリス系のOneWeb（648基）やアマゾンのKuiper（Leo）も参入。出典: 各社・各国発表、Wikipedia（Qianfan / IRIS²）2026年
+            </p>
+          </section>
+
+          <!-- Section 4 -->
+          <section class="section" id="sec-battlefield">
+            <h2 class="section-title"><span class="sec-num">04</span> 軌道という戦場 — 混雑・電波・兵器</h2>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              衛星が爆発的に増えれば、軌道と電波という<strong>有限の資源</strong>の奪い合いが起きる。
+              国際電気通信連合（ITU）への衛星周波数の申請は2020〜2025年で<strong>4倍</strong>に増え、
+              主要な周波数帯は前例のない混雑に陥っている。だがITUは周波数と軌道を割り当てるものの、
+              <strong>強い執行権限を持たず</strong>、事実上「早い者勝ち」の構造になっている。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              さらに深刻なのが軍事化だ。アメリカ政府は、ロシアが軌道上に<strong>核を用いた対衛星兵器</strong>を開発中だと警告する。
+              放射線や電磁パルスで多数の衛星を一度に無力化しうるもので、衛星を多数ばらまく方式の弱点を突く。
+              中国は対衛星ミサイル・地上レーザー・他衛星を捕獲する衛星を整備し、アメリカも対抗兵器の配備を加速。
+              2025年の報告書は<strong>12カ国</strong>が対宇宙能力を開発中と記録した。宇宙ゴミは10センチ超で<strong>4万3,000個以上</strong>が追跡されている。
+            </p>
+          </section>
+
+          <!-- [IMG-2] 挿入位置：Section 4の直後 / テーマ「混雑する低軌道のデブリ／対衛星の緊張」(コンセプトB) -->
+
+          <!-- Section 5 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">05</span> 各立場の主張</h2>
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- SpaceX -->
+                  <div class="perspective-card" style="--card-color:var(--accent);">
+                    <div class="country-header">
+                      <span class="country-name">スペースX・スターリンク</span>
+                      <span class="stance-label stance-supportive">革新・接続の拡大</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      「世界中の届かなかった場所に、低価格・高速の通信を届ける」。圧倒的な打ち上げ能力で、接続の空白を一気に埋める民間の革新だと訴える。
+                    </div>
+                    <div class="key-claim">
+                      <strong>論点</strong>
+                      民間の意思決定が国家安全保障に直結する一方、その判断は経営者個人の裁量に委ねられ、外部の説明責任の仕組みがない。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>市場支配力</span><span>最高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="97%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>市場の先行独占、打ち上げコストの優位、衛星ネットの収益化
+                    </div>
+                  </div>
+
+                  <!-- US gov -->
+                  <div class="perspective-card" style="--card-color:var(--accent);">
+                    <div class="country-header">
+                      <span class="country-name">アメリカ政府</span>
+                      <span class="stance-label stance-cautious">同盟資産だが制御は難題</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      自国企業の宇宙支配は戦略的優位であり、安全保障・災害対応にも有用。宇宙軍は対衛星脅威に備え、対抗兵器の配備を加速する。
+                    </div>
+                    <div class="key-claim">
+                      <strong>ジレンマ</strong>
+                      最大の戦略インフラを握るのが政府ではなく一民間人であること。国益と企業・経営者の判断が食い違う場面をどう統制するかが課題。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>宇宙での優位</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="85%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>宇宙覇権の維持、軍事通信、民間活力の活用と統制の両立
+                    </div>
+                  </div>
+
+                  <!-- EU -->
+                  <div class="perspective-card" style="--card-color:var(--accent);">
+                    <div class="country-header">
+                      <span class="country-name">欧州連合</span>
+                      <span class="stance-label stance-cautious">主権のための自前網</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      「通信は主権の問題だ」。商業目的のスターリンクとは異なり、IRIS²を政府・安全保障用の自前インフラとして整備し、域外依存を減らす。
+                    </div>
+                    <div class="key-claim">
+                      <strong>現実</strong>
+                      IRIS²は282基規模で配備は2030年。1万基規模の先行者に対し出遅れており、当面はスターリンク等への依存が続く。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>主権志向</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="74%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>戦略的自律、技術主権、域内産業の育成
+                    </div>
+                  </div>
+
+                  <!-- China -->
+                  <div class="perspective-card" style="--card-color:var(--accent2);">
+                    <div class="country-header">
+                      <span class="country-name">中国</span>
+                      <span class="stance-label stance-hostile">国家主導の対抗網</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      アメリカ民間の軌道独占は安全保障上の脅威。国網・千帆という1万基級の国家コンステレーションで対抗し、自国と友好国に独自の通信網を提供する。
+                    </div>
+                    <div class="key-claim">
+                      <strong>手段</strong>
+                      国家主導の大量打ち上げに加え、対衛星ミサイル・捕獲衛星・地上レーザーなどの対宇宙能力も整備。「コンステレーションそのものが戦略資産」と捉える。
+                    </div>
+                    <div class="tone-meter tone-hostile">
+                      <div class="tone-meter-label"><span>国家関与度</span><span>最高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="88%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>通信主権、軍事利用、グローバルサウスへの影響力
+                    </div>
+                  </div>
+
+                  <!-- Russia -->
+                  <div class="perspective-card" style="--card-color:var(--accent2);">
+                    <div class="country-header">
+                      <span class="country-name">ロシア</span>
+                      <span class="stance-label stance-hostile">破壊による対抗</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      自前の巨大コンステレーションを持たないロシアは、「作る」より「壊す」能力に傾く。軌道上の対衛星兵器で相手の優位を無力化しうると示威する。
+                    </div>
+                    <div class="key-claim">
+                      <strong>懸念</strong>
+                      核を用いた対衛星兵器は、放射線や電磁パルスで敵味方を問わず多数の衛星を無差別に破壊しかねず、「宇宙のキューバ危機」とも評される。
+                    </div>
+                    <div class="tone-meter tone-hostile">
+                      <div class="tone-meter-label"><span>破壊的能力への依存</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="80%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>非対称的対抗、抑止、軍事的示威
+                    </div>
+                  </div>
+
+                  <!-- Global South -->
+                  <div class="perspective-card" style="--card-color:var(--accent3);">
+                    <div class="country-header">
+                      <span class="country-name">グローバルサウス（途上国）</span>
+                      <span class="stance-label stance-supportive">恩恵と従属の間</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      光ファイバーが届かない地域に高速通信が届く好機。デジタル格差の解消に大きな期待がある一方、月120ドル前後の料金は富裕層・商用に限られるのが現実。
+                    </div>
+                    <div class="key-claim">
+                      <strong>懸念</strong>
+                      「インフラの所有者ではなく消費者で終わる＝デジタル植民地主義」という不安。インドはデータの国内保存や地上設備の国内化を義務づけ、主権の確保に動く。
+                    </div>
+                    <div class="tone-meter tone-supportive">
+                      <div class="tone-meter-label"><span>期待と警戒</span><span>二律背反</span></div>
+                      <div class="tone-track" style="background:var(--bg-card2);"><div class="tone-fill" style="background:var(--accent3);" data-width="58%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>デジタル格差の解消、料金負担、データ主権、外国依存の回避
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本姿勢</th>
+                        <th>強調点</th>
+                        <th>課題・懸念</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>スペースX</td><td>革新・接続拡大</td><td>市場独占・低コスト</td><td>説明責任の欠如</td></tr>
+                      <tr><td>アメリカ政府</td><td>同盟資産・統制難</td><td>宇宙覇権・対抗兵器</td><td>民間への過度な集中</td></tr>
+                      <tr><td>欧州連合</td><td>主権のための自前網</td><td>IRIS²・戦略的自律</td><td>規模・配備の出遅れ</td></tr>
+                      <tr><td>中国</td><td>国家主導の対抗網</td><td>国網・千帆・対宇宙能力</td><td>軍事化の加速</td></tr>
+                      <tr><td>ロシア</td><td>破壊による対抗</td><td>対衛星兵器</td><td>無差別破壊・デブリ</td></tr>
+                      <tr><td>グローバルサウス</td><td>恩恵と従属の間</td><td>格差解消の好機</td><td>料金・デジタル植民地</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 6 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">06</span> データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- 稼働衛星シェア -->
+              <div class="data-card">
+                <h4>稼働衛星に占めるスターリンクの割合</h4>
+                <div class="share-bar">
+                  <div class="share-row">
+                    <div class="share-head"><span class="share-label">スターリンク</span><span class="share-value">約65%</span></div>
+                    <div class="share-track"><div class="share-fill" style="background:var(--accent);width:65%;"></div></div>
+                  </div>
+                  <div class="share-row">
+                    <div class="share-head"><span class="share-label">その他すべての運用者</span><span class="share-value">約35%</span></div>
+                    <div class="share-track"><div class="share-fill" style="background:#6a7a8a;width:35%;"></div></div>
+                  </div>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">低軌道の総質量では52%超を占める。出典: 学術誌・Statista 2025</p>
+              </div>
+
+              <!-- コンステレーション計画規模 -->
+              <div class="data-card">
+                <h4>主要コンステレーションの計画規模（基）</h4>
+                <div class="share-bar">
+                  <div class="share-row">
+                    <div class="share-head"><span class="share-label">千帆（中国）</span><span class="share-value">約15,000</span></div>
+                    <div class="share-track"><div class="share-fill" style="background:var(--accent2);width:100%;"></div></div>
+                  </div>
+                  <div class="share-row">
+                    <div class="share-head"><span class="share-label">国網（中国）</span><span class="share-value">約13,000</span></div>
+                    <div class="share-track"><div class="share-fill" style="background:var(--accent2);width:87%;"></div></div>
+                  </div>
+                  <div class="share-row">
+                    <div class="share-head"><span class="share-label">スターリンク（運用中）</span><span class="share-value">1万基+</span></div>
+                    <div class="share-track"><div class="share-fill" style="background:var(--accent);width:67%;"></div></div>
+                  </div>
+                  <div class="share-row">
+                    <div class="share-head"><span class="share-label">IRIS²（欧州連合）</span><span class="share-value">282</span></div>
+                    <div class="share-track"><div class="share-fill" style="background:var(--accent3);width:3%;"></div></div>
+                  </div>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">中国2種は計画値、スターリンクは現運用数。出典: 各社・各国発表 2026</p>
+              </div>
+
+              <!-- ITU申請の増加 -->
+              <div class="data-card">
+                <h4>衛星周波数の申請件数（2020年=100）</h4>
+                <div style="position:relative;height:180px;">
+                  <canvas id="ituChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">2020〜2025年で約4倍に増加。出典: ITU / 業界分析 2026</p>
+              </div>
+
+              <!-- Key Stats -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">97.1%</div>
+                    <div class="stat-label">衛星ネット実測のスターリンク比率（2025年Q3）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">4.7万</div>
+                    <div class="stat-label">ウクライナの端末数（2025年初頭）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">4.3万+</div>
+                    <div class="stat-label">追跡される宇宙ゴミ（10cm超）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">12カ国</div>
+                    <div class="stat-label">対宇宙能力を開発中の国（2025年報告）</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 7 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">07</span> 情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Foreign Policy</div>
+                  <div class="source-desc">「スターリンクは地政学を私物化した」</div>
+                  <div class="source-country">【国際政治の論評】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Secure World Foundation / CSIS</div>
+                  <div class="source-desc">対宇宙能力・対衛星兵器の年次評価</div>
+                  <div class="source-country">【宇宙安全保障の専門分析】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Euronews / Wikipedia</div>
+                  <div class="source-desc">ウクライナの依存、各コンステレーションの諸元</div>
+                  <div class="source-country">【欧州報道・一次データ】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">NPR / The Diplomat</div>
+                  <div class="source-desc">グローバルサウスの主権・デジタル格差</div>
+                  <div class="source-country">【途上国視点】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">ITU / 業界分析</div>
+                  <div class="source-desc">周波数・軌道スロットの混雑</div>
+                  <div class="source-country">【電波・軌道の規制】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Statista / 学術誌</div>
+                  <div class="source-desc">衛星シェア・低軌道の占有データ</div>
+                  <div class="source-country">【統計・基礎データ】</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-dominance">スターリンクの支配</a></li>
+            <li><a href="#sec-sovereignty">主権の委譲</a></li>
+            <li><a href="#sec-rivals">対抗する競争</a></li>
+            <li><a href="#sec-battlefield">軌道という戦場</a></li>
+            <li><a href="#sec-perspectives">各立場の主張</a></li>
+            <li><a href="#sec-data">データ・統計</a></li>
+            <li><a href="#sec-sources">情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/ai-tech/index.html">AI・技術覇権</a></div>
+            <div>2026年6月6日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/ai-tech/index.html">AI・技術覇権一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+const ctx = document.getElementById('ituChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
+    datasets: [{
+      label: '衛星周波数の申請件数（指数）',
+      data: [100, 150, 220, 300, 380, 500],
+      borderColor: '#9ab4c4',
+      backgroundColor: 'rgba(154,180,196,0.12)',
+      tension: 0.3, fill: true, pointRadius: 3,
+      pointBackgroundColor: '#9ab4c4',
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { ticks: { color: '#8890a0', font: { size: 10 } }, grid: { color: '#2a3a50' } },
+      x: { ticks: { color: '#8890a0', font: { size: 10 } }, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>
