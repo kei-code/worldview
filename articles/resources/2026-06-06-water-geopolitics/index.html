@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>水の地政学 — 川とダムをめぐる「静かな戦争」 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    .section-title .sec-num {
+      font-family: var(--font-mono);
+      font-size: 0.78rem; font-weight: 700;
+      color: var(--accent);
+      border: 1px solid rgba(154,180,196,0.35);
+      border-radius: 4px;
+      padding: 0.1em 0.45em;
+      letter-spacing: 0.04em;
+    }
+
+    /* 流域カード（上流 vs 下流） */
+    .basin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 1rem; }
+    .basin-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.2rem 1.3rem;
+      border-top: 2px solid var(--bc-color, var(--accent));
+    }
+    .basin-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .basin-sub { font-size: 0.72rem; color: var(--text-dim); margin-bottom: 0.7rem; }
+    .basin-flow { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+    .basin-up { color: var(--accent4); font-weight: 700; }
+    .basin-down { color: var(--accent2); font-weight: 700; }
+    .basin-arrow { color: var(--text-dim); }
+    .basin-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); }
+    .article-figure figcaption { font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* ヒーロー背景画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/water-geopolitics-dam-reservoir.jpg');
+      background-size: cover; background-position: center 45%;
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.78) 0%, rgba(14,17,23,0.72) 40%, rgba(14,17,23,0.92) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .basin-grid { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/middle-east/index.html">中東情勢</a>
+    <a href="../../../categories/resources/index.html" style="color:var(--text);">資源・環境</a>
+    <a href="../../../categories/asia/index.html">アジア情勢</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-green">資源・環境</span>
+        <span class="tag tag-red">安全保障</span>
+        <span class="date">2026年6月6日</span>
+      </div>
+      <h1 class="article-title">水の地政学<br>— 川とダムをめぐる「静かな戦争」</h1>
+      <p class="article-summary">
+        気候変動と人口増で水が希少資源となり、国境を越える川が新たな紛争の火種になっている。
+        上流国がダムで水を握り、下流国が「存立の問題」として反発する——同じ構図が、ナイル・インダス・メコン・チグリスで同時に進行している。
+        2025年にはエチオピアがアフリカ最大のダムを稼働させ、インドはパキスタンとの水条約を停止した。
+        2026年には国際機関が相次いで「水は最大級の地政学リスク」と警告した。
+        「水は誰のものか」という問いを、上流国・下流国・国際機関など複数の視点から整理する。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">越境河川の流域数</div>
+          <div class="kp-value">約300 — 世界人口の約4割が依存</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">ナイル（2025年9月）</div>
+          <div class="kp-value">エチオピアがアフリカ最大のダムを稼働</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">インダス（2025年4月）</div>
+          <div class="kp-value">インドが水条約を停止 — 65年で初</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">国際的枠組み</div>
+          <div class="kp-value">国連水路条約の締約国はわずか38カ国</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1 -->
+          <section class="section" id="sec-overview">
+            <h2 class="section-title"><span class="sec-num">01</span> なぜ今、水が「武器」になるのか</h2>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              世界には国境を越えて流れる川の流域が<strong>約300</strong>あり、世界人口のおよそ<strong>4割</strong>がそれに依存している。
+              気候変動による干ばつ、人口増、食料・電力需要の高まりが重なり、水は急速に「奪い合う資源」へと変わった。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              対立の基本構造はどこでも同じだ。<strong>上流の国はダムを建てて水と電力を握り</strong>、
+              <strong>下流の国はそれを「存立にかかわる脅威」と受け止める</strong>。
+              ミュンヘン安全保障報告は2026年、水を<strong>初めて主要な地政学リスク</strong>として取り上げ、
+              ナイル・インダス・ユーフラテス＝チグリス・中央アジアを高リスク地域に挙げた。
+              国連も2026年1月、世界が「<strong>水の破産</strong>」の時代に入ったと警告している。
+            </p>
+            <p style="color:var(--text-dim);font-size:0.8rem;line-height:1.8;">
+              砲弾は飛ばないが、ダムの放流量ひとつが数千万人の生活を左右する。だからこれは「静かな戦争」と呼ばれる。
+            </p>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/water-geopolitics-dry-riverbed.jpg"
+                 alt="干上がった川底と、水を待つ乾いた農地" loading="lazy">
+            <figcaption>干ばつで干上がる川。上流のダム運用ひとつで、下流の農業と暮らしが大きく揺らぐ。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 2 -->
+          <section class="section" id="sec-basins">
+            <h2 class="section-title"><span class="sec-num">02</span> 4つの火種 — 世界の主要な対立流域</h2>
+            <div class="basin-grid">
+              <div class="basin-box" style="--bc-color:#7aaa82;">
+                <div class="basin-name">ナイル川</div>
+                <div class="basin-sub">アフリカ北東部</div>
+                <div class="basin-flow"><span class="basin-up">エチオピア（上流）</span><span class="basin-arrow">→</span><span class="basin-down">エジプト・スーダン（下流）</span></div>
+                <div class="basin-text">エチオピアがアフリカ最大のダムGERDを2025年9月に稼働。エジプトは水の約97%をナイルに依存し「存立の問題」と反発。</div>
+              </div>
+              <div class="basin-box" style="--bc-color:#b87868;">
+                <div class="basin-name">インダス川</div>
+                <div class="basin-sub">南アジア</div>
+                <div class="basin-flow"><span class="basin-up">インド（上流）</span><span class="basin-arrow">→</span><span class="basin-down">パキスタン（下流）</span></div>
+                <div class="basin-text">2025年4月、インドがテロを機に水条約を停止。パキスタンは農業の生命線とし「遮断は戦争行為」と警告。最も危険な対立。</div>
+              </div>
+              <div class="basin-box" style="--bc-color:#9ab4c4;">
+                <div class="basin-name">メコン川</div>
+                <div class="basin-sub">東南アジア</div>
+                <div class="basin-flow"><span class="basin-up">中国（上流）</span><span class="basin-arrow">→</span><span class="basin-down">タイ・ラオス・カンボジア・ベトナム</span></div>
+                <div class="basin-text">中国が上流に11基のダム。乾季に放流し雨季に貯め込む運用で、下流の農業・漁業・デルタが打撃を受ける。</div>
+              </div>
+              <div class="basin-box" style="--bc-color:#c4a882;">
+                <div class="basin-name">ユーフラテス・チグリス川</div>
+                <div class="basin-sub">中東</div>
+                <div class="basin-flow"><span class="basin-up">トルコ（上流）</span><span class="basin-arrow">→</span><span class="basin-down">シリア・イラク（下流）</span></div>
+                <div class="basin-text">トルコの巨大開発GAP（22ダム）。完成すればシリアへの流量は3〜5割減、イラクへの水は最大8割減との指摘も。</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 3 -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">03</span> タイムライン — 直近の動き</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2024年9月</div>
+                <div class="timeline-content">
+                  <h4>エチオピア、GERDの貯水を完了</h4>
+                  <p>14年・約50億ドルをかけたアフリカ最大の水力発電ダムが貯水を完了。下流のエジプト・スーダンは干ばつ時の運用ルールが定まらないまま既成事実化が進むことに反発。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">エチオピア「開発の権利」</span>
+                    <span class="reaction-chip">エジプト「存立の問題」</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年4月</div>
+                <div class="timeline-content">
+                  <h4>インド、インダス水条約を停止 — 65年で初</h4>
+                  <p>カシミールでのテロ攻撃を受け、インドが1960年締結の水条約の停止を宣言。3度の戦争を越えて維持されてきた枠組みが初めて止まった。パキスタンは「水の遮断は戦争行為」と警告した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">インド「テロと水は切り離せない」</span>
+                    <span class="reaction-chip">パキスタン「存立の危機」</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年9月</div>
+                <div class="timeline-content">
+                  <h4>エチオピア、GERDを正式に稼働（落成式）</h4>
+                  <p>近隣国の首脳も出席し落成式を開催。アフリカ最大、最大出力5,150メガワットの水力発電が本格稼働。下流との法的合意は依然不在のまま。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">エチオピア「アフリカの誇り」</span>
+                    <span class="reaction-chip">エジプト・スーダン「一方的だ」</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2025年10月</div>
+                <div class="timeline-content">
+                  <h4>ナイル増水でエジプト・スーダンが洪水被害</h4>
+                  <p>記録的増水で農地や村が浸水し、スーダンでは1,200世帯超が避難。エジプトは「GERDの無謀な一方的放流」と非難、エチオピアは記録的モンスーンが原因と反論した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">「放流が原因」vs「豪雨が原因」</span>
+                    <span class="reaction-chip">調停は停滞</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-neutral"></div>
+                <div class="timeline-date">2026年1月</div>
+                <div class="timeline-content">
+                  <h4>国連「水の破産」を警告／ミュンヘン報告が水を主要リスクに</h4>
+                  <p>国連の報告書が、世界が「水の破産」の時代に入ったとして抜本改革を求めた。ミュンヘン安全保障報告2026も、水を初めて主要な地政学リスクとして明記した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">国際社会「枠組みの空白」</span>
+                    <span class="reaction-chip">気候変動が緊張を増幅</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot" style="background:var(--accent3)"></div>
+                <div class="timeline-date">2026年（現在）</div>
+                <div class="timeline-content">
+                  <h4>「水と安全保障の連結」が常態に</h4>
+                  <p>インド・パキスタンの条約は復活せず、ナイルの合意も不在。水を外交・安全保障のカードに使う動きが各地で常態化し、気候変動がそれをさらに加速させている。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">水＝交渉カード化</span>
+                    <span class="reaction-chip">流域協力が唯一の解とも</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/water-geopolitics-river-border.jpg"
+                 alt="国境地帯を流れる大河と、両岸に広がる農地の俯瞰" loading="lazy">
+            <figcaption>国境を越える大河は、複数の国の暮らしを同時に支える。だからこそ一国の判断が緊張を生む。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 4 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">04</span> 各立場の主張</h2>
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- 上流国 -->
+                  <div class="perspective-card" style="--card-color:var(--accent4);">
+                    <div class="country-header">
+                      <span class="country-name">上流国（エチオピア・中国・トルコ）</span>
+                      <span class="stance-label stance-cautious">開発の権利・主権</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      「自国の領内を流れる川を開発するのは主権の行使だ」。ダムは貧困解消・電力供給・洪水調整に不可欠で、発展の権利を下流国に縛られる筋合いはないと主張する。
+                    </div>
+                    <div class="key-claim">
+                      <strong>論点</strong>
+                      法的拘束力ある運用ルールを避け、まず建設・稼働で既成事実を作る傾向。エチオピアは「アフリカの誇り」、中国はデータ共有に応じつつ運用は自国判断。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>開発優先度</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="85%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>電力・経済発展、国家威信、水という戦略的レバレッジ
+                    </div>
+                  </div>
+
+                  <!-- 下流国 -->
+                  <div class="perspective-card" style="--card-color:var(--accent2);">
+                    <div class="country-header">
+                      <span class="country-name">下流国（エジプト・パキスタン・東南アジア）</span>
+                      <span class="stance-label stance-hostile">存立の危機</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      「水を断たれることは国の死活問題だ」。乾燥国にとって川は農業・飲料・経済の生命線であり、上流の一方的なダム運用は既得の水利権の侵害だと訴える。
+                    </div>
+                    <div class="key-claim">
+                      <strong>強い言葉</strong>
+                      エジプトはナイルを「存立の問題、妥協の対象ではない」と表現。パキスタンは水の遮断を「戦争行為」とみなし、核使用も辞さないと警告した。
+                    </div>
+                    <div class="tone-meter tone-hostile">
+                      <div class="tone-meter-label"><span>危機感</span><span>最高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="95%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>食料・飲料水の確保、農業経済、国民の生存
+                    </div>
+                  </div>
+
+                  <!-- インド（水と安保の連結） -->
+                  <div class="perspective-card" style="--card-color:var(--accent);">
+                    <div class="country-header">
+                      <span class="country-name">インド（新しい手法）</span>
+                      <span class="stance-label stance-cautious">水と安全保障の連結</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      「テロと水の問題は切り離せない」。インダス水条約の停止という形で、水を安全保障・外交の交渉カードとして明確に使う新しい姿勢を示した。
+                    </div>
+                    <div class="key-claim">
+                      <strong>含意</strong>
+                      長年「協力の象徴」とされた条約さえ止まりうるという前例は、世界の越境河川全体に「水は武器になる」という強いメッセージを送った。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>水の戦略化</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="78%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>対パキスタン圧力、国内世論、上流国としての立場
+                    </div>
+                  </div>
+
+                  <!-- 国際機関 -->
+                  <div class="perspective-card" style="--card-color:var(--accent);">
+                    <div class="country-header">
+                      <span class="country-name">国際機関・専門家</span>
+                      <span class="stance-label stance-neutral">枠組みの空白に警鐘</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      水を律する国際法は弱い。越境河川を扱う1997年の国連水路条約の締約国はわずか38カ国で、多くの川に世界的な法的枠組みが無い。仲裁する仕組みも乏しい。
+                    </div>
+                    <div class="key-claim">
+                      <strong>警告と希望</strong>
+                      気候変動で緊張は増す一方、流域協力が進めば紛争リスクは大きく下げられるとの試算もある。鍵は「データ共有」と「拘束力ある運用ルール」。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>制度整備の必要</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="80%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>国際秩序の安定、気候適応、人道・食料安全保障
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本姿勢</th>
+                        <th>強調点</th>
+                        <th>課題・懸念</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>上流国</td><td>開発の権利・主権</td><td>電力・発展・洪水調整</td><td>既成事実化・合意回避</td></tr>
+                      <tr><td>下流国</td><td>存立の危機</td><td>既得の水利権・生存</td><td>一方的運用への脆弱性</td></tr>
+                      <tr><td>インド</td><td>水と安保の連結</td><td>条約停止という前例</td><td>緊張の固定化・核リスク</td></tr>
+                      <tr><td>国際機関</td><td>枠組みの空白に警鐘</td><td>データ共有・運用ルール</td><td>法的枠組み・執行力の欠如</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 5 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">05</span> データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- 下流国の依存度 -->
+              <div class="data-card">
+                <h4>下流国の特定河川への依存度</h4>
+                <div class="bar-chart">
+                  <div class="bar-row">
+                    <div class="bar-label">エジプト（ナイル）</div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent2);" data-width="97%"></div></div>
+                    <div class="bar-value">約97%</div>
+                  </div>
+                  <div class="bar-row">
+                    <div class="bar-label">パキスタン（インダス）</div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent2);" data-width="80%"></div></div>
+                    <div class="bar-value">農業の大半</div>
+                  </div>
+                  <div class="bar-row">
+                    <div class="bar-label">メコン下流（漁業）</div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent4);" data-width="70%"></div></div>
+                    <div class="bar-value">食料の柱</div>
+                  </div>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">エジプトは再生可能水資源の約97%をナイルに依存。出典: CFR / 各種報道</p>
+              </div>
+
+              <!-- 主要ダムの規模 -->
+              <div class="data-card">
+                <h4>象徴的なダム・開発の規模</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">5,150</div>
+                    <div class="stat-label">GERDの最大出力（メガワット・アフリカ最大）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">11基</div>
+                    <div class="stat-label">中国がメコン上流に持つダム</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">22基</div>
+                    <div class="stat-label">トルコGAP計画のダム数</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">65年</div>
+                    <div class="stat-label">インダス水条約が初めて停止されるまでの年数</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ガバナンスの空白 -->
+              <div class="data-card">
+                <h4>越境河川とガバナンスの空白</h4>
+                <div style="position:relative;height:180px;">
+                  <canvas id="waterChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">越境流域は約300、依存人口は世界の約4割。条約締約国は38カ国どまり。出典: 国連 / Nature Communications 2025</p>
+              </div>
+
+              <!-- 注目の数字 -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">約300</div>
+                    <div class="stat-label">世界の越境河川流域</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">約40%</div>
+                    <div class="stat-label">越境河川に依存する世界人口</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">38カ国</div>
+                    <div class="stat-label">国連水路条約の締約国</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">&lt;10%</div>
+                    <div class="stat-label">流域協力が進めば下げられる紛争リスク</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 6 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span> 情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Al Jazeera / Fanack Water</div>
+                  <div class="source-desc">GERD稼働とナイル洪水・対立の最新報道</div>
+                  <div class="source-country">【ナイル流域の一次報道】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">NPR / CSIS / Chatham House</div>
+                  <div class="source-desc">インダス水条約の停止と影響分析</div>
+                  <div class="source-country">【南アジアの安全保障】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Stimson Center / VOA</div>
+                  <div class="source-desc">メコン上流ダムと下流への影響</div>
+                  <div class="source-country">【東南アジアの水問題】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">国連 / ミュンヘン安全保障報告2026</div>
+                  <div class="source-desc">「水の破産」警告・地政学リスク評価</div>
+                  <div class="source-country">【国際機関の評価】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Nature Communications / CFR</div>
+                  <div class="source-desc">越境河川の紛争リスクの定量分析</div>
+                  <div class="source-country">【学術・基礎データ】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Ahram Online ほか</div>
+                  <div class="source-desc">トルコGAPとユーフラテス・チグリス</div>
+                  <div class="source-country">【中東の水政治】</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-overview">なぜ水が武器に</a></li>
+            <li><a href="#sec-basins">4つの火種</a></li>
+            <li><a href="#sec-timeline">タイムライン</a></li>
+            <li><a href="#sec-perspectives">各立場の主張</a></li>
+            <li><a href="#sec-data">データ・統計</a></li>
+            <li><a href="#sec-sources">情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/resources/index.html">資源・環境</a></div>
+            <div>2026年6月6日</div>
+            <div style="margin-top:0.5rem;">4つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/resources/index.html">資源・環境一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+const ctx = document.getElementById('waterChart').getContext('2d');
+new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ['越境河川に依存（約40%）', 'その他（約60%）'],
+    datasets: [{
+      data: [40, 60],
+      backgroundColor: ['rgba(154,180,196,0.85)', 'rgba(90,100,115,0.4)'],
+      borderColor: '#0e1117', borderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, cutout: '62%',
+    plugins: { legend: { labels: { color: '#8a9ab0', font: { size: 10 } } } }
+  }
+});
+</script>
+</body>
+</html>
