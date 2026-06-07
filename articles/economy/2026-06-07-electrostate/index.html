@@ -10,14 +10,22 @@
   <style>
     .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
 
+    /* セクション番号：雑誌風の大きな薄い数字 */
+    .section-title {
+      display: block !important;
+    }
     .section-title .sec-num {
-      font-family: var(--font-mono);
-      font-size: 0.78rem; font-weight: 700;
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
       color: var(--accent);
-      border: 1px solid rgba(154,180,196,0.35);
-      border-radius: 4px;
-      padding: 0.1em 0.45em;
-      letter-spacing: 0.04em;
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
     }
 
     /* 要因カード */
@@ -65,13 +73,10 @@
       font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
     }
 
-    /* Section 05: データカードを縦1列・余白たっぷりに */
-    #sec-data .data-grid { grid-template-columns: 1fr; gap: 2rem; }
-    #sec-data .data-card { padding: 1.75rem; }
-    #sec-data .bar-row { align-items: flex-start; flex-wrap: wrap; gap: 0.4rem 0.75rem; }
-    #sec-data .bar-label { white-space: normal; min-width: unset; width: 100%; font-size: 0.8rem; margin-bottom: 0.1rem; }
-    #sec-data .bar-track { width: 100%; flex: unset; }
-    #sec-data .bar-value { width: 100%; text-align: left; }
+    /* Section 05: 左カード固定幅・右カード可変 */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: minmax(280px, 340px) 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+    #sec-data .bar-label { width: 140px; flex-shrink: 0; white-space: nowrap; font-size: 0.78rem; }
 
     /* Section 06: ソースカードをリンク化 */
     a.source-item {
@@ -539,7 +544,7 @@
 
               <div class="data-card">
                 <h4>世界のクリーンエネルギー投資（2024年・地域別）</h4>
-                <div style="position:relative;height:300px;max-width:420px;margin:0 auto;">
+                <div style="position:relative;height:200px;max-width:280px;margin:0 auto;">
                   <canvas id="investChart"></canvas>
                 </div>
                 <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
@@ -548,36 +553,31 @@
               </div>
 
               <div class="data-card">
-                <h4>中国・アメリカのエネルギー転換の方向性</h4>
+                <h4>中国のクリーンテック世界製造シェア（2025年）</h4>
                 <div class="bar-chart" style="margin-top:1rem;">
                   <div class="bar-row">
-                    <div class="bar-label" style="font-size:0.8rem;color:var(--text-muted);">中国・再エネ投資（2025）</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent3);" data-width="100%"></div></div>
-                    <div class="bar-value">約1兆ドル</div>
-                  </div>
-                  <div class="bar-row">
-                    <div class="bar-label" style="font-size:0.8rem;color:var(--text-muted);">アメリカ・石油生産（日量）</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent2);" data-width="88%"></div></div>
-                    <div class="bar-value">1,360万 bbl</div>
-                  </div>
-                  <div class="bar-row">
-                    <div class="bar-label" style="font-size:0.8rem;color:var(--text-muted);">中国・太陽光パネル世界シェア</div>
+                    <div class="bar-label">太陽光パネル（中国）</div>
                     <div class="bar-track"><div class="bar-fill" style="background:var(--accent3);" data-width="80%"></div></div>
-                    <div class="bar-value">80%+</div>
+                    <div class="bar-value">80%</div>
                   </div>
                   <div class="bar-row">
-                    <div class="bar-label" style="font-size:0.8rem;color:var(--text-muted);">中国・EV世界生産シェア</div>
+                    <div class="bar-label">電気自動車（中国）</div>
                     <div class="bar-track"><div class="bar-fill" style="background:var(--accent3);" data-width="70%"></div></div>
                     <div class="bar-value">70%</div>
                   </div>
                   <div class="bar-row">
-                    <div class="bar-label" style="font-size:0.8rem;color:var(--text-muted);">中国・風力タービン世界シェア</div>
+                    <div class="bar-label">風力タービン（中国）</div>
                     <div class="bar-track"><div class="bar-fill" style="background:var(--accent3);" data-width="60%"></div></div>
                     <div class="bar-value">60%</div>
                   </div>
+                  <div class="bar-row">
+                    <div class="bar-label">蓄電池（中国）</div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent3);" data-width="52%"></div></div>
+                    <div class="bar-value">52%</div>
+                  </div>
                 </div>
                 <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">
-                  中国（緑）は電気転換への集中投資、アメリカ（橙）は化石燃料の最大化という対照的な路線を歩む。
+                  いずれも世界全体の製造・設置量に占める中国のシェア（%）。出典：IEA・Bloomberg NEF・Robeco（2025）
                 </p>
               </div>
 
