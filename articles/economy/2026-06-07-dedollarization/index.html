@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>脱ドルへの挑戦 — 基軸通貨は揺らぐのか — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    .section-title .sec-num {
+      font-family: var(--font-mono);
+      font-size: 0.78rem; font-weight: 700;
+      color: var(--accent);
+      border: 1px solid rgba(154,180,196,0.35);
+      border-radius: 4px;
+      padding: 0.1em 0.45em;
+      letter-spacing: 0.04em;
+    }
+
+    /* 要因カード */
+    .driver-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1rem; }
+    .driver-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.2rem 1.3rem;
+      border-top: 2px solid var(--dc-color, var(--accent));
+    }
+    .driver-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .driver-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* 比率バー（縦積み） */
+    .ratio-bar { margin: 1rem 0 0.25rem; }
+    .ratio-row { margin-bottom: 0.95rem; }
+    .ratio-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.35rem; }
+    .ratio-label { font-size: 0.8rem; color: var(--text-muted); }
+    .ratio-value { font-size: 0.8rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+    .ratio-track { height: 18px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .ratio-fill { height: 100%; border-radius: 5px; transition: width 0.8s cubic-bezier(.4,0,.2,1); }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); }
+    .article-figure figcaption { font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* ヒーロー背景画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/dedollarization-dollar-gold.jpg');
+      background-size: cover; background-position: center 40%;
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.80) 0%, rgba(14,17,23,0.74) 40%, rgba(14,17,23,0.92) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .driver-grid { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/economy/index.html" style="color:var(--text);">世界経済</a>
+    <a href="../../../categories/asia/index.html">アジア情勢</a>
+    <a href="../../../categories/resources/index.html">資源・環境</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-yellow">世界経済</span>
+        <span class="tag tag-blue">通貨・金融</span>
+        <span class="date">2026年6月7日</span>
+      </div>
+      <h1 class="article-title">脱ドルへの挑戦<br>— 基軸通貨は揺らぐのか</h1>
+      <p class="article-summary">
+        ドルの公的準備シェアが30年ぶりに57%を割り、各国の中央銀行は記録的に金を買い増した。
+        ついに金が米国債を抜き、世界の準備資産の第2位に躍り出た。制裁による「ドルの武器化」への反発が、脱ドルの動きを加速させている。
+        だが——ドルに代わる基軸通貨は不在で、世界のステーブルコインの99%はドル建てだ。
+        「ドルは衰えるが、王座は空いたまま」という逆説を、アメリカ・中国・ロシア・新興国・市場の視点から整理する。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">ドルの公的準備シェア</div>
+          <div class="kp-value">56.9%（2025年Q3）— 1995年以来初の57%割れ</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">準備資産の逆転</div>
+          <div class="kp-value">金27% > 米国債22%（2025年末・ECB）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">BRICS域内貿易の現地通貨建て</div>
+          <div class="kp-value">約67%（10年前は20%未満）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">ドル建てステーブルコイン</div>
+          <div class="kp-value">世界供給の99%超 — デジタルでもドル優位</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1 -->
+          <section class="section" id="sec-shift">
+            <h2 class="section-title"><span class="sec-num">01</span> 数字が示す構造変化</h2>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              「脱ドル」はこれまで主に政治的なスローガンだった。だが2025〜2026年、それは<strong>統計に表れる構造変化</strong>へと変わった。
+              ドルが世界の公的外貨準備に占める割合は<strong>56.9%（2025年第3四半期）</strong>へ低下し、1995年以来初めて57%を割り込んだ。
+              2001年のピークである72%から、長期的に低下し続けている。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              象徴的なのが準備資産の逆転だ。欧州中央銀行の報告によれば、2025年末に<strong>金が世界の中銀準備資産の27%</strong>を占め、
+              <strong>米国債（22%）を上回った</strong>。外国中銀が保有する金の価値は約4兆ドルに達し、米国債（約3.9兆ドル）を超えた——これは<strong>1996年以来</strong>のことだ。
+            </p>
+            <p style="color:var(--text-dim);font-size:0.8rem;line-height:1.8;">
+              ただし「低下」は「崩壊」ではない。57%は依然として他のどの通貨も足元に及ばない圧倒的な水準だ。問われているのは、王座が揺らぐ速度である。
+            </p>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/dedollarization-gold-vault.jpg"
+                 alt="中央銀行の金庫に整然と積まれた金塊のクローズアップ" loading="lazy">
+            <figcaption>各国中銀は2022年以降、年1,000トン超の金を買い増してきた。金は「国家に紐づかない中立資産」として選ばれている。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 2 -->
+          <section class="section" id="sec-drivers">
+            <h2 class="section-title"><span class="sec-num">02</span> 何が脱ドルを駆動するのか</h2>
+            <div class="driver-grid">
+              <div class="driver-box" style="--dc-color:#c4a882;">
+                <div class="driver-name">制裁＝「ドルの武器化」</div>
+                <div class="driver-text">ロシアの外貨準備凍結など、ドル決済網を通じた制裁が各国に「自分も狙われうる」という警戒を植え付けた。制裁回避はロシア・イランの強い動機。</div>
+              </div>
+              <div class="driver-box" style="--dc-color:#c4a882;">
+                <div class="driver-name">中銀の金シフト</div>
+                <div class="driver-text">中国・トルコ・ポーランド・インドが主導し、年1,000トン超を購入。金の準備シェアは2017年の13%から2025年に約30%へ上昇した。</div>
+              </div>
+              <div class="driver-box" style="--dc-color:#c4a882;">
+                <div class="driver-name">代替決済網の整備</div>
+                <div class="driver-text">中国のCIPSは月約2,700億ドルを処理し117カ国が参加。BRICS域内貿易の約67%が現地通貨建てになり、SWIFT依存を下げる。</div>
+              </div>
+              <div class="driver-box" style="--dc-color:#c4a882;">
+                <div class="driver-name">米国の財政・政治リスク</div>
+                <div class="driver-text">巨額の債務、関税の乱発、政治の不確実性が「安全資産としてのドル」への信認を少しずつ削る。米国債の外国保有比率も約30%へ低下。</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 3 -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">03</span> タイムライン — 直近の動き</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2022年〜</div>
+                <div class="timeline-content">
+                  <h4>制裁を機に中銀の金買いが加速</h4>
+                  <p>ロシアの外貨準備凍結を受け、各国中銀は年1,000トン超の金を買い増す異例の局面に。ドル一極への依存を見直す動きが本格化した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">「自国も凍結されうる」</span>
+                    <span class="reaction-chip">中立資産＝金へ</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年2月・7月</div>
+                <div class="timeline-content">
+                  <h4>トランプ、BRICSに「100%関税」を威嚇</h4>
+                  <p>トランプは、ドルを脅かすならBRICS諸国に100%の関税を課すと警告。「BRICSは我々のドルを潰すために作られた」と述べ、通貨を安全保障の問題として明確に位置づけた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">アメリカ「ドルを守る」</span>
+                    <span class="reaction-chip">関税が逆に脱ドルを刺激</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2025年9月</div>
+                <div class="timeline-content">
+                  <h4>ドルの準備シェアが57%割れ — 30年ぶり</h4>
+                  <p>ドルの公的準備シェアが56.9%へ低下し、1995年以来初めて57%を割り込んだ。緩やかだが一貫した低下トレンドが改めて確認された。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">構造的低下の確認</span>
+                    <span class="reaction-chip">ただし依然首位</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2025年後半</div>
+                <div class="timeline-content">
+                  <h4>中国、人民元ステーブルコインを検討</h4>
+                  <p>中国は上海協力機構の枠組みなどで、人民元建てステーブルコインやデジタル人民元の越境利用を議論。デジタル領域での通貨競争が新たな戦線に。ただし人民元の国際決済シェアは2.88%にとどまる。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">中国「デジタルで挑戦」</span>
+                    <span class="reaction-chip">資本規制という壁</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年6月</div>
+                <div class="timeline-content">
+                  <h4>金が米国債を抜き、準備資産の第2位に</h4>
+                  <p>欧州中央銀行が、2025年末に金（27%）が米国債（22%）を上回ったと報告。外国中銀の金保有額が米国債を超えるのは1996年以来。象徴的な「世代の転換点」となった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">金 > 米国債（1996年以来）</span>
+                    <span class="reaction-chip">中立資産への大移動</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot" style="background:var(--accent3)"></div>
+                <div class="timeline-date">現在</div>
+                <div class="timeline-content">
+                  <h4>「多極化」だが「覇権交代」ではない</h4>
+                  <p>脱ドルは進むが、代わる基軸通貨は不在。BRICS共通通貨は実質停滞し、インドは「脱ドルを志向したことはない」と明言。緩やかな多極化への移行という見方が主流だ。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">分散は進む</span>
+                    <span class="reaction-chip">王座は空席のまま</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/dedollarization-currencies.jpg"
+                 alt="米ドル・人民元・ユーロなど各国通貨紙幣が重なり合う様子の俯瞰" loading="lazy">
+            <figcaption>ドルの比重は下がるが、人民元(国際決済2.88%)もユーロも単独では代替になれない。脱ドルは「交代」ではなく「分散」として進む。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 4 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">04</span> 各立場の主張</h2>
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- USA -->
+                  <div class="perspective-card" style="--card-color:var(--accent);">
+                    <div class="country-header">
+                      <span class="country-name">アメリカ</span>
+                      <span class="stance-label stance-cautious">ドル覇権の防衛</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      ドルの基軸通貨地位は国力の源泉であり、安価な資金調達と制裁という外交手段を支える。脅かす動きには関税で対抗し、デジタル領域でもドル建てステーブルコインで優位を延命する。
+                    </div>
+                    <div class="key-claim">
+                      <strong>ジレンマ</strong>
+                      制裁の多用（ドルの武器化）と関税の威嚇は、短期の圧力にはなるが、長期では各国に「ドル離れ」の動機を与える自己矛盾を抱える。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>覇権維持力</span><span>依然最強</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="88%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>低コストの資金調達、制裁という梃子、金融覇権の維持
+                    </div>
+                  </div>
+
+                  <!-- China -->
+                  <div class="perspective-card" style="--card-color:var(--accent2);">
+                    <div class="country-header">
+                      <span class="country-name">中国</span>
+                      <span class="stance-label stance-hostile">人民元の国際化</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      ドル依存は安全保障上の弱点。CIPS（独自決済網）や人民元建て貿易、デジタル人民元・ステーブルコインで、ドルを介さない経済圏を着実に広げる。
+                    </div>
+                    <div class="key-claim">
+                      <strong>限界</strong>
+                      人民元の国際決済シェアは2.88%にとどまる。資本規制と不透明性が信認を妨げ、「使われる通貨」になるには制度の自由化という痛みを伴う。
+                    </div>
+                    <div class="tone-meter tone-hostile">
+                      <div class="tone-meter-label"><span>挑戦の本気度</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="72%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>通貨主権、制裁耐性、グローバルサウスへの影響力
+                    </div>
+                  </div>
+
+                  <!-- Russia / Iran -->
+                  <div class="perspective-card" style="--card-color:var(--accent2);">
+                    <div class="country-header">
+                      <span class="country-name">ロシア・イラン</span>
+                      <span class="stance-label stance-hostile">制裁回避・脱ドル急進</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      ドル決済網からの排除は死活問題。SWIFTを迂回し、現地通貨・金・暗号資産で取引することは制裁を生き延びる必須手段だと位置づける。
+                    </div>
+                    <div class="key-claim">
+                      <strong>論点</strong>
+                      プーチンは「ドルの武器化は大きな誤りだ」と批判。脱ドルを最も急進的に進める一方、経済規模が小さく単独では基軸通貨秩序を動かせない。
+                    </div>
+                    <div class="tone-meter tone-hostile">
+                      <div class="tone-meter-label"><span>脱ドルの切迫度</span><span>最高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="92%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>制裁の回避、外貨準備の防衛、対米対抗
+                    </div>
+                  </div>
+
+                  <!-- BRICS / Global South -->
+                  <div class="perspective-card" style="--card-color:var(--accent3);">
+                    <div class="country-header">
+                      <span class="country-name">新興国・グローバルサウス</span>
+                      <span class="stance-label stance-supportive">分散したいが一枚岩でない</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      過度なドル依存のリスク（金利・為替の波及）を減らしたい。現地通貨決済や金の積み増しでヘッジを進める。「ドルを倒す」より「選択肢を増やす」が本音。
+                    </div>
+                    <div class="key-claim">
+                      <strong>内部の温度差</strong>
+                      インド外相は「インドは脱ドルを志向したことはない」「共通通貨の提案は今ない」と明言。BRICSは一枚岩ではなく、共通通貨構想は実質停滞している。
+                    </div>
+                    <div class="tone-meter tone-supportive">
+                      <div class="tone-meter-label"><span>多様化志向</span><span>中〜高</span></div>
+                      <div class="tone-track" style="background:var(--bg-card2);"><div class="tone-fill" style="background:var(--accent3);" data-width="60%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>リスク分散、自国通貨の安定、対米自律
+                    </div>
+                  </div>
+
+                  <!-- Market / IMF -->
+                  <div class="perspective-card" style="--card-color:var(--accent);">
+                    <div class="country-header">
+                      <span class="country-name">市場・国際金融</span>
+                      <span class="stance-label stance-neutral">多極化だが交代ではない</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      ドルの強さは深く流動的な米国債市場、貿易建値、決済網という強力なネットワーク効果に支えられている。代替候補はいずれも弱く、すぐに王座を奪える通貨はない。
+                    </div>
+                    <div class="key-claim">
+                      <strong>見立て</strong>
+                      J.P.モルガン等は「脱ドルは進むがドル覇権の終焉ではない」とし、緩やかな多極化（multipolar）への移行と分析。金は中立資産として受け皿になる。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>覇権交代の確度</span><span>低い</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="30%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>市場の安定、流動性、リスク評価
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本姿勢</th>
+                        <th>主な手段</th>
+                        <th>弱点・限界</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>アメリカ</td><td>ドル覇権の防衛</td><td>関税の威嚇・ステーブルコイン</td><td>制裁多用が脱ドルを誘発</td></tr>
+                      <tr><td>中国</td><td>人民元の国際化</td><td>CIPS・現地通貨・デジタル人民元</td><td>決済シェア2.88%・資本規制</td></tr>
+                      <tr><td>ロシア・イラン</td><td>制裁回避・急進</td><td>SWIFT迂回・現地通貨・金</td><td>経済規模が小さい</td></tr>
+                      <tr><td>新興国</td><td>分散・ヘッジ</td><td>現地通貨決済・金の積増し</td><td>一枚岩でない・共通通貨停滞</td></tr>
+                      <tr><td>市場・国際金融</td><td>多極化だが交代せず</td><td>―（分析）</td><td>代替通貨の不在</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 5 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">05</span> データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- ドル準備シェアの推移 -->
+              <div class="data-card">
+                <h4>ドルの公的外貨準備シェアの推移</h4>
+                <div style="position:relative;height:180px;">
+                  <canvas id="dollarChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">2001年72% → 2025年56.9%へ。出典: IMF COFER / 各種報道</p>
+              </div>
+
+              <!-- 準備資産の逆転 -->
+              <div class="data-card">
+                <h4>世界の中銀準備資産の構成（2025年末）</h4>
+                <div class="ratio-bar">
+                  <div class="ratio-row">
+                    <div class="ratio-head"><span class="ratio-label">金（前年20%）</span><span class="ratio-value">27%</span></div>
+                    <div class="ratio-track"><div class="ratio-fill" style="background:var(--accent4);width:100%;"></div></div>
+                  </div>
+                  <div class="ratio-row">
+                    <div class="ratio-head"><span class="ratio-label">米国債（前年25%）</span><span class="ratio-value">22%</span></div>
+                    <div class="ratio-track"><div class="ratio-fill" style="background:var(--accent);width:81%;"></div></div>
+                  </div>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">金が米国債を逆転（1996年以来）。出典: 欧州中央銀行 2026</p>
+              </div>
+
+              <!-- 通貨別の国際決済シェア -->
+              <div class="data-card">
+                <h4>国際決済シェア（通貨別・2025年）</h4>
+                <div class="ratio-bar">
+                  <div class="ratio-row">
+                    <div class="ratio-head"><span class="ratio-label">米ドル</span><span class="ratio-value">47.2%</span></div>
+                    <div class="ratio-track"><div class="ratio-fill" style="background:var(--accent);width:100%;"></div></div>
+                  </div>
+                  <div class="ratio-row">
+                    <div class="ratio-head"><span class="ratio-label">ユーロ（参考）</span><span class="ratio-value">約23%</span></div>
+                    <div class="ratio-track"><div class="ratio-fill" style="background:var(--accent3);width:49%;"></div></div>
+                  </div>
+                  <div class="ratio-row">
+                    <div class="ratio-head"><span class="ratio-label">人民元</span><span class="ratio-value">2.88%</span></div>
+                    <div class="ratio-track"><div class="ratio-fill" style="background:var(--accent2);width:6%;"></div></div>
+                  </div>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">人民元はドルに遠く及ばない。ユーロは参考値。出典: SWIFT 2025</p>
+              </div>
+
+              <!-- 注目の数字 -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">99%+</div>
+                    <div class="stat-label">ドル建てステーブルコインの世界シェア</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">67%</div>
+                    <div class="stat-label">BRICS域内貿易の現地通貨建て比率</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">約30%</div>
+                    <div class="stat-label">米国債の外国保有比率（リーマン時は50%超）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">1,000t+</div>
+                    <div class="stat-label">中銀の年間金購入（2022年以降）</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 6 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span> 情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">J.P. Morgan / IMF COFER</div>
+                  <div class="source-desc">ドル準備シェアの長期推移と脱ドル分析</div>
+                  <div class="source-country">【マクロ金融データ】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">欧州中央銀行（ECB）</div>
+                  <div class="source-desc">金が米国債を抜いた準備資産の逆転</div>
+                  <div class="source-country">【中央銀行の一次データ】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">PBS / CNN / PIIE</div>
+                  <div class="source-desc">トランプのBRICS関税威嚇・通貨の武器化</div>
+                  <div class="source-country">【米国の政策・政治】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Atlantic Council / SWIFT</div>
+                  <div class="source-desc">人民元国際化・CIPS・国際決済シェア</div>
+                  <div class="source-country">【中国・決済インフラ】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Visual Capitalist / World Gold Council系</div>
+                  <div class="source-desc">中銀の金購入動向</div>
+                  <div class="source-country">【金・準備資産データ】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Chicago Policy Review / BIS</div>
+                  <div class="source-desc">BRICSの脱ドル・ステーブルコインの実態</div>
+                  <div class="source-country">【学術・国際機関】</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-shift">数字が示す変化</a></li>
+            <li><a href="#sec-drivers">何が駆動するか</a></li>
+            <li><a href="#sec-timeline">タイムライン</a></li>
+            <li><a href="#sec-perspectives">各立場の主張</a></li>
+            <li><a href="#sec-data">データ・統計</a></li>
+            <li><a href="#sec-sources">情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/economy/index.html">世界経済</a></div>
+            <div>2026年6月7日</div>
+            <div style="margin-top:0.5rem;">5つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/economy/index.html">世界経済一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+const ctx = document.getElementById('dollarChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['2001', '2008', '2015', '2020', '2023', '2025'],
+    datasets: [{
+      label: 'ドルの公的準備シェア（%）',
+      data: [72, 64, 66, 59, 58, 56.9],
+      borderColor: '#9ab4c4',
+      backgroundColor: 'rgba(154,180,196,0.12)',
+      tension: 0.3, fill: true, pointRadius: 3,
+      pointBackgroundColor: '#9ab4c4',
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { min: 50, max: 75, ticks: { color: '#8890a0', font: { size: 10 }, callback: v => v + '%' }, grid: { color: '#2a3a50' } },
+      x: { ticks: { color: '#8890a0', font: { size: 10 } }, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>
