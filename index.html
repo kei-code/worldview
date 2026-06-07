@@ -54,16 +54,10 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('image/home/1.png');
-      background-size: cover; background-position: center 38%;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 38%;
       filter: brightness(0.5) saturate(1.05);
-      transform: scale(1.08);
-      animation: kenburns 26s ease-in-out infinite alternate;
       z-index: 0;
-    }
-    @keyframes kenburns {
-      from { transform: scale(1.08) translate(0,0); }
-      to   { transform: scale(1.18) translate(-1.5%, -2%); }
     }
     /* 暗部方向グラデ＋ごく薄い青の放射1枚 */
     .hero-tint {
@@ -347,7 +341,9 @@
 <main>
   <!-- ===================== HERO ===================== -->
   <section class="hero">
-    <div class="hero-bg"></div>
+    <video class="hero-bg" autoplay muted loop playsinline preload="none"
+           poster="image/home/world-map-fragmenting-hero.png"
+           data-mp4="image/home/world-map-fragmenting-hero.mp4"></video>
     <div class="hero-tint"></div>
     <div class="hero-bottom"></div>
     <div class="container">
@@ -688,6 +684,23 @@
 
 <script src="assets/js/main.js"></script>
 <script>
+/* ===== Home: ヒーロー動画の条件付き読み込み =====
+   省データ/低モーション/狭い画面ではポスター画像のまま（動画を読み込まない） */
+(function () {
+  const v = document.querySelector('video.hero-bg');
+  if (!v) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = navigator.connection && navigator.connection.saveData;
+  const narrow = window.matchMedia('(max-width: 700px)').matches;
+  if (reduce || saveData || narrow) return; // ポスターのまま
+  const add = (src, type) => { const s = document.createElement('source'); s.src = src; s.type = type; v.appendChild(s); };
+  if (v.dataset.webm) add(v.dataset.webm, 'video/webm');
+  if (v.dataset.mp4)  add(v.dataset.mp4, 'video/mp4');
+  v.load();
+  const p = v.play();
+  if (p && p.catch) p.catch(() => {}); // 自動再生不可でもポスターにフォールバック
+})();
+
 /* ===== Home: 数字カウントアップ ===== */
 (function () {
   const nums = document.querySelectorAll('.hero-stat-num[data-count]');
