@@ -93,6 +93,16 @@
       .stack-label { width: 100%; }
       .toc-sidebar { display: none; }
     }
+
+    @media (max-width: 768px) {
+      /* 対応A：2カラム → 1カラムに戻す（IDセレクタで優先度を上書き） */
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+
+      /* 対応B：バーチャートを縦積みレイアウトに */
+      #sec-data .bar-row { flex-wrap: wrap; gap: 0.3rem 0; }
+      #sec-data .bar-label { width: 100%; flex-shrink: 1; white-space: normal; }
+      #sec-data .bar-value { width: 100%; text-align: left; }
+    }
   </style>
 </head>
 <body>
