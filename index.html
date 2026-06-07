@@ -691,8 +691,7 @@
   if (!v) return;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const saveData = navigator.connection && navigator.connection.saveData;
-  const narrow = window.matchMedia('(max-width: 700px)').matches;
-  if (reduce || saveData || narrow) return; // ポスターのまま
+  if (reduce || saveData) return; // 低モーション/省データ時のみポスターのまま（モバイルでも再生）
   const add = (src, type) => { const s = document.createElement('source'); s.src = src; s.type = type; v.appendChild(s); };
   if (v.dataset.webm) add(v.dataset.webm, 'video/webm');
   if (v.dataset.mp4)  add(v.dataset.mp4, 'video/mp4');
