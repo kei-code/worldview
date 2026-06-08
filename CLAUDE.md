@@ -163,6 +163,12 @@ for name in files:
 
 ---
 
+## 運用上の絶対ルール
+
+- **コミット・公開（git commit / git push）の前に必ずユーザーに確認を取ること。** 無断で実行しない。
+
+---
+
 ## GitHub Pages 運用メモ
 
 - ブランチ：`main`（直接公開）
