@@ -57,17 +57,6 @@ a:hover { text-decoration: underline; }
   color: var(--text); letter-spacing: 0.08em;
   display: flex; align-items: center; gap: 0.5rem;
 }
-.site-logo::before {
-  content: '';
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  display: inline-block;
-  box-shadow:
-    0 0 6px rgba(154,180,196,0.9),
-    0 0 14px rgba(154,180,196,0.5),
-    0 0 28px rgba(154,180,196,0.2);
-}
 .site-logo span { color: var(--accent); }
 
 .site-nav { display: flex; gap: 2rem; }
