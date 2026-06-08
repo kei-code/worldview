@@ -76,6 +76,42 @@
     #sec-data .data-grid { gap: 1.5rem; grid-template-columns: minmax(280px, 340px) 1fr; }
     #sec-data .data-card { padding: 1.5rem; }
 
+    /* tone-meter 統一軸・中心起点バー */
+    .tone-meter { margin-top: 1rem; }
+    .tone-axis-title {
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.09em;
+      color: var(--text-dim); margin-bottom: 0.3rem;
+    }
+    .tone-meter-ends {
+      display: flex; justify-content: space-between;
+      font-size: 0.69rem; color: var(--text-dim);
+      margin-bottom: 0.3rem;
+    }
+    /* 中心起点バー：center-tickで中心線、fillを中央から伸ばす */
+    #sec-perspectives .tone-track {
+      position: relative; overflow: visible;
+    }
+    #sec-perspectives .tone-track::before {
+      content: ''; position: absolute;
+      left: calc(50% - 1px); top: -3px;
+      width: 2px; height: 11px;
+      background: var(--text-dim); border-radius: 1px; z-index: 2;
+    }
+    #sec-perspectives .tone-fill {
+      position: absolute; top: 0; height: 100%; width: 0;
+      border-radius: 3px;
+      transition: width 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    /* 右方向（正当・歓迎寄り）*/
+    #sec-perspectives .tone-fill[data-side="right"] {
+      left: 50%; background: var(--accent);
+    }
+    /* 左方向（脅威と見る）*/
+    #sec-perspectives .tone-fill[data-side="left"] {
+      right: 50%; left: auto; background: var(--accent);
+    }
+
     /* Section 06: ソースカードをリンク化 */
     a.source-item {
       text-decoration: none; color: inherit; cursor: pointer;
@@ -401,9 +437,10 @@
                       国境管理・自国優先こそが真の安全保障だ。NATOや欧州連合のような多国間機関は国民主権を侵食する。
                       「自国民を守る」強い指導者が今こそ必要とされている。
                     </div>
-                    <div class="tone-meter tone-hostile">
-                      <div class="tone-meter-label"><span>既成秩序への対抗度</span><span>高</span></div>
-                      <div class="tone-track"><div class="tone-fill" data-width="90%"></div></div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">右傾化・ポピュリズムへの評価</div>
+                      <div class="tone-meter-ends"><span>脅威と見る</span><span>正当・歓迎</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="right" data-width="40%"></div></div>
                     </div>
                     <div class="interests">
                       <strong>背景：</strong>トランプ・メローニ・オルバンらは「普通の人々が忘れられてきた」という共通の物語を持つ。
@@ -427,8 +464,9 @@
                       「進歩」の恩恵を受けられなかった人々を置き去りにしてきた責任がある。
                     </div>
                     <div class="tone-meter">
-                      <div class="tone-meter-label"><span>制度的危機感</span><span>高</span></div>
-                      <div class="tone-track"><div class="tone-fill" data-width="85%"></div></div>
+                      <div class="tone-axis-title">右傾化・ポピュリズムへの評価</div>
+                      <div class="tone-meter-ends"><span>脅威と見る</span><span>正当・歓迎</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="left" data-width="40%"></div></div>
                     </div>
                     <div class="interests">
                       <strong>背景：</strong>欧州社会民主党・民主党などの中道左派は2010年代以降、
@@ -455,8 +493,9 @@
                       これを「選挙権威主義（Electoral Authoritarianism）」と呼ぶ研究者もいる。
                     </div>
                     <div class="tone-meter">
-                      <div class="tone-meter-label"><span>制度的留保の強度</span><span>中</span></div>
-                      <div class="tone-track"><div class="tone-fill" data-width="60%"></div></div>
+                      <div class="tone-axis-title">右傾化・ポピュリズムへの評価</div>
+                      <div class="tone-meter-ends"><span>脅威と見る</span><span>正当・歓迎</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="left" data-width="25%"></div></div>
                     </div>
                     <div class="interests">
                       <strong>背景：</strong>政治学者のヤン＝ウェルナー・ミュラーは著書「ポピュリズムとは何か」で、
@@ -482,8 +521,9 @@
                       不信感が強まっている。「民主主義の輸出」という概念の正当性が問い直されている。
                     </div>
                     <div class="tone-meter">
-                      <div class="tone-meter-label"><span>欧米への不信度</span><span>中〜高</span></div>
-                      <div class="tone-track"><div class="tone-fill" data-width="65%"></div></div>
+                      <div class="tone-axis-title">右傾化・ポピュリズムへの評価</div>
+                      <div class="tone-meter-ends"><span>脅威と見る</span><span>正当・歓迎</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="left" data-width="12%"></div></div>
                     </div>
                     <div class="interests">
                       <strong>背景：</strong>アフリカ・アジア・ラテンアメリカの多くの国にとって、
@@ -509,9 +549,10 @@
                       ロシアは欧州右派ポピュリスト政党との関係構築（資金提供疑惑を含む）を通じて
                       西洋の民主主義陣営を内側から揺さぶる戦略をとってきた。
                     </div>
-                    <div class="tone-meter tone-supportive">
-                      <div class="tone-meter-label"><span>西洋分断への期待度</span><span>高</span></div>
-                      <div class="tone-track"><div class="tone-fill" data-width="88%"></div></div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">右傾化・ポピュリズムへの評価</div>
+                      <div class="tone-meter-ends"><span>脅威と見る</span><span>正当・歓迎</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="right" data-width="32%"></div></div>
                     </div>
                     <div class="interests">
                       <strong>背景：</strong>ロシアの国営メディア（RTなど）は欧米の右派ポピュリスト運動に好意的な報道を行い、
