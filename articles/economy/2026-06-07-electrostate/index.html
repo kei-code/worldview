@@ -76,7 +76,6 @@
     /* Section 05: 左カード固定幅・右カード可変 */
     #sec-data .data-grid { gap: 1.5rem; grid-template-columns: minmax(280px, 340px) 1fr; }
     #sec-data .data-card { padding: 1.5rem; }
-    #sec-data .bar-label { width: 140px; flex-shrink: 0; white-space: nowrap; font-size: 0.78rem; }
 
     /* Section 06: ソースカードをリンク化 */
     a.source-item {
@@ -95,13 +94,8 @@
     }
 
     @media (max-width: 768px) {
-      /* 対応A：2カラム → 1カラムに戻す（IDセレクタで優先度を上書き） */
+      /* データグリッドを1カラムに（IDセレクタで優先度を上書き） */
       #sec-data .data-grid { grid-template-columns: 1fr; }
-
-      /* 対応B：バーチャートを縦積みレイアウトに */
-      #sec-data .bar-row { flex-wrap: wrap; gap: 0.3rem 0; }
-      #sec-data .bar-label { width: 100%; flex-shrink: 1; white-space: normal; }
-      #sec-data .bar-value { width: 100%; text-align: left; }
     }
   </style>
 </head>
@@ -563,31 +557,12 @@
               </div>
 
               <div class="data-card">
-                <h4>中国のクリーンテック世界製造シェア（2025年）</h4>
-                <div class="bar-chart" style="margin-top:1rem;">
-                  <div class="bar-row">
-                    <div class="bar-label">太陽光パネル（中国）</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent3);" data-width="80%"></div></div>
-                    <div class="bar-value">80%</div>
-                  </div>
-                  <div class="bar-row">
-                    <div class="bar-label">電気自動車（中国）</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent3);" data-width="70%"></div></div>
-                    <div class="bar-value">70%</div>
-                  </div>
-                  <div class="bar-row">
-                    <div class="bar-label">風力タービン（中国）</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent3);" data-width="60%"></div></div>
-                    <div class="bar-value">60%</div>
-                  </div>
-                  <div class="bar-row">
-                    <div class="bar-label">蓄電池（中国）</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent3);" data-width="52%"></div></div>
-                    <div class="bar-value">52%</div>
-                  </div>
+                <h4>主要市場のEV新車販売シェア（2025年）</h4>
+                <div style="position:relative;height:220px;margin-top:1rem;">
+                  <canvas id="evChart"></canvas>
                 </div>
-                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">
-                  いずれも世界全体の製造・設置量に占める中国のシェア（%）。出典：IEA・Bloomberg NEF・Robeco（2025）
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  新車販売台数に占める電気自動車の割合。中国では新車の2台に1台がEV。出典：IEA・Bloomberg NEF（2025）
                 </p>
               </div>
 
@@ -726,6 +701,55 @@
               return ' ' + context.label + ': ' + context.parsed + '%';
             }
           }
+        }
+      }
+    }
+  });
+
+  // EV新車販売シェアチャート（横棒）
+  const evCtx = document.getElementById('evChart').getContext('2d');
+  new Chart(evCtx, {
+    type: 'bar',
+    data: {
+      labels: ['中国', '欧州連合', '世界平均', 'アメリカ', '日本'],
+      datasets: [{
+        data: [50, 22, 18, 8, 4],
+        backgroundColor: [
+          'rgba(122,170,130,0.80)',
+          'rgba(154,180,196,0.65)',
+          'rgba(154,180,196,0.40)',
+          'rgba(184,120,104,0.70)',
+          'rgba(154,180,196,0.30)',
+        ],
+        borderColor: 'transparent',
+        borderWidth: 0,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(context) { return ' ' + context.parsed.x + '%'; }
+          }
+        }
+      },
+      scales: {
+        x: {
+          max: 60,
+          grid: { color: 'rgba(154,180,196,0.08)' },
+          ticks: {
+            color: 'rgba(200,210,220,0.55)',
+            font: { size: 10 },
+            callback: function(value) { return value + '%'; }
+          }
+        },
+        y: {
+          grid: { display: false },
+          ticks: { color: 'rgba(200,210,220,0.75)', font: { size: 11 } }
         }
       }
     }
