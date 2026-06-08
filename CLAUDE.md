@@ -73,6 +73,7 @@
 | 2026-06-07 | economy | 脱ドルへの挑戦 — 基軸通貨は揺らぐのか | 2026-06-07-dedollarization |
 | 2026-06-07 | security | 海底ケーブルの「影の戦争」 — 事故か、攻撃か | 2026-06-07-undersea-cables |
 | 2026-06-07 | economy | エレクトロステートの誕生 — 「石油の国」から「電気の国」へ | 2026-06-07-electrostate |
+| 2026-06-08 | security | 「右傾化する世界」 — ポピュリズムはなぜ民主主義を変えるのか | 2026-06-08-global-right-shift |
 
 ---
 
@@ -87,7 +88,11 @@
 5. **Midjourneyプロンプト出力**：画像3枚分（ヒーロー1枚＋本文中2枚）×各2案
 6. **カテゴリページ更新**：`categories/{カテゴリ}/index.html` に記事カード追加
 7. **ホームページ更新**：`index.html` の最新記事リスト先頭に追加
-8. **画像配置**：ユーザーが `image/tmp/` に格納後、`image/articles/` へ移動・リネーム
+8. **画像配置＆圧縮**：ユーザーが `image/tmp/` に格納後、以下の手順を実行（詳細は「画像処理ルール」参照）
+   - `image/articles/` へSEO対応ファイル名でコピー（例：`right-shift-hero-rally.png`）
+   - Pillowで JPEG圧縮（quality=82）→ 元PNGを削除（拡張子が `.jpg` に変わる）
+   - 記事HTMLのファイル参照を `.png` → `.jpg` に更新
+   - `image/tmp/` の中身をすべて削除
 9. **コミット＆公開**：ユーザー確認後に `git commit` → `git push`
 
 ---
@@ -109,6 +114,40 @@
 - **perspective-card**：5視点前後。スタンスはテキストラベルと tone-meter で区別
 - **画像構成**：ヒーロー1枚＋本文中2枚、計3枚。うち最低1枚は近接・接写
 - **Chart.js**：CDN `chart.js@4.4.0` を使用。記事ごとに1〜2チャート
+
+---
+
+## 画像処理ルール（必須）
+
+### 圧縮コマンド
+
+`image/tmp/` から `image/articles/` にコピーした後、以下を実行する：
+
+```bash
+uv run --with pillow python -c "
+from PIL import Image
+import os
+
+files = ['ファイル名1', 'ファイル名2', ...]  # 拡張子なし
+base = r'image/articles のフルパス'
+
+for name in files:
+    src = os.path.join(base, f'{name}.png')
+    dst = os.path.join(base, f'{name}.jpg')
+    img = Image.open(src).convert('RGB')
+    img.save(dst, 'JPEG', quality=82, optimize=True)
+    os.remove(src)
+"
+```
+
+### ルール
+- **形式**：フォトリアル画像は PNG → JPEG に変換（quality=82）。ファイルサイズを90%前後削減できる
+- **PNG削除**：JPEG保存後は元PNGを必ず削除
+- **HTML更新**：記事の画像参照パスを `.png` → `.jpg` に忘れず更新（記事HTML・ホームHTML の両方）
+- **tmp削除**：画像配置・圧縮が完了したら `image/tmp/` の中身をすべて削除する
+  ```powershell
+  Get-ChildItem "image\tmp" -File | Remove-Item -Confirm:$false
+  ```
 
 ---
 

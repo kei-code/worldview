@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>「右傾化する世界」— ポピュリズムはなぜ民主主義を変えるのか — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* セクション番号：雑誌風の大きな薄い数字 */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* 用語解説グリッド */
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .glossary-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent5);
+    }
+    .glossary-term { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .glossary-def  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* 要因カード */
+    .driver-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1rem; }
+    .driver-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.2rem 1.3rem;
+      border-top: 2px solid var(--dc-color, var(--accent));
+    }
+    .driver-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .driver-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); }
+    .article-figure figcaption { font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* ヒーロー背景画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/right-shift-hero-rally.jpg');
+      background-size: cover; background-position: center 40%;
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.78) 0%, rgba(14,17,23,0.72) 40%, rgba(14,17,23,0.92) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* Section 05 */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: minmax(280px, 340px) 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* Section 06: ソースカードをリンク化 */
+    a.source-item {
+      text-decoration: none; color: inherit; cursor: pointer;
+      display: flex; gap: 0.75rem; align-items: flex-start;
+    }
+    a.source-item:hover { border-color: var(--accent); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent); }
+    a.source-item .source-name { transition: color 0.2s; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .driver-grid { grid-template-columns: 1fr; }
+      .glossary-grid { grid-template-columns: 1fr 1fr; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .glossary-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/security/index.html" style="color:var(--text);">安全保障</a>
+    <a href="../../../categories/europe/index.html">欧州情勢</a>
+    <a href="../../../categories/economy/index.html">世界経済</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-red">安全保障</span>
+        <span class="tag tag-blue">民主主義</span>
+        <span class="date">2026年6月8日</span>
+      </div>
+      <h1 class="article-title">「右傾化する世界」<br>— ポピュリズムはなぜ民主主義を変えるのか</h1>
+      <p class="article-summary">
+        トランプ・メローニ・ミレイ・オルバン——2020年代、先進民主主義国で右派ポピュリスト指導者が次々と政権を握った。
+        これは一時的な振れ幅なのか、それとも戦後民主主義の構造的転換なのか。
+        経済格差・移民不安・エリート不信・SNSの台頭という4つの構造要因を軸に、
+        保守右派・中道左派・研究者・グローバルサウス・権威主義体制の5つの視点から読み解く。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent2)">
+          <div class="kp-label">右派・極右が政権参加中の欧州諸国</div>
+          <div class="kp-value">10カ国超（2026年）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent2)">
+          <div class="kp-label">世界の自由スコアが低下し続けた年数</div>
+          <div class="kp-value">18年連続（Freedom House 2025）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent2)">
+          <div class="kp-label">「既成政治家を信頼しない」先進国市民の割合</div>
+          <div class="kp-value">平均57%（Edelman Trust 2025）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent2)">
+          <div class="kp-label">ポピュリスト指導者が統治する世界人口</div>
+          <div class="kp-value">約20億人（2025年推計）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1 -->
+          <section class="section" id="sec-what">
+            <h2 class="section-title"><span class="sec-num">01</span> 数字と定義 — 「右傾化」とは何か</h2>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              「右傾化」とは、社会や有権者・政治の重心が右方向——ナショナリズム・安全保障のタカ派化・社会的保守・移民規制——へと動くことを指す、方向性の言葉だ。
+              保守政党が正当な選挙で誠実に勝利して政策を右に寄せる場合も「右傾化」であり、エリート敵視も制度破壊も伴わない形で起こりうる。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              これに対して「ポピュリズム」は左右軸とは別の次元だ——「純粋な人民 対 腐敗したエリート」という二項対立を政治の中心に据えるスタイルで、
+              ラテンアメリカの左派ポピュリズム（チャベス、ポデモス）も右派ポピュリズムまったく同じ「人民 対 エリート」の語法を使う。
+              さらに「民主主義的後退」は体制の話——選挙で選ばれた指導者が司法・選挙制度・報道を徐々に骨抜きにするプロセスであり、右派固有の現象ではない。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              2020年代が特殊なのは、この三つが同時に起きている点だ——右傾化（重心の移動）＋右派ポピュリズム（エリート対人民の構図）＋民主主義的後退（制度の空洞化）が重なって観察されるため、しばしば一体のものとして語られる。
+              この記事では、それぞれを別の概念として区別しながら整理する。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:0.75rem;font-weight:700;">用語解説</div>
+            <div class="glossary-grid">
+              <div class="glossary-card">
+                <div class="glossary-term">右派・右翼（Right-wing）</div>
+                <div class="glossary-def">
+                  伝統・秩序・国家主権・市場競争を重視する立場。「これまで機能してきた社会の仕組みを守る」という志向が基本にある。
+                  穏健な保守から強権的な国家主義まで幅広い。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">左派・左翼（Left-wing）</div>
+                <div class="glossary-def">
+                  平等・再分配・社会保障・多様性を重視する立場。「社会の不平等を是正し、弱者を守る」という志向が基本にある。
+                  穏健な社会民主主義から急進的な社会主義まで幅広い。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">ポピュリズム（Populism）</div>
+                <div class="glossary-def">
+                  「純粋な人民」対「腐敗したエリート」という二項対立を強調する政治スタイル。
+                  右派にも左派にも存在し、既成政党・専門家・メディアへの不信を燃料にする。
+                  経済政策の立場ではなく、政治の「やり方」に関わる概念だ。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">右派ポピュリズム</div>
+                <div class="glossary-def">
+                  反移民・反グローバリズム・自国優先を訴える右翼ポピュリスト運動。
+                  「伝統的な多数派の価値観が移民・国際機関・エリートに脅かされている」という危機感を核心に持つ。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">民主主義的後退（Democratic Backsliding）</div>
+                <div class="glossary-def">
+                  選挙によって選ばれた指導者が、メディアの独立性・司法の独立・議会の権限を段階的に弱体化させるプロセス。
+                  クーデターではなく「合法的な手続き」を通じて権力が集中していく点が特徴。
+                </div>
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.5rem;margin-bottom:1rem;">
+              現在、欧州だけで見ても右派・極右政党が連立政権に参加しているか第1党となっている国は10カ国を超える。
+              イタリアのメローニ政権（2022年〜）、ハンガリーのオルバン政権（2010年〜）、スウェーデン・フィンランド・オランダ・オーストリア・スロバキア……
+              欧州連合の内部で、かつては「欧州の価値」とされた自由主義的民主主義への疑念が広がっている。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1rem;">
+              アメリカではトランプが2期目に就任し、アルゼンチンではミレイが「アナキスト的資本主義」を掲げて大統領に選出された。
+              インドのモディ、インドネシアのプラボウォ、イスラエルのネタニヤフ——
+              民主主義の手続きを通じて選ばれながら、権威主義的な傾向を持つ指導者が世界的に増加している。
+            </p>
+          </section>
+
+          <!-- Section 2 -->
+          <section class="section" id="sec-causes">
+            <h2 class="section-title"><span class="sec-num">02</span> なぜ今、右に動くのか — 4つの構造要因</h2>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.3rem;">
+              右派ポピュリズムの台頭は、特定の「悪い指導者」が現れたからではない。
+              数十年にわたって蓄積された社会・経済的矛盾が、SNSの台頭をきっかけに一気に噴出した構造的現象だ。
+            </p>
+            <div class="driver-grid">
+              <div class="driver-box" style="--dc-color:var(--accent2);">
+                <div class="driver-name">経済的不満と格差の固定化</div>
+                <div class="driver-text">
+                  1990年代以降のグローバリゼーションで製造業の雇用が新興国へ流出し、先進国の低・中所得層の実質賃金が停滞。
+                  2008年の金融危機後の「緊縮財政」で社会保障が削られ、「普通の生活」を守れないという怒りが蓄積した。
+                  恩恵を受けたのは資産家とグローバル企業だけだという認識が広がる。
+                </div>
+              </div>
+              <div class="driver-box" style="--dc-color:var(--accent2);">
+                <div class="driver-name">移民・文化変容への不安</div>
+                <div class="driver-text">
+                  2010年代中盤のシリア難民危機、2020年代のアフリカ・中東からの移民増加が欧州各地で政治争点化。
+                  「自分たちの文化が変わってしまう」という感覚と、犯罪・住宅コスト上昇との結びつけが右派の燃料に。
+                  移民の実態よりも「移民への恐怖」が政治を動かす。
+                </div>
+              </div>
+              <div class="driver-box" style="--dc-color:var(--accent2);">
+                <div class="driver-name">既成メディアとエリートへの不信</div>
+                <div class="driver-text">
+                  SNSの普及で「既成メディアは偏っている」という認識が広まり、独自の情報生態系が形成された。
+                  ソーシャルメディアは怒りと不信を増幅するアルゴリズムで動く。
+                  「専門家・学者・ジャーナリストは自分たちとは別の世界に生きている」という疎外感が右派ポピュリストへの共感を生む。
+                </div>
+              </div>
+              <div class="driver-box" style="--dc-color:var(--accent2);">
+                <div class="driver-name">コロナ後の政府不信の加速</div>
+                <div class="driver-text">
+                  2020〜2022年のロックダウン・ワクチン義務・行動規制が「政府の過剰介入」への反発を引き起こした。
+                  陰謀論の拡散と「自由の剥奪」への怒りが、コロナ後に反体制的な政治運動に転化。
+                  特にドイツ・オーストリア・オランダで極右が支持を急伸させた時期と重なる。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/right-shift-factory-worker.jpg"
+                 alt="廃工場の端に一人立つヘルメットの工場労働者、背後に錆びた機械と曇り空" loading="lazy">
+            <figcaption>かつて製造業の中心だった地域では、グローバリゼーションによる雇用流出の記憶が政治的怒りの土台になっている。ポピュリズムの燃料は、経済的喪失感と「見捨てられた」という実感だ。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/right-shift-inequality-split.jpg"
+                 alt="高級ペントハウスと老朽化した団地を崩れかけた階段でつないだ対比構図" loading="lazy">
+            <figcaption>同じ都市の中に存在する富の二極——グローバリゼーションがもたらした格差の構造は、数字ではなく目に見える形で人々の怒りを醸成してきた。「システムが自分たちのために機能していない」という感覚が右派ポピュリズムの核心にある。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 3 -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">03</span> タイムライン — 右傾化の軌跡</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2008年</div>
+                <div class="timeline-content">
+                  <h4>リーマンショックと緊縮財政 — 怒りの蓄積</h4>
+                  <p>世界金融危機後、欧州各国が実施した「緊縮財政」で社会保障が削減。
+                  ギリシャ危機（2010年）ではEU（欧州連合）の「外圧」が民主主義の選択を上書きしたように見え、
+                  ポピュリズムへの素地が形成された。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">銀行は救済、市民は緊縮</span>
+                    <span class="reaction-chip">欧州連合への不満が各地で拡大</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2015〜2016年</div>
+                <div class="timeline-content">
+                  <h4>難民危機・ブレグジット・トランプ当選 — ポピュリズムの「実証」</h4>
+                  <p>シリア難民100万人超が欧州に流入し、移民問題が政治の中心に。
+                  イギリスでブレグジット国民投票が可決（2016年6月）、同年11月にトランプが米大統領に当選。
+                  「ポピュリストは選挙に勝てる」ことが世界に示された。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">既成メディアの予測が外れ権威が失墜</span>
+                    <span class="reaction-chip">右派ポピュリズムの「お手本」が誕生</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2018〜2019年</div>
+                <div class="timeline-content">
+                  <h4>ボルソナーロ・ジョンソン — 「第二波」が南米・英国へ</h4>
+                  <p>ジャイール・ボルソナーロがブラジル大統領に当選（2018年）、ボリス・ジョンソンが英国首相に就任（2019年）。
+                  ポピュリズムがアングロサクソン圏・ラテンアメリカに拡大した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">「トランプ的手法」が輸出された</span>
+                    <span class="reaction-chip">SNSが選挙運動の主戦場に</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2022〜2023年</div>
+                <div class="timeline-content">
+                  <h4>メローニ政権誕生 — 欧州各地で右派連立が常態化</h4>
+                  <p>ジョルジャ・メローニ率いる「イタリアの同胞（FdI）」が第1党となり、ファシズムの流れを汲む政党が70年ぶりに政権を握った（2022年10月）。
+                  スウェーデン・フィンランドでも極右が閣内に入り、欧州の「右傾化の常態化」が進んだ。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">「欧州の価値」vs「国民主権」が争点に</span>
+                    <span class="reaction-chip">NATO内部での亀裂が表面化</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年</div>
+                <div class="timeline-content">
+                  <h4>欧州議会選挙で極右躍進 — トランプ再選</h4>
+                  <p>2024年6月の欧州議会選挙で右派・極右が約25%の議席を獲得し、フランスで解散総選挙が実施されるなど欧州政治が動揺。
+                  11月にトランプが再選を果たし、「ポピュリズムの時代」が確定的になった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">欧州委員会の政策に右派圧力が増大</span>
+                    <span class="reaction-chip">ウクライナ支援の継続が不透明に</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot" style="background:var(--accent3)"></div>
+                <div class="timeline-date">2025〜2026年（現在）</div>
+                <div class="timeline-content">
+                  <h4>ミレイの急進改革 — 「統治の実践」フェーズへ</h4>
+                  <p>アルゼンチンのミレイ大統領が国家機能の大幅縮小を実行中。
+                  欧州では右派政党が「愛国主義者（Patriots）グループ」として欧州議会の最大右派会派を形成。
+                  右派ポピュリズムは選挙での勝利から「統治の実践」フェーズに入りつつある。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">「右傾化」から「右派統治」へ移行</span>
+                    <span class="reaction-chip">民主主義的後退の実態が問われ始める</span>
+                    <span class="reaction-chip">西洋の結束低下をロシア・中国が活用</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 4 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">04</span> 各立場の視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">保守右派・ポピュリスト</span>
+                      <span class="stance-label stance-hostile">体制への正当な反乱</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      これは「民主主義への脅威」ではなく、民主主義の正当な表現だ。
+                      長年にわたって腐敗したエリート・メディア・グローバル機関が国民の声を無視してきた結果、
+                      人々は本物の代弁者を選んでいるにすぎない。
+                    </div>
+                    <div class="key-claim">
+                      <strong>安全保障上の立場</strong>
+                      国境管理・自国優先こそが真の安全保障だ。NATOや欧州連合のような多国間機関は国民主権を侵食する。
+                      「自国民を守る」強い指導者が今こそ必要とされている。
+                    </div>
+                    <div class="tone-meter tone-hostile">
+                      <div class="tone-meter-label"><span>既成秩序への対抗度</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="90%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>トランプ・メローニ・オルバンらは「普通の人々が忘れられてきた」という共通の物語を持つ。
+                      支持基盤は製造業労働者・農村部・宗教的保守層など、グローバリゼーションの恩恵を受けにくかった層だ。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">中道左派・リベラル</span>
+                      <span class="stance-label stance-cautious">民主主義制度の危機</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      右派ポピュリズムは民主主義の外形を保ちながら、その実質——独立した司法・自由な報道・少数者の権利——を破壊する。
+                      ハンガリーやポーランドで起きたことが「民主主義の死に方」の見本だ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>左派の自省</strong>
+                      同時に、ポピュリズムを生んだ経済格差や文化的疎外感に対処できなかった左派自身の失敗も認めなければならない。
+                      「進歩」の恩恵を受けられなかった人々を置き去りにしてきた責任がある。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>制度的危機感</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="85%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>欧州社会民主党・民主党などの中道左派は2010年代以降、
+                      伝統的な支持層だった労働者を右派ポピュリストに奪われた。「多様性」「環境」への傾倒が
+                      経済問題を後回しにしているという批判を受け続けている。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">研究者・政治学者</span>
+                      <span class="stance-label stance-neutral">経済格差が根本原因</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      右傾化の根本原因は経済的不平等と社会的疎外感だ。
+                      「ポピュリスト指導者が人々を煽った」のではなく、「人々の怒りがポピュリスト指導者を生んだ」。
+                      格差是正と政治的代表性の回復なしに、この波は止まらない。
+                    </div>
+                    <div class="key-claim">
+                      <strong>「民主主義の逆説」</strong>
+                      右派ポピュリズムは民主主義の手続きを通じて民主主義を弱体化させるという逆説を持つ。
+                      投票で選ばれた指導者が制度を侵食する場合、外部から「非民主的」と断言するのは難しく、
+                      これを「選挙権威主義（Electoral Authoritarianism）」と呼ぶ研究者もいる。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>制度的留保の強度</span><span>中</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="60%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>政治学者のヤン＝ウェルナー・ミュラーは著書「ポピュリズムとは何か」で、
+                      ポピュリズムを「民主主義の病理」ではなく「民主主義の症状」として分析する視点を提示した。
+                      格差是正なしにポピュリズムは消えないという主張は、左右を問わず広く共有されている。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">グローバルサウス</span>
+                      <span class="stance-label stance-neutral">先進国の内向き化を注視</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      先進国の「右傾化」は表面上は他国の内政問題に見えるが、援助の削減・通商政策の変化・
+                      多国間機関の機能不全を通じて途上国に直接影響する。
+                      トランプ政権による国際開発援助の削減は数十カ国の開発プログラムに打撃を与えた。
+                    </div>
+                    <div class="key-claim">
+                      <strong>「ダブルスタンダード」への反感</strong>
+                      欧米が自国では民主主義を後退させながら、途上国に民主主義を要求することへの
+                      不信感が強まっている。「民主主義の輸出」という概念の正当性が問い直されている。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>欧米への不信度</span><span>中〜高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="65%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>アフリカ・アジア・ラテンアメリカの多くの国にとって、
+                      欧米の右傾化は「先進国民主主義の終わり」というよりも「先進国の内向き化」として映る。
+                      「非同盟」的なスタンスをとる国が増えている。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">権威主義体制（中国・ロシア）</span>
+                      <span class="stance-label stance-supportive">西洋分断を外交カードに</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      西洋の「民主主義モデル」の失敗が証明されつつある。
+                      混乱・分断・機能不全を繰り返す民主主義国と比べて、安定した統治を実現している
+                      権威主義体制の優位性を内外に示す好機だ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>外交的活用</strong>
+                      欧米の内部分断はNATOの結束を弱め、ウクライナ支援を不安定化させる。
+                      ロシアは欧州右派ポピュリスト政党との関係構築（資金提供疑惑を含む）を通じて
+                      西洋の民主主義陣営を内側から揺さぶる戦略をとってきた。
+                    </div>
+                    <div class="tone-meter tone-supportive">
+                      <div class="tone-meter-label"><span>西洋分断への期待度</span><span>高</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="88%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>ロシアの国営メディア（RTなど）は欧米の右派ポピュリスト運動に好意的な報道を行い、
+                      移民・犯罪・エリート批判を増幅させてきたとされる。
+                      中国は「民主主義の混乱」を対外宣伝に積極的に利用している。
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>右傾化への評価</th>
+                        <th>主な主張・懸念</th>
+                        <th>安全保障への影響</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>保守右派</td>
+                        <td>正当な民主主義的表現</td>
+                        <td>エリート支配からの解放。国民主権の回復</td>
+                        <td>NATOより自国国境管理を優先</td>
+                      </tr>
+                      <tr>
+                        <td>中道左派</td>
+                        <td>民主主義制度の危機</td>
+                        <td>司法・メディア独立の侵食。少数者の権利後退</td>
+                        <td>同盟の分断、ウクライナ支援の不安定化を懸念</td>
+                      </tr>
+                      <tr>
+                        <td>研究者</td>
+                        <td>経済格差の症状</td>
+                        <td>「選挙権威主義」の台頭。格差是正なしに解決なし</td>
+                        <td>民主主義制度の侵食が長期的な安全保障リスク</td>
+                      </tr>
+                      <tr>
+                        <td>グローバルサウス</td>
+                        <td>先進国の内向き化</td>
+                        <td>援助削減・通商変化の波及。欧米のダブルスタンダード</td>
+                        <td>多国間主義の弱体化が途上国に直撃</td>
+                      </tr>
+                      <tr>
+                        <td>権威主義体制</td>
+                        <td>西洋モデルの失敗の証明</td>
+                        <td>分断を外交カードに利用。NATO弱体化を歓迎</td>
+                        <td>西洋の結束低下を地政学的機会として活用</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div><!-- /tab-table -->
+            </div><!-- /tabs-wrap -->
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/right-shift-ballot-box.jpg"
+                 alt="空の投票所に置かれた割れたガラス面の投票箱、頭上の蛍光灯と空の椅子" loading="lazy">
+            <figcaption>民主主義の「制度」は表面的には維持されながら、内実が変質していく——「民主主義的後退」の本質は、革命ではなく侵食だ。投票箱は残っているが、その重みが変わっていく。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 5 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">05</span> データ・統計</h2>
+            <div class="data-grid">
+
+              <div class="data-card">
+                <h4>世界の自由度ステータス（2025年・国数比率）</h4>
+                <div style="position:relative;height:200px;max-width:280px;margin:0 auto;">
+                  <canvas id="freedomChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  「自由」な国は全体の43%にとどまり、2005年以降で最低水準。「非自由」国に暮らす人口は世界全体の39%に達する。出典：Freedom House「Freedom in the World 2025」
+                </p>
+              </div>
+
+              <div class="data-card">
+                <h4>欧州主要右派政党の支持率（2025年・直近調査）</h4>
+                <div style="position:relative;height:220px;margin-top:1rem;">
+                  <canvas id="rightPartyChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  欧州各国の右派・極右政党の支持率。ハンガリー・フィデスは単独過半数に迫る。出典：各国世論調査・Politico Europe Poll of Polls（2025）
+                </p>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 6 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span> 情報源</h2>
+            <div class="sources-grid">
+              <a class="source-item" href="https://freedomhouse.org/report/freedom-world/2025/world" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Freedom House</div>
+                  <div class="source-desc">Freedom in the World 2025 — 世界の自由度年次報告書</div>
+                  <div class="source-country">【国際人権機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://v-dem.net/publications/democracy-reports/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">V-Dem Institute</div>
+                  <div class="source-desc">Democracy Report 2025 — 民主主義指標の国際比較研究</div>
+                  <div class="source-country">【学術研究機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.edelman.com/trust/trust-barometer" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Edelman Trust Barometer 2025</div>
+                  <div class="source-desc">28カ国3万2,000人への政府・メディア・企業への信頼度調査</div>
+                  <div class="source-country">【国際世論調査】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.pewresearch.org/topic/politics-policy/political-parties-and-partisanship/populism/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Pew Research Center</div>
+                  <div class="source-desc">Populism and political discontent — 各国のポピュリズム支持要因分析</div>
+                  <div class="source-country">【調査研究機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.economist.com/graphic-detail/2024/09/26/the-economists-2024-global-democracy-index" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">The Economist</div>
+                  <div class="source-desc">Global Democracy Index 2024 — 民主主義の世界的後退を追跡</div>
+                  <div class="source-country">【国際経済メディア】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.politico.eu/europe-poll-of-polls/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Politico Europe — Poll of Polls</div>
+                  <div class="source-desc">欧州主要国の政党支持率リアルタイム集計</div>
+                  <div class="source-country">【欧州政治メディア】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://press.princeton.edu/books/hardcover/9780691174426/what-is-populism" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Jan-Werner Müller「What Is Populism?」</div>
+                  <div class="source-desc">ポピュリズムの政治理論的定義を確立した学術書（2016年）</div>
+                  <div class="source-country">【学術書籍】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.dw.com/en/far-right/t-64891472" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Deutsche Welle — Far Right</div>
+                  <div class="source-desc">欧州極右の動向を継続的に追うドイツ国際放送の特集ページ</div>
+                  <div class="source-country">【欧州メディア】</div>
+                </div>
+              </a>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-what"><span class="toc-icon">01</span>定義と現状</a></li>
+            <li><a href="#sec-causes"><span class="toc-icon">02</span>4つの構造要因</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">03</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">04</span>各立場の視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">05</span>データ・統計</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer"><p>WorldView — 多視点で読む世界情勢</p></footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 世界の自由度ステータス（ドーナツチャート）
+  const freedomCtx = document.getElementById('freedomChart').getContext('2d');
+  new Chart(freedomCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['自由（Free）', '部分的自由（Partly Free）', '非自由（Not Free）'],
+      datasets: [{
+        data: [43, 32, 25],
+        backgroundColor: [
+          'rgba(122,170,130,0.80)',
+          'rgba(196,168,130,0.70)',
+          'rgba(184,120,104,0.80)',
+        ],
+        borderColor: 'transparent',
+        borderWidth: 0,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '60%',
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: 'rgba(200,210,220,0.75)',
+            font: { size: 10 },
+            padding: 8,
+            boxWidth: 11,
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return ' ' + context.label + ': ' + context.parsed + '%';
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // 欧州主要右派政党支持率（横棒グラフ）
+  const rightPartyCtx = document.getElementById('rightPartyChart').getContext('2d');
+  new Chart(rightPartyCtx, {
+    type: 'bar',
+    data: {
+      labels: ['ハンガリー・フィデス', 'フランス・国民連合', 'イタリア・同胞', 'オランダ・自由党', 'スウェーデン民主党', 'ドイツ・AfD'],
+      datasets: [{
+        data: [49, 34, 27, 24, 22, 21],
+        backgroundColor: [
+          'rgba(184,120,104,0.85)',
+          'rgba(184,120,104,0.75)',
+          'rgba(184,120,104,0.70)',
+          'rgba(184,120,104,0.65)',
+          'rgba(184,120,104,0.60)',
+          'rgba(184,120,104,0.55)',
+        ],
+        borderColor: 'transparent',
+        borderWidth: 0,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(context) { return ' ' + context.parsed.x + '%'; }
+          }
+        }
+      },
+      scales: {
+        x: {
+          max: 60,
+          grid: { color: 'rgba(154,180,196,0.08)' },
+          ticks: {
+            color: 'rgba(200,210,220,0.55)',
+            font: { size: 10 },
+            callback: function(value) { return value + '%'; }
+          }
+        },
+        y: {
+          grid: { display: false },
+          ticks: { color: 'rgba(200,210,220,0.75)', font: { size: 10 } }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>
