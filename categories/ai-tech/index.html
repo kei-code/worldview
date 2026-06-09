@@ -6,58 +6,39 @@
   <title>AI・技術覇権 — WorldView</title>
   <link rel="stylesheet" href="../../assets/css/common.css">
   <style>
-    .cat-hero {
-      padding: 3rem 0 2.5rem;
-      border-bottom: 1px solid var(--border);
-      background: radial-gradient(ellipse at top left, rgba(88,166,255,0.08) 0%, transparent 55%);
-    }
+    .cat-hero { position: relative; overflow: hidden; min-height: 320px; display: flex; align-items: flex-end; border-bottom: 1px solid var(--border-subtle); }
+    .cat-hero::before { content: ''; position: absolute; inset: 0; z-index: 0; background-image: url('../../image/home/ai-semiconductor-circuit-board.png'); background-size: cover; background-position: center center; }
+    .cat-hero::after { content: ''; position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(14,17,23,0.45) 0%, rgba(14,17,23,0.70) 50%, rgba(14,17,23,0.90) 100%); }
+    .cat-hero .container { position: relative; z-index: 1; padding-top: 3rem; padding-bottom: 2.5rem; }
     .cat-breadcrumb { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; }
     .cat-breadcrumb a { color: var(--text-muted); }
     .cat-breadcrumb span { margin: 0 0.4rem; }
-    .cat-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
-    .cat-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 0.75rem; }
+    .cat-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 0.75rem; margin-top: 0.5rem; }
     .cat-desc { font-size: 0.95rem; color: var(--text-muted); max-width: 600px; line-height: 1.8; }
-    .filter-bar {
-      display: flex; gap: 0.75rem; flex-wrap: wrap;
-      padding: 1.5rem 0; border-bottom: 1px solid var(--border);
-    }
-    .filter-btn {
-      padding: 0.4em 1em; border-radius: 20px; font-size: 0.82rem; font-weight: 600;
-      border: 1px solid var(--border); background: none; color: var(--text-muted);
-      cursor: pointer; font-family: var(--font); transition: all 0.2s;
-    }
+    .filter-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; padding: 1.5rem 0; border-bottom: 1px solid var(--border-subtle); }
+    .filter-btn { padding: 0.4em 1em; border-radius: 20px; font-size: 0.82rem; font-weight: 600; border: 1px solid var(--border); background: none; color: var(--text-muted); cursor: pointer; font-family: var(--font); transition: all 0.2s; }
     .filter-btn.active, .filter-btn:hover { background: var(--accent); border-color: var(--accent); color: #000; }
     .month-group { margin: 2.5rem 0; }
-    .month-label {
-      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.12em; color: var(--text-muted);
-      padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem;
-    }
-    .article-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.25rem 1.5rem;
-      display: flex; gap: 1.5rem; align-items: flex-start;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .article-card:hover { border-color: var(--accent); transform: translateX(3px); }
-    .ac-date-col { flex-shrink: 0; text-align: center; width: 50px; }
-    .ac-day { font-size: 1.6rem; font-weight: 800; color: var(--accent); line-height: 1; }
-    .ac-month { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; }
+    .month-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-dim); padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-subtle); margin-bottom: 1rem; }
+    .article-list { display: flex; flex-direction: column; gap: 1rem; }
+    a.article-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius); display: flex; align-items: stretch; overflow: hidden; transition: border-color 0.2s, background 0.2s, transform 0.2s; color: inherit; text-decoration: none; }
+    a.article-card:hover { border-color: var(--accent); background: var(--bg-card2); transform: translateX(3px); text-decoration: none; }
+    .ac-thumb { flex-shrink: 0; width: 120px; background-image: var(--thumb, none), linear-gradient(135deg, color-mix(in srgb, var(--c, var(--accent)) 25%, var(--bg)), var(--bg) 82%); background-size: cover; background-position: center; }
+    .ac-inner { flex: 1; min-width: 0; display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.25rem 1.5rem; }
+    .ac-date { flex-shrink: 0; font-size: 0.78rem; color: var(--text-dim); padding-top: 0.15rem; white-space: nowrap; }
     .ac-body { flex: 1; min-width: 0; }
     .ac-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.5rem; }
-    .ac-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.4; }
-    .ac-title a { color: var(--text); }
-    .ac-title a:hover { color: var(--accent); text-decoration: none; }
+    .ac-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.4; color: var(--text); }
     .ac-summary { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.6rem; }
-    .ac-flags { font-size: 1.1rem; letter-spacing: 0.1em; }
-    .ac-right { flex-shrink: 0; text-align: center; }
-    .ac-angle-badge { background: var(--bg-card2); border: 1px solid var(--border); border-radius: 8px; padding: 0.5rem 0.75rem; }
+    .ac-countries { font-size: 0.78rem; color: var(--text-dim); }
+    .ac-right { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .ac-angle-badge { background: var(--bg-card2); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 0.5rem 0.75rem; text-align: center; }
     .ac-angle-badge .num { font-size: 1.3rem; font-weight: 800; color: var(--accent); line-height: 1; }
     .ac-angle-badge .lbl { font-size: 0.7rem; color: var(--text-muted); }
+    @media (max-width: 560px) { .ac-thumb { width: 80px; } }
   </style>
 </head>
 <body>
-
 <header class="site-header">
   <div class="site-logo"><a href="../../index.html" style="color:inherit;"><span>World</span>View</a></div>
   <nav class="site-nav">
@@ -67,115 +48,74 @@
     <a href="../europe/index.html">欧州情勢</a>
   </nav>
 </header>
-
 <main>
   <div class="cat-hero">
     <div class="container">
-      <div class="cat-breadcrumb">
-        <a href="../../index.html">ホーム</a><span>›</span>AI・技術覇権
-      </div>
-      <div class="cat-icon">🤖</div>
+      <div class="cat-breadcrumb"><a href="../../index.html">ホーム</a><span>›</span>AI・技術覇権</div>
       <h1 class="cat-title">AI・技術覇権</h1>
       <p class="cat-desc">米中AI競争、半導体サプライチェーン、各国の規制戦略、AGI開発競争——テクノロジーをめぐる覇権争いを多角的に分析します。</p>
     </div>
   </div>
-
   <div class="container">
-    <div class="filter-bar" style="display:none"><!-- 記事数が増えたら絞り込み機能を実装して有効化 -->
+    <div class="filter-bar" style="display:none">
       <button class="filter-btn active">すべて</button>
       <button class="filter-btn">米中競争</button>
       <button class="filter-btn">AI規制</button>
       <button class="filter-btn">半導体</button>
-      <button class="filter-btn">AGI</button>
     </div>
-
     <div class="month-group">
       <div class="month-label">2026年 6月</div>
-      <div style="display:flex;flex-direction:column;gap:1rem;">
-        <div class="article-card">
-          <div class="ac-date-col">
-            <div class="ac-day">06</div>
-            <div class="ac-month">Jun</div>
-          </div>
-          <div class="ac-body">
-            <div class="ac-meta">
-              <span class="tag tag-blue">宇宙・安全保障</span>
-              <span class="tag tag-red">技術覇権</span>
+      <div class="article-list">
+        <a class="article-card" href="../../articles/ai-tech/2026-06-06-orbital-supremacy/index.html" style="--thumb:url('../../image/articles/orbital-supremacy-satellite-constellation.jpg'); --c:#7fa6b8;">
+          <div class="ac-thumb"></div>
+          <div class="ac-inner">
+            <div class="ac-date">2026.6.6</div>
+            <div class="ac-body">
+              <div class="ac-meta"><span class="tag tag-blue">宇宙・安全保障</span></div>
+              <div class="ac-title">軌道の覇権争い — スターリンクと「宇宙インフラの私物化」</div>
+              <div class="ac-summary">全稼働衛星の約3分の2を一民間企業スターリンクが握り、戦場の通信さえ左右する。各国はこれを「主権の委譲」と警戒し、中国の国網・千帆、欧州連合のIRIS²、対衛星兵器で対抗。空が新たな国境になる構図を6つの視点で整理。</div>
+              <div class="ac-countries">アメリカ・欧州連合・中国・ロシア・グローバルサウス</div>
             </div>
-            <div class="ac-title">
-              <a href="../../articles/ai-tech/2026-06-06-orbital-supremacy/index.html">
-                軌道の覇権争い — スターリンクと「宇宙インフラの私物化」
-              </a>
-            </div>
-            <div class="ac-summary">全稼働衛星の約3分の2を一民間企業スターリンクが握り、戦場の通信さえ左右する。各国はこれを「主権の委譲」と警戒し、中国の国網・千帆、欧州連合のIRIS²、対衛星兵器で対抗。空が新たな国境になる構図を6つの視点で整理。</div>
-            <div class="ac-flags">アメリカ・欧州連合・中国・ロシア・グローバルサウス</div>
-          </div>
-          <div class="ac-right">
-            <div class="ac-angle-badge">
-              <div class="num">6</div>
-              <div class="lbl">視点</div>
+            <div class="ac-right">
+              <div class="ac-angle-badge"><div class="num">6</div><div class="lbl">視点</div></div>
             </div>
           </div>
-        </div>
-        <div class="article-card">
-          <div class="ac-date-col">
-            <div class="ac-day">04</div>
-            <div class="ac-month">Jun</div>
-          </div>
-          <div class="ac-body">
-            <div class="ac-meta">
-              <span class="tag tag-blue">科学・未来</span>
-              <span class="tag tag-green">AI活用</span>
+        </a>
+        <a class="article-card" href="../../articles/ai-tech/2026-06-04-ai-science/index.html" style="--c:#7fa6b8;">
+          <div class="ac-thumb"></div>
+          <div class="ac-inner">
+            <div class="ac-date">2026.6.4</div>
+            <div class="ac-body">
+              <div class="ac-meta"><span class="tag tag-blue">科学・未来</span></div>
+              <div class="ac-title">AIが変えた科学の速度 — AlphaFold以後の「発見の自動化」</div>
+              <div class="ac-summary">タンパク質構造を解いたAlphaFoldがノーベル化学賞を受賞。生物・材料・創薬で数年の工程が数日に短縮され、AIとロボットが実験を自動で回す「自律実験室」も現実に。希望と慎重さの両面を5つの視点で整理。</div>
+              <div class="ac-countries">アメリカ・イギリス・中国・欧州連合・日本</div>
             </div>
-            <div class="ac-title">
-              <a href="../../articles/ai-tech/2026-06-04-ai-science/index.html">
-                AIが変えた科学の速度 — AlphaFold以後の「発見の自動化」
-              </a>
-            </div>
-            <div class="ac-summary">タンパク質構造を解いたAlphaFoldがノーベル化学賞を受賞。生物・材料・創薬で数年の工程が数日に短縮され、AIとロボットが実験を自動で回す「自律実験室」も現実に。一方で再現性やハルシネーションの課題も。希望と慎重さの両面を5つの視点で整理。</div>
-            <div class="ac-flags">アメリカ・イギリス・中国・欧州連合・日本</div>
-          </div>
-          <div class="ac-right">
-            <div class="ac-angle-badge">
-              <div class="num">5</div>
-              <div class="lbl">視点</div>
+            <div class="ac-right">
+              <div class="ac-angle-badge"><div class="num">5</div><div class="lbl">視点</div></div>
             </div>
           </div>
-        </div>
-        <div class="article-card">
-          <div class="ac-date-col">
-            <div class="ac-day">02</div>
-            <div class="ac-month">Jun</div>
-          </div>
-          <div class="ac-body">
-            <div class="ac-meta">
-              <span class="tag tag-blue">米中競争</span>
-              <span class="tag tag-yellow">高関心</span>
+        </a>
+        <a class="article-card" href="../../articles/ai-tech/2026-06-02-ai-race/index.html" style="--c:#7fa6b8;">
+          <div class="ac-thumb"></div>
+          <div class="ac-inner">
+            <div class="ac-date">2026.6.2</div>
+            <div class="ac-body">
+              <div class="ac-meta"><span class="tag tag-blue">米中競争</span></div>
+              <div class="ac-title">米中AI覇権争いの現在地 — 性能差2.7%まで縮まった技術競争の構図</div>
+              <div class="ac-summary">Stanford AI Index 2026が明らかにした米中の接近。DeepSeekショック、半導体輸出規制、欧州連合の規制先行、インドの第三極台頭——AIをめぐる世界の勢力図を6カ国の視点から整理する。</div>
+              <div class="ac-countries">アメリカ・中国・欧州連合・インド・日本・ロシア</div>
             </div>
-            <div class="ac-title">
-              <a href="../../articles/ai-tech/2026-06-02-ai-race/index.html">
-                米中AI覇権争いの現在地 — 性能差2.7%まで縮まった技術競争の構図
-              </a>
-            </div>
-            <div class="ac-summary">Stanford AI Index 2026が明らかにした米中の接近。DeepSeekショック、半導体輸出規制、EUの規制先行、インドの第三極台頭——AIをめぐる世界の勢力図を6カ国の視点から整理する。</div>
-            <div class="ac-flags">🇺🇸 🇨🇳 🇪🇺 🇮🇳 🇯🇵 🇷🇺</div>
-          </div>
-          <div class="ac-right">
-            <div class="ac-angle-badge">
-              <div class="num">6</div>
-              <div class="lbl">視点</div>
+            <div class="ac-right">
+              <div class="ac-angle-badge"><div class="num">6</div><div class="lbl">視点</div></div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
 </main>
-
-<footer class="site-footer">
-  <p>WorldView — 多視点で読む世界情勢</p>
-</footer>
-
+<footer class="site-footer"><p>WorldView — 多視点で読む世界情勢</p></footer>
 <script src="../../assets/js/main.js"></script>
 </body>
 </html>
