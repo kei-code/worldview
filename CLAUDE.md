@@ -52,6 +52,7 @@
 | europe | 欧州情勢 | tag-green |
 | resources | 資源・環境 | tag-green |
 | security | 安全保障 | tag-red |
+| elections | 世論・選挙 | tag-blue（統一色） |
 
 ---
 
@@ -74,6 +75,7 @@
 | 2026-06-07 | security | 海底ケーブルの「影の戦争」 — 事故か、攻撃か | 2026-06-07-undersea-cables |
 | 2026-06-07 | economy | エレクトロステートの誕生 — 「石油の国」から「電気の国」へ | 2026-06-07-electrostate |
 | 2026-06-08 | security | 「右傾化する世界」 — ポピュリズムはなぜ民主主義を変えるのか | 2026-06-08-global-right-shift |
+| 2026-06-09 | elections | 「2つのアメリカ」— トランプ支持率の解剖 | 2026-06-09-trump-approval |
 
 ---
 

@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>「2つのアメリカ」— トランプ支持率の解剖 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* セクション番号：雑誌風の大きな薄い数字 */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* 用語解説グリッド */
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .glossary-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent);
+    }
+    .glossary-term { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .glossary-def  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* 要因カード */
+    .driver-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1rem; }
+    .driver-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.2rem 1.3rem;
+      border-top: 2px solid var(--dc-color, var(--accent));
+    }
+    .driver-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .driver-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* 争点別の強弱ミニバー */
+    .issue-grid { display: grid; gap: 0.75rem; margin: 1.5rem 0; }
+    .issue-row { display: grid; grid-template-columns: 120px 1fr 48px; align-items: center; gap: 0.9rem; }
+    .issue-name { font-size: 0.84rem; font-weight: 600; color: var(--text); }
+    .issue-track { position: relative; height: 9px; border-radius: 5px; background: var(--bg-card2); overflow: hidden; }
+    .issue-fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 5px; background: var(--accent); transition: width 0.9s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .issue-val { font-size: 0.82rem; font-weight: 700; color: var(--accent); text-align: right; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); }
+    .article-figure figcaption { font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* ヒーロー背景画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/trump-approval-hero-flag-split.jpg');
+      background-size: cover; background-position: center 35%;
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.78) 0%, rgba(14,17,23,0.72) 40%, rgba(14,17,23,0.92) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* Section 05 */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: minmax(280px, 340px) 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* tone-meter 統一軸・中心起点バー */
+    .tone-meter { margin-top: 1rem; }
+    .tone-axis-title {
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.09em;
+      color: var(--text-dim); margin-bottom: 0.3rem;
+    }
+    .tone-meter-ends {
+      display: flex; justify-content: space-between;
+      font-size: 0.69rem; color: var(--text-dim);
+      margin-bottom: 0.3rem;
+    }
+    /* 中心起点バー：center-tickで中心線、fillを中央から伸ばす */
+    #sec-perspectives .tone-track {
+      position: relative; overflow: visible;
+    }
+    #sec-perspectives .tone-track::before {
+      content: ''; position: absolute;
+      left: calc(50% - 1px); top: -3px;
+      width: 2px; height: 11px;
+      background: var(--text-dim); border-radius: 1px; z-index: 2;
+    }
+    #sec-perspectives .tone-fill {
+      position: absolute; top: 0; height: 100%; width: 0;
+      border-radius: 3px;
+      transition: width 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    /* 右方向（支持寄り）*/
+    #sec-perspectives .tone-fill[data-side="right"] {
+      left: 50%; background: var(--accent);
+    }
+    /* 左方向（不支持寄り）*/
+    #sec-perspectives .tone-fill[data-side="left"] {
+      right: 50%; left: auto; background: var(--accent);
+    }
+
+    /* Section 06: ソースカードをリンク化 */
+    a.source-item {
+      text-decoration: none; color: inherit; cursor: pointer;
+      display: flex; gap: 0.75rem; align-items: flex-start;
+    }
+    a.source-item:hover { border-color: var(--accent); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent); }
+    a.source-item .source-name { transition: color 0.2s; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .driver-grid { grid-template-columns: 1fr; }
+      .glossary-grid { grid-template-columns: 1fr 1fr; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .glossary-grid { grid-template-columns: 1fr; }
+      .issue-row { grid-template-columns: 92px 1fr 44px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/elections/index.html" style="color:var(--text);">世論・選挙</a>
+    <a href="../../../categories/security/index.html">安全保障</a>
+    <a href="../../../categories/economy/index.html">世界経済</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-blue">世論・選挙</span>
+        <span class="tag tag-blue">アメリカ政治</span>
+        <span class="date">2026年6月9日</span>
+      </div>
+      <h1 class="article-title">「2つのアメリカ」<br>— トランプ支持率の解剖</h1>
+      <p class="article-summary">
+        トランプ大統領の支持率は2026年6月時点で38.6%、不支持58.0%——第1期・第2期を通じて最低水準にある。
+        だが「全体の数字」はこの国の実像を覆い隠す。共和党支持者の87%が支持し、民主党支持者はわずか7%。
+        その差80ポイントは史上最大級で、同じ国・同じ出来事を見ながら評価が真逆になる「2つのアメリカ」が現れている。
+        党派・無党派・世代・人種という4つの断面から、分断された世論を読み解く。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">全体の支持率（2026年6月・集計平均）</div>
+          <div class="kp-value">38.6%（不支持 58.0%）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">共和党支持者と民主党支持者の支持率の差</div>
+          <div class="kp-value">80ポイント（87% 対 7%）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">無党派（独立）層の支持率</div>
+          <div class="kp-value">34%（2018年の水準を下回る）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">第2期で最も低かった月の支持率</div>
+          <div class="kp-value">38.1%（2026年5月）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1 -->
+          <section class="section" id="sec-what">
+            <h2 class="section-title"><span class="sec-num">01</span> 数字と定義 — 「支持率」をどう読むか</h2>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              支持率（Approval Rating）とは、「大統領の仕事ぶりを支持するか」という質問への回答比率だ。
+              個別の調査は誤差を含むため、複数の世論調査をならした「集計平均」で趨勢を読むのが一般的になっている。
+              2026年6月時点で、トランプ大統領の支持率は約38.6%、不支持は58.0%。差し引きの「ネット支持率」は−19.4ポイントで、
+              第1期・第2期を通じて最も低い水準にある。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              だが、この「全体の38.6%」という数字ひとつでは、いまのアメリカ世論を理解できない。
+              支持率を党派別に割ると、共和党支持者の87%が支持する一方、民主党支持者の支持はわずか7%。
+              その差は80ポイントに達する。これは歴代大統領の中でも史上最大級の「党派ギャップ」で、
+              同じ経済指標、同じ外交ニュースを見ても、所属政党によって評価が真逆になることを意味する。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              そして勝敗を分けるのは、どちらにも固定されていない無党派（独立）層だ。
+              彼らのトランプ支持率は34%まで落ち込み、民主党が下院で41議席を奪い返した2018年中間選挙の前（当時36%）すら下回っている。
+              「2つのアメリカ」のあいだで揺れるこの層が、半年後の中間選挙の行方を左右する。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:0.75rem;font-weight:700;">用語解説</div>
+            <div class="glossary-grid">
+              <div class="glossary-card">
+                <div class="glossary-term">支持率（Approval Rating）</div>
+                <div class="glossary-def">
+                  「大統領の仕事ぶりを支持しますか」という問いに「支持する」と答えた人の割合。
+                  政権の勢いを測る最も基本的な指標で、政策の通りやすさや選挙の見通しに直結する。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">ネット支持率（Net Approval）</div>
+                <div class="glossary-def">
+                  支持率から不支持率を引いた数値。プラスなら支持が上回り、マイナスなら不支持が上回る。
+                  トランプ大統領は現在−19.4で、「不支持が支持を大きく上回る」状態が続く。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">党派ギャップ（Partisan Gap）</div>
+                <div class="glossary-def">
+                  共和党支持者と民主党支持者のあいだの支持率の差。大きいほど世論が政党で二分されていることを示す。
+                  トランプ大統領では80ポイント超で、近代の大統領で最大級。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">無党派・独立層（Independents）</div>
+                <div class="glossary-def">
+                  特定の政党に属さない有権者。選挙のたびに支持先を変えうるため、勝敗の鍵を握る。
+                  メディアや政党はこの層の動向を最も注視する。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">集計平均（Polling Average）</div>
+                <div class="glossary-def">
+                  複数の世論調査を統合して算出した平均値。個別調査の偏りや誤差を平準化できるため、
+                  趨勢を読むうえで単発の調査より信頼性が高いとされる。
+                </div>
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.5rem;margin-bottom:1rem;">
+              この党派ギャップは突然生まれたものではない。アイゼンハワーやケネディの時代、共和・民主の支持率の差は27〜40ポイント程度だった。
+              それがオバマ、トランプ、バイデンと時代が下るにつれて広がり、80ポイントを超えるまでになった。
+              実際、「最も分極化した10年」はすべて過去16年に集中している——これは特定の指導者の問題ではなく、アメリカ社会そのものの構造変化だ。
+            </p>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/trump-approval-hero-divided-crowd.jpg"
+                 alt="上空から見おろした政治集会の群衆、中央の境界線で二分された2つのグループ" loading="lazy">
+            <figcaption>同じ国の市民でありながら、まるで別の世界を見ているかのように分かれた2つのアメリカ。共和党支持者87%・民主党支持者7%という80ポイントの党派ギャップは、こうした「見え方の断層」から生まれている。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 2 -->
+          <section class="section" id="sec-causes">
+            <h2 class="section-title"><span class="sec-num">02</span> なぜ支持率は下がったのか — 要因と争点</h2>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.3rem;">
+              就任時に47%あった支持率は、1年あまりで38%台まで低下した。最大の要因は経済、とりわけ物価高だ。
+              支持率の下落カーブは、消費者が物価高を実感し始めた時期とほぼ重なっている。
+            </p>
+            <div class="driver-grid">
+              <div class="driver-box" style="--dc-color:var(--accent);">
+                <div class="driver-name">物価高・インフレ（最大の弱点）</div>
+                <div class="driver-text">
+                  PCE（個人消費支出）物価指数は4.5%まで上昇。食品・住居費の高止まりが家計を圧迫し、
+                  「生活が楽にならない」という不満が支持率を直接押し下げた。経済の評価はネット−18と、全争点で最悪。
+                </div>
+              </div>
+              <div class="driver-box" style="--dc-color:var(--accent);">
+                <div class="driver-name">関税政策の副作用</div>
+                <div class="driver-text">
+                  看板政策である関税の引き上げが、2026年第1四半期から輸入品の価格に転嫁され始めた。
+                  公約だった「物価を下げる」とは逆方向の体感が広がり、支持者の一部にも失望が生じている。
+                </div>
+              </div>
+              <div class="driver-box" style="--dc-color:var(--accent);">
+                <div class="driver-name">スタグフレーション懸念</div>
+                <div class="driver-text">
+                  第1四半期のGDPは+2.0%と成長を保つ一方、インフレは4.5%。
+                  「景気は伸び悩むのに物価は上がる」というスタグフレーションへの不安が、経済の先行き評価を冷やしている。
+                </div>
+              </div>
+              <div class="driver-box" style="--dc-color:var(--accent);">
+                <div class="driver-name">外交・国際的地位への不信</div>
+                <div class="driver-text">
+                  外交の支持は36%。「彼の判断はアメリカの世界での地位を損なった」と答えた人は63%に達し、
+                  1月から6ポイント上昇した。同盟国との摩擦が、無党派・中道層の評価を下げている。
+                </div>
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.6rem;margin-bottom:0.4rem;">
+              もっとも、トランプ大統領の支持率は「一枚岩の不人気」ではない。争点ごとに評価は大きく割れている。
+              移民政策は今も最も強い分野で、経済が足を引っ張る構図が鮮明だ。
+            </p>
+            <div class="issue-grid">
+              <div class="issue-row">
+                <span class="issue-name">移民政策</span>
+                <span class="issue-track"><span class="issue-fill" data-w="45%"></span></span>
+                <span class="issue-val">45%</span>
+              </div>
+              <div class="issue-row">
+                <span class="issue-name">外交</span>
+                <span class="issue-track"><span class="issue-fill" data-w="36%"></span></span>
+                <span class="issue-val">36%</span>
+              </div>
+              <div class="issue-row">
+                <span class="issue-name">経済</span>
+                <span class="issue-track"><span class="issue-fill" data-w="33%"></span></span>
+                <span class="issue-val">33%</span>
+              </div>
+            </div>
+            <p style="color:var(--text-dim);font-size:0.76rem;line-height:1.7;margin-top:0.3rem;">
+              争点別の支持率（2026年・各種世論調査の集計）。移民は年内で最高水準まで戻した一方、経済はネット−18と過去最悪。
+            </p>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/trump-approval-voters-waiting.jpg"
+                 alt="投票所に並ぶ多世代・多人種の有権者の列、自然光の差し込む室内" loading="lazy">
+            <figcaption>同じ「アメリカ人」でありながら、世代・人種・所属政党によって大統領の評価は大きく分かれる。支持率の全体平均は、その内部にある深い断層を覆い隠している。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 3 -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">03</span> タイムライン — 支持率の軌跡</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2025年1月</div>
+                <div class="timeline-content">
+                  <h4>就任 — 47%の「ハネムーン」</h4>
+                  <p>第2期就任直後、支持率は47%まで上昇。新政権への期待が高まる「ハネムーン期」で、
+                  この時点では支持が不支持をわずかに上回っていた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">経済再建への期待</span>
+                    <span class="reaction-chip">支持・不支持はほぼ拮抗</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年（中盤〜後半）</div>
+                <div class="timeline-content">
+                  <h4>じわじわと低下 — 物価高への不満が蓄積</h4>
+                  <p>就任後の高揚が薄れ、物価高への不満が徐々に表面化。支持率は40%台前半へと緩やかに下降していった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">家計の負担感が拡大</span>
+                    <span class="reaction-chip">無党派層が離れ始める</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年2月28日</div>
+                <div class="timeline-content">
+                  <h4>米・イスラエルがイランを攻撃 — ラリー効果は起きなかった</h4>
+                  <p>アメリカとイスラエルがイランの核施設・弾道ミサイル拠点・政治指導部を同時攻撃（<a href="../../middle-east/2026-06-02-iran-nuclear/index.html" style="color:var(--accent);">詳細はイラン核交渉の記事を参照</a>）。
+                  ハーメネイー最高指導者が死亡し、4月8日に条件付き停戦が成立するまで1,900人以上が死亡した。
+                  過去には軍事行動が「旗のもとへの結集（ラリー効果）」として支持率を押し上げることがあったが、
+                  今回は起きなかった。Morning Consultの分析では支持率に変化なし。
+                  クィニピアック大学の3月調査では有権者の53%が軍事行動に反対し、無党派の6割・民主党の8割が不支持——
+                  分極化した世論がラリー効果を打ち消した形だ。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">中東で大規模軍事行動</span>
+                    <span class="reaction-chip">ラリー効果なし（Morning Consult）</span>
+                    <span class="reaction-chip">無党派・民主党は反対多数</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年3月</div>
+                <div class="timeline-content">
+                  <h4>41%へ下落 — 経済評価が新低水準</h4>
+                  <p>経済の支持率が新たな低水準を記録。CNNなどの調査で「経済の扱い」への評価が過去最低となり、全体支持率も41%まで下がった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">経済が最大の弱点に</span>
+                    <span class="reaction-chip">インフレ指標が悪化</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年4月</div>
+                <div class="timeline-content">
+                  <h4>43%へ一時回復 — つかの間の反発</h4>
+                  <p>一部の政策発表や外交日程を受けて支持率は43%へ小幅に持ち直した。しかしこの回復は長続きしなかった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">支持基盤の引き締め</span>
+                    <span class="reaction-chip">中道層の評価は戻らず</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年5月</div>
+                <div class="timeline-content">
+                  <h4>38.1%へ急落 — 第2期で最低</h4>
+                  <p>関税の価格転嫁が加速し、PCEインフレが4.5%に到達。スタグフレーション懸念が広がり、支持率は38.1%と第2期で最も低い水準まで落ち込んだ。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">関税が物価に波及</span>
+                    <span class="reaction-chip">スタグフレーション不安</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot" style="background:var(--accent3)"></div>
+                <div class="timeline-date">2026年6月（現在）</div>
+                <div class="timeline-content">
+                  <h4>38.6% — 「2つのアメリカ」と中間選挙</h4>
+                  <p>支持率は38.6%で低位安定。共和87%・民主7%という80ポイントの分断が固定化し、無党派は34%。
+                  半年後の中間選挙に向け、この数字がどこへ動くかに注目が集まる。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">党派ギャップが史上最大級に</span>
+                    <span class="reaction-chip">無党派34%は2018年以下</span>
+                    <span class="reaction-chip">中間選挙の前哨戦が始まる</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <div style="margin:2rem 0 2.5rem;">
+            <div style="font-size:0.78rem;font-weight:700;color:var(--text);margin-bottom:0.6rem;">支持率と不支持率の推移（2025年1月〜2026年6月・集計平均）</div>
+            <div style="position:relative;height:260px;">
+              <canvas id="approvalTrendChart"></canvas>
+            </div>
+            <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.6rem;line-height:1.65;">
+              破線はイラン攻撃（2026年2月28日）。2025年の月次データは各社調査の中間値による推計を含む。出典：Gallup / USPollingData / FiftyPlusOne
+            </p>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/trump-approval-polling-station.jpg"
+                 alt="地域の投票所の内部、さまざまな背景を持つ有権者が記入ブースで投票する風景" loading="lazy">
+            <figcaption>民主主義の現場——地域の投票所では、党派・世代・人種を超えたすべての有権者が同じ一票を持つ。支持率の数字が最終的に選挙結果に変換されるのは、こうした一つひとつの場所でのことだ。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 4 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">04</span> 各層の視点 — 誰がどう見ているか</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">共和党支持者（MAGAコア）</span>
+                      <span class="stance-label stance-supportive">揺るがぬ支持・87%</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>支持の論理</strong>
+                      公約を実行する「強い大統領」だと評価する。移民規制や「アメリカ第一」の姿勢は約束どおりで、
+                      物価高や対立は前政権やグローバル経済、敵対的なメディアのせいだと受け止める層が多い。
+                    </div>
+                    <div class="key-claim">
+                      <strong>結束の固さ</strong>
+                      支持率87%は、近代の大統領が自党内で得る数字としては極めて高い。
+                      多少の経済悪化や論争では揺らがず、「身内の支持」がトランプ政治の岩盤になっている。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">大統領への評価</div>
+                      <div class="tone-meter-ends"><span>不支持</span><span>支持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="right" data-width="44%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>白人・高年齢層・地方・宗教的保守層で特に支持が厚い。
+                      ただし同じ共和党支持者でも、35歳未満やヒスパニックでは支持がやや弱まる「内部の温度差」も生じている。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">民主党支持者</span>
+                      <span class="stance-label stance-hostile">ほぼ全面拒否・7%</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>不支持の論理</strong>
+                      支持はわずか7%。政策の中身というより、トランプ大統領の統治手法そのもの——制度・司法・報道への姿勢——を
+                      民主主義への脅威と捉える層が中心だ。経済・外交を含め、ほぼ全争点で否定的に評価する。
+                    </div>
+                    <div class="key-claim">
+                      <strong>「同じ国に見えない」</strong>
+                      共和党支持者との評価差は80ポイント。同じ統計や同じニュースに接しても、
+                      民主党支持者にとっては「危機」、共和党支持者にとっては「成果」と、解釈が正反対になる。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">大統領への評価</div>
+                      <div class="tone-meter-ends"><span>不支持</span><span>支持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="left" data-width="46%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>都市部・高学歴・若年層・マイノリティで不支持が際立つ。
+                      党派の「負の結束」も強く、相手陣営の大統領をほぼ一律に拒否する傾向は近年の分極化の典型だ。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">無党派・独立層</span>
+                      <span class="stance-label stance-cautious">経済で離反・34%</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>判断の軸</strong>
+                      イデオロギーより「暮らし向き」で評価する層。物価高と関税の体感が支持率を直接押し下げ、
+                      34%まで低下した。これは2018年中間選挙の前（36%）を下回る、政権にとって危険な水準だ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>中間選挙の鍵</strong>
+                      どちらの党にも固定されないこの層こそ、半年後の中間選挙の勝敗を決める。
+                      無党派の低支持は、過去のパターンでは与党の議席減を示唆する先行指標とされる。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">大統領への評価</div>
+                      <div class="tone-meter-ends"><span>不支持</span><span>支持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="left" data-width="22%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>無党派層は政策の細部よりも「生活が良くなったか」を基準にする。
+                      物価が下がらない限り、彼らの評価が大きく回復する可能性は低いと見られている。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">若年層（18〜29歳）</span>
+                      <span class="stance-label stance-hostile">最も厳しい世代</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>強い不支持</strong>
+                      18〜22歳の68%、23〜29歳の72%が不支持。若い世代ほどトランプ大統領への評価は厳しく、
+                      物価・住居費・将来不安が背景にある。共和党支持の若者でさえ支持率は伸び悩む。
+                    </div>
+                    <div class="key-claim">
+                      <strong>性別・年齢の「ねじれ」</strong>
+                      ただし一様ではない。34〜44歳の女性は28ポイントも離反した一方、
+                      30〜44歳の男性はむしろ13ポイント支持を強め、全年齢・性別で唯一プラスに振れた。
+                      「若者の離反」と「働き盛り男性の接近」が同時に起きている。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">大統領への評価</div>
+                      <div class="tone-meter-ends"><span>不支持</span><span>支持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="left" data-width="40%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>若年層は投票率が相対的に低く、不支持が高くても選挙結果に直結しにくい。
+                      しかし長期的には、この世代の政治的態度が今後の選挙地図を塗り替えていく。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ヒスパニック有権者</span>
+                      <span class="stance-label stance-neutral">揺れる新興票</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>大きな振れ幅</strong>
+                      最も評価が安定しない層だ。2026年2月の一部調査では支持56%だったが、
+                      その後は不支持が多数の調査も現れた。経済重視か、移民政策への反発か——争点ごとに評価が割れる。
+                    </div>
+                    <div class="key-claim">
+                      <strong>共和党の「新しい票田」</strong>
+                      近年トランプ陣営はヒスパニック票を取り込んできたが、トランプ支持者の中でもヒスパニックの継続支持は66%にとどまり、
+                      白人(81%)・高年齢層(87%)より弱い。獲得した票がどこまで定着するかは不透明だ。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">大統領への評価</div>
+                      <div class="tone-meter-ends"><span>不支持</span><span>支持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="left" data-width="10%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>ヒスパニックは一枚岩ではなく、出身国・世代・地域で政治傾向が異なる。
+                      経済政策への期待と移民政策への警戒が交錯し、両党にとって最大の「変動票」になっている。
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>層</th>
+                        <th>支持率の目安</th>
+                        <th>評価の軸・特徴</th>
+                        <th>選挙への影響</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>共和党支持者</td>
+                        <td>87%（強い支持）</td>
+                        <td>公約実行を評価。岩盤の結束</td>
+                        <td>動員力は高いが上積みの余地は小</td>
+                      </tr>
+                      <tr>
+                        <td>民主党支持者</td>
+                        <td>7%（ほぼ拒否）</td>
+                        <td>統治手法を民主主義の脅威と見る</td>
+                        <td>反トランプで結束し投票率が上昇傾向</td>
+                      </tr>
+                      <tr>
+                        <td>無党派・独立層</td>
+                        <td>34%（離反）</td>
+                        <td>暮らし向きで判断。物価高に敏感</td>
+                        <td>中間選挙の勝敗を握る最重要層</td>
+                      </tr>
+                      <tr>
+                        <td>若年層(18〜29)</td>
+                        <td>不支持7割</td>
+                        <td>物価・将来不安で厳しい評価</td>
+                        <td>投票率は低いが長期的影響が大</td>
+                      </tr>
+                      <tr>
+                        <td>ヒスパニック</td>
+                        <td>揺れ動く</td>
+                        <td>経済期待と移民警戒が交錯</td>
+                        <td>両党にとって最大の変動票</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div><!-- /tab-table -->
+            </div><!-- /tabs-wrap -->
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/trump-approval-ballot-closeup.jpg"
+                 alt="投票用紙に記入する手のクローズアップ、鉛筆の先と用紙の質感" loading="lazy">
+            <figcaption>分断された世論は、最終的に一枚一枚の投票用紙に集約される。支持率という「世論の温度計」が中間選挙でどんな結果に翻訳されるかが、次の焦点だ。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 5 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">05</span> データ・統計</h2>
+            <div class="data-grid">
+
+              <div class="data-card">
+                <h4>党派別の支持率（2026年6月）</h4>
+                <div style="position:relative;height:220px;margin-top:1rem;">
+                  <canvas id="partyChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  共和党87%・無党派34%・民主党7%。その差80ポイントは近代の大統領で史上最大級の「党派ギャップ」。全体平均の38.6%は、この巨大な断層を平均でならした数字にすぎない。出典：Gallup／集計各社（2026）
+                </p>
+              </div>
+
+              <div class="data-card">
+                <h4>トランプ支持者の「継続支持率」（属性別）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="baseChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  かつてトランプに投票した層のうち、今も支持を続ける割合。50歳以上(87%)・白人(81%)に対し、ヒスパニック(66%)・35歳未満(57%)では支持の定着が弱い。獲得した若年・ヒスパニック票の「ほころび」が見える。出典：各種世論調査（2026）
+                </p>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 6 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span> 情報源</h2>
+            <div class="sources-grid">
+              <a class="source-item" href="https://news.gallup.com/poll/topic/presidential_job_approval.aspx" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Gallup</div>
+                  <div class="source-desc">大統領職務支持率・党派別分極化の長期追跡データ</div>
+                  <div class="source-country">【世論調査機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.pewresearch.org/politics/2026/05/01/trump-loses-ground-on-several-personal-traits-as-approval-rating-slips/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Pew Research Center</div>
+                  <div class="source-desc">2026年5月 — 支持率の低下と資質評価の変化を分析</div>
+                  <div class="source-country">【調査研究機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://apnorc.org/projects/trump-approval-on-the-economy-remains-low/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">AP-NORC Center</div>
+                  <div class="source-desc">経済・移民など争点別の支持率調査</div>
+                  <div class="source-country">【世論調査機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://today.yougov.com/topics/politics" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">YouGov / The Economist</div>
+                  <div class="source-desc">男性・女性・ヒスパニック別の支持率の動きを継続調査</div>
+                  <div class="source-country">【世論調査機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://youthpoll.yale.edu/spring-2026-results" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Yale Youth Poll</div>
+                  <div class="source-desc">2026年春 — 若年有権者(18〜29歳)の政治態度調査</div>
+                  <div class="source-country">【大学研究調査】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.cnn.com/2026/04/01/politics/cnn-poll-trump-approval-rating-economy" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">CNN Poll</div>
+                  <div class="source-desc">2026年4月 — 経済の扱いへの評価が新低水準を記録</div>
+                  <div class="source-country">【報道機関世論調査】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://uspollingdata.com/polls/trump-approval/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">USPollingData / FiftyPlusOne</div>
+                  <div class="source-desc">複数調査を統合した支持率の集計平均トラッカー</div>
+                  <div class="source-country">【集計サイト】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://en.wikipedia.org/wiki/Opinion_polling_on_the_second_Trump_presidency" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Wikipedia</div>
+                  <div class="source-desc">Opinion polling on the second Trump presidency — 各社調査の一覧</div>
+                  <div class="source-country">【調査まとめ】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://morningconsult.com/articles/trump-iran-strikes-poll" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Morning Consult</div>
+                  <div class="source-desc">Iran Strike Poll: No Rally Effect and Deep Partisan Divide — イラン攻撃後の支持率分析</div>
+                  <div class="source-country">【世論調査機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://poll.qu.edu/poll-release?releaseid=3952" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Quinnipiac University Poll（2026年3月9日）</div>
+                  <div class="source-desc">イランへの軍事行動への賛否・党派別内訳。有権者の53%が反対</div>
+                  <div class="source-country">【大学世論調査】</div>
+                </div>
+              </a>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-what"><span class="toc-icon">01</span>数字と定義</a></li>
+            <li><a href="#sec-causes"><span class="toc-icon">02</span>下落の要因と争点</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">03</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">04</span>各層の視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">05</span>データ・統計</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer"><p>WorldView — 多視点で読む世界情勢</p></footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 支持率・不支持率の推移グラフ（折れ線）
+  (function() {
+    var labels = ['25/1', '25/4', '25/7', '25/10', '26/1', '26/2', '26/3', '26/4', '26/5', '26/6'];
+    // イラン攻撃は index=5（26/2）
+    var iranIdx = 5;
+    var approval    = [47, 45, 43, 42, 41, 41, 41, 43, 38, 39];
+    var disapproval = [47, 50, 52, 54, 55, 55, 55, 53, 57, 58];
+
+    // イラン攻撃の点だけ大きく目立たせる
+    var approvalRadius    = labels.map((_,i) => i === iranIdx ? 6 : 3);
+    var disapprovalRadius = labels.map((_,i) => i === iranIdx ? 6 : 3);
+
+    // 縦線（イラン攻撃）をafterDrawで描画するカスタムプラグイン
+    var iranLinePlugin = {
+      id: 'iranLine',
+      afterDraw: function(chart) {
+        var ctx = chart.ctx;
+        var xScale = chart.scales.x;
+        var yScale = chart.scales.y;
+        var x = xScale.getPixelForValue(iranIdx);
+        var yTop    = yScale.getPixelForValue(yScale.max);
+        var yBottom = yScale.getPixelForValue(yScale.min);
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(x, yTop);
+        ctx.lineTo(x, yBottom);
+        ctx.strokeStyle = 'rgba(196,168,130,0.55)';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([4, 3]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = 'rgba(196,168,130,0.80)';
+        ctx.font = '9px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('イラン攻撃', x, yTop - 5);
+        ctx.restore();
+      }
+    };
+
+    var trendCtx = document.getElementById('approvalTrendChart');
+    if (!trendCtx) return;
+    new Chart(trendCtx.getContext('2d'), {
+      type: 'line',
+      plugins: [iranLinePlugin],
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: '支持',
+            data: approval,
+            borderColor: 'rgba(154,180,196,0.90)',
+            backgroundColor: 'rgba(154,180,196,0.12)',
+            borderWidth: 2,
+            fill: false,
+            tension: 0.3,
+            pointRadius: approvalRadius,
+            pointBackgroundColor: labels.map(function(_,i){ return i===iranIdx?'rgba(154,180,196,1)':'rgba(154,180,196,0.80)'; }),
+            pointBorderColor: 'transparent',
+          },
+          {
+            label: '不支持',
+            data: disapproval,
+            borderColor: 'rgba(184,120,104,0.90)',
+            backgroundColor: 'rgba(184,120,104,0.10)',
+            borderWidth: 2,
+            fill: false,
+            tension: 0.3,
+            pointRadius: disapprovalRadius,
+            pointBackgroundColor: labels.map(function(_,i){ return i===iranIdx?'rgba(184,120,104,1)':'rgba(184,120,104,0.80)'; }),
+            pointBorderColor: 'transparent',
+          }
+        ]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            align: 'end',
+            labels: {
+              color: 'rgba(200,210,220,0.85)',
+              font: { size: 11 },
+              padding: 16,
+              boxWidth: 28,
+              boxHeight: 3,
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) { return ' ' + ctx.dataset.label + ': ' + ctx.parsed.y + '%'; }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(154,180,196,0.07)' },
+            ticks: { color: 'rgba(200,210,220,0.55)', font: { size: 10 } }
+          },
+          y: {
+            min: 30,
+            max: 65,
+            grid: { color: 'rgba(154,180,196,0.07)' },
+            ticks: {
+              color: 'rgba(200,210,220,0.55)',
+              font: { size: 10 },
+              callback: function(v) { return v + '%'; }
+            }
+          }
+        }
+      }
+    });
+  })();
+
+  // 争点別ミニバーのアニメーション（読み込み済みでも確実に発火させる）
+  function animateIssueBars() {
+    setTimeout(function() {
+      document.querySelectorAll('.issue-fill').forEach(function(el) {
+        el.style.width = el.getAttribute('data-w');
+      });
+    }, 60);
+  }
+  if (document.readyState === 'complete') {
+    animateIssueBars();
+  } else {
+    window.addEventListener('load', animateIssueBars);
+  }
+
+  // 党派別の支持率（横棒グラフ）
+  const partyCtx = document.getElementById('partyChart').getContext('2d');
+  new Chart(partyCtx, {
+    type: 'bar',
+    data: {
+      labels: ['共和党支持者', '無党派（独立）', '民主党支持者'],
+      datasets: [{
+        data: [87, 34, 7],
+        backgroundColor: [
+          'rgba(184,120,104,0.85)',
+          'rgba(196,168,130,0.75)',
+          'rgba(122,150,180,0.85)',
+        ],
+        borderColor: 'transparent',
+        borderWidth: 0,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(context) { return ' 支持 ' + context.parsed.x + '%'; }
+          }
+        }
+      },
+      scales: {
+        x: {
+          max: 100,
+          grid: { color: 'rgba(154,180,196,0.08)' },
+          ticks: {
+            color: 'rgba(200,210,220,0.55)',
+            font: { size: 10 },
+            callback: function(value) { return value + '%'; }
+          }
+        },
+        y: {
+          grid: { display: false },
+          ticks: { color: 'rgba(200,210,220,0.75)', font: { size: 11 } }
+        }
+      }
+    }
+  });
+
+  // トランプ支持者の継続支持率（属性別・横棒グラフ）
+  const baseCtx = document.getElementById('baseChart').getContext('2d');
+  new Chart(baseCtx, {
+    type: 'bar',
+    data: {
+      labels: ['50歳以上', '白人', 'ヒスパニック', '35歳未満'],
+      datasets: [{
+        data: [87, 81, 66, 57],
+        backgroundColor: [
+          'rgba(184,120,104,0.85)',
+          'rgba(184,120,104,0.72)',
+          'rgba(184,120,104,0.58)',
+          'rgba(184,120,104,0.45)',
+        ],
+        borderColor: 'transparent',
+        borderWidth: 0,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(context) { return ' 継続支持 ' + context.parsed.x + '%'; }
+          }
+        }
+      },
+      scales: {
+        x: {
+          max: 100,
+          grid: { color: 'rgba(154,180,196,0.08)' },
+          ticks: {
+            color: 'rgba(200,210,220,0.55)',
+            font: { size: 10 },
+            callback: function(value) { return value + '%'; }
+          }
+        },
+        y: {
+          grid: { display: false },
+          ticks: { color: 'rgba(200,210,220,0.75)', font: { size: 11 } }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>
