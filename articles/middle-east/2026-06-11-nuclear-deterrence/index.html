@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>核を手放した国の末路 — 「核抑止」という生存の論理 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* セクション番号：雑誌風の大きな薄い数字 */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* 用語解説グリッド */
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .glossary-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent);
+    }
+    .glossary-term { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .glossary-def  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* 要因カード */
+    .driver-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1rem; }
+    .driver-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.2rem 1.3rem;
+      border-top: 2px solid var(--dc-color, var(--accent));
+    }
+    .driver-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .driver-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* 運命の対比テーブル */
+    .fate-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;
+    }
+    .fate-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.2rem 1.3rem;
+    }
+    .fate-box-title {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 0.9rem;
+    }
+    .fate-box.fate-bad .fate-box-title { color: var(--accent3, #c07870); }
+    .fate-box.fate-ok  .fate-box-title { color: #7faa92; }
+    .fate-row {
+      display: flex; gap: 0.5rem; align-items: flex-start;
+      font-size: 0.82rem; color: var(--text-muted); line-height: 1.6;
+      margin-bottom: 0.65rem;
+    }
+    .fate-row:last-child { margin-bottom: 0; }
+    .fate-mark { font-size: 0.78rem; font-weight: 700; flex-shrink: 0; margin-top: 0.05rem; }
+    .fate-box.fate-bad  .fate-mark { color: var(--accent3, #c07870); }
+    .fate-box.fate-ok   .fate-mark { color: #7faa92; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); }
+    .article-figure figcaption { font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* ヒーロー背景画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/nuclear-deterrence-hero-empty-silo.jpg');
+      background-size: cover; background-position: center 40%;
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.78) 0%, rgba(14,17,23,0.72) 40%, rgba(14,17,23,0.92) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* tone-meter 統一軸・中心起点バー */
+    .tone-meter { margin-top: 1rem; }
+    .tone-axis-title {
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.09em;
+      color: var(--text-dim); margin-bottom: 0.3rem;
+    }
+    .tone-meter-ends {
+      display: flex; justify-content: space-between;
+      font-size: 0.69rem; color: var(--text-dim);
+      margin-bottom: 0.3rem;
+    }
+    #sec-perspectives .tone-track {
+      position: relative; overflow: visible;
+    }
+    #sec-perspectives .tone-track::before {
+      content: ''; position: absolute;
+      left: calc(50% - 1px); top: -3px;
+      width: 2px; height: 11px;
+      background: var(--text-dim); border-radius: 1px; z-index: 2;
+    }
+    #sec-perspectives .tone-fill {
+      position: absolute; top: 0; height: 100%; width: 0;
+      border-radius: 3px;
+      transition: width 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    #sec-perspectives .tone-fill[data-side="right"] {
+      left: 50%; background: var(--accent);
+    }
+    #sec-perspectives .tone-fill[data-side="left"] {
+      right: 50%; left: auto; background: var(--accent);
+    }
+
+    /* Section 05 */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* ソースカードをリンク化 */
+    a.source-item {
+      text-decoration: none; color: inherit; cursor: pointer;
+      display: flex; gap: 0.75rem; align-items: flex-start;
+    }
+    a.source-item:hover { border-color: var(--accent); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent); }
+    a.source-item .source-name { transition: color 0.2s; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .driver-grid { grid-template-columns: 1fr; }
+      .glossary-grid { grid-template-columns: 1fr 1fr; }
+      .fate-grid { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .glossary-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/middle-east/index.html" style="color:var(--text);">中東情勢</a>
+    <a href="../../../categories/security/index.html">安全保障</a>
+    <a href="../../../categories/economy/index.html">世界経済</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-blue">中東情勢</span>
+        <span class="tag tag-blue">核抑止</span>
+        <span class="date">2026年6月11日</span>
+      </div>
+      <h1 class="article-title">核を手放した国の末路<br>— 「核抑止」という生存の論理</h1>
+      <p class="article-summary">
+        リビアは核を捨てて8年後にカダフィが殺された。ウクライナは世界第3位の核を放棄し、30年後にロシアに侵攻された。
+        イラクは核を持っていなかったにもかかわらず「持っていると疑われた」だけで滅んだ。
+        一方、北朝鮮は核を持ち続け、体制は今も存続している。
+        2026年2月、米・イスラエルによるイランへの攻撃は、この「核抑止のパラドックス」を世界に再確認させた——
+        核を手放した国の末路と、NPT体制が直面する最大の危機を5つの視点から読み解く。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">核保有国（2026年現在）</div>
+          <div class="kp-value">9カ国</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">北朝鮮の推定核弾頭数</div>
+          <div class="kp-value">約50発</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">ウクライナが1994年に放棄した核弾頭数</div>
+          <div class="kp-value">約1,900発（当時世界第3位）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">NPT（核不拡散条約）加盟国</div>
+          <div class="kp-value">191カ国（非加盟：インド・パキスタン・イスラエル・北朝鮮）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1 -->
+          <section class="section" id="sec-what">
+            <h2 class="section-title"><span class="sec-num">01</span> 「核抑止とは何か」— 概念と基本構造</h2>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              「核抑止（Nuclear Deterrence）」とは、「核で攻撃すれば自国も核で報復される」という恐怖によって、
+              相手国の先制攻撃を未然に防ぐ論理だ。理論上は「撃てば自分も死ぬ」という相互確証破壊（MAD）の均衡が
+              平和を維持する。冷戦期、アメリカとソ連がそれぞれ数万発の核を保有しながら直接衝突しなかったのは、
+              この論理が機能した結果とも言われる。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              だが核抑止は「核保有国どうし」の間でしか成立しない。非核国は核保有国から攻撃されても報復の手段を持たない。
+              この非対称性が、独裁者や権威主義体制に「核を持てば不可侵になれる」という動機を与え続けてきた。
+              現在、核保有9カ国（アメリカ・ロシア・中国・フランス・イギリス・パキスタン・インド・イスラエル・北朝鮮）のうち、
+              NPT（核不拡散条約）の枠外にある4カ国（インド・パキスタン・イスラエル・北朝鮮）はいずれも条約に縛られずに核を保有している。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              NPTは1970年に発効した国際条約で、「核保有5カ国（アメリカ・ロシア・中国・フランス・イギリス）は核軍縮を進める義務を負い、
+              非核国は核開発をしない代わりに平和利用の権利を持つ」という取引を骨格にしている。
+              191カ国が加盟する最大規模の軍備管理条約だが、核保有国が「核軍縮の義務」を果たしてこなかった二重基準は、
+              長年にわたって新興国の不信を積み重ねてきた。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:0.75rem;font-weight:700;">用語解説</div>
+            <div class="glossary-grid">
+              <div class="glossary-card">
+                <div class="glossary-term">核抑止（Nuclear Deterrence）</div>
+                <div class="glossary-def">
+                  核による報復能力を相手に示すことで、先制攻撃を思いとどまらせる戦略。
+                  「攻撃すれば自国も壊滅する」という恐怖が抑止力の源泉となる。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">相互確証破壊（MAD）</div>
+                <div class="glossary-def">
+                  Mutually Assured Destruction の略。どちらが先に攻撃しても双方が全滅する状態。
+                  逆説的に、この「共倒れ」の恐怖が核保有国間の全面戦争を防ぐとされる。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">NPT（核不拡散条約）</div>
+                <div class="glossary-def">
+                  1970年発効。核保有5カ国の軍縮義務と、非核国の核開発禁止・平和利用権を定めた条約。
+                  191カ国が加盟する最大規模の軍備管理条約。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">ブダペスト覚書</div>
+                <div class="glossary-def">
+                  1994年、ウクライナが核を放棄する代わりに米英露が「主権と領土保全を尊重する」と約束した文書。
+                  法的拘束力を持たず、ロシアの侵攻で事実上の「紙切れ」となった。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">核の傘（Extended Deterrence）</div>
+                <div class="glossary-def">
+                  核保有国が同盟国に「核による報復」を約束することで、同盟国も核攻撃から守られるとする仕組み。
+                  日本・韓国・北大西洋条約機構加盟国がアメリカの核の傘の下にある。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 2 -->
+          <section class="section" id="sec-causes">
+            <h2 class="section-title"><span class="sec-num">02</span> なぜ独裁者は核を欲しがるか — 放棄した国の末路</h2>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.3rem;">
+              核を手放した国の指導者たちはどうなったか。その答えは残酷なほど一致している。
+              リビアのカダフィは核を捨てて国際社会に復帰した8年後、北大西洋条約機構の空爆の支援を受けた反政府勢力に殺された。
+              ウクライナはブダペスト覚書の「保証」を信じて1,900発の核を放棄し、30年後に全面侵攻を受けた。
+              イラクのフセインは実際には核を持っていなかったにもかかわらず、「曖昧戦略」が裏目に出て2003年に侵攻された。
+              北朝鮮だけが核を持ち続け、今も政権が存続している。
+            </p>
+
+            <div class="driver-grid">
+              <div class="driver-box" style="--dc-color:var(--accent);">
+                <div class="driver-name">「生存保険」の論理</div>
+                <div class="driver-text">
+                  核を持てば、いかに強大な国も「核報復」を恐れて侵攻できない。
+                  北朝鮮はこの論理を完全に体現する：米・韓・日の圧倒的な通常戦力を前にしても、
+                  核があるかぎり体制転換を強制されない。核は究極の生存保険だ。
+                </div>
+              </div>
+              <div class="driver-box" style="--dc-color:var(--accent);">
+                <div class="driver-name">曖昧さの罠（イラクの教訓）</div>
+                <div class="driver-text">
+                  イラクのフセインは核・生物・化学兵器の「疑惑」を外部に見せることで、
+                  イランへの抑止力を維持しようとした。だが査察に協力せず疑惑を晴らさなかった結果、
+                  「持っていないことを証明できなかった」ために侵攻を招いた。
+                  曖昧さ戦略は、持っているふりでも持っていない状態でも致命的だ。
+                </div>
+              </div>
+              <div class="driver-box" style="--dc-color:var(--accent);">
+                <div class="driver-name">紙切れになった保証（ウクライナの教訓）</div>
+                <div class="driver-text">
+                  ブダペスト覚書は法的拘束力を持たない政治的約束だった。
+                  ロシアは2014年にクリミアを、2022年に東部4州を一方的に侵攻した。
+                  「安全の保証」を信じて核を手放したウクライナの経験は、
+                  「強国の約束は有事に機能しない」という教訓として世界中の指導者に広まった。
+                </div>
+              </div>
+              <div class="driver-box" style="--dc-color:var(--accent);">
+                <div class="driver-name">持てば不可侵（北朝鮮の証明）</div>
+                <div class="driver-text">
+                  北朝鮮は2006年に核実験を強行して以来、国際社会の激しい制裁と圧力にさらされながらも政権を維持。
+                  2022年に先制使用を認める核ドクトリンを採択し、推定50発・米本土到達の弾道ミサイルを整備した。
+                  「核があれば体制転換を強制されない」という命題を現実が証明し続けている。
+                </div>
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.8rem;margin-bottom:0.8rem;">
+              この4つの教訓が組み合わさると、権威主義体制のリーダーにとっての結論は自明に見える——
+              「核は絶対に手放してはならない。手放した国の末路が答えだ」。
+            </p>
+
+            <div class="fate-grid">
+              <div class="fate-box fate-bad">
+                <div class="fate-box-title">核を手放した国・持てなかった国</div>
+                <div class="fate-row"><span class="fate-mark">×</span><span><strong>リビア</strong> — 2003年自主放棄 → 2011年カダフィ殺害</span></div>
+                <div class="fate-row"><span class="fate-mark">×</span><span><strong>ウクライナ</strong> — 1994年放棄 → 2022年全面侵攻</span></div>
+                <div class="fate-row"><span class="fate-mark">×</span><span><strong>イラク</strong> — 実際は核なし・曖昧戦略 → 2003年侵攻・フセイン処刑</span></div>
+                <div class="fate-row"><span class="fate-mark">×</span><span><strong>イラン</strong> — 核施設未完成の状態で → 2026年米・イスラエルに攻撃</span></div>
+              </div>
+              <div class="fate-box fate-ok">
+                <div class="fate-box-title">核を保有・維持した国</div>
+                <div class="fate-row"><span class="fate-mark">○</span><span><strong>北朝鮮</strong> — 核保有継続 → 政権存続・体制不可侵</span></div>
+                <div class="fate-row"><span class="fate-mark">○</span><span><strong>パキスタン</strong> — 1998年核実験 → 体制維持・米国も関係正常化</span></div>
+                <div class="fate-row"><span class="fate-mark">○</span><span><strong>インド</strong> — NPT外で核保有 → 国際的地位向上・米印原子力協定</span></div>
+                <div class="fate-row"><span class="fate-mark">○</span><span><strong>イスラエル</strong> — 曖昧保有政策 → 70年以上体制維持</span></div>
+              </div>
+            </div>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/nuclear-deterrence-warheads-row.jpg"
+                 alt="格納庫の棚に整然と並べられた核弾頭・ミサイル弾頭のクローズアップ" loading="lazy">
+            <figcaption>格納庫に並ぶ核弾頭——数ではなく「存在」そのものが抑止力として機能する。核保有国は「報復能力の生存性（second-strike capability）」を保つことで、先制攻撃を思いとどまらせる。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 3 -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">03</span> タイムライン — 核秩序の崩壊史</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">1994年12月</div>
+                <div class="timeline-content">
+                  <h4>ブダペスト覚書 — ウクライナが核を手放す</h4>
+                  <p>ウクライナはソ連崩壊で引き継いだ約1,900発の核弾頭（当時世界第3位）を放棄し、ロシアへ移管。
+                  見返りとして米・英・露がウクライナの「主権と領土保全を尊重する」と約束した。
+                  だが覚書は条約ではなく、法的拘束力を持たない政治的文書だった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">核弾頭1,900発をロシアへ移管</span>
+                    <span class="reaction-chip">米・英・露が「保証」を約束</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2003年3月</div>
+                <div class="timeline-content">
+                  <h4>イラク侵攻 — 「疑惑」だけで国が滅ぶ</h4>
+                  <p>アメリカ主導の連合軍がフセイン政権を打倒。大量破壊兵器は結局発見されなかった。
+                  フセインが査察を拒否し曖昧な態度を取り続けた結果、「持っていないことを証明できなかった」
+                  ために侵攻を招いた。核を「疑われる」だけで国が滅ぶという前例が作られた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">大量破壊兵器は見つからず</span>
+                    <span class="reaction-chip">フセインは2006年処刑</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2003年12月</div>
+                <div class="timeline-content">
+                  <h4>リビアが核開発計画を放棄</h4>
+                  <p>カダフィはイラク侵攻の直後、電撃的に核・化学・生物兵器の開発計画を放棄すると宣言。
+                  国際社会への復帰と制裁解除を求めた「取引」だった。アメリカはこれを「賢明な選択」と絶賛した。
+                  北朝鮮はこの動きを「核放棄の愚かさ」の事例として以後繰り返し言及する。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">核開発を全面廃棄</span>
+                    <span class="reaction-chip">国際社会への復帰を果たす</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2011年10月</div>
+                <div class="timeline-content">
+                  <h4>カダフィ殺害 — 「核を捨てた者の末路」</h4>
+                  <p>北大西洋条約機構の空爆支援を受けた反体制派に追い詰められ、カダフィは処刑された。
+                  核放棄から8年後のことだった。「リビアの選択」は以後、世界の独裁者に
+                  「核を捨てれば同じ目に遭う」という反面教師として機能し続けている。
+                  北朝鮮外務省は「帝国主義の約束の空虚さ」を示す証拠として即座に声明を発表した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">核放棄から8年後に政権崩壊</span>
+                    <span class="reaction-chip">北朝鮮が「反面教師」として引用</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2014年〜2022年</div>
+                <div class="timeline-content">
+                  <h4>ロシアのウクライナ侵攻 — ブダペスト覚書の破綻</h4>
+                  <p>2014年のクリミア併合に続き、2022年2月にロシアがウクライナへの全面侵攻を開始。
+                  「保証した」米・英は武器・資金の支援はしたものの、核の使用を示唆するロシアの威嚇を前に
+                  直接参戦を避け続けた。ブダペスト覚書は事実上の「紙切れ」となり、
+                  「核を持たない非核国は核保有国から保護されない」という現実が改めて証明された。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">覚書で保証した米英は直接参戦せず</span>
+                    <span class="reaction-chip">「核軍縮」論への信頼が失墜</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot" style="background:var(--accent3, #c07870)"></div>
+                <div class="timeline-date">2026年2月</div>
+                <div class="timeline-content">
+                  <h4>米・イスラエルがイランの核施設を攻撃</h4>
+                  <p>アメリカとイスラエルがイランの核施設・弾道ミサイル拠点・政治指導部を同時攻撃し、
+                  ハーメネイー最高指導者が死亡（<a href="../../middle-east/2026-06-02-iran-nuclear/index.html" style="color:var(--accent);">イラン核交渉の詳細はこちら</a>）。
+                  イランは核施設が完成する前に攻撃を受けたことになる。
+                  攻撃後、イラン国内では強硬派を中心に「NPT脱退と核武装の正当化」論が噴出。
+                  「NPTに留まっていて何の利益があったか」という問いが、中東諸国から東アジアまで広がった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">イラン国内に核武装論が噴出</span>
+                    <span class="reaction-chip">サウジ・韓国も核保有議論が加速</span>
+                    <span class="reaction-chip">NPT体制の信頼性が危機に</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/nuclear-deterrence-treaty-signature.jpg"
+                 alt="条約文書にサインするペン先の接写、紙の繊維が見えるほどの近距離" loading="lazy">
+            <figcaption>ブダペスト覚書にサインした各国首脳は「約束を守る」と信じていたのか、それとも守れないことを知りながら押印したのか——「紙の上の保証」と現実の武力の落差が、核拡散を防ぐ国際体制の最大の弱点だ。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 4 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">04</span> 核をめぐる5つの立場</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">核武装を求める側（イラン強硬派・権威主義体制）</span>
+                      <span class="stance-label stance-hostile">核武装も自衛の権利</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>「放棄した国の末路」が答えだ</strong>
+                      イランの核施設が攻撃された2026年以降、「リビア・ウクライナ・イラクを見よ。
+                      核を持てなかった国・捨てた国はすべて滅んだ」という論理が権威主義体制間で共有されている。
+                      核武装は侵略への「唯一の現実的保険」であり、NPTへの服従は自国の安全保障を他国に委ねることだと主張する。
+                    </div>
+                    <div class="key-claim">
+                      <strong>「二重基準」への怒り</strong>
+                      NPTを守った非核国が攻撃される一方、NPT非加盟のインドは国際的地位を向上させた。
+                      「ルールを守る者が損をする」構造が明白である以上、
+                      条約への服従は合理的ではないという議論が勢いを増している。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">核放棄・不拡散 ← → 核武装も自衛</div>
+                      <div class="tone-meter-ends"><span>核放棄</span><span>核武装</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="right" data-width="40%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>イラン・北朝鮮・一部の権威主義体制が共有する論理。
+                      2026年以降、この「証拠」がさらに説得力を持つようになった。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">アメリカ・西側諸国（不拡散推進）</span>
+                      <span class="stance-label stance-supportive">NPT体制の維持が最優先</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>核拡散は世界全体を脅かす</strong>
+                      核保有国が増えるほど、誤算・テロ・地域紛争による核使用のリスクは指数的に高まる。
+                      NPT体制は不完全ながらも、世界が70年以上にわたって核戦争を回避できた基盤だ。
+                      一国一国の「自衛の権利」を認め始めれば、核保有国は数十カ国に膨れ上がる。
+                    </div>
+                    <div class="key-claim">
+                      <strong>イランへの攻撃は「最後の手段」だった</strong>
+                      米・イスラエルは外交・制裁・察・圧力が尽きた末の選択として攻撃を正当化した。
+                      しかしこの論理は「核開発に着手すれば攻撃される可能性がある」という
+                      逆説的な抑止——「核を持とうとすること自体を阻止する」構造を体現してもいる。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">核放棄・不拡散 ← → 核武装も自衛</div>
+                      <div class="tone-meter-ends"><span>核放棄</span><span>核武装</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="left" data-width="42%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>アメリカ・イギリス・フランスなど既存の核保有5カ国が共通して持つ立場。
+                      同盟国への「核の傘」提供が不拡散政策の要でもある。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">NPT・IAEA（国際原子力機関）</span>
+                      <span class="stance-label stance-cautious">体制崩壊の危機</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>条約の二重基準が信頼を損なった</strong>
+                      NPTが義務付ける「核保有5カ国の核軍縮」はほとんど進まなかった。
+                      インド・パキスタン・イスラエルはNPTに加盟せずに核を保有し、
+                      国際社会との関係を正常化した。北朝鮮は脱退して核実験を強行した。
+                      「なぜNPTを守る国だけが損をするのか」という不満が積み重なり、条約体制の正統性が根本から問われている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>新たな核拡散の波に警戒</strong>
+                      サウジアラビアは「イランが核を持つなら自分たちも」と公言し、
+                      韓国では世論の60〜70%が独自核保有を支持する。
+                      次の5〜10年が核不拡散体制の存廃を決する可能性がある。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">核放棄・不拡散 ← → 核武装も自衛</div>
+                      <div class="tone-meter-ends"><span>核放棄</span><span>核武装</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="left" data-width="15%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>IAEAは非核国の条約遵守を検証する権限を持つが、核保有国の軍縮を強制する手段を持たない。
+                      「条番人が二重基準を認める」構造的矛盾が批判の的になっている。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">北朝鮮</span>
+                      <span class="stance-label stance-hostile">「我々は正しかった」</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>リビアは「愚かな選択」の見本</strong>
+                      北朝鮮は2011年のカダフィ殺害以来、「リビアの選択が何をもたらしたかを見よ」と
+                      繰り返し主張してきた。2026年のイランへの攻撃は、その主張をさらに強化した。
+                      「核を持たない体制は外部からの体制転換を防げない」という論は、
+                      北朝鮮の核政策を完全に正当化する「証拠」として機能している。
+                    </div>
+                    <div class="key-claim">
+                      <strong>推定50発・ICBM保有で「不可侵」を実証</strong>
+                      推定50発の核弾頭と米本土到達可能なICBMを保有し、2022年に先制使用ドクトリンを採択した。
+                      核保有によって韓国・日本・アメリカのいずれも直接攻撃を踏み切れない状態を維持——
+                      これが北朝鮮にとっての「核抑止の成功」だ。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">核放棄・不拡散 ← → 核武装も自衛</div>
+                      <div class="tone-meter-ends"><span>核放棄</span><span>核武装</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="right" data-width="45%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>北朝鮮は2003年にNPTを脱退し、2006年に最初の核実験を実施。
+                      制裁を受けながらも核・ミサイル開発を続け、現在は実質的な核保有国として扱われている。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">潜在的核武装国（サウジアラビア・韓国）</span>
+                      <span class="stance-label stance-neutral">「核の傘」への疑念が加速</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>サウジアラビア：「イランが持てば我々も」</strong>
+                      ムハンマド・ビン・サルマン皇太子は2018年に「イランが核を持つなら我々も核を開発する」と
+                      公言した。イランへの攻撃後も、「核施設は破壊されたが核意志は残っている」として
+                      核開発の準備を加速させているとの情報がある。パキスタンとの「核の傘」交渉も取り沙汰される。
+                    </div>
+                    <div class="key-claim">
+                      <strong>韓国：世論の60〜70%が独自核保有を支持</strong>
+                      ウクライナ侵攻後に跳ね上がり、イランへの攻撃後もその水準を維持。
+                      「アメリカの核の傘は本当に機能するのか」という疑念が政治議論にのぼるようになった。
+                      技術的には数カ月でプルトニウム型核爆弾を製造できる能力があると評価されている。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">核放棄・不拡散 ← → 核武装も自衛</div>
+                      <div class="tone-meter-ends"><span>核放棄</span><span>核武装</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="right" data-width="20%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>サウジ・韓国のどちらもNPT加盟国だが、脱退は技術的に可能。
+                      「核拡散の第二波」のトリガーとして最も注目されている2カ国だ。
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>核に関するスタンス</th>
+                        <th>主な主張</th>
+                        <th>今後の動向</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>イラン強硬派・権威主義体制</td>
+                        <td>核武装も自衛の権利</td>
+                        <td>放棄した国はすべて滅んだ。NPTは二重基準</td>
+                        <td>イラン攻撃後に核武装論が噴出</td>
+                      </tr>
+                      <tr>
+                        <td>アメリカ・西側諸国</td>
+                        <td>NPT体制の維持</td>
+                        <td>核拡散はリスクを指数的に高める</td>
+                        <td>同盟国への核の傘強化が焦点</td>
+                      </tr>
+                      <tr>
+                        <td>NPT・IAEA</td>
+                        <td>不拡散体制の維持（危機感）</td>
+                        <td>二重基準が条約信頼を崩壊させている</td>
+                        <td>体制存続か崩壊の岐路</td>
+                      </tr>
+                      <tr>
+                        <td>北朝鮮</td>
+                        <td>核武装（実証済み）</td>
+                        <td>リビアは愚かな選択。我々は正しかった</td>
+                        <td>核を外交カードに使い続ける</td>
+                      </tr>
+                      <tr>
+                        <td>サウジ・韓国</td>
+                        <td>核の傘への疑念が高まる</td>
+                        <td>アメリカの保証は信頼できるか</td>
+                        <td>NPT脱退・独自核開発の可能性</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div><!-- /tab-table -->
+            </div><!-- /tabs-wrap -->
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/nuclear-deterrence-military-parade.jpg"
+                 alt="弾道ミサイルを搭載した移動式発射台が行進する軍事パレードの広角ショット" loading="lazy">
+            <figcaption>ミサイルを誇示する軍事パレード——核は「使う兵器」ではなく「見せる政治」だ。抑止は相手に「反撃能力が存在する」と信じ込ませることで成立する。その「見せる行為」が核拡散を呼ぶという矛盾を、国際社会は解けていない。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 5 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">05</span> データ・統計</h2>
+            <div class="data-grid">
+
+              <div class="data-card">
+                <h4>主要9カ国の核弾頭推定保有数（2025年・SIPRI推計）</h4>
+                <div style="position:relative;height:280px;margin-top:1rem;">
+                  <canvas id="warheadChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  ロシア・アメリカで世界の核弾頭の約87%を占める。中国は急速に増加中（2020年の約300発から500発超へ）。
+                  北朝鮮の50発は小規模に見えるが、韓国・日本への核攻撃には十分な数だ。出典：SIPRI Yearbook 2025
+                </p>
+              </div>
+
+              <div class="data-card">
+                <h4>世界の核弾頭総数の推移（1960〜2025年）</h4>
+                <div style="position:relative;height:280px;margin-top:1rem;">
+                  <canvas id="trendChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  冷戦ピーク（1985年）の約68,000発から現在約12,100発へと80%削減。しかし近年は下げ止まりし、
+                  中国・北朝鮮・パキスタンの増強で新たな増加フェーズに入りつつある。出典：SIPRI / FAS Nuclear Notebook
+                </p>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 6 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span> 情報源</h2>
+            <div class="sources-grid">
+              <a class="source-item" href="https://www.stimson.org/2023/lessons-from-libyas-nuclear-disarmament-20-years-on/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Stimson Center</div>
+                  <div class="source-desc">「Lessons From Libya's Nuclear Disarmament 20 Years On」 — リビア核放棄の教訓を分析</div>
+                  <div class="source-country">【安全保障シンクタンク】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.wilsoncenter.org/article/revisiting-libyas-decision-dismantle-its-weapons-mass-destruction-program" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Wilson Center</div>
+                  <div class="source-desc">「Revisiting Libya's Decision to Dismantle」 — カダフィの核放棄決断の内幕</div>
+                  <div class="source-country">【政策研究機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.armscontrol.org/factsheets/ukraine-nuclear-weapons" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Arms Control Association</div>
+                  <div class="source-desc">「Ukraine, Nuclear Weapons, and Security Assurances」 — ブダペスト覚書の詳細と教訓</div>
+                  <div class="source-country">【軍備管理専門誌】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.sipri.org/yearbook/2025/06" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">SIPRI Yearbook 2025</div>
+                  <div class="source-desc">世界の核弾頭数・保有国別推計データ（最新版）</div>
+                  <div class="source-country">【ストックホルム国際平和研究所】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://fas.org/initiative/status-world-nuclear-forces/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">FAS Nuclear Notebook</div>
+                  <div class="source-desc">米科学者連盟による核弾頭数・推移データベース（年次更新）</div>
+                  <div class="source-country">【核軍備管理専門機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.chathamhouse.org/2024/05/iran-war-risks-triggering-new-wave-nuclear-proliferation" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Chatham House</div>
+                  <div class="source-desc">「Iran war risks triggering a new wave of nuclear proliferation」 — 新たな核拡散の波を分析</div>
+                  <div class="source-country">【国際政策研究機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://thebulletin.org/2026/03/npt-after-iran/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Bulletin of the Atomic Scientists</div>
+                  <div class="source-desc">イラン攻撃後のNPT体制の危機に関する専門家分析</div>
+                  <div class="source-country">【核科学者専門誌】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://carnegieendowment.org/research/2026/04/lessons-of-iraq-iran-nuclear" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Carnegie Endowment for International Peace</div>
+                  <div class="source-desc">イラクとイランの核問題から得られた国際不拡散体制への示唆</div>
+                  <div class="source-country">【国際政策研究機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="../../middle-east/2026-06-02-iran-nuclear/index.html">
+                <div class="source-info">
+                  <div class="source-name">WorldView — イラン核交渉の最新動向（2026-06-02）</div>
+                  <div class="source-desc">米国・イスラエル・イランの三つ巴交渉から攻撃に至る経緯を詳述</div>
+                  <div class="source-country">【本サイト関連記事】</div>
+                </div>
+              </a>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-what"><span class="toc-icon">01</span>核抑止とは何か</a></li>
+            <li><a href="#sec-causes"><span class="toc-icon">02</span>放棄した国の末路</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">03</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">04</span>5つの立場</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">05</span>データ・統計</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer"><p>WorldView — 多視点で読む世界情勢</p></footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 核弾頭保有数（横棒グラフ）
+  (function() {
+    var warheadCtx = document.getElementById('warheadChart');
+    if (!warheadCtx) return;
+    new Chart(warheadCtx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['ロシア', 'アメリカ', '中国', 'フランス', 'イギリス', 'パキスタン', 'インド', 'イスラエル', '北朝鮮'],
+        datasets: [{
+          data: [5580, 5044, 500, 290, 225, 170, 172, 90, 50],
+          backgroundColor: [
+            'rgba(184,120,104,0.82)',
+            'rgba(154,180,196,0.82)',
+            'rgba(184,120,104,0.72)',
+            'rgba(127,170,146,0.75)',
+            'rgba(127,170,146,0.70)',
+            'rgba(196,168,130,0.75)',
+            'rgba(196,168,130,0.70)',
+            'rgba(154,180,196,0.60)',
+            'rgba(184,120,104,0.60)',
+          ],
+          borderColor: 'transparent',
+          borderWidth: 0,
+        }]
+      },
+      options: {
+        animation: false,
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) { return ' ' + ctx.parsed.x.toLocaleString() + '発'; }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(154,180,196,0.07)' },
+            ticks: {
+              color: 'rgba(200,210,220,0.55)', font: { size: 10 },
+              callback: function(v) { return v.toLocaleString(); }
+            }
+          },
+          y: {
+            grid: { color: 'rgba(154,180,196,0.07)' },
+            ticks: { color: 'rgba(200,210,220,0.70)', font: { size: 11 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // 世界の核弾頭総数の推移（折れ線グラフ）
+  (function() {
+    var trendCtx = document.getElementById('trendChart');
+    if (!trendCtx) return;
+    new Chart(trendCtx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['1960', '1970', '1980', '1985', '1990', '1995', '2000', '2005', '2010', '2015', '2020', '2025'],
+        datasets: [{
+          label: '核弾頭総数',
+          data: [20000, 39000, 56000, 68000, 55000, 40000, 31000, 26000, 22000, 15800, 13400, 12100],
+          borderColor: 'rgba(217,165,103,0.90)',
+          backgroundColor: 'rgba(217,165,103,0.08)',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.35,
+          pointRadius: 3,
+          pointBackgroundColor: 'rgba(217,165,103,0.80)',
+          pointBorderColor: 'transparent',
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) { return ' ' + ctx.parsed.y.toLocaleString() + '発（推計）'; }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(154,180,196,0.07)' },
+            ticks: { color: 'rgba(200,210,220,0.55)', font: { size: 10 } }
+          },
+          y: {
+            min: 0,
+            grid: { color: 'rgba(154,180,196,0.07)' },
+            ticks: {
+              color: 'rgba(200,210,220,0.55)', font: { size: 10 },
+              callback: function(v) { return (v / 1000) + '万'; }
+            }
+          }
+        }
+      }
+    });
+  })();
+
+  // tone-meterのアニメーション
+  function animateToneMeters() {
+    setTimeout(function() {
+      document.querySelectorAll('#sec-perspectives .tone-fill').forEach(function(el) {
+        el.style.width = el.getAttribute('data-width');
+      });
+    }, 60);
+  }
+  if (document.readyState === 'complete') {
+    animateToneMeters();
+  } else {
+    window.addEventListener('load', animateToneMeters);
+  }
+</script>
+</body>
+</html>
