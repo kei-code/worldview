@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>火の輪は、なぜ消えたか — イラン「抵抗の枢軸」の興亡 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* セクション番号：雑誌風の大きな薄い数字 */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* 用語解説グリッド */
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .glossary-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent);
+    }
+    .glossary-term { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .glossary-def  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* 要因カード */
+    .driver-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1rem; }
+    .driver-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.2rem 1.3rem;
+      border-top: 2px solid var(--dc-color, var(--accent));
+    }
+    .driver-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .driver-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* 役割分担リスト（各勢力） */
+    .role-grid { display: grid; gap: 0.75rem; margin: 1.5rem 0; }
+    .role-row {
+      display: grid; grid-template-columns: 150px 1fr; gap: 1rem; align-items: start;
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 0.9rem 1.1rem;
+    }
+    .role-name { font-size: 0.86rem; font-weight: 700; color: var(--text); }
+    .role-loc { font-size: 0.72rem; color: var(--text-dim); display: block; margin-top: 0.2rem; }
+    .role-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* 最盛期 vs 現在の対比ボックス */
+    .fate-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;
+    }
+    .fate-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.2rem 1.3rem;
+    }
+    .fate-box-title {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 0.9rem;
+    }
+    .fate-box.fate-ok  .fate-box-title { color: var(--accent); }
+    .fate-box.fate-bad .fate-box-title { color: #8a8190; }
+    .fate-row {
+      display: flex; gap: 0.5rem; align-items: flex-start;
+      font-size: 0.82rem; color: var(--text-muted); line-height: 1.6;
+      margin-bottom: 0.65rem;
+    }
+    .fate-row:last-child { margin-bottom: 0; }
+    .fate-mark { font-size: 0.78rem; font-weight: 700; flex-shrink: 0; margin-top: 0.05rem; }
+    .fate-box.fate-ok  .fate-mark { color: var(--accent); }
+    .fate-box.fate-bad .fate-mark { color: #8a8190; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); }
+    .article-figure figcaption { font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* ヒーロー背景画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/iran-proxies-hero-faded-posters.jpg');
+      background-size: cover; background-position: center 40%;
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.78) 0%, rgba(14,17,23,0.72) 40%, rgba(14,17,23,0.92) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* tone-meter 統一軸・中心起点バー */
+    .tone-meter { margin-top: 1rem; }
+    .tone-axis-title {
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.09em;
+      color: var(--text-dim); margin-bottom: 0.3rem;
+    }
+    .tone-meter-ends {
+      display: flex; justify-content: space-between;
+      font-size: 0.69rem; color: var(--text-dim);
+      margin-bottom: 0.3rem;
+    }
+    #sec-perspectives .tone-track {
+      position: relative; overflow: visible;
+    }
+    #sec-perspectives .tone-track::before {
+      content: ''; position: absolute;
+      left: calc(50% - 1px); top: -3px;
+      width: 2px; height: 11px;
+      background: var(--text-dim); border-radius: 1px; z-index: 2;
+    }
+    #sec-perspectives .tone-fill {
+      position: absolute; top: 0; height: 100%; width: 0;
+      border-radius: 3px;
+      transition: width 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    #sec-perspectives .tone-fill[data-side="right"] {
+      left: 50%; background: var(--accent);
+    }
+    #sec-perspectives .tone-fill[data-side="left"] {
+      right: 50%; left: auto; background: var(--accent);
+    }
+
+    /* Section 05 */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* ソースカードをリンク化 */
+    a.source-item {
+      text-decoration: none; color: inherit; cursor: pointer;
+      display: flex; gap: 0.75rem; align-items: flex-start;
+    }
+    a.source-item:hover { border-color: var(--accent); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent); }
+    a.source-item .source-name { transition: color 0.2s; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .driver-grid { grid-template-columns: 1fr; }
+      .glossary-grid { grid-template-columns: 1fr 1fr; }
+      .fate-grid { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .glossary-grid { grid-template-columns: 1fr; }
+      .role-row { grid-template-columns: 1fr; gap: 0.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/middle-east/index.html" style="color:var(--text);">中東情勢</a>
+    <a href="../../../categories/security/index.html">安全保障</a>
+    <a href="../../../categories/economy/index.html">世界経済</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-blue">中東情勢</span>
+        <span class="tag tag-blue">代理勢力</span>
+        <span class="date">2026年6月12日</span>
+      </div>
+      <h1 class="article-title">火の輪は、なぜ消えたか<br>— イラン「抵抗の枢軸」の興亡</h1>
+      <p class="article-summary">
+        イランは数十年をかけて、レバノンのヒズボラ、ガザのハマス、イエメンのフーシ派、イラクのシーア派民兵を束ね、
+        自国を取り囲む敵対勢力に対する「火の輪（Ring of Fire）」を築いた。自国の外で戦い、直接の関与を隠す——
+        この「前方防衛」の戦略は、長らくイランの抑止力の中核だった。
+        だが2023年10月のガザ戦争を起点に、わずか2年半でこの帝国は解体された。
+        ヒズボラは壊滅して武装解除され、シリアの「陸の回廊」は断たれ、2026年2月にはイラン本体が攻撃を受けた。
+        枠組みの論理と崩壊の連鎖を、5つの代理勢力それぞれの視点から読み解く。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">「抵抗の枢軸」を構成した主な勢力</div>
+          <div class="kp-value">5勢力（レバノン・ガザ・イエメン・イラク・シリア）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">ヒズボラの最盛期のロケット・ミサイル保有数</div>
+          <div class="kp-value">約15万発 → 現在は約2万発</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">アサド政権崩壊で断たれたもの</div>
+          <div class="kp-value">レバノンへの「陸の回廊」（2024年12月）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">コッズ部隊が枢軸を築いた年月</div>
+          <div class="kp-value">約40年（1982年のヒズボラ創設以来）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1 -->
+          <section class="section" id="sec-what">
+            <h2 class="section-title"><span class="sec-num">01</span> 「抵抗の枢軸」とは何か — 枠組みと前方防衛</h2>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              「抵抗の枢軸（Axis of Resistance）」とは、イランが主導する非国家武装組織と友好政権の緩やかなネットワークの総称だ。
+              レバノンのヒズボラ、ガザのハマス、イエメンのフーシ派、イラクのシーア派民兵、そしてかつてのシリア・アサド政権が、
+              アメリカとイスラエルに対抗するという共通の旗のもとに結びついていた。
+              これは正式な同盟ではなく、資金・武器・訓練・イデオロギーを通じてイランが束ねる「ハブ＆スポーク（中心と放射）」型の構造である。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              この枠組みを支えるのが、イランの「前方防衛（Forward Defense）」というドクトリンだ。
+              イラン・イラク戦争（1980〜88年）で国土を侵され、化学兵器の被害まで受けた経験から、
+              イランは「戦争は自国の領土の外で戦う」という発想を徹底するようになった。
+              代理勢力を国境のはるか外側に配置することで、敵を自国から遠ざけ、いざという時には複数の戦線で反撃できる態勢を築く——
+              これが「火の輪（Ring of Fire）」と呼ばれる、イスラエルを包囲する抑止の構造である。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              この戦略を実際に運営してきたのが、革命防衛隊（IRGC）の精鋭部門である「コッズ部隊」だ。
+              コッズ部隊は約40年をかけて各地の武装組織を育て、武器を供与し、戦術を指導してきた。
+              代理勢力を使う最大の利点は「否認可能性（plausible deniability）」——
+              攻撃があってもイランは「自分たちは関与していない」と主張でき、直接の報復を受けにくい。
+              低コストで広範囲に影響力を投射できるこの仕組みは、長らくイランの地域戦略の屋台骨だった。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:0.75rem;font-weight:700;">用語解説</div>
+            <div class="glossary-grid">
+              <div class="glossary-card">
+                <div class="glossary-term">抵抗の枢軸（Axis of Resistance）</div>
+                <div class="glossary-def">
+                  イランが主導する反米・反イスラエルの武装組織・政権ネットワークの総称。
+                  ヒズボラ・ハマス・フーシ派・イラクのシーア派民兵などが含まれる。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">前方防衛（Forward Defense）</div>
+                <div class="glossary-def">
+                  戦争を自国領土の外側で戦うというイランの戦略思想。
+                  イラン・イラク戦争の被侵略体験から生まれ、代理勢力による緩衝帯の構築につながった。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">コッズ部隊（Quds Force）</div>
+                <div class="glossary-def">
+                  革命防衛隊（IRGC）の海外作戦を担う精鋭部門。
+                  代理勢力への武器供与・訓練・資金提供・戦術指導を統括する、枢軸の「設計者」。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">否認可能性（Plausible Deniability）</div>
+                <div class="glossary-def">
+                  代理勢力を使うことで、攻撃の主体が自国だと立証されにくくする利点。
+                  イランは直接の報復を避けつつ敵に打撃を与えられる。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">火の輪（Ring of Fire）</div>
+                <div class="glossary-def">
+                  イスラエルを複数方向から取り囲む代理勢力の配置。
+                  レバノン（北）・ガザ（南西）・イエメン（南）・シリア（東北）からの多正面の脅威を指す。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 2 -->
+          <section class="section" id="sec-causes">
+            <h2 class="section-title"><span class="sec-num">02</span> なぜイランは代理勢力を築いたか — 火の輪の論理</h2>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.3rem;">
+              イランが莫大な資源を代理勢力に注ぎ込んできたのには、明確な戦略的計算がある。
+              通常戦力でアメリカやイスラエルに正面から対抗するのは不可能だ。
+              そこでイランは「非対称」の手段——各地の武装組織を通じた間接的な圧力——を選んだ。
+              その論理は、おおむね4つに整理できる。
+            </p>
+
+            <div class="driver-grid">
+              <div class="driver-box" style="--dc-color:var(--accent);">
+                <div class="driver-name">「国外で戦う」緩衝帯</div>
+                <div class="driver-text">
+                  代理勢力を国境の外に配置することで、戦火を自国領土から遠ざける。
+                  イラン・イラク戦争で本土を破壊された記憶が、この「前方で食い止める」発想の原点にある。
+                </div>
+              </div>
+              <div class="driver-box" style="--dc-color:var(--accent);">
+                <div class="driver-name">否認可能性という盾</div>
+                <div class="driver-text">
+                  代理勢力が攻撃しても、イランは「直接の関与はない」と主張できる。
+                  この曖昧さが、敵からの直接報復を抑制し、エスカレーションの責任を回避させる。
+                </div>
+              </div>
+              <div class="driver-box" style="--dc-color:var(--accent);">
+                <div class="driver-name">低コストの抑止</div>
+                <div class="driver-text">
+                  正規軍を派遣せずとも、武器と資金の供与で広範囲に影響力を投射できる。
+                  イスラエルを多正面から脅かす「火の輪」は、安価で持続可能な抑止装置だった。
+                </div>
+              </div>
+              <div class="driver-box" style="--dc-color:var(--accent);">
+                <div class="driver-name">イデオロギーの輸出</div>
+                <div class="driver-text">
+                  1979年のイラン革命以来、シーア派の革命思想と「反シオニズム」を共有する勢力を支援。
+                  宗派的・思想的な絆が、単なる利害を超えた結束を生み出してきた。
+                </div>
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.8rem;margin-bottom:0.8rem;">
+              この「火の輪」は、地理的に役割が分担されていた。
+              各勢力がイスラエルや米軍をそれぞれの方角から牽制し、シリアがそれらを繋ぐ「陸の回廊」として機能していた。
+            </p>
+
+            <div class="role-grid">
+              <div class="role-row">
+                <div><span class="role-name">ヒズボラ</span><span class="role-loc">レバノン（イスラエル北方）</span></div>
+                <div class="role-desc">枢軸の「王冠の宝石」。約15万発のロケット・ミサイルでイスラエル全土を射程に収め、抑止の中核を担った。</div>
+              </div>
+              <div class="role-row">
+                <div><span class="role-name">ハマス</span><span class="role-loc">ガザ（イスラエル南西）</span></div>
+                <div class="role-desc">スンニ派だが反イスラエルで連携。2023年10月の越境攻撃が、結果的に枢軸全体を巻き込む戦争の引き金になった。</div>
+              </div>
+              <div class="role-row">
+                <div><span class="role-name">フーシ派</span><span class="role-loc">イエメン（イスラエル南方・紅海）</span></div>
+                <div class="role-desc">紅海の海運を脅かし、長距離ミサイルでイスラエルを攻撃。地理的に最も遠く、最も自律性が高い。</div>
+              </div>
+              <div class="role-row">
+                <div><span class="role-name">シーア派民兵</span><span class="role-loc">イラク（イランとの境界）</span></div>
+                <div class="role-desc">イラク駐留米軍を牽制し、イランとシリアを結ぶ補給線を守る役割。複数組織の連合体（PMF）。</div>
+              </div>
+              <div class="role-row">
+                <div><span class="role-name">アサド政権</span><span class="role-loc">シリア（陸の回廊）</span></div>
+                <div class="role-desc">イランからヒズボラへ武器を運ぶ「陸の回廊」の要。2024年12月の崩壊が、枢軸全体の構造を断ち切った。</div>
+              </div>
+            </div>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/iran-proxies-map-ring-of-fire.jpg"
+                 alt="イランを中心に代理勢力がイスラエルを取り囲む「火の輪」を示した中東の地政学地図" loading="lazy">
+            <figcaption>イランを起点に、レバノン（ヒズボラ）・ガザ（ハマス）・イエメン（フーシ派）・イラク（シーア派民兵）がイスラエルを多正面から包囲する「火の輪」。シリアはイランとヒズボラを結ぶ「陸の回廊」だったが、2024年12月のアサド政権崩壊で断たれた。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 3 -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">03</span> タイムライン — 火の輪が消えるまで</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">1982年</div>
+                <div class="timeline-content">
+                  <h4>ヒズボラ創設 — 枢軸の原点</h4>
+                  <p>レバノン内戦とイスラエルの侵攻を背景に、革命防衛隊の支援でヒズボラが結成された。
+                  これがイランの代理勢力モデルの原型となり、以後40年にわたる「火の輪」構築の出発点になった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">革命防衛隊が育成</span>
+                    <span class="reaction-chip">代理勢力モデルの原型</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2023年10月7日</div>
+                <div class="timeline-content">
+                  <h4>ハマスの越境攻撃 — 連鎖の引き金</h4>
+                  <p>ハマスがイスラエルへ大規模な越境攻撃を実施し、ガザ戦争が勃発。
+                  これに呼応してヒズボラやフーシ派も攻撃を開始し、枢軸全体がイスラエルとの全面対決に引きずり込まれていった。
+                  イランが長年築いた「火の輪」が、初めて同時に試される事態となった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">ガザ戦争が勃発</span>
+                    <span class="reaction-chip">枢軸が連鎖的に参戦</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年秋</div>
+                <div class="timeline-content">
+                  <h4>ヒズボラ壊滅 — 指導部とナスララの死</h4>
+                  <p>イスラエルがヒズボラに対し、通信機（ポケベル）の一斉爆発という前例のない攻撃を仕掛け、指導部を次々に排除。
+                  長年の指導者ナスララも殺害された。枢軸最強の戦力だったヒズボラは、組織の中枢を失って機能不全に陥った。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">ポケベル一斉爆発</span>
+                    <span class="reaction-chip">ナスララ殺害</span>
+                    <span class="reaction-chip">指導部が壊滅</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年11月</div>
+                <div class="timeline-content">
+                  <h4>レバノン停戦 — ヒズボラの後退</h4>
+                  <p>アメリカの仲介でイスラエルとヒズボラの停戦が成立。
+                  ヒズボラは南部からの撤退を迫られ、軍事的優位を完全に失った。
+                  「抵抗」の象徴だった組織が、防御一辺倒に追い込まれた瞬間だった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">米国仲介の停戦</span>
+                    <span class="reaction-chip">南部からの撤退</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年12月</div>
+                <div class="timeline-content">
+                  <h4>アサド政権崩壊 — 「陸の回廊」が折れた</h4>
+                  <p>シリアの反体制派がダマスカスを制圧し、半世紀続いたアサド家の支配が終焉。
+                  これによりイランからヒズボラへ武器を運ぶ「陸の回廊」が断たれた。
+                  枢軸のハブ＆スポーク構造は「曲がった」のではなく「折れた」——
+                  ヒズボラは戦略的な後背地を永久に失った。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">アサド家支配の終焉</span>
+                    <span class="reaction-chip">補給線の切断</span>
+                    <span class="reaction-chip">枢軸構造の破綻</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年1月〜4月</div>
+                <div class="timeline-content">
+                  <h4>レバノンの主権回復 — ヒズボラの武装解除へ</h4>
+                  <p>レバノンはイランとシリアの干渉なしに大統領と首相を選出。
+                  ヒズボラの特権的な地位を剥奪し、武器を国家が独占することを憲法で明記した。
+                  4月までにヒズボラは南部265拠点のうち190をレバノン軍へ移譲。
+                  国家のなかの「国家」だった組織が、初めて国家の管理下に置かれ始めた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">武器の国家独占を憲法化</span>
+                    <span class="reaction-chip">265拠点中190を軍へ移譲</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年2月</div>
+                <div class="timeline-content">
+                  <h4>イラン本体が攻撃を受ける — ハーメネイー死亡</h4>
+                  <p>米・イスラエルがイランの核施設・指導部を直接攻撃し、ハーメネイー最高指導者が死亡
+                  （<a href="../../middle-east/2026-06-02-iran-nuclear/index.html" style="color:var(--accent);">イラン核交渉の詳細はこちら</a>）。
+                  「火の輪」が敵を遠ざけるはずだったのに、攻撃はイラン本土に到達した。
+                  代理勢力が弱体化したことで、前方防衛の前提そのものが崩れていたのだ
+                  （<a href="../../middle-east/2026-06-11-nuclear-deterrence/index.html" style="color:var(--accent);">核抑止をめぐる議論はこちら</a>）。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">イラン本土への直接攻撃</span>
+                    <span class="reaction-chip">前方防衛の前提が崩壊</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年3月</div>
+                <div class="timeline-content">
+                  <h4>ヒズボラの無謀な介入 — 全軍事活動を禁止される</h4>
+                  <p>弱体化したヒズボラがイランへの攻撃に呼応して対イスラエル介入を試みるが、かえって壊滅的打撃を受けた。
+                  これを受けてレバノン政府はヒズボラのすべての軍事・治安活動を禁止。
+                  かつて枢軸最強だった組織は、地域の力の方程式から事実上退場した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">介入が裏目に</span>
+                    <span class="reaction-chip">全軍事活動を禁止</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot" style="background:var(--accent3, #c07870)"></div>
+                <div class="timeline-date">2026年6月（現在）</div>
+                <div class="timeline-content">
+                  <h4>イラク民兵の「武器移譲」表明 — 残る火種</h4>
+                  <p>イラクのシーア派民兵カタイブ・ヒズボラなどが、武器を国家の管理下に置く方針を表明。
+                  ただしドローンやミサイルなどの高度兵器は手放さず、実質的には骨抜きとの見方が強い。
+                  フーシ派はなお自律的に活動を続けており、「火の輪」は消えても、火種は完全には消えていない。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">武器の国家管理を表明</span>
+                    <span class="reaction-chip">高度兵器は温存</span>
+                    <span class="reaction-chip">フーシ派は活動継続</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/iran-proxies-surrendered-rifles.jpg"
+                 alt="国家に引き渡すため積み上げられた小銃の接写、金属の質感が見える近距離" loading="lazy">
+            <figcaption>レバノン軍へ移譲されるヒズボラの武器——国家のなかの「国家」として独自の武装を誇った組織が、初めて武器を手放す側になった。武装解除は、代理勢力が地域の力学から退場する決定的な一歩だ。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 4 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">04</span> 代理勢力5つの視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">イラン（革命防衛隊・コッズ部隊）</span>
+                      <span class="stance-label stance-supportive">枢軸の設計者</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>40年の投資が揺らぐ</strong>
+                      コッズ部隊は約40年かけて代理勢力網を築いてきた。だがシリアの陥落で「陸の回廊」を失い、
+                      ヒズボラは壊滅。前方で敵を食い止めるはずの「火の輪」が機能せず、ついに本土が攻撃された。
+                    </div>
+                    <div class="key-claim">
+                      <strong>ドクトリンは残る</strong>
+                      ネットワークは打撃を受けたが、前方防衛という発想そのものが消えたわけではない。
+                      イランは残存勢力の再編と、新たな代理勢力の育成によって枢軸の再建を図る可能性がある。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">イランへの忠誠 ← → 自律・国家統合</div>
+                      <div class="tone-meter-ends"><span>忠誠・一体</span><span>自律</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="left" data-width="48%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>枢軸の「中心（ハブ）」そのもの。各勢力への武器・資金・訓練の供給源であり、
+                      ネットワーク全体の戦略を統括してきた当事者。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ヒズボラ（レバノン）</span>
+                      <span class="stance-label stance-hostile">王冠の宝石 → 武装解除</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>最強の戦力から最大の敗者へ</strong>
+                      約15万発のロケットを擁し「枢軸の王冠の宝石」と呼ばれた。
+                      だが指導部の壊滅、ナスララの死、シリアの後背地喪失で凋落。
+                      ロケットは約2万発まで激減し、組織の中枢機能を失った。
+                    </div>
+                    <div class="key-claim">
+                      <strong>国家の管理下へ</strong>
+                      レバノン政府は特権を剥奪し、武器の国家独占を憲法化。
+                      2026年3月の介入失敗で全軍事活動を禁止された。
+                      「国家のなかの国家」だった存在が、国家に飲み込まれつつある。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">イランへの忠誠 ← → 自律・国家統合</div>
+                      <div class="tone-meter-ends"><span>忠誠・一体</span><span>自律</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="right" data-width="20%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>1982年創設の枢軸の原点。イランとの結びつきが最も強い「忠実な代理勢力」だったが、
+                      いまや国家統合を強いられる立場に転落した。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ハマス（ガザ）</span>
+                      <span class="stance-label stance-cautious">火種・損耗するも再生</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>連鎖の引き金を引いた</strong>
+                      2023年10月の越境攻撃が、枢軸全体を巻き込む戦争の発端になった。
+                      その後のガザ戦争で指導部・インフラ・統治能力に甚大な損害を受けた。
+                    </div>
+                    <div class="key-claim">
+                      <strong>完全な根絶は困難</strong>
+                      スンニ派組織で、もともとイランとは宗派が異なり半自律的な関係。
+                      密集市街地で活動するため壊滅は難しく、指導部の再生と戦術の適応を続けている。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">イランへの忠誠 ← → 自律・国家統合</div>
+                      <div class="tone-meter-ends"><span>忠誠・一体</span><span>自律</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="right" data-width="30%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>スンニ派でありながら反イスラエルでイランと連携してきた「異色の代理勢力」。
+                      利害と思想が一致する限りでの協力関係にある。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">フーシ派（イエメン）</span>
+                      <span class="stance-label stance-hostile">最も自律・最後の一基</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>地理が生んだ生存力</strong>
+                      イランから最も遠く、イスラエルの直接攻撃が届きにくい。
+                      紅海の海運を脅かし長距離ミサイルでイスラエルを攻撃する能力を持ち、
+                      枢軸が次々と倒れるなかで「最後まで立っている」勢力となった。
+                    </div>
+                    <div class="key-claim">
+                      <strong>慎重なエスカレーション管理</strong>
+                      2026年の戦争では全面参戦を回避。
+                      組織の弱体化が進むなか、米軍への大規模攻撃は「組織崩壊を早めるリスク」と判断し、
+                      自らの生存を最優先する現実的な計算を見せている。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">イランへの忠誠 ← → 自律・国家統合</div>
+                      <div class="tone-meter-ends"><span>忠誠・一体</span><span>自律</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="right" data-width="42%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>イエメン内戦を背景に台頭。イランの支援を受けつつも独自の動機で動く、
+                      最も自律性の高い代理勢力。地理的な遠さが生存性を高めている。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">イラクのシーア派民兵（PMF）</span>
+                      <span class="stance-label stance-neutral">ヘッジング・国家統合へ</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>自派の権力・資産を優先</strong>
+                      多くの民兵組織は、イランの利益よりも自らの権力基盤と資産の維持を優先するようになった。
+                      2026年の戦争でも、イスラエルに攻撃の口実を与えるのを恐れ、米軍への攻撃を控えた。
+                    </div>
+                    <div class="key-claim">
+                      <strong>「武器移譲」の実態</strong>
+                      2026年5〜6月、カタイブ・ヒズボラなどが武器の国家管理を受け入れると表明。
+                      だがドローン・ミサイルなどの高度兵器は手放さず、実質的には骨抜きとの見方が強い。
+                      国家統合と自律維持のあいだで「ヘッジング（両賭け）」している。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-axis-title">イランへの忠誠 ← → 自律・国家統合</div>
+                      <div class="tone-meter-ends"><span>忠誠・一体</span><span>自律</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="right" data-width="35%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>イラク戦争後に台頭した複数組織の連合体（PMF）。
+                      自称23.8万人、イラン系の現実的兵力は8〜10万人。イラク政治に深く組み込まれている。
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>勢力</th>
+                        <th>拠点</th>
+                        <th>現在の状態</th>
+                        <th>イランとの距離感</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>イラン（コッズ部隊）</td>
+                        <td>イラン本国</td>
+                        <td>ネットワークが打撃・本土も被弾</td>
+                        <td>枢軸の中心・設計者</td>
+                      </tr>
+                      <tr>
+                        <td>ヒズボラ</td>
+                        <td>レバノン</td>
+                        <td>壊滅・武装解除へ</td>
+                        <td>最も忠実だが国家統合を強制</td>
+                      </tr>
+                      <tr>
+                        <td>ハマス</td>
+                        <td>ガザ</td>
+                        <td>損耗するも再生</td>
+                        <td>スンニ派・半自律の連携</td>
+                      </tr>
+                      <tr>
+                        <td>フーシ派</td>
+                        <td>イエメン</td>
+                        <td>弱体化も活動継続</td>
+                        <td>最も自律・独自の動機</td>
+                      </tr>
+                      <tr>
+                        <td>シーア派民兵</td>
+                        <td>イラク</td>
+                        <td>ヘッジング・部分統合</td>
+                        <td>自派の利益を優先</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div><!-- /tab-table -->
+            </div><!-- /tabs-wrap -->
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/iran-proxies-lone-fighter-desert.jpg"
+                 alt="広大な砂漠に一人で立つ武装した戦闘員の広角ショット、孤立感のある構図" loading="lazy">
+            <figcaption>枢軸の多くが倒れたなか、地理的に最も遠いフーシ派は「最後まで立つ勢力」となった。だが弱体化のなかで全面戦争を避ける慎重さも見せる。火の輪は消えても、火種は完全には消えていない。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 5 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">05</span> データ・統計</h2>
+            <div class="data-grid">
+
+              <div class="data-card">
+                <h4>主要代理勢力の推定戦闘員数</h4>
+                <div style="position:relative;height:260px;margin-top:1rem;">
+                  <canvas id="fightersChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  ヒズボラ約10万人、イラクのイラン系民兵8〜10万人が二大勢力。ハマスは開戦前で約3万人。
+                  数の上では大きいが、近年の戦闘で多くが損耗した。出典：Britannica / 各種推計（2024〜26）
+                </p>
+              </div>
+
+              <div class="data-card">
+                <h4>ヒズボラのロケット・ミサイル保有数の激減</h4>
+                <div style="position:relative;height:260px;margin-top:1rem;">
+                  <canvas id="rocketChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  開戦前に約15万発を誇り、欧州の多くの軍を上回る火力とされた。だが度重なる攻撃で約2万発まで激減し、
+                  「枢軸の王冠の宝石」は抑止力の大半を失った。出典：CSIS Missile Threat / イスラエル軍推計
+                </p>
+              </div>
+
+            </div>
+
+            <div class="fate-grid">
+              <div class="fate-box fate-ok">
+                <div class="fate-box-title">最盛期の枢軸（〜2023年）</div>
+                <div class="fate-row"><span class="fate-mark">◯</span><span>シリアの「陸の回廊」が機能し、武器が自由に流れた</span></div>
+                <div class="fate-row"><span class="fate-mark">◯</span><span>ヒズボラが約15万発で全イスラエルを射程に収める</span></div>
+                <div class="fate-row"><span class="fate-mark">◯</span><span>多正面の「火の輪」がイスラエルを包囲・抑止</span></div>
+                <div class="fate-row"><span class="fate-mark">◯</span><span>イラン本土は前方の緩衝帯で守られていた</span></div>
+              </div>
+              <div class="fate-box fate-bad">
+                <div class="fate-box-title">現在の枢軸（2026年）</div>
+                <div class="fate-row"><span class="fate-mark">×</span><span>アサド崩壊で「陸の回廊」が断たれた</span></div>
+                <div class="fate-row"><span class="fate-mark">×</span><span>ヒズボラは壊滅・武装解除され約2万発に</span></div>
+                <div class="fate-row"><span class="fate-mark">×</span><span>イラク民兵はヘッジング、フーシ派のみ活動継続</span></div>
+                <div class="fate-row"><span class="fate-mark">×</span><span>イラン本土が直接攻撃を受けた</span></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 6 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span> 情報源</h2>
+            <div class="sources-grid">
+              <a class="source-item" href="https://www.belfercenter.org/research-analysis/degradation-irans-proxy-model" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Belfer Center（ハーバード大学）</div>
+                  <div class="source-desc">「The Degradation of Iran's Proxy Model」 — 代理勢力モデルの劣化を分析</div>
+                  <div class="source-country">【国際関係研究機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.inss.org.il/publication/fracturing-the-axis/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">INSS（イスラエル国家安全保障研究所）</div>
+                  <div class="source-desc">「Fracturing the Axis」 — 枢軸の分断と弱体化のプロセス</div>
+                  <div class="source-country">【安全保障研究機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.stimson.org/2026/after-khamenei-regional-reckoning-and-the-future-of-irans-proxy-networks/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Stimson Center</div>
+                  <div class="source-desc">「After Khamenei」（2026） — ハーメネイー後の代理勢力網の行方</div>
+                  <div class="source-country">【安全保障シンクタンク】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://smallwarsjournal.com/2025/04/30/the-fall-of-assads-regime/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Small Wars Journal</div>
+                  <div class="source-desc">「The Fall of Assad's Regime Shakes Iran's Proxy Network」 — アサド崩壊の波及</div>
+                  <div class="source-country">【軍事専門誌】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://missilethreat.csis.org/country/hezbollahs-rocket-arsenal/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">CSIS Missile Threat</div>
+                  <div class="source-desc">「Missiles and Rockets of Hezbollah」 — ヒズボラのロケット保有数の推計</div>
+                  <div class="source-country">【戦略国際問題研究所】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.aljazeera.com/features/2025/8/18/will-iraq-integrate-the-pmf-into-state-insitutions" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Al Jazeera</div>
+                  <div class="source-desc">「Will Iraq integrate the PMF into state institutions?」 — イラク民兵の国家統合</div>
+                  <div class="source-country">【報道機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.fdd.org/analysis/2026/06/03/several-iranian-backed-militias-in-iraq-say-they-accept-state-control-of-weapons/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">FDD（民主主義防衛財団）</div>
+                  <div class="source-desc">2026年6月 — イラク民兵が武器の国家管理を受け入れ表明（実態分析）</div>
+                  <div class="source-country">【政策研究機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.britannica.com/topic/Axis-of-Resistance" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Britannica</div>
+                  <div class="source-desc">「Axis of Resistance」 — 抵抗の枢軸の構成・地図・指導者の概説</div>
+                  <div class="source-country">【百科事典】</div>
+                </div>
+              </a>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-what"><span class="toc-icon">01</span>抵抗の枢軸とは何か</a></li>
+            <li><a href="#sec-causes"><span class="toc-icon">02</span>火の輪の論理</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">03</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">04</span>5つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">05</span>データ・統計</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer"><p>WorldView — 多視点で読む世界情勢</p></footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 主要代理勢力の推定戦闘員数（横棒グラフ）
+  (function() {
+    var ctx = document.getElementById('fightersChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['ヒズボラ', 'イラク民兵（イラン系）', 'ハマス（開戦前）'],
+        datasets: [{
+          data: [100000, 90000, 30000],
+          backgroundColor: [
+            'rgba(217,165,103,0.85)',
+            'rgba(154,180,196,0.78)',
+            'rgba(138,129,144,0.75)',
+          ],
+          borderColor: 'transparent',
+          borderWidth: 0,
+        }]
+      },
+      options: {
+        animation: false,
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' 約' + c.parsed.x.toLocaleString() + '人'; }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(154,180,196,0.07)' },
+            ticks: {
+              color: 'rgba(200,210,220,0.55)', font: { size: 10 },
+              callback: function(v) { return (v/10000) + '万'; }
+            }
+          },
+          y: {
+            grid: { color: 'rgba(154,180,196,0.07)' },
+            ticks: { color: 'rgba(200,210,220,0.70)', font: { size: 11 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // ヒズボラのロケット保有数の激減（before/after 縦棒）
+  (function() {
+    var ctx = document.getElementById('rocketChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['開戦前（〜2023）', '現在（2026）'],
+        datasets: [{
+          data: [150000, 20000],
+          backgroundColor: [
+            'rgba(217,165,103,0.85)',
+            'rgba(138,129,144,0.70)',
+          ],
+          borderColor: 'transparent',
+          borderWidth: 0,
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' 約' + c.parsed.y.toLocaleString() + '発'; }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(154,180,196,0.07)' },
+            ticks: { color: 'rgba(200,210,220,0.70)', font: { size: 11 } }
+          },
+          y: {
+            min: 0,
+            grid: { color: 'rgba(154,180,196,0.07)' },
+            ticks: {
+              color: 'rgba(200,210,220,0.55)', font: { size: 10 },
+              callback: function(v) { return (v/10000) + '万'; }
+            }
+          }
+        }
+      }
+    });
+  })();
+
+  // tone-meterのアニメーション
+  function animateToneMeters() {
+    setTimeout(function() {
+      document.querySelectorAll('#sec-perspectives .tone-fill').forEach(function(el) {
+        el.style.width = el.getAttribute('data-width');
+      });
+    }, 60);
+  }
+  if (document.readyState === 'complete') {
+    animateToneMeters();
+  } else {
+    window.addEventListener('load', animateToneMeters);
+  }
+</script>
+</body>
+</html>
