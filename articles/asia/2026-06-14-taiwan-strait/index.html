@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台湾海峡の「新常態」— 火を使わない包囲という戦略 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* セクション番号 */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* 記事の問い（冒頭フック） */
+    .article-question {
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.4rem;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.8rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* 用語解説グリッド */
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .glossary-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent);
+    }
+    .glossary-term { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .glossary-def  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* 中国の3選択肢カード */
+    .option-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+    .option-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.2rem 1.3rem;
+    }
+    .option-box.option-likely { border-top: 3px solid var(--accent); }
+    .option-box.option-unlikely { border-top: 3px solid var(--border); opacity: 0.75; }
+    .option-name { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .option-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    .option-box.option-likely .option-label { color: var(--accent); }
+    .option-box.option-unlikely .option-label { color: var(--text-dim); }
+    .option-text { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); }
+    .article-figure figcaption { font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* ヒーロー背景 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/taiwan-strait-hero-gray-standoff.jpg');
+      background-size: cover; background-position: center 50%;
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.72) 0%, rgba(14,17,23,0.68) 40%, rgba(14,17,23,0.92) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* tone-meter */
+    .tone-meter { margin-top: 1rem; }
+    .tone-axis-title {
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.09em;
+      color: var(--text-dim); margin-bottom: 0.3rem;
+    }
+    .tone-meter-ends {
+      display: flex; justify-content: space-between;
+      font-size: 0.69rem; color: var(--text-dim);
+      margin-bottom: 0.3rem;
+    }
+    #sec-perspectives .tone-track {
+      position: relative; overflow: visible;
+    }
+    #sec-perspectives .tone-track::before {
+      content: ''; position: absolute;
+      left: calc(50% - 1px); top: -3px;
+      width: 2px; height: 11px;
+      background: var(--text-dim); border-radius: 1px; z-index: 2;
+    }
+    #sec-perspectives .tone-fill {
+      position: absolute; top: 0; height: 100%; width: 0;
+      border-radius: 3px;
+      transition: width 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    #sec-perspectives .tone-fill[data-side="right"] {
+      left: 50%; background: var(--accent);
+    }
+    #sec-perspectives .tone-fill[data-side="left"] {
+      right: 50%; left: auto; background: var(--accent);
+    }
+
+    /* fate-grid（シナリオ対比） */
+    .fate-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;
+    }
+    .fate-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.2rem 1.3rem;
+    }
+    .fate-box-title {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 0.9rem;
+    }
+    .fate-box.fate-ok  .fate-box-title { color: var(--accent); }
+    .fate-box.fate-bad .fate-box-title { color: #8a8190; }
+    .fate-row {
+      display: flex; gap: 0.5rem; align-items: flex-start;
+      font-size: 0.82rem; color: var(--text-muted); line-height: 1.6;
+      margin-bottom: 0.65rem;
+    }
+    .fate-row:last-child { margin-bottom: 0; }
+    .fate-mark { font-size: 0.78rem; font-weight: 700; flex-shrink: 0; margin-top: 0.05rem; }
+    .fate-box.fate-ok  .fate-mark { color: var(--accent); }
+    .fate-box.fate-bad .fate-mark { color: #8a8190; }
+
+    /* Section 04 */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* 深掘りセクション */
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ソースリンク */
+    a.source-item {
+      text-decoration: none; color: inherit; cursor: pointer;
+      display: flex; gap: 0.75rem; align-items: flex-start;
+    }
+    a.source-item:hover { border-color: var(--accent); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent); }
+    a.source-item .source-name { transition: color 0.2s; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .option-grid { grid-template-columns: 1fr; }
+      .glossary-grid { grid-template-columns: 1fr 1fr; }
+      .fate-grid { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .glossary-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/asia/index.html" style="color:var(--text);">アジア情勢</a>
+    <a href="../../../categories/security/index.html">安全保障</a>
+    <a href="../../../categories/economy/index.html">世界経済</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-blue">アジア情勢</span>
+        <span class="tag tag-blue">台湾海峡</span>
+        <span class="date">2026年6月14日</span>
+      </div>
+      <h1 class="article-title">台湾海峡の「新常態」<br>— 火を使わない包囲という戦略</h1>
+      <p class="article-summary">
+        多くの人が台湾海峡に抱くイメージは「中国がどんどん圧力を強め、いつか侵攻が始まる」というものだ。
+        だがデータは別の絵を示している。中国軍機の防空識別圏（ADIZ）侵入回数は、2024年のピークから
+        2026年に入って減少した。エスカレーションしているのではなく、「質が変わった」のだ。
+        侵攻でも封鎖でもなく、海警局を前面に立てた「検疫（quarantine）」——
+        法律の抜け穴を使い、戦争の閾値の下でじわじわと現状を塗り替える戦略が、静かに進行している。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">ADIZ侵入回数のピーク（2024年）から2026年の変化</div>
+          <div class="kp-value">月300回超 → 月200回未満に減少</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">TSMCの先端半導体（7nm以下）世界シェア</div>
+          <div class="kp-value">約92%（世界経済の急所）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">台湾有事が起きた場合の世界経済損失（試算）</div>
+          <div class="kp-value">最大10兆ドル</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">中国が「検疫」に使う前面部隊</div>
+          <div class="kp-value">海軍ではなく海警局（法執行機関）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1：定義と構造 -->
+          <section class="section" id="sec-what">
+            <h2 class="section-title"><span class="sec-num">01</span>「新常態」とは何か — 定義と構造</h2>
+
+            <div class="article-question">
+              なぜ中国軍機の台湾周辺への侵入回数が減っているのに、台湾海峡はむしろ不安定になっているのか？
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              台湾を取り巻く軍事的圧力は、2026年に入って「量」より「質」が変わった。
+              中国軍機の防空識別圏（ADIZ）侵入回数は2024年5月の頼清徳政権発足後に月300回を超えたが、
+              2026年初頭から月200回を下回って推移している。
+              この数字だけ見ると「圧力が和らいだ」と読めるが、そう単純ではない。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              中国が選んでいるのは、量的なエスカレーションから「常態化＋法律化」への質的転換だ。
+              毎日少しずつ軍艦や海警船が台湾周辺を行き来することで、国際社会の「異常事態センサー」を
+              徐々に麻痺させる。そして「武力」と見なされにくい海警局（沿岸警備機関）を前面に押し出すことで、
+              国際法上の「武力攻撃」の定義そのものを曖昧にしていく——これが台湾海峡の「新常態」の実態だ。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              中国にとって、台湾に対して取れる選択肢は大きく3つある。
+              それぞれのコストとリスクを比較すると、なぜ「検疫」が最も合理的な選択なのかが見えてくる。
+            </p>
+
+            <div class="option-grid">
+              <div class="option-box option-unlikely">
+                <div class="option-label">可能性：低</div>
+                <div class="option-name">侵攻（Invasion）</div>
+                <div class="option-text">
+                  上陸作戦で台湾を武力制圧。コストが最も高く、
+                  アメリカ・日本の軍事介入を確実に招く。
+                  中国経済は対西側制裁で壊滅的打撃を受ける。
+                  軍が準備できていないという分析も多い。
+                </div>
+              </div>
+              <div class="option-box option-unlikely">
+                <div class="option-label">可能性：中</div>
+                <div class="option-name">封鎖（Blockade）</div>
+                <div class="option-text">
+                  海軍で台湾の港を封鎖し、物資の流入を止める。
+                  「戦争行為」と明確に見なされアメリカの介入を招きやすい。
+                  長期化すれば中国も経済的損失が大きい。
+                </div>
+              </div>
+              <div class="option-box option-likely">
+                <div class="option-label">現在進行形</div>
+                <div class="option-name">検疫（Quarantine）</div>
+                <div class="option-text">
+                  海警局（法執行機関）が台湾周辺を「パトロール」し、
+                  「密輸取締り」「税関検査」として船を止める。
+                  「武力行使」の定義に該当させず、アメリカの介入根拠を与えにくい。
+                  圧力は持続しながら、直接衝突は回避できる。
+                </div>
+              </div>
+            </div>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2rem 0 0.75rem;font-weight:700;">用語解説</div>
+            <div class="glossary-grid">
+              <div class="glossary-card">
+                <div class="glossary-term">新常態（New Normal）</div>
+                <div class="glossary-def">
+                  軍事的圧力が「異常事態」から「毎日の風景」になること。
+                  頻度が高まりすぎて国際社会が慣れ、警戒心が薄れた状態を指す。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">検疫（Quarantine）</div>
+                <div class="glossary-def">
+                  軍事的な封鎖ではなく、海警局・海上法執行機関が「法の執行」として
+                  船舶の通行を制限・検査する手法。「武力行使」の法的認定を逃れやすい。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">ADIZ（防空識別圏）</div>
+                <div class="glossary-def">
+                  国際法上の領空（12海里）の外側に各国が独自に設定した
+                  航空機識別のための区域。中国軍機の侵入回数は近年急増し、
+                  2024年に年間3,000回を超えた。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">曖昧さの罠（Ambiguity Trap）</div>
+                <div class="glossary-def">
+                  「船1隻を止める行為は武力攻撃か？」とアメリカに問い続ける中国の戦術。
+                  米台相互防衛の発動要件を曖昧にし、アメリカの介入判断を遅らせる。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">シリコンの盾（Silicon Shield）</div>
+                <div class="glossary-def">
+                  TSMCに代表される台湾の半導体産業が、台湾を守る「盾」になるという概念。
+                  世界が台湾の半導体に依存しているため、各国が台湾を守る動機になる、とされる。
+                </div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">戦略的曖昧さ（Strategic Ambiguity）</div>
+                <div class="glossary-def">
+                  台湾有事にアメリカが介入するかどうかを故意に明言しないアメリカの伝統的政策。
+                  中国の侵攻も台湾の独立宣言も抑制する「二重抑止」として機能してきたが、
+                  現在はその実効性が問われている。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/taiwan-strait-coast-guard-vessel.jpg"
+                 alt="霧がかかった海上で航行する大型の中国海警船、圧倒的な存在感の構図" loading="lazy">
+            <figcaption>中国海警局の大型船は、軍艦ではなく「法執行機関」として台湾周辺に展開する。
+            軍の行動ではないため「武力行使」と認定しにくく、国際社会が反応しにくい。
+            これが「検疫」戦略の核心的な抜け穴だ。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 2：タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span> タイムライン — 「火を使わない包囲」の形成史</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">1996年</div>
+                <div class="timeline-content">
+                  <h4>台湾海峡危機 — 最後の「旧型」危機</h4>
+                  <p>中国が台湾総統選に圧力をかけるためミサイル演習を実施。
+                  アメリカは空母2隻を台湾近海に派遣し、中国は演習を中止した。
+                  この「露骨な軍事圧力 → アメリカが介入 → 中国が引く」という構図が、
+                  以後30年で大きく変わっていく。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">米空母2隻が介入</span>
+                    <span class="reaction-chip">旧型の危機管理の最後の例</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2022年8月</div>
+                <div class="timeline-content">
+                  <h4>ペロシ訪台と封鎖演習 — 「新型」圧力の登場</h4>
+                  <p>アメリカ連邦議会議長ペロシの台湾訪問に反発し、中国は台湾を完全に取り囲む
+                  大規模軍事演習「東部戦区演習」を実施。基隆・高雄の主要港を含む6エリアを封鎖した。
+                  この演習は「封鎖の予行演習」と広く分析され、以後の中国戦略の原型となった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">6エリアの模擬封鎖</span>
+                    <span class="reaction-chip">封鎖演習の原型</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年5月</div>
+                <div class="timeline-content">
+                  <h4>頼清徳政権発足 — ADIZ侵入が月300回を超える</h4>
+                  <p>中国が「台湾独立」路線とみなす頼清徳が総統に就任すると、
+                  中国軍機のADIZ侵入が急増。月300回を超え、「新常態」の幕が開いた。
+                  だが当時の「量的エスカレーション」は、翌年から「質的転換」へと向かう。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">月300回超に急増</span>
+                    <span class="reaction-chip">量的エスカレーションのピーク</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年12月</div>
+                <div class="timeline-content">
+                  <h4>「正義の使命2025」演習 — 海警局が主役へ</h4>
+                  <p>人民解放軍東部戦区が台湾を取り囲む大規模演習を実施。
+                  注目すべきは、海警局が演習の主体として前面に立ったことだ。
+                  軍艦ではなく「法執行機関」を使うことで、「武力演習」ではなく
+                  「法執行訓練」という体裁を整え、国際社会の批判を回避しやすくした。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">海警局が主役の演習</span>
+                    <span class="reaction-chip">「法執行」という衣を纏う</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年1〜6月</div>
+                <div class="timeline-content">
+                  <h4>侵入回数が減少 — 「量から質へ」の転換完了</h4>
+                  <p>ADIZ侵入回数が月200回未満へと減少。「圧力が和らいだ」という見方もあるが、
+                  実際は別の動きが進んでいる——人民解放軍の「戦闘即応パトロール」の頻度は増加し、
+                  焦点は台湾海峡から東シナ海・南シナ海へと広がりつつある。
+                  数字が減った裏で、「検疫」型の恒常的包囲が深化している。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">侵入回数は減少</span>
+                    <span class="reaction-chip">質的転換・包囲の深化</span>
+                    <span class="reaction-chip">圧力の焦点が拡散</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 3：視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span> 5つの視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">中国（人民解放軍・海警局）</span>
+                      <span class="stance-label stance-hostile">現状変更・一体化の貫徹</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>「台湾問題に期限はない、だが時間は中国の味方」</strong>
+                      直接侵攻は国際的孤立とコストが大きすぎる。
+                      「検疫」による恒常的圧力で台湾を疲弊させ、国際社会を慣らし、
+                      現状変更を既成事実として積み上げていく戦略が合理的だ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>「曖昧さが武器」</strong>
+                      海警局を使うことで「武力行使か否か」を曖昧にし、
+                      アメリカの介入根拠を消す。習近平が「統一は歴史の必然」と繰り返すのも、
+                      あくまで「平和的手段を優先する」という体裁を国内外に示すためだ。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-ends"><span>現状変更</span><span>現状維持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="left" data-width="45%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>台湾統一は中国共産党の建国来の政治目標。
+                      習近平は「自分の代での統一」を強く意識しているとされる。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">台湾（頼清徳政権）</span>
+                      <span class="stance-label stance-cautious">非対称防衛で自主防衛力を高める</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>「豪猪（ヤマアラシ）戦略」</strong>
+                      中国に勝てなくとも、侵攻コストを高くする非対称防衛を徹底する。
+                      国防予算の64%を国産対艦ミサイル・無人機などに集中し、
+                      正規軍より安価で運用できる「刺さる棘」を増やす。
+                    </div>
+                    <div class="key-claim">
+                      <strong>「シリコンの盾」は諸刃</strong>
+                      TSMCを守ることはアメリカを守ることでもある——という論理は成立する。
+                      だが一方で「台湾の半導体を敵に渡さないために台湾を守る」という
+                      冷淡な計算も含まれており、「守られている安心感」とは異なる。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-ends"><span>現状変更</span><span>現状維持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="right" data-width="38%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>頼清徳は独立志向が強いとみなされているが、
+                      実際には「現状維持」路線を維持。挑発的な独立宣言は避けている。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">アメリカ（トランプ政権）</span>
+                      <span class="stance-label stance-neutral">戦略的曖昧さから戦略的不安へ</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>武器は来る——だが、軍は来るのか</strong>
+                      トランプ政権は台湾への武器売却として史上最大の110億ドルを承認する一方、
+                      「習近平との関係は素晴らしい、台湾海峡を心配していない」と繰り返す。
+                      台湾にとっての不安は「武器があるか」ではなく「有事に米軍が本当に来るか」だ。
+                      そのシグナルが、トランプの言動から見えなくなっている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>戦略的曖昧さの変質</strong>
+                      従来の「曖昧さ」は中国の侵攻も台湾の独立も同時に抑制する「二重抑止」として機能した。
+                      だがトランプ政権の予測不能な姿勢は、この計算を崩している。
+                      RAND研究所は「戦略的曖昧さが戦略的不安に変質した」と警告する。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-ends"><span>現状変更</span><span>現状維持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="right" data-width="28%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>アメリカの「一つの中国」政策は台湾を正式に承認しない。
+                      台湾関係法（1979）に基づき防衛的武器の供与は続けるが、
+                      軍事介入の義務は明示していない。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">日本</span>
+                      <span class="stance-label stance-cautious">台湾有事は日本有事</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>地理的に最も近い当事者</strong>
+                      沖縄・与那国島から台湾まで110km。台湾有事は日本の南西諸島が
+                      即座に戦場になることを意味する。日本政府が「台湾有事は日本有事」と
+                      明言するのは外交的発言ではなく、地理的な現実だ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>防衛費増額と反撃能力の取得</strong>
+                      日本は2027年までにGDP比2%への防衛費倍増と、
+                      長距離ミサイルによる「反撃能力（敵基地攻撃能力）」の取得を決定。
+                      台湾有事を現実的な脅威として位置づけた政策転換だ。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-ends"><span>現状変更</span><span>現状維持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="right" data-width="40%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>日米安保条約に基づき、台湾有事ではアメリカへの後方支援が義務化される。
+                      在日米軍基地（嘉手納など）が前線基地となる可能性がある。
+                    </div>
+                  </div>
+
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ASEAN</span>
+                      <span class="stance-label stance-neutral">巻き込まれ回避・経済優先</span>
+                    </div>
+                    <div class="key-claim">
+                      <strong>「私たちは戦場になりたくない」</strong>
+                      ASEAN諸国の最大の関心は、米中対立に引きずり込まれないことだ。
+                      マレーシア・インドネシア・タイなど多くの国は中国とも深い経済的依存関係にあり、
+                      「台湾問題でどちらかに付く」ことを極力避けようとする。
+                    </div>
+                    <div class="key-claim">
+                      <strong>南シナ海との連動が重なる</strong>
+                      フィリピン・ベトナムなど南シナ海で中国と直接対立する国は台湾問題にも敏感だが、
+                      それ以外のASEAN諸国は温度差が大きい。「ASEAN」として一致した対中姿勢を
+                      取ることは事実上不可能な状態が続いている。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-ends"><span>現状変更</span><span>現状維持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-side="right" data-width="44%"></div></div>
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>ASEAN10カ国の対中貿易は域内貿易全体の約25%を占める。
+                      経済的依存が高いほど、対中批判的な立場を取りにくくなる構造がある。
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>勢力</th>
+                        <th>基本スタンス</th>
+                        <th>最大の懸念</th>
+                        <th>現在の動き</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>中国</td>
+                        <td>統一は歴史の必然</td>
+                        <td>台湾の独立宣言・アメリカの介入</td>
+                        <td>海警局主導の検疫型包囲</td>
+                      </tr>
+                      <tr>
+                        <td>台湾</td>
+                        <td>現状維持・民主主義の防衛</td>
+                        <td>アメリカの支援が続くか</td>
+                        <td>非対称防衛・国産兵器増産</td>
+                      </tr>
+                      <tr>
+                        <td>アメリカ</td>
+                        <td>戦略的曖昧さ（変質中）</td>
+                        <td>中国によるTSMC支配</td>
+                        <td>武器支援最大化・介入は不明確</td>
+                      </tr>
+                      <tr>
+                        <td>日本</td>
+                        <td>現状維持・台湾有事は日本有事</td>
+                        <td>南西諸島が戦場になること</td>
+                        <td>防衛費倍増・反撃能力取得</td>
+                      </tr>
+                      <tr>
+                        <td>ASEAN</td>
+                        <td>巻き込まれ回避</td>
+                        <td>経済と安全保障の板挟み</td>
+                        <td>どちらにも付かない中立外交</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/taiwan-strait-silicon-wafer.jpg"
+                 alt="精密な回路が刻まれた半導体ウェハーの接写、シリコンの光沢が美しい" loading="lazy">
+            <figcaption>TSMCが生産する先端半導体は世界の約92%のシェアを占める。
+            スマートフォン・自動車・AIデータセンター——台湾の半導体なしに現代文明は動かない。
+            「シリコンの盾」はこの依存関係が台湾を守るという逆説的な抑止論だが、
+            同時に台湾を最大の標的にもしている。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 4：データ -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span> データ・統計</h2>
+            <div class="data-grid">
+
+              <div class="data-card">
+                <h4>台湾ADIZ侵入回数の推移（2020〜2026）</h4>
+                <div style="position:relative;height:260px;margin-top:1rem;">
+                  <canvas id="adizChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  2024年のピーク（年間3,000回超）から2026年は減少傾向。
+                  「エスカレーションが続いている」という直感と、データは異なる動きを示す。
+                  侵入回数の減少は「圧力の緩和」ではなく「戦略の質的転換」を意味する。
+                  出典：AEI China & Taiwan Update、防衛研究所分析
+                </p>
+              </div>
+
+              <div class="data-card">
+                <h4>台湾海峡の軍事バランス（主要指標）</h4>
+                <div style="position:relative;height:260px;margin-top:1rem;">
+                  <canvas id="militaryChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  規模の差は圧倒的だが、台湾は非対称防衛（対艦ミサイル・無人機・機雷）で
+                  侵攻コストを引き上げることで対抗する。数で勝てなくとも「勝つのに高すぎる」
+                  状況を作ることが目標だ。出典：U.S. DoD中国軍事力報告（2024）
+                </p>
+              </div>
+
+            </div>
+
+            <div class="fate-grid">
+              <div class="fate-box fate-bad">
+                <div class="fate-box-title">侵攻シナリオのコスト（中国視点）</div>
+                <div class="fate-row"><span class="fate-mark">×</span><span>アメリカ・日本の軍事介入がほぼ確実</span></div>
+                <div class="fate-row"><span class="fate-mark">×</span><span>対西側制裁で中国経済が壊滅的打撃</span></div>
+                <div class="fate-row"><span class="fate-mark">×</span><span>TSMCを破壊・占領すれば世界が敵に</span></div>
+                <div class="fate-row"><span class="fate-mark">×</span><span>上陸作戦の成功確率は不確実</span></div>
+              </div>
+              <div class="fate-box fate-ok">
+                <div class="fate-box-title">検疫シナリオのメリット（中国視点）</div>
+                <div class="fate-row"><span class="fate-mark">◯</span><span>「武力行使」の法的認定を回避できる</span></div>
+                <div class="fate-row"><span class="fate-mark">◯</span><span>アメリカの介入根拠を与えにくい</span></div>
+                <div class="fate-row"><span class="fate-mark">◯</span><span>現状変更を既成事実として積み上げられる</span></div>
+                <div class="fate-row"><span class="fate-mark">◯</span><span>台湾・国際社会を「慣れ」させる効果がある</span></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 5：深掘り -->
+          <section class="section" id="sec-insight">
+            <h2 class="section-title"><span class="sec-num">05</span> 深掘り — 「シリコンの盾」の逆説と2027問題</h2>
+
+            <div class="insight-box">
+              <div class="insight-title">盾は、同時に最大の標的でもある</div>
+              <div class="insight-text">
+                「シリコンの盾」論の根拠は、世界がTSMCの先端半導体に依存しているため、
+                中国が台湾を破壊すれば自分たちも大打撃を受ける——という相互確証破壊に似た論理だ。
+                だが見方を逆にすると、TSMCこそが台湾を「最も価値ある標的」にしている。
+                中国がTSMCを占領して稼働させたまま維持できれば、
+                「世界の半導体サプライチェーンを人質にする」という圧倒的なカードを手にする。
+                台湾の防衛計画には「有事の際にTSMCの生産ラインを自ら破壊する」というオプションが
+                含まれるとも報じられており、「盾」が最後は「爆弾」になるという皮肉な構造がある。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">2027問題 — 「期限」は本当にあるのか</div>
+              <div class="insight-text">
+                習近平が人民解放軍に「2027年までに台湾統一の軍事準備を整えよ」と指示したと
+                複数の情報機関が証言していることから、「2027年が台湾有事のXデー」という見方が広まった。
+                だが重要なのは、「準備を整える」と「実際に実行する」は別物だということだ。
+                軍事力が整っても、経済的コスト・国際的孤立・成功確率の不確実性が変わらなければ
+                侵攻は非合理的なまま。「2027問題」はメディアが作り上げた「直線本能的な恐怖」
+                である可能性も否定できない。現実のシナリオは、侵攻ではなく
+                「検疫による漸進的な現状変更」が最も実現可能性が高い。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">戦略的曖昧さから戦略的不安へ</div>
+              <div class="insight-text">
+                アメリカの伝統的な「戦略的曖昧さ」は、中国の侵攻も台湾の独立宣言も同時に抑制する
+                精巧な均衡装置だった。「介入するかもしれない」という不確実性が抑止力になっていた。
+                だがトランプ政権はその均衡を崩しつつある。台湾への武器売却は史上最大規模を承認しながら、
+                「習近平との関係は素晴らしい、心配していない」と繰り返す。
+                武器は来る——しかし有事に米軍が実際に介入するかどうかは、これまで以上に読めない。
+                台湾にとっての不安は「武器があるか」ではなく「アメリカは本当に来るか」であり、
+                中国にとっては「今が好機かもしれない」という誘惑が生まれる。
+                RAND研究所が指摘する「戦略的不安（Strategic Anxiety）」の時代に入りつつある。
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.8rem;">
+              台湾海峡をめぐる最大の逆説は、「誰も戦争を望んでいない」のに
+              「戦争のリスクが高まっている」ことだ。
+              中国は「侵攻しない理由」を十分に持っている。
+              だがそれは「侵攻しない」ことを意味しない——
+              戦争の閾値の下で少しずつ現状を塗り替える「火を使わない包囲」が、
+              今まさに台湾海峡で静かに進行している。
+            </p>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/taiwan-strait-city-daily-life.jpg"
+                 alt="活気ある台北の街並みと夜市、日常の喧騒が広がる風景" loading="lazy">
+            <figcaption>台北の日常——多くの市民は「有事」を意識しながら普通の生活を送る。
+            「新常態」の怖さは、危機が「日常」に紛れ込んでいることだ。
+            軍機の飛来も、海警船の接近も、繰り返されるうちにニュースにならなくなっていく。
+            これが「検疫」戦略の最も深いところで働いている効果かもしれない。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 6：情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span> 情報源</h2>
+            <div class="sources-grid">
+              <a class="source-item" href="https://www.aei.org/articles/china-taiwan-update-may-1-2026/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">AEI（米国企業研究所）</div>
+                  <div class="source-desc">「China & Taiwan Update」シリーズ（2026年各月） — ADIZ侵入回数の推移・中国の戦略転換を追跡</div>
+                  <div class="source-country">【政策研究機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://thediplomat.com/2026/05/chinas-navy-is-shifting-pressure-beyond-the-taiwan-strait/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">The Diplomat</div>
+                  <div class="source-desc">「China's Navy Is Shifting Pressure Beyond the Taiwan Strait」（2026-05） — 圧力の焦点が台湾海峡から拡散しつつある分析</div>
+                  <div class="source-country">【アジア太平洋専門誌】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://globaltaiwan.org/2026/01/trumps-policy-toward-taiwan/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Global Taiwan Institute</div>
+                  <div class="source-desc">「Trump's Policy toward Taiwan: Compounding Strategic Ambiguity」（2026） — トランプ政権の戦略的曖昧さの変質を分析</div>
+                  <div class="source-country">【台湾専門シンクタンク】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.rand.org/pubs/commentary/2025/03/from-strategic-ambiguity-to-strategic-anxiety-taiwans.html" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">RAND Corporation</div>
+                  <div class="source-desc">「From Strategic Ambiguity to Strategic Anxiety」（2025） — 戦略的曖昧さの変質と台湾の安全保障への影響</div>
+                  <div class="source-country">【安全保障シンクタンク】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.19fortyfive.com/2026/03/china-is-watching-america-fail-in-the-strait-of-hormuz/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">19FortyFive</div>
+                  <div class="source-desc">「China Is Watching America Fail…」（2026-03） — 検疫型封鎖の論理と海警局の役割を詳述</div>
+                  <div class="source-country">【安全保障専門メディア】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://restofworld.org/2026/china-taiwan-tsmc-semiconductor-economic-risk/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Rest of World</div>
+                  <div class="source-desc">「Taiwan's chips power the global economy. China holds the leverage」（2026） — TSMCと台湾有事の経済リスクを詳述</div>
+                  <div class="source-country">【テクノロジー専門メディア】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.nids.mod.go.jp/publication/commentary/commentary325.html" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">防衛省防衛研究所（NIDSコメンタリー第325号）</div>
+                  <div class="source-desc">台湾海峡のグレーゾーン事態と日本の安全保障への含意</div>
+                  <div class="source-country">【日本政府研究機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.ide.go.jp/Japanese/Publish/Reports/AjikenPolicyBrief/283.html" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">アジア経済研究所</div>
+                  <div class="source-desc">「台湾海峡のグレーゾーン事態と複合的危機への対応」 — ASEAN・アジア各国の対応を分析</div>
+                  <div class="source-country">【国際経済研究機関】</div>
+                </div>
+              </a>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-what"><span class="toc-icon">01</span>定義と構造</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>5つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-insight"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer"><p>WorldView — 多視点で読む世界情勢</p></footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // ADIZ侵入回数の推移（折れ線グラフ）
+  (function() {
+    var ctx = document.getElementById('adizChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['2020', '2021', '2022', '2023', '2024', '2025', '2026*'],
+        datasets: [{
+          label: '年間ADIZ侵入回数',
+          data: [380, 972, 1700, 1700, 3000, 2200, 1400],
+          borderColor: 'rgba(217,165,103,0.9)',
+          backgroundColor: 'rgba(217,165,103,0.12)',
+          borderWidth: 2.5,
+          pointBackgroundColor: 'rgba(217,165,103,1)',
+          pointRadius: 4,
+          fill: true,
+          tension: 0.35,
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(c) {
+                var v = c.parsed.y;
+                return ' 約' + v.toLocaleString() + '回' + (c.label === '2026*' ? '（推計）' : '');
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(154,180,196,0.07)' },
+            ticks: { color: 'rgba(200,210,220,0.70)', font: { size: 11 } }
+          },
+          y: {
+            min: 0,
+            grid: { color: 'rgba(154,180,196,0.07)' },
+            ticks: {
+              color: 'rgba(200,210,220,0.55)', font: { size: 10 },
+              callback: function(v) { return v.toLocaleString() + '回'; }
+            }
+          }
+        }
+      }
+    });
+  })();
+
+  // 軍事バランス（横棒グラフ）
+  (function() {
+    var ctx = document.getElementById('militaryChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['海軍艦艇（隻）', '戦闘機（機）', '兵員（万人）'],
+        datasets: [
+          {
+            label: '中国',
+            data: [730, 1900, 200],
+            backgroundColor: 'rgba(217,165,103,0.82)',
+            borderColor: 'transparent',
+            borderWidth: 0,
+          },
+          {
+            label: '台湾',
+            data: [90, 300, 16],
+            backgroundColor: 'rgba(154,180,196,0.72)',
+            borderColor: 'transparent',
+            borderWidth: 0,
+          }
+        ]
+      },
+      options: {
+        animation: false,
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            labels: { color: 'rgba(200,210,220,0.70)', font: { size: 11 }, boxWidth: 12 }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' ' + c.dataset.label + '：' + c.parsed.x.toLocaleString(); }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(154,180,196,0.07)' },
+            ticks: { color: 'rgba(200,210,220,0.55)', font: { size: 10 } }
+          },
+          y: {
+            grid: { color: 'rgba(154,180,196,0.07)' },
+            ticks: { color: 'rgba(200,210,220,0.70)', font: { size: 11 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // tone-meterアニメーション
+  function animateToneMeters() {
+    setTimeout(function() {
+      document.querySelectorAll('#sec-perspectives .tone-fill').forEach(function(el) {
+        el.style.width = el.getAttribute('data-width');
+      });
+    }, 60);
+  }
+  if (document.readyState === 'complete') {
+    animateToneMeters();
+  } else {
+    window.addEventListener('load', animateToneMeters);
+  }
+</script>
+</body>
+</html>
