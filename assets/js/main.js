@@ -1,3 +1,44 @@
+/* ===== Hamburger Menu ===== */
+(function () {
+  var header = document.querySelector('.site-header');
+  var nav = header && header.querySelector('.site-nav');
+  if (!header || !nav) return;
+
+  var btn = document.createElement('button');
+  btn.className = 'nav-toggle';
+  btn.setAttribute('aria-label', 'メニューを開く');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.innerHTML = '<span></span><span></span><span></span>';
+  header.insertBefore(btn, nav);
+
+  function openNav() {
+    nav.classList.add('is-open');
+    btn.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'メニューを閉じる');
+  }
+  function closeNav() {
+    nav.classList.remove('is-open');
+    btn.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'メニューを開く');
+  }
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    nav.classList.contains('is-open') ? closeNav() : openNav();
+  });
+  document.addEventListener('click', function (e) {
+    if (!header.contains(e.target)) closeNav();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeNav();
+  });
+  nav.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', closeNav);
+  });
+})();
+
 /* ===== Tabs ===== */
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
