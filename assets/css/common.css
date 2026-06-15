@@ -161,15 +161,18 @@ a:hover { text-decoration: underline; }
 .nav-toggle.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* ===== Mobile Nav (全カテゴリ一覧) ===== */
+.site-nav-mobile { display: none; }
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .site-header { padding: 0 1.25rem; }
   .container { padding: 0 1.25rem; }
 
   .nav-toggle { display: flex; }
+  .site-nav { display: none; }
 
-  .site-nav {
-    display: none;
+  .site-nav-mobile {
     position: fixed;
     top: 62px;
     left: 0; right: 0;
@@ -179,16 +182,18 @@ a:hover { text-decoration: underline; }
     border-bottom: 1px solid var(--border-subtle);
     flex-direction: column;
     padding: 0.25rem 0;
-    gap: 0;
     z-index: 99;
     box-shadow: 0 8px 24px rgba(0,0,0,0.4);
   }
-  .site-nav.is-open { display: flex; }
-  .site-nav a {
-    padding: 0.9rem 1.5rem;
+  .site-nav-mobile.is-open { display: flex; }
+  .site-nav-mobile a {
+    color: var(--text-muted);
     font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    padding: 0.9rem 1.5rem;
     border-bottom: 1px solid var(--border-subtle);
+    text-decoration: none;
   }
-  .site-nav a:last-child { border-bottom: none; }
-  .site-nav a::after { display: none; }
+  .site-nav-mobile a:last-child { border-bottom: none; }
+  .site-nav-mobile a:hover { color: var(--text); text-decoration: none; }
 }

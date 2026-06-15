@@ -1,24 +1,59 @@
 /* ===== Hamburger Menu ===== */
 (function () {
   var header = document.querySelector('.site-header');
-  var nav = header && header.querySelector('.site-nav');
-  if (!header || !nav) return;
+  if (!header) return;
 
+  // ロゴの href からサイトルートへの相対パスを取得
+  var logoLink = header.querySelector('.site-logo a');
+  var homeHref = logoLink ? logoLink.getAttribute('href') : 'index.html';
+  var base = homeHref.replace('index.html', '');
+  var path = window.location.pathname;
+
+  var allCategories = [
+    ['', 'ホーム'],
+    ['middle-east', '中東情勢'],
+    ['ukraine', 'ウクライナ'],
+    ['ai-tech', 'AI・技術覇権'],
+    ['immigration', '移民政策'],
+    ['economy', '世界経済'],
+    ['asia', 'アジア情勢'],
+    ['europe', '欧州情勢'],
+    ['resources', '資源・環境'],
+    ['security', '安全保障'],
+    ['elections', '世論・選挙'],
+  ];
+
+  // モバイル専用ナビを生成
+  var mobileNav = document.createElement('nav');
+  mobileNav.className = 'site-nav-mobile';
+  allCategories.forEach(function (c) {
+    var a = document.createElement('a');
+    a.href = c[0] === '' ? base + 'index.html' : base + 'categories/' + c[0] + '/index.html';
+    a.textContent = c[1];
+    var isActive = c[0] === ''
+      ? !path.includes('/categories/') && !path.includes('/articles/')
+      : path.includes('/categories/' + c[0] + '/') || path.includes('/articles/' + c[0] + '/');
+    if (isActive) a.style.color = 'var(--text)';
+    mobileNav.appendChild(a);
+  });
+  header.appendChild(mobileNav);
+
+  // ハンバーガーボタンを生成
   var btn = document.createElement('button');
   btn.className = 'nav-toggle';
   btn.setAttribute('aria-label', 'メニューを開く');
   btn.setAttribute('aria-expanded', 'false');
   btn.innerHTML = '<span></span><span></span><span></span>';
-  header.insertBefore(btn, nav);
+  header.insertBefore(btn, mobileNav);
 
   function openNav() {
-    nav.classList.add('is-open');
+    mobileNav.classList.add('is-open');
     btn.classList.add('is-open');
     btn.setAttribute('aria-expanded', 'true');
     btn.setAttribute('aria-label', 'メニューを閉じる');
   }
   function closeNav() {
-    nav.classList.remove('is-open');
+    mobileNav.classList.remove('is-open');
     btn.classList.remove('is-open');
     btn.setAttribute('aria-expanded', 'false');
     btn.setAttribute('aria-label', 'メニューを開く');
@@ -26,7 +61,7 @@
 
   btn.addEventListener('click', function (e) {
     e.stopPropagation();
-    nav.classList.contains('is-open') ? closeNav() : openNav();
+    mobileNav.classList.contains('is-open') ? closeNav() : openNav();
   });
   document.addEventListener('click', function (e) {
     if (!header.contains(e.target)) closeNav();
@@ -34,7 +69,7 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeNav();
   });
-  nav.querySelectorAll('a').forEach(function (a) {
+  mobileNav.querySelectorAll('a').forEach(function (a) {
     a.addEventListener('click', closeNav);
   });
 })();
