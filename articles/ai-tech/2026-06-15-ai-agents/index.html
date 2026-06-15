@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>「考えるAI」から「動くAI」へ — 自律エージェントの実力と限界 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* セクション番号（台湾海峡記事に倣う大型スタイル） */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* 記事の問い（冒頭フック） */
+    .article-question {
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.4rem;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.8rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* 構造要因概観ボックス（3要因）*/
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent);
+    }
+    .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/ai-agents-hero-autonomous-workstation.jpg');
+      background-size: cover; background-position: center 45%;
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.78) 0%, rgba(14,17,23,0.70) 40%, rgba(14,17,23,0.92) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* 本文中の図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* 支出バー */
+    .spend-bar { margin: 1rem 0 0.25rem; }
+    .spend-row { margin-bottom: 0.95rem; }
+    .spend-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.35rem; }
+    .spend-label { font-size: 0.8rem; color: var(--text-muted); }
+    .spend-value { font-size: 0.8rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+    .spend-track { height: 18px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .spend-fill { height: 100%; border-radius: 5px; transition: width 0.8s cubic-bezier(.4,0,.2,1); }
+
+    /* 深掘りセクション */
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* data-gridを2列に */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* 役割バッジ */
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+    }
+
+    /* プルクォート（核心の一文） */
+    .pull-quote {
+      border-left: 3px solid var(--accent);
+      background: rgba(154,180,196,0.06);
+      padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text); line-height: 1.65;
+    }
+
+    /* 関係の深さインジケーター（横バー） */
+    .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+    .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
+    .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .depth-bar-fill { height: 100%; background: var(--accent); border-radius: 5px; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/ai-tech/index.html" style="color:var(--text);">AI・技術覇権</a>
+    <a href="../../../categories/economy/index.html">世界経済</a>
+    <a href="../../../categories/security/index.html">安全保障</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-blue">AI・技術覇権</span>
+        <span class="tag tag-blue">自律エージェント</span>
+        <span class="date">2026年6月15日</span>
+      </div>
+      <h1 class="article-title">「考えるAI」から「動くAI」へ<br>— 自律エージェントの実力と限界</h1>
+      <p class="article-summary">
+        AIはもはや質問に答えるだけの道具ではない。コードを書き、ファイルを操作し、ウェブを検索し、複数のツールを連携させながら多段タスクを自律的に実行する「動くAI」が現実のものとなっている。
+        三大ラボ（Anthropic・OpenAI・Google）のコーディングエージェントはすでにGitHubの公開コミットの約4%を生成している。しかし本番稼働は11%にとどまり、安全性・ガバナンス・労働への影響をめぐる問いは答えを待っている。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">Claude CodeがGitHubコミットの約4%</div>
+          <div class="kp-value">2026年2月時点で日次約13.5万件。2026年末には日次コミットの20%超との予測</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">エンタープライズアプリの40%が組込み</div>
+          <div class="kp-value">2026年末予測（2025年は5%未満）。AIエージェント市場は2034年に2,360億ドルへ</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">だが本番稼働は11%のみ</div>
+          <div class="kp-value">79%の企業が何らかの形で採用するも、本番環境で動かせているのは11%</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">タスク自律の時間幅は4か月で倍増</div>
+          <div class="kp-value">2026年半ばで約2時間のタスクを50%遂行（METR＝AIの能力を独立評価する非営利研究機関）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 核心と問い -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>核心と問い — 「考えるAI」から「動くAI」へ</h2>
+
+            <div class="article-question">
+              AIが「答える道具」から「自律的に働く存在」になったとき、その技術は実際どこまで動くのか。富と仕事は誰の手に渡り、誰から奪われるのか。「働くAI」は生産性革命か、制御不能のリスクか。
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              「考えるAI（推論モデル）」から「動くAI（自律的にツールを使い多段タスクを実行するエージェント）」へ——この移行が、AIの歴史における最大の転換点になりつつある。
+              推論モデルが質問に答え、文章を生成するのに対し、エージェントは外部ツールを呼び出し、ファイルを操作し、ウェブを検索し、得た結果をもとに次の行動を決める。「観測→推論→行動」のループを人間の介在なしに繰り返す。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              最も成熟した実例として頭角を現しているのが、三大ラボのコーディングエージェントだ。
+              Anthropicの<strong>Claude Code</strong>、OpenAIの<strong>Codex</strong>、Googleの<strong>Antigravity</strong>——いずれもアメリカの巨大ラボが開発したこれらのツールは、ソフトウェア開発の現場で実際にコードを書き、テストし、バグを修正している。
+              2026年2月時点で、Claude CodeだけでGitHubの公開コミットの約4%（日次約13.5万件）を生成しているという事実は、「AIがソフトウェア産業の一角を担い始めた」現実を数字で示している。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              Claude Code・Codex・Antigravityの3つはいずれもアメリカ製だ。コーディングエージェントという最前線においては、アメリカの巨大ラボが事実上の標準を握っている。
+              しかし能力が急速に伸びる一方で、本番稼働に踏み切れる企業は11%にとどまり、雇用へのインパクト、セキュリティリスク、ガバナンスの欠如という三つの問いが「動くAI」の普及を足止めしている。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2rem 0 0.75rem;font-weight:700;">3つの論点</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">実力 — どこまで動くか</div>
+                <div class="factor-desc">
+                  エージェントにパソコンやウェブブラウザを操作させ、与えた作業をどれだけ最後までやり切れるかを測る試験（OSWorld・WebArenaなど）がある。その成功率はこの2年で1割前後から6〜7割へ急上昇した。ただし複雑な実務での完遂率は65〜86%とばらつき、人間（約8割）にはまだ届かない。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">労働 — 誰の仕事か</div>
+                <div class="factor-desc">
+                  広範なホワイトカラー崩壊はまだ統計に出ていない。だがエントリー職・コーディング職から侵食が始まっている。22〜25歳のAI露出度の高い職種では雇用が16%減少したとの調査もある。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">リスク — 制御できるか</div>
+                <div class="factor-desc">
+                  プロンプトインジェクション攻撃は前年比+340%。自律エージェントは「プログラム的速度を持つ内部不正者」になりうるとセキュリティ専門家は警告する。成熟したガバナンスを持つ企業は5社に1社にすぎない。
+                </div>
+              </div>
+            </div>
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/ai-agents-core-thinking-vs-acting.jpg"
+                   alt="「考えるAI」から「動くAI」へ——推論と自律行動の対比を表すビジュアル" loading="lazy">
+              <figcaption>「答える」から「動く」へ——AIの役割が根本から変わりつつある。推論モデルが思考を重ねる一方で、エージェントはその思考をリアルタイムで行動に変換する。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 「動くAI」の足跡</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2022〜2023年</div>
+                <div class="timeline-content">
+                  <h4>ReActという基礎 — 「考えて、動いて、確かめる」</h4>
+                  <p>「考える（推論）→ツールを使う（行動）→結果を見る（観測）」を繰り返す仕組み（ReActと呼ばれる）が研究者によって示された。AIが検索・計算・コード実行といった外部の道具を自分で使い始めた転換点であり、その後のエージェント開発すべての土台になった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">推論と行動の往復ループが確立</span>
+                    <span class="reaction-chip">外部ツール連携の基盤が生まれる</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年</div>
+                <div class="timeline-content">
+                  <h4>ツール使用とエージェントの本格化</h4>
+                  <p>関数呼び出し・ツール使用が主要モデルの標準機能になった。複数ステップのタスクを試みるエージェントが続々と登場し、研究から製品への移行が始まった。AIエージェント市場は形成期に入り、スタートアップと大手ラボが競い合った。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">ツール使用が標準機能に</span>
+                    <span class="reaction-chip">多段タスクのエージェントが市場へ</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年</div>
+                <div class="timeline-content">
+                  <h4>コーディングエージェントとエージェント製品ラッシュ</h4>
+                  <p>2025年前半にAnthropicがClaude Codeを研究プレビューとして提供開始し、続いてOpenAIがCodexをエージェントとして提供開始した。コーディングエージェントが産業利用の最前線になった。Salesforceの業務向けエージェント「Agentforce」は2026年初頭までに1.85万社が契約し、年換算の売上が約5.4億ドルに達した。企業向けエージェント製品が一斉に市場へ投入された年として記憶される。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">Claude CodeとCodexが提供開始</span>
+                    <span class="reaction-chip">Agentforceが急拡大</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年11月</div>
+                <div class="timeline-content">
+                  <h4>Google Antigravity 公開 — 三大ラボ出揃う</h4>
+                  <p>GoogleがGemini 3と同時にエージェント・ファーストIDE「Antigravity」を公開した。Claude Code（Anthropic）・Codex（OpenAI）・Antigravity（Google）という、アメリカの巨大ラボ3社のコーディングエージェントが出揃った瞬間だった。コーディングエージェント市場の競争は三つ巴の構造に入った。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">三大ラボのエージェントが揃う</span>
+                    <span class="reaction-chip">Gemini 3と同時公開</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年2〜3月</div>
+                <div class="timeline-content">
+                  <h4>「動くAI」の可視化 — GitHubコミットの4%</h4>
+                  <p>Claude CodeがGitHubの公開コミットの約4%（日次約13.5万件）を生成していることが明らかになった。3月15日には単日で32.6万件というピークを記録。「AIがソフトウェア開発の一角を担い始めた」ことが初めて統計として可視化された出来事として注目を集めた。2026年末には20%超になるとの予測もある。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">日次13.5万件のコミットを生成</span>
+                    <span class="reaction-chip">3月15日に単日32.6万件のピーク</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-neutral"></div>
+                <div class="timeline-date">2026年3月</div>
+                <div class="timeline-content">
+                  <h4>11%の壁とセキュリティの影</h4>
+                  <p>試しに導入する企業は増えても、実際に本番の業務で動かせているのは11%にとどまるという調査が出た。ちょうど同じ頃、多くのエージェントが共通して使う部品（LiteLLMというソフト）に不正なプログラムがこっそり仕込まれ、配布サイトから約4.7万回もダウンロードされる事件が起きた。「便利だが、まだ安心して任せられない」という現実が浮き彫りになった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">本番で動かせるのは11%だけ</span>
+                    <span class="reaction-chip">共通部品に不正プログラム混入</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 3: 各国・各勢力の視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>6つの視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- AIラボ・開発企業 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">AIラボ・開発企業（Anthropic・OpenAI・Google）</span>
+                      <span class="role-badge">技術推進</span>
+                    </div>
+                    <div class="pull-quote">「能力は4か月で倍増している。次の主戦場はコーディングエージェントだ」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      Claude Code・Codex・Antigravityの三大コーディングエージェントはすでに実コードを生成し（GitHubコミットの約4%）、能力は指数的に伸びている。METRの評価では、自律実行できるタスクの時間幅が4か月ごとに倍増しており、次の主戦場はコーディングエージェントだ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>課題：信頼性と安全性の担保</strong>
+                      実タスク完遂率は65〜86%でばらつきがあり、100%の信頼性には届いていない。安全性・ガバナンス・説明責任の担保が、エージェントの社会的受容の鍵になる。三大ラボはいずれもアメリカ企業であり、技術標準の形成も事実上アメリカが主導している。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>エージェント市場は2034年に2,360億ドルへ拡大すると予測されており、三大ラボにとってコーディングエージェントは次の主要収益源だ。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:100%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 企業・産業界 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">企業・産業界（導入企業）</span>
+                      <span class="role-badge">導入当事者</span>
+                    </div>
+                    <div class="pull-quote">「試すのは簡単だが、本番で任せきるのは別問題だ」</div>
+                    <div class="key-claim">
+                      <strong>生産性とROIへの期待</strong>
+                      開発者の71%が何らかのコーディングエージェントを常用しており、生産性向上への期待は高い。Salesforceのエージェント製品「Agentforce」が年換算で約5.4億ドルを売り上げている事実は、企業の需要が実在することを示している。
+                    </div>
+                    <div class="key-claim">
+                      <strong>現実：本番稼働11%、ガバナンス未成熟</strong>
+                      79%の企業が何らかの形でAIエージェントを採用しているが、本番環境で動かせているのは11%。ガバナンスが成熟しているのは5社に1社で、40%超の案件が2027年までに中止リスクを抱える。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>ROIの不透明さと責任の所在の曖昧さが、本番化を妨げる主因だ。AIエージェントが誤った行動をとったとき誰が責任を負うかという問いに、多くの企業はまだ答えられていない。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:100%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 労働者・雇用市場 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">労働者・雇用市場</span>
+                      <span class="role-badge">被影響層</span>
+                    </div>
+                    <div class="pull-quote">「まだ大崩壊は起きていない。だが新人の入り口が狭まっている」</div>
+                    <div class="key-claim">
+                      <strong>エントリー職・コーディング職から侵食</strong>
+                      広範なホワイトカラー崩壊はまだ統計に現れていない。しかしAI露出度の高い職種では22〜25歳の雇用が16%減少したという調査があり、新卒・エントリー職・コーディング職から変化が始まっている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>アモデイの警告と「両論」</strong>
+                      Anthropic CEOのダリオ・アモデイは「5年以内にほぼすべてのコードがAIで書かれ、認知労働者の失業率が10〜20%になりうる」と警告する。一方で世界経済フォーラムは2030年までに8,500万職が代替され1.7億職が新規創出されるという「両論」を示している。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>AIエージェントが最も深く侵食するのは「ルーティンのある知識労働」だ。新卒や若年労働者が最も打撃を受けやすい構造で、キャリア形成の起点となるエントリー職の喪失は長期的な格差につながりうる。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:80%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 安全性研究者・規制当局 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">安全性研究者・規制当局</span>
+                      <span class="role-badge">監視・規律</span>
+                    </div>
+                    <div class="pull-quote">「自律性が上がるほど、誰が責任を負うのかが曖昧になる」</div>
+                    <div class="key-claim">
+                      <strong>制御・説明責任・ガバナンスが追いついていない</strong>
+                      エージェントが複数のシステムをまたいで自律的に動くとき、その行動を誰が監視し、誰が責任を負うのかは未解決だ。METRによれば、自律実行能力は4か月で倍増しており、ガバナンスの整備が能力の伸びに追いつかない。
+                    </div>
+                    <div class="key-claim">
+                      <strong>成熟したガバナンスは5社に1社</strong>
+                      AIエージェントを導入している企業のうち、成熟したガバナンス体制を持つのは5社に1社にすぎない。OWASPはエージェント特有の脅威トップ10を公表し、プロンプトインジェクションを筆頭リスクに挙げている。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>欧州連合のAI法はエージェントを高リスクAIに分類し規制しようとしているが、技術の進化速度に法整備が追いつかないという構造的な問題がある。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:80%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 各国政府（アメリカ・中国） -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">各国政府（アメリカ・中国）</span>
+                      <span class="role-badge">国家戦略</span>
+                    </div>
+                    <div class="pull-quote">「アメリカは深さを、中国は普及速度を最適化している」</div>
+                    <div class="key-claim">
+                      <strong>競争力と規制の綱引き</strong>
+                      AIエージェントの覇権は経済力・安全保障・国際的影響力と直結する。アメリカは三大ラボのエージェント開発を主導しつつ、輸出規制で半導体とモデルの流出を防ごうとしている。三大コーディングエージェントがすべてアメリカ製であることは、現時点での技術的優位を示す。
+                    </div>
+                    <div class="key-claim">
+                      <strong>中国の普及速度：産業企業の67%が本番導入</strong>
+                      中国の産業企業は67%がAIを本番導入しており、アメリカの34%を大きく上回る。中国軍は「智能化（インテリジェント化）」戦略のもとエージェント技術の軍事応用を推進している。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>アメリカは技術の深さ（能力・精度・安全性）を、中国は普及の速度（産業・行政・軍への展開）を最優先している。この二つの戦略の差が、5年後のAIエージェント覇権の分かれ目になる。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:60%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- セキュリティ専門家 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">セキュリティ専門家</span>
+                      <span class="role-badge">リスク警告</span>
+                    </div>
+                    <div class="pull-quote">「自律エージェントは、機械の速度で動く『内部の裏切り者』になりうる」</div>
+                    <div class="key-claim">
+                      <strong>だまされやすさ — 「偽の指示」を見抜けない</strong>
+                      エージェントはウェブやメール、書類を読み込んで作業する。その文章のなかに悪意ある命令をこっそり紛れ込ませて乗っ取る手口（プロンプトインジェクション）が前年比+340%と急増している。人間が読んでも気づきにくいのが厄介だ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>部品の汚染 — 一か所の侵入が全体に広がる</strong>
+                      2026年3月、多くのエージェントが共通して使う部品に不正なプログラムが仕込まれ、配布サイトから約4.7万回ダウンロードされた。エージェント同士をつなぐ共通規格が広まるほど、たった一か所の侵入が多数のエージェントに連鎖して広がりやすくなる。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>人間の不正は「人の速度」でしか進まないが、エージェントは1秒間に何千回もの操作を実行できる。もし乗っ取られれば、被害は桁違いの速さと規模で広がる。「速くて自律的」という長所が、そのままリスクの大きさになる。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:80%;"></div></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本スタンス</th>
+                        <th>最大の主張</th>
+                        <th>課題・懸念</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>AIラボ・開発企業</td><td>技術推進・標準形成</td><td>能力は4か月で倍増している</td><td>信頼性・安全性の担保</td></tr>
+                      <tr><td>企業・産業界</td><td>ROI期待・慎重な本番化</td><td>試すのは簡単、任せきるのは別</td><td>ガバナンス未成熟・40%超が中止リスク</td></tr>
+                      <tr><td>労働者・雇用市場</td><td>変化への警戒と適応</td><td>まだ大崩壊はない、入り口が狭まる</td><td>エントリー職の喪失・長期格差</td></tr>
+                      <tr><td>安全性研究者・規制当局</td><td>監視と説明責任の確立</td><td>自律性が上がるほど責任が曖昧に</td><td>ガバナンス整備が能力に追いつかない</td></tr>
+                      <tr><td>各国政府（アメリカ・中国）</td><td>覇権競争・規制の綱引き</td><td>米は深さ、中国は速度を最適化</td><td>技術流出防止と軍事応用の均衡</td></tr>
+                      <tr><td>セキュリティ専門家</td><td>リスク可視化と対策</td><td>機械の速度で動く「内部の裏切り者」</td><td>共通部品の汚染が全体に連鎖する</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure" style="margin-top:2rem;">
+              <img src="../../../image/articles/ai-agents-security-breach.jpg"
+                   alt="サイバーセキュリティの侵害をイメージした暗い画面。不正アクセスの警告が表示される" loading="lazy">
+              <figcaption>自律エージェントが悪用された場合、従来の内部不正者と異なり「プログラム的速度」で動く。秒単位で数千のAPIコールを実行できるエージェントは、発見されるまでに組織のシステム全体を横断しうる。MCPがサプライチェーンの結節点となりつつあるいま、単一の侵害が広範なエージェントシステムを汚染するリスクが高まっている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/ai-agents-react-loop-closeup.jpg"
+                 alt="コードとデータが流れるモニター画面の接写。エージェントが推論と行動を繰り返す様子" loading="lazy">
+            <figcaption>AIエージェントの「思考」は画面上でリアルタイムに可視化される。推論・ツール呼び出し・結果の観測というReActループが秒単位で繰り返され、人間のエンジニアはその過程をレビューしながら作業を進める。「任せる」と「確認する」の境界線が、エージェント時代の新しい仕事の形だ。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- エージェントのタスク遂行能力 -->
+              <div class="data-card">
+                <h4>エージェントのタスク遂行能力（ベンチマーク正答率, %）</h4>
+                <div style="position:relative;height:220px;margin-top:1rem;">
+                  <canvas id="agentCapabilityChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  パソコン操作（OSWorld）とウェブ操作（WebArena）で、エージェントが作業をやり切れた割合の推移。人間の成績は8割前後で、その差は縮まりつつある。
+                  出典：Stanford AI Index 2026・OSWorld・WebArena
+                </p>
+              </div>
+
+              <!-- AIエージェント市場規模の予測 -->
+              <div class="data-card">
+                <h4>AIエージェント市場規模の予測（十億ドル）</h4>
+                <div style="position:relative;height:220px;margin-top:1rem;">
+                  <canvas id="agentMarketChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  2025年の7.6十億ドルから2034年に2,360億ドルへの急成長が予測される。2028〜2030年が最大の加速期とみられる。
+                  出典：各種市場調査
+                </p>
+              </div>
+
+              <!-- コーディングエージェントの3つの数字 -->
+              <div class="data-card">
+                <h4>コーディングエージェントをめぐる3つの数字</h4>
+                <div class="spend-bar" style="margin-top:1.5rem;">
+                  <div class="spend-row">
+                    <div class="spend-head"><span class="spend-label">開発者の常用率</span><span class="spend-value">71%</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent);width:71%;"></div></div>
+                  </div>
+                  <div class="spend-row">
+                    <div class="spend-head"><span class="spend-label">AI提案コードの受入率</span><span class="spend-value">30%</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent4);width:30%;"></div></div>
+                  </div>
+                  <div class="spend-row">
+                    <div class="spend-head"><span class="spend-label">結果を信頼する開発者</span><span class="spend-value">38%</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent2);width:38%;"></div></div>
+                  </div>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">広く使われるが、信頼と本番化はこれから。人間のレビューが依然支配的。出典：各種開発者調査</p>
+              </div>
+
+              <!-- 注目の数字 -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">2,360億ドル</div>
+                    <div class="stat-label">2034年のAIエージェント市場予測</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">約4%→20%</div>
+                    <div class="stat-label">Claude CodeのGitHub公開コミット占有率（2026年2月→年末予測）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">+340%</div>
+                    <div class="stat-label">プロンプトインジェクション攻撃の前年比増加</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">11%</div>
+                    <div class="stat-label">AIエージェントを本番稼働できている企業の割合</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure" style="margin-top:2rem;">
+              <img src="../../../image/articles/ai-agents-office-worker-screen.jpg"
+                   alt="オフィスワーカーが複数のモニターを前にAIエージェントと協働する様子" loading="lazy">
+              <figcaption>AIエージェントが「同僚」として働き始めたオフィスの現場。開発者はエージェントが生成したコードをレビューし、承認し、修正する。「人間のレビューが依然支配的」という現実は、現時点でのAIエージェントの立ち位置を正確に示している。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り — これから2〜3年で何が起きるか</h2>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              現状は「広く試されるが、まだ任せきれない」段階だ。では、この先はどう動くのか。能力・本番化・雇用・覇権という4つの軸で、今後2〜3年の見通しを整理する。
+            </p>
+
+            <div class="insight-box">
+              <div class="insight-title">能力の予測 — 「任せられる仕事の長さ」が伸びる</div>
+              <div class="insight-text">
+                METRは、エージェントが自力でやり切れるタスクの「時間幅」が約4か月ごとに倍増していると指摘する。2026年半ばで「約2時間の作業を半分の確率でこなす」水準だが、このペースが続けば、2027年には1営業日分、2028年には1週間分、2029年には1か月分の仕事を任せられる計算になる。
+                もっとも、これは直線的な延長にすぎない。実際にはエネルギー・計算資源・信頼性の壁が「律速」になり、倍増ペースはどこかで鈍る可能性が高い。鍵を握るのは生の性能よりも「失敗をどれだけ減らせるか」だ。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">本番化の予測 — 2027年が「11%の壁」の分岐点</div>
+              <div class="insight-text">
+                本番で動かせる企業が11%にとどまる最大の理由は、性能ではなく「監視・監査・責任の仕組み」が未整備なことだ。逆に言えば、ここが整えば本番化は一気に進む。
+                調査会社は、ガバナンスやROIの見通しが立たないエージェント案件の40%超が2027年までに中止に追い込まれると予測する。2027年前後は、整備を進めた企業が一気に本番化する一方、整備を怠った企業の試みが頓挫する——「二極化」の分岐点になると見られる。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">雇用の予測 — まず「入り口」、次に「使い手」で二極化</div>
+              <div class="insight-text">
+                今後まず影響が出るのは、定型的なコーディングや事務などの新人・エントリー職だ。これらは「人間がやる仕事」から「人間が確認する仕事」へ置き換わっていく。
+                その先の3年で起きるのは、職そのものの消滅よりも「AIを使いこなす人」と「使われる側に回る人」の二極化だろう。世界経済フォーラムは2030年までに8,500万職が代替される一方で1.7億職が新規創出されると見るが、移行がなめらかに進むかは、教育と再訓練の速度しだいだ。新人が経験を積む「入り口」が狭まること自体が、長期的な格差の火種になる。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">覇権の予測 — 「標準」を握る者が次の10年を握る</div>
+              <div class="insight-text">
+                コーディングエージェントの最前線は当面アメリカが主導する見込みだ。三大ラボがいずれもアメリカ企業であり、技術の「深さ」で先行している。
+                ただし中国は産業企業の67%が本番導入（アメリカは34%）という「普及の速さ」で追う。勝負を分けるのは、エージェント同士をつなぐ共通規格（MCPなど）を誰が握るかだ。かつてOSやスマホのプラットフォームを握った者が市場を支配したように、エージェントの「土台」を握る企業・国が、次の10年の主導権を握る可能性が高い。
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.8rem;">
+              「道具か、働き手か」という問いの答えは、技術の進歩そのものよりも、社会がどれだけ速く受け皿を用意できるかにかかっている。
+              能力は今後も伸びる。だが「働き手」として本当に任せられるかどうかを決めるのは、監視・責任・再訓練・合意形成という、技術より一歩遅れて動く領域だ。次の2〜3年は、その「遅れ」をどれだけ詰められるかが問われる時間になる。
+            </p>
+
+            <div class="insight-box" style="border-left-color:var(--border);opacity:0.85;">
+              <div class="insight-title">編集後記 — この記事もまた「動くAI」の産物である</div>
+              <div class="insight-text">
+                この WorldView というサイトは、記事のHTML・デザイン・運用そのものを Claude Code というコーディングエージェントを使って作っている。本稿もまた「動くAI」が下書きし、人間（編集者）がレビューして公開している。AIが書き、人間が確かめる——本文で見た「人間のレビューが依然支配的」という現実は、このサイトの作り方そのものにも当てはまる。
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/ai-agents-analysis-bifurcation.jpg"
+                   alt="AIを使いこなす側と使われる側——2027年に迫る分岐点のビジュアル" loading="lazy">
+              <figcaption>「動くAI」の普及が生む分岐——整備を進めた企業と怠った企業、使いこなす人と使われる側に回る人。2027年前後はその「選別」が可視化される転換点になると予測される。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Stanford HAI — AI Index 2026</div>
+                  <div class="source-desc">エージェントのベンチマーク性能（OSWorld・WebArena）の推移。AIの能力急伸の年次統計。</div>
+                  <div class="source-country">【AI動向の年次ベンチマーク】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">METR（Model Evaluation and Threat Research）</div>
+                  <div class="source-desc">タスク自律実行の「時間幅」と倍増ペースの評価。独立した能力測定の一次資料。</div>
+                  <div class="source-country">【AI能力評価の独立研究機関】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Gartner</div>
+                  <div class="source-desc">エンタープライズのAIエージェント組込み予測（2026年末40%）・本番化ギャップ（11%）・案件中止リスクの調査。</div>
+                  <div class="source-country">【IT市場調査】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">OWASP — LLM/Agentic Security 2026</div>
+                  <div class="source-desc">プロンプトインジェクションをはじめとするエージェント特有の脅威トップ10。MCPリスクの体系化。</div>
+                  <div class="source-country">【セキュリティ標準化団体】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Anthropic — Economic Index / 2026 Agentic Coding Trends</div>
+                  <div class="source-desc">労働インパクトの分析（22〜25歳雇用16%減）とコーディングエージェントの利用動向（GitHubコミット占有率等）。</div>
+                  <div class="source-country">【AI開発企業の調査】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Pragmatic Engineer・SemiAnalysis</div>
+                  <div class="source-desc">コーディングエージェントの開発者利用率（71%）、AI提案コード受入率（30%）、GitHubコミット占有率の詳細分析。</div>
+                  <div class="source-country">【ソフト開発・半導体の専門分析】</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>核心と問い</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/ai-tech/index.html">AI・技術覇権</a></div>
+            <div>2026年6月15日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/ai-tech/index.html">AI・技術覇権一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // エージェントのタスク遂行能力（折れ線グラフ）
+  (function() {
+    var ctx = document.getElementById('agentCapabilityChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['2024', '2024後半', '2025前半', '2025後半', '2026前半', '2026半ば'],
+        datasets: [
+          {
+            label: 'OSWorld',
+            data: [12, 22, 38, 52, 61, 66],
+            borderColor: 'rgba(154,180,196,0.9)',
+            backgroundColor: 'rgba(154,180,196,0.08)',
+            pointBackgroundColor: 'rgba(154,180,196,0.9)',
+            tension: 0.3,
+            fill: false,
+            borderWidth: 2,
+          },
+          {
+            label: 'WebArena',
+            data: [14, 28, 45, 58, 65, 69],
+            borderColor: 'rgba(196,168,130,0.9)',
+            backgroundColor: 'rgba(196,168,130,0.08)',
+            pointBackgroundColor: 'rgba(196,168,130,0.9)',
+            tension: 0.3,
+            fill: false,
+            borderWidth: 2,
+          }
+        ]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            labels: { color: '#8890a0', font: { size: 11 } }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' ' + c.dataset.label + ': ' + c.parsed.y + '%'; }
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            max: 100,
+            grid: { color: '#2a3a50' },
+            ticks: {
+              color: '#8890a0', font: { size: 10 },
+              callback: function(v) { return v + '%'; }
+            }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // AIエージェント市場規模（棒グラフ）
+  (function() {
+    var ctx = document.getElementById('agentMarketChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2025', '2026', '2028', '2030', '2034'],
+        datasets: [{
+          data: [7.6, 10.9, 35, 90, 236],
+          backgroundColor: [
+            'rgba(154,180,196,0.55)',
+            'rgba(154,180,196,0.65)',
+            'rgba(154,180,196,0.72)',
+            'rgba(154,180,196,0.80)',
+            'rgba(154,180,196,0.88)',
+          ],
+          borderColor: 'transparent',
+          borderWidth: 0,
+          borderRadius: 3,
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' 約' + c.parsed.y + '十億ドル'; }
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: {
+              color: '#8890a0', font: { size: 10 },
+              callback: function(v) { return '$' + v + 'B'; }
+            }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 11 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // tone-meterアニメーション
+  function animateToneMeters() {
+    setTimeout(function() {
+      document.querySelectorAll('#sec-perspectives .tone-fill').forEach(function(el) {
+        el.style.width = el.getAttribute('data-width');
+      });
+    }, 60);
+  }
+  if (document.readyState === 'complete') {
+    animateToneMeters();
+  } else {
+    window.addEventListener('load', animateToneMeters);
+  }
+</script>
+</body>
+</html>
