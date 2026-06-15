@@ -129,6 +129,13 @@ a:hover { text-decoration: underline; }
   margin: 2rem 0;
 }
 
+/* ===== Category Article Cards ===== */
+.ac-countries::before {
+  content: '視点：';
+  font-size: 0.76rem;
+  color: var(--text-dim);
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .site-header { padding: 0 1.25rem; }
