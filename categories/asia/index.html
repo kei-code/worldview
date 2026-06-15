@@ -36,11 +36,25 @@
     .ac-angle-badge .num { font-size: 1.3rem; font-weight: 800; color: var(--accent); line-height: 1; }
     .ac-angle-badge .lbl { font-size: 0.7rem; color: var(--text-dim); }
     @media (max-width: 600px) {
-      a.article-card { flex-direction: column; }
+      a.article-card { flex-direction: column; position: relative; }
       .ac-thumb { width: 100%; height: 160px; }
-      .ac-inner { flex-direction: column; gap: 0.5rem; padding: 0.9rem 1.1rem 1rem; align-items: stretch; }
-      .ac-date { font-size: 0.74rem; }
-      .ac-right { align-self: flex-start; margin-top: 0.3rem; }
+      .ac-inner { flex-direction: column; gap: 0.4rem; padding: 0.85rem 1.1rem 1rem; align-items: stretch; }
+      .ac-date {
+        position: absolute; top: 0.55rem; left: 0.65rem; z-index: 2;
+        font-size: 0.7rem; color: rgba(255,255,255,0.88);
+        background: rgba(0,0,0,0.42); padding: 0.1rem 0.5rem;
+        border-radius: 4px; white-space: nowrap;
+      }
+      .ac-right {
+        position: absolute; top: 0.55rem; right: 0.65rem; z-index: 2;
+        align-self: auto; margin-top: 0;
+      }
+      .ac-angle-badge {
+        background: rgba(0,0,0,0.48); border-color: rgba(255,255,255,0.18);
+        padding: 0.3rem 0.6rem;
+      }
+      .ac-angle-badge .num { font-size: 1.1rem; color: #fff; }
+      .ac-angle-badge .lbl { color: rgba(255,255,255,0.72); }
     }
   </style>
 </head>
