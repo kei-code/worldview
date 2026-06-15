@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>氷上のシルクロード — 温暖化が開いた航路と資源の地政学 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* セクション番号（大型スタイル） */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* 記事の問い（冒頭フック） */
+    .article-question {
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.4rem;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.8rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* 構造要因概観ボックス（3要因）*/
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent);
+    }
+    .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/arctic-thaw-hero-icebreaker.jpg');
+      background-size: cover; background-position: center 45%;
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.78) 0%, rgba(14,17,23,0.70) 40%, rgba(14,17,23,0.92) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* 本文中の図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* 支出バー */
+    .spend-bar { margin: 1rem 0 0.25rem; }
+    .spend-row { margin-bottom: 0.95rem; }
+    .spend-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.35rem; }
+    .spend-label { font-size: 0.8rem; color: var(--text-muted); }
+    .spend-value { font-size: 0.8rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+    .spend-track { height: 18px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .spend-fill { height: 100%; border-radius: 5px; transition: width 0.8s cubic-bezier(.4,0,.2,1); }
+
+    /* 深掘りセクション */
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* data-gridを2列に */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* 役割バッジ */
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+    }
+
+    /* プルクォート（核心の一文） */
+    .pull-quote {
+      border-left: 3px solid var(--accent);
+      background: rgba(154,180,196,0.06);
+      padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text); line-height: 1.65;
+    }
+
+    /* 関係の深さインジケーター（横バー） */
+    .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+    .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
+    .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .depth-bar-fill { height: 100%; background: var(--accent); border-radius: 5px; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/resources/index.html" style="color:var(--text);">資源・環境</a>
+    <a href="../../../categories/security/index.html">安全保障</a>
+    <a href="../../../categories/economy/index.html">世界経済</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-green">資源・環境</span>
+        <span class="tag tag-green">北極・地政学</span>
+        <span class="date">2026年6月15日</span>
+      </div>
+      <h1 class="article-title">氷上のシルクロード<br>— 温暖化が開いた航路と資源の地政学</h1>
+      <p class="article-summary">
+        北極の氷が史上最低水準まで後退し、これまで凍りついて閉ざされていた海が「使える海」に変わりつつある。
+        スエズ運河より約4割短い北極海航路、海底に眠る世界有数の石油・天然ガス・レアアース、そして急速に進む軍事拠点化——。
+        氷が溶けて生まれた新しい海は、各国が利益を分け合う「協力の海」になるのか、それとも「新しい冷戦」の最前線になるのか。ロシア・中国・アメリカ・北欧諸国・先住民・科学者の6つの視点で読み解く。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">海氷は観測史上最低水準</div>
+          <div class="kp-value">2026年3月の冬季最大海氷面積は1,429万km²。1981〜2010年平均より約136万km²少ない</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">スエズ比 約40%短縮の航路</div>
+          <div class="kp-value">北極海航路（NSR＝ロシア沿岸を通る北極の海路）の2025年通航は103隻。中国は欧州へ20日で到達</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">世界有数の未発見資源</div>
+          <div class="kp-value">世界の未発見石油の約13%・天然ガスの約30%が北極にあるとされる（USGS＝米地質調査所）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">砕氷船は40対2の格差</div>
+          <div class="kp-value">ロシアは約40隻（うち原子力7隻）。アメリカは老朽化した2隻にとどまる</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 核心と問い -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>核心と問い — 氷が溶けて生まれた海</h2>
+
+            <div class="article-question">
+              氷が溶けて生まれた新しい海と航路——その富と支配は誰のものになるのか。北極は各国が利益を分け合う「協力の海」になるのか、それとも資源と航路をめぐる「新しい冷戦」の最前線になるのか。
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              北極はこれまで、厚い氷に閉ざされた「近づけない場所」だった。だが地球温暖化は極地でとりわけ速く進み、海を覆う氷は年々薄く、狭くなっている。2026年3月、冬季の最大海氷面積は1,429万km²と、48年に及ぶ衛星観測の歴史で前年と並ぶ最低水準を記録した。1981〜2010年の平均と比べて、テキサス州のおよそ2倍にあたる氷が失われた計算だ。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              氷が減るということは、これまで通れなかった海が「通れる海」になるということだ。ロシア沿岸を通る北極海航路（NSR）は、アジアと欧州を結ぶ最短ルートとして、スエズ運河経由より航海日数を約4割も縮められる。2025年10月には中国発のコンテナ船が北極海航路を経由してわずか20日で英国の港に到達し、「氷上のシルクロード」がもはや構想ではなく現実であることを示した。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              さらに北極の海底には、世界の未発見石油の約13%、天然ガスの約30%が眠るとされ、グリーンランドにはレアアース（先端産業に不可欠な希少金属）の鉱床もある。航路と資源、その両方に各国の触手が伸び、軍事的な存在感の競争も激化している。「開けた海」は誰のものか——この問いが、これからの北極をめぐるすべての対立の根にある。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2rem 0 0.75rem;font-weight:700;">3つの論点</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">航路 — 新しい交易路</div>
+                <div class="factor-desc">
+                  氷が減り、アジアと欧州を最短で結ぶ北極海航路が現実味を帯びてきた。スエズ運河より約4割短く、混雑や紛争リスクを避けられる。ロシアが沿岸を握り、中国が資金と船で参入する。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">資源 — 海底の富</div>
+                <div class="factor-desc">
+                  北極には世界有数の石油・天然ガスが眠り、グリーンランドにはレアアースの鉱床がある。だが採掘は過酷な環境と高コスト、環境規制の壁に阻まれ、実際の生産はまだ限られている。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">環境 — 溶けゆく生態系</div>
+                <div class="factor-desc">
+                  氷の後退は、そこで暮らす先住民の狩猟・漁労の基盤を崩し、生態系を脅かす。開発の利益と環境の破壊が表裏一体であることが、北極問題を単純な「争奪戦」では語れないものにしている。
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/arctic-thaw-melting-passage.jpg"
+                   alt="溶けゆく北極の海氷と、その間に開けた暗い水路" loading="lazy">
+              <figcaption>溶けゆく海氷の間に開けた水路。氷が「障壁」から「通り道」へと変わるとき、北極は世界経済と安全保障の新しい舞台になる。だがその変化は、同時に取り返しのつかない環境の損失でもある。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 北極が焦点になるまで</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2007年</div>
+                <div class="timeline-content">
+                  <h4>ロシア、北極点の海底に国旗を設置</h4>
+                  <p>ロシアの探査隊が北極点の海底4,000メートルにチタン製の国旗を設置した。これは単なるパフォーマンスではなく、「北極点まで続く海底の山脈（ロモノソフ海嶺）は自国の大陸棚の延長だ」という領有権主張の象徴だった。北極をめぐる大国の競争が可視化された出来事として記憶される。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">海底の領有権主張が表面化</span>
+                    <span class="reaction-chip">大陸棚をめぐる競争の号砲</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2018年</div>
+                <div class="timeline-content">
+                  <h4>中国が「近北極国家」を自称</h4>
+                  <p>中国は北極政策白書を発表し、自らを「近北極国家」と位置づけた。一帯一路構想の延長として、北極海航路を「氷上のシルクロード」と名づけ、ロシアと組んで本格参入する意思を明確にした。北極沿岸国でない中国の関与拡大は、各国に新たな警戒を呼んだ。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">氷上シルクロード構想を提唱</span>
+                    <span class="reaction-chip">非沿岸国の参入に警戒</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年</div>
+                <div class="timeline-content">
+                  <h4>西側が「砕氷船同盟」で巻き返し</h4>
+                  <p>アメリカ・カナダ・フィンランドが砕氷船の共同建造協定「ICE Pact」を結んだ。氷を割って進む砕氷船は北極航行の生命線だが、西側はこの分野でロシアに大きく後れを取っていた。3か国の連携は、ロシアと中国の北極進出に対する西側の本格的な巻き返しの始まりだった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">米加芬が砕氷船で連携</span>
+                    <span class="reaction-chip">対ロシアの巻き返し本格化</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年3月</div>
+                <div class="timeline-content">
+                  <h4>海氷が史上最低 — グリーンランドは選挙へ</h4>
+                  <p>冬季の最大海氷面積が観測史上最低を記録し、温暖化の加速が改めて突きつけられた。同じ月、北極の要衝グリーンランドでは議会選挙が行われ、連立与党は「独立を急がず現実的に進める」方針で合意。住民の約56%が独立を志向するなか、その帰属が世界の注目を集めることになった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">海氷面積が観測史上最低に</span>
+                    <span class="reaction-chip">グリーンランドの帰属が焦点に</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年10月</div>
+                <div class="timeline-content">
+                  <h4>中国、欧州へ初のコンテナ輸送 — 20日で到達</h4>
+                  <p>中国発のコンテナ船が北極海航路を経由し、わずか20日で英国の港に到着した。これはスエズ運河経由の約半分の日数で、「氷上のシルクロード」が実用段階に入ったことを示す象徴的な航海だった。同月、ロシアと中国は北極海航路の協力ロードマップを承認し、2030年までに年2,000万トンの貨物輸送を目標に掲げた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">スエズの半分の日数で欧州着</span>
+                    <span class="reaction-chip">露中が2,000万トン目標で合意</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-neutral"></div>
+                <div class="timeline-date">2026年1〜2月</div>
+                <div class="timeline-content">
+                  <h4>グリーンランド問題とNATOの北極展開</h4>
+                  <p>アメリカのトランプ大統領がグリーンランドの「取得」を改めて公言し、デンマークとの緊張が高まった。これを受けてNATO（北大西洋条約機構）は2月、北極での軍事プレゼンスを高める作戦「Arctic Sentry（北極の歩哨）」を発動。フィンランドとスウェーデンの加盟により、欧州の北極沿岸はロシアを除きすべてNATO加盟国となり、対立の構図が鮮明になった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">トランプのグリーンランド発言再燃</span>
+                    <span class="reaction-chip">NATOが北極作戦を発動</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/arctic-thaw-cargo-ship.jpg"
+                   alt="氷の浮かぶ北極海を航行する大型コンテナ船" loading="lazy">
+              <figcaption>氷の浮かぶ北極海を進む大型コンテナ船。かつては砕氷船に守られた一部の船しか通れなかった海を、いまや世界貿易の貨物が行き来し始めている。「氷上のシルクロード」は構想から現実へと移りつつある。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 3: 各国・各勢力の視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>6つの視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- ロシア -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ロシア</span>
+                      <span class="role-badge">沿岸最大の当事国</span>
+                    </div>
+                    <div class="pull-quote">「北極海航路は、わが国の経済を支える国家の大動脈である」</div>
+                    <div class="key-claim">
+                      <strong>北極を「国家の大動脈」に</strong>
+                      ロシアは北極海航路の沿岸の大半を握り、これを国家の戦略的資産と位置づける。約40隻（うち原子力7隻）という世界最大の砕氷船隊を背景に、通航する船から料金を取り、エネルギー輸出の新たな出口として育てようとしている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>海底の領有権を主張</strong>
+                      北極点まで続く海底の山脈（ロモノソフ海嶺）を自国の大陸棚の延長だと主張し、その下に眠る資源の権利を確保しようとしている。西側の制裁で技術と資金が細るなか、中国の参入を受け入れることで開発を進める道を選んだ。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>ウクライナ侵攻後の制裁で欧州市場を失ったロシアにとって、北極海航路を通じたアジア向けのエネルギー輸出は生命線だ。中国への依存を深めながらも、北極の主導権だけは手放したくないというジレンマを抱える。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:100%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 中国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">中国</span>
+                      <span class="role-badge">「近北極国家」</span>
+                    </div>
+                    <div class="pull-quote">「氷上のシルクロードは、一帯一路を北へ延ばす新しい動脈だ」</div>
+                    <div class="key-claim">
+                      <strong>氷上シルクロードへの参入</strong>
+                      北極沿岸国ではない中国は、自らを「近北極国家」と位置づけ、北極海航路を一帯一路の延長として重視する。ロシアに資金を払って科学調査に同行するなどして足場を築き、2030年までに露中で年2,000万トンの貨物輸送を目指す。
+                    </div>
+                    <div class="key-claim">
+                      <strong>航路の多様化という狙い</strong>
+                      中国の貿易はマラッカ海峡やスエズ運河という「詰まりやすい喉元」に依存している。北極海航路はその代替路として、有事の際にもアジアと欧州を結べる戦略的な保険になる。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>中国にとって北極は、資源の供給源であると同時に、アメリカの影響力が及びにくい新しい交易路でもある。ロシアの足元を見つつ協力を深め、長期的には北極の「ルールづくり」にも関与しようとしている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:80%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- アメリカ -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">アメリカ（トランプ政権）</span>
+                      <span class="role-badge">後発の巻き返し</span>
+                    </div>
+                    <div class="pull-quote">「グリーンランドは、アメリカの安全保障にとって絶対に必要だ」</div>
+                    <div class="key-claim">
+                      <strong>出遅れと焦り</strong>
+                      アメリカは北極で大きく出遅れた。砕氷船はわずか2隻、しかも老朽化している。ロシアの40隻、増強を進める中国に比べ、北極を自力で航行する力すら不足しているという危機感が、急速な巻き返しの動機になっている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>グリーンランドへの執着</strong>
+                      トランプ大統領はグリーンランドの「取得」を繰り返し公言する。北極の要衝であり、レアアースなどの資源も眠るこの島を、安全保障と資源確保の両面から重視している。同盟国カナダ・フィンランドと砕氷船を共同建造する「ICE Pact」で挽回を図る。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>北極の主導権をロシアと中国に握られることは、アメリカにとって軍事・経済の両面で脅威だ。だが同盟国デンマークの領土であるグリーンランドへの強硬姿勢は、西側の結束を揺るがすという矛盾もはらんでいる。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:80%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 北欧・カナダ -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">北欧・カナダ（NATO沿岸国）</span>
+                      <span class="role-badge">主権防衛</span>
+                    </div>
+                    <div class="pull-quote">「北極は争いの場ではなく、ルールに基づく協力の海であるべきだ」</div>
+                    <div class="key-claim">
+                      <strong>大国に挟まれる沿岸国</strong>
+                      ノルウェー、デンマーク（グリーンランドを統治）、カナダといった北極沿岸国は、ロシアの軍事的圧力とアメリカの強硬姿勢の双方に向き合う。自国の主権と領海を守りつつ、北極を「ルールに基づく秩序」のもとに保とうとしている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>防衛力の増強</strong>
+                      カナダは国産の砕氷船8隻の建造を計画し、北欧諸国もNATOの「Arctic Sentry」作戦に参加して哨戒を強化している。フィンランドとスウェーデンの加盟で、欧州の北極沿岸はロシアを除きすべてNATO圏となった。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>グリーンランドでは住民の約56%が独立を志向するが、与党は現実路線を取る。小国・自治政府が大国の思惑に翻弄されないために、国際法と多国間の枠組みが頼みの綱になっている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:80%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 先住民 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">先住民（イヌイットなど）</span>
+                      <span class="role-badge">当事者・被影響層</span>
+                    </div>
+                    <div class="pull-quote">「ここは資源庫ではなく、私たちが生きてきた故郷だ」</div>
+                    <div class="key-claim">
+                      <strong>崩れる生活基盤</strong>
+                      イヌイット、サーミ、ネネツといった北極の先住民は、氷の上での狩猟や漁労を生活の基盤にしてきた。海氷の後退はその基盤を直接崩し、移動・食料・健康のすべてに影響を及ぼしている。温暖化の最前線で暮らす彼らは、最も早く、最も深く影響を受ける人々だ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>開発と自己決定権のはざま</strong>
+                      鉱山開発や航路の整備は雇用と収入をもたらす一方、伝統的な暮らしと環境を脅かす。先住民は「開発の恩恵」と「故郷の保全」のあいだで難しい選択を迫られ、自分たちの土地のことを自分たちで決める権利（自己決定権）を求めている。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>グリーンランドの独立論も、レアアース鉱山の開発も、結局はそこに暮らす人々の生活と切り離せない。大国の地政学の議論からこぼれ落ちがちな当事者の声が、北極問題のもう一つの核心にある。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:60%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 科学者・環境 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">科学者・環境</span>
+                      <span class="role-badge">リスク警告</span>
+                    </div>
+                    <div class="pull-quote">「北極が溶けることは、北極だけの問題では終わらない」</div>
+                    <div class="key-claim">
+                      <strong>温暖化の「増幅装置」</strong>
+                      北極は地球の平均より数倍速く温まっている。白い氷は太陽光を跳ね返すが、氷が溶けて黒い海が広がると逆に熱を吸収し、温暖化をさらに加速させる。北極の変化は、世界全体の気候を揺さぶる「増幅装置」として働く。
+                    </div>
+                    <div class="key-claim">
+                      <strong>開発がもたらす新たなリスク</strong>
+                      凍った地中（永久凍土）が溶けると、閉じ込められていたメタンなどの温室効果ガスが放出される恐れがある。さらに、航路や資源開発が進めば、油の流出や生態系の破壊といったリスクも高まる。科学者は「開発の速度に環境の備えが追いついていない」と警告する。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>北極の氷は、地球全体の気候を安定させる役割を担ってきた。その喪失は遠い極地の出来事ではなく、海面上昇や異常気象として世界中に跳ね返る。「資源か、環境か」という問いは、人類全体の問題でもある。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:60%;"></div></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本スタンス</th>
+                        <th>最大の主張</th>
+                        <th>課題・懸念</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>ロシア</td><td>主導権の維持・資源輸出</td><td>北極海航路は国家の大動脈</td><td>制裁下で中国依存が深まる</td></tr>
+                      <tr><td>中国</td><td>航路参入・多様化</td><td>氷上シルクロードを延ばす</td><td>非沿岸国ゆえの正統性の弱さ</td></tr>
+                      <tr><td>アメリカ</td><td>後発の巻き返し</td><td>グリーンランドは安全保障に必須</td><td>砕氷船不足・同盟国との摩擦</td></tr>
+                      <tr><td>北欧・カナダ</td><td>主権防衛・ルール重視</td><td>協力の海であるべき</td><td>大国に挟まれる小国の立場</td></tr>
+                      <tr><td>先住民</td><td>生活と自己決定権</td><td>ここは資源庫でなく故郷</td><td>開発と環境保全のはざま</td></tr>
+                      <tr><td>科学者・環境</td><td>リスクの可視化</td><td>北極の融解は世界の問題</td><td>開発速度に備えが追いつかない</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/arctic-thaw-military-standoff.jpg"
+                   alt="北極の海氷の縁をパトロールする軍艦と、極寒の中の兵士" loading="lazy">
+              <figcaption>北極の軍事プレゼンスは年々高まっている。ロシアの圧力、アメリカの強硬姿勢、NATOの哨戒——「協力の海」を掲げる沿岸国の理想とは裏腹に、氷の溶けた海は静かに軍事化が進む最前線になりつつある。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- 海氷面積の推移 -->
+              <div class="data-card">
+                <h4>北極の冬季最大海氷面積の推移（百万km²）</h4>
+                <div style="position:relative;height:220px;margin-top:1rem;">
+                  <canvas id="iceExtentChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  毎年3月ごろに最大となる海氷の面積。長期的に縮小し、2025年・2026年は観測史上最低水準で並んだ。1981〜2010年の平均は約15.6百万km²。
+                  出典：NSIDC（米雪氷データセンター）・NASA
+                </p>
+              </div>
+
+              <!-- 砕氷船の保有数 -->
+              <div class="data-card">
+                <h4>主な国の砕氷船保有数（隻）</h4>
+                <div style="position:relative;height:220px;margin-top:1rem;">
+                  <canvas id="icebreakerChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  氷を割って進む砕氷船は北極航行の生命線。ロシアが圧倒的で、アメリカは大きく後れを取る。カナダは8隻の建造を計画中。
+                  出典：各種報道・専門機関の推計
+                </p>
+              </div>
+
+              <!-- 北極の未発見資源シェア -->
+              <div class="data-card">
+                <h4>北極が握る世界の未発見資源</h4>
+                <div class="spend-bar" style="margin-top:1.5rem;">
+                  <div class="spend-row">
+                    <div class="spend-head"><span class="spend-label">天然ガス（世界の未発見量に占める割合）</span><span class="spend-value">約30%</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent);width:30%;"></div></div>
+                  </div>
+                  <div class="spend-row">
+                    <div class="spend-head"><span class="spend-label">石油（世界の未発見量に占める割合）</span><span class="spend-value">約13%</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent4);width:13%;"></div></div>
+                  </div>
+                  <div class="spend-row">
+                    <div class="spend-head"><span class="spend-label">うち海底（オフショア）にある割合</span><span class="spend-value">約84%</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent3);width:84%;"></div></div>
+                  </div>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">資源は豊富だが大半が海底にあり、採掘は過酷な環境と高コストの壁に阻まれる。出典：USGS環北極資源評価</p>
+              </div>
+
+              <!-- 注目の数字 -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">石油13%<br>ガス30%</div>
+                    <div class="stat-label">北極が握る世界の未発見資源</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">約40%</div>
+                    <div class="stat-label">北極海航路によるスエズ比の航海短縮</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">40対2</div>
+                    <div class="stat-label">砕氷船の保有数（ロシア対アメリカ）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">1,429万km²</div>
+                    <div class="stat-label">冬季最大海氷面積（2026年・観測史上最低水準）</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り — これから2〜3年で何が起きるか</h2>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              氷は溶け続け、各国の関与は深まっている。では、この先はどう動くのか。航路・砕氷船・グリーンランド・秩序という4つの軸で、今後2〜3年の見通しを整理する。
+            </p>
+
+            <div class="insight-box">
+              <div class="insight-title">航路の予測 — 「夏だけの海」から「もっと長い季節」へ</div>
+              <div class="insight-text">
+                北極海航路はまだ「夏から秋の数か月だけ」の季節限定路にすぎない。氷が薄くなっても、流氷や予測の難しさは残り、当面は砕氷船の護衛なしに安心して通れる海にはならない。
+                それでも、露中が掲げる2030年に年2,000万トンという目標は、輸送量を着実に押し上げるだろう。今後2〜3年で起きるのは「全面開通」ではなく、エネルギーや資源など特定の貨物が、限られた季節に確実に流れる「部分的な常用化」だ。スエズ運河やマラッカ海峡で混乱が起きるたびに、北極の価値が見直される展開が続く。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">砕氷船の予測 — ギャップはすぐには埋まらない</div>
+              <div class="insight-text">
+                砕氷船は北極の主導権を決める「鍵」だが、西側の遅れは深刻だ。ロシアの約40隻に対しアメリカは2隻。「ICE Pact」で米加芬が建造を急いでも、大型船の完成には何年もかかる。
+                したがって今後2〜3年は、ロシアの優位が続く時間帯になる。西側は数で追いつけない間、同盟国の連携と既存の船の活用でしのぐしかない。砕氷船という「物理的な力」の差が、北極での発言力の差として残り続ける構図だ。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">グリーンランドの予測 — 独立・併合・自由連合の三択</div>
+              <div class="insight-text">
+                グリーンランドの行方は、北極の地政学を左右する。選択肢は大きく三つ——デンマークからの完全独立、アメリカへの接近や事実上の併合、そして両者の中間にあたる「自由連合（防衛や外交を大国に委ねつつ自治を保つ形）」だ。
+                住民の約56%が独立を望む一方、与党は経済的自立の難しさから現実路線を取る。トランプ政権の圧力がかえって独立論や反米感情を刺激する可能性もある。今後2〜3年は、急激な変化より「現状維持のなかでの綱引き」が続く公算が大きいが、その均衡はいつ崩れてもおかしくない。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">秩序の予測 — 「協力の海」か「新冷戦」か</div>
+              <div class="insight-text">
+                北極の平和は長く、利害を調整する「北極評議会（Arctic Council）」などの枠組みに支えられてきた。だがウクライナ侵攻以降、ロシアと西側の協力は事実上止まり、ルールづくりの場が機能不全に陥っている。
+                この「ガバナンスの空白」が最大のリスクだ。航路や資源をめぐる利害がぶつかるのに、それを調整する仕組みが弱まっている。今後2〜3年で北極が「協力の海」に戻れるか、それとも軍事化が進む「新冷戦」の海になるかは、空白を埋める新しい枠組みを各国が作れるかどうかにかかっている。
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.8rem;">
+              氷が溶けて生まれた海は、莫大な富と新しい航路という「機会」と、環境破壊と軍事衝突という「危険」を同時に運んでくる。
+              北極が「協力の海」になるか「争いの海」になるかを決めるのは、氷の量ではなく、各国が欲望をどう制御し、ルールをどう作り直せるかだ。そしてその議論の中心には、いつも忘れられがちな当事者——そこで生きてきた人々と、地球全体の気候がいることを見落としてはならない。
+            </p>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/arctic-thaw-future-port.jpg"
+                   alt="雪に覆われた海岸に建設される近代的な北極の港湾施設" loading="lazy">
+              <figcaption>建設が進む北極の港湾。氷が溶けた先に立ち上がるのは、繁栄の拠点か、それとも対立の最前線か。新しいインフラがもたらす利益と、それが奪う環境・暮らしのあいだで、北極の未来はまだ定まっていない。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">USGS — 環北極資源評価（Circum-Arctic Resource Appraisal）</div>
+                  <div class="source-desc">北極の未発見石油・天然ガスの推計。世界シェアや海底比率の一次資料。</div>
+                  <div class="source-country">【米地質調査所】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">NSIDC・NASA — 海氷データ</div>
+                  <div class="source-desc">北極の海氷面積の最大・最小と長期的な減少傾向。観測史上最低水準の年次記録。</div>
+                  <div class="source-country">【米雪氷データセンター・米航空宇宙局】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">High North News / The Arctic Institute</div>
+                  <div class="source-desc">北極海航路の通航統計、砕氷船ギャップ、安全保障動向の専門分析。</div>
+                  <div class="source-country">【北極専門メディア・研究機関】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">CSIS — グリーンランド・レアアースと北極安全保障</div>
+                  <div class="source-desc">グリーンランドの鉱物資源、中国の鉱物支配、北極の戦略的価値の分析。</div>
+                  <div class="source-country">【戦略国際問題研究所】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">日本国際問題研究所 — グリーンランドの将来</div>
+                  <div class="source-desc">グリーンランドの独立・併合・自由連合をめぐる選択肢と戦略的価値の解説。</div>
+                  <div class="source-country">【日本のシンクタンク】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Rosatom / CHNL（NSR情報事務所）</div>
+                  <div class="source-desc">北極海航路の貨物量・通航隻数、露中協力ロードマップの統計と公式発表。</div>
+                  <div class="source-country">【ロシア国営原子力企業・NSR統計機関】</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>核心と問い</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/resources/index.html">資源・環境</a></div>
+            <div>2026年6月15日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/resources/index.html">資源・環境一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 北極の冬季最大海氷面積（折れ線グラフ）
+  (function() {
+    var ctx = document.getElementById('iceExtentChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['1985', '1995', '2005', '2015', '2025', '2026'],
+        datasets: [{
+          label: '冬季最大海氷面積',
+          data: [16.5, 15.9, 15.2, 14.6, 14.33, 14.29],
+          borderColor: 'rgba(154,180,196,0.9)',
+          backgroundColor: 'rgba(154,180,196,0.08)',
+          pointBackgroundColor: 'rgba(154,180,196,0.9)',
+          tension: 0.3,
+          fill: true,
+          borderWidth: 2,
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' ' + c.parsed.y + '百万km²'; }
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 13,
+            max: 17,
+            grid: { color: '#2a3a50' },
+            ticks: {
+              color: '#8890a0', font: { size: 10 },
+              callback: function(v) { return v + 'M'; }
+            }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // 砕氷船の保有数（棒グラフ）
+  (function() {
+    var ctx = document.getElementById('icebreakerChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['ロシア', 'カナダ（計画）', '中国', 'アメリカ'],
+        datasets: [{
+          data: [40, 8, 4, 2],
+          backgroundColor: [
+            'rgba(184,120,104,0.78)',
+            'rgba(154,180,196,0.78)',
+            'rgba(196,168,130,0.78)',
+            'rgba(154,180,196,0.55)',
+          ],
+          borderColor: 'transparent',
+          borderWidth: 0,
+          borderRadius: 3,
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' ' + c.parsed.y + '隻'; }
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: {
+              color: '#8890a0', font: { size: 10 },
+              callback: function(v) { return v + '隻'; }
+            }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 11 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // tone-meterアニメーション（該当要素がなくても無害）
+  function animateToneMeters() {
+    setTimeout(function() {
+      document.querySelectorAll('#sec-perspectives .tone-fill').forEach(function(el) {
+        el.style.width = el.getAttribute('data-width');
+      });
+    }, 60);
+  }
+  if (document.readyState === 'complete') {
+    animateToneMeters();
+  } else {
+    window.addEventListener('load', animateToneMeters);
+  }
+</script>
+</body>
+</html>
