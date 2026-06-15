@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ドイツという「病人」の再来 — 欧州を牽引した国は、なぜ失速したか — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* セクション番号（台湾海峡記事に倣う大型スタイル） */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* 記事の問い（冒頭フック） */
+    .article-question {
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.4rem;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.8rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* 構造要因概観ボックス（3要因）*/
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent);
+    }
+    .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/germany-sick-man-hero-empty-factory.jpg');
+      background-size: cover; background-position: center 45%;
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.78) 0%, rgba(14,17,23,0.70) 40%, rgba(14,17,23,0.92) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* 本文中の図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* 支出バー（labor cost比較） */
+    .spend-bar { margin: 1rem 0 0.25rem; }
+    .spend-row { margin-bottom: 0.95rem; }
+    .spend-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.35rem; }
+    .spend-label { font-size: 0.8rem; color: var(--text-muted); }
+    .spend-value { font-size: 0.8rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+    .spend-track { height: 18px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .spend-fill { height: 100%; border-radius: 5px; transition: width 0.8s cubic-bezier(.4,0,.2,1); }
+
+    /* 深掘りセクション */
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* data-gridを2列に */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* 役割バッジ */
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+    }
+
+    /* プルクォート（核心の一文） */
+    .pull-quote {
+      border-left: 3px solid var(--accent);
+      background: rgba(154,180,196,0.06);
+      padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text); line-height: 1.65;
+    }
+
+    /* 関係の深さインジケーター */
+    .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+    .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
+    .depth-dots { display: flex; gap: 0.35rem; }
+    .depth-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .depth-dot.on  { background: var(--accent); }
+    .depth-dot.off { background: var(--border); }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/europe/index.html" style="color:var(--text);">欧州情勢</a>
+    <a href="../../../categories/economy/index.html">世界経済</a>
+    <a href="../../../categories/asia/index.html">アジア情勢</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-green">欧州情勢</span>
+        <span class="tag tag-yellow">世界経済</span>
+        <span class="date">2026年6月15日</span>
+      </div>
+      <h1 class="article-title">ドイツという「病人」の再来<br>— 欧州を牽引した国は、なぜ失速したか</h1>
+      <p class="article-summary">
+        2002年、エコノミストはドイツを「欧州の病人」と呼んだ。シュレーダー改革で立て直したドイツは以後20年、欧州最大の経済大国として大陸を牽引した。
+        だが2023年・2024年のGDP縮小、そして2026年の成長率予測が当初の半分以下に落ちいまそのレッテルが戻ってきた。
+        エネルギー高・自動車の対中敗北・高コスト体質という三重苦の構造と、メルツ政権の5000億ユーロ「財政革命」が本当に危機を脱せるかを、6つの視点から読み解く。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">3年連続のスタグネーション</div>
+          <div class="kp-value">2023・2024と2年連続GDP縮小。2025は+0.3%にとどまる</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">2026年成長率予測の半減</div>
+          <div class="kp-value">当初1.0%予測 → 2026年4月に0.5%へ下方修正</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">製造業雇用の消失</div>
+          <div class="kp-value">過去1年で12.5万人削減。独産業企業の4割が追加削減を計画</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">対中自動車輸出の崩壊</div>
+          <div class="kp-value">2025年に前年比33%減（136億ユーロ）。フォルクスワーゲンは中国市場で3位に転落</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 核心と問い -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>核心と問い — 「欧州の優等生」はなぜ失速したか</h2>
+
+            <div class="article-question">
+              3年連続の停滞とはどういう事態か。そしてメルツ政権の5000億ユーロ「財政革命」は、エネルギー高・自動車の対中敗北・高コスト体質という構造問題を本当に解けるのか。
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              「欧州の病人（sick man of Europe）」とは、もともと19世紀のオスマン帝国に貼られたレッテルだった。
+              2002年、エコノミスト誌はそれをドイツに転用した。しかし当時のシュレーダー政権のハルツ改革で労働市場を改革し、輸出競争力を回復したドイツは、以後20年にわたって欧州最大の経済大国として大陸を率いた。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              そのドイツに、いまふたたびそのレッテルが戻ってきた。
+              2023年のGDP成長率は-0.3%、2024年は-0.2%と2年連続でマイナス。
+              2025年は+0.3%と辛うじてプラスに転じたが、欧州連合の平均を大きく下回る。
+              2026年の成長率予測は当初1.0%だったが、2026年4月に<strong>0.5%へ半減</strong>した。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              3年連続の停滞の背景には、一時的なショックではなく<strong>構造的な三重苦</strong>がある。
+              ロシア産ガス喪失によるエネルギー高、中国での自動車産業の敗北、そして欧州最高水準の高コスト体質。
+              これら3つの問題が同時に押し寄せ、「輸出立国・製造業立国」というドイツのビジネスモデルそのものを揺るがしている。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2rem 0 0.75rem;font-weight:700;">3つの構造要因</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">エネルギー高</div>
+                <div class="factor-desc">
+                  ロシア産ガスはドイツのガス供給の55%を占めていた。2022年の供給停止でエネルギー価格が急騰。化学・鉄鋼など製造業の競争力が根本から揺らぎ、工場の国外移転が相次ぐ。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">自動車の対中敗北</div>
+                <div class="factor-desc">
+                  中国市場でフォルクスワーゲンはBYD（2024年）・吉利（2025年）に抜かれ3位に転落。利益は最盛期の約50億ユーロから2026年には2〜6億ユーロへ激減。対中輸出も2025年に33%減少した。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">高コスト体質</div>
+                <div class="factor-desc">
+                  自動車産業の時給はドイツが62ユーロに対し、スペイン29ユーロ、ポルトガル20ユーロ。法人税・官僚主義・インフラ老朽化も相まって、「生産の場としての魅力」が急速に失われている。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 失速の足跡</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2022年2〜9月</div>
+                <div class="timeline-content">
+                  <h4>ロシア産ガス供給が事実上停止</h4>
+                  <p>ロシアのウクライナ侵攻を機に、独ガス供給の55%を占めていたロシア産パイプラインガスが段階的に途絶。エネルギー価格が急騰し、化学・鉄鋼・ガラスなどエネルギー集約型産業が競争力を失い始める。BASFは「欧州でこれ以上コスト競争力を持てない」と表明。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">ガス供給の55%が消失</span>
+                    <span class="reaction-chip">エネルギー集約産業に打撃</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2023〜2024年</div>
+                <div class="timeline-content">
+                  <h4>2年連続のGDP縮小 — 「欧州の病人」再来</h4>
+                  <p>2023年-0.3%、2024年-0.2%と2年連続でマイナス成長。欧州の主要国で2年連続縮小は異例だ。フォルクスワーゲン・ボッシュ・ティッセンクルップが大規模なリストラを発表。製造業雇用が過去1年で12.5万人消失した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">欧州主要国で異例の2年連続マイナス</span>
+                    <span class="reaction-chip">フォルクスワーゲンが1万人超削減発表</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年</div>
+                <div class="timeline-content">
+                  <h4>BYDがフォルクスワーゲンを中国市場で逆転</h4>
+                  <p>中国EVメーカーのBYDが販売台数でフォルクスワーゲンを抜き、中国市場の首位に躍り出た。フォルクスワーゲンが中国市場の最大手として君臨し続けた30年以上の歴史に終止符が打たれた。フォルクスワーゲンの中国市場での利益はピーク約50億ユーロから急落。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">30年以上の首位陥落</span>
+                    <span class="reaction-chip">中国EV市場で攻守逆転</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年3月</div>
+                <div class="timeline-content">
+                  <h4>メルツ政権、債務ブレーキ憲法改正を連邦議会で可決</h4>
+                  <p>CDU/CSU・社会民主党の大連立で憲法の「債務ブレーキ（Schuldenbremse）」を改正。国防費はGDP1%超の分を借入制限から除外し、インフラ・気候変動対策などに充てる5000億ユーロの特別基金（12年間）を設立。戦後ドイツの財政規律の大転換と評された。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">憲法改正で財政制約を緩和</span>
+                    <span class="reaction-chip">5000億ユーロ特別基金を設立</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年</div>
+                <div class="timeline-content">
+                  <h4>吉利がフォルクスワーゲンを抜き中国市場3位に</h4>
+                  <p>中国の吉利汽車が販売台数でさらに上回り、フォルクスワーゲンは中国市場で3位に後退。ドイツの対中自動車輸出は年間33%減（136億ユーロ）と急落し、「中国市場への依存」というドイツ自動車業界の構造がもはや機能しないことが明確になった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">中国市場でさらに後退し3位へ</span>
+                    <span class="reaction-chip">対中輸出33%減</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-neutral"></div>
+                <div class="timeline-date">2026年4月</div>
+                <div class="timeline-content">
+                  <h4>2026年成長率予測を1%から0.5%へ半減</h4>
+                  <p>中東情勢の緊迫化によるエネルギー価格の再騰、アメリカの関税圧力などを受け、主要機関がドイツの2026年成長率予測を一斉に下方修正。当初1.0%だった予測が0.5%へ半減した。ユーロ圏全体のGDP成長率も2025年第4四半期の0.3%から2026年第1四半期の0.2%へ減速。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">成長率予測が半減</span>
+                    <span class="reaction-chip">ユーロ圏全体にも波及</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 3: 各国・各勢力の視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>6つの視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- ドイツ政府 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ドイツ政府（メルツ政権）</span>
+                      <span class="role-badge">政策当事者</span>
+                    </div>
+                    <div class="pull-quote">「5000億ユーロを投じ、先送りしてきた構造転換を一気に実現する」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      債務ブレーキの改正と5000億ユーロの特別基金は、数十年間先送りされてきたインフラ投資と経済の構造転換を一気に実現するための歴史的転換だ。財政出動が民間投資を呼び込み、成長軌道に戻れる。
+                    </div>
+                    <div class="key-claim">
+                      <strong>葛藤と課題</strong>
+                      特別基金があっても2026年予算には300億ユーロの財政の穴が残る。エネルギー高や対中敗北は財政出動だけでは解決できない構造問題だという批判に、政府は答え切れていない。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>メルツ首相（キリスト教民主同盟）は財政保守派の旗手だったが、経済危機の深刻さから「180度転換」を選んだ。歴史的な政策転換の評価は割れている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-dots">
+                        <span class="depth-dot on"></span><span class="depth-dot on"></span><span class="depth-dot on"></span><span class="depth-dot on"></span><span class="depth-dot on"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 自動車業界 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ドイツ自動車業界（フォルクスワーゲン等）</span>
+                      <span class="role-badge">基幹産業</span>
+                    </div>
+                    <div class="pull-quote">「高コスト体質のまま低価格EVと戦う矛盾は、解消されていない」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      中国市場での競争力喪失は認める。しかし1万ユーロ台の低価格EVの開発、中国メーカーとの合弁深化、欧州市場での中国EV参入への関税障壁の活用で巻き返しを図る。
+                    </div>
+                    <div class="key-claim">
+                      <strong>苦境の現実</strong>
+                      フォルクスワーゲンは2030年までに3.5万人の削減を計画し、工場閉鎖も俎上に。ボッシュ・ティッセンクルップも数千人規模のリストラを進める。高コスト体質（時給62ユーロ）のまま低価格EVと戦うことの矛盾は解消されていない。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>自動車産業はドイツのGDPの約5%、輸出の約20%、雇用の80万人を支える基幹産業。その凋落はドイツ経済全体の問題だ。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-dots">
+                        <span class="depth-dot on"></span><span class="depth-dot on"></span><span class="depth-dot on"></span><span class="depth-dot on"></span><span class="depth-dot on"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- エネルギー集約産業 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">エネルギー集約型産業（BASF等）</span>
+                      <span class="role-badge">被影響産業</span>
+                    </div>
+                    <div class="pull-quote">「エネルギー価格差がある限り、欧州での大規模生産は非合理だ」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      ドイツのエネルギーコストはアメリカや中国の2〜3倍。財政出動がいくら増えても、この価格差がある限り欧州での大規模生産は非合理だ。工場を中国や北米に移す以外に選択肢がない。
+                    </div>
+                    <div class="key-claim">
+                      <strong>実際の行動</strong>
+                      BASFはルートヴィヒスハーフェン本社工場で数千人を削減し、中国・広東省への投資を拡大。ランクセス（Lanxess）も数千人規模のリストラ。ミシュランとグッドイヤーはドイツ工場を閉鎖・縮小した。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>ドイツの化学・鉄鋼・ガラス産業は戦後の競争力の源泉だった。その国外流出は「脱工業化」を意味し、取り返しのつかない損失になりかねない。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-dots">
+                        <span class="depth-dot on"></span><span class="depth-dot on"></span><span class="depth-dot on"></span><span class="depth-dot on"></span><span class="depth-dot off"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 中国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">中国</span>
+                      <span class="role-badge">市場・競合</span>
+                    </div>
+                    <div class="pull-quote">「中国EVの競争力は補助金ではなく、技術力・規模の経済・サプライチェーンの優位によるものだ」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      欧州連合の対中EV関税は保護主義だ。BYD・吉利・蔚来（NIO）はドイツメーカーに代わり世界のEV市場を主導する。
+                    </div>
+                    <div class="key-claim">
+                      <strong>ドイツへの影響力</strong>
+                      中国はドイツ最大の貿易相手国（2024年）であり続ける。ドイツが中国を失えば輸出の約7%が消える。一方でフォルクスワーゲン・BMWなど独大手は中国での生産・合弁を維持しており、「切り離せない」相互依存が続く。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>ドイツへの貿易黒字（輸出超過）は中国にとっても重要。全面的な関係悪化は望んでいないが、自国EVの市場拡大には欧州連合の障壁を崩したい。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-dots">
+                        <span class="depth-dot on"></span><span class="depth-dot on"></span><span class="depth-dot on"></span><span class="depth-dot off"></span><span class="depth-dot off"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- アメリカ -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">アメリカ</span>
+                      <span class="role-badge">域外大国</span>
+                    </div>
+                    <div class="pull-quote">「ドイツより北米で作る方が合理的だと、ドイツ企業自身が証明している」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      インフレ抑制法（IRA）の補助金と低エネルギーコストを武器に、ドイツの製造業を北米に誘致する。高コスト・高税負担のドイツより、アメリカで作る方が合理的だとドイツ企業自身が証明している。
+                    </div>
+                    <div class="key-claim">
+                      <strong>関税圧力</strong>
+                      トランプ政権の対欧州関税はドイツの輸出に直接ダメージを与える。ドイツの対米輸出は自動車・機械が中心であり、追加関税はすでに苦境にある製造業にさらなる打撃を与えている。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>IRAはドイツの化学・半導体・EV電池メーカーを北米に引き寄せる効果を持つ。一方でNATOの文脈では同盟国であり、ドイツの経済衰退はヨーロッパの不安定化につながりアメリカにとってもマイナスだ。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-dots">
+                        <span class="depth-dot on"></span><span class="depth-dot on"></span><span class="depth-dot off"></span><span class="depth-dot off"></span><span class="depth-dot off"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 欧州連合・他加盟国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">欧州連合・他加盟国（フランス・イタリア）</span>
+                      <span class="role-badge">連動経済圏</span>
+                    </div>
+                    <div class="pull-quote">「ドイツが落ちれば欧州が落ちる。しかし財政出動の恩恵にも期待がかかる」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      欧州連合GDP最大国の停滞はユーロ圏全体の成長を引き下げている。一方で、ドイツの5000億ユーロの財政出動が内需を拡大すれば、輸出依存の周辺国にとっては恩恵にもなりうる。
+                    </div>
+                    <div class="key-claim">
+                      <strong>イタリアの悩み</strong>
+                      イタリアは2026年成長率をすでに0.6%へ下方修正。ドイツ経済との連動が深いため、北部イタリアの製造業は独の不況が直撃する。一方でドイツの財政保守主義が緩めば、欧州連合全体で財政規律が緩む懸念も残る。
+                    </div>
+                    <div class="interests">
+                      <strong>背景：</strong>欧州連合GDP成長率は2025年第4四半期0.3%→2026年第1四半期0.2%へ減速。ユーロ圏の牽引役たるドイツの回復は、欧州連合全体の最優先課題だ。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-dots">
+                        <span class="depth-dot on"></span><span class="depth-dot on"></span><span class="depth-dot on"></span><span class="depth-dot off"></span><span class="depth-dot off"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本スタンス</th>
+                        <th>最大の主張</th>
+                        <th>課題・懸念</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>ドイツ政府</td><td>財政出動で構造転換</td><td>5000億ユーロ基金が起爆剤</td><td>300億ユーロの予算の穴</td></tr>
+                      <tr><td>自動車業界</td><td>低価格EVで巻き返し</td><td>中国合弁・欧州関税で防衛</td><td>高コスト体質が変わらない</td></tr>
+                      <tr><td>エネルギー集約産業</td><td>ドイツ離れ・国外移転</td><td>エネルギー高では経営不能</td><td>一度出た工場は戻らない</td></tr>
+                      <tr><td>中国</td><td>最大の市場・最大の競合</td><td>EV技術力で正当に勝利</td><td>欧州連合の対中関税</td></tr>
+                      <tr><td>アメリカ</td><td>IRAで企業誘致・関税圧力</td><td>北米生産の方が合理的</td><td>欧州不安定化は米にも害</td></tr>
+                      <tr><td>欧州連合・他加盟国</td><td>波及警戒・財政出動に期待</td><td>独回復は欧州の最優先課題</td><td>財政規律緩和の懸念</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/germany-sick-man-vw-assembly.jpg"
+                 alt="フォルクスワーゲン工場の自動車組立ラインの接写。ロボットアームが車体を溶接する" loading="lazy">
+            <figcaption>フォルクスワーゲンの工場で稼働する自動車組立ライン。精密な自動化設備は世界最高水準だが、
+            時給62ユーロという労働コストはスペインの2倍以上、ポルトガルの3倍だ。コスト競争力の乖離が、
+            ドイツ製造業の根本的な弱点として浮かび上がっている。※イメージ画像（生成AI）</figcaption>
+          </figure>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- GDP成長率推移 -->
+              <div class="data-card">
+                <h4>ドイツGDP成長率の推移（%）</h4>
+                <div style="position:relative;height:220px;margin-top:1rem;">
+                  <canvas id="germanyGdpChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  2023・2024年の2年連続マイナスは欧州主要国で異例。
+                  2026〜2027は予測値（ゴールドマン・サックス、欧州委員会等の平均）。
+                  出典：IMF・欧州委員会・ドイツ連邦経済省
+                </p>
+              </div>
+
+              <!-- 対中自動車利益の激減 -->
+              <div class="data-card">
+                <h4>フォルクスワーゲンの中国事業利益（推計、十億ユーロ）</h4>
+                <div style="position:relative;height:220px;margin-top:1rem;">
+                  <canvas id="germanyChinaChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  ピーク時（2018〜2019年ごろ）の約50億ユーロから2026年は2〜6億ユーロへ激減。
+                  BYD・吉利との競争激化とEV転換の遅れが主因。
+                  出典：フォルクスワーゲン各年次報告・Reuters
+                </p>
+              </div>
+
+              <!-- 労働コスト比較 -->
+              <div class="data-card">
+                <h4>自動車産業の労働コスト国際比較（時給）</h4>
+                <div class="spend-bar" style="margin-top:1.5rem;">
+                  <div class="spend-row">
+                    <div class="spend-head"><span class="spend-label">ドイツ</span><span class="spend-value">€62/時</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent2);width:100%;"></div></div>
+                  </div>
+                  <div class="spend-row">
+                    <div class="spend-head"><span class="spend-label">スペイン</span><span class="spend-value">€29/時</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent);width:47%;"></div></div>
+                  </div>
+                  <div class="spend-row">
+                    <div class="spend-head"><span class="spend-label">ポルトガル</span><span class="spend-value">€20/時</span></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent4);width:32%;"></div></div>
+                  </div>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">ドイツはスペインの2倍以上、ポルトガルの3倍。中国や東欧との差はさらに大きい。出典：欧州自動車工業会・各種報道</p>
+              </div>
+
+              <!-- 注目の数字 -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">€5,000億</div>
+                    <div class="stat-label">インフラ・気候変動転換の特別基金（12年間）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">-12.5万</div>
+                    <div class="stat-label">過去1年間の製造業雇用の消失（人）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">-33%</div>
+                    <div class="stat-label">対中自動車輸出の減少（2025年、136億ユーロ）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">55%</div>
+                    <div class="stat-label">停止前のドイツのガス供給に占めるロシア産の割合</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure" style="margin-top:2rem;">
+              <img src="../../../image/articles/germany-sick-man-chemical-plant.jpg"
+                   alt="ドイツの化学プラントの夜景。高い煙突と工場の灯りが夜空に映える" loading="lazy">
+              <figcaption>ドイツ最大の化学メーカーBASFはルートヴィヒスハーフェンの本社工場で数千人を削減し、中国・広東省への投資を拡大した。
+              エネルギー価格の高止まりが続く限り、化学・鉄鋼などのエネルギー集約産業はドイツで生産する競争力を失い続けると専門家は指摘する。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り — メルツの「財政革命」は構造問題を解けるか</h2>
+
+            <div class="insight-box">
+              <div class="insight-title">5000億ユーロの賭け — 財政革命の論理</div>
+              <div class="insight-text">
+                メルツ政権の「財政革命」の論理はシンプルだ。長年の財政節約で先送りされてきたインフラ・デジタル化・エネルギー転換への投資を一気に加速させれば、民間投資を呼び込み、経済の体質を変えられる——。
+                5000億ユーロの特別基金は12年かけて使われる計画で、インフラ・気候変動転換基金に1000億ユーロ、州政府向けに1000億ユーロが充てられる。また国防費はGDP1%超の部分を借入制限から除外し、同盟国への約束を果たせる規模に拡大する。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">基金の限界 — 300億ユーロの穴と構造問題</div>
+              <div class="insight-text">
+                しかし批判者は「5000億ユーロがあっても2026年の予算にはなお300億ユーロの財政の穴がある」と指摘する。そして根本的な問いは、財政出動がエネルギー高・対中敗北・高コスト体質という三重苦を解けるかどうかだ。
+                エネルギー高は基金が積まれても、再生可能エネルギーへの転換が完了するまで続く。対中自動車敗北は、ドイツ車が中国消費者の心をもう一度掴むか、新市場（東南アジア・インド・アフリカ）を開拓するかどうかにかかっており、財政とは別次元の問題だ。
+                高コスト体質は、労働市場の柔軟化や官僚主義の削減という「改革」なしには変えられないが、これは政治的に難しい。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">ユーロ圏・イタリアへの波及 — 「独の病は欧州の病」</div>
+              <div class="insight-text">
+                ドイツの失速はユーロ圏全体に波及している。ユーロ圏のGDP成長率は2025年第4四半期の0.3%から2026年第1四半期の0.2%へと低下した。イタリアは2026年成長率を0.6%へ下方修正しており、北部イタリアはドイツの製造業サプライチェーンと深く結びついているため直撃を受ける。
+                一方で、ドイツの5000億ユーロの財政出動が内需を押し上げれば、輸出に頼る周辺国（フランス・オランダ・チェコ等）には恩恵になるという見方もある。「ドイツがくしゃみをすればユーロ圏が風邪をひく」という構図は変わっていない。
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.8rem;">
+              ドイツの問題の根底にあるのは、「輸出立国・製造業立国」という成功モデルそのものが通用しなくなりつつあるという現実だ。
+              安価なロシア産ガスと巨大な中国市場という「二つの特需」に依存した20年のビジネスモデルは終わった。
+              財政革命が「歴史的な構造転換の起爆剤」になるか、「構造問題を先送りした高価な時間稼ぎ」に終わるかは、今後2〜3年で問われることになる。
+            </p>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/germany-sick-man-reichstag-euros.jpg"
+                   alt="ドイツ連邦議会（ライヒスタク）の建物を背景に、財政・ユーロ紙幣のイメージ" loading="lazy">
+              <figcaption>メルツ首相が押し通した債務ブレーキの改正は、戦後ドイツの財政規律の象徴だった憲法条文を書き換えるものだった。
+              「欧州の優等生」が「財政の異端児」になる歴史的転換の意味を、欧州各国は固唾を飲んで見守っている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Goldman Sachs Global Investment Research</div>
+                  <div class="source-desc">ドイツ経済の2026年成長率予測の下方修正、ユーロ圏への波及分析</div>
+                  <div class="source-country">【国際投資銀行・マクロ経済分析】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">欧州委員会（European Commission）</div>
+                  <div class="source-desc">2026年春の欧州経済予測（European Economic Forecast Spring 2026）。ユーロ圏・各加盟国の成長率予測</div>
+                  <div class="source-country">【欧州連合の公式経済統計】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Clean Energy Wire（CLEW）</div>
+                  <div class="source-desc">ドイツのエネルギー転換・脱ロシア産ガスの詳細データと産業への影響分析</div>
+                  <div class="source-country">【ドイツ・エネルギー専門メディア】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Reuters・Euronews</div>
+                  <div class="source-desc">フォルクスワーゲン・BASF・ボッシュ等の人員削減・工場閉鎖の報道、対中輸出データ</div>
+                  <div class="source-country">【国際ニュース速報・欧州経済報道】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">ドイツ連邦経済省（BMWK）</div>
+                  <div class="source-desc">ドイツ政府の経済政策・債務ブレーキ改正の一次情報、5000億ユーロ特別基金の公式内訳</div>
+                  <div class="source-country">【ドイツ政府公式】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Bruegel（ブリューゲル研究所）</div>
+                  <div class="source-desc">「Germany's Fiscal Turn」（2025）。財政革命の評価・限界・欧州連合への波及を分析したブリュッセルのシンクタンクの論考</div>
+                  <div class="source-country">【欧州連合・欧州経済政策シンクタンク】</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>核心と問い</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/europe/index.html">欧州情勢</a></div>
+            <div>2026年6月15日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/europe/index.html">欧州情勢一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // GDP成長率推移（棒グラフ。マイナス年が分かるように）
+  (function() {
+    var ctx = document.getElementById('germanyGdpChart');
+    if (!ctx) return;
+    var data = [1.4, -0.3, -0.2, 0.3, 0.5, 0.9];
+    var colors = data.map(function(v) {
+      return v < 0 ? 'rgba(184,120,104,0.82)' : 'rgba(154,180,196,0.72)';
+    });
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2022', '2023', '2024', '2025', '2026*', '2027*'],
+        datasets: [{
+          label: 'GDP成長率（%）',
+          data: data,
+          backgroundColor: colors,
+          borderColor: 'transparent',
+          borderWidth: 0,
+          borderRadius: 3,
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' ' + c.parsed.y + '%' + (c.label.indexOf('*') > -1 ? '（予測）' : ''); }
+            }
+          }
+        },
+        scales: {
+          y: {
+            grid: { color: '#2a3a50' },
+            ticks: {
+              color: '#8890a0', font: { size: 10 },
+              callback: function(v) { return v + '%'; }
+            }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 11 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // フォルクスワーゲン中国事業利益（棒グラフ）
+  (function() {
+    var ctx = document.getElementById('germanyChinaChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2016', '2018（ピーク）', '2020', '2022', '2024', '2026*'],
+        datasets: [{
+          label: '中国事業利益（十億ユーロ）',
+          data: [4.2, 5.0, 4.0, 3.2, 1.2, 0.4],
+          backgroundColor: [
+            'rgba(154,180,196,0.60)',
+            'rgba(154,180,196,0.85)',
+            'rgba(154,180,196,0.65)',
+            'rgba(154,180,196,0.55)',
+            'rgba(184,120,104,0.70)',
+            'rgba(184,120,104,0.85)',
+          ],
+          borderColor: 'transparent',
+          borderWidth: 0,
+          borderRadius: 3,
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(c) {
+                return ' 約' + c.parsed.y + '十億ユーロ' + (c.label.indexOf('*') > -1 ? '（推計）' : '');
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: {
+              color: '#8890a0', font: { size: 10 },
+              callback: function(v) { return '€' + v + 'B'; }
+            }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // tone-meterアニメーション
+  function animateToneMeters() {
+    setTimeout(function() {
+      document.querySelectorAll('#sec-perspectives .tone-fill').forEach(function(el) {
+        el.style.width = el.getAttribute('data-width');
+      });
+    }, 60);
+  }
+  if (document.readyState === 'complete') {
+    animateToneMeters();
+  } else {
+    window.addEventListener('load', animateToneMeters);
+  }
+</script>
+</body>
+</html>
