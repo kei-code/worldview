@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>実戦を知った核 — 北朝鮮を変えた「ロシアの後ろ盾」 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* セクション番号（大型スタイル） */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* 記事の問い（冒頭フック） */
+    .article-question {
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.4rem;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.8rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* 構造要因概観ボックス（3要因） */
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent);
+    }
+    .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/north-korea-nuclear-hero-parade.jpg');
+      background-size: cover; background-position: center 45%;
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.78) 0%, rgba(14,17,23,0.70) 40%, rgba(14,17,23,0.92) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* 本文中の図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* 支出バー */
+    .spend-bar { margin: 1rem 0 0.25rem; }
+    .spend-row { margin-bottom: 0.95rem; }
+    .spend-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.35rem; }
+    .spend-label { font-size: 0.8rem; color: var(--text-muted); }
+    .spend-value { font-size: 0.8rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+    .spend-track { height: 18px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .spend-fill { height: 100%; border-radius: 5px; transition: width 0.8s cubic-bezier(.4,0,.2,1); }
+
+    /* 深掘りセクション */
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* data-gridを2列に */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* 役割バッジ */
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+    }
+
+    /* プルクォート（核心の一文） */
+    .pull-quote {
+      border-left: 3px solid var(--accent);
+      background: rgba(184,127,140,0.07);
+      padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text); line-height: 1.65;
+    }
+
+    /* 関係の深さインジケーター（横バー） */
+    .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+    .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
+    .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .depth-bar-fill { height: 100%; background: var(--accent); border-radius: 5px; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/security/index.html" style="color:var(--text);">安全保障</a>
+    <a href="../../../categories/asia/index.html">アジア情勢</a>
+    <a href="../../../categories/middle-east/index.html">中東情勢</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-red">安全保障</span>
+        <span class="tag tag-red">核・ミサイル</span>
+        <span class="date">2026年6月19日</span>
+      </div>
+      <h1 class="article-title">実戦を知った核<br>— 北朝鮮を変えた「ロシアの後ろ盾」</h1>
+      <p class="article-summary">
+        2024年6月の露朝相互防衛条約を起点に、北朝鮮はウクライナ戦線へ1万人超を派兵し、見返りに技術支援と国連制裁の無力化を得た。固体燃料の大陸間弾道ミサイル、複数弾頭化、核搭載潜水艦——「孤立した核志望国」は「実戦経験を積む既成事実の核保有国」へ変質しつつある。「核を手放させる」という30年来の前提が崩れたいま、世界はこの核とどう向き合うのか。北朝鮮・韓国・アメリカ・ロシア・中国・日本、6つの視点で読み解く。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">ウクライナへ1万人超を派兵</div>
+          <div class="kp-value">2024年秋以降、ロシア・クルスク州に約1.1万〜1.5万人を投入。約6,000人の死傷と引き換えに実戦データを獲得</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">核弾頭は推定50発、90発へ</div>
+          <div class="kp-value">実装済み約50発、核分裂性物質は最大90発分。2027年に90発との予測。IAEA（国際原子力機関）は「指数関数的成長」と警告</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">火星20で米本土全域が射程内</div>
+          <div class="kp-value">2025年10月公開の固体燃料ICBM（大陸間弾道ミサイル）。射程15,000km超。複数弾頭化を狙う高推力エンジン</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">金正恩は非核化交渉を拒否</div>
+          <div class="kp-value">「非核化への執着を捨てよ」と前提条件を要求。韓国・李在明政権の対話路線は接点を欠いたまま</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 核心と問い -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>核心と問い — 崩れた「非核化」の前提</h2>
+
+            <div class="article-question">
+              「制裁で締め上げ、交渉で核を手放させる」——30年続いたこの前提は、ロシアという後ろ盾の出現で崩れた。実戦経験を積み、技術支援を受け、弾頭を増やし続ける北朝鮮を、世界はもう「非核化」できるのか。それとも「核を持つ隣人」として管理するしかないのか。
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              北朝鮮の核問題は長らく「いかに放棄させるか」という枠で語られてきた。だが2024年以降、その枠組み自体が現実から乖離し始めている。ウクライナ戦争でロシアに兵を送り、見返りに国連制裁の無力化と兵器技術を得た北朝鮮は、もはや孤立した挑戦者ではない。核は体制の保険から、実戦と外交で裏打ちされた既成事実へと変わりつつある。その変質を、ロシアの後ろ盾・実戦経験・兵器の質的飛躍という3つの構造から読み解く。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2rem 0 0.75rem;font-weight:700;">3つの論点</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">ロシアの後ろ盾 — 制裁体制の崩壊</div>
+                <div class="factor-desc">
+                  2024年6月の相互防衛条約で、ロシアは国連での新規制裁を阻止し、北朝鮮の核開発への反対を撤回した。30年機能してきた「制裁による圧力」の前提が、安保理常任理事国の離反で土台から崩れている。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">実戦経験 — 軍隊の質的変化</div>
+                <div class="factor-desc">
+                  ウクライナ戦線への派兵で、北朝鮮軍は近代的な戦闘戦術とドローン戦の実戦データを獲得した。多大な死傷を出しつつも、「実戦を知らない軍隊」という長年の弱点を埋めつつある。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">兵器の飛躍 — 量から質へ</div>
+                <div class="factor-desc">
+                  固体燃料ICBM（大陸間弾道ミサイル）、複数弾頭化、核搭載潜水艦。ロシアの技術支援を背景に、北朝鮮の戦略兵器は「数を揃える」段階から「質で迫る」段階へ移行しつつある。
+                </div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg-card);border:1px solid var(--border-subtle);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:0.9rem 1.2rem;margin-top:1.25rem;font-size:0.82rem;">
+              <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);font-weight:700;margin-bottom:0.45rem;">用語解説</div>
+              <span style="font-weight:700;color:var(--text);">相互防衛条約（2024年）</span>
+              <p style="color:var(--text-muted);line-height:1.75;margin-top:0.35rem;margin-bottom:0;">2024年6月、プーチン大統領が訪朝し金正恩総書記と署名した「包括的戦略パートナーシップ条約」。一方が武力侵攻を受けた場合、他方が軍事援助を含む支援を提供すると定める事実上の同盟条項を含む。冷戦期の1961年条約以来の相互防衛の復活であり、北朝鮮の対ロ兵員・弾薬供与と、ロシアの対北技術・経済支援を双方向に正当化する枠組みとなった。</p>
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/north-korea-nuclear-enrichment-facility.jpg"
+                   alt="北朝鮮の核濃縮施設" loading="lazy">
+              <figcaption>北朝鮮の核濃縮プラントは、IAEA（国際原子力機関）の査察が一切入らないまま拡張が続いている。衛星画像の分析では、濃縮施設の規模が2022年以降に顕著に拡大したことが確認されている。核分裂性物質の蓄積は「指数関数的成長」の段階に入りつつあるとされる。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 孤立から「ロシアの後ろ盾」へ</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2017年</div>
+                <div class="timeline-content">
+                  <h4>核戦力完成宣言とICBM試射ラッシュ</h4>
+                  <p>火星15を含むICBM（大陸間弾道ミサイル）試射を重ね、金正恩は「国家核武力の完成」を宣言。アメリカ本土を射程に収める能力を誇示し、米朝の緊張が頂点に達した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">米本土到達能力を誇示</span>
+                    <span class="reaction-chip">最大限の圧力と制裁</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2018〜19年</div>
+                <div class="timeline-content">
+                  <h4>米朝首脳会談と決裂</h4>
+                  <p>シンガポール・ハノイで史上初の米朝首脳会談が開催された。だが非核化の定義をめぐり物別れに終わり、外交は失速した。トップ交渉の限界と非核化定義の深い溝が露わになった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">トップ外交の限界</span>
+                    <span class="reaction-chip">非核化定義の溝</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2022年</div>
+                <div class="timeline-content">
+                  <h4>ICBMモラトリアム破棄・ミサイル乱射</h4>
+                  <p>自ら課した発射凍結を破棄し、年間を通じて過去最多の弾道ミサイルを発射した。試射の常態化で瀬戸際戦術に回帰し、外交による解決への可能性は遠のいた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">自主凍結の放棄</span>
+                    <span class="reaction-chip">試射の常態化</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年6月</div>
+                <div class="timeline-content">
+                  <h4>露朝相互防衛条約</h4>
+                  <p>プーチン大統領が訪朝し、相互防衛条項を含む条約に署名した。国連安全保障理事会の常任理事国が北朝鮮の側に立つ構図が生まれ、30年続いた制裁体制の基盤が崩れ始めた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">事実上の同盟復活</span>
+                    <span class="reaction-chip">制裁体制の空洞化</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年10月</div>
+                <div class="timeline-content">
+                  <h4>ウクライナへの派兵開始</h4>
+                  <p>北朝鮮がロシア・クルスク州へ部隊を派遣した。冷戦後初の本格的な海外実戦投入となり、北朝鮮軍は近代的なドローン戦・砲兵戦の実戦データを獲得した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">初の大規模派兵</span>
+                    <span class="reaction-chip">実戦データの獲得</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年10月</div>
+                <div class="timeline-content">
+                  <h4>火星20を公開</h4>
+                  <p>固体燃料ICBM「火星20」を軍事パレードで公開した。射程15,000km超で複数弾頭化を狙う高推力エンジンを誇示し、アメリカ本土全域を即時発射能力で射程に収める段階へ進んだ。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">固体燃料ICBM</span>
+                    <span class="reaction-chip">複数弾頭化の布石</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年</div>
+                <div class="timeline-content">
+                  <h4>ミサイル試射が前年超え・原潜艦体ほぼ完成</h4>
+                  <p>2026年に入り4カ月で弾道ミサイル20発超・巡航ミサイル16発超を発射し、前年実績を上回るペースで試射が続いている。6月には核搭載潜水艦の艦体がほぼ完成した写真が公開された。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">試射ペースが加速</span>
+                    <span class="reaction-chip">核搭載潜水艦が前進</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-neutral"></div>
+                <div class="timeline-date">2026年6月</div>
+                <div class="timeline-content">
+                  <h4>監視グループが露朝同盟を「違法」認定</h4>
+                  <p>韓国・アメリカ・日本など11カ国の制裁監視グループが、露朝の軍事協力を国連制裁違反と認定した。だが国連安全保障理事会ではロシアが拒否権を握り、実効性は限られる。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">多国間で違法認定</span>
+                    <span class="reaction-chip">安保理は機能不全</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/north-korea-nuclear-russia-summit.jpg"
+                   alt="露朝接近を象徴する首脳会談の情景" loading="lazy">
+              <figcaption>2024年6月の相互防衛条約署名は、北朝鮮の核問題における決定的な転換点だった。制裁と圧力によって孤立させるという30年来の戦略は、常任理事国であるロシアの離反によって根底から崩れた。露朝の接近は、北朝鮮の核開発を後押しする構造的な変化をもたらしている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 3: 各国・各勢力の視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>6つの視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- 北朝鮮 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">北朝鮮（金正恩政権）</span>
+                      <span class="role-badge">核を手放さない</span>
+                    </div>
+                    <div class="pull-quote">「核は交渉の道具ではない。体制と国家の生存そのものだ」</div>
+                    <div class="key-claim">
+                      <strong>核保有の既成事実化</strong>
+                      金正恩は核を憲法に明記し、非核化交渉そのものを拒否している。リビアやウクライナの例を引き、「核を手放した国の末路」を体制存続の論拠にしている。核は交渉カードではなく、体制が存続するための絶対条件として位置づけられた。
+                    </div>
+                    <div class="key-claim">
+                      <strong>ロシアとの取引で得た飛躍</strong>
+                      派兵と弾薬供与の見返りに、ミサイル・潜水艦技術と経済支援、制裁回避を得た。孤立を脱し、後ろ盾を持つ核保有国として振る舞う余裕が生まれている。ロシアとの同盟は、北朝鮮の戦略的立場を根本から変えた。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:100%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 韓国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">韓国（李在明政権）</span>
+                      <span class="role-badge">対話と抑止の両立</span>
+                    </div>
+                    <div class="pull-quote">「対話の扉は開くが、抑止の備えは緩めない」</div>
+                    <div class="key-claim">
+                      <strong>関与政策の手詰まり</strong>
+                      李在明政権は対話による緊張緩和を掲げるが、金正恩が前提条件としてアメリカと韓国の「敵視政策」撤回を求め、接点を欠く。一年を経ても目に見える進展は乏しく、関与政策は実質的に機能不全に陥っている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>自前の抑止力強化</strong>
+                      国防費を国内総生産（GDP）比3.5%へ引き上げる方針で、2026年予算を増額した。米韓の原潜協力も進め、世論の一部では独自核武装論もくすぶっている。対話と抑止の双方を同時に追う難しいバランスが続く。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:90%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- アメリカ -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">アメリカ（トランプ政権）</span>
+                      <span class="role-badge">関心の分散</span>
+                    </div>
+                    <div class="pull-quote">「中東とウクライナに追われ、北朝鮮は後回しになっている」</div>
+                    <div class="key-claim">
+                      <strong>非核化目標の形骸化</strong>
+                      公式には非核化を掲げ続けるが、中東・ウクライナへ関心が分散している。北朝鮮対応の優先順位を割けず、結果として現状を黙認するリスクが高まっている。非核化という目標は掲げたまま、実質的な政策が空白になりつつある。
+                    </div>
+                    <div class="key-claim">
+                      <strong>トップ取引への誘惑</strong>
+                      トランプ大統領は金正恩との首脳会談再開に意欲を示すが、非核化を棚上げした「軍縮取引」は同盟国の韓国・日本の不安を呼ぶ。手柄優先の外交が抑止の枠組みを揺さぶるリスクを抱えている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:80%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- ロシア -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ロシア（プーチン政権）</span>
+                      <span class="role-badge">兵力との交換</span>
+                    </div>
+                    <div class="pull-quote">「兵と弾薬を得る代わりに、北朝鮮の核を黙認する」</div>
+                    <div class="key-claim">
+                      <strong>制裁体制からの離反</strong>
+                      ウクライナ戦争で消耗するロシアは、北朝鮮の兵員と砲弾を必要とし、その見返りに国連制裁の執行を妨害している。かつて非核化を支持した立場を事実上撤回し、制裁体制の機能を骨抜きにした。
+                    </div>
+                    <div class="key-claim">
+                      <strong>技術移転というリスク</strong>
+                      潜水艦の推進系やミサイル技術の移転が疑われ、北朝鮮の戦略兵器を一段押し上げる恐れがある。短期の戦争協力が、長期の核拡散リスクに転化している。ロシアが戦況に窮するほど、対価を引き上げる誘惑は強まる。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:85%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 中国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">中国</span>
+                      <span class="role-badge">緩衝国家の維持</span>
+                    </div>
+                    <div class="pull-quote">「北朝鮮の安定は望むが、露朝の過度な接近は歓迎しない」</div>
+                    <div class="key-claim">
+                      <strong>緩衝地帯としての北朝鮮</strong>
+                      中国は北朝鮮の体制崩壊と難民流入、米韓軍の北上を避けたい。核そのものは望まないが、北朝鮮を対米の戦略的緩衝として維持する利益が優先する。体制の安定が中国にとっての最優先事項であり、非核化はその次に来る。
+                    </div>
+                    <div class="key-claim">
+                      <strong>露朝接近への警戒</strong>
+                      ロシアが北朝鮮への影響力を強めることは、中国の対北レバレッジを相対的に弱める。表立って批判はしないが、露朝の軍事的密着には距離を置き、独自の関与を保とうとしている。北朝鮮が中国の影響圏から離れることへの静かな警戒が続く。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:70%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 日本 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">日本</span>
+                      <span class="role-badge">射程内の脅威</span>
+                    </div>
+                    <div class="pull-quote">「すべての弾道ミサイルが、すでに日本を射程に収めている」</div>
+                    <div class="key-claim">
+                      <strong>直接の脅威としての核・ミサイル</strong>
+                      日本は北朝鮮の短中距離弾道ミサイルの射程内にあり、頻発する試射は防空・避難態勢に直結する。反撃能力の保有と日米同盟の抑止力強化を急いでいるが、核の影の下での抑止の実効性には不透明さが残る。
+                    </div>
+                    <div class="key-claim">
+                      <strong>拉致問題という固有の懸案</strong>
+                      核・ミサイルと並び、未解決の拉致問題が対北朝鮮政策の制約となる。安全保障と人道的懸案の双方を抱え、対話と圧力のバランスに苦慮している。この二重の課題は、日本独自の対北朝鮮外交を根本的に複雑にしている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:75%;"></div></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本スタンス</th>
+                        <th>最大の主張</th>
+                        <th>課題・懸念</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>北朝鮮</td><td>核の既成事実化</td><td>核は体制の生存そのもの</td><td>露依存と経済の脆弱さ</td></tr>
+                      <tr><td>韓国</td><td>対話と抑止の両立</td><td>関与で緊張を緩和</td><td>金正恩が前提条件で拒否</td></tr>
+                      <tr><td>アメリカ</td><td>関心の分散</td><td>公式には非核化を維持</td><td>現状黙認と取引の誘惑</td></tr>
+                      <tr><td>ロシア</td><td>兵力との交換</td><td>兵員と砲弾を確保</td><td>技術移転が核拡散を招く</td></tr>
+                      <tr><td>中国</td><td>緩衝国家の維持</td><td>体制崩壊を避けたい</td><td>露朝接近で対北影響力が低下</td></tr>
+                      <tr><td>日本</td><td>射程内の脅威</td><td>反撃能力で抑止</td><td>拉致問題と防衛のジレンマ</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/north-korea-nuclear-dmz-standoff.jpg"
+                   alt="南北の国境地帯での対峙" loading="lazy">
+              <figcaption>板門店の非武装地帯（DMZ）は、朝鮮半島の分断と対立を象徴する場所であり続けている。6つの視点が示すように、北朝鮮の核をめぐる利害と立場は当事国ごとに大きく異なり、単一の解決策が存在しない構造的な対立が続いている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- 核弾頭保有数の推移と予測 -->
+              <div class="data-card">
+                <h4>核弾頭保有数の推移と予測</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="warheadChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  実装済みは約50発だが、核分裂性物質の蓄積から2027年に90発、2030年に100発に達するとの推計。IAEA（国際原子力機関）は「指数関数的成長」と警告している。出典：各種シンクタンク推計、IAEA
+                </p>
+              </div>
+
+              <!-- 主要なICBMの射程比較 -->
+              <div class="data-card">
+                <h4>主要なICBM（大陸間弾道ミサイル）の射程比較</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="rangeChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  いずれもアメリカ本土全域を射程に収める。火星20は固体燃料で即時発射性が高く、複数弾頭化を狙う。出典：防衛省、各種公開情報
+                </p>
+              </div>
+
+              <!-- 北朝鮮の主要ミサイル一覧（テーブル） -->
+              <div class="data-card">
+                <h4>北朝鮮の主要ミサイル一覧</h4>
+                <table style="width:100%;border-collapse:collapse;margin-top:1rem;font-size:0.82rem;">
+                  <thead>
+                    <tr style="border-bottom:1px solid var(--border);">
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;">名称</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">射程</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">特徴</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">火星15</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">約13,000km</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">液体燃料ICBM。アメリカ本土東海岸まで到達可能</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">火星17</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">15,000km超</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">大型液体燃料ICBM。複数弾頭の搭載が可能とされる</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">火星20</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">15,000km超</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">固体燃料ICBM。即時発射性が高く2025年公開</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">北極星系</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">潜水艦発射型</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">SLBM（潜水艦発射弾道ミサイル）。第二撃能力の中核</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">液体から固体燃料へ、地上発射から海中発射へ——残存性と即応性を高める方向に進化している。</p>
+              </div>
+
+              <!-- 注目の数字 -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">約1.1万</div>
+                    <div class="stat-label">ウクライナ戦線への派兵規模（クルスク州、人）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">約6,000</div>
+                    <div class="stat-label">派兵による死傷者数（推定）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">15,000km超</div>
+                    <div class="stat-label">火星20の推定射程（アメリカ本土全域が射程内）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">50→90発</div>
+                    <div class="stat-label">核弾頭の推定数と2027年予測</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り — これから2〜3年で何が起きるか</h2>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              露朝接近は、北朝鮮の核問題を「放棄させる対象」から「共存を強いられる現実」へと変えつつある。非核化・技術移転・米朝外交・地域の軍拡という4つの軸で、今後2〜3年を見通す。
+            </p>
+
+            <div class="insight-box">
+              <div class="insight-title">非核化の終焉 — 目標は「軍縮・管理」へ移行するか</div>
+              <div class="insight-text">
+                30年掲げてきた「完全な非核化」は、北朝鮮の弾頭増加とロシアの後ろ盾の前で現実味を失いつつある。今後の焦点は、放棄ではなく「これ以上増やさせない」「偶発的使用を防ぐ」という軍備管理へ目標が事実上スライドするかどうかだ。だがそれは北朝鮮を核保有国と認める含意を持ち、韓国・日本の安全保障観を根本から揺さぶる。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">露朝技術移転のリスク — 潜水艦・複数弾頭・再突入体</div>
+              <div class="insight-text">
+                最大の不確実性は、ロシアがどこまで機微技術を渡すかだ。核搭載潜水艦の推進系、複数弾頭化、再突入体の精度——これらが移転されれば、北朝鮮の核戦力は「数」だけでなく「残存性と命中精度」で質的に跳ね上がる。ウクライナ戦争が長引くほど、ロシアが対価を引き上げる誘惑は強まる。MIRV（複数個別誘導再突入体）技術の共有は、特に深刻な核拡散リスクとなりうる。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">米朝再交渉の可能性 — トランプと金正恩の「取引」シナリオ</div>
+              <div class="insight-text">
+                トランプ大統領が金正恩との首脳会談を再開する可能性は残る。だが非核化を棚上げした「現状凍結＋制裁緩和」型の取引は、北朝鮮の核保有を追認しかねない。同盟国の頭越しに進む取引は、韓国・日本の信頼と、アメリカの拡大抑止の信頼性を同時に損なうリスクを抱える。手柄優先の外交が、地域の安全保障の枠組みを内側から崩す危険がある。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">朝鮮半島の軍拡連鎖 — 韓国の独自核論と日本の防衛転換</div>
+              <div class="insight-text">
+                北朝鮮の核の既成事実化は、韓国世論の独自核武装論を勢いづかせ、日本の反撃能力保有と防衛費増額を後押しする。北東アジアは、北朝鮮一国の核を起点に、韓国・日本・そして中国を巻き込む軍拡の連鎖へ向かう圧力にさらされている。「一国の核」が「地域の軍拡」へと波及するスパイラルが、すでに動き始めている。
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.8rem;">
+              北朝鮮の核は、もはや「いつ手放すか」を問う段階を過ぎ、「どう共存し、どう増やさせないか」を問う段階に入りつつある。ロシアという後ろ盾を得た核保有国を前に、非核化という旗を下ろさないまま、現実をどう管理するか——その難題は、核を手放した国の末路を知る世界にこそ、重く突きつけられている。
+            </p>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/north-korea-nuclear-submarine-future.jpg"
+                   alt="核搭載潜水艦と不確実な未来" loading="lazy">
+              <figcaption>核搭載潜水艦の実戦配備は、北朝鮮の核戦力に「第二撃能力」をもたらす。先制攻撃を受けても海中から報復できる能力は、抑止の構図を根本から変える。SLBM（潜水艦発射弾道ミサイル）を持つ北朝鮮という現実を、国際社会はどう管理するのか——その問いへの答えはまだない。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">38 North — Tracing Russian Linkages in North Korea's Expanding Nuclear Complex</div>
+                  <div class="source-desc">露朝の核協力と濃縮施設拡張の衛星画像分析。北朝鮮研究の専門メディア。</div>
+                  <div class="source-country">【スティムソン・センター（米）】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">FDD's Long War Journal — Russian Security Assistance on the Korean Peninsula</div>
+                  <div class="source-desc">露朝の安全保障協力が朝鮮半島に与える影響の実証分析。</div>
+                  <div class="source-country">【民主主義防衛財団（米）】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Heritage Foundation — The Potential for Russia to Supercharge North Korea's Nuclear and Missile Program</div>
+                  <div class="source-desc">ロシアの技術支援が北朝鮮の兵器開発を加速させる経路の分析。</div>
+                  <div class="source-country">【ヘリテージ財団（米）】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">AEI — Korean Peninsula Update</div>
+                  <div class="source-desc">朝鮮半島情勢の定期分析。米韓同盟・北朝鮮の軍事動向を継続追跡。</div>
+                  <div class="source-country">【アメリカン・エンタープライズ研究所】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Council on Foreign Relations — How North Korea Has Bolstered Russia's War in Ukraine</div>
+                  <div class="source-desc">北朝鮮の対ロ兵員・弾薬供与の実態と見返りの包括分析。</div>
+                  <div class="source-country">【外交問題評議会（米）】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">IAEA / CRS — North Korea's Nuclear Weapons and Missile Programs</div>
+                  <div class="source-desc">弾頭数推計・ミサイル射程・核計画の公的データ。</div>
+                  <div class="source-country">【国際原子力機関・米議会調査局】</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>核心と問い</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/security/index.html">安全保障</a></div>
+            <div>2026年6月19日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/security/index.html">安全保障一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 核弾頭保有数の推移と予測（棒グラフ）
+  (function() {
+    var ctx = document.getElementById('warheadChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2018年', '2022年', '2026年', '2027年(予測)', '2030年(予測)'],
+        datasets: [
+          {
+            label: '推定核弾頭数（発）',
+            data: [20, 40, 50, 90, 100],
+            backgroundColor: 'rgba(184,127,140,0.78)',
+            borderColor: 'transparent',
+            borderRadius: 3,
+          }
+        ]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: { color: '#8890a0', font: { size: 11 } }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' ' + c.dataset.label + ': ' + c.parsed.y.toLocaleString() + '発'; }
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // 主要ICBMの射程比較（横棒グラフ）
+  (function() {
+    var ctx = document.getElementById('rangeChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['火星15', '火星17', '火星20'],
+        datasets: [
+          {
+            label: '推定最大射程（km）',
+            data: [13000, 15000, 15000],
+            backgroundColor: 'rgba(184,127,140,0.78)',
+            borderColor: 'transparent',
+            borderRadius: 3,
+          }
+        ]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: { color: '#8890a0', font: { size: 11 } }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' ' + c.dataset.label + ': ' + c.parsed.x.toLocaleString() + 'km'; }
+            }
+          }
+        },
+        scales: {
+          x: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          },
+          y: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // tone-meterアニメーション（該当要素がなくても無害）
+  function animateToneMeters() {
+    setTimeout(function() {
+      document.querySelectorAll('#sec-perspectives .tone-fill').forEach(function(el) {
+        el.style.width = el.getAttribute('data-width');
+      });
+    }, 60);
+  }
+  if (document.readyState === 'complete') {
+    animateToneMeters();
+  } else {
+    window.addEventListener('load', animateToneMeters);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界で最も危険な国境 — カシミールが映す核時代の南アジア — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* セクション番号（大型スタイル） */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* 記事の問い（冒頭フック） */
+    .article-question {
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.4rem;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.8rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* 構造要因概観ボックス（3要因） */
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent);
+    }
+    .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/india-pakistan-hero-loc-border.jpg');
+      background-size: cover; background-position: center 45%;
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.78) 0%, rgba(14,17,23,0.70) 40%, rgba(14,17,23,0.92) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* 本文中の図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* 支出バー */
+    .spend-bar { margin: 1rem 0 0.25rem; }
+    .spend-row { margin-bottom: 0.95rem; }
+    .spend-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.35rem; }
+    .spend-label { font-size: 0.8rem; color: var(--text-muted); }
+    .spend-value { font-size: 0.8rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+    .spend-track { height: 18px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .spend-fill { height: 100%; border-radius: 5px; transition: width 0.8s cubic-bezier(.4,0,.2,1); }
+
+    /* 深掘りセクション */
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* data-gridを2列に */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* 役割バッジ */
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+    }
+
+    /* プルクォート（核心の一文） */
+    .pull-quote {
+      border-left: 3px solid var(--accent);
+      background: rgba(184,127,140,0.07);
+      padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text); line-height: 1.65;
+    }
+
+    /* 関係の深さインジケーター（横バー） */
+    .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+    .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
+    .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .depth-bar-fill { height: 100%; background: var(--accent); border-radius: 5px; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/asia/index.html" style="color:var(--text);">アジア情勢</a>
+    <a href="../../../categories/security/index.html">安全保障</a>
+    <a href="../../../categories/middle-east/index.html">中東情勢</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-blue">アジア情勢</span>
+        <span class="tag tag-blue">南アジア・核</span>
+        <span class="date">2026年6月16日</span>
+      </div>
+      <h1 class="article-title">世界で最も危険な国境<br>— カシミールが映す核時代の南アジア</h1>
+      <p class="article-summary">
+        2025年4月、インド側カシミールのパハルガムで観光客26人が武装勢力に殺害された。インドは報復として「シンドゥール作戦」を発動、パキスタンを空爆し、4日間にわたり核保有国同士が打ち合う事態となった。
+        3度の戦争、70年以上続く領土問題、互いに向け合う核——なぜカシミールでは対立が終わらないのか。
+        インド・パキスタン・中国・アメリカ・カシミール住民・核拡散専門家、6つの視点で読み解く。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">パハルガム襲撃で26人死亡</div>
+          <div class="kp-value">2025年4月22日、観光地で「The Resistance Front（TRF＝カシミール武装勢力）」が観光客を襲撃</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">核弾頭は印180対パ170発</div>
+          <div class="kp-value">2025年8月、インドはAgni-5にMIRV（多弾頭独立目標再突入弾）試験を成功させた</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">インダス水条約を保留</div>
+          <div class="kp-value">1960年来の条約をインドが「テロ支援が続く限り保留」と表明。農業の生命線が人質に</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent)">
+          <div class="kp-label">GDPは約11倍の格差</div>
+          <div class="kp-value">インド約4.15兆ドル対パキスタン4,520億ドル。経済力では勝負にならない非対称な対立</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 核心と問い -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>核心と問い — 70年の分断</h2>
+
+            <figure class="article-figure" style="margin-top:0;margin-bottom:1.8rem;">
+              <img src="../../../image/articles/india-pakistan-map-south-asia.jpg"
+                   alt="インド・パキスタン・中国の位置関係地図" loading="lazy">
+              <figcaption>カシミールはインド・パキスタン・中国の3カ国の国境が収束する地点に位置する。インドとパキスタンは実効支配線（LoC）を挟んで領有権を争い、中国は東部のアクサイチンを実効支配している。※イメージ画像（生成AI）</figcaption>
+            </figure>
+
+            <div class="article-question">
+              3度の戦争を戦い、互いに核を向け合う2つの国の境界線——カシミール。なぜここで対立は70年以上も終わらないのか。2025年の4日間の衝突を経て、印パは破局へ向かうのか、それとも危うい均衡を保ち続けるのか。
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              インドとパキスタンの対立は、領土・宗教・水・経済・核——あらゆる火種が一本の境界線に集約されているという意味で、世界でも例のない複雑さを持つ。2025年4月のパハルガム襲撃と続く軍事衝突は、その対立が「過去の問題」ではなく今も現在進行形であることを突きつけた。核を持った2つの国が、なぜ70年たっても折り合えないのか。その答えは、独立分割の傷・水の依存・大国の介入という、3つの絡み合った構造の中にある。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2rem 0 0.75rem;font-weight:700;">3つの論点</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">領土 — 70年の未解決</div>
+                <div class="factor-desc">
+                  1947年の分離独立で生まれた領土問題は、3度の戦争でも解決しなかった。実効支配線（LoC＝Line of Control）を挟んで両国が領有を主張し、住民の意思は問われないまま分断が続く。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">核抑止 — 最後の保険</div>
+                <div class="factor-desc">
+                  両国は1998年に相次いで核実験を行い、以後は「核を撃てば終わり」という認識が全面戦争を抑える。だがその「天井」の下では、空爆や代理戦争という限定衝突が繰り返し起きている。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">水と経済 — 非対称な対立</div>
+                <div class="factor-desc">
+                  パキスタン農業の8割以上が依存するインダス水系は、上流国インドの手にある。GDPの差は約11倍。圧倒的に不利なパキスタンにとって、核と中国だけが対等を保つ手段になっている。
+                </div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg-card);border:1px solid var(--border-subtle);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:0.9rem 1.2rem;margin-top:1.25rem;font-size:0.82rem;">
+              <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);font-weight:700;margin-bottom:0.45rem;">用語解説</div>
+              <span style="font-weight:700;color:var(--text);">インダス水条約（1960年）</span>
+              <p style="color:var(--text-muted);line-height:1.75;margin-top:0.35rem;margin-bottom:0;">世界銀行の仲介でインドとパキスタンが締結した水利条約。インダス川水系の6支流を東西に分割し、東の3支流（ラービー・ビアース・サトレジ）をインド、西の3支流（インダス・ジェルム・チェナーブ）をパキスタンに配分する。パキスタン農業の水需要の8割以上がこの西側の配分に依存しており、3度の戦争を経ても効力を維持してきた。2025年4月のパハルガム襲撃後、インドが「保留（abeyance）」を宣言し、初めて外交カードとして行使された。</p>
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/india-pakistan-divided-kashmir.jpg"
+                   alt="分断されたカシミールの村と境界フェンス" loading="lazy">
+              <figcaption>カシミールは1947年以来、印パが領有を主張し続ける土地だ。実効支配線は山岳地帯を蛇行し、家族・村・宗教共同体を分断したまま70年が過ぎた。住民の意思は、いまも国家間の論理の前で後回しにされている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 70年の対立と4日間の衝突</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">1947年</div>
+                <div class="timeline-content">
+                  <h4>分離独立とカシミールをめぐる第一次戦争</h4>
+                  <p>英領インドが宗教を基準にインドとパキスタンに分割され、数十万人が犠牲となる大移動が起きた。藩王が独立かインド帰属かを決めかねていたカシミールで第一次印パ戦争が勃発し、領土問題の原型ができあがった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">宗教を基準にした分割</span>
+                    <span class="reaction-chip">カシミール紛争の原点</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">1971年</div>
+                <div class="timeline-content">
+                  <h4>バングラデシュ独立戦争 — パキスタンの分裂</h4>
+                  <p>1947年の建国当初、パキスタンはインド領を挟んで東西2地域に分かれており、人口では東パキスタンが西を上回っていた。インドが東パキスタンの独立を軍事支援してバングラデシュが誕生すると、パキスタンはその東半分——国土面積の約半分と人口の過半——を一挙に失い、圧倒的な劣勢を抱えたまま核開発に踏み込んでいく。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">パキスタンが国土の半分を喪失</span>
+                    <span class="reaction-chip">核開発への決定打</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">1998年</div>
+                <div class="timeline-content">
+                  <h4>両国が相次いで核実験</h4>
+                  <p>5月、インドが5回の核実験を実施し、その2週間後にパキスタンも6回の核実験で応じた。南アジアは「核保有国同士が国境を接する」世界で唯一の地域となり、地域の戦略環境は一変した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">南アジアの核時代到来</span>
+                    <span class="reaction-chip">国際社会から制裁を受ける</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">1999年</div>
+                <div class="timeline-content">
+                  <h4>カルギル戦争 — 核保有後初の本格衝突</h4>
+                  <p>パキスタン軍と武装勢力がインド側カシミールのカルギルに侵入し、両国軍が直接交戦した。核戦争への発展を恐れたアメリカが介入し、パキスタンが撤退する形で収束。「核の天井の下で在来戦争が起きる」構図が定着した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">核抑止下での限定戦争</span>
+                    <span class="reaction-chip">米国の仲介で収束</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2019年</div>
+                <div class="timeline-content">
+                  <h4>プルワマ襲撃・バラコート空爆と特別自治権剥奪</h4>
+                  <p>カシミール武装勢力の襲撃にインドが報復空爆で応じ、両国の戦闘機が交戦した。同年8月、モディ政権はインド側カシミールの特別自治権を一方的に剥奪し、自治の枠組みを根本から書き換えた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">越境空爆という前例</span>
+                    <span class="reaction-chip">カシミール自治権の終焉</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年4月</div>
+                <div class="timeline-content">
+                  <h4>パハルガム襲撃と「インダス水条約」保留</h4>
+                  <p>パハルガムで観光客26人が殺害され、TRFが犯行声明を出した。インドは翌日、1960年に締結されたインダス水条約を「保留（abeyance）」し、パキスタン農業の生命線である水資源を初めて外交カードに使った。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">観光客への大規模テロ</span>
+                    <span class="reaction-chip">水を「武器」化</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年5月</div>
+                <div class="timeline-content">
+                  <h4>シンドゥール作戦 — 4日間の衝突と停戦</h4>
+                  <p>5月7日深夜、インド空軍がパキスタン本土とパキスタン側カシミールの9カ所を空爆した。両国は4日間にわたりミサイルとドローンを撃ち合い、5月10日に停戦合意。米トランプ政権が「仲介」を主張したがインドは即座に否定した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">核保有国同士の本格交戦</span>
+                    <span class="reaction-chip">米国の仲介をめぐる火種</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-neutral"></div>
+                <div class="timeline-date">2026年5〜6月</div>
+                <div class="timeline-content">
+                  <h4>水条約の仲裁判決とパキスタン側カシミール抗議</h4>
+                  <p>仲裁裁判所がインダス水条約に関しパキスタン寄りの判決を出したが、インドは「不法な裁判所」として拒否。同時期、パキスタン側カシミールで難民議席をめぐる抗議行動が警察と衝突し11人が死亡、対立は政府間だけでなく住民レベルにも広がった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">仲裁判決を印が拒否</span>
+                    <span class="reaction-chip">住民レベルの不安定化</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/india-pakistan-historic-soldiers.jpg"
+                   alt="南アジア国境の歴史的な兵士の情景" loading="lazy">
+              <figcaption>1947年の分離独立から70年——3度の戦争、核実験、空爆、そしてシンドゥール作戦。世代を超えて同じ国境を巡る対立が繰り返され、新しい兵器と新しい指導者のもとで、古い火種が何度も発火している。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 3: 各国・各勢力の視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>6つの視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- インド -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">インド（モディ政権）</span>
+                      <span class="role-badge">強硬・大国化</span>
+                    </div>
+                    <div class="pull-quote">「テロには断固たる軍事報復で応える。これがインドの新しい常態だ」</div>
+                    <div class="key-claim">
+                      <strong>報復ドクトリンの常態化</strong>
+                      モディ政権は、テロ攻撃には越境空爆で報復するという姿勢を固めた。2019年のバラコート、2025年のシンドゥール作戦と、報復は二度目以降は「例外」ではなく「規則」になっている。核の天井下での懲罰的攻撃を、ためらいなく選択する政治体質が定着した。
+                    </div>
+                    <div class="key-claim">
+                      <strong>水と軍事力で圧迫</strong>
+                      インダス水条約を保留し、パキスタン経済の生命線である水資源を交渉カードにした。同時に Agni-5 ミサイルへの MIRV（多弾頭独立目標再突入弾）搭載や弾道ミサイル原潜の就役で核戦力を増強。対象にはパキスタンだけでなく、長期的には中国も視野に入れている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:100%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- パキスタン -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">パキスタン（シャリフ政権）</span>
+                      <span class="role-badge">包囲感の中で</span>
+                    </div>
+                    <div class="pull-quote">「核と中国だけが、圧倒的に不利な現実を支えている」</div>
+                    <div class="key-claim">
+                      <strong>非対称性を補う核抑止</strong>
+                      経済規模で約11倍、軍事費でも大きく劣るパキスタンにとって、核戦力は唯一の対等性の担保だ。「即時かつ大規模報復」という核ドクトリンと戦術核を組み合わせ、インドの在来戦力優位を相殺する。SLBM（潜水艦発射弾道ミサイル）を持たないため第二撃能力に弱点を抱えるが、それを「敷居の低さ」で補おうとしている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>経済難と中国依存</strong>
+                      IMF支援下の財政・通貨危機が常態化し、政治は軍部と文民政府の綱引きが続く。中国との「全天候型」パートナーシップと中パ経済回廊（CPEC＝中国・パキスタン経済回廊）に経済の活路を求め、対インド外交でも中国の後ろ盾を頼りにせざるを得ない構造になっている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:100%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 中国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">中国</span>
+                      <span class="role-badge">「全天候型」同盟</span>
+                    </div>
+                    <div class="pull-quote">「パキスタンの安定はわが国の戦略的利益であり、決して譲れない」</div>
+                    <div class="key-claim">
+                      <strong>パキスタンを通じてインドを牽制</strong>
+                      中国は1990年代からパキスタンに核・ミサイル技術を供与し、国境紛争を抱えるインドを地政学的に挟撃する形を整えてきた。2026年で印中国交75周年を迎えるが、パキスタンへの「全天候型」支援姿勢に変化はない。インドの大国化を「単独で抑え込む」のではなく、パキスタンと連動させて足止めする戦略だ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>CPEC 2.0と地経学的浸透</strong>
+                      CPEC は港湾・道路・電力・産業団地を巻き込んだ巨大投資で、2026年には第2フェーズの加速が確認された。中国はパキスタンを軍事同盟国ではなく経済的にも不可逆な依存関係に組み込み、南アジアでのプレゼンスを物理的に固めようとしている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:80%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- アメリカ -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">アメリカ（トランプ政権）</span>
+                      <span class="role-badge">仲介者と利用者</span>
+                    </div>
+                    <div class="pull-quote">「印中対抗ではインドが要だが、印パ仲介の手柄も欲しい」</div>
+                    <div class="key-claim">
+                      <strong>「再ハイフン化」を嫌うインド</strong>
+                      アメリカは長期的にはインド重視で、中国に対抗する戦略的パートナーと位置づけている。だが2025年5月の停戦をトランプ大統領が「自分の仲介で実現した」と繰り返し公言したことで、モディ政権は強く反発。インドが避けてきた「印パを並列に扱われる」状態（再ハイフン化）への警戒が深まっている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>関与の浅さがもたらすリスク</strong>
+                      バンス副大統領が当初「われわれの問題ではない」と発言した直後にトランプ大統領が仲介を主張するなど、米政権内の足並みは揃わなかった。介入の意思と実力が一致しないまま「手柄」だけ取りに行く姿勢は、印パいずれの信頼も失いかねず、危機の際の調停力を削いでいる。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:70%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- カシミール住民 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">カシミール住民</span>
+                      <span class="role-badge">当事者・板挟み</span>
+                    </div>
+                    <div class="pull-quote">「私たちは70年、誰のものかを決められる側ではなかった」</div>
+                    <div class="key-claim">
+                      <strong>消された自決権</strong>
+                      1948年の国連決議は「住民投票で帰属を決める」と定めたが、ついに実施されなかった。インド側カシミールでは2019年の特別自治権剥奪以降、政治活動と表現の自由が大きく制限され、パキスタン側でも2026年6月の抗議で11人が死亡するなど、両側で住民の声が抑え込まれている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>軍事化のなかでの日常</strong>
+                      実効支配線の両側には世界有数の密度で軍が展開され、人口比あたりの兵力では世界屈指の軍事化地域となっている。観光・経済は政情で揺れ、若年層の失業率は高い。70年の対立の代償は、最終的には軍人ではなく、ここに生まれ育った人々が支払い続けている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:60%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 核拡散専門家 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">国際社会・核拡散専門家</span>
+                      <span class="role-badge">リスク警告</span>
+                    </div>
+                    <div class="pull-quote">「南アジアは、いまも『世界で最も核戦争に近い場所』だ」</div>
+                    <div class="key-claim">
+                      <strong>エスカレーション制御の脆弱化</strong>
+                      2025年のシンドゥール作戦は、空爆・ミサイル・ドローンが一気に飛び交う「4日間で核保有国がここまで行く」事例となった。両国の指導者と司令系統がエスカレーションを制御できる時間と情報の余裕は、戦闘テンポの高速化により以前より明らかに短くなっている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>抑止の論理の劣化</strong>
+                      インドは MIRV化・原潜・長距離ミサイルでより柔軟で攻撃的な核戦力に進化し、パキスタンは戦術核と早期発射ドクトリンで対抗する。「使われない核」を保つはずの抑止の論理が、技術と教義の両面で複雑化し、誤算・誤認・先制衝動のリスクが上がっている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:60%;"></div></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本スタンス</th>
+                        <th>最大の主張</th>
+                        <th>課題・懸念</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>インド</td><td>強硬・大国化</td><td>テロには軍事報復が新常態</td><td>中国も視野に核戦力を拡張</td></tr>
+                      <tr><td>パキスタン</td><td>核抑止と中国依存</td><td>非対称性を核と同盟で補う</td><td>経済難・第二撃能力の弱さ</td></tr>
+                      <tr><td>中国</td><td>「全天候型」同盟</td><td>パキスタンを通じインド牽制</td><td>地域不安定化のコスト</td></tr>
+                      <tr><td>アメリカ</td><td>仲介と利用の混在</td><td>印中対抗でインド重視</td><td>「再ハイフン化」で印の信頼失う</td></tr>
+                      <tr><td>カシミール住民</td><td>自決権の主張</td><td>住民投票の約束は果たされず</td><td>両側で声が抑え込まれる</td></tr>
+                      <tr><td>核拡散専門家</td><td>リスクの可視化</td><td>世界で最も核戦争に近い場所</td><td>エスカレーション制御の劣化</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/india-pakistan-confrontation.jpg"
+                   alt="国境警備兵の対峙" loading="lazy">
+              <figcaption>国境ゲートでの儀礼的対峙は、両国関係を象徴する光景でもある。整然とした足踏みの裏にあるのは、70年積み重なった不信と、押し殺された緊張だ。形式化された敵意のなかで、それぞれの兵士はそれぞれの国家を背負って立つ。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- 軍事力比較（棒グラフ） -->
+              <div class="data-card">
+                <h4>軍事力の比較（核弾頭・兵力・国防予算）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="militaryChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  核弾頭数はほぼ拮抗するが、現役兵力と国防予算はインドが大きくリード。パキスタンは「量より核」で非対称性を補う構造。出典：SIPRI、IISS、各種推計
+                </p>
+              </div>
+
+              <!-- 経済規模の比較 -->
+              <div class="data-card">
+                <h4>経済規模の比較（2026年）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="gdpChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  名目GDPは約11倍の格差。一人あたりGDPでもインドが大きくリード。経済力の非対称が、対立の構造を歪める根本要因。出典：IMF World Economic Outlook、世界銀行
+                </p>
+              </div>
+
+              <!-- 過去の戦争と死者（テーブル） -->
+              <div class="data-card">
+                <h4>印パが経験した主要な軍事衝突</h4>
+                <table style="width:100%;border-collapse:collapse;margin-top:1rem;font-size:0.82rem;">
+                  <thead>
+                    <tr style="border-bottom:1px solid var(--border);">
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;">年</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">概要</th>
+                      <th style="text-align:right;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;">期間</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">1947–48</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">第一次印パ戦争。国連停戦で実効支配線（LoC）が生まれ、カシミール問題の原型が固まる</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);text-align:right;white-space:nowrap;vertical-align:top;">約1年半</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">1965</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">第二次印パ戦争。カシミール奪還を狙ったパキスタン軍が侵入、引き分けのまま国連停戦</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);text-align:right;white-space:nowrap;vertical-align:top;">17日間</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">1971</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">バングラデシュ独立戦争。インドの軍事介入でパキスタンが東半分を喪失、以後の核開発へ直結</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);text-align:right;white-space:nowrap;vertical-align:top;">13日間</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">1999</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">カルギル戦争。核保有後初の本格衝突。米国仲介でパキスタンが撤退し「核の天井」構図が定着</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);text-align:right;white-space:nowrap;vertical-align:top;">約2か月</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">2025</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">シンドゥール作戦。核保有国同士がミサイル・ドローンを撃ち合い、米仲介で停戦</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);text-align:right;white-space:nowrap;vertical-align:top;">4日間</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">回を追うごとに期間は短くなるが、兵器の高度化と核リスクは上がり続けている。出典：各種戦史資料</p>
+              </div>
+
+              <!-- 注目の数字 -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">180対170</div>
+                    <div class="stat-label">核弾頭数（インド対パキスタン）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">約11倍</div>
+                    <div class="stat-label">GDPの格差（インド/パキスタン）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">80%超</div>
+                    <div class="stat-label">パキスタン農業の水依存（インダス水系）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">4日間</div>
+                    <div class="stat-label">2025年のシンドゥール作戦と停戦までの日数</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り — これから2〜3年で何が起きるか</h2>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              2025年の衝突は、印パ関係を「危機の前」と「危機の後」に区切る分水嶺になった。報復ドクトリン・水・大国の介入・核——4つの軸で、今後2〜3年の見通しを整理する。
+            </p>
+
+            <div class="insight-box">
+              <div class="insight-title">報復ドクトリンの予測 — 「シンドゥール」は例外でなく規則になる</div>
+              <div class="insight-text">
+                インドは「テロには越境空爆」という選択肢を、2019年に続いて2025年も実行した。三度目以降は「常態化」と呼ぶしかない段階に入る。今後2〜3年でカシミール側で大規模なテロが起きた場合、インドはほぼ自動的に空爆で応じるだろう。問題は、その応酬が4日間で止まる保証がだんだん弱くなっていることだ。前回の停戦は米国の介入と双方の偶然の自制で成立したが、次も同じ条件がそろうとは限らない。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">インダス水条約の予測 — 仲裁と二国間のどちらに収束するか</div>
+              <div class="insight-text">
+                インダス水条約はインドが「保留」を続けるなか、仲裁裁判所はパキスタン寄りの判決を出している。だがインドは判決を「不法」として拒否し、現状は「条約は紙の上で生きているが、現実には機能していない」状態だ。今後2〜3年で焦点になるのは、インドがダム建設や流量変更でどこまで実質的に水を絞れるか、そしてパキスタンが「水は戦争の理由になる」と公言したラインをどこに引くかだ。水の争いは、核とは別の経路で本格衝突を引き起こすリスクを孕む。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">米中介入の予測 — インドの「再ハイフン化」拒否と中国の地経学的深入り</div>
+              <div class="insight-text">
+                アメリカは印中対抗ではインドを必要としているが、トランプ政権は「印パ仲介」のクレジットを取りたがり、両者の信頼を消耗させている。中国は逆に、CPEC 2.0で経済的にパキスタンに深く食い込み、軍事だけでなくインフラの「全方位」で関与を強める。結果として、印パ危機の調停役は不在のまま、外部からの圧力と支援が逆方向に働く危うい構図が固まりつつある。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">核エスカレーションの予測 — レッドラインは曖昧化する</div>
+              <div class="insight-text">
+                インドの MIRV 化・原潜・長距離ミサイル、パキスタンの戦術核と早期発射ドクトリン——両国の核戦力は「使われないための核」から「使えなくはない核」に向けて少しずつ進化している。明確だった核使用のレッドラインは、双方で曖昧化しつつある。今後2〜3年で最大のリスクは、政治的危機が在来戦に発展した瞬間、相手の核ドクトリンを誤読した側が「先制せざるを得ない」と判断することだ。技術の進歩が、皮肉にも抑止の論理を壊す可能性がある。
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.8rem;">
+              印パの対立は、領土・宗教・水・経済・核がすべて絡み合った、世界でも例のない複合危機だ。70年たっても解けない理由は、どこかの段階で対話が一度切れて、双方が「相手を変えるより、自分が強くなる」道を選び続けてきたからにほかならない。
+              核時代の南アジアが「危うい均衡」を保てるかは、印パの政治家、米中の介入、そして忘れられがちなカシミール住民の声を、誰がどう束ね直せるかにかかっている。氷の溶けた北極が「協力の海」になれるかと同じ問いが、火の絶えない南アジアの国境でも問われ続けている。
+            </p>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/india-pakistan-future-uncertainty.jpg"
+                   alt="核と平和のジレンマを象徴する将来像" loading="lazy">
+              <figcaption>核を持った2つの国の境界線——その先にあるのは、危うい均衡か、それとも制御できない衝突か。技術の進歩と政治の硬直が同時に進むなか、南アジアは「使われない核」と「終わらない国境」のあいだで、なお揺れている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">CSIS — What Led to the Recent Crisis Between India and Pakistan?</div>
+                  <div class="source-desc">パハルガム襲撃から停戦までの経緯、米中の関与、地域への含意の包括分析。</div>
+                  <div class="source-country">【戦略国際問題研究所（米）】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Stimson Center — Four Days in May: The India-Pakistan Crisis of 2025</div>
+                  <div class="source-desc">シンドゥール作戦・停戦・エスカレーション制御の専門分析。南アジア戦略研究の第一線。</div>
+                  <div class="source-country">【スティムソン・センター（米）】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Carnegie Endowment — A Quarter Century of Nuclear South Asia</div>
+                  <div class="source-desc">核保有25年の南アジアにおける危機・シグナリング・エスカレーションリスクの長期分析。</div>
+                  <div class="source-country">【カーネギー国際平和財団】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Atlantic Council — Experts React: India just launched airstrikes against Pakistan</div>
+                  <div class="source-desc">複数地域専門家による即時分析。米英欧の政策実務家視点からの危機評価。</div>
+                  <div class="source-country">【大西洋評議会（米）】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">International Crisis Group — India-Pakistan (Kashmir)</div>
+                  <div class="source-desc">カシミール紛争の現地動向・住民影響・武装組織情勢の継続的モニタリング。</div>
+                  <div class="source-country">【国際危機グループ】</div>
+                </div>
+              </div>
+              <div class="source-item">
+                <div class="source-info">
+                  <div class="source-name">Chatham House / Bulletin of the Atomic Scientists</div>
+                  <div class="source-desc">水条約再交渉の見通し、核ドクトリンの実証分析、抑止の論理に関する査読系の議論。</div>
+                  <div class="source-country">【英王立国際問題研究所・米科学者会報】</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>核心と問い</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/asia/index.html">アジア情勢</a></div>
+            <div>2026年6月16日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/asia/index.html">アジア情勢一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 軍事力の比較（棒グラフ：3指標で印パを並列）
+  (function() {
+    var ctx = document.getElementById('militaryChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['核弾頭（発）', '現役兵力（万人）', '国防予算（億ドル）'],
+        datasets: [
+          {
+            label: 'インド',
+            data: [180, 146, 860],
+            backgroundColor: 'rgba(184,127,140,0.78)',
+            borderColor: 'transparent',
+            borderRadius: 3,
+          },
+          {
+            label: 'パキスタン',
+            data: [170, 65, 105],
+            backgroundColor: 'rgba(154,180,196,0.55)',
+            borderColor: 'transparent',
+            borderRadius: 3,
+          }
+        ]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: { color: '#8890a0', font: { size: 11 } }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' ' + c.dataset.label + ': ' + c.parsed.y.toLocaleString(); }
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // 経済規模の比較（棒グラフ：GDP/人口/一人あたりGDP）
+  (function() {
+    var ctx = document.getElementById('gdpChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: [['名目GDP', '（兆ドル）'], ['人口', '（億人）'], ['一人あたりGDP', '（千ドル）']],
+        datasets: [
+          {
+            label: 'インド',
+            data: [4.15, 14.5, 2.81],
+            backgroundColor: 'rgba(184,127,140,0.78)',
+            borderColor: 'transparent',
+            borderRadius: 3,
+          },
+          {
+            label: 'パキスタン',
+            data: [0.45, 2.51, 1.90],
+            backgroundColor: 'rgba(154,180,196,0.55)',
+            borderColor: 'transparent',
+            borderRadius: 3,
+          }
+        ]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: { color: '#8890a0', font: { size: 11 } }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' ' + c.dataset.label + ': ' + c.parsed.y; }
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // tone-meterアニメーション（該当要素がなくても無害）
+  function animateToneMeters() {
+    setTimeout(function() {
+      document.querySelectorAll('#sec-perspectives .tone-fill').forEach(function(el) {
+        el.style.width = el.getAttribute('data-width');
+      });
+    }, 60);
+  }
+  if (document.readyState === 'complete') {
+    animateToneMeters();
+  } else {
+    window.addEventListener('load', animateToneMeters);
+  }
+</script>
+</body>
+</html>
