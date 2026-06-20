@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>500ドルの空軍 — モスクワを襲ったドローン、その技術の中身 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* セクション番号（大型スタイル） */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent5);
+      opacity: 0.7;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* 記事の問い（冒頭フック） */
+    .article-question {
+      border-left: 3px solid var(--accent5);
+      padding: 1rem 1.4rem;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.8rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* 構造要因概観ボックス（3要因） */
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent5);
+    }
+    .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/drone-warfare-hero-swarm-night.jpg');
+      background-size: cover; background-position: center 42%;
+      /* 例外：暗い夜景画像を明るく補正して見やすくする */
+      filter: brightness(1.35) contrast(1.04) saturate(1.06);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      /* 標準：オーバーレイを薄めにして、半透明カード越しに画像を透かす */
+      background: linear-gradient(180deg, rgba(14,17,23,0.14) 0%, rgba(14,17,23,0.20) 45%, rgba(14,17,23,0.42) 100%);
+    }
+    /* テキストの可読性を影で補強 */
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title,
+    .article-hero.has-image .article-summary { text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65); }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    /* 標準：キーポイントのカードを半透明（ガラス調）にして背景の画像を透かす */
+    .article-hero.has-image .key-point {
+      background: rgba(18,23,31,0.40);
+      border: 1px solid rgba(255,255,255,0.18);
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+      box-shadow: 0 2px 14px rgba(0,0,0,0.28);
+    }
+    .article-hero.has-image .key-point:hover { background: rgba(18,23,31,0.54); }
+    .article-hero.has-image .key-point .kp-value { color: #f2f5f9; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+    .article-hero.has-image .key-point .kp-label { color: rgba(255,255,255,0.74); }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* 情報源リンク：a 化したカードのリンク色をリセットし、hoverでアクセント */
+    a.source-item { color: inherit; text-decoration: none; cursor: pointer; }
+    a.source-item:hover { border-color: var(--accent5); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent5); }
+    a.source-item .source-name { transition: color 0.2s; }
+
+    /* 本文中の図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* 深掘りセクション */
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent5);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* data-gridを2列に */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* 役割バッジ */
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+    }
+
+    /* プルクォート（核心の一文） */
+    .pull-quote {
+      border-left: 3px solid var(--accent5);
+      background: rgba(154,138,180,0.09);
+      padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text); line-height: 1.65;
+    }
+
+    /* 関係の深さインジケーター（横バー） */
+    .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+    .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
+    .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .depth-bar-fill { height: 100%; background: var(--accent5); border-radius: 5px; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav">
+    <a href="../../../index.html">ホーム</a>
+    <a href="../../../categories/technology/index.html" style="color:var(--text);">テクノロジー</a>
+    <a href="../../../categories/ai-tech/index.html">AI</a>
+    <a href="../../../categories/security/index.html">安全保障</a>
+  </nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-purple">テクノロジー</span>
+        <span class="tag tag-red">ドローン・軍事技術</span>
+        <span class="date">2026年6月20日</span>
+      </div>
+      <h1 class="article-title">500ドルの空軍<br>— モスクワを襲ったドローン、その技術の中身</h1>
+      <p class="article-summary">
+        2026年6月18日、ウクライナは約200機のドローンでモスクワを攻撃し、製油所を炎上させた。数百ドルの機体が数百万ドルの兵器を脅かす——ドローンは「兵器の経済学」を覆した。その駆動力は、光ファイバー制御・AI標的識別・大量生産という3つの技術革新だ。何がドローンをこれほど強くしたのか。その技術の中身と、戦争にもたらす変質を、ウクライナ・ロシア・中国・西側軍需・倫理専門家・民間社会の6つの視点で読み解く。
+      </p>
+
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">モスクワへ約200機</div>
+          <div class="kp-value">2026年6月18日、侵攻以来最大規模。製油所が週内2度目の被弾、空港4か所が一時閉鎖</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">1機わずか300〜500ドル</div>
+          <div class="kp-value">使い捨て前提の精密兵器。迎撃側は1回に数千〜数百万ドルを要し、費用対効果が逆転している</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">AI命中率 30-50%→約80%</div>
+          <div class="kp-value">終末誘導をAIが担い、電子妨害下でも自律で着弾。操縦者は最初に標的を指定するだけ</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">ロシア 年産700万機計画</div>
+          <div class="kp-value">ウクライナも2025年に450万機を生産。ドローンは「物量の量産競争」の段階に入った</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 核心と問い -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>核心と問い — 500ドルが覆した戦争</h2>
+
+            <div class="article-question">
+              なぜ数百ドルの「おもちゃ」のような機体が、数百万ドルの戦闘機や防空システムを脅かすのか。モスクワを襲った約200機のドローンは、戦争の何を変えたのか。その答えは、機体そのものの3つの技術革新にある。
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              ドローンは、もはや偵察用の「空飛ぶカメラ」ではない。ウクライナとロシアの戦場では、数百ドルの小型機が前線の戦車を破壊し、数百キロ先の製油所を炎上させる主力兵器になった。重要なのは、これが一握りの先端企業ではなく、地下室や町工場で量産される「消耗品」だという点だ。安価で、大量で、しかも年々賢くなる——この組み合わせが、高価な兵器を中心に組み立てられてきた戦争の常識を内側から崩している。その変質を生んだのは、光ファイバー制御・AI標的識別・大量生産という、3つの技術革新だ。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2rem 0 0.75rem;font-weight:700;">3つの技術革新</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">光ファイバー制御 — 妨害が効かない</div>
+                <div class="factor-desc">
+                  機体と操縦者を髪の毛ほどの光ケーブルで物理的に結ぶ。無線を使わないため、電子妨害（ジャミング）が一切効かない。ロシアが先行して実戦投入し、射程は10〜20km級に達する。電子戦という「見えない盾」を、一本のケーブルが無力化した。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">AI標的識別 — 自律で着弾する</div>
+                <div class="factor-desc">
+                  着弾直前の終末誘導をAIが担う。操縦者は最初に標的を指定するだけで、あとは機体が自律で命中させる。妨害で映像が途切れても当たる。これによりFPVドローンの命中率は30-50%から約80%へ跳ね上がった。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">大量生産・低コスト — 使い捨てる</div>
+                <div class="factor-desc">
+                  1機あたり300〜500ドル。市販部品を組み合わせ、年に数百万機を生産する。「高価な兵器を惜しんで使う」のではなく、「安価な兵器を惜しまず使い捨てる」。精密兵器が消耗品になった瞬間だ。
+                </div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg-card);border:1px solid var(--border-subtle);border-left:3px solid var(--accent5);border-radius:0 var(--radius) var(--radius) 0;padding:0.9rem 1.2rem;margin-top:1.25rem;font-size:0.82rem;">
+              <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);font-weight:700;margin-bottom:0.45rem;">用語解説</div>
+              <span style="font-weight:700;color:var(--text);">FPVドローン／徘徊型兵器</span>
+              <p style="color:var(--text-muted);line-height:1.75;margin-top:0.35rem;margin-bottom:0;">FPV（First Person View＝一人称視点）ドローンは、機体のカメラ映像をゴーグルで見ながら操縦者がまるで搭乗しているかのように飛ばす小型機で、爆薬を積んで標的に体当たりする「カミカゼ」型が前線の主力になっている。徘徊型兵器（loitering munition）は、標的の上空をしばらく旋回（徘徊）して機会を待ち、見つけ次第突入する自爆型ドローンを指す。ロシアのGeran（Shahed系）が代表例で、数百〜千キロを飛んで都市やインフラを攻撃する。</p>
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/drone-warfare-fpv-fiber-closeup.jpg"
+                   alt="FPVドローンと光ファイバー巻取りの接写" loading="lazy">
+              <figcaption>FPVドローンの本体に取り付けられた、髪の毛ほどの細さの光ファイバー巻取り。無線の代わりにこのケーブルで操縦することで、敵の電子妨害を完全に無効化する。むき出しの回路基板と4基のモーター——数百ドルで組める「消耗品の精密兵器」が、戦場の主役になった。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン — ドローン戦争の進化</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2022年</div>
+                <div class="timeline-content">
+                  <h4>市販ドローンの軍事転用</h4>
+                  <p>侵攻初期、両軍は中国製の市販ドローン（DJI製など）を偵察や手製爆弾の投下に転用した。年間生産はまだ数千機規模で、ドローンは「補助的な道具」にすぎなかった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">民生機の軍事流用</span>
+                    <span class="reaction-chip">偵察が主な用途</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2023年</div>
+                <div class="timeline-content">
+                  <h4>FPVカミカゼドローンの本格化</h4>
+                  <p>爆薬を積んで体当たりするFPVドローンが前線の主力に躍り出た。戦車や装甲車を1機数百ドルの機体が破壊する光景が常態化し、両軍は量産競争へ突入した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">使い捨て攻撃機の登場</span>
+                    <span class="reaction-chip">量産競争の開始</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年</div>
+                <div class="timeline-content">
+                  <h4>電子戦の激化と光ファイバードローン</h4>
+                  <p>無線を妨害するジャミングが戦場を覆い、ドローンが次々に墜とされるようになった。これに対抗してロシアが、ケーブルで操縦する光ファイバードローンを投入。妨害の効かない攻撃手段が生まれ、攻防は新たな段階に入った。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">ジャミング戦の本格化</span>
+                    <span class="reaction-chip">光ファイバーで妨害を回避</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年</div>
+                <div class="timeline-content">
+                  <h4>AI終末誘導と長距離攻撃ドローン</h4>
+                  <p>AIによる終末誘導が普及し、妨害下でも命中する自律性が現実になった。同時に、数百〜千キロを飛ぶ長距離攻撃ドローンがロシア国内の製油所を狙い始める。ウクライナの年間生産は450万機に達した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">AIで命中率が向上</span>
+                    <span class="reaction-chip">後方インフラへの戦略打撃</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年前半</div>
+                <div class="timeline-content">
+                  <h4>物量競争と「脱中国」の達成</h4>
+                  <p>ロシアは年産700万機を計画し、物量で前線と後方を圧迫する構えを見せた。一方ウクライナは3月、部品を中国に頼らない「中国製ゼロ」のドローンを実現。迎撃専用ドローンも10万機規模で生産され、攻防双方が加速した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">露が年産700万機を計画</span>
+                    <span class="reaction-chip">ウクライナが脱中国を達成</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-neutral"></div>
+                <div class="timeline-date">2026年6月18日</div>
+                <div class="timeline-content">
+                  <h4>モスクワへ約200機の記録的攻撃</h4>
+                  <p>ウクライナが約200機のドローンで首都モスクワを攻撃し、侵攻以来数年ぶりの規模となった。モスクワ製油所が週内2度目の被弾で炎上、空港4か所が一時閉鎖。迎撃された1機はショッピングモールに墜落して火災を起こし、別の1機は高層住宅に命中した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">首都への記録的攻撃</span>
+                    <span class="reaction-chip">後方インフラの前線化</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/drone-warfare-production-workshop.jpg"
+                   alt="ドローンの量産工房" loading="lazy">
+              <figcaption>地下室や町工場に並ぶFPVドローンの組み立てライン。回路基板をはんだ付けし、モーターを取り付け、完成機を箱詰めする——この「消耗品の大量生産」こそがドローン戦争の本質だ。高価な兵器工場ではなく、無数の小さな作業場が、年に数百万機を戦場へ送り出す。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 3: 各国・各勢力の視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>6つの視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- ウクライナ -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ウクライナ（開発・運用側）</span>
+                      <span class="role-badge">非対称の均衡装置</span>
+                    </div>
+                    <div class="pull-quote">「巨人と戦う小国にとって、500ドルのドローンは唯一の対等装置だ」</div>
+                    <div class="key-claim">
+                      <strong>ガレージから生まれた兵器産業</strong>
+                      地下室や町工場で回路基板とモーターを自作し、生産は2022年の数千機から2025年の450万機へ。国家の存亡をかけた切迫が、世界最速のドローン革新を生んだ。前線の兵士の要望が数週間で設計に反映される、異例の速さで進化している。
+                    </div>
+                    <div class="key-claim">
+                      <strong>脱中国への執念</strong>
+                      部品を中国に依存するリスクを痛感し、2026年3月に「中国製ゼロ」のドローンを実現した。ただし量産可能になるのは数年先で、当面は中国製部品との併用が続く。供給網の自立は、技術と同じくらい重い課題になっている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:100%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- ロシア -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ロシア（標的かつ先駆者）</span>
+                      <span class="role-badge">物量で圧迫</span>
+                    </div>
+                    <div class="pull-quote">「首都を撃たれる側でありながら、妨害を無効化する技術では先を行く」</div>
+                    <div class="key-claim">
+                      <strong>光ファイバーとShahed系の量産</strong>
+                      無線妨害に強い光ファイバードローンを実戦投入して先行し、長距離徘徊型のGeran（Shahed系）を年産700万機規模へ拡大しようとしている。物量で前線と後方の双方を圧迫する戦略だ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>報復とエスカレーションの威嚇</strong>
+                      モスクワ製油所への連続被弾に対し、ロシアはウクライナのエネルギー網への大規模報復とエスカレーションを警告した。安価なドローンの応酬は、どちらの後方も聖域ではない段階に達している。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:95%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 中国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">中国（見えない主役）</span>
+                      <span class="role-badge">供給網の支配者</span>
+                    </div>
+                    <div class="pull-quote">「一発も撃たずに、戦争のテンポを左右できる立場にいる」</div>
+                    <div class="key-claim">
+                      <strong>部品サプライチェーンの掌握</strong>
+                      ブラシレスモーター、永久磁石、成熟半導体、そして光ファイバーケーブル——ドローンの心臓部の多くを中国が握る。撃たずとも、供給の蛇口を締めるだけで戦争の速度を調整できる、特異な立ち位置にある。
+                    </div>
+                    <div class="key-claim">
+                      <strong>非対称な供給</strong>
+                      中国はロシア向けに32.8万マイルもの光ファイバーケーブルを供給する一方、ウクライナとその支援国への流通は絞ったとされる。「中立」を装いつつ、供給網そのものが事実上の関与になっている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:85%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 西側の軍需産業・各国軍 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">西側の軍需産業・各国軍</span>
+                      <span class="role-badge">ドクトリン転換</span>
+                    </div>
+                    <div class="pull-quote">「400万ドルの迎撃弾で500ドルのドローンを落とす——この算数は持続しない」</div>
+                    <div class="key-claim">
+                      <strong>重装甲ドクトリンの終焉</strong>
+                      戦車や有人機を中心に据えた高価な兵器体系は、安価なドローンの飽和攻撃に対して費用対効果が崩壊した。各国軍は、数十年積み上げてきた調達思想そのものの転換を迫られている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>安価な対ドローンへの転換</strong>
+                      1射のコストが極端に低いレーザー、再利用できる迎撃機、電子戦——防御コストを攻撃側まで引き下げる競争が始まった。米陸軍は29億ドル規模の対ドローン調達に動き、ウクライナ製の安価な機体を試験している。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:80%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 倫理・国際法／専門家 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">AI兵器の倫理・国際法／専門家</span>
+                      <span class="role-badge">自律化への警鐘</span>
+                    </div>
+                    <div class="pull-quote">「『操縦者が確認する』と『機械が自分で殺す』の境界が、技術とともに溶けていく」</div>
+                    <div class="key-claim">
+                      <strong>人間の関与が薄れる</strong>
+                      AI終末誘導は、操縦者が標的を指定したあとは機体が自律で着弾する。妨害下では完全自律が現実的な選択肢になり、「人間が引き金を引く」という前提が形骸化しつつある。判断のどこまでを機械に委ねるのか、線引きが問われている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>規制の不在</strong>
+                      自律型致死兵器（LAWS＝Lethal Autonomous Weapons Systems）を縛る国際的な枠組みは、いまだ存在しない。技術の普及が規制の議論を追い越し、「殺人ロボット」の標準化が事実として先に進んでいる。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:70%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 民間社会・重要インフラ -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">民間社会・重要インフラ</span>
+                      <span class="role-badge">最大の被害者</span>
+                    </div>
+                    <div class="pull-quote">「安価な長距離精密打撃の前で、『安全な後方』はもう存在しない」</div>
+                    <div class="key-claim">
+                      <strong>前線化する都市</strong>
+                      モスクワでは製油所だけでなく、ショッピングモールや高層住宅が被弾した。安価なドローンが数百〜千キロを飛ぶ時代、エネルギー施設・空港・都市が恒常的に射程内に入り、市民生活が直接の脅威にさらされる。
+                    </div>
+                    <div class="key-claim">
+                      <strong>防御の限界とコスト</strong>
+                      民間インフラを完全に守るには天文学的な防空コストがかかる。攻撃が安く防御が高いという非対称が、社会の脆弱性をそのまま放置する構造を生んでいる。守りきれないものをどう守るかが、各国共通の難題になった。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:75%;"></div></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本スタンス</th>
+                        <th>最大の主張</th>
+                        <th>課題・懸念</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>ウクライナ</td><td>開発・運用の最前線</td><td>500ドルが巨人への対等装置</td><td>部品の脱中国は数年先</td></tr>
+                      <tr><td>ロシア</td><td>標的かつ先駆者</td><td>光ファイバーと物量で圧迫</td><td>首都も後方も聖域でない</td></tr>
+                      <tr><td>中国</td><td>供給網の支配者</td><td>撃たずにテンポを左右</td><td>「中立」を装う事実上の関与</td></tr>
+                      <tr><td>西側軍需・各国軍</td><td>ドクトリン転換</td><td>安価な対ドローンで反撃</td><td>コスト非対称の解消は途上</td></tr>
+                      <tr><td>倫理・国際法／専門家</td><td>自律化への警鐘</td><td>人間の関与が消える</td><td>自律兵器規制が不在</td></tr>
+                      <tr><td>民間・重要インフラ</td><td>最大の被害者</td><td>後方の消滅を可視化</td><td>防御コストが見合わない</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/drone-warfare-asymmetry-jet-drone.jpg"
+                   alt="小さなドローンと高価な戦闘機の対比" loading="lazy">
+              <figcaption>手前の小さなドローンと、背後にそびえる高価な戦闘機——この圧倒的なスケールとコストの対比が、ドローン戦争の核心を物語る。攻撃側は数百ドル、防御側は数百万ドル。この非対称こそが、各国軍に数十年の兵器ドクトリンの転換を迫っている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- コスト非対称（対数軸の棒グラフ） -->
+              <div class="data-card">
+                <h4>1回あたりのコスト非対称（対数軸）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="costChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  攻撃用FPVドローンは1機500ドル前後。これを撃ち落とす地対空ミサイルや空対空ミサイルは1発100万ドル級に達する。縦軸は対数目盛。攻撃側の桁違いの安さが一目でわかる。出典：各種軍事分析、公開情報
+                </p>
+              </div>
+
+              <!-- ウクライナの生産推移 -->
+              <div class="data-card">
+                <h4>ウクライナのドローン年間生産数</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="productionChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  2022年の約5,000機から、2025年には450万機へ。わずか3年で約900倍という指数的な増加。ロシアも2026年に年産700万機を計画し、ドローンは「物量の量産競争」になった。出典：各種推計
+                </p>
+              </div>
+
+              <!-- ドローンの種類と特徴（テーブル） -->
+              <div class="data-card">
+                <h4>ドローンの種類と特徴</h4>
+                <table style="width:100%;border-collapse:collapse;margin-top:1rem;font-size:0.82rem;">
+                  <thead>
+                    <tr style="border-bottom:1px solid var(--border);">
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;">種類</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">射程</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">特徴</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;vertical-align:top;">FPVカミカゼ</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">〜20km</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">一人称視点で操縦し体当たり自爆。1機300〜500ドルの前線の主力</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;vertical-align:top;">光ファイバーFPV</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">10〜20km</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">ケーブルで操縦し電子妨害が無効。電子戦に強い新世代</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;vertical-align:top;">長距離攻撃型</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">1,000km超</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">徘徊型（Geran／Shahed系）。都市・インフラへの戦略打撃</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;vertical-align:top;">迎撃ドローン</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">数km</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">飛来するドローンを空中で撃墜。1機3,000〜5,000ドル</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;vertical-align:top;">偵察ドローン</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">可変</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">標的の捜索・観測を担う「攻撃の目」</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">無線から光ファイバーへ、手動からAI自律へ、近距離から長距離へ——あらゆる軸で進化が同時進行している。</p>
+              </div>
+
+              <!-- 注目の数字 -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">約200機</div>
+                    <div class="stat-label">モスクワ攻撃のドローン数（2026年6月18日）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">$300-500</div>
+                    <div class="stat-label">FPVドローン1機の単価</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">約80%</div>
+                    <div class="stat-label">AI終末誘導によるFPVの命中率</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">700万機</div>
+                    <div class="stat-label">ロシアの2026年ドローン生産計画</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り — これから2〜3年で何が起きるか</h2>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              モスクワ攻撃は、ドローンが「補助兵器」から「戦略兵器」へ変わったことを首都の空で示した。自律化・対ドローン・供給網・後方の脆弱性という4つの軸で、今後2〜3年を見通す。
+            </p>
+
+            <div class="insight-box">
+              <div class="insight-title">自律スウォームの到来 — 1人が「群れ」を操る</div>
+              <div class="insight-text">
+                次の段階は、AIが連携する「群れ（スウォーム）」だ。1人の操縦者がメッシュ状に接続した数十機を同時に操り、やがては妨害の効かない自律のAI群が標的を分担して襲う。専門家は、これが戦闘の質を根本から変えると見る。同時に、人間が個々の標的を確認しないまま機械が殺傷を完結させる領域が広がり、「引き金を引くのは誰か」という問いが現実の制御課題になる。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">対ドローンのコスト競争 — 防御は非対称を逆転できるか</div>
+              <div class="insight-text">
+                500ドルの脅威に数百万ドルで応じる構図は持続しない。各国は1射のコストが極端に低いレーザー、回収して再利用できる迎撃機（Anduril社のRoadrunnerなど）、電子戦を組み合わせ、防御コストを攻撃側まで引き下げようとしている。ドイツは群れに対抗する迎撃システムを公開し、米陸軍は29億ドル規模の調達に動いた。今後2〜3年の焦点は、防御側が「安く・速く・大量に」墜とす手段を確立できるかどうかだ。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">供給網の脱中国 — 心臓部を誰が握るか</div>
+              <div class="insight-text">
+                ドローンのモーター・磁石・成熟半導体・光ファイバーは、その多くを中国が供給する。中国はロシアへ流しつつウクライナへの供給を絞り、撃たずして戦争のテンポに影響を与えてきた。ウクライナは2026年3月に「中国製ゼロ」の機体を実現したが、それを量産水準に乗せるには数年かかる。米国防総省がウクライナ製の安価な機体を試験するなど、西側は「安くて中国に依存しない」生産基盤の構築を急いでいる。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">「安全な後方」の消滅 — 都市とインフラが射程に入る</div>
+              <div class="insight-text">
+                数百ドルの機体が千キロを飛ぶ時代、製油所・発電所・空港・そして都市そのものが恒常的に射程内に入る。モスクワでモールや住宅が被弾したように、戦場と銃後の境界は消えつつある。攻撃が安く防御が高いという非対称は、社会の急所をむき出しにしたまま放置する。各国は、軍事拠点だけでなく民間インフラをどう守るかという、平時には想定しなかった防空の問いに直面している。
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.8rem;">
+              ドローンの革命は、単に新しい兵器が増えたという話ではない。光ファイバーが妨害を、AIが照準を、量産が価格を解決したことで、「安価な精密打撃を、誰もが、大量に」放てる時代が来た。兵器の民主化は、戦場の力学だけでなく、都市に暮らす人々の安全の前提そのものを書き換えつつある。500ドルの空軍が突きつけたのは、技術が安くなったとき、戦争はどこまで広がるのか、という問いだ。
+            </p>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/drone-warfare-autonomous-future.jpg"
+                   alt="自律ドローンの群れと対ドローンレーザーの将来像" loading="lazy">
+              <figcaption>網目状に連携して飛ぶ自律ドローンの群れ（スウォーム）と、それを迎え撃つ地上のレーザー——攻撃と防御は、ともにAIと自律化へ向かって加速している。安くなり続ける攻撃と、それを安く墜とそうとする防御。この終わりのない競争の先に、戦争と社会の新しい姿がある。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <a class="source-item" href="https://www.bloomberg.com/news/articles/2026-06-18/ukraine-hits-moscow-with-record-drone-strike-targeting-refinery" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Bloomberg — Ukraine Hits Moscow with Record Drone Strike</div>
+                  <div class="source-desc">モスクワへの記録的ドローン攻撃（2026年6月）。規模・標的・被害の一次報道。</div>
+                  <div class="source-country">【ブルームバーグ（米）】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://spectrum.ieee.org/autonomous-drone-warfare" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">IEEE Spectrum — Autonomous Drone Warfare in Ukraine</div>
+                  <div class="source-desc">AI自律ドローンと終末誘導、命中率30%→70%超、スウォーム化の技術解説。</div>
+                  <div class="source-country">【米電気電子学会】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://cepa.org/article/how-are-drones-changing-war-the-future-of-the-battlefield/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">CEPA — How Are Drones Changing War?</div>
+                  <div class="source-desc">ドローンが変える戦場のドクトリンと未来戦の分析。</div>
+                  <div class="source-country">【欧州政策分析センター（米）】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.rusi.org/explore-our-research/publications/research-papers/drones-decoupling-supply-chains-china" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">RUSI — Drones: Decoupling Supply Chains from China</div>
+                  <div class="source-desc">部品サプライチェーンと中国依存（重要電子部品の6〜8割）、脱中国の実証研究。</div>
+                  <div class="source-country">【英王立防衛安全保障研究所】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://dronexl.co/2026/03/23/ukraine-fiber-optic-fpv-drones-radio-cable/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">DroneXL — Ukraine's Fiber-Optic FPV Drones</div>
+                  <div class="source-desc">光ファイバーFPVの仕組みとジャミング耐性、量産・低コスト化の専門解説。</div>
+                  <div class="source-country">【ドローン専門メディア】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.armyrecognition.com/news/army-news/2026/germany-reveals-dronehammer-counter-drone-system-to-protect-troops-from-swarm-attacks" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Army Recognition — 対ドローンとコスト非対称（DroneHammer ほか）</div>
+                  <div class="source-desc">$500のドローンに$4万〜45万の迎撃という非対称、レーザー・迎撃ドローンへの転換。</div>
+                  <div class="source-country">【軍事専門メディア】</div>
+                </div>
+              </a>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>核心と問い</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/technology/index.html">テクノロジー</a></div>
+            <div>2026年6月20日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/technology/index.html">テクノロジー一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // コスト非対称（対数軸の棒グラフ）
+  (function() {
+    var ctx = document.getElementById('costChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: [['攻撃FPV', 'ドローン'], ['迎撃', 'ドローン'], ['地対空', 'ミサイル'], ['空対空', 'ミサイル']],
+        datasets: [
+          {
+            label: '1回あたりのコスト（ドル）',
+            data: [500, 4000, 1000000, 1000000],
+            backgroundColor: ['rgba(154,138,180,0.85)', 'rgba(154,138,180,0.6)', 'rgba(184,127,140,0.7)', 'rgba(184,127,140,0.7)'],
+            borderColor: 'transparent',
+            borderRadius: 3,
+          }
+        ]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' ' + c.parsed.y.toLocaleString() + ' ドル'; }
+            }
+          }
+        },
+        scales: {
+          y: {
+            type: 'logarithmic',
+            min: 100,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v) { return v.toLocaleString(); } }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // ウクライナのドローン生産推移（棒グラフ）
+  (function() {
+    var ctx = document.getElementById('productionChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2022年', '2024年', '2025年'],
+        datasets: [
+          {
+            label: '年間生産数（万機）',
+            data: [0.5, 220, 450],
+            backgroundColor: 'rgba(154,138,180,0.78)',
+            borderColor: 'transparent',
+            borderRadius: 3,
+          }
+        ]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: { color: '#8890a0', font: { size: 11 } }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' ' + c.parsed.y.toLocaleString() + ' 万機'; }
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // tone-meterアニメーション（該当要素がなくても無害）
+  function animateToneMeters() {
+    setTimeout(function() {
+      document.querySelectorAll('#sec-perspectives .tone-fill').forEach(function(el) {
+        el.style.width = el.getAttribute('data-width');
+      });
+    }, 60);
+  }
+  if (document.readyState === 'complete') {
+    animateToneMeters();
+  } else {
+    window.addEventListener('load', animateToneMeters);
+  }
+</script>
+</body>
+</html>

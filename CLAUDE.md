@@ -85,6 +85,7 @@
 | 2026-06-15 | resources | 氷上のシルクロード — 温暖化が開いた航路と資源の地政学 | 2026-06-15-arctic-thaw |
 | 2026-06-16 | asia | 世界で最も危険な国境 — カシミールが映す核時代の南アジア | 2026-06-16-india-pakistan |
 | 2026-06-19 | security | 実戦を知った核 — 北朝鮮を変えた「ロシアの後ろ盾」 | 2026-06-19-north-korea-nuclear |
+| 2026-06-20 | technology | 500ドルの空軍 — モスクワを襲ったドローン、その技術の中身 | 2026-06-20-drone-warfare |
 
 ---
 
@@ -141,6 +142,26 @@
   - **各ポジションの画像は、そのセクションの内容と関連するものにする**（01なら記事の核心テーマ、02なら時代背景・現場、03なら視点の対立、05なら将来像・帰結など）
   - ファイル名規則：`{スラッグ}-{内容キーワード}.jpg`（全ポジション統一）
 - **Chart.js**：CDN `chart.js@4.4.0` を使用。記事ごとに1〜2チャート
+- **情報源は必ず実URLのリンクにする（必須）**：`sec-sources`（06）の各カードは `<div class="source-item">` ではなく **`<a class="source-item" href="https://..." target="_blank" rel="noopener">`** で実装する。
+  - URLは**実在を確認した一次情報**を貼る（憶測・推測のURLは404を生むので禁止）。調査時の `WebSearch` で得た正規URLを使う。
+  - `source-name` と貼るURLの内容を一致させる（媒体名と中身がズレないように）。
+  - リンク色のリセットとhoverは記事のstyleブロックに `a.source-item { color: inherit; text-decoration: none; }` ／ `a.source-item:hover { border-color: var(--accentN); }` を入れる（手本：drone-warfare 記事）。
+
+### ヒーロー画像の標準（必須）
+
+ヒーロー（記事冒頭）はフォトリアル画像を**背景に敷き、その上に概要＋キーポイントを重ねる**構成を標準とする。
+夜景など暗い画像でも「画像が映え、かつ文字が読める」状態を両立させるため、以下の処方を基準値とする
+（実装の手本：`articles/technology/2026-06-20-drone-warfare/index.html`）。
+
+- **構造**：`.article-hero.has-image` に `::before`（背景画像）＋ `::after`（薄いグラデーション）を重ね、`.container` を `z-index:1` で前面に。ヒーロー内に `article-meta` ＋ `article-title` ＋ `article-summary` ＋ キーポイント（`.key-point` 4枚）を置く。
+- **背景画像（`::before`）**：`background-size: cover;`、`background-position` は被写体に合わせ調整（例 `center 42%`）。暗い画像は明るさ補正を入れる：`filter: brightness(1.35) contrast(1.04) saturate(1.06);`（数値は画像の明るさで微調整）。
+- **オーバーレイ（`::after`）**：上を薄く下を濃くする縦グラデーションを基準に。薄め設定例 `linear-gradient(180deg, rgba(14,17,23,0.14) 0%, rgba(14,17,23,0.20) 45%, rgba(14,17,23,0.42) 100%)`。画像を活かしたいときは薄く、文字が読みにくいときは濃く調整。
+- **文字の可読性**：`article-meta / article-title / article-summary` に `text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65);` を付ける。
+- **キーポイントのカード（ガラス調・半透明）**：背景画像を透かすため `.key-point` を半透明＋ぼかしにする。
+  - `background: rgba(18,23,31,0.40);`（hover時 `0.54`）、`border: 1px solid rgba(255,255,255,0.18);`、`backdrop-filter: blur(6px);`（`-webkit-` も併記）、`box-shadow: 0 2px 14px rgba(0,0,0,0.28);`
+  - 文字色は `kp-value: #f2f5f9`（影付き）、`kp-label: rgba(255,255,255,0.74)`
+  - 透過の強さ（0.40）は画像の明るさで微調整。明るい画像なら濃く（数値↑）、暗い画像なら薄く（数値↓）。
+- **クレジット表記**：生成AI画像には `.hero-credit`（右下・小サイズ）で「イメージ画像（生成AI）」を明示。
 
 ---
 
