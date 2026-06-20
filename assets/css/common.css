@@ -109,6 +109,7 @@ a:hover { text-decoration: underline; }
 .tag-red    { background: rgba(192, 83, 58,0.12); color: var(--accent2); border: 1px solid rgba(192, 83, 58,0.25); }
 .tag-green  { background: rgba( 79,184,106,0.12); color: var(--accent3); border: 1px solid rgba( 79,184,106,0.25); }
 .tag-yellow { background: rgba(212,169, 71,0.12); color: var(--accent4); border: 1px solid rgba(212,169, 71,0.25); }
+.tag-purple { background: rgba(154,138,180,0.14); color: var(--accent5); border: 1px solid rgba(154,138,180,0.28); }
 
 /* ===== Site Footer ===== */
 .site-footer {

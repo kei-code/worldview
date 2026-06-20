@@ -45,7 +45,8 @@
 |---|---|---|
 | middle-east | 中東情勢 | tag-red |
 | ukraine | ウクライナ | tag-red |
-| ai-tech | AI・技術覇権 | tag-blue |
+| ai-tech | AI | tag-blue |
+| technology | テクノロジー | tag-purple |
 | immigration | 移民政策 | tag-yellow |
 | economy | 世界経済 | tag-yellow |
 | asia | アジア情勢 | tag-blue |
@@ -70,7 +71,7 @@
 | 2026-06-04 | ai-tech | AIが変えた科学の速度 — AlphaFold以後の「発見の自動化」 | 2026-06-04-ai-science |
 | 2026-06-05 | europe | 欧州の「自前防衛」への転換 — アメリカ抜きで大陸を守れるか | 2026-06-05-european-defense |
 | 2026-06-06 | resources | 水の地政学 — 川とダムをめぐる「静かな戦争」 | 2026-06-06-water-geopolitics |
-| 2026-06-06 | ai-tech | 軌道の覇権争い — スターリンクと「宇宙インフラの私物化」 | 2026-06-06-orbital-supremacy |
+| 2026-06-06 | technology | 軌道の覇権争い — スターリンクと「宇宙インフラの私物化」 | 2026-06-06-orbital-supremacy |
 | 2026-06-07 | economy | 脱ドルへの挑戦 — 基軸通貨は揺らぐのか | 2026-06-07-dedollarization |
 | 2026-06-07 | security | 海底ケーブルの「影の戦争」 — 事故か、攻撃か | 2026-06-07-undersea-cables |
 | 2026-06-07 | economy | エレクトロステートの誕生 — 「石油の国」から「電気の国」へ | 2026-06-07-electrostate |
