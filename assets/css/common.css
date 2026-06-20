@@ -162,8 +162,40 @@ a:hover { text-decoration: underline; }
 .nav-toggle.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ===== Mobile Nav (全カテゴリ一覧) ===== */
-.site-nav-mobile { display: none; }
+/* ===== 「すべて」トグル（デスクトップ） ===== */
+.site-nav a.nav-all { cursor: pointer; }
+.site-nav a.nav-all::before { content: '≡'; margin-right: 0.35rem; opacity: 0.85; }
+
+/* ===== 全カテゴリ ドロワー（デスクトップ「すべて」＆モバイル共通） ===== */
+.site-nav-mobile {
+  display: none;
+  position: fixed;
+  top: 62px;
+  right: 2.5rem; left: auto;
+  width: 240px;
+  background: rgba(20,25,32,0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  flex-direction: column;
+  padding: 0.25rem 0;
+  z-index: 99;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.site-nav-mobile.is-open { display: flex; }
+.site-nav-mobile a {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  padding: 0.7rem 1.4rem;
+  border-bottom: 1px solid var(--border-subtle);
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+}
+.site-nav-mobile a:last-child { border-bottom: none; }
+.site-nav-mobile a:hover { color: var(--text); background: rgba(255,255,255,0.03); text-decoration: none; }
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
@@ -174,27 +206,8 @@ a:hover { text-decoration: underline; }
   .site-nav { display: none; }
 
   .site-nav-mobile {
-    position: fixed;
-    top: 62px;
-    left: 0; right: 0;
-    background: rgba(20,25,32,0.97);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border-subtle);
-    flex-direction: column;
-    padding: 0.25rem 0;
-    z-index: 99;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    top: 62px; left: 0; right: 0; width: auto;
+    border-left: none; border-right: none; border-radius: 0;
   }
-  .site-nav-mobile.is-open { display: flex; }
-  .site-nav-mobile a {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    letter-spacing: 0.03em;
-    padding: 0.9rem 1.5rem;
-    border-bottom: 1px solid var(--border-subtle);
-    text-decoration: none;
-  }
-  .site-nav-mobile a:last-child { border-bottom: none; }
-  .site-nav-mobile a:hover { color: var(--text); text-decoration: none; }
+  .site-nav-mobile a { font-size: 0.95rem; padding: 0.9rem 1.5rem; }
 }

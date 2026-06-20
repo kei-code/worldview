@@ -1,4 +1,7 @@
-/* ===== Hamburger Menu ===== */
+/* ===== ヘッダーナビ（単一ソース） =====
+   デスクトップ：ホーム＋主要カテゴリ＋「すべて」ドロワー
+   モバイル：ハンバーガー → 全カテゴリのドロワー
+   ナビ定義はこの1か所だけ。各ページの <nav class="site-nav"> は空でよい。 */
 (function () {
   var header = document.querySelector('.site-header');
   if (!header) return;
@@ -9,6 +12,7 @@
   var base = homeHref.replace('index.html', '');
   var path = window.location.pathname;
 
+  // 全カテゴリ（ドロワー＆モバイル用・単一ソース）
   var allCategories = [
     ['', 'ホーム'],
     ['middle-east', '中東情勢'],
@@ -23,56 +27,90 @@
     ['security', '安全保障'],
     ['elections', '世論・選挙'],
   ];
+  // デスクトップ常時表示の主要カテゴリ（先頭ホーム・末尾「すべて」はJSが付与）
+  var primaryKeys = ['middle-east', 'ukraine', 'asia', 'economy', 'security', 'ai-tech'];
 
-  // モバイル専用ナビを生成
-  var mobileNav = document.createElement('nav');
-  mobileNav.className = 'site-nav-mobile';
+  var labelOf = {};
+  allCategories.forEach(function (c) { labelOf[c[0]] = c[1]; });
+
+  function hrefFor(key) {
+    return key === '' ? base + 'index.html' : base + 'categories/' + key + '/index.html';
+  }
+  function isActive(key) {
+    return key === ''
+      ? !path.includes('/categories/') && !path.includes('/articles/')
+      : path.includes('/categories/' + key + '/') || path.includes('/articles/' + key + '/');
+  }
+  // 現在地のカテゴリ（ホーム・該当なしは ''）
+  var activeKey = '';
+  allCategories.forEach(function (c) { if (c[0] !== '' && isActive(c[0])) activeKey = c[0]; });
+
+  // ----- 全カテゴリ ドロワー（デスクトップ「すべて」＆モバイル共通） -----
+  var drawer = document.createElement('nav');
+  drawer.className = 'site-nav-mobile';
   allCategories.forEach(function (c) {
     var a = document.createElement('a');
-    a.href = c[0] === '' ? base + 'index.html' : base + 'categories/' + c[0] + '/index.html';
+    a.href = hrefFor(c[0]);
     a.textContent = c[1];
-    var isActive = c[0] === ''
-      ? !path.includes('/categories/') && !path.includes('/articles/')
-      : path.includes('/categories/' + c[0] + '/') || path.includes('/articles/' + c[0] + '/');
-    if (isActive) a.style.color = 'var(--text)';
-    mobileNav.appendChild(a);
+    if (isActive(c[0])) a.style.color = 'var(--text)';
+    drawer.appendChild(a);
   });
-  header.appendChild(mobileNav);
 
-  // ハンバーガーボタンを生成
+  // ----- デスクトップ主要ナビ（.site-nav を充填） -----
+  var deskNav = header.querySelector('.site-nav');
+  if (!deskNav) {
+    deskNav = document.createElement('nav');
+    deskNav.className = 'site-nav';
+    header.appendChild(deskNav);
+  }
+  deskNav.innerHTML = '';
+  [''].concat(primaryKeys).forEach(function (key) {
+    var a = document.createElement('a');
+    a.href = hrefFor(key);
+    a.textContent = key === '' ? 'ホーム' : labelOf[key];
+    if (isActive(key)) a.style.color = 'var(--text)';
+    deskNav.appendChild(a);
+  });
+  // 「すべて」トグル（現在地が主要外なら強調）
+  var allToggle = document.createElement('a');
+  allToggle.href = '#';
+  allToggle.className = 'nav-all';
+  allToggle.textContent = 'すべて';
+  if (activeKey && primaryKeys.indexOf(activeKey) === -1) allToggle.style.color = 'var(--text)';
+  deskNav.appendChild(allToggle);
+
+  // ----- ハンバーガー（モバイル） -----
   var btn = document.createElement('button');
   btn.className = 'nav-toggle';
   btn.setAttribute('aria-label', 'メニューを開く');
   btn.setAttribute('aria-expanded', 'false');
   btn.innerHTML = '<span></span><span></span><span></span>';
-  header.insertBefore(btn, mobileNav);
+  header.appendChild(btn);
+  header.appendChild(drawer);
 
   function openNav() {
-    mobileNav.classList.add('is-open');
+    drawer.classList.add('is-open');
     btn.classList.add('is-open');
+    allToggle.classList.add('is-open');
     btn.setAttribute('aria-expanded', 'true');
     btn.setAttribute('aria-label', 'メニューを閉じる');
   }
   function closeNav() {
-    mobileNav.classList.remove('is-open');
+    drawer.classList.remove('is-open');
     btn.classList.remove('is-open');
+    allToggle.classList.remove('is-open');
     btn.setAttribute('aria-expanded', 'false');
     btn.setAttribute('aria-label', 'メニューを開く');
   }
+  function toggleNav() {
+    drawer.classList.contains('is-open') ? closeNav() : openNav();
+  }
 
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    mobileNav.classList.contains('is-open') ? closeNav() : openNav();
-  });
-  document.addEventListener('click', function (e) {
-    if (!header.contains(e.target)) closeNav();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeNav();
-  });
-  mobileNav.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', closeNav);
-  });
+  btn.addEventListener('click', function (e) { e.stopPropagation(); toggleNav(); });
+  allToggle.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); toggleNav(); });
+  document.addEventListener('click', function (e) { if (!header.contains(e.target)) closeNav(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeNav(); });
+  drawer.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeNav); });
 })();
 
 /* ===== Tabs ===== */

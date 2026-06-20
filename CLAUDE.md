@@ -174,6 +174,16 @@
 - **Twitter**：`twitter:card`=summary_large_image, `twitter:title`, `twitter:description`, `twitter:image`（OGPと同値）。
 - `og:image` / `twitter:image` は必ず**絶対URL**（`https://kei-code.github.io/worldview/image/...jpg`）にする。SNS共有のサムネに必要。
 
+### ヘッダーナビ（単一ソース / 必須）
+
+ナビは **`assets/js/main.js` の配列1か所が唯一の定義**。各ページの `<nav class="site-nav">` は**空にしておく**（`<nav class="site-nav"></nav>`）。JSが中身を生成する。
+
+- **デスクトップ**：ホーム＋主要カテゴリ（`primaryKeys`）＋「すべて ≡」を表示。「すべて」で全カテゴリのドロワーを開く。
+- **モバイル**：ハンバーガー → 全カテゴリ（`allCategories`）のドロワー。
+- **現在地ハイライト**はURLから自動。手書きの `style="color:var(--text)"` は付けない。
+- **新規ページ作成時**は手書きナビを書かない（空の `<nav class="site-nav"></nav>` だけ置く）。カテゴリ追加時は `main.js` の `allCategories`（必要なら `primaryKeys`）に1行追加するだけ。
+- カテゴリ表示名は `allCategories` に一本化（表記ゆれ禁止。例：「移民政策」で統一）。
+
 ---
 
 ## 画像処理ルール（必須）
