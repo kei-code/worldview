@@ -163,6 +163,17 @@
   - 透過の強さ（0.40）は画像の明るさで微調整。明るい画像なら濃く（数値↑）、暗い画像なら薄く（数値↓）。
 - **クレジット表記**：生成AI画像には `.hero-credit`（右下・小サイズ）で「イメージ画像（生成AI）」を明示。
 
+### ページ共通のhead要素（SEO・OGP / 必須）
+
+全ページ（記事・カテゴリ・ホーム）の `<head>` に、`<meta name="viewport">` の直後・`<title>` の前へ以下を入れる。新規ページ作成時は最初から含めること。
+
+- `<meta name="description" content="…">`：ページ固有。記事は `article-summary`、カテゴリは `cat-desc` の文面を流用（160字以内）。
+- `<link rel="canonical" href="…">`：絶対URL。記事/カテゴリは末尾スラッシュのディレクトリ形（`…/2026-06-20-drone-warfare/`）、ホームは `https://kei-code.github.io/worldview/`。
+- `<link rel="icon" type="image/svg+xml" href="…image/favicon.svg">`：相対パス（階層に応じて `../` を調整）。faviconは `image/favicon.svg`。
+- **OGP**：`og:type`（記事=`article`／カテゴリ・ホーム=`website`）, `og:site_name`=WorldView, `og:locale`=ja_JP, `og:title`（＝title）, `og:description`（＝description）, `og:url`（＝canonical）, `og:image`（**絶対URL**・ヒーロー画像）。
+- **Twitter**：`twitter:card`=summary_large_image, `twitter:title`, `twitter:description`, `twitter:image`（OGPと同値）。
+- `og:image` / `twitter:image` は必ず**絶対URL**（`https://kei-code.github.io/worldview/image/...jpg`）にする。SNS共有のサムネに必要。
+
 ---
 
 ## 画像処理ルール（必須）
