@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ガザもウクライナも止められない安保理。拒否権を持つ5大国の利害が一致しなければ何も決まらないこの構造は「欠陥」なのか、それとも「設計どおり」なのか。機能不全の国連と、台頭する「小さな多国間主義」を6つの視点で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/security/2026-06-22-un-security-council/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="国連は死んだのか — 安保理の機能不全と「ルールなき世界」 — WorldView">
+  <meta property="og:description" content="ガザもウクライナも止められない安保理。拒否権を持つ5大国の利害が一致しなければ何も決まらないこの構造は「欠陥」なのか、それとも「設計どおり」なのか。機能不全の国連と、台頭する「小さな多国間主義」を6つの視点で読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/security/2026-06-22-un-security-council/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/un-council-hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="国連は死んだのか — 安保理の機能不全と「ルールなき世界」 — WorldView">
+  <meta name="twitter:description" content="ガザもウクライナも止められない安保理。拒否権を持つ5大国の利害が一致しなければ何も決まらないこの構造は「欠陥」なのか、それとも「設計どおり」なのか。機能不全の国連と、台頭する「小さな多国間主義」を6つの視点で読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/un-council-hero.jpg">
+  <title>国連は死んだのか — 安保理の機能不全と「ルールなき世界」 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent5);
+      opacity: 0.7;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    .article-question {
+      border-left: 3px solid var(--accent5);
+      padding: 1rem 1.4rem;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.8rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent5);
+    }
+    .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/un-council-hero.jpg');
+      background-size: cover; background-position: center 45%;
+      filter: brightness(1.12) contrast(1.04) saturate(1.04);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.18) 0%, rgba(14,17,23,0.30) 45%, rgba(14,17,23,0.55) 100%);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title,
+    .article-hero.has-image .article-summary { text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65); }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .article-hero.has-image .key-point {
+      background: rgba(18,23,31,0.44);
+      border: 1px solid rgba(255,255,255,0.18);
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+      box-shadow: 0 2px 14px rgba(0,0,0,0.28);
+    }
+    .article-hero.has-image .key-point:hover { background: rgba(18,23,31,0.58); }
+    .article-hero.has-image .key-point .kp-value { color: #f2f5f9; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+    .article-hero.has-image .key-point .kp-label { color: rgba(255,255,255,0.74); }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* 情報源リンク */
+    a.source-item { color: inherit; text-decoration: none; cursor: pointer; }
+    a.source-item:hover { border-color: var(--accent5); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent5); }
+    a.source-item .source-name { transition: color 0.2s; }
+
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent5);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+    }
+
+    .pull-quote {
+      border-left: 3px solid var(--accent5);
+      background: rgba(154,138,180,0.09);
+      padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text); line-height: 1.65;
+    }
+
+    .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+    .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
+    .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .depth-bar-fill { height: 100%; background: var(--accent5); border-radius: 5px; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-red">安全保障</span>
+        <span class="tag tag-red">国際秩序</span>
+        <span class="date">2026年6月22日</span>
+      </div>
+      <h1 class="article-title">国連は死んだのか<br>— 安保理の機能不全と「ルールなき世界」</h1>
+      <p class="article-summary">
+        ガザの停戦も、ウクライナ侵攻の非難も、安保理は止められなかった。拒否権を持つ5つの大国の利害が一致しなければ、世界の最高意思決定機関は何も決められない。だがこの麻痺は「欠陥」なのか、それとも創設時からの「設計どおり」なのか。改革は80年間進まず、秩序づくりの舞台は国連の外——BRICS・G20・クアッドへと移り始めた。国連の機能不全の正体を、6つの立場から読み解く。
+      </p>
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">拒否権を持つのは5カ国</div>
+          <div class="kp-value">アメリカ・イギリス・フランス・ロシア・中国の常任理事国だけが「一票での否決権」を握る。14カ国が賛成しても、1カ国の反対で決議は葬られる</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">加盟国 51→193</div>
+          <div class="kp-value">1945年の原加盟51カ国から193カ国へ。だが常任理事国の顔ぶれは80年間そのまま。世界は変わっても、椅子は変わらない</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">2024年 拒否権で7件否決</div>
+          <div class="kp-value">拒否権による決議否決は2024年に7件と1986年以来最多。ガザ停戦は2025年6月、14カ国賛成・アメリカ1カ国の反対で葬られた</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">舞台は国連の外へ</div>
+          <div class="kp-value">世界人口の45%を占めるBRICS＋、G20、クアッドなど「小さな多国間主義」が台頭。秩序づくりは安保理の外に分散し始めた</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 核心と問い -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>核心と問い — 欠陥か、設計どおりか</h2>
+
+            <div class="article-question">
+              安保理が何も決められないのは、制度の「故障」なのか、それとも「仕様」なのか。拒否権は、大国の暴走を止めるブレーキとして設計された。だが今やそれは、大国が自らの責任を問われないための盾になっている。国連は機能不全に陥ったのか——それとも最初から、こういうものだったのか。
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              国際連合（国連）は1945年、第二次世界大戦の惨禍を二度と繰り返さないために生まれた。その中核が、国際の平和と安全に第一の責任を負う安全保障理事会（安保理）だ。総会が193の全加盟国による「議論の場」だとすれば、安保理は制裁や武力行使を法的拘束力をもって決められる「執行の場」である。だが、その執行力の鍵を握るのが、第二次大戦の戦勝国であるアメリカ・イギリス・フランス・ロシア（旧ソ連）・中国の5常任理事国に与えられた「拒否権」だ。この5カ国のうち1カ国でも反対すれば、ほかの14カ国がいかに賛成しても、決議は成立しない。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              この設計には明確な思想があった。大国を強制的に従わせようとすれば、大国同士の戦争になる——その教訓から、「大国が一致しないことは、そもそも実行しない」という安全装置を組み込んだのだ。だから安保理の麻痺は、ある意味で意図された結果でもある。問題は、その装置が今、ガザやウクライナのように大国自身が当事者となる危機の前で、責任回避の道具として使われていることだ。本記事は、この機能不全を3つの構造から捉える。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2rem 0 0.75rem;font-weight:700;">機能不全を生む3つの構造</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">拒否権 — 設計に組み込まれた麻痺</div>
+                <div class="factor-desc">
+                  常任5カ国の一票が決議全体を葬る。とりわけ大国自身やその同盟国が当事者の場合、当事者が裁判官を兼ねる構造になる。ロシアは自国のウクライナ侵攻への非難を、アメリカはイスラエルへの圧力を、それぞれ拒否権で阻んできた。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">代表性 — 1945年で止まった世界</div>
+                <div class="factor-desc">
+                  加盟国は51から193へ約4倍になったが、常任理事国の顔ぶれは80年間不変だ。人口14億のインドも、経済大国の日本・ドイツも、54カ国を擁するアフリカも常任の座を持たない。「戦勝国クラブ」が世界を代表しているという正統性が揺らいでいる。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">強制力 — 決めても動かせない</div>
+                <div class="factor-desc">
+                  国連は独自の常備軍を持たない。決議が通っても、実際に動くのは加盟国が自発的に出す部隊や資金だ。国連平和維持活動（PKO）も派遣国の意思に依存する。「決める力」と「動かす力」が分離しているため、決議は時に紙の上の宣言にとどまる。
+                </div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg-card);border:1px solid var(--border-subtle);border-left:3px solid var(--accent5);border-radius:0 var(--radius) var(--radius) 0;padding:0.9rem 1.2rem;margin-top:1.25rem;font-size:0.82rem;">
+              <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);font-weight:700;margin-bottom:0.45rem;">用語解説</div>
+              <span style="font-weight:700;color:var(--text);">拒否権（veto）と常任理事国</span>
+              <p style="color:var(--text-muted);line-height:1.75;margin-top:0.35rem;margin-bottom:0;">安保理は15カ国で構成され、うち5カ国（アメリカ・イギリス・フランス・ロシア・中国）が任期のない「常任理事国」、残り10カ国が地域ごとに選ばれる任期2年の「非常任理事国」だ。重要事項の決議には9カ国以上の賛成が必要だが、常任理事国が1カ国でも反対票を投じると、その時点で否決される。これが拒否権で、常任理事国だけに与えられた特権である。手続き事項には適用されない。</p>
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/un-council-veto.jpg"
+                   alt="拒否権を象徴する、多数の賛成の中の一票の反対" loading="lazy">
+              <figcaption>14の手が挙がっても、1つの反対がすべてを止める——拒否権の本質を象徴する構図。この一票の重みこそが、安保理を「大国が合意したときだけ動く機関」にしている。合意できない危機の前で、それは沈黙の装置に変わる。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 機能と麻痺の80年</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">1945年</div>
+                <div class="timeline-content">
+                  <h4>国連創設 — 戦勝国による設計</h4>
+                  <p>第二次大戦の戦勝5カ国が常任理事国となり、拒否権を確保した。「大国の一致なくして強制なし」という思想のもと、安保理は国際秩序の執行機関として出発した。原加盟国は51カ国。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">戦勝国に拒否権を付与</span>
+                    <span class="reaction-chip">大国一致の原則</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">冷戦期（1946〜1989年）</div>
+                <div class="timeline-content">
+                  <h4>拒否権の応酬と長期麻痺</h4>
+                  <p>米ソ対立が安保理に直接持ち込まれ、拒否権が乱発された。とくに初期はソ連が、後年はアメリカがイスラエル関連で多用。重大な危機ほど安保理は動けず、「冷戦の人質」と呼ばれた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">米ソが拒否権を多用</span>
+                    <span class="reaction-chip">安保理は長期麻痺</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">1991年</div>
+                <div class="timeline-content">
+                  <h4>湾岸戦争 — 機能した稀な瞬間</h4>
+                  <p>イラクのクウェート侵攻に対し、安保理は決議678で「あらゆる手段」の行使を承認した。冷戦終結で米ソが協調し、多国籍軍が組織された。安保理が設計どおりに機能した、数少ない成功例とされる。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">大国が一致した例外</span>
+                    <span class="reaction-chip">集団安全保障の発動</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2003年</div>
+                <div class="timeline-content">
+                  <h4>イラク戦争 — 安保理を迂回した大国</h4>
+                  <p>アメリカとイギリスは、武力行使を明示的に認める新決議を得られないまま、イラクに侵攻した。アナン事務総長は後に「国連憲章に反する」と述べた。大国が安保理を「通さない」道を選べることが露呈した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">新決議なしの侵攻</span>
+                    <span class="reaction-chip">安保理の権威が動揺</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2011〜2022年</div>
+                <div class="timeline-content">
+                  <h4>シリア・クリミア — 拒否権の常態化</h4>
+                  <p>シリア内戦ではロシアと中国が繰り返し拒否権を行使し、人道決議を阻んだ。2014年のクリミア併合、2022年のウクライナ侵攻では、ロシアが当事者でありながら自国への非難決議を拒否。「裁判官を兼ねる被告」の構図が際立った。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">ロシアと中国が連携して拒否</span>
+                    <span class="reaction-chip">当事国による自己擁護</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2023〜2025年</div>
+                <div class="timeline-content">
+                  <h4>ガザ — 沈黙する安保理</h4>
+                  <p>ガザ危機をめぐり、アメリカが停戦決議を繰り返し拒否。2025年6月には14カ国が賛成する停戦決議をアメリカ1カ国の拒否権で否決した。2024年の拒否権による否決は7件と1986年以来最多を記録し、安保理の麻痺が改めて可視化された。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">14対1での否決</span>
+                    <span class="reaction-chip">拒否権否決が最多に</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/un-council-history.jpg"
+                   alt="国連本部と並ぶ加盟国の旗" loading="lazy">
+              <figcaption>ニューヨークの国連本部。創設から80年、加盟国は51から193へと増え、世界は大きく姿を変えた。しかし安保理の中心に座る5カ国の顔ぶれは、いまも1945年のままだ。この「凍結された権力構造」が、機能不全の根にある。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 3: 視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>6つの視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">各立場の主張</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- 拒否権擁護（常任理事国の論理） -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">拒否権擁護（常任理事国の論理）</span>
+                      <span class="role-badge">秩序の安全弁</span>
+                    </div>
+                    <div class="pull-quote">「大国を無理に従わせれば、それは新たな大国間戦争の引き金になる」</div>
+                    <div class="key-claim">
+                      <strong>麻痺は機能の代償</strong>
+                      拒否権は失敗ではなく設計だ、というのが常任理事国の基本的立場。大国の合意なき強制は実行できないし、強行すれば世界大戦のリスクを高める。安保理が動かないのは、動かすべきでない局面だからだ、という論理である。
+                    </div>
+                    <div class="key-claim">
+                      <strong>既得権としての防衛</strong>
+                      表向きは安定の論理を語りつつ、5カ国は拒否権という特権を手放す気はない。改革で新常任が増えれば自らの相対的影響力は下がる。「制度を守る」主張と「特権を守る」動機が分かちがたく結びついている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:100%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 改革推進派（G4） -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">改革推進派（日本・ドイツ・インド・ブラジル）</span>
+                      <span class="role-badge">常任入りを求める</span>
+                    </div>
+                    <div class="pull-quote">「21世紀の世界を、1945年の権力構造で運営することはできない」</div>
+                    <div class="key-claim">
+                      <strong>常任議席の拡大</strong>
+                      経済・人口・拠出で重みを増したG4（日本・ドイツ・インド・ブラジルの4カ国）は、安保理を25議席前後に拡大し、自らを含む新常任を加える案を主導する。代表性を回復しなければ安保理の正統性は持たない、という訴えだ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>拒否権の凍結という妥協</strong>
+                      抵抗を和らげるため、新常任の拒否権は10〜15年凍結する案も示す。だが憲章改正には常任5カ国を含む3分の2の賛成が必要で、既存5カ国が自らの相対的地位を下げる改革に応じる保証はない。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:85%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- グローバルサウス -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">グローバルサウス（アフリカ連合ほか）</span>
+                      <span class="role-badge">歴史的不正義の是正</span>
+                    </div>
+                    <div class="pull-quote">「植民地だった大陸が、世界の意思決定の中心にひとつの常任議席も持たない」</div>
+                    <div class="key-claim">
+                      <strong>アフリカの代表性</strong>
+                      54カ国・14億人を擁するアフリカは常任議席ゼロだ。アフリカ連合は「エズルウィニ・コンセンサス」で、拒否権付きの常任2議席＋非常任5議席を要求する。安保理の議題の多くがアフリカに関するものでありながら、当事者が決定の輪の外にいる。
+                    </div>
+                    <div class="key-claim">
+                      <strong>「二重基準」への不信</strong>
+                      ウクライナには厳しく、ガザには甘い——西側の対応の落差が、グローバルサウスの国際秩序への不信を深めた。ルールが大国の都合で伸縮するなら、そのルールに従う義理はない、という空気が広がっている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:80%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 国連擁護・人道機関 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">国連擁護・人道機関</span>
+                      <span class="role-badge">安保理＝国連ではない</span>
+                    </div>
+                    <div class="pull-quote">「安保理が麻痺しても、毎日何億人もが国連の活動で生かされている」</div>
+                    <div class="key-claim">
+                      <strong>見えない実務の価値</strong>
+                      世界食糧計画（WFP）、難民を支える国連難民高等弁務官事務所（UNHCR）、世界保健機関（WHO）——安保理の政治的麻痺とは別の次元で、国連の専門機関は食料・難民・保健・気候の現場を支えている。「国連は死んだ」という断定は、この実務を見落としている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>不完全でも不可欠</strong>
+                      安保理が完璧に機能した時代はそもそも存在しない。それでも各国が対話する常設の場、規範を語る共通の言語としての価値は失われていない。壊すより、不完全なまま使い続けるべきだという立場だ。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:70%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 現実主義・懐疑論 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">現実主義・懐疑論</span>
+                      <span class="role-badge">過大評価への警告</span>
+                    </div>
+                    <div class="pull-quote">「国連はもともと世界政府ではない。大国が合意を確認する鏡にすぎない」</div>
+                    <div class="key-claim">
+                      <strong>力の現実を映すだけ</strong>
+                      国際政治の現実主義者は、安保理は独立した権力ではなく、大国間の力関係を映す鏡だと見る。鏡が割れて見えるのは、世界の力配分が多極化して割れているからだ。安保理に過剰な期待をかけること自体が間違いだ、という醒めた立場。
+                    </div>
+                    <div class="key-claim">
+                      <strong>改革論の空疎さ</strong>
+                      議席を増やしても、拒否権を残せば麻痺は続き、拒否権を廃せば大国は離脱する。どちらにせよ機能はしない——改革の議論は、解けないジレンマを言葉で覆い隠しているにすぎない、と懐疑論は指摘する。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:60%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 小さな多国間主義 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">「小さな多国間主義」推進派</span>
+                      <span class="role-badge">国連の外で動く</span>
+                    </div>
+                    <div class="pull-quote">「全員一致を待つより、動ける有志だけで動く方が早い」</div>
+                    <div class="key-claim">
+                      <strong>有志連合への移行</strong>
+                      G7・G20、拡大するBRICS（ブラジル・ロシア・インド・中国・南アフリカで発足した新興国連合）、クアッド（日本・アメリカ・オーストラリア・インドの4カ国枠組み）——課題ごとに動ける国だけが集まる「クラブ外交」が増えている。拒否権に縛られない機動性が魅力だ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>分断という副作用</strong>
+                      ただし、これは普遍的なルールの場を、立場の近い者同士の小さな輪に置き換える動きでもある。BRICS＋は世界人口の45%を代表するが、西側のクラブと東側のクラブが並び立てば、世界はむしろ二極・多極へと分断されかねない。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:75%;"></div></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本スタンス</th>
+                        <th>最大の主張</th>
+                        <th>課題・矛盾</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>拒否権擁護（常任5カ国）</td><td>現状維持</td><td>麻痺は秩序の安全弁</td><td>特権防衛との区別が曖昧</td></tr>
+                      <tr><td>改革推進派（日独印伯）</td><td>議席拡大</td><td>1945年の構造は古い</td><td>憲章改正に5カ国の壁</td></tr>
+                      <tr><td>グローバルサウス</td><td>不正義の是正</td><td>アフリカに常任議席を</td><td>大国の同意を得にくい</td></tr>
+                      <tr><td>国連擁護・人道機関</td><td>不完全でも維持</td><td>安保理＝国連ではない</td><td>政治的麻痺は解けない</td></tr>
+                      <tr><td>現実主義・懐疑論</td><td>過大評価を戒める</td><td>力の現実を映す鏡</td><td>代替案を示さない</td></tr>
+                      <tr><td>小さな多国間主義</td><td>国連の外で動く</td><td>有志連合の機動力</td><td>世界の分断を招く</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/un-council-divide.jpg"
+                   alt="真ん中から割れた円卓が示す大国の分断" loading="lazy">
+              <figcaption>真ん中から割れた円卓——安保理の麻痺は、機械の故障ではなく、それを囲む大国の世界観が割れていることの反映だ。冷戦後に一時的に協調できた瞬間は過ぎ去り、テーブルは再び二つ、あるいはそれ以上に分かれつつある。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- 国別の拒否権行使回数 -->
+              <div class="data-card">
+                <h4>常任理事国別の拒否権行使回数（1946年〜）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="vetoCountryChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  ソ連／ロシアが最多、次いでアメリカ。イギリス・フランスは1989年以降は不行使。数値は集計時点で前後する概数。出典：国連、Council on Foreign Relations（2025年8月時点）
+                </p>
+              </div>
+
+              <!-- 時代別の拒否権行使回数 -->
+              <div class="data-card">
+                <h4>時代別の拒否権行使回数の趨勢（概数）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="vetoEraChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  冷戦期に多発し、冷戦終結直後（1996〜2005年）に激減、2011年以降ふたたび増加——「協調」と「対立」の波が読み取れる。各時代の値は趨勢を示す概数。出典：国連 Dag Hammarskjöld Library、Security Council Report
+                </p>
+              </div>
+
+              <!-- 注目の数字 -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">5カ国</div>
+                    <div class="stat-label">拒否権を持つ常任理事国（アメリカ・イギリス・フランス・ロシア・中国）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">51→193</div>
+                    <div class="stat-label">国連加盟国数の推移（1945年→現在）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">7件</div>
+                    <div class="stat-label">2024年の拒否権による否決数（1986年以来最多）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">14対1</div>
+                    <div class="stat-label">2025年6月ガザ停戦決議の票決（アメリカの拒否で否決）</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 主要な拒否権事例 -->
+              <div class="data-card">
+                <h4>近年の主要な拒否権事例</h4>
+                <table style="width:100%;border-collapse:collapse;margin-top:1rem;font-size:0.82rem;">
+                  <thead>
+                    <tr style="border-bottom:1px solid var(--border);">
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">時期</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">議題</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">拒否した国</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">2011〜20年</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--accent5);font-weight:700;">シリア内戦の人道決議</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">ロシア・中国（複数回）</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">2022年</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--accent5);font-weight:700;">ウクライナ侵攻の非難決議</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">ロシア（当事国）</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">2024年</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--accent5);font-weight:700;">ガザ停戦決議（複数）</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">アメリカ／ロシア・中国</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">2025年6月</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--accent5);font-weight:700;">ガザ恒久停戦決議（14対1）</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">アメリカ</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">大国が当事者・後ろ盾となる危機ほど、拒否権で決議が葬られる傾向が鮮明だ。</p>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り — 「死」の先にあるもの</h2>
+
+            <div class="insight-box">
+              <div class="insight-title">拒否権は「欠陥」か「機能」か</div>
+              <div class="insight-text">
+                拒否権を単なる欠陥と見なすのは早計だ。それは「大国を強制すれば大戦になる」という第二次大戦の教訓から、意図して組み込まれた安全装置だった。実際、拒否権があるからこそ大国は国連にとどまり、最悪の直接衝突は避けられてきた側面がある。問題は、この装置が本来の「大国間戦争の抑止」を超えて、大国が自国や同盟国の行動への批判を封じる盾として使われていることだ。設計思想は正しくとも、運用が目的を裏切っている——機能不全の核心はそこにある。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">改革はなぜ80年も進まないのか</div>
+              <div class="insight-text">
+                安保理改革が進まない理由は、構造そのものに埋め込まれている。改革には国連憲章の改正が必要で、それには総会の3分の2の採択に加えて、全加盟国の3分の2（常任5カ国すべてを含む）の批准が要る。つまり、特権を最も削られる側の同意がなければ、特権を削れない。さらに新常任の候補をめぐっても、日本に中国が、インドにパキスタンが、ドイツにイタリアが反対するなど、地域内のライバル関係が合意を阻む。「総論賛成・各論反対」の典型例であり、80年間ほぼ動かなかったのは偶然ではない。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">「小さな多国間主義」は代替になるか</div>
+              <div class="insight-text">
+                安保理が動かないなか、G20やBRICS＋、クアッドといった有志連合が存在感を増している。拒否権に縛られず、課題ごとに動ける国だけが集まる機動性は確かに強みだ。だが、これらは普遍的な正統性を持たない。誰が入り、誰が排除されるかは力関係で決まり、ルールは内輪の合意にとどまる。西側のクラブと非西側のクラブが並び立てば、世界は一つの秩序ではなく、複数の競合する秩序へと分かれていく。機動性の代償は、普遍性の喪失かもしれない。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">「ルールなき世界」で日本はどう動くか</div>
+              <div class="insight-text">
+                日本は安保理改革の主導国（G4）であり、最大級の国連分担金を負担する「国連重視」の国でもある。だが常任入りの展望は開けず、頼みの国際秩序は揺らいでいる。普遍的ルールの空洞化は、軍事力で劣りルールに守られてきた中堅国にこそ打撃が大きい。安保理改革を訴え続けながら、同時にクアッドのような有志連合にも軸足を置く——その二正面の使い分けが、当面の現実的な選択肢になる。理想の制度を待つのではなく、不完全な複数の枠組みを束ねて使う外交が問われている。
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/un-council-fragment.jpg"
+                   alt="断片化する世界秩序を象徴するひび割れた地球" loading="lazy">
+              <figcaption>一つのテーブルを囲む世界から、いくつもの小さなテーブルが並ぶ世界へ。国連が「死んだ」かどうかよりも重要なのは、その先に普遍的なルールが残るのか、それとも力がルールを決める世界に戻るのか、という問いだ。答えはまだ書かれていない。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源</h2>
+            <div class="sources-grid">
+
+              <a class="source-item" href="https://main.un.org/securitycouncil/en/content/vetoes-since-1946" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">United Nations — Vetoes since 1946</div>
+                  <div class="source-desc">1946年以降の安保理における拒否権行使の公式記録。国別・案件別の一覧</div>
+                  <div class="source-country">【国連・公式】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.cfr.org/backgrounders/un-security-council" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">CFR — The UN Security Council</div>
+                  <div class="source-desc">安保理の構造・拒否権・改革論を整理した米外交問題評議会の解説。国別の拒否権累計も掲載</div>
+                  <div class="source-country">【アメリカ・シンクタンク】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.securitycouncilreport.org/un-security-council-working-methods/the-veto.php" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Security Council Report — The Veto</div>
+                  <div class="source-desc">拒否権の運用実態と歴史的データを継続的に追跡する独立系の調査機関</div>
+                  <div class="source-country">【国際・独立調査機関】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://news.un.org/en/story/2025/06/1164056" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">UN News — US vetoes resolution demanding permanent ceasefire in Gaza</div>
+                  <div class="source-desc">2025年6月、14カ国賛成のガザ恒久停戦決議がアメリカの拒否権で否決された経緯を報じた国連ニュース</div>
+                  <div class="source-country">【国連・公式メディア】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://en.wikipedia.org/wiki/Reform_of_the_United_Nations_Security_Council" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Wikipedia — Reform of the United Nations Security Council</div>
+                  <div class="source-desc">G4案・エズルウィニ・コンセンサスなど、安保理改革をめぐる各案と対立点を整理した概要</div>
+                  <div class="source-country">【国際百科事典】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.csis.org/analysis/africas-design-reformed-un-security-council" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">CSIS — Africa's Design for a Reformed UN Security Council</div>
+                  <div class="source-desc">アフリカの常任議席要求（エズルウィニ・コンセンサス）を分析した米戦略国際問題研究所のレポート</div>
+                  <div class="source-country">【アメリカ・シンクタンク】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://carnegieendowment.org/research/2024/10/brics-summit-emerging-middle-powers-g7-g20?lang=en" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Carnegie — BRICS Expansion, the G20, and the Future of World Order</div>
+                  <div class="source-desc">BRICS拡大とG20・G7の力学から「小さな多国間主義」への移行を読み解くカーネギー国際平和財団の分析</div>
+                  <div class="source-country">【アメリカ・シンクタンク】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://press.un.org/en/2025/sc16174.doc.htm" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">UN Press — Security Council Fails to Adopt Resolution on Gaza Ceasefire</div>
+                  <div class="source-desc">ガザ停戦決議が否決された際の安保理公式の会合記録（各国の投票・発言を収録）</div>
+                  <div class="source-country">【国連・公式】</div>
+                </div>
+              </a>
+
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>核心と問い</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/security/index.html">安全保障</a></div>
+            <div>2026年6月22日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer"><p>WorldView — 多視点で読む世界情勢</p></footer>
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // タブ切り替え
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = this.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
+      this.classList.add('active');
+      document.getElementById(target).classList.add('active');
+    });
+  });
+
+  // 目次のスクロールハイライトは main.js が処理（.toc-list a + .is-current）
+
+  // Chart.js — 国別の拒否権行使回数
+  (function() {
+    var ctx = document.getElementById('vetoCountryChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['ソ連／ロシア', 'アメリカ', 'イギリス', '中国', 'フランス'],
+        datasets: [{
+          label: '拒否権行使回数',
+          data: [159, 93, 29, 21, 16],
+          backgroundColor: [
+            'rgba(184, 100, 80, 0.85)',
+            'rgba(122, 90, 160, 0.78)',
+            'rgba(80, 140, 160, 0.7)',
+            'rgba(184, 100, 80, 0.55)',
+            'rgba(120, 150, 130, 0.7)'
+          ],
+          borderColor: 'transparent',
+          borderWidth: 1,
+          borderRadius: 4
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(ctx) { return ctx.parsed.x + '回'; } } }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(255,255,255,0.06)' },
+            ticks: { color: '#8a9aaa', font: { size: 11 }, callback: function(v) { return v + '回'; } },
+            beginAtZero: true
+          },
+          y: { grid: { display: false }, ticks: { color: '#8a9aaa', font: { size: 11 } } }
+        }
+      }
+    });
+  })();
+
+  // Chart.js — 時代別の拒否権行使回数
+  (function() {
+    var ctx = document.getElementById('vetoEraChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['1946-55', '1956-65', '1966-75', '1976-85', '1986-95', '1996-05', '2006-15', '2016-25'],
+        datasets: [{
+          label: '拒否権行使回数（概数）',
+          data: [83, 26, 37, 56, 36, 16, 27, 49],
+          backgroundColor: 'rgba(122, 90, 160, 0.7)',
+          borderColor: 'rgba(122, 90, 160, 1)',
+          borderWidth: 1,
+          borderRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(ctx) { return '約' + ctx.parsed.y + '回'; } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: '#8a9aaa', font: { size: 10 } } },
+          y: {
+            grid: { color: 'rgba(255,255,255,0.06)' },
+            ticks: { color: '#8a9aaa', font: { size: 11 }, callback: function(v) { return v + '回'; } },
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  })();
+</script>
+</body>
+</html>

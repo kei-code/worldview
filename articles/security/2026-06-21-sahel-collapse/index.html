@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2020〜2023年、中央サヘルのマリ・ブルキナファソ・ニジェールで計5度のクーデターが連鎖し、フランスは撤退、ロシア系ワグネルが進出した。テロ死者は年間1万1千人超——サヘルで何が起きているのか。崩壊の構造を6つの視点で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/security/2026-06-21-sahel-collapse/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="サヘルの崩壊 — 西アフリカ連続クーデターとワグネルの「新植民地」 — WorldView">
+  <meta property="og:description" content="2020〜2023年、中央サヘルのマリ・ブルキナファソ・ニジェールで計5度のクーデターが連鎖し、フランスは撤退、ロシア系ワグネルが進出した。テロ死者は年間1万1千人超——サヘルで何が起きているのか。崩壊の構造を6つの視点で読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/security/2026-06-21-sahel-collapse/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/sahel-collapse-hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="サヘルの崩壊 — 西アフリカ連続クーデターとワグネルの「新植民地」 — WorldView">
+  <meta name="twitter:description" content="2020〜2023年、中央サヘルのマリ・ブルキナファソ・ニジェールで計5度のクーデターが連鎖し、フランスは撤退、ロシア系ワグネルが進出した。テロ死者は年間1万1千人超——サヘルで何が起きているのか。崩壊の構造を6つの視点で読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/sahel-collapse-hero.jpg">
+  <title>サヘルの崩壊 — 西アフリカ連続クーデターとワグネルの「新植民地」 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent5);
+      opacity: 0.7;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    .article-question {
+      border-left: 3px solid var(--accent5);
+      padding: 1rem 1.4rem;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.8rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent5);
+    }
+    .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/sahel-collapse-hero.jpg');
+      background-size: cover; background-position: center 40%;
+      filter: brightness(1.15) contrast(1.04) saturate(1.05);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.18) 0%, rgba(14,17,23,0.28) 45%, rgba(14,17,23,0.52) 100%);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title,
+    .article-hero.has-image .article-summary { text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65); }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .article-hero.has-image .key-point {
+      background: rgba(18,23,31,0.44);
+      border: 1px solid rgba(255,255,255,0.18);
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+      box-shadow: 0 2px 14px rgba(0,0,0,0.28);
+    }
+    .article-hero.has-image .key-point:hover { background: rgba(18,23,31,0.58); }
+    .article-hero.has-image .key-point .kp-value { color: #f2f5f9; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+    .article-hero.has-image .key-point .kp-label { color: rgba(255,255,255,0.74); }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* 情報源リンク */
+    a.source-item { color: inherit; text-decoration: none; cursor: pointer; }
+    a.source-item:hover { border-color: var(--accent5); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent5); }
+    a.source-item .source-name { transition: color 0.2s; }
+
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent5);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+    }
+
+    .pull-quote {
+      border-left: 3px solid var(--accent5);
+      background: rgba(154,138,180,0.09);
+      padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text); line-height: 1.65;
+    }
+
+    .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+    .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
+    .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .depth-bar-fill { height: 100%; background: var(--accent5); border-radius: 5px; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-red">安全保障</span>
+        <span class="tag tag-red">アフリカ地政学</span>
+        <span class="date">2026年6月21日</span>
+      </div>
+      <h1 class="article-title">サヘルの崩壊<br>— 西アフリカ連続クーデターとワグネルの「新植民地」</h1>
+      <p class="article-summary">
+        2020〜2023年、中央サヘルのマリ・ブルキナファソ・ニジェールで計5度のクーデターが連鎖し、フランスは9年間の軍事作戦を終え撤退した。その空白にロシア系民間軍事会社ワグネルが入り込み、現地政権と安全保障・経済的見返りをめぐる新たな依存関係を結んだ。しかしテロ死者は撤退後も増え続け、2023年には年間1万1千人を超えた。誰が何のためにサヘルを動かしているのか。6つの視点で構造を読み解く。
+      </p>
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">クーデター 3カ国/計5回</div>
+          <div class="kp-value">マリ×2・ブルキナファソ×2・ニジェール×1。2020〜2023年、中央サヘル3カ国で軍政が連鎖した（周辺のチャド・ギニアでも政変）</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">フランス軍 撤退完了</div>
+          <div class="kp-value">9年間・最大5,500人規模のバルカン作戦は2022年11月に終結。フランスは中央サヘルでの軍事的影響力をほぼ失った</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">AES同盟 3カ国</div>
+          <div class="kp-value">2023年9月、マリ・ブルキナファソ・ニジェールがサヘル同盟（AES）を結成。2024年1月にECOWASを脱退し、独自路線へ</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">ワグネル マリに約2,000人</div>
+          <div class="kp-value">マリの約2,000人を中核に、ブルキナファソ・ニジェールへも展開。2024年に「アフリカ軍団」へ改編されロシア国防省の直轄に</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 核心と問い -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>核心と問い — なぜサヘルで崩壊が連鎖するのか</h2>
+
+            <div class="article-question">
+              なぜ西アフリカのサヘル地帯で、クーデターがこれほど連鎖するのか。フランスが9年間の軍事作戦を終えて撤退したあと、ロシアのワグネルが入り込んだのに暴力は減るどころか増えた。「新しいパートナー」と「植民地支配の焼き直し」——その境界線はどこにあるのか。
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              サヘルとは、サハラ砂漠の南縁に東西に広がる半乾燥地帯を指す。マリ、ブルキナファソ、ニジェール、チャドなどが含まれ、その多くはフランスの旧植民地だ。本稿では主に、武装勢力の脅威が集中する中央サヘル3カ国——マリ・ブルキナファソ・ニジェール——を対象とし、必要に応じて周辺の政変にも触れる。この3カ国では2020〜2023年に計5度の軍事クーデターが起きた。マリで2回（2020年・2021年）、ブルキナファソで2回（いずれも2022年）、ニジェールで1回（2023年）。同じ時期に周辺のチャド（2021年）やギニア（2021年）でも政変が起き、サヘル・西アフリカ一帯で軍政化の流れが広がった。わずか数年でこれだけの政変が連鎖した密度は、世界的にも異例だ。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              その背景には3つの構造的要因が絡み合っている。イスラム武装勢力の台頭で疲弊した軍と政府、独立後も続いたフランスの政治・経済的影響力（いわゆる「フランサフリック」）への反感、そしてソーシャルメディアを通じて拡散する反欧米感情の燃料だ。クーデターはそれぞれ独立した事件に見えるが、根にある構造は同じだ。そして、フランスの撤退というかたちで表れた「西側の退場」の後に入り込んだのが、ロシア系民間軍事会社のワグネルだった。なお本稿が見出しで「新植民地」と表現するのは、①安全保障を外部勢力に依存し、②資源・権益や外交的立場を見返りに差し出し、③現地住民の安全よりも外部勢力と軍政の利益が優先される——という構図を指す。善悪のレッテルではなく、依存の構造を問うための言葉だ。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2rem 0 0.75rem;font-weight:700;">崩壊を生む3つの構造要因</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">統治の機能不全 — 植民地の負の遺産</div>
+                <div class="factor-desc">
+                  サヘル諸国の多くは1960年代に独立したが、植民地時代に引かれた国境は民族・部族の分布を無視したものだった。中央政府は首都周辺しか統治できず、農村部では武装勢力が行政機能を事実上代替している。クーデターを起こす軍は、機能しない文民政府への「代替」として大衆の支持を得やすい構造がある。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">イスラム武装勢力の跋扈 — JNIM と ISGS</div>
+                <div class="factor-desc">
+                  サヘルでは2010年代から、アルカイダ系の JNIM（ジャマート・ヌスラット・アル・イスラム・ワル・ムスリミン）と、イスラム国系の ISGS（大サハラのイスラム国支部）の2大勢力が勢力を広げた。農村部での民兵化や、脆弱な国境地帯のコントロールが進み、各国政府とフランス軍の対テロ作戦は局所的な成果を上げるにとどまった。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">「反仏」感情の燃料 — SNSと大国の思惑</div>
+                <div class="factor-desc">
+                  独立後も続く旧宗主国フランスの影響力——外交・軍事・通貨（CFAフラン）——への不満は、独立後世代の若者を中心に根強い。ソーシャルメディアを通じた反仏プロパガンダはロシアが一部資金提供したとされ、クーデター直後の街頭ではロシア国旗が振られた。感情は本物でも、それを利用する勢力もいる。
+                </div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg-card);border:1px solid var(--border-subtle);border-left:3px solid var(--accent5);border-radius:0 var(--radius) var(--radius) 0;padding:0.9rem 1.2rem;margin-top:1.25rem;font-size:0.82rem;">
+              <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);font-weight:700;margin-bottom:0.45rem;">用語解説</div>
+              <span style="font-weight:700;color:var(--text);">フランサフリック（Françafrique）</span>
+              <p style="color:var(--text-muted);line-height:1.75;margin-top:0.35rem;margin-bottom:0;">フランスと旧植民地アフリカ諸国との間に続く、非公式の政治・経済・軍事的つながりを指す造語。フランスが有利な採掘権や貿易条件を確保する代わりに、現地政権を財政・軍事的に支援するという「もたれ合い」の構造が独立後も続いてきた。この構造への批判が、クーデターへの大衆的な支持の底流にある。</p>
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/sahel-collapse-region-map.jpg"
+                   alt="サヘル地帯の地図と崩壊の構造" loading="lazy">
+              <figcaption>サハラ砂漠の南縁に東西に広がるサヘル地帯。この「緑のベルト」が今、世界で最も不安定な地域のひとつになっている。脆弱な統治・限られた行政能力・武装勢力の跋扈という三重苦に、大国の地政学的競争が重なる。金やウランなどの資源は乏しくないが、それを国家の安定につなげる統治の力が欠けている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 崩壊の連鎖</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2012〜2013年</div>
+                <div class="timeline-content">
+                  <h4>マリの分裂とフランスの介入</h4>
+                  <p>マリ北部でトゥアレグ族の反乱とイスラム武装勢力が台頭し、マリ軍が崩壊寸前に陥った。フランスはセルヴァル作戦を発動して介入し、北部を奪還。この成功体験がサヘル常駐化の起点となった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">フランス軍が救援</span>
+                    <span class="reaction-chip">武装勢力は分散・潜伏</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2014年</div>
+                <div class="timeline-content">
+                  <h4>バルカン作戦の開始</h4>
+                  <p>フランスはサヘル5カ国（マリ・ブルキナファソ・ニジェール・チャド・モーリタニア）を対象に、常設の対テロ作戦「バルカン作戦」を開始した。最大5,500人規模で展開し、サヘルにおけるフランスの軍事プレゼンスが恒常化した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">欧州諸国も参加</span>
+                    <span class="reaction-chip">武装勢力は根絶されず</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2020年8月・2021年5月</div>
+                <div class="timeline-content">
+                  <h4>マリで2度のクーデター — ワグネルの扉が開く</h4>
+                  <p>武装勢力の拡大を止められない文民政府への不満が爆発し、マリで2回のクーデターが起きた。ゴイタ大佐が実権を掌握した軍政は、フランスとの関係を冷却させながら、ロシア系民間軍事会社ワグネルとの接触を開始した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">仏・マリ関係が悪化</span>
+                    <span class="reaction-chip">ワグネルとの交渉開始</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2022年</div>
+                <div class="timeline-content">
+                  <h4>フランスの撤退とブルキナファソの二重政変</h4>
+                  <p>マリの軍政がフランス大使を追放し、フランスはバルカン作戦のマリ部分を終了した。8月に撤退完了、11月に作戦終結を宣言。同年ブルキナファソでは1月と9月に2度のクーデターが起き、2カ国が続けて反仏・親ロシア路線に転換した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">バルカン作戦が実質終了</span>
+                    <span class="reaction-chip">ブルキナファソが連続政変</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2023年7月</div>
+                <div class="timeline-content">
+                  <h4>ニジェールのクーデター — 最後のドミノ</h4>
+                  <p>大統領警護隊のチアニ将軍がバズム大統領を拘束し権力を掌握した。西側が「安定のとりで」と頼りにしていたニジェールの失陥は衝撃を広げた。西アフリカ諸国経済共同体（ECOWAS）が制裁と軍事介入を示唆したが、実行されなかった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">ECOWASが圧力をかけるも失敗</span>
+                    <span class="reaction-chip">バズム大統領は現在も拘束中</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2023年9月〜2024年1月</div>
+                <div class="timeline-content">
+                  <h4>AES設立とECOWAS離脱</h4>
+                  <p>マリ・ブルキナファソ・ニジェールの3軍政が「リプタコ＝グルマ憲章」に署名し、サヘル同盟（AES：Alliance des États du Sahel）を発足させた。2024年1月にはECOWASからの正式脱退を宣言し、地域の多国間枠組みから離脱した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">独自の集団防衛体制へ</span>
+                    <span class="reaction-chip">ECOWAS制裁は機能不全に</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024〜2025年</div>
+                <div class="timeline-content">
+                  <h4>ワグネルからアフリカ軍団へ — 拡大と限界</h4>
+                  <p>2024年にワグネルはロシア国防省直轄の「アフリカ軍団」へ改編された。ブルキナファソとニジェールへも展開が進んだが、テロ被害は減らず。2025年5月にはブルキナファソで約200人の軍人が死亡する攻撃が発生。同年6月、ワグネル後継はマリでの「任務完了」を宣言し、事実上の縮小・再編に転じた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">アフリカ軍団に組織改編</span>
+                    <span class="reaction-chip">暴力は増加が続く</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/sahel-collapse-coup-street.jpg"
+                   alt="クーデター直後の西アフリカの街頭" loading="lazy">
+              <figcaption>クーデター直後の街頭では、軍用車を取り囲む群衆が「解放」を祝う場面が繰り返された。しかしその熱狂の裏で、政府の機能は停止し、武装勢力への対処はさらに困難になっていった。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 3: 視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>6つの視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">各国・各勢力の立場</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- フランス -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">フランス（旧宗主国・撤退した大国）</span>
+                      <span class="role-badge">裏切られた献身</span>
+                    </div>
+                    <div class="pull-quote">「9年間・450人以上の死者を出して戦ったのに、軍政に追い出された」</div>
+                    <div class="key-claim">
+                      <strong>作戦の費用と成果の乖離</strong>
+                      バルカン作戦に投じたコストは年間約10億ユーロ、延べ5,500人規模の兵力。テロ組織の指導者を多数排除したものの、組織は分裂しながら拡散した。「水を絞っても形を変えて広がる」という非対称戦の限界をサヘルが体現した。
+                    </div>
+                    <div class="key-claim">
+                      <strong>撤退の理由と後悔</strong>
+                      軍政がフランス大使を追放し、ワグネルとの契約を結んだ時点で、フランスは選択肢を失った。一方で批判的な自己評価もある——「成果を現地の人々に届けることができなかった」とマクロン大統領自身が認めた。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:100%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- ロシア/アフリカ軍団 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ロシア／アフリカ軍団（進出する大国）</span>
+                      <span class="role-badge">条件なしの安全保障</span>
+                    </div>
+                    <div class="pull-quote">「民主主義の条件など付けない。必要なものを必要なときに届ける」</div>
+                    <div class="key-claim">
+                      <strong>反欧米感情の戦略的活用</strong>
+                      ロシア系の情報機関がソーシャルメディアでの反仏プロパガンダを支援したとされる。ウクライナ侵攻で西側との関係が断絶したロシアにとって、アフリカでの外交的プレゼンスは代替的な多極化の演出だった。
+                    </div>
+                    <div class="key-claim">
+                      <strong>経済的見返りと安全保障の交換</strong>
+                      ワグネルは中央アフリカでは金やダイヤモンドの採掘権益と引き換えに軍事支援を提供したことが知られる。一方マリについては、鉱山権益の取得が思うように進んでいないとの報道もあり（The Sentry／Reuters）、「資源を報酬とするモデル」が常に成立するわけではない。それでも、安全保障の提供と引き換えに経済的・政治的な見返りを得る構図そのものは一貫している。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:90%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- サヘル軍政 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">サヘル軍政（マリ・ブルキナファソ・ニジェール）</span>
+                      <span class="role-badge">主権回復の旗手</span>
+                    </div>
+                    <div class="pull-quote">「フランスは9年間で何も変えなかった。我々は自分でパートナーを選ぶ権利がある」</div>
+                    <div class="key-claim">
+                      <strong>「脱植民地」の論理</strong>
+                      軍政指導者たちは、フランスの存在そのものを植民地支配の継続と位置づけた。バルカン作戦の9年間でテロが終わらなかったことが、この主張を説得力あるものにした。AES設立は「欧米依存からの脱却」のシンボルでもある。
+                    </div>
+                    <div class="key-claim">
+                      <strong>正統性の問題</strong>
+                      クーデターで成立した軍政は、選挙による正統性を持たない。ECOWASや西側諸国からの圧力をかわすために「主権」「反植民地」の言語を使うことは、批判者からすると正当性のすり替えに映る。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:95%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 地域住民 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">地域住民（サヘルの民衆）</span>
+                      <span class="role-badge">期待と幻滅の間で</span>
+                    </div>
+                    <div class="pull-quote">「フランスが去り、ロシアが来た。暴力は減っていない」</div>
+                    <div class="key-claim">
+                      <strong>クーデターへの熱狂と現実</strong>
+                      クーデター直後、多くの市民が街頭に出てロシア国旗を振り祝った。長年の政府腐敗と治安の悪化への不満が噴き出した瞬間だった。しかしワグネルが来ても、農村部への武装勢力の侵入は止まらず、食料・医療・学校へのアクセスは悪化した。
+                    </div>
+                    <div class="key-claim">
+                      <strong>民間人への暴力とワグネルの人権侵害</strong>
+                      国際人権団体Forbidden Storiesの調査で、ワグネルがマリで数百人の民間人を拉致・拷問・殺害したと報告された。「解放者」は別の暴力の主体になった。被害を受けた村人たちは今も声を上げられない状況にある。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:85%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 中国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">中国（静観する大国）</span>
+                      <span class="role-badge">リスクを取らない参与者</span>
+                    </div>
+                    <div class="pull-quote">「争いに首を突っ込まなくても、採掘権と市場は手に入る」</div>
+                    <div class="key-claim">
+                      <strong>軍事介入なき経済進出</strong>
+                      中国はサヘルに軍を送らず、外交的に「不干渉原則」を強調する。しかし、インフラ投資・採掘権・武器輸出は着実に進んでいる。フランスが退場した真空を、軍事コストをかけずに埋めようとしている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>静観の長期的計算</strong>
+                      サヘルの不安定はリスクでもあるが、大国が消耗する中で影響力を安価に拡大できるチャンスでもある。中国の「一帯一路」構想のアフリカ部分は、軍政・民主政を問わず政権と取引する柔軟性を持つ。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:65%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 欧州/西側 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">欧州連合・西側諸国</span>
+                      <span class="role-badge">板挟みの価値観外交</span>
+                    </div>
+                    <div class="pull-quote">「軍政を非難しながらも、テロと移民問題では協力しなければならない」</div>
+                    <div class="key-claim">
+                      <strong>民主主義と安全保障の矛盾</strong>
+                      西側はクーデターを民主主義の後退と批判し、援助を制限した。しかし、サヘルの不安定化はサハラ以南から欧州への移民・難民の増加に直結する。制裁を強めれば民衆が苦しみ、緩めれば軍政を事実上承認することになる。
+                    </div>
+                    <div class="key-claim">
+                      <strong>ECOWASの限界が示したもの</strong>
+                      ニジェールのクーデター後、ECOWAS（西アフリカ諸国経済共同体）は厳しい制裁を発動し軍事介入を示唆したが、実行されずに終わった。2024年2月には制裁を撤回。外部から圧力をかけるだけでは軍政を民主化できないという現実が露わになった。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:75%;"></div></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本スタンス</th>
+                        <th>最大の主張</th>
+                        <th>課題・矛盾</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>フランス</td><td>撤退した旧宗主国</td><td>9年間の作戦で戦果を上げた</td><td>成果が現地に届かなかった</td></tr>
+                      <tr><td>ロシア／アフリカ軍団</td><td>条件なしの支援者</td><td>反欧米感情を取り込み進出</td><td>暴力を減らせず人権侵害も</td></tr>
+                      <tr><td>サヘル軍政</td><td>主権回復の旗手</td><td>植民地的依存から脱却した</td><td>選挙なし・正統性が脆弱</td></tr>
+                      <tr><td>地域住民</td><td>期待と幻滅の間</td><td>本物の独立と安全を求める</td><td>どの勢力も暴力を止められず</td></tr>
+                      <tr><td>中国</td><td>静観する経済大国</td><td>軍事コストなしで影響力拡大</td><td>不安定化のリスクは抱える</td></tr>
+                      <tr><td>欧州連合・西側</td><td>価値観と利益の板挟み</td><td>民主化・人権を要求したい</td><td>制裁も介入も機能しない</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/sahel-collapse-flags-clash.jpg"
+                   alt="フランス国旗とロシア国旗が向き合う象徴的構図" loading="lazy">
+              <figcaption>サヘルの砂漠に突き刺さった2本の旗——フランスとロシア。どちらも「パートナー」として現れ、どちらも暴力を終わらせることができなかった。背後には、地域の安全よりも大国の利益が優先される地政学的現実がある。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- テロ死者数の推移 -->
+              <div class="data-card">
+                <h4>サヘルのイスラム過激派関連死者数（2019〜2023年）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="fatalitiesChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  クーデター前後で暴力は増加の一途。2020年〜2023年のわずか3年で約3倍に達した。フランス撤退後もロシア参入後も、数字は改善していない。出典：ACLED、Global Terrorism Index
+                </p>
+              </div>
+
+              <!-- 2023年国別内訳 -->
+              <div class="data-card">
+                <h4>2023年 サヘル中央部 国別テロ死者数（概数）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="countryChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  2023年のサヘル中央部の死者約1万1,643人のうち、ブルキナファソが約3分の2を占める。マリ・ニジェールの内訳は残余からの概算値。世界のテロ死者に占めるサヘルの割合は、GTI2023で約43%、CFRの整理では2024年に約51%へ上昇した。出典：ACLED、Global Terrorism Index、CFR
+                </p>
+              </div>
+
+              <!-- 注目の数字 -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">43%</div>
+                    <div class="stat-label">世界のテロ死者に占めるサヘルの割合（GTI2023）。2024年はCFR整理で約51%へ</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">11,643人</div>
+                    <div class="stat-label">サヘル中央部のイスラム過激派関連死者数（2023年）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">9年間</div>
+                    <div class="stat-label">フランスのバルカン作戦の期間（2014〜2022年）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">計5回</div>
+                    <div class="stat-label">2020〜2023年に中央サヘル3カ国（マリ・ブルキナファソ・ニジェール）で起きた軍事クーデター</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- クーデターの一覧表 -->
+              <div class="data-card">
+                <h4>中央サヘル3カ国のクーデター一覧（2020〜2023年・計5回）</h4>
+                <table style="width:100%;border-collapse:collapse;margin-top:1rem;font-size:0.82rem;">
+                  <thead>
+                    <tr style="border-bottom:1px solid var(--border);">
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">年月</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">国</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">主要人物</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">2020年8月</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--accent5);font-weight:700;">マリ</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">ゴイタ大佐ら（CNSP、IBK政権を打倒）</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">2021年5月</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--accent5);font-weight:700;">マリ</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">ゴイタ大佐（移行政権を掌握し実権を握る）</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">2022年1月</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--accent5);font-weight:700;">ブルキナファソ</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">ダミバ中佐（カボレ大統領を追放）</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">2022年9月</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--accent5);font-weight:700;">ブルキナファソ</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">トラオレ大尉（ダミバを追放）</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">2023年7月</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--accent5);font-weight:700;">ニジェール</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">チアニ将軍（バズム大統領を拘束）</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り — 構造の先に何があるか</h2>
+
+            <div class="insight-box">
+              <div class="insight-title">「反仏」はナショナリズムか、プロパガンダか</div>
+              <div class="insight-text">
+                サヘルの反仏感情は本物だ。フランサフリックの構造、CFAフランを通じた通貨の支配、独立後も続いた軍事基地——これらへの不満は数十年かけて蓄積してきた。しかし「本物の怒り」と「外部から扇動された怒り」は共存する。ロシアがSNSを通じて反仏コンテンツを増幅させたことは複数の調査が示している。重要なのは、感情の真正性と、それを利用する勢力の存在を、同時に認識することだ。クーデター後の軍政が真の独立を達成できているかどうかは、ロシアへの依存の深さを見れば問い直さざるを得ない。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">ワグネルは何を得るのか — 経済的見返りと地政学的酸素</div>
+              <div class="insight-text">
+                ワグネルがサヘルで得ているものは二層構造だ。一層目は具体的な経済利益。中央アフリカでは金やダイヤモンドの採掘権益を実際に得ている。ただしマリでは鉱山権益の取得が難航しているとの報道もあり、「支援と資源の交換」が常に成立するわけではない。二層目はロシアの地政学的利益——ウクライナ侵攻で西側と断絶したロシアが、アフリカでの外交プレゼンスを「まだ影響力がある証明」として使う。しかし2025年にワグネルがマリでの「任務完了」を宣言したことが示すように、実際の安全保障成果は乏しく、これは持続可能なモデルではない可能性がある。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">AES同盟の持続可能性 — 3国の結束は本物か</div>
+              <div class="insight-text">
+                マリ・ブルキナファソ・ニジェールの3軍政が設立したAESは、2024年に「サヘル諸国連合（Confédération des États du Sahel）」への格上げを宣言した。しかし3カ国それぞれが抱える脅威は異なり、共通通貨や経済統合の実現は遠い。ECOWASを脱退したことで、地域の紛争調停メカニズムや人道支援の枠組みからも離れた。「反欧米」という共通の言語で束ねられた同盟は、その接着剤が薄れるときに何が残るかが問われる。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">西側に残された選択肢は何か</div>
+              <div class="insight-text">
+                制裁は機能せず、軍事介入は政治的に不可能、援助の条件付けは軍政を動かせなかった。西側が直接使えるレバーは今や限られている。残された現実的な選択肢は、隣国の安定した政府（セネガル、コートジボワールなど）を支援すること、サヘルからの移民・難民の流入に備えること、そして長期的には人道支援と教育投資を通じた「軍政ではなく人々への関与」を続けることだ。大国の退場が地域の安定化につながるかどうかは、まだ歴史の審判を待っている。
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/sahel-collapse-horizon.jpg"
+                   alt="不確実な未来を象徴するサヘルの地平線" loading="lazy">
+              <figcaption>夜明けなのか、嵐の前触れなのか——サヘルの地平線はまだその答えを示していない。大国の介入が失敗を繰り返す中、地域の人々が自らの安定を手にする道筋は、依然として見えていない。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源</h2>
+            <div class="sources-grid">
+
+              <a class="source-item" href="https://www.cfr.org/global-conflict-tracker/conflict/violent-extremism-sahel" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">CFR — Global Conflict Tracker: Violent Extremism in the Sahel</div>
+                  <div class="source-desc">サヘルの暴力的過激主義の現状を継続的に追跡する米外交問題評議会の紛争トラッカー</div>
+                  <div class="source-country">【アメリカ・シンクタンク】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://acleddata.com/region/conflict-sahel" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">ACLED — Conflict in the Sahel</div>
+                  <div class="source-desc">武力紛争・事件データプロジェクト（ACLED）によるサヘル地域の暴力事件・死者数データ</div>
+                  <div class="source-country">【国際・学術データベース】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.wilsoncenter.org/blog-post/sahel-now-accounts-43-global-terrorism-deaths" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Wilson Center — The Sahel Now Accounts for 43% of Global Terrorism Deaths</div>
+                  <div class="source-desc">サヘルが世界のテロ死者の43%を占めるとする分析。ウィルソンセンター（米シンクタンク）</div>
+                  <div class="source-country">【アメリカ・シンクタンク】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://foreignpolicy.com/2024/02/07/africa-corps-wagner-group-russia-africa-burkina-faso/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Foreign Policy — Russia's Africa Corps Takes Over From the Wagner Group</div>
+                  <div class="source-desc">ワグネルからアフリカ軍団への改編と、ロシアのアフリカ戦略の変化を報じた詳細記事</div>
+                  <div class="source-country">【アメリカ・国際政治誌】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.csis.org/analysis/end-operation-barkhane-and-future-counterterrorism-mali" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">CSIS — The End of Operation Barkhane and the Future of Counterterrorism in Mali</div>
+                  <div class="source-desc">バルカン作戦終了の経緯と今後の展望を分析した米戦略国際問題研究所（CSIS）のレポート</div>
+                  <div class="source-country">【アメリカ・シンクタンク】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://en.wikipedia.org/wiki/Alliance_of_Sahel_States" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Wikipedia — Alliance of Sahel States</div>
+                  <div class="source-desc">AES（サヘル同盟）の設立経緯・目的・構成国・ECOWASとの関係を整理した概要記事</div>
+                  <div class="source-country">【国際百科事典】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://responsiblestatecraft.org/2022/11/16/france-ends-its-eight-year-counterterror-operation-in-the-sahel/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Responsible Statecraft — France out of West Africa, ending 8 years of military mission</div>
+                  <div class="source-desc">フランスの8年間の対テロ作戦終了を報じた評論記事。撤退の背景と影響を分析</div>
+                  <div class="source-country">【アメリカ・外交専門メディア】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.amnesty.org/en/latest/news/2024/07/niger-rights-in-free-fall-a-year-after-coup/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Amnesty International — Niger: Rights in free fall a year after coup</div>
+                  <div class="source-desc">ニジェールのクーデターから1年後の人権状況を報告した国際アムネスティの調査報告</div>
+                  <div class="source-country">【国際人権団体】</div>
+                </div>
+              </a>
+
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>核心と問い</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/security/index.html">安全保障</a></div>
+            <div>2026年6月21日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer"><p>WorldView — 多視点で読む世界情勢</p></footer>
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // タブ切り替え
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = this.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
+      this.classList.add('active');
+      document.getElementById(target).classList.add('active');
+    });
+  });
+
+  // 目次のスクロールハイライトは main.js が処理（.toc-list a + .is-current）
+
+  // tone-meterアニメーション（該当要素がなくても無害）
+  window.addEventListener('load', function() {
+    document.querySelectorAll('#sec-perspectives .tone-fill').forEach(function(el) {
+      var w = el.style.width; el.style.width = '0';
+      setTimeout(function() { el.style.transition = 'width 0.8s ease'; el.style.width = w; }, 200);
+    });
+  });
+
+  // Chart.js — 死者数推移
+  (function() {
+    var ctx = document.getElementById('fatalitiesChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2019年', '2020年', '2021年', '2022年', '2023年'],
+        datasets: [{
+          label: 'イスラム過激派関連死者数',
+          data: [1600, 4000, 5800, 8500, 11643],
+          backgroundColor: 'rgba(184, 100, 80, 0.75)',
+          borderColor: 'rgba(184, 100, 80, 1)',
+          borderWidth: 1,
+          borderRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) { return ctx.parsed.y.toLocaleString() + '人'; }
+            }
+          }
+        },
+        scales: {
+          x: { grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#8a9aaa', font: { size: 11 } } },
+          y: {
+            grid: { color: 'rgba(255,255,255,0.06)' },
+            ticks: {
+              color: '#8a9aaa', font: { size: 11 },
+              callback: function(v) { return v.toLocaleString() + '人'; }
+            },
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  })();
+
+  // Chart.js — 2023年 国別内訳
+  (function() {
+    var ctx = document.getElementById('countryChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'doughnut',
+      data: {
+        labels: ['ブルキナファソ', 'マリ', 'ニジェール'],
+        datasets: [{
+          data: [7762, 2498, 1383],
+          backgroundColor: [
+            'rgba(184, 100, 80, 0.85)',
+            'rgba(122, 90, 160, 0.75)',
+            'rgba(80, 140, 160, 0.75)'
+          ],
+          borderColor: [
+            'rgba(184, 100, 80, 1)',
+            'rgba(122, 90, 160, 1)',
+            'rgba(80, 140, 160, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: '#8a9aaa', font: { size: 11 }, padding: 12, boxWidth: 14 }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) {
+                var total = ctx.dataset.data.reduce(function(a, b) { return a + b; }, 0);
+                var pct = Math.round(ctx.parsed / total * 100);
+                return ctx.label + ': ' + ctx.parsed.toLocaleString() + '人（' + pct + '%）';
+              }
+            }
+          }
+        },
+        cutout: '62%'
+      }
+    });
+  })();
+</script>
+</body>
+</html>
