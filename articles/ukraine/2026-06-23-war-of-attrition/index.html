@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2022年の全面侵攻から4年超。ウクライナ戦争は、領土の奪い合いだけで勝敗が決まる段階を過ぎ、人・金・武器・外部支援をどちらが長く維持できるかが問われる消耗戦に入った。戦線・経済・外部支援の三つの軸から、その構造と不確実性を読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/ukraine/2026-06-23-war-of-attrition/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="ウクライナ、終わらない消耗戦 — 戦線・経済・疲弊する欧州 — WorldView">
+  <meta property="og:description" content="2022年の全面侵攻から4年超。ウクライナ戦争は、領土の奪い合いだけで勝敗が決まる段階を過ぎ、人・金・武器・外部支援をどちらが長く維持できるかが問われる消耗戦に入った。戦線・経済・外部支援の三つの軸から、その構造と不確実性を読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/ukraine/2026-06-23-war-of-attrition/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/attrition-hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ウクライナ、終わらない消耗戦 — 戦線・経済・疲弊する欧州 — WorldView">
+  <meta name="twitter:description" content="2022年の全面侵攻から4年超。ウクライナ戦争は、領土の奪い合いだけで勝敗が決まる段階を過ぎ、人・金・武器・外部支援をどちらが長く維持できるかが問われる消耗戦に入った。戦線・経済・外部支援の三つの軸から、その構造と不確実性を読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/attrition-hero.jpg">
+  <title>ウクライナ、終わらない消耗戦 — 戦線・経済・疲弊する欧州 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent5);
+      opacity: 0.7;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    .article-question {
+      border-left: 3px solid var(--accent5);
+      padding: 1rem 1.4rem;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.8rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent5);
+    }
+    .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/attrition-hero.jpg');
+      background-size: cover; background-position: center 40%;
+      filter: brightness(1.20) contrast(1.05) saturate(1.04);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.18) 0%, rgba(14,17,23,0.32) 45%, rgba(14,17,23,0.60) 100%);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title,
+    .article-hero.has-image .article-summary { text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65); }
+    .article-hero.has-image .container { position: relative; z-index: 1; }
+    .article-hero.has-image .key-point {
+      background: rgba(18,23,31,0.40);
+      border: 1px solid rgba(255,255,255,0.18);
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+      box-shadow: 0 2px 14px rgba(0,0,0,0.28);
+    }
+    .article-hero.has-image .key-point:hover { background: rgba(18,23,31,0.54); }
+    .article-hero.has-image .key-point .kp-value { color: #f2f5f9; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+    .article-hero.has-image .key-point .kp-label { color: rgba(255,255,255,0.74); }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* 情報源リンク */
+    a.source-item { color: inherit; text-decoration: none; cursor: pointer; }
+    a.source-item:hover { border-color: var(--accent5); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent5); }
+    a.source-item .source-name { transition: color 0.2s; }
+
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent5);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+    }
+
+    .pull-quote {
+      border-left: 3px solid var(--accent5);
+      background: rgba(154,138,180,0.09);
+      padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text); line-height: 1.65;
+    }
+
+    .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+    .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
+    .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .depth-bar-fill { height: 100%; background: var(--accent5); border-radius: 5px; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-yellow">ウクライナ紛争</span>
+        <span class="tag tag-red">消耗戦</span>
+        <span class="date">2026年6月23日</span>
+      </div>
+      <h1 class="article-title">ウクライナ、終わらない消耗戦<br>— 戦線・経済・疲弊する欧州</h1>
+      <p class="article-summary">
+        2022年2月のロシアによる全面侵攻から4年超。この戦争は、短期的な領土の奪い合いで勝敗が決まる段階を過ぎ、人・金・武器・外部支援をどちらが長く維持できるかが戦局を左右する消耗戦の段階に入った。前線は全体として膠着し、双方が国力を削り合う。アメリカの新規支援が以前ほど自動的でなくなるなか、欧州が穴を埋めきれるかが行方を左右する。
+      </p>
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">前線の膠着</div>
+          <div class="kp-value">2025年12月〜2026年5月にロシアが新たに支配した地域は約40km²にとどまり、ウクライナの押し戻しがこれを上回ったとされる（ISW）。大規模な突破は双方ともできていない</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">ロシア軍事費の膨張</div>
+          <div class="kp-value">国内総生産〈GDP〉比6.3%・歳出の約4割が国防治安費。戦時経済に切り替え、持久戦を前提とした構造になっている</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">支援の構図</div>
+          <div class="kp-value">アメリカは単一国として最大の供与国（累計約1,146億ユーロ）。一方、EU機関と欧州各国を合算した「欧州全体」では規模はアメリカを上回るが、高性能装備の即応供与ではアメリカ依存がなお大きい</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent5)">
+          <div class="kp-label">2026〜27年の資金不足</div>
+          <div class="kp-value">ウクライナの2026〜27年の必要支援額は推計1,350億ユーロ。アメリカが撤退すれば欧州単独では埋まらない構造的な赤字がある</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 核心と問い -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>核心と問い — 「勝敗」から「持久」へ</h2>
+
+            <div class="article-question">
+              どちらが先に尽きるか——この戦争は、短期的な領土奪取だけで勝敗が決まる段階を過ぎ、人・金・武器・支援意欲という「消耗の速度」の競争へと比重を移したとみられる。決定的勝利は双方ともに遠く、問うべきは「誰が勝つか」だけでなく「どちらが先に折れるか」でもある。
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              2022年2月24日、ロシアは「特別軍事作戦」と称してウクライナへの全面侵攻を開始した。キーウ（キエフ）の電撃占領を狙った当初の作戦は失敗し、戦場は東部・南部での消耗戦へと移行した。それから4年以上が経過した2026年の段階で、戦線全体では大規模な突破は起きていない。アメリカの戦争研究所〈ISW〉とCritical Threatsの戦況評価によれば、2025年12月から2026年5月にかけてロシア軍が新たに支配・浸透した地域は約40平方キロメートルにとどまり、同じ期間にウクライナ軍が押し戻した地域がこれを上回ったとされる。ただし「支配」「浸透」「一時的前進」「奪還」のどれを数えるかで数字は変わり、局地的にはロシア軍の前進とウクライナ軍の押し戻しが同時に起きている。支配地域は小刻みに変動しながらも、戦線全体は事実上の膠着にある。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              戦況の膠着は、単に前線が動かないことを意味しない。この戦争は完全な膠着ではなく、双方が砲撃・ドローン攻撃・歩兵の前進を繰り返しながら、局地的な前進と後退を続ける「動きのある消耗戦」になっている。そこで問われるのは、どちらが長く戦い続けられるかという持久力だ。本記事はその構造を、戦線・経済・外部支援という三つの軸から読み解く。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2rem 0 0.75rem;font-weight:700;">消耗戦を規定する3つの構造</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">戦線の膠着 — 機動戦から陣地戦へ</div>
+                <div class="factor-desc">
+                  ドローン・長距離精密打撃・電子戦が大規模な装甲機動を困難にした。2026年初頭に東部の交通要衝ポクロウシクはロシア軍の支配下に入ったとみられるが、その後ロシア軍は西方への作戦的突破にはつなげられていない。戦術的前進が作戦的成功に転化できない膠着が続く。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">補充力の競争 — 人・装備・資金</div>
+                <div class="factor-desc">
+                  双方が消耗しながら補充を続ける構図。ウクライナは歩兵不足と動員への国民の抵抗に直面し、ロシアは経済の停滞と高い軍事費の持続可能性が問われる。消耗の速度の差が、いつか戦局を動かす。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">外部支援という「もう一つの戦線」</div>
+                <div class="factor-desc">
+                  ウクライナは戦費の多くを外国支援に依存する。アメリカによる新規支援は以前ほど自動的ではなくなり、欧州や北大西洋条約機構〈NATO〉加盟国がアメリカ製兵器を購入してウクライナへ供与する仕組みの比重が増している。欧州が穴を埋められるかどうかが持久力の差を生み、支援の政治経済学が戦場と並ぶ主戦場になっている。
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/attrition-frontline.jpg"
+                   alt="膠着する前線。塹壕と砲撃の痕跡が残る東部ウクライナ" loading="lazy">
+              <figcaption>終わりの見えない前線。尽きていく兵站が勝敗を分ける——4年超の消耗戦が刻んだ東部の地形は、第一次世界大戦の西部戦線を想起させる。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 機動戦から消耗戦へ</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2022年2月</div>
+                <div class="timeline-content">
+                  <h4>全面侵攻開始 — 電撃戦の失敗</h4>
+                  <p>ロシアがウクライナへの全面侵攻を開始。キーウ（キエフ）への電撃占領を狙ったが、ウクライナ軍の抵抗と補給の失敗により撤退。戦場は東部・南部へ移行した。北大西洋条約機構〈NATO〉諸国が支援を本格化し、対戦車兵器・砲弾が供与され始める。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">電撃占領の企図</span>
+                    <span class="reaction-chip">キーウ撤退</span>
+                    <span class="reaction-chip">西側支援の本格化</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2022年秋</div>
+                <div class="timeline-content">
+                  <h4>ウクライナの反攻 — ハルキウ・ヘルソン奪還</h4>
+                  <p>ウクライナ軍が北東部ハルキウ州と南部ヘルソン州で大規模な反攻作戦を展開し、多くの領土を奪還。アメリカ製の高機動ロケット砲システム（HIMARS）などの精密誘導兵器が戦局を変えた。ロシアは部分動員令を発令し、戦争の長期化を認めた形となった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">ハルキウ州の大半を奪還</span>
+                    <span class="reaction-chip">ヘルソン市の解放</span>
+                    <span class="reaction-chip">ロシア部分動員令</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2023年夏〜秋</div>
+                <div class="timeline-content">
+                  <h4>反転攻勢の頓挫 — 消耗戦への移行</h4>
+                  <p>ウクライナが南部ザポリージャ方向への大規模反転攻勢を開始したが、ロシアの地雷原・陣地防御の前に前進は限定的だった。攻勢終末後、戦場は「消耗戦」として定着。双方が砲撃とドローンによる消耗を競う構図に移行した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">反転攻勢が限定的な戦果</span>
+                    <span class="reaction-chip">地雷・陣地防御の優位</span>
+                    <span class="reaction-chip">消耗戦の固定化</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年</div>
+                <div class="timeline-content">
+                  <h4>東部でロシアがじわじわ前進</h4>
+                  <p>ロシアがドネツク州を中心に低速度で前進を続けた。アウジーウカが2024年2月に陥落。ウクライナは防御ラインを維持しながらも後退を余儀なくされた。アメリカでは追加支援法案が議会で長期停滞し、砲弾不足がウクライナの防御を圧迫した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">アウジーウカ陥落</span>
+                    <span class="reaction-chip">砲弾不足の深刻化</span>
+                    <span class="reaction-chip">米議会での支援停滞</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025〜2026年</div>
+                <div class="timeline-content">
+                  <h4>ポクロウシク制圧・前線膠着・停戦交渉</h4>
+                  <p>2025年を通じてロシア軍はドネツク州西部で低速の前進を続け、交通要衝ポクロウシクへ迫った。2026年初頭、同市はロシア軍の支配下に入ったとみられるが、その後の西進は鈍化し、膠着状態が続いた。トランプ政権が2026年5月に3日間の停戦を仲介したが崩壊。欧州連合は900億ユーロの融資パッケージを自らの予算を裏付けに組成し、これとは別に凍結ロシア資産の運用益をウクライナ支援に充てる仕組みも動かした。アメリカの軍事支援は継続されているが、条件と規模が変化している。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">ポクロウシク制圧（2026年初頭）</span>
+                    <span class="reaction-chip">3日間停戦→崩壊</span>
+                    <span class="reaction-chip">欧州融資パッケージ組成</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/attrition-ruins.jpg"
+                   alt="砲撃で廃墟となったウクライナ東部の市街地" loading="lazy">
+              <figcaption>4年以上に及ぶ戦争が刻んだ街の傷痕。東部の都市は繰り返される砲撃と奪還の攻防の中で、建物の骨格だけを残して廃墟化した。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 3: 視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>6つの視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">各立場の主張</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- ウクライナ政府 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ウクライナ政府</span>
+                      <span class="role-badge">抵抗と持久の論理</span>
+                    </div>
+                    <div class="pull-quote">「安全の保証なき停戦は、次の侵攻までの休止にすぎない」</div>
+                    <div class="key-claim">
+                      <strong>徹底抗戦の根拠</strong>
+                      2014年のクリミア併合後にロシアが再侵攻した経緯から、ウクライナは「停戦＝時間の猶予を与えるだけ」と見る。ゼレンスキー大統領はNATOへの加盟か国際的な安全保障の枠組みなしに停戦に応じる意思はないと繰り返す。
+                    </div>
+                    <div class="key-claim">
+                      <strong>内側に蓄積する限界</strong>
+                      だが動員への国民の抵抗は強く、歩兵の補充が追いつかない。記録的な無断離隊（離脱兵）の増加が伝えられ、前線維持の人的コストが社会的な問題になりつつある。持久の意志と持久の能力のギャップが広がっている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:100%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- ロシア -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ロシア</span>
+                      <span class="role-badge">時間は我にあり</span>
+                    </div>
+                    <div class="pull-quote">「西側の結束が緩むのを待てばよい。経済は戦争に耐えられる」</div>
+                    <div class="key-claim">
+                      <strong>戦時経済への転換</strong>
+                      2026年予算で軍事費はGDP比6.3%、歳出の約4割が国防・治安関連に振り向けられる戦時経済体制に移行した。ストックホルム国際平和研究所〈SIPRI〉の推計によればこの比率は2021年の約3.6%から急上昇しており、ピークとされる2025年からはいったん抑制されたものの、依然として高水準にある。消耗戦を継続するだけの資金と動員能力は当面維持できるという計算だ。ただし戦争が長期化すれば、予算が再修正される可能性もある。
+                    </div>
+                    <div class="key-claim">
+                      <strong>経済の内実と限界</strong>
+                      ただしGDP（国内総生産）成長率の見通しは下方修正されており、付加価値税を22%へ引き上げるなど財政圧迫の兆候も出ている。戦時経済の勢いには鈍化が見え、持久戦が長引くほど経済の「内圧」が上昇する。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:100%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- アメリカ（トランプ政権） -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">アメリカ（トランプ政権）</span>
+                      <span class="role-badge">早期停戦・負担削減</span>
+                    </div>
+                    <div class="pull-quote">「アメリカは欧州の戦争に無制限に資金を出す立場にない」</div>
+                    <div class="key-claim">
+                      <strong>和平仲介と支援の条件化</strong>
+                      トランプ大統領は2026年5月の3日間停戦を仲介し、ドネツク州の未占領地域（約6,500平方キロメートル）のウクライナによる割譲を含む案と、15年間の安全保障に関する提案を示したと報じられた。ウクライナにとって受け入れがたい条件であるため、交渉は進んでいない。
+                    </div>
+                    <div class="key-claim">
+                      <strong>支援の変容</strong>
+                      軍事支援は継続されているが、規模・条件・対象が変化している。欧州にさらなる負担増を迫りながら、欧州が単独でウクライナを支え切れるかは試されている段階だ。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:85%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 欧州 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">欧州（ドイツ・フランス＋東欧）</span>
+                      <span class="role-badge">穴埋めと「支援疲れ」の板挟み</span>
+                    </div>
+                    <div class="pull-quote">「アメリカなしでウクライナを支えられるか、欧州は試されている」</div>
+                    <div class="key-claim">
+                      <strong>900億ユーロ融資パッケージ</strong>
+                      欧州連合は900億ユーロの融資パッケージを、最終的には自らの予算を裏付けに組成した。凍結されたロシア国有資産そのものの没収はフランス・イタリアの法的・外交的懸念から回避された一方、凍結資産の運用益（利子）をウクライナ支援に充てる別建ての仕組みは動いている。いずれも欧州としての支援継続の意思表示だ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>割れる東西と「支援疲れ」</strong>
+                      スロバキア・チェコでは支援に懐疑的な政治勢力が台頭しているが、欧州連合全体の合意は維持されている。ただしアメリカの分担が縮小した場合、2026〜27年の必要額（推計約1,350億ユーロ）に対しては欧州だけでは大きな不足分が残るとみられ、追加負担は避けられない。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:80%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- グローバルサウス／中立国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">グローバルサウス／中立国</span>
+                      <span class="role-badge">早期終戦と経済安定</span>
+                    </div>
+                    <div class="pull-quote">「この戦争は食料とエネルギーの価格を押し上げ、私たちを傷つけている」</div>
+                    <div class="key-claim">
+                      <strong>「代理戦争」への距離感</strong>
+                      インド・ブラジル・トルコ・中国は欧米の対ロシア制裁に加わらず、ロシアとの貿易・外交関係を維持している。ウクライナ支持かロシア支持かという二項対立を避け、早期停戦と食料・エネルギー市場の安定を優先する立場だ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>停戦仲介への関心</strong>
+                      中国は「12項目の和平案」（2023年）を提示し、仲介者のポジションを維持している。グローバルサウスの多くは「欧米とロシアの代理戦争」と見ており、どちらの側にも軍事支援を行わない。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:60%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 現実主義・懐疑論 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">現実主義・懐疑論</span>
+                      <span class="role-badge">正義と停戦のトレードオフ</span>
+                    </div>
+                    <div class="pull-quote">「領土の現状追認は不正義かもしれない。だが長期化のコストも問うべきだ」</div>
+                    <div class="key-claim">
+                      <strong>現状追認という選択肢</strong>
+                      一部の研究者・政治家は「ウクライナが2014年以前の領土を回復するコスト」と「凍結停戦のコスト」を比較し、現状追認に近い停戦が現実的だと主張する。「正義の実現」と「早期停止」のトレードオフは、ウクライナ国内でも議論されている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>「凍結された戦争」の危険</strong>
+                      ただし、安全保障の保証なき停戦は「第二のミンスク合意」になりかねないという見方もある。2015年のミンスク合意（ミンスク2）による停戦が2022年の全面侵攻を防げなかった経緯を踏まえると、凍結停戦はリスクをゼロにしない。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:65%;"></div></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>望む結末</th>
+                        <th>時間は味方か</th>
+                        <th>最大の弱み</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>ウクライナ政府</td><td>領土回復＋安全保障の保証</td><td>外部支援が続けば有利</td><td>歩兵不足・動員への国民の抵抗</td></tr>
+                      <tr><td>ロシア</td><td>東部・南部の既占領地維持と緩衝化</td><td>西側の結束が緩めば有利</td><td>経済停滞・財政圧迫・孤立化</td></tr>
+                      <tr><td>アメリカ（トランプ政権）</td><td>早期停戦・コスト削減</td><td>長引くほど不利</td><td>「見捨てた」と見られる外交コスト</td></tr>
+                      <tr><td>欧州</td><td>ウクライナの主権回復・欧州安保の安定</td><td>ロシアの弱体化が続けば有利</td><td>支援疲れ・アメリカ分担なしの資金不足</td></tr>
+                      <tr><td>グローバルサウス</td><td>早期停戦と市場安定</td><td>長期化は不利</td><td>仲介の実効力がない</td></tr>
+                      <tr><td>現実主義・懐疑論</td><td>凍結停戦（現状ライン前後）</td><td>中立</td><td>停戦後の再侵攻リスクを説明できない</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/attrition-europe.jpg"
+                   alt="支援を続ける欧州諸国の旗が並ぶ景観" loading="lazy">
+              <figcaption>支援を続ける欧州と広がる「支援疲れ」。アメリカの後退が続くなか、欧州は財政的にも政治的にもギリギリの均衡を保ちながらウクライナを支えている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- 累計支援額の比較 -->
+              <div class="data-card">
+                <h4>国・地域別の累計支援額（2022〜2026年、億ユーロ）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="supportChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  軍事・財政・人道支援の合計。アメリカは単一国として最大だが、EU機関と欧州各国（ドイツ・イギリス・その他欧州）を合算した「欧州全体」ではアメリカを上回る。出典：Kiel Institute for the World Economy（Ukraine Support Tracker、2026年時点）
+                </p>
+              </div>
+
+              <!-- ロシア軍事費GDP比の推移 -->
+              <div class="data-card">
+                <h4>ロシアの軍事費GDP比の推移（%）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="russiaMilChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  概数・SIPRI〈ストックホルム国際平和研究所〉等を基に作成。2022年以降の急上昇が持久戦への転換を示す。2025年をピークに2026年はやや抑制されたが、依然として高水準にある。
+                </p>
+              </div>
+
+              <!-- 注目の数字 -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">4年超</div>
+                    <div class="stat-label">全面侵攻からの経過期間（2022年2月〜）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">約40km²</div>
+                    <div class="stat-label">2025年12月〜2026年5月にロシアが新たに支配・浸透した面積（ISW）。同期間のウクライナの押し戻しがこれを上回ったとされる</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">6.3%</div>
+                    <div class="stat-label">ロシアの軍事費対GDP比（2026年推計、歳出の約4割が国防治安）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">1,350億ユーロ</div>
+                    <div class="stat-label">ウクライナの2026〜27年推計必要支援額</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 消耗の指標 -->
+              <div class="data-card">
+                <h4>消耗の指標 — ウクライナ vs ロシア</h4>
+                <table style="width:100%;border-collapse:collapse;margin-top:1rem;font-size:0.82rem;">
+                  <thead>
+                    <tr style="border-bottom:1px solid var(--border);">
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">指標</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">ウクライナ</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">ロシア</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">兵員</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">歩兵不足・無断離隊増加・動員への抵抗</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">高額契約金による募兵、囚人・地方出身者の動員、北朝鮮兵を含む外部補充</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">防空</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">パトリオット迎撃弾の不足が深刻</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">長距離ミサイル・ドローンの大量使用</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">資金</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">対外支援に高依存・不足が構造化</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">GDP比6%台で持久可能も成長停滞</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">前線</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">膠着・後退圧力を受けながら防衛</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">低速で前進も突破口を開けず膠着</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">出典：IISS Military Balance、ISW戦況評価、カーネギー国際平和財団を基に整理（2026年6月現在）</p>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り — 消耗の臨界点</h2>
+
+            <div class="insight-box">
+              <div class="insight-title">なぜ膠着は崩れないのか</div>
+              <div class="insight-text">
+                前線が動かない根本的な理由は、攻撃側が防御側より大きな消耗を強いられる現代戦の構造にある。ドローンが偵察・攻撃の両面で安価に運用できるようになり、歩兵集団や戦車縦隊の大規模前進は「観測されたら即攻撃される」リスクを常に抱える。長距離精密打撃は敵の兵站拠点・指揮所・補給路を後方から攻撃できる一方、防御側が損失を補充しながら戦線を維持する能力を高めた。この「消耗的機動戦」では、突破口を開けても維持する兵力と補給が伴わなければ、作戦的な成功には転化しない。ウクライナもロシアも、戦術的前進を作戦的突破に変えられないまま消耗を続けている。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">先に尽きるのはどちらか — 人・金・武器</div>
+              <div class="insight-text">
+                「尽き方」は双方で異なる。ウクライナの最大の脆弱性は「人」——前線に送り込む歩兵の絶対数だ。防空迎撃弾、特にパトリオットシステムの弾薬不足も深刻で、ロシアの弾道ミサイルや滑空爆弾（グライドボム＝通常爆弾に翼を付け遠方から滑空させる兵器）による都市インフラへの打撃を防ぎきれなくなりつつある。一方、ロシアの脆弱性は「金」——戦時経済が長引くほど財政圧迫が累積し、民生への歪みが社会不満に転化するリスクがある。いずれの枯渇が先に限界点（臨界点）に達するかで、交渉テーブルのパワーバランスが変わる。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">支援疲れは決定打になるか</div>
+              <div class="insight-text">
+                アメリカが主要な支援国から退けば、欧州が穴を埋めきれるかという問いは重い。キール世界経済研究所（Kiel Institute for the World Economy）のウクライナ支援追跡（Ukraine Support Tracker）によれば、アメリカは単一国として最大の供与国（累計約1,146億ユーロ）だが、EU機関（約696億ユーロ）と欧州各国を合算した「欧州全体」では支援規模はすでにアメリカを上回る。ただし軍事支援の即応性や高性能装備の供与では、アメリカ依存がなお大きい。欧州は900億ユーロ規模の支援ローンを整備したが、2026〜27年の必要額は約1,350億ユーロと見積もられており、なお大きな不足分が残る。凍結ロシア資産の運用益の活用は重要な一歩だが、規模は必要額の一部にとどまる。支援疲れが「決定打」になるかは、欧州の政治的意志と財政的余力の両方に左右される。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">停戦後も残る「凍結された戦争」のリスク — 日本への含意</div>
+              <div class="insight-text">
+                領土の現状追認に近い形で停戦が実現しても、安全保障の保証が伴わなければ再侵攻のリスクは消えない。2015年に成立したミンスク合意（ミンスク2）は停戦を一時実現したが、ロシアはその7年後に全面侵攻に踏み切った。この教訓は、ウクライナ和平交渉において「停戦の条件」が極めて重要であることを示している。日本はG7のERAローン〈Extraordinary Revenue Acceleration＝凍結ロシア資産の運用益を裏付けとするG7の融資枠組み〉を通じ、最大4,719億円規模の円借款をウクライナに供与するなど、この問題への関与を続けている。権威主義国家による「力による現状変更の試み」に対し、ルールに基づく国際秩序を守ることの費用と便益は、日本の安全保障にも直結する問いだ。
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/attrition-edge.jpg"
+                   alt="夜明け前の廃墟の地平。消耗の臨界点を象徴する" loading="lazy">
+              <figcaption>どちらが先に尽きるか。消耗の臨界点——前線の膠着が続くなか、人・金・支援という見えない戦場での競争が、最終的な結末を決める。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源</h2>
+            <div class="sources-grid">
+
+              <a class="source-item" href="https://www.criticalthreats.org/analysis/russian-offensive-campaign-assessment-june-1-2026" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">ISW / Critical Threats — Russian Offensive Campaign Assessment (June 2026)</div>
+                  <div class="source-desc">アメリカの戦争研究所〈ISW〉とCritical Threatsによる継続的な戦況評価。前線の移動・占領面積の変化を日次で記録</div>
+                  <div class="source-country">【アメリカ・シンクタンク・戦況評価】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.csis.org/analysis/russias-grinding-war-ukraine" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">CSIS — Russia's Grinding War in Ukraine</div>
+                  <div class="source-desc">米戦略国際問題研究所〈CSIS〉による消耗戦の構造分析。前線膠着の要因と持続可能性を論じる</div>
+                  <div class="source-country">【アメリカ・シンクタンク】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.sipri.org/publications/2026/sipri-insights-peace-and-security/budget-fifth-year-war-military-spending-russias-budget-2026" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">SIPRI — Military Spending in Russia's Budget 2026</div>
+                  <div class="source-desc">ストックホルム国際平和研究所〈SIPRI〉によるロシアの軍事費動向分析。GDP比・歳出比の推移を詳述</div>
+                  <div class="source-country">【スウェーデン・研究機関】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.kielinstitut.de/topics/war-against-ukraine/ukraine-support-tracker/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Kiel Institute — Ukraine Support Tracker</div>
+                  <div class="source-desc">キール世界経済研究所による国別の対ウクライナ支援額の継続的な追跡調査。軍事・財政・人道支援を分類して集計</div>
+                  <div class="source-country">【ドイツ・経済研究機関】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.iiss.org/online-analysis/military-balance/2026/04/attrition-and-adaptation-ukraines-evolving-war-effort/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">IISS Military Balance — Attrition and Adaptation: Ukraine's Evolving War Effort</div>
+                  <div class="source-desc">国際戦略研究所〈IISS〉による消耗と適応の軍事分析。ウクライナの戦力構造の変化を評価</div>
+                  <div class="source-country">【イギリス・安全保障研究機関】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://carnegieendowment.org/research/2026/03/ukraine-military-russia-war-manpower-recruitment" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Carnegie — Ukraine's Manpower and Recruitment Challenge</div>
+                  <div class="source-desc">カーネギー国際平和財団による動員・兵員補充問題の分析。歩兵不足と国内の政治的緊張を詳述</div>
+                  <div class="source-country">【アメリカ・シンクタンク】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.csis.org/analysis/unfinished-plan-peace-ukraine-provision-provision" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">CSIS — An Unfinished Plan for Peace in Ukraine: Provision by Provision</div>
+                  <div class="source-desc">トランプ政権の和平提案を条文ごとに分析した米戦略国際問題研究所の報告。条件の問題点と交渉上の課題を整理</div>
+                  <div class="source-country">【アメリカ・シンクタンク】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.cer.eu/insights/ukraine-reparations-loan-how-fix-europes-financial-plumbing" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Centre for European Reform — Ukraine Reparations Loan: How to Fix Europe's Financial Plumbing</div>
+                  <div class="source-desc">欧州改革センター〈CER〉による凍結ロシア資産活用スキームの分析。900億ユーロ融資パッケージの構造と課題を論じる</div>
+                  <div class="source-country">【イギリス・欧州政策研究機関】</div>
+                </div>
+              </a>
+
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>核心と問い</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/ukraine/index.html">ウクライナ</a></div>
+            <div>2026年6月23日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer"><p>WorldView — 多視点で読む世界情勢</p></footer>
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 目次のスクロールハイライトは main.js が処理（.toc-list a + .is-current）
+  // タブ切り替えは main.js が処理（.tab-btn + .tab-pane）
+
+  // Chart.js — 累計支援額の比較
+  (function() {
+    var ctx = document.getElementById('supportChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['アメリカ', '欧州連合\n（EU機関）', 'ドイツ', 'イギリス', 'その他欧州'],
+        datasets: [{
+          label: '累計支援額（億ユーロ）',
+          data: [1146, 696, 225, 130, 341],
+          backgroundColor: [
+            'rgba(122, 90, 160, 0.82)',
+            'rgba(80, 140, 200, 0.75)',
+            'rgba(80, 160, 140, 0.72)',
+            'rgba(160, 140, 80, 0.70)',
+            'rgba(160, 100, 100, 0.68)'
+          ],
+          borderColor: 'transparent',
+          borderWidth: 1,
+          borderRadius: 4
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(ctx) { return '約' + ctx.parsed.x + '億ユーロ'; } } }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(255,255,255,0.06)' },
+            ticks: { color: '#8a9aaa', font: { size: 11 }, callback: function(v) { return v + '億€'; } },
+            beginAtZero: true
+          },
+          y: { grid: { display: false }, ticks: { color: '#8a9aaa', font: { size: 11 } } }
+        }
+      }
+    });
+  })();
+
+  // Chart.js — ロシア軍事費GDP比の推移
+  (function() {
+    var ctx = document.getElementById('russiaMilChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2021', '2022', '2023', '2024', '2025', '2026'],
+        datasets: [{
+          label: 'GDP比（%）',
+          data: [3.6, 3.9, 5.4, 6.3, 6.7, 6.3],
+          backgroundColor: 'rgba(184, 100, 80, 0.75)',
+          borderColor: 'rgba(184, 100, 80, 1)',
+          borderWidth: 1,
+          borderRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(ctx) { return '約' + ctx.parsed.y + '%'; } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: '#8a9aaa', font: { size: 11 } } },
+          y: {
+            grid: { color: 'rgba(255,255,255,0.06)' },
+            ticks: { color: '#8a9aaa', font: { size: 11 }, callback: function(v) { return v + '%'; } },
+            beginAtZero: true,
+            max: 8
+          }
+        }
+      }
+    });
+  })();
+</script>
+</body>
+</html>
