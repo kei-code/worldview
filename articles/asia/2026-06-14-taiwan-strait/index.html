@@ -31,7 +31,7 @@
       font-family: var(--font);
       font-size: 2.8rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--accent5);
       opacity: 0.65;
       line-height: 1;
       letter-spacing: -0.03em;
@@ -42,7 +42,7 @@
 
     /* 記事の問い（冒頭フック） */
     .article-question {
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--accent5);
       padding: 1rem 1.4rem;
       background: var(--bg-card);
       border-radius: 0 var(--radius) var(--radius) 0;
@@ -62,7 +62,7 @@
     .glossary-card {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.1rem 1.2rem;
-      border-top: 2px solid var(--accent);
+      border-top: 2px solid var(--accent5);
     }
     .glossary-term { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
     .glossary-def  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
@@ -73,11 +73,11 @@
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.2rem 1.3rem;
     }
-    .option-box.option-likely { border-top: 3px solid var(--accent); }
+    .option-box.option-likely { border-top: 3px solid var(--accent5); }
     .option-box.option-unlikely { border-top: 3px solid var(--border); opacity: 0.75; }
     .option-name { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.35rem; }
     .option-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
-    .option-box.option-likely .option-label { color: var(--accent); }
+    .option-box.option-likely .option-label { color: var(--accent5); }
     .option-box.option-unlikely .option-label { color: var(--text-dim); }
     .option-text { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
 
@@ -130,10 +130,10 @@
       transition: width 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     #sec-perspectives .tone-fill[data-side="right"] {
-      left: 50%; background: var(--accent);
+      left: 50%; background: var(--accent5);
     }
     #sec-perspectives .tone-fill[data-side="left"] {
-      right: 50%; left: auto; background: var(--accent);
+      right: 50%; left: auto; background: var(--accent5);
     }
 
     /* fate-grid（シナリオ対比） */
@@ -148,7 +148,7 @@
       font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
       letter-spacing: 0.1em; margin-bottom: 0.9rem;
     }
-    .fate-box.fate-ok  .fate-box-title { color: var(--accent); }
+    .fate-box.fate-ok  .fate-box-title { color: var(--accent5); }
     .fate-box.fate-bad .fate-box-title { color: #8a8190; }
     .fate-row {
       display: flex; gap: 0.5rem; align-items: flex-start;
@@ -157,7 +157,7 @@
     }
     .fate-row:last-child { margin-bottom: 0; }
     .fate-mark { font-size: 0.78rem; font-weight: 700; flex-shrink: 0; margin-top: 0.05rem; }
-    .fate-box.fate-ok  .fate-mark { color: var(--accent); }
+    .fate-box.fate-ok  .fate-mark { color: var(--accent5); }
     .fate-box.fate-bad .fate-mark { color: #8a8190; }
 
     /* Section 04 */
@@ -168,7 +168,7 @@
     .insight-box {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--accent5);
     }
     .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
     .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
@@ -178,8 +178,8 @@
       text-decoration: none; color: inherit; cursor: pointer;
       display: flex; gap: 0.75rem; align-items: flex-start;
     }
-    a.source-item:hover { border-color: var(--accent); background: var(--bg-card2); }
-    a.source-item:hover .source-name { color: var(--accent); }
+    a.source-item:hover { border-color: var(--accent5); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent5); }
     a.source-item .source-name { transition: color 0.2s; }
 
     @media (max-width: 900px) {
@@ -221,19 +221,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent5)">
           <div class="kp-label">ADIZ侵入回数のピーク（2024年）から2026年の変化</div>
           <div class="kp-value">月300回超 → 月200回未満に減少</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent5)">
           <div class="kp-label">TSMCの先端半導体（7nm以下）世界シェア</div>
           <div class="kp-value">約92%（世界経済の急所）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent5)">
           <div class="kp-label">台湾有事が起きた場合の世界経済損失（試算）</div>
           <div class="kp-value">最大10兆ドル</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent5)">
           <div class="kp-label">中国が「検疫」に使う前面部隊</div>
           <div class="kp-value">海軍ではなく海警局（法執行機関）</div>
         </div>
@@ -895,12 +895,12 @@
         },
         scales: {
           x: {
-            grid: { color: 'rgba(154,180,196,0.07)' },
+            grid: { color: 'rgba(154,138,180,0.07)' },
             ticks: { color: 'rgba(200,210,220,0.70)', font: { size: 11 } }
           },
           y: {
             min: 0,
-            grid: { color: 'rgba(154,180,196,0.07)' },
+            grid: { color: 'rgba(154,138,180,0.07)' },
             ticks: {
               color: 'rgba(200,210,220,0.55)', font: { size: 10 },
               callback: function(v) { return v.toLocaleString() + '回'; }
@@ -930,7 +930,7 @@
           {
             label: '台湾',
             data: [90, 300, 16],
-            backgroundColor: 'rgba(154,180,196,0.72)',
+            backgroundColor: 'rgba(154,138,180,0.72)',
             borderColor: 'transparent',
             borderWidth: 0,
           }
@@ -954,11 +954,11 @@
         },
         scales: {
           x: {
-            grid: { color: 'rgba(154,180,196,0.07)' },
+            grid: { color: 'rgba(154,138,180,0.07)' },
             ticks: { color: 'rgba(200,210,220,0.55)', font: { size: 10 } }
           },
           y: {
-            grid: { color: 'rgba(154,180,196,0.07)' },
+            grid: { color: 'rgba(154,138,180,0.07)' },
             ticks: { color: 'rgba(200,210,220,0.70)', font: { size: 11 } }
           }
         }

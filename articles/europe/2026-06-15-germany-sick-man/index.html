@@ -31,7 +31,7 @@
       font-family: var(--font);
       font-size: 2.8rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--accent5);
       opacity: 0.65;
       line-height: 1;
       letter-spacing: -0.03em;
@@ -42,7 +42,7 @@
 
     /* 記事の問い（冒頭フック） */
     .article-question {
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--accent5);
       padding: 1rem 1.4rem;
       background: var(--bg-card);
       border-radius: 0 var(--radius) var(--radius) 0;
@@ -62,7 +62,7 @@
     .factor-card {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.1rem 1.2rem;
-      border-top: 2px solid var(--accent);
+      border-top: 2px solid var(--accent5);
     }
     .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
     .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
@@ -108,7 +108,7 @@
     .insight-box {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--accent5);
     }
     .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
     .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
@@ -127,8 +127,8 @@
 
     /* プルクォート（核心の一文） */
     .pull-quote {
-      border-left: 3px solid var(--accent);
-      background: rgba(154,180,196,0.06);
+      border-left: 3px solid var(--accent5);
+      background: rgba(154,138,180,0.06);
       padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       font-size: 0.88rem; font-weight: 600;
@@ -140,7 +140,7 @@
     .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
     .depth-dots { display: flex; gap: 0.35rem; }
     .depth-dot { width: 9px; height: 9px; border-radius: 50%; }
-    .depth-dot.on  { background: var(--accent); }
+    .depth-dot.on  { background: var(--accent5); }
     .depth-dot.off { background: var(--border); }
 
     @media (max-width: 900px) {
@@ -178,19 +178,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent5)">
           <div class="kp-label">3年連続のスタグネーション</div>
           <div class="kp-value">2023・2024と2年連続GDP縮小。2025は+0.3%にとどまる</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent5)">
           <div class="kp-label">2026年成長率予測の半減</div>
           <div class="kp-value">当初1.0%予測 → 2026年4月に0.5%へ下方修正</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent5)">
           <div class="kp-label">製造業雇用の消失</div>
           <div class="kp-value">過去1年で12.5万人削減。独産業企業の4割が追加削減を計画</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent5)">
           <div class="kp-label">対中自動車輸出の崩壊</div>
           <div class="kp-value">2025年に前年比33%減（136億ユーロ）。フォルクスワーゲンは中国市場で3位に転落</div>
         </div>
@@ -582,7 +582,7 @@
                   </div>
                   <div class="spend-row">
                     <div class="spend-head"><span class="spend-label">スペイン</span><span class="spend-value">€29/時</span></div>
-                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent);width:47%;"></div></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent5);width:47%;"></div></div>
                   </div>
                   <div class="spend-row">
                     <div class="spend-head"><span class="spend-label">ポルトガル</span><span class="spend-value">€20/時</span></div>
@@ -755,7 +755,7 @@
     if (!ctx) return;
     var data = [1.4, -0.3, -0.2, 0.3, 0.5, 0.9];
     var colors = data.map(function(v) {
-      return v < 0 ? 'rgba(184,120,104,0.82)' : 'rgba(154,180,196,0.72)';
+      return v < 0 ? 'rgba(184,120,104,0.82)' : 'rgba(154,138,180,0.72)';
     });
     new Chart(ctx.getContext('2d'), {
       type: 'bar',
@@ -811,10 +811,10 @@
           label: '中国事業利益（十億ユーロ）',
           data: [4.2, 5.0, 4.0, 3.2, 1.2, 0.4],
           backgroundColor: [
-            'rgba(154,180,196,0.60)',
-            'rgba(154,180,196,0.85)',
-            'rgba(154,180,196,0.65)',
-            'rgba(154,180,196,0.55)',
+            'rgba(154,138,180,0.60)',
+            'rgba(154,138,180,0.85)',
+            'rgba(154,138,180,0.65)',
+            'rgba(154,138,180,0.55)',
             'rgba(184,120,104,0.70)',
             'rgba(184,120,104,0.85)',
           ],

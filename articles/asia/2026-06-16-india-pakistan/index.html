@@ -31,7 +31,7 @@
       font-family: var(--font);
       font-size: 2.8rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--accent5);
       opacity: 0.65;
       line-height: 1;
       letter-spacing: -0.03em;
@@ -42,7 +42,7 @@
 
     /* 記事の問い（冒頭フック） */
     .article-question {
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--accent5);
       padding: 1rem 1.4rem;
       background: var(--bg-card);
       border-radius: 0 var(--radius) var(--radius) 0;
@@ -62,7 +62,7 @@
     .factor-card {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.1rem 1.2rem;
-      border-top: 2px solid var(--accent);
+      border-top: 2px solid var(--accent5);
     }
     .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
     .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
@@ -108,7 +108,7 @@
     .insight-box {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--accent5);
     }
     .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
     .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
@@ -127,7 +127,7 @@
 
     /* プルクォート（核心の一文） */
     .pull-quote {
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--accent5);
       background: rgba(184,127,140,0.07);
       padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
@@ -139,7 +139,7 @@
     .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
     .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
     .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
-    .depth-bar-fill { height: 100%; background: var(--accent); border-radius: 5px; }
+    .depth-bar-fill { height: 100%; background: var(--accent5); border-radius: 5px; }
 
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
@@ -176,19 +176,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent5)">
           <div class="kp-label">パハルガム襲撃で26人死亡</div>
           <div class="kp-value">2025年4月22日、観光地で「The Resistance Front（TRF＝カシミール武装勢力）」が観光客を襲撃</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent5)">
           <div class="kp-label">核弾頭は印180対パ170発</div>
           <div class="kp-value">2025年8月、インドはAgni-5にMIRV（多弾頭独立目標再突入弾）試験を成功させた</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent5)">
           <div class="kp-label">インダス水条約を保留</div>
           <div class="kp-value">1960年来の条約をインドが「テロ支援が続く限り保留」と表明。農業の生命線が人質に</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent5)">
           <div class="kp-label">GDPは約11倍の格差</div>
           <div class="kp-value">インド約4.15兆ドル対パキスタン4,520億ドル。経済力では勝負にならない非対称な対立</div>
         </div>
@@ -241,7 +241,7 @@
               </div>
             </div>
 
-            <div style="background:var(--bg-card);border:1px solid var(--border-subtle);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:0.9rem 1.2rem;margin-top:1.25rem;font-size:0.82rem;">
+            <div style="background:var(--bg-card);border:1px solid var(--border-subtle);border-left:3px solid var(--accent5);border-radius:0 var(--radius) var(--radius) 0;padding:0.9rem 1.2rem;margin-top:1.25rem;font-size:0.82rem;">
               <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);font-weight:700;margin-bottom:0.45rem;">用語解説</div>
               <span style="font-weight:700;color:var(--text);">インダス水条約（1960年）</span>
               <p style="color:var(--text-muted);line-height:1.75;margin-top:0.35rem;margin-bottom:0;">世界銀行の仲介でインドとパキスタンが締結した水利条約。インダス川水系の6支流を東西に分割し、東の3支流（ラービー・ビアース・サトレジ）をインド、西の3支流（インダス・ジェルム・チェナーブ）をパキスタンに配分する。パキスタン農業の水需要の8割以上がこの西側の配分に依存しており、3度の戦争を経ても効力を維持してきた。2025年4月のパハルガム襲撃後、インドが「保留（abeyance）」を宣言し、初めて外交カードとして行使された。</p>
@@ -585,27 +585,27 @@
                   </thead>
                   <tbody>
                     <tr style="border-bottom:1px solid var(--border-subtle);">
-                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">1947–48</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;white-space:nowrap;vertical-align:top;">1947–48</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">第一次印パ戦争。国連停戦で実効支配線（LoC）が生まれ、カシミール問題の原型が固まる</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);text-align:right;white-space:nowrap;vertical-align:top;">約1年半</td>
                     </tr>
                     <tr style="border-bottom:1px solid var(--border-subtle);">
-                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">1965</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;white-space:nowrap;vertical-align:top;">1965</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">第二次印パ戦争。カシミール奪還を狙ったパキスタン軍が侵入、引き分けのまま国連停戦</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);text-align:right;white-space:nowrap;vertical-align:top;">17日間</td>
                     </tr>
                     <tr style="border-bottom:1px solid var(--border-subtle);">
-                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">1971</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;white-space:nowrap;vertical-align:top;">1971</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">バングラデシュ独立戦争。インドの軍事介入でパキスタンが東半分を喪失、以後の核開発へ直結</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);text-align:right;white-space:nowrap;vertical-align:top;">13日間</td>
                     </tr>
                     <tr style="border-bottom:1px solid var(--border-subtle);">
-                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">1999</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;white-space:nowrap;vertical-align:top;">1999</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">カルギル戦争。核保有後初の本格衝突。米国仲介でパキスタンが撤退し「核の天井」構図が定着</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);text-align:right;white-space:nowrap;vertical-align:top;">約2か月</td>
                     </tr>
                     <tr>
-                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">2025</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;white-space:nowrap;vertical-align:top;">2025</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">シンドゥール作戦。核保有国同士がミサイル・ドローンを撃ち合い、米仲介で停戦</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);text-align:right;white-space:nowrap;vertical-align:top;">4日間</td>
                     </tr>
@@ -788,7 +788,7 @@
           {
             label: 'パキスタン',
             data: [170, 65, 105],
-            backgroundColor: 'rgba(154,180,196,0.55)',
+            backgroundColor: 'rgba(154,138,180,0.55)',
             borderColor: 'transparent',
             borderRadius: 3,
           }
@@ -844,7 +844,7 @@
           {
             label: 'パキスタン',
             data: [0.45, 2.51, 1.90],
-            backgroundColor: 'rgba(154,180,196,0.55)',
+            backgroundColor: 'rgba(154,138,180,0.55)',
             borderColor: 'transparent',
             borderRadius: 3,
           }

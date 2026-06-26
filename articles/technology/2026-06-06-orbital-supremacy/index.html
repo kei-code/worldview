@@ -27,8 +27,8 @@
     .section-title .sec-num {
       font-family: var(--font-mono);
       font-size: 0.78rem; font-weight: 700;
-      color: var(--accent);
-      border: 1px solid rgba(154,180,196,0.35);
+      color: var(--accent-tech);
+      border: 1px solid rgba(128,172,216,0.35);
       border-radius: 4px;
       padding: 0.1em 0.45em;
       letter-spacing: 0.04em;
@@ -39,11 +39,11 @@
     .const-box {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.2rem 1.3rem;
-      border-left: 2px solid var(--accent);
+      border-left: 2px solid var(--accent-tech);
     }
     .const-box .cn-op { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem; }
     .const-box .cn-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .const-box .cn-num { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; }
+    .const-box .cn-num { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--accent-tech); line-height: 1; margin-bottom: 0.4rem; }
     .const-box .cn-text { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
 
     /* シェアバー（縦積み） */
@@ -115,19 +115,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">スターリンクの衛星数</div>
           <div class="kp-value">2026年3月時点で1万基超</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">全稼働衛星に占める割合</div>
           <div class="kp-value">約65% — 低軌道の質量の半分超</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">衛星ネット市場での実測シェア</div>
           <div class="kp-value">97.1%（2025年第3四半期・Speedtest）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">追跡される宇宙ゴミ</div>
           <div class="kp-value">10cm超で4万3,000個以上</div>
         </div>
@@ -254,7 +254,7 @@
                 <div class="perspectives-grid">
 
                   <!-- SpaceX -->
-                  <div class="perspective-card" style="--card-color:var(--accent);">
+                  <div class="perspective-card" style="--card-color:var(--accent-tech);">
                     <div class="country-header">
                       <span class="country-name">スペースX・スターリンク</span>
                       <span class="stance-label stance-supportive">革新・接続の拡大</span>
@@ -277,7 +277,7 @@
                   </div>
 
                   <!-- US gov -->
-                  <div class="perspective-card" style="--card-color:var(--accent);">
+                  <div class="perspective-card" style="--card-color:var(--accent-tech);">
                     <div class="country-header">
                       <span class="country-name">アメリカ政府</span>
                       <span class="stance-label stance-cautious">同盟資産だが制御は難題</span>
@@ -300,7 +300,7 @@
                   </div>
 
                   <!-- EU -->
-                  <div class="perspective-card" style="--card-color:var(--accent);">
+                  <div class="perspective-card" style="--card-color:var(--accent-tech);">
                     <div class="country-header">
                       <span class="country-name">欧州連合</span>
                       <span class="stance-label stance-cautious">主権のための自前網</span>
@@ -430,7 +430,7 @@
                 <div class="share-bar">
                   <div class="share-row">
                     <div class="share-head"><span class="share-label">スターリンク</span><span class="share-value">約65%</span></div>
-                    <div class="share-track"><div class="share-fill" style="background:var(--accent);width:65%;"></div></div>
+                    <div class="share-track"><div class="share-fill" style="background:var(--accent-tech);width:65%;"></div></div>
                   </div>
                   <div class="share-row">
                     <div class="share-head"><span class="share-label">その他すべての運用者</span><span class="share-value">約35%</span></div>
@@ -454,7 +454,7 @@
                   </div>
                   <div class="share-row">
                     <div class="share-head"><span class="share-label">スターリンク（運用中）</span><span class="share-value">1万基+</span></div>
-                    <div class="share-track"><div class="share-fill" style="background:var(--accent);width:67%;"></div></div>
+                    <div class="share-track"><div class="share-fill" style="background:var(--accent-tech);width:67%;"></div></div>
                   </div>
                   <div class="share-row">
                     <div class="share-head"><span class="share-label">IRIS²（欧州連合）</span><span class="share-value">282</span></div>
@@ -589,7 +589,7 @@ new Chart(ctx, {
       label: '衛星周波数の申請件数（指数）',
       data: [100, 150, 220, 300, 380, 500],
       borderColor: '#9ab4c4',
-      backgroundColor: 'rgba(154,180,196,0.12)',
+      backgroundColor: 'rgba(128,172,216,0.12)',
       tension: 0.3, fill: true, pointRadius: 3,
       pointBackgroundColor: '#9ab4c4',
     }]

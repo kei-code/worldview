@@ -31,7 +31,7 @@
       font-family: var(--font);
       font-size: 2.8rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--accent3);
       opacity: 0.65;
       line-height: 1;
       letter-spacing: -0.03em;
@@ -42,7 +42,7 @@
 
     /* 記事の問い（冒頭フック） */
     .article-question {
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--accent3);
       padding: 1rem 1.4rem;
       background: var(--bg-card);
       border-radius: 0 var(--radius) var(--radius) 0;
@@ -62,7 +62,7 @@
     .factor-card {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.1rem 1.2rem;
-      border-top: 2px solid var(--accent);
+      border-top: 2px solid var(--accent3);
     }
     .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
     .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
@@ -108,7 +108,7 @@
     .insight-box {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--accent3);
     }
     .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
     .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
@@ -127,8 +127,8 @@
 
     /* プルクォート（核心の一文） */
     .pull-quote {
-      border-left: 3px solid var(--accent);
-      background: rgba(154,180,196,0.06);
+      border-left: 3px solid var(--accent3);
+      background: rgba(122,170,130,0.06);
       padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       font-size: 0.88rem; font-weight: 600;
@@ -139,7 +139,7 @@
     .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
     .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
     .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
-    .depth-bar-fill { height: 100%; background: var(--accent); border-radius: 5px; }
+    .depth-bar-fill { height: 100%; background: var(--accent3); border-radius: 5px; }
 
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
@@ -176,19 +176,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent3)">
           <div class="kp-label">海氷は観測史上最低水準</div>
           <div class="kp-value">2026年3月の冬季最大海氷面積は1,429万km²。1981〜2010年平均より約136万km²少ない</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent3)">
           <div class="kp-label">スエズ比 約40%短縮の航路</div>
           <div class="kp-value">北極海航路（NSR＝ロシア沿岸を通る北極の海路）の2025年通航は103隻。中国は欧州へ20日で到達</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent3)">
           <div class="kp-label">世界有数の未発見資源</div>
           <div class="kp-value">世界の未発見石油の約13%・天然ガスの約30%が北極にあるとされる（USGS＝米地質調査所）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent3)">
           <div class="kp-label">砕氷船は40対2の格差</div>
           <div class="kp-value">ロシアは約40隻（うち原子力7隻）。アメリカは老朽化した2隻にとどまる</div>
         </div>
@@ -542,7 +542,7 @@
                 <div class="spend-bar" style="margin-top:1.5rem;">
                   <div class="spend-row">
                     <div class="spend-head"><span class="spend-label">天然ガス（世界の未発見量に占める割合）</span><span class="spend-value">約30%</span></div>
-                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent);width:30%;"></div></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent3);width:30%;"></div></div>
                   </div>
                   <div class="spend-row">
                     <div class="spend-head"><span class="spend-label">石油（世界の未発見量に占める割合）</span><span class="spend-value">約13%</span></div>
@@ -726,9 +726,9 @@
         datasets: [{
           label: '冬季最大海氷面積',
           data: [16.5, 15.9, 15.2, 14.6, 14.33, 14.29],
-          borderColor: 'rgba(154,180,196,0.9)',
-          backgroundColor: 'rgba(154,180,196,0.08)',
-          pointBackgroundColor: 'rgba(154,180,196,0.9)',
+          borderColor: 'rgba(122,170,130,0.9)',
+          backgroundColor: 'rgba(122,170,130,0.08)',
+          pointBackgroundColor: 'rgba(122,170,130,0.9)',
           tension: 0.3,
           fill: true,
           borderWidth: 2,
@@ -777,9 +777,9 @@
           data: [40, 8, 4, 2],
           backgroundColor: [
             'rgba(184,120,104,0.78)',
-            'rgba(154,180,196,0.78)',
+            'rgba(122,170,130,0.78)',
             'rgba(196,168,130,0.78)',
-            'rgba(154,180,196,0.55)',
+            'rgba(122,170,130,0.55)',
           ],
           borderColor: 'transparent',
           borderWidth: 0,

@@ -31,7 +31,7 @@
       font-family: var(--font);
       font-size: 2.8rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--accent-tech);
       opacity: 0.65;
       line-height: 1;
       letter-spacing: -0.03em;
@@ -42,7 +42,7 @@
 
     /* 記事の問い（冒頭フック） */
     .article-question {
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--accent-tech);
       padding: 1rem 1.4rem;
       background: var(--bg-card);
       border-radius: 0 var(--radius) var(--radius) 0;
@@ -62,7 +62,7 @@
     .factor-card {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.1rem 1.2rem;
-      border-top: 2px solid var(--accent);
+      border-top: 2px solid var(--accent-tech);
     }
     .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
     .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
@@ -108,7 +108,7 @@
     .insight-box {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--accent-tech);
     }
     .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
     .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
@@ -127,8 +127,8 @@
 
     /* プルクォート（核心の一文） */
     .pull-quote {
-      border-left: 3px solid var(--accent);
-      background: rgba(154,180,196,0.06);
+      border-left: 3px solid var(--accent-tech);
+      background: rgba(128,172,216,0.06);
       padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       font-size: 0.88rem; font-weight: 600;
@@ -139,7 +139,7 @@
     .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
     .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
     .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
-    .depth-bar-fill { height: 100%; background: var(--accent); border-radius: 5px; }
+    .depth-bar-fill { height: 100%; background: var(--accent-tech); border-radius: 5px; }
 
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
@@ -175,19 +175,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">Claude CodeがGitHubコミットの約4%</div>
           <div class="kp-value">2026年2月時点で日次約13.5万件。2026年末には日次コミットの20%超との予測</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">エンタープライズアプリの40%が組込み</div>
           <div class="kp-value">2026年末予測（2025年は5%未満）。AIエージェント市場は2034年に2,360億ドルへ</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">だが本番稼働は11%のみ</div>
           <div class="kp-value">79%の企業が何らかの形で採用するも、本番環境で動かせているのは11%</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">タスク自律の時間幅は4か月で倍増</div>
           <div class="kp-value">2026年半ばで約2時間のタスクを50%遂行（METR＝AIの能力を独立評価する非営利研究機関）</div>
         </div>
@@ -568,7 +568,7 @@
                 <div class="spend-bar" style="margin-top:1.5rem;">
                   <div class="spend-row">
                     <div class="spend-head"><span class="spend-label">開発者の常用率</span><span class="spend-value">71%</span></div>
-                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent);width:71%;"></div></div>
+                    <div class="spend-track"><div class="spend-fill" style="background:var(--accent-tech);width:71%;"></div></div>
                   </div>
                   <div class="spend-row">
                     <div class="spend-head"><span class="spend-label">AI提案コードの受入率</span><span class="spend-value">30%</span></div>
@@ -766,9 +766,9 @@
           {
             label: 'OSWorld',
             data: [12, 22, 38, 52, 61, 66],
-            borderColor: 'rgba(154,180,196,0.9)',
-            backgroundColor: 'rgba(154,180,196,0.08)',
-            pointBackgroundColor: 'rgba(154,180,196,0.9)',
+            borderColor: 'rgba(128,172,216,0.9)',
+            backgroundColor: 'rgba(128,172,216,0.08)',
+            pointBackgroundColor: 'rgba(128,172,216,0.9)',
             tension: 0.3,
             fill: false,
             borderWidth: 2,
@@ -830,11 +830,11 @@
         datasets: [{
           data: [7.6, 10.9, 35, 90, 236],
           backgroundColor: [
-            'rgba(154,180,196,0.55)',
-            'rgba(154,180,196,0.65)',
-            'rgba(154,180,196,0.72)',
-            'rgba(154,180,196,0.80)',
-            'rgba(154,180,196,0.88)',
+            'rgba(128,172,216,0.55)',
+            'rgba(128,172,216,0.65)',
+            'rgba(128,172,216,0.72)',
+            'rgba(128,172,216,0.80)',
+            'rgba(128,172,216,0.88)',
           ],
           borderColor: 'transparent',
           borderWidth: 0,

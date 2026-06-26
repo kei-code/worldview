@@ -28,8 +28,8 @@
     .section-title .sec-num {
       font-family: var(--font-mono);
       font-size: 0.78rem; font-weight: 700;
-      color: var(--accent);
-      border: 1px solid rgba(154,180,196,0.35);
+      color: var(--accent-tech);
+      border: 1px solid rgba(128,172,216,0.35);
       border-radius: 4px;
       padding: 0.1em 0.45em;
       letter-spacing: 0.04em;
@@ -40,11 +40,11 @@
     .flow-card {
       background: var(--bg-card); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 1.35rem;
-      border-top: 2px solid var(--fc-color, var(--accent)); position: relative;
+      border-top: 2px solid var(--fc-color, var(--accent-tech)); position: relative;
     }
     .flow-step {
       font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em;
-      color: var(--fc-color, var(--accent)); margin-bottom: 0.5rem;
+      color: var(--fc-color, var(--accent-tech)); margin-bottom: 0.5rem;
     }
     .flow-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
     .flow-sub { font-size: 0.76rem; color: var(--text-dim); margin-bottom: 0.85rem; }
@@ -55,7 +55,7 @@
     .leader {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.1rem 1.25rem;
-      border-left: 2px solid var(--accent);
+      border-left: 2px solid var(--accent-tech);
     }
     .leader .ld-name { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; }
     .leader .ld-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
@@ -92,19 +92,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">ノーベル化学賞 2024</div>
           <div class="kp-value">AlphaFold開発者ら3名が受賞</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">構造予測の規模</div>
           <div class="kp-value">既知のほぼ全2億種のタンパク質</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">利用の広がり</div>
           <div class="kp-value">190か国・200万人超の研究者</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">自律実験室の速度</div>
           <div class="kp-value">従来比 約10倍のデータ収集</div>
         </div>
@@ -269,7 +269,7 @@
                 <div class="perspectives-grid">
 
                   <!-- 開発者 -->
-                  <div class="perspective-card" style="--card-color:var(--accent);">
+                  <div class="perspective-card" style="--card-color:var(--accent-tech);">
                     <div class="country-header">
                       <span class="country-name">AI開発者（ディープマインド等）</span>
                       <span class="stance-label stance-supportive">楽観・実証</span>
@@ -292,7 +292,7 @@
                   </div>
 
                   <!-- 各国政府 -->
-                  <div class="perspective-card" style="--card-color:var(--accent);">
+                  <div class="perspective-card" style="--card-color:var(--accent-tech);">
                     <div class="country-header">
                       <span class="country-name">各国政府</span>
                       <span class="stance-label stance-cautious">国家戦略・投資競争</span>
@@ -315,7 +315,7 @@
                   </div>
 
                   <!-- 現場の科学者 -->
-                  <div class="perspective-card" style="--card-color:var(--accent);">
+                  <div class="perspective-card" style="--card-color:var(--accent-tech);">
                     <div class="country-header">
                       <span class="country-name">現場の科学者</span>
                       <span class="stance-label stance-cautious">恩恵と懸念の両面</span>
@@ -338,7 +338,7 @@
                   </div>
 
                   <!-- 産業界 -->
-                  <div class="perspective-card" style="--card-color:var(--accent);">
+                  <div class="perspective-card" style="--card-color:var(--accent-tech);">
                     <div class="country-header">
                       <span class="country-name">創薬・材料産業</span>
                       <span class="stance-label stance-supportive">実装・高速化</span>
@@ -470,12 +470,12 @@
                 <div class="bar-chart">
                   <div class="bar-row">
                     <div class="bar-label">欧州連合</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent);" data-width="100%"></div></div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent-tech);" data-width="100%"></div></div>
                     <div class="bar-value">約1,100億ユーロ</div>
                   </div>
                   <div class="bar-row">
                     <div class="bar-label">フランス</div>
-                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent);" data-width="99%"></div></div>
+                    <div class="bar-track"><div class="bar-fill" style="background:var(--accent-tech);" data-width="99%"></div></div>
                     <div class="bar-value">約1,090億ユーロ</div>
                   </div>
                   <div class="bar-row">
@@ -631,7 +631,7 @@ new Chart(ctx, {
     datasets: [{
       label: '発見に要する相対時間（小さいほど速い）',
       data: [100, 25, 10],
-      backgroundColor: ['rgba(184,120,104,0.6)', 'rgba(154,180,196,0.6)', 'rgba(122,170,130,0.7)'],
+      backgroundColor: ['rgba(184,120,104,0.6)', 'rgba(128,172,216,0.6)', 'rgba(122,170,130,0.7)'],
       borderRadius: 4,
     }]
   },

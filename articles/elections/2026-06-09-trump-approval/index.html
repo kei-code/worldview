@@ -31,7 +31,7 @@
       font-family: var(--font);
       font-size: 2.8rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--accent4);
       opacity: 0.65;
       line-height: 1;
       letter-spacing: -0.03em;
@@ -49,7 +49,7 @@
     .glossary-card {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.1rem 1.2rem;
-      border-top: 2px solid var(--accent);
+      border-top: 2px solid var(--accent4);
     }
     .glossary-term { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
     .glossary-def  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
@@ -59,7 +59,7 @@
     .driver-box {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.2rem 1.3rem;
-      border-top: 2px solid var(--dc-color, var(--accent));
+      border-top: 2px solid var(--dc-color, var(--accent4));
     }
     .driver-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
     .driver-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
@@ -69,8 +69,8 @@
     .issue-row { display: grid; grid-template-columns: 120px 1fr 48px; align-items: center; gap: 0.9rem; }
     .issue-name { font-size: 0.84rem; font-weight: 600; color: var(--text); }
     .issue-track { position: relative; height: 9px; border-radius: 5px; background: var(--bg-card2); overflow: hidden; }
-    .issue-fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 5px; background: var(--accent); transition: width 0.9s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .issue-val { font-size: 0.82rem; font-weight: 700; color: var(--accent); text-align: right; }
+    .issue-fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 5px; background: var(--accent4); transition: width 0.9s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .issue-val { font-size: 0.82rem; font-weight: 700; color: var(--accent4); text-align: right; }
 
     /* 図版 */
     .article-figure { margin: 2.75rem 0; }
@@ -127,11 +127,11 @@
     }
     /* 右方向（支持寄り）*/
     #sec-perspectives .tone-fill[data-side="right"] {
-      left: 50%; background: var(--accent);
+      left: 50%; background: var(--accent4);
     }
     /* 左方向（不支持寄り）*/
     #sec-perspectives .tone-fill[data-side="left"] {
-      right: 50%; left: auto; background: var(--accent);
+      right: 50%; left: auto; background: var(--accent4);
     }
 
     /* Section 06: ソースカードをリンク化 */
@@ -139,8 +139,8 @@
       text-decoration: none; color: inherit; cursor: pointer;
       display: flex; gap: 0.75rem; align-items: flex-start;
     }
-    a.source-item:hover { border-color: var(--accent); background: var(--bg-card2); }
-    a.source-item:hover .source-name { color: var(--accent); }
+    a.source-item:hover { border-color: var(--accent4); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent4); }
     a.source-item .source-name { transition: color 0.2s; }
 
     @media (max-width: 900px) {
@@ -181,19 +181,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent4)">
           <div class="kp-label">全体の支持率（2026年6月・集計平均）</div>
           <div class="kp-value">38.6%（不支持 58.0%）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent4)">
           <div class="kp-label">共和党支持者と民主党支持者の支持率の差</div>
           <div class="kp-value">80ポイント（87% 対 7%）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent4)">
           <div class="kp-label">無党派（独立）層の支持率</div>
           <div class="kp-value">34%（2018年の水準を下回る）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent4)">
           <div class="kp-label">第2期で最も低かった月の支持率</div>
           <div class="kp-value">38.1%（2026年5月）</div>
         </div>
@@ -287,28 +287,28 @@
               支持率の下落カーブは、消費者が物価高を実感し始めた時期とほぼ重なっている。
             </p>
             <div class="driver-grid">
-              <div class="driver-box" style="--dc-color:var(--accent);">
+              <div class="driver-box" style="--dc-color:var(--accent4);">
                 <div class="driver-name">物価高・インフレ（最大の弱点）</div>
                 <div class="driver-text">
                   PCE（個人消費支出）物価指数は4.5%まで上昇。食品・住居費の高止まりが家計を圧迫し、
                   「生活が楽にならない」という不満が支持率を直接押し下げた。経済の評価はネット−18と、全争点で最悪。
                 </div>
               </div>
-              <div class="driver-box" style="--dc-color:var(--accent);">
+              <div class="driver-box" style="--dc-color:var(--accent4);">
                 <div class="driver-name">関税政策の副作用</div>
                 <div class="driver-text">
                   看板政策である関税の引き上げが、2026年第1四半期から輸入品の価格に転嫁され始めた。
                   公約だった「物価を下げる」とは逆方向の体感が広がり、支持者の一部にも失望が生じている。
                 </div>
               </div>
-              <div class="driver-box" style="--dc-color:var(--accent);">
+              <div class="driver-box" style="--dc-color:var(--accent4);">
                 <div class="driver-name">スタグフレーション懸念</div>
                 <div class="driver-text">
                   第1四半期のGDPは+2.0%と成長を保つ一方、インフレは4.5%。
                   「景気は伸び悩むのに物価は上がる」というスタグフレーションへの不安が、経済の先行き評価を冷やしている。
                 </div>
               </div>
-              <div class="driver-box" style="--dc-color:var(--accent);">
+              <div class="driver-box" style="--dc-color:var(--accent4);">
                 <div class="driver-name">外交・国際的地位への不信</div>
                 <div class="driver-text">
                   外交の支持は36%。「彼の判断はアメリカの世界での地位を損なった」と答えた人は63%に達し、
@@ -386,7 +386,7 @@
                 <div class="timeline-date">2026年2月28日</div>
                 <div class="timeline-content">
                   <h4>米・イスラエルがイランを攻撃 — ラリー効果は起きなかった</h4>
-                  <p>アメリカとイスラエルがイランの核施設・弾道ミサイル拠点・政治指導部を同時攻撃（<a href="../../middle-east/2026-06-02-iran-nuclear/index.html" style="color:var(--accent);">詳細はイラン核交渉の記事を参照</a>）。
+                  <p>アメリカとイスラエルがイランの核施設・弾道ミサイル拠点・政治指導部を同時攻撃（<a href="../../middle-east/2026-06-02-iran-nuclear/index.html" style="color:var(--accent4);">詳細はイラン核交渉の記事を参照</a>）。
                   ハーメネイー最高指導者が死亡し、4月8日に条件付き停戦が成立するまで1,900人以上が死亡した。
                   過去には軍事行動が「旗のもとへの結集（ラリー効果）」として支持率を押し上げることがあったが、
                   今回は起きなかった。Morning Consultの分析では支持率に変化なし。
@@ -854,13 +854,13 @@
           {
             label: '支持',
             data: approval,
-            borderColor: 'rgba(154,180,196,0.90)',
-            backgroundColor: 'rgba(154,180,196,0.12)',
+            borderColor: 'rgba(196,168,130,0.90)',
+            backgroundColor: 'rgba(196,168,130,0.12)',
             borderWidth: 2,
             fill: false,
             tension: 0.3,
             pointRadius: approvalRadius,
-            pointBackgroundColor: labels.map(function(_,i){ return i===iranIdx?'rgba(154,180,196,1)':'rgba(154,180,196,0.80)'; }),
+            pointBackgroundColor: labels.map(function(_,i){ return i===iranIdx?'rgba(196,168,130,1)':'rgba(196,168,130,0.80)'; }),
             pointBorderColor: 'transparent',
           },
           {
@@ -903,13 +903,13 @@
         },
         scales: {
           x: {
-            grid: { color: 'rgba(154,180,196,0.07)' },
+            grid: { color: 'rgba(196,168,130,0.07)' },
             ticks: { color: 'rgba(200,210,220,0.55)', font: { size: 10 } }
           },
           y: {
             min: 30,
             max: 65,
-            grid: { color: 'rgba(154,180,196,0.07)' },
+            grid: { color: 'rgba(196,168,130,0.07)' },
             ticks: {
               color: 'rgba(200,210,220,0.55)',
               font: { size: 10 },
@@ -968,7 +968,7 @@
       scales: {
         x: {
           max: 100,
-          grid: { color: 'rgba(154,180,196,0.08)' },
+          grid: { color: 'rgba(196,168,130,0.08)' },
           ticks: {
             color: 'rgba(200,210,220,0.55)',
             font: { size: 10 },
@@ -1017,7 +1017,7 @@
       scales: {
         x: {
           max: 100,
-          grid: { color: 'rgba(154,180,196,0.08)' },
+          grid: { color: 'rgba(196,168,130,0.08)' },
           ticks: {
             color: 'rgba(200,210,220,0.55)',
             font: { size: 10 },

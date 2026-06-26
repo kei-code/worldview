@@ -31,7 +31,7 @@
       font-family: var(--font);
       font-size: 2.8rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--accent2);
       opacity: 0.65;
       line-height: 1;
       letter-spacing: -0.03em;
@@ -49,7 +49,7 @@
     .glossary-card {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.1rem 1.2rem;
-      border-top: 2px solid var(--accent);
+      border-top: 2px solid var(--accent2);
     }
     .glossary-term { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
     .glossary-def  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
@@ -59,7 +59,7 @@
     .driver-box {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.2rem 1.3rem;
-      border-top: 2px solid var(--dc-color, var(--accent));
+      border-top: 2px solid var(--dc-color, var(--accent2));
     }
     .driver-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
     .driver-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
@@ -119,11 +119,11 @@
     }
     /* 右方向（正当・歓迎寄り）*/
     #sec-perspectives .tone-fill[data-side="right"] {
-      left: 50%; background: var(--accent);
+      left: 50%; background: var(--accent2);
     }
     /* 左方向（脅威と見る）*/
     #sec-perspectives .tone-fill[data-side="left"] {
-      right: 50%; left: auto; background: var(--accent);
+      right: 50%; left: auto; background: var(--accent2);
     }
 
     /* Section 06: ソースカードをリンク化 */
@@ -131,8 +131,8 @@
       text-decoration: none; color: inherit; cursor: pointer;
       display: flex; gap: 0.75rem; align-items: flex-start;
     }
-    a.source-item:hover { border-color: var(--accent); background: var(--bg-card2); }
-    a.source-item:hover .source-name { color: var(--accent); }
+    a.source-item:hover { border-color: var(--accent2); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent2); }
     a.source-item .source-name { transition: color 0.2s; }
 
     @media (max-width: 900px) {
@@ -172,19 +172,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent2)">
           <div class="kp-label">右派・極右が政権参加中の欧州諸国</div>
           <div class="kp-value">10カ国超（2026年）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent2)">
           <div class="kp-label">世界の自由スコアが低下し続けた年数</div>
           <div class="kp-value">18年連続（Freedom House 2025）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent2)">
           <div class="kp-label">「既成政治家を信頼しない」先進国市民の割合</div>
           <div class="kp-value">平均57%（Edelman Trust 2025）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent2)">
           <div class="kp-label">ポピュリスト指導者が統治する世界人口</div>
           <div class="kp-value">約20億人（2025年推計）</div>
         </div>
@@ -274,7 +274,7 @@
               数十年にわたって蓄積された社会・経済的矛盾が、SNSの台頭をきっかけに一気に噴出した構造的現象だ。
             </p>
             <div class="driver-grid">
-              <div class="driver-box" style="--dc-color:var(--accent);">
+              <div class="driver-box" style="--dc-color:var(--accent2);">
                 <div class="driver-name">経済的不満と格差の固定化</div>
                 <div class="driver-text">
                   1990年代以降のグローバリゼーションで製造業の雇用が新興国へ流出し、先進国の低・中所得層の実質賃金が停滞。
@@ -282,7 +282,7 @@
                   恩恵を受けたのは資産家とグローバル企業だけだという認識が広がる。
                 </div>
               </div>
-              <div class="driver-box" style="--dc-color:var(--accent);">
+              <div class="driver-box" style="--dc-color:var(--accent2);">
                 <div class="driver-name">移民・文化変容への不安</div>
                 <div class="driver-text">
                   2010年代中盤のシリア難民危機、2020年代のアフリカ・中東からの移民増加が欧州各地で政治争点化。
@@ -290,7 +290,7 @@
                   移民の実態よりも「移民への恐怖」が政治を動かす。
                 </div>
               </div>
-              <div class="driver-box" style="--dc-color:var(--accent);">
+              <div class="driver-box" style="--dc-color:var(--accent2);">
                 <div class="driver-name">既成メディアとエリートへの不信</div>
                 <div class="driver-text">
                   SNSの普及で「既成メディアは偏っている」という認識が広まり、独自の情報生態系が形成された。
@@ -298,7 +298,7 @@
                   「専門家・学者・ジャーナリストは自分たちとは別の世界に生きている」という疎外感が右派ポピュリストへの共感を生む。
                 </div>
               </div>
-              <div class="driver-box" style="--dc-color:var(--accent);">
+              <div class="driver-box" style="--dc-color:var(--accent2);">
                 <div class="driver-name">コロナ後の政府不信の加速</div>
                 <div class="driver-text">
                   2020〜2022年のロックダウン・ワクチン義務・行動規制が「政府の過剰介入」への反発を引き起こした。
@@ -820,7 +820,7 @@
       scales: {
         x: {
           max: 60,
-          grid: { color: 'rgba(154,180,196,0.08)' },
+          grid: { color: 'rgba(184,120,104,0.08)' },
           ticks: {
             color: 'rgba(200,210,220,0.55)',
             font: { size: 10 },

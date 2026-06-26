@@ -41,19 +41,33 @@
 
 ## カテゴリ一覧
 
-| カテゴリID | 表示名 | タグ色 |
+**カテゴリタグ自体は色分けしない**（全タグ中立グレー `class="tag"`）。下表の色は**記事のテーマ色（アクセント）**＝セクション番号・カレッジボックスの左罫・グラフ等に使う色。**テーマ色＝カテゴリ色を厳格に守る**（記事ごとに気分で変えない）。
+
+色は「トピックのドメイン」を軸に5系統へ整理している：
+
+| ドメイン（色の意味） | テーマ色 | 該当カテゴリ |
 |---|---|---|
-| middle-east | 中東情勢 | tag-red |
-| ukraine | ウクライナ | tag-red |
-| ai-tech | AI | tag-blue |
-| technology | テクノロジー | tag-purple |
-| immigration | 移民政策 | tag-yellow |
-| economy | 世界経済 | tag-yellow |
-| asia | アジア情勢 | tag-blue |
-| europe | 欧州情勢 | tag-green |
-| resources | 資源・環境 | tag-green |
-| security | 安全保障 | tag-red |
-| elections | 世論・選挙 | tag-blue（統一色） |
+| 国際紛争・安全保障 | `--accent2` テラコッタ | 中東情勢・ウクライナ・安全保障 |
+| テクノロジー | `--accent-tech` 青（#80acd8） | AI・テクノロジー |
+| 地域の勢力図 | `--accent5` パープル | アジア情勢・欧州情勢 |
+| 資源・環境 | `--accent3` グリーン | 資源・環境 |
+| 経済・社会・内政 | `--accent4` ベージュ/金 | 世界経済・移民政策・世論選挙 |
+
+| カテゴリID | 表示名 | テーマ色 |
+|---|---|---|
+| middle-east | 中東情勢 | `--accent2`（テラコッタ） |
+| ukraine | ウクライナ | `--accent2`（テラコッタ） |
+| ai-tech | AI | `--accent-tech`（青 #80acd8） |
+| technology | テクノロジー | `--accent-tech`（青 #80acd8） |
+| immigration | 移民政策 | `--accent4`（ベージュ） |
+| economy | 世界経済 | `--accent4`（ベージュ） |
+| asia | アジア情勢 | `--accent5`（パープル） |
+| europe | 欧州情勢 | `--accent5`（パープル） |
+| resources | 資源・環境 | `--accent3`（グリーン） |
+| security | 安全保障 | `--accent2`（テラコッタ） |
+| elections | 世論・選挙 | `--accent4`（ベージュ） |
+
+新規記事は、この表のテーマ色を `var(--accentN)` とグラフ等の直書き `rgba()` の両方に適用する。スタンスの色分けは tone-meter（`.tone-hostile`=赤／`.tone-supportive`=緑）で別途行い、テーマ色とは独立。
 
 ---
 

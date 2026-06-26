@@ -31,7 +31,7 @@
       font-family: var(--font);
       font-size: 2.8rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--accent2);
       opacity: 0.65;
       line-height: 1;
       letter-spacing: -0.03em;
@@ -49,7 +49,7 @@
     .glossary-card {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.1rem 1.2rem;
-      border-top: 2px solid var(--accent);
+      border-top: 2px solid var(--accent2);
     }
     .glossary-term { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
     .glossary-def  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
@@ -59,7 +59,7 @@
     .driver-box {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.2rem 1.3rem;
-      border-top: 2px solid var(--dc-color, var(--accent));
+      border-top: 2px solid var(--dc-color, var(--accent2));
     }
     .driver-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
     .driver-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
@@ -87,7 +87,7 @@
       font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
       letter-spacing: 0.1em; margin-bottom: 0.9rem;
     }
-    .fate-box.fate-ok  .fate-box-title { color: var(--accent); }
+    .fate-box.fate-ok  .fate-box-title { color: var(--accent2); }
     .fate-box.fate-bad .fate-box-title { color: #8a8190; }
     .fate-row {
       display: flex; gap: 0.5rem; align-items: flex-start;
@@ -96,7 +96,7 @@
     }
     .fate-row:last-child { margin-bottom: 0; }
     .fate-mark { font-size: 0.78rem; font-weight: 700; flex-shrink: 0; margin-top: 0.05rem; }
-    .fate-box.fate-ok  .fate-mark { color: var(--accent); }
+    .fate-box.fate-ok  .fate-mark { color: var(--accent2); }
     .fate-box.fate-bad .fate-mark { color: #8a8190; }
 
     /* 図版 */
@@ -148,10 +148,10 @@
       transition: width 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     #sec-perspectives .tone-fill[data-side="right"] {
-      left: 50%; background: var(--accent);
+      left: 50%; background: var(--accent2);
     }
     #sec-perspectives .tone-fill[data-side="left"] {
-      right: 50%; left: auto; background: var(--accent);
+      right: 50%; left: auto; background: var(--accent2);
     }
 
     /* Section 05 */
@@ -163,8 +163,8 @@
       text-decoration: none; color: inherit; cursor: pointer;
       display: flex; gap: 0.75rem; align-items: flex-start;
     }
-    a.source-item:hover { border-color: var(--accent); background: var(--bg-card2); }
-    a.source-item:hover .source-name { color: var(--accent); }
+    a.source-item:hover { border-color: var(--accent2); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent2); }
     a.source-item .source-name { transition: color 0.2s; }
 
     @media (max-width: 900px) {
@@ -208,19 +208,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent2)">
           <div class="kp-label">「抵抗の枢軸」を構成した主な勢力</div>
           <div class="kp-value">5勢力（レバノン・ガザ・イエメン・イラク・シリア）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent2)">
           <div class="kp-label">ヒズボラの最盛期のロケット・ミサイル保有数</div>
           <div class="kp-value">約15万発 → 現在は約2万発</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent2)">
           <div class="kp-label">アサド政権崩壊で断たれたもの</div>
           <div class="kp-value">レバノンへの「陸の回廊」（2024年12月）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent2)">
           <div class="kp-label">コッズ部隊が枢軸を築いた年月</div>
           <div class="kp-value">約40年（1982年のヒズボラ創設以来）</div>
         </div>
@@ -308,28 +308,28 @@
             </p>
 
             <div class="driver-grid">
-              <div class="driver-box" style="--dc-color:var(--accent);">
+              <div class="driver-box" style="--dc-color:var(--accent2);">
                 <div class="driver-name">「国外で戦う」緩衝帯</div>
                 <div class="driver-text">
                   代理勢力を国境の外に配置することで、戦火を自国領土から遠ざける。
                   イラン・イラク戦争で本土を破壊された記憶が、この「前方で食い止める」発想の原点にある。
                 </div>
               </div>
-              <div class="driver-box" style="--dc-color:var(--accent);">
+              <div class="driver-box" style="--dc-color:var(--accent2);">
                 <div class="driver-name">否認可能性という盾</div>
                 <div class="driver-text">
                   代理勢力が攻撃しても、イランは「直接の関与はない」と主張できる。
                   この曖昧さが、敵からの直接報復を抑制し、エスカレーションの責任を回避させる。
                 </div>
               </div>
-              <div class="driver-box" style="--dc-color:var(--accent);">
+              <div class="driver-box" style="--dc-color:var(--accent2);">
                 <div class="driver-name">低コストの抑止</div>
                 <div class="driver-text">
                   正規軍を派遣せずとも、武器と資金の供与で広範囲に影響力を投射できる。
                   イスラエルを多正面から脅かす「火の輪」は、安価で持続可能な抑止装置だった。
                 </div>
               </div>
-              <div class="driver-box" style="--dc-color:var(--accent);">
+              <div class="driver-box" style="--dc-color:var(--accent2);">
                 <div class="driver-name">イデオロギーの輸出</div>
                 <div class="driver-text">
                   1979年のイラン革命以来、シーア派の革命思想と「反シオニズム」を共有する勢力を支援。
@@ -476,10 +476,10 @@
                 <div class="timeline-content">
                   <h4>イラン本体が攻撃を受ける — ハーメネイー死亡</h4>
                   <p>米・イスラエルがイランの核施設・指導部を直接攻撃し、ハーメネイー最高指導者が死亡
-                  （<a href="../../middle-east/2026-06-02-iran-nuclear/index.html" style="color:var(--accent);">イラン核交渉の詳細はこちら</a>）。
+                  （<a href="../../middle-east/2026-06-02-iran-nuclear/index.html" style="color:var(--accent2);">イラン核交渉の詳細はこちら</a>）。
                   「火の輪」が敵を遠ざけるはずだったのに、攻撃はイラン本土に到達した。
                   代理勢力が弱体化したことで、前方防衛の前提そのものが崩れていたのだ
-                  （<a href="../../middle-east/2026-06-11-nuclear-deterrence/index.html" style="color:var(--accent);">核抑止をめぐる議論はこちら</a>）。</p>
+                  （<a href="../../middle-east/2026-06-11-nuclear-deterrence/index.html" style="color:var(--accent2);">核抑止をめぐる議論はこちら</a>）。</p>
                   <div class="timeline-reactions">
                     <span class="reaction-chip">イラン本土への直接攻撃</span>
                     <span class="reaction-chip">前方防衛の前提が崩壊</span>
@@ -879,7 +879,7 @@
           data: [100000, 90000, 30000],
           backgroundColor: [
             'rgba(217,165,103,0.85)',
-            'rgba(154,180,196,0.78)',
+            'rgba(184,120,104,0.78)',
             'rgba(138,129,144,0.75)',
           ],
           borderColor: 'transparent',
@@ -901,14 +901,14 @@
         },
         scales: {
           x: {
-            grid: { color: 'rgba(154,180,196,0.07)' },
+            grid: { color: 'rgba(184,120,104,0.07)' },
             ticks: {
               color: 'rgba(200,210,220,0.55)', font: { size: 10 },
               callback: function(v) { return (v/10000) + '万'; }
             }
           },
           y: {
-            grid: { color: 'rgba(154,180,196,0.07)' },
+            grid: { color: 'rgba(184,120,104,0.07)' },
             ticks: { color: 'rgba(200,210,220,0.70)', font: { size: 11 } }
           }
         }
@@ -948,12 +948,12 @@
         },
         scales: {
           x: {
-            grid: { color: 'rgba(154,180,196,0.07)' },
+            grid: { color: 'rgba(184,120,104,0.07)' },
             ticks: { color: 'rgba(200,210,220,0.70)', font: { size: 11 } }
           },
           y: {
             min: 0,
-            grid: { color: 'rgba(154,180,196,0.07)' },
+            grid: { color: 'rgba(184,120,104,0.07)' },
             ticks: {
               color: 'rgba(200,210,220,0.55)', font: { size: 10 },
               callback: function(v) { return (v/10000) + '万'; }

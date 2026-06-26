@@ -27,8 +27,8 @@
     .section-title .sec-num {
       font-family: var(--font-mono);
       font-size: 0.78rem; font-weight: 700;
-      color: var(--accent);
-      border: 1px solid rgba(154,180,196,0.35);
+      color: var(--accent3);
+      border: 1px solid rgba(122,170,130,0.35);
       border-radius: 4px;
       padding: 0.1em 0.45em;
       letter-spacing: 0.04em;
@@ -39,7 +39,7 @@
     .basin-box {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.2rem 1.3rem;
-      border-top: 2px solid var(--bc-color, var(--accent));
+      border-top: 2px solid var(--bc-color, var(--accent3));
     }
     .basin-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
     .basin-sub { font-size: 0.72rem; color: var(--text-dim); margin-bottom: 0.7rem; }
@@ -104,19 +104,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent3)">
           <div class="kp-label">越境河川の流域数</div>
           <div class="kp-value">約300 — 世界人口の約4割が依存</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent3)">
           <div class="kp-label">ナイル（2025年9月）</div>
           <div class="kp-value">エチオピアがアフリカ最大のダムを稼働</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent3)">
           <div class="kp-label">インダス（2025年4月）</div>
           <div class="kp-value">インドが水条約を停止 — 65年で初</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent3)">
           <div class="kp-label">国際的枠組み</div>
           <div class="kp-value">国連水路条約の締約国はわずか38カ国</div>
         </div>
@@ -336,7 +336,7 @@
                   </div>
 
                   <!-- インド（水と安保の連結） -->
-                  <div class="perspective-card" style="--card-color:var(--accent);">
+                  <div class="perspective-card" style="--card-color:var(--accent3);">
                     <div class="country-header">
                       <span class="country-name">インド（新しい手法）</span>
                       <span class="stance-label stance-cautious">水と安全保障の連結</span>
@@ -359,7 +359,7 @@
                   </div>
 
                   <!-- 国際機関 -->
-                  <div class="perspective-card" style="--card-color:var(--accent);">
+                  <div class="perspective-card" style="--card-color:var(--accent3);">
                     <div class="country-header">
                       <span class="country-name">国際機関・専門家</span>
                       <span class="stance-label stance-neutral">枠組みの空白に警鐘</span>
@@ -580,7 +580,7 @@ new Chart(ctx, {
     labels: ['越境河川に依存（約40%）', 'その他（約60%）'],
     datasets: [{
       data: [40, 60],
-      backgroundColor: ['rgba(154,180,196,0.85)', 'rgba(90,100,115,0.4)'],
+      backgroundColor: ['rgba(122,170,130,0.85)', 'rgba(90,100,115,0.4)'],
       borderColor: '#0e1117', borderWidth: 2,
     }]
   },

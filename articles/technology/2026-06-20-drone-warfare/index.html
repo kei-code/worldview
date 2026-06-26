@@ -31,7 +31,7 @@
       font-family: var(--font);
       font-size: 2.8rem;
       font-weight: 800;
-      color: var(--accent5);
+      color: var(--accent-tech);
       opacity: 0.7;
       line-height: 1;
       letter-spacing: -0.03em;
@@ -42,7 +42,7 @@
 
     /* 記事の問い（冒頭フック） */
     .article-question {
-      border-left: 3px solid var(--accent5);
+      border-left: 3px solid var(--accent-tech);
       padding: 1rem 1.4rem;
       background: var(--bg-card);
       border-radius: 0 var(--radius) var(--radius) 0;
@@ -62,7 +62,7 @@
     .factor-card {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.1rem 1.2rem;
-      border-top: 2px solid var(--accent5);
+      border-top: 2px solid var(--accent-tech);
     }
     .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
     .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
@@ -103,8 +103,8 @@
 
     /* 情報源リンク：a 化したカードのリンク色をリセットし、hoverでアクセント */
     a.source-item { color: inherit; text-decoration: none; cursor: pointer; }
-    a.source-item:hover { border-color: var(--accent5); background: var(--bg-card2); }
-    a.source-item:hover .source-name { color: var(--accent5); }
+    a.source-item:hover { border-color: var(--accent-tech); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent-tech); }
     a.source-item .source-name { transition: color 0.2s; }
 
     /* 本文中の図版 */
@@ -122,7 +122,7 @@
     .insight-box {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
-      border-left: 3px solid var(--accent5);
+      border-left: 3px solid var(--accent-tech);
     }
     .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
     .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
@@ -141,8 +141,8 @@
 
     /* プルクォート（核心の一文） */
     .pull-quote {
-      border-left: 3px solid var(--accent5);
-      background: rgba(154,138,180,0.09);
+      border-left: 3px solid var(--accent-tech);
+      background: rgba(128,172,216,0.09);
       padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       font-size: 0.88rem; font-weight: 600;
@@ -153,7 +153,7 @@
     .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
     .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
     .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
-    .depth-bar-fill { height: 100%; background: var(--accent5); border-radius: 5px; }
+    .depth-bar-fill { height: 100%; background: var(--accent-tech); border-radius: 5px; }
 
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
@@ -188,19 +188,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent5)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">モスクワへ約200機</div>
           <div class="kp-value">2026年6月18日、侵攻以来最大規模。製油所が週内2度目の被弾、空港4か所が一時閉鎖</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent5)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">1機わずか300〜500ドル</div>
           <div class="kp-value">使い捨て前提の精密兵器。迎撃側は1回に数千〜数百万ドルを要し、費用対効果が逆転している</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent5)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">AI命中率 30-50%→約80%</div>
           <div class="kp-value">終末誘導をAIが担い、電子妨害下でも自律で着弾。操縦者は最初に標的を指定するだけ</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent5)">
+        <div class="key-point" style="--kp-color:var(--accent-tech)">
           <div class="kp-label">ロシア 年産700万機計画</div>
           <div class="kp-value">ウクライナも2025年に450万機を生産。ドローンは「物量の量産競争」の段階に入った</div>
         </div>
@@ -247,7 +247,7 @@
               </div>
             </div>
 
-            <div style="background:var(--bg-card);border:1px solid var(--border-subtle);border-left:3px solid var(--accent5);border-radius:0 var(--radius) var(--radius) 0;padding:0.9rem 1.2rem;margin-top:1.25rem;font-size:0.82rem;">
+            <div style="background:var(--bg-card);border:1px solid var(--border-subtle);border-left:3px solid var(--accent-tech);border-radius:0 var(--radius) var(--radius) 0;padding:0.9rem 1.2rem;margin-top:1.25rem;font-size:0.82rem;">
               <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);font-weight:700;margin-bottom:0.45rem;">用語解説</div>
               <span style="font-weight:700;color:var(--text);">FPVドローン／徘徊型兵器</span>
               <p style="color:var(--text-muted);line-height:1.75;margin-top:0.35rem;margin-bottom:0;">FPV（First Person View＝一人称視点）ドローンは、機体のカメラ映像をゴーグルで見ながら操縦者がまるで搭乗しているかのように飛ばす小型機で、爆薬を積んで標的に体当たりする「カミカゼ」型が前線の主力になっている。徘徊型兵器（loitering munition）は、標的の上空をしばらく旋回（徘徊）して機会を待ち、見つけ次第突入する自爆型ドローンを指す。ロシアのGeran（Shahed系）が代表例で、数百〜千キロを飛んで都市やインフラを攻撃する。</p>
@@ -565,27 +565,27 @@
                   </thead>
                   <tbody>
                     <tr style="border-bottom:1px solid var(--border-subtle);">
-                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;vertical-align:top;">FPVカミカゼ</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent-tech);font-weight:700;vertical-align:top;">FPVカミカゼ</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">〜20km</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">一人称視点で操縦し体当たり自爆。1機300〜500ドルの前線の主力</td>
                     </tr>
                     <tr style="border-bottom:1px solid var(--border-subtle);">
-                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;vertical-align:top;">光ファイバーFPV</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent-tech);font-weight:700;vertical-align:top;">光ファイバーFPV</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">10〜20km</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">ケーブルで操縦し電子妨害が無効。電子戦に強い新世代</td>
                     </tr>
                     <tr style="border-bottom:1px solid var(--border-subtle);">
-                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;vertical-align:top;">長距離攻撃型</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent-tech);font-weight:700;vertical-align:top;">長距離攻撃型</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">1,000km超</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">徘徊型（Geran／Shahed系）。都市・インフラへの戦略打撃</td>
                     </tr>
                     <tr style="border-bottom:1px solid var(--border-subtle);">
-                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;vertical-align:top;">迎撃ドローン</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent-tech);font-weight:700;vertical-align:top;">迎撃ドローン</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">数km</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">飛来するドローンを空中で撃墜。1機3,000〜5,000ドル</td>
                     </tr>
                     <tr>
-                      <td style="padding:0.6rem 0.5rem;color:var(--accent5);font-weight:700;vertical-align:top;">偵察ドローン</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent-tech);font-weight:700;vertical-align:top;">偵察ドローン</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">可変</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">標的の捜索・観測を担う「攻撃の目」</td>
                     </tr>
@@ -760,7 +760,7 @@
           {
             label: '1回あたりのコスト（ドル）',
             data: [500, 4000, 1000000, 1000000],
-            backgroundColor: ['rgba(154,138,180,0.85)', 'rgba(154,138,180,0.6)', 'rgba(184,127,140,0.7)', 'rgba(184,127,140,0.7)'],
+            backgroundColor: ['rgba(128,172,216,0.85)', 'rgba(128,172,216,0.6)', 'rgba(184,127,140,0.7)', 'rgba(184,127,140,0.7)'],
             borderColor: 'transparent',
             borderRadius: 3,
           }
@@ -806,7 +806,7 @@
           {
             label: '年間生産数（万機）',
             data: [0.5, 220, 450],
-            backgroundColor: 'rgba(154,138,180,0.78)',
+            backgroundColor: 'rgba(128,172,216,0.78)',
             borderColor: 'transparent',
             borderRadius: 3,
           }

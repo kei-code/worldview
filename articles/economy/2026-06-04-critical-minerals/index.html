@@ -31,17 +31,17 @@
     .use-card {
       background: var(--bg-card); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 1.35rem; position: relative; overflow: hidden;
-      border-top: 3px solid var(--uc-color, var(--accent));
+      border-top: 3px solid var(--uc-color, var(--accent4));
     }
     .use-symbol {
       font-size: 2rem; font-weight: 800; line-height: 1;
-      color: var(--uc-color, var(--accent)); font-family: var(--font-mono);
+      color: var(--uc-color, var(--accent4)); font-family: var(--font-mono);
       margin-bottom: 0.2rem;
     }
     .use-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.85rem; }
     .use-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
     .use-list li { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; display: flex; gap: 0.5rem; }
-    .use-list li::before { content: '▸'; color: var(--uc-color, var(--accent)); flex-shrink: 0; }
+    .use-list li::before { content: '▸'; color: var(--uc-color, var(--accent4)); flex-shrink: 0; }
     .use-tag {
       display: inline-block; margin-top: 0.9rem; font-size: 0.68rem; font-weight: 700;
       padding: 0.25em 0.7em; border-radius: 100px;
@@ -90,19 +90,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent4)">
           <div class="kp-label">中国のレアアース精錬シェア</div>
           <div class="kp-value">世界の約90%（生産では約60%）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent4)">
           <div class="kp-label">EUの重希土類の対中依存</div>
           <div class="kp-value">100%（単一国依存）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent4)">
           <div class="kp-label">コンゴのコバルト埋蔵量</div>
           <div class="kp-value">世界の約70%</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent4)">
           <div class="kp-label">脱・中国の現実（McKinsey）</div>
           <div class="kp-value">Dy・Tbは2035年でも中国外で需要の1/5未満</div>
         </div>
@@ -324,7 +324,7 @@
                   </div>
 
                   <!-- USA -->
-                  <div class="perspective-card" style="--card-color:var(--accent);">
+                  <div class="perspective-card" style="--card-color:var(--accent4);">
                     <div class="country-header">
                       <span class="flag-emoji">🇺🇸</span>
                       <span class="country-name">アメリカ（トランプ政権）</span>
@@ -348,7 +348,7 @@
                   </div>
 
                   <!-- EU -->
-                  <div class="perspective-card" style="--card-color:var(--accent);">
+                  <div class="perspective-card" style="--card-color:var(--accent4);">
                     <div class="country-header">
                       <span class="flag-emoji">🇪🇺</span>
                       <span class="country-name">欧州連合</span>
@@ -669,7 +669,7 @@ new Chart(ctx, {
       {
         label: 'ゲルマニウム',
         data: [100, 120, 175, 240, 320],
-        borderColor: '#9ab4c4', backgroundColor: 'rgba(154,180,196,0.1)',
+        borderColor: '#9ab4c4', backgroundColor: 'rgba(196,168,130,0.1)',
         tension: 0.3, fill: false, pointRadius: 3,
       }
     ]

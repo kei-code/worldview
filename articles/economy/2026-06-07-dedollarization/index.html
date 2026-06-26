@@ -27,8 +27,8 @@
     .section-title .sec-num {
       font-family: var(--font-mono);
       font-size: 0.78rem; font-weight: 700;
-      color: var(--accent);
-      border: 1px solid rgba(154,180,196,0.35);
+      color: var(--accent4);
+      border: 1px solid rgba(196,168,130,0.35);
       border-radius: 4px;
       padding: 0.1em 0.45em;
       letter-spacing: 0.04em;
@@ -39,7 +39,7 @@
     .driver-box {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.2rem 1.3rem;
-      border-top: 2px solid var(--dc-color, var(--accent));
+      border-top: 2px solid var(--dc-color, var(--accent4));
     }
     .driver-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
     .driver-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
@@ -107,19 +107,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent4)">
           <div class="kp-label">ドルの公的準備シェア</div>
           <div class="kp-value">56.9%（2025年Q3）— 1995年以来初の57%割れ</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent4)">
           <div class="kp-label">準備資産の逆転</div>
           <div class="kp-value">金27% > 米国債22%（2025年末・ECB）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent4)">
           <div class="kp-label">BRICS域内貿易の現地通貨建て</div>
           <div class="kp-value">約67%（10年前は20%未満）</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent4)">
           <div class="kp-label">ドル建てステーブルコイン</div>
           <div class="kp-value">世界供給の99%超 — デジタルでもドル優位</div>
         </div>
@@ -283,7 +283,7 @@
                 <div class="perspectives-grid">
 
                   <!-- USA -->
-                  <div class="perspective-card" style="--card-color:var(--accent);">
+                  <div class="perspective-card" style="--card-color:var(--accent4);">
                     <div class="country-header">
                       <span class="country-name">アメリカ</span>
                       <span class="stance-label stance-cautious">ドル覇権の防衛</span>
@@ -375,7 +375,7 @@
                   </div>
 
                   <!-- Market / IMF -->
-                  <div class="perspective-card" style="--card-color:var(--accent);">
+                  <div class="perspective-card" style="--card-color:var(--accent4);">
                     <div class="country-header">
                       <span class="country-name">市場・国際金融</span>
                       <span class="stance-label stance-neutral">多極化だが交代ではない</span>
@@ -448,7 +448,7 @@
                   </div>
                   <div class="ratio-row">
                     <div class="ratio-head"><span class="ratio-label">米国債（前年25%）</span><span class="ratio-value">22%</span></div>
-                    <div class="ratio-track"><div class="ratio-fill" style="background:var(--accent);width:81%;"></div></div>
+                    <div class="ratio-track"><div class="ratio-fill" style="background:var(--accent4);width:81%;"></div></div>
                   </div>
                 </div>
                 <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">金が米国債を逆転（1996年以来）。出典: 欧州中央銀行 2026</p>
@@ -460,7 +460,7 @@
                 <div class="ratio-bar">
                   <div class="ratio-row">
                     <div class="ratio-head"><span class="ratio-label">米ドル</span><span class="ratio-value">47.2%</span></div>
-                    <div class="ratio-track"><div class="ratio-fill" style="background:var(--accent);width:100%;"></div></div>
+                    <div class="ratio-track"><div class="ratio-fill" style="background:var(--accent4);width:100%;"></div></div>
                   </div>
                   <div class="ratio-row">
                     <div class="ratio-head"><span class="ratio-label">ユーロ（参考）</span><span class="ratio-value">約23%</span></div>
@@ -589,7 +589,7 @@ new Chart(ctx, {
       label: 'ドルの公的準備シェア（%）',
       data: [72, 64, 66, 59, 58, 56.9],
       borderColor: '#9ab4c4',
-      backgroundColor: 'rgba(154,180,196,0.12)',
+      backgroundColor: 'rgba(196,168,130,0.12)',
       tension: 0.3, fill: true, pointRadius: 3,
       pointBackgroundColor: '#9ab4c4',
     }]

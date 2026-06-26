@@ -31,7 +31,7 @@
       font-family: var(--font);
       font-size: 2.8rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--accent2);
       opacity: 0.65;
       line-height: 1;
       letter-spacing: -0.03em;
@@ -42,7 +42,7 @@
 
     /* 記事の問い（冒頭フック） */
     .article-question {
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--accent2);
       padding: 1rem 1.4rem;
       background: var(--bg-card);
       border-radius: 0 var(--radius) var(--radius) 0;
@@ -62,7 +62,7 @@
     .factor-card {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.1rem 1.2rem;
-      border-top: 2px solid var(--accent);
+      border-top: 2px solid var(--accent2);
     }
     .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
     .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
@@ -108,7 +108,7 @@
     .insight-box {
       background: var(--bg-card); border: 1px solid var(--border-subtle);
       border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--accent2);
     }
     .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
     .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
@@ -127,7 +127,7 @@
 
     /* プルクォート（核心の一文） */
     .pull-quote {
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--accent2);
       background: rgba(184,127,140,0.07);
       padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
@@ -139,7 +139,7 @@
     .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
     .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
     .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
-    .depth-bar-fill { height: 100%; background: var(--accent); border-radius: 5px; }
+    .depth-bar-fill { height: 100%; background: var(--accent2); border-radius: 5px; }
 
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
@@ -174,19 +174,19 @@
       </p>
 
       <div class="key-points" style="margin-top:1.5rem;">
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent2)">
           <div class="kp-label">ウクライナへ1万人超を派兵</div>
           <div class="kp-value">2024年秋以降、ロシア・クルスク州に約1.1万〜1.5万人を投入。約6,000人の死傷と引き換えに実戦データを獲得</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent2)">
           <div class="kp-label">核弾頭は推定50発、90発へ</div>
           <div class="kp-value">実装済み約50発、核分裂性物質は最大90発分。2027年に90発との予測。IAEA（国際原子力機関）は「指数関数的成長」と警告</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent2)">
           <div class="kp-label">火星20で米本土全域が射程内</div>
           <div class="kp-value">2025年10月公開の固体燃料ICBM（大陸間弾道ミサイル）。射程15,000km超。複数弾頭化を狙う高推力エンジン</div>
         </div>
-        <div class="key-point" style="--kp-color:var(--accent)">
+        <div class="key-point" style="--kp-color:var(--accent2)">
           <div class="kp-label">金正恩は非核化交渉を拒否</div>
           <div class="kp-value">「非核化への執着を捨てよ」と前提条件を要求。韓国・李在明政権の対話路線は接点を欠いたまま</div>
         </div>
@@ -233,7 +233,7 @@
               </div>
             </div>
 
-            <div style="background:var(--bg-card);border:1px solid var(--border-subtle);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:0.9rem 1.2rem;margin-top:1.25rem;font-size:0.82rem;">
+            <div style="background:var(--bg-card);border:1px solid var(--border-subtle);border-left:3px solid var(--accent2);border-radius:0 var(--radius) var(--radius) 0;padding:0.9rem 1.2rem;margin-top:1.25rem;font-size:0.82rem;">
               <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);font-weight:700;margin-bottom:0.45rem;">用語解説</div>
               <span style="font-weight:700;color:var(--text);">相互防衛条約（2024年）</span>
               <p style="color:var(--text-muted);line-height:1.75;margin-top:0.35rem;margin-bottom:0;">2024年6月、プーチン大統領が訪朝し金正恩総書記と署名した「包括的戦略パートナーシップ条約」。一方が武力侵攻を受けた場合、他方が軍事援助を含む支援を提供すると定める事実上の同盟条項を含む。冷戦期の1961年条約以来の相互防衛の復活であり、北朝鮮の対ロ兵員・弾薬供与と、ロシアの対北技術・経済支援を双方向に正当化する枠組みとなった。</p>
@@ -577,22 +577,22 @@
                   </thead>
                   <tbody>
                     <tr style="border-bottom:1px solid var(--border-subtle);">
-                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">火星15</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent2);font-weight:700;white-space:nowrap;vertical-align:top;">火星15</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">約13,000km</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">液体燃料ICBM。アメリカ本土東海岸まで到達可能</td>
                     </tr>
                     <tr style="border-bottom:1px solid var(--border-subtle);">
-                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">火星17</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent2);font-weight:700;white-space:nowrap;vertical-align:top;">火星17</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">15,000km超</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">大型液体燃料ICBM。複数弾頭の搭載が可能とされる</td>
                     </tr>
                     <tr style="border-bottom:1px solid var(--border-subtle);">
-                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">火星20</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent2);font-weight:700;white-space:nowrap;vertical-align:top;">火星20</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">15,000km超</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">固体燃料ICBM。即時発射性が高く2025年公開</td>
                     </tr>
                     <tr>
-                      <td style="padding:0.6rem 0.5rem;color:var(--accent);font-weight:700;white-space:nowrap;vertical-align:top;">北極星系</td>
+                      <td style="padding:0.6rem 0.5rem;color:var(--accent2);font-weight:700;white-space:nowrap;vertical-align:top;">北極星系</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);vertical-align:top;white-space:nowrap;">潜水艦発射型</td>
                       <td style="padding:0.6rem 0.5rem;color:var(--text-muted);line-height:1.55;vertical-align:top;">SLBM（潜水艦発射弾道ミサイル）。第二撃能力の中核</td>
                     </tr>
