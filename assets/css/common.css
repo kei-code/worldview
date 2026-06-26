@@ -104,7 +104,12 @@ a:hover { text-decoration: underline; }
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  /* 中立の既定スタイル（カテゴリ別の色分けは一旦停止。色クラスは下に温存） */
+  background: rgba(255,255,255,0.06);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
 }
+/* 以下のカテゴリ色クラスは現在未使用（将来の再導入に備え定義のみ残置） */
 .tag-blue   { background: rgba(126,184,212,0.12); color: var(--accent);  border: 1px solid rgba(126,184,212,0.25); }
 .tag-red    { background: rgba(192, 83, 58,0.12); color: var(--accent2); border: 1px solid rgba(192, 83, 58,0.25); }
 .tag-green  { background: rgba( 79,184,106,0.12); color: var(--accent3); border: 1px solid rgba( 79,184,106,0.25); }
