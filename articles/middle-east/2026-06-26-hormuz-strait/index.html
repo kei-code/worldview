@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="世界の石油・ガスの約2割が通るホルムズ海峡を、2026年にイランが封鎖した。原油は126ドルへ高騰し、中東に9割依存する日本も直撃。なぜ一本の海峡が世界経済を人質に取れるのか——封鎖の構造と『諸刃の剣』を、イラン・湾岸産油国・アメリカ・日本/アジア・中国の5視点で読み解く（2026年6月26日時点）。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/middle-east/2026-06-26-hormuz-strait/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="ホルムズ海峡封鎖 — 世界の石油2割を握る「最後の蛇口」 — WorldView">
+  <meta property="og:description" content="世界の石油・ガスの約2割が通るホルムズ海峡を、2026年にイランが封鎖した。原油は126ドルへ高騰し、中東に9割依存する日本も直撃。なぜ一本の海峡が世界経済を人質に取れるのか——封鎖の構造を5視点で読み解く（2026年6月26日時点）。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/middle-east/2026-06-26-hormuz-strait/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/hormuz-hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ホルムズ海峡封鎖 — 世界の石油2割を握る「最後の蛇口」 — WorldView">
+  <meta name="twitter:description" content="世界の石油・ガスの約2割が通るホルムズ海峡を、2026年にイランが封鎖した。なぜ一本の海峡が世界経済を人質に取れるのか——封鎖の構造を5視点で読み解く（2026年6月26日時点）。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/hormuz-hero.jpg">
+  <title>ホルムズ海峡封鎖 — 世界の石油2割を握る「最後の蛇口」 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent2);
+      opacity: 0.7;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    .article-question {
+      border-left: 3px solid var(--accent2);
+      padding: 1rem 1.4rem;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.8rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent2);
+    }
+    .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; min-height: 680px; display: flex; align-items: center; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/hormuz-hero.jpg');
+      background-size: cover; background-position: center 48%;
+      filter: brightness(1.22) contrast(1.05) saturate(1.05);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.16) 0%, rgba(14,17,23,0.22) 45%, rgba(14,17,23,0.46) 100%);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title,
+    .article-hero.has-image .article-summary { text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65); }
+    .article-hero.has-image .article-summary {
+      color: #eef2f6;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.92), 0 1px 5px rgba(0,0,0,0.8);
+      background: rgba(14,17,23,0.52);
+      box-shadow: -2px 0 16px rgba(0,0,0,0.40);
+      border-left-color: rgba(255,255,255,0.5);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; width: 100%; }
+    .article-hero.has-image .key-point {
+      background: rgba(18,23,31,0.40);
+      border: 1px solid rgba(255,255,255,0.18);
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+      box-shadow: 0 2px 14px rgba(0,0,0,0.28);
+    }
+    .article-hero.has-image .key-point:hover { background: rgba(18,23,31,0.54); }
+    .article-hero.has-image .key-point .kp-value { color: #f2f5f9; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+    .article-hero.has-image .key-point .kp-label { color: rgba(255,255,255,0.74); }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* 情報源リンク */
+    a.source-item { color: inherit; text-decoration: none; cursor: pointer; }
+    a.source-item:hover { border-color: var(--accent2); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent2); }
+    a.source-item .source-name { transition: color 0.2s; }
+
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent2);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+    }
+
+    .pull-quote {
+      border-left: 3px solid var(--accent2);
+      background: rgba(184,120,104,0.10);
+      padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text); line-height: 1.65;
+    }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-red">中東情勢</span>
+        <span class="tag tag-red">エネルギー安全保障</span>
+        <span class="date">2026年6月26日</span>
+      </div>
+      <h1 class="article-title">ホルムズ海峡封鎖<br>— 世界の石油2割を握る「最後の蛇口」</h1>
+      <p class="article-summary">
+        世界の石油・ガスの約2割が通る、幅わずか数十キロの海峡。2026年、イランがそこを閉じた。原油は高騰し、中東に9割を頼る日本も無傷ではいられない。なぜ一本の海峡が、世界経済を人質に取れるのか——封鎖の構造を5つの視点で読み解く。
+      </p>
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent2)">
+          <div class="kp-label">通過する量</div>
+          <div class="kp-value">世界の石油・ガスの約2割。海上原油では約3割が、この一本の海峡を通る</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent2)">
+          <div class="kp-label">封鎖の衝撃</div>
+          <div class="kp-value">原油は4年ぶりに100ドル超、ピークは126ドルへ。タンカー通航はほぼゼロに</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent2)">
+          <div class="kp-label">代替路の限界</div>
+          <div class="kp-value">迂回パイプラインはサウジ・UAEのみ。余力は封鎖される量の数分の一</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent2)">
+          <div class="kp-label">日本の急所</div>
+          <div class="kp-value">原油の中東依存は約94%、ホルムズ経由は9割。石油備蓄は約8カ月分</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 核心と問い -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>核心と問い — 「石油」ではなく「急所」</h2>
+
+            <div class="article-question">
+              一本の海峡が、なぜ世界経済を人質に取れるのか。ホルムズ海峡は、世界の石油・ガスの約2割が通る唯一無二の水路だ。代わりになる道はほとんどなく、閉じれば価格は跳ね、開けば落ち着く。問うべきは「石油が足りるか」ではない。地理が生んだこの“急所”を、誰が、どこまで握れるのか——である。
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.9;margin-bottom:1.5rem;padding:0.9rem 1.2rem;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border-subtle);">
+              <strong style="color:var(--text);">用語と時点について。</strong>本稿でいう「封鎖」は、機雷の敷設・革命防衛隊〈IRGC〉による臨検や攻撃・通航許可の選別など複数の手段の総称であり、物理的に水路を塞ぐ単一の行為を指すわけではない。また情勢は流動的なため、本記事は<strong style="color:var(--text);">2026年6月26日時点</strong>のスナップショットとして読まれたい。
+            </p>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              ホルムズ海峡はペルシャ湾とオマーン湾を結ぶ唯一の出口で、最も狭い場所は幅約33キロ、実際の航路はさらに細い。ここを2025年には日量約1,500万バレルの原油——海上で取引される原油の約3割——が通った。サウジアラビア、アラブ首長国連邦、クウェート、イラク、カタール、そしてイラン自身の輸出が、この一点に集中する。代替路はサウジの東西パイプラインとUAEのハブシャン-フジャイラ管しかなく、迂回できる量は封鎖される量の数分の一にとどまる。だからこそ海峡は、軍事的に占領せずとも世界経済を揺らせる、希少な“急所”になる。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2rem 0 0.75rem;font-weight:700;">海峡を「急所」にする3つの構造</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">地理が生む唯一性</div>
+                <div class="factor-desc">
+                  ペルシャ湾岸の産油国は、輸出の大半をこの一本の海峡に依存する。湾内に他の出口はなく、地理そのものが、海峡を扼するイランに地政学的なてこを与えている。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">イランの“切り札”</div>
+                <div class="factor-desc">
+                  海峡の北岸はイラン領。正面から戦えば不利でも、海峡を脅かすだけで原油価格と世界経済を動かせる。費用が小さく効果が大きい、非対称の手段だ。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">代替路の限界</div>
+                <div class="factor-desc">
+                  迂回できるのはサウジ・UAEのパイプラインのみで、余力は合計で日量350〜550万バレル程度。封鎖される量には遠く及ばず、迂回は「逃げ場」になりきれない。
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/hormuz-tanker.jpg"
+                   alt="ホルムズ海峡の隘路を行く巨大原油タンカー" loading="lazy">
+              <figcaption>世界の動脈にして、最大の弱点。海上で取引される原油の約3割が、この狭い水路に積荷を託している。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 封鎖から再封鎖まで</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">1980年代〜2019年</div>
+                <div class="timeline-content">
+                  <h4>繰り返し露呈してきた「脆さ」</h4>
+                  <p>1980年代のイラン・イラク戦争では、互いのタンカーを攻撃し合う「タンカー戦争」が起きた。2019年には安倍晋三首相（当時）の訪問中にホルムズ付近でタンカーが攻撃され、海峡の脆さは時代を越えて何度も露呈してきた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">タンカー戦争</span>
+                    <span class="reaction-chip">2019年の攻撃</span>
+                    <span class="reaction-chip">繰り返す脆さ</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年2月28日</div>
+                <div class="timeline-content">
+                  <h4>攻撃、そして数時間後の封鎖</h4>
+                  <p>米国とイスラエルがイランを攻撃し、最高指導者ハーメネイーを殺害。その数時間後、イランは報復としてホルムズ海峡を事実上封鎖した。世界の石油・ガスの約2割が通る水路が、一夜にして危機に陥った。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">米・イスラエルの攻撃</span>
+                    <span class="reaction-chip">数時間後に封鎖</span>
+                    <span class="reaction-chip">報復措置</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年3月</div>
+                <div class="timeline-content">
+                  <h4>価格急騰 — 4年ぶりの100ドル超</h4>
+                  <p>商船への攻撃が相次ぎ、通航は当初およそ7割減、150隻超が海峡の外で投錨し、やがてほぼゼロに落ち込んだ。ブレント原油は4年ぶりに1バレル100ドルを突破し、ピークでは126ドルに達した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">通航ほぼゼロ</span>
+                    <span class="reaction-chip">ブレント126ドル</span>
+                    <span class="reaction-chip">4年ぶり100ドル超</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年4〜5月</div>
+                <div class="timeline-content">
+                  <h4>アメリカの“逆封鎖”</h4>
+                  <p>トランプ政権は4月13日、イランの港に出入りする船を対象に、米海軍による“逆封鎖”を発動した。5月には封鎖を破ろうとしたイランのタンカーを空母艦載機が攻撃し、航行不能にした。封鎖と封鎖がぶつかり合う異例の事態となった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">米軍の逆封鎖</span>
+                    <span class="reaction-chip">イラン港を封鎖</span>
+                    <span class="reaction-chip">タンカー攻撃</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年6月</div>
+                <div class="timeline-content">
+                  <h4>停戦、そして再封鎖</h4>
+                  <p>6月17日、米・イラン両首脳が停戦の覚書〈MOU〉に署名。海峡は60日間にわたり無料で再開され、米国の封鎖も解除された。だが6月22日、イスラエルのレバノン攻撃を理由にイランが再び封鎖を宣言。通航は前日の35隻から12隻へ激減し、危機は今も収束していない。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">60日停戦の覚書</span>
+                    <span class="reaction-chip">海峡を再開</span>
+                    <span class="reaction-chip">6月22日に再封鎖</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/hormuz-irgc.jpg"
+                   alt="ホルムズ海峡で商船に接近する武装した高速哨戒艇" loading="lazy">
+              <figcaption>力ではなく、脅しで止める。革命防衛隊の高速艇による臨検と攻撃は、巨大な商船を一隻ずつ足止めしていく。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 3: 視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>5つの視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">各立場の主張</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- イラン -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">イラン</span>
+                      <span class="role-badge">抵抗の切り札 / 諸刃の剣</span>
+                    </div>
+                    <div class="pull-quote">「正面から戦わずとも、海峡を脅かすだけで世界を動かせる」</div>
+                    <div class="key-claim">
+                      <strong>海峡という非対称の武器</strong>
+                      海峡の北岸を扼するイランにとって、封鎖は最小の費用で最大の圧力をかけられる手段だ。軍事力で米国に劣っても、原油価格を通じて世界経済に「報復」できる。
+                    </div>
+                    <div class="key-claim">
+                      <strong>自らの首も絞る</strong>
+                      だが封鎖はイラン自身の原油輸出——その8〜9割を買う中国向け——も止める。長期化は外貨収入を断ち、後ろ盾である中国の不興も買う。抜けば自分も傷つく、諸刃の剣だ。
+                    </div>                  </div>
+
+                  <!-- 湾岸産油国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">湾岸産油国（サウジアラビア・UAE）</span>
+                      <span class="role-badge">迂回路と自衛</span>
+                    </div>
+                    <div class="pull-quote">「同じ湾に住む隣人が、私たちの出口を握っている」</div>
+                    <div class="key-claim">
+                      <strong>迂回パイプラインという保険</strong>
+                      両国だけが海峡を迂回する原油パイプラインを持つ。だが余力は日量350〜550万バレルで、湾岸全体の輸出量には遠く及ばない。保険はあっても、全損は防げない。
+                    </div>
+                    <div class="key-claim">
+                      <strong>彼ら自身も当事者</strong>
+                      封鎖は自国の輸出と経済をも直撃する。イランと敵対しつつ、全面戦争は望まない。UAEは迂回管の増強を急ぐが、地理そのものからは逃れられない。
+                    </div>                  </div>
+
+                  <!-- アメリカ・有志連合 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">アメリカ・有志連合</span>
+                      <span class="role-badge">航行の自由と逆封鎖</span>
+                    </div>
+                    <div class="pull-quote">「海峡を開くのは世界の責務だ——だが、出口はどこにある」</div>
+                    <div class="key-claim">
+                      <strong>航行の自由という原則</strong>
+                      米国は海上交通の自由を国際秩序の柱と位置づけ、海軍を展開してきた。2026年にはイランの港を封じる“逆封鎖”に踏み切り、圧力で海峡の再開を迫った。
+                    </div>
+                    <div class="key-claim">
+                      <strong>出口戦略の難しさ</strong>
+                      だが力ずくの再開は機雷除去も含めて容易でなく、油価高騰は自国経済にも跳ね返る。最終的に海峡を開いたのは軍事ではなく、60日停戦という外交合意だった。
+                    </div>                  </div>
+
+                  <!-- 日本・アジア輸入国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">日本・アジア輸入国</span>
+                      <span class="role-badge">依存ゆえの脆さ</span>
+                    </div>
+                    <div class="pull-quote">「最も遠い国が、最も深く依存している」</div>
+                    <div class="key-claim">
+                      <strong>9割という依存度</strong>
+                      日本は原油の約94%を中東に頼り、その9割がホルムズを通る。封鎖はガソリンや電気料金に直結し、家計と産業を揺らす。LNGの中東依存が約1割と低いのが、わずかな救いだ。
+                    </div>
+                    <div class="key-claim">
+                      <strong>備蓄という時間稼ぎ</strong>
+                      日本は約8カ月分の石油備蓄で当座をしのげる。だがそれは時間稼ぎにすぎない。封鎖が長引けば、調達先の多角化という積年の構造課題が突きつけられる。
+                    </div>                  </div>
+
+                  <!-- 中国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">中国</span>
+                      <span class="role-badge">最大の利害関係者</span>
+                    </div>
+                    <div class="pull-quote">「イランの石油を最も買う国が、最も多くを失いかねない」</div>
+                    <div class="key-claim">
+                      <strong>二重の当事者</strong>
+                      中国はイラン産原油の8〜9割を買う最大の顧客であり、同時に湾岸からも日量約540万バレルをホルムズ経由で輸入する。封鎖はイラン支援と自国のエネルギー安全保障を、同時に揺さぶる。
+                    </div>
+                    <div class="key-claim">
+                      <strong>備えと仲介</strong>
+                      山東省の「ティーポット」と呼ばれる小規模製油所が割引イラン原油を吸収し、国有企業を政治リスクから守ってきた。中国は備蓄と独自の調達網で衝撃を和らげつつ、停戦の鍵を握る仲介者でもある。
+                    </div>                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>最も重視するもの</th>
+                        <th>求める結果</th>
+                        <th>最大の弱み</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>イラン</td><td>圧力をかけるてこ</td><td>攻撃の停止と制裁緩和</td><td>封鎖は自国の輸出も止める</td></tr>
+                      <tr><td>湾岸産油国</td><td>自国の輸出と経済</td><td>海峡の安定と迂回路の確保</td><td>迂回の余力が封鎖量に届かない</td></tr>
+                      <tr><td>アメリカ・有志連合</td><td>航行の自由</td><td>力と外交による再開</td><td>力ずくの再開は高くつく</td></tr>
+                      <tr><td>日本・アジア輸入国</td><td>安定調達</td><td>早期の海峡再開</td><td>中東・海峡への依存が極端</td></tr>
+                      <tr><td>中国</td><td>エネルギー安保とイラン関係</td><td>封鎖の早期解除</td><td>二重に依存し損失が大きい</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/hormuz-escort.jpg"
+                   alt="狭い海峡でタンカーを護衛する軍艦と追走する高速艇" loading="lazy">
+              <figcaption>開けたい者と、閉じたい者。同じ水路を挟んで、護衛する軍艦と脅かす高速艇の利害が真正面からぶつかる。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- 原油価格の推移 -->
+              <div class="data-card">
+                <h4>ブレント原油価格の推移（2026年・ドル/バレル）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="oilChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  概数。2月末の封鎖後、3月に4年ぶり100ドル超、ピークで126ドル。6月の停戦合意で一旦沈静化。出典：各種報道を基に整理
+                </p>
+              </div>
+
+              <!-- 通過量 vs 迂回余力 -->
+              <div class="data-card">
+                <h4>ホルムズ通過量 vs 迂回パイプラインの余力（日量・百万バレル）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="bypassChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  概数。海峡を通る原油は迂回路の能力をはるかに上回り、代替路は封鎖の穴を埋めきれない。出典：IEA、EIA、CNBC
+                </p>
+              </div>
+
+              <!-- 注目の数字 -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">約2割</div>
+                    <div class="stat-label">世界の石油・ガスのうちホルムズ海峡を通る割合（EIA）。海上原油では約3割</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">126ドル</div>
+                    <div class="stat-label">封鎖後のブレント原油のピーク価格。封鎖前は60〜70ドル台だった</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">約94%</div>
+                    <div class="stat-label">日本の原油の中東依存度（2025年）。うち9割がホルムズ海峡を経由する</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">約8カ月</div>
+                    <div class="stat-label">日本の石油備蓄（2026年2月時点）。長期封鎖には「時間稼ぎ」にとどまる</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 迂回路の選択肢 -->
+              <div class="data-card">
+                <h4>海峡を避ける選択肢と、その限界</h4>
+                <table style="width:100%;border-collapse:collapse;margin-top:1rem;font-size:0.82rem;">
+                  <thead>
+                    <tr style="border-bottom:1px solid var(--border);">
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">経路</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">能力（概数）</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">限界</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">サウジ 東西パイプライン（紅海・ヤンブー）</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">日量約500万バレル</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">平時も一部使用、全量は回せない</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">UAE ハブシャン-フジャイラ（ADCOP）</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">名目 日量約180万バレル</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">空き容量は約70万バレルのみ</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">喜望峰まわりの迂回航路</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">量の制限なし</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">約2〜3週間の遅延とコスト増</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">国内・国際備蓄の取り崩し</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">各国 数カ月分</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">あくまで一時しのぎ</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">出典：IEA、EIA、CNBC を基に整理</p>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り — 諸刃の剣・脱ホルムズ・日本の宿題</h2>
+
+            <div class="insight-box">
+              <div class="insight-title">封鎖は本当に続けられるのか — 諸刃の剣の論理</div>
+              <div class="insight-text">
+                海峡の封鎖は、イランにとって最強の切り札であると同時に、最大の自縛でもある。封鎖が続けば、イラン自身の原油輸出——その8〜9割を支える中国向け——も止まり、外貨収入が断たれる。後ろ盾である中国の不興も買う。だからこそイランは歴史上、全面封鎖を「示唆」しても、長期の完全封鎖は避けてきた。2026年も、選択的な通航許可や60日停戦の合意へと動いたのは、この諸刃の剣ゆえだと見るべきだ。封鎖は、抜き身のまま握り続けられる刃ではない。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">脱ホルムズは可能か — 迂回路と備蓄の現実</div>
+              <div class="insight-text">
+                海峡を避ける道はある。サウジの東西パイプラインとUAEの迂回管、喜望峰まわりの長い航路、そして各国が積み上げてきた石油備蓄だ。UAEは封鎖を受けて迂回管の増強を急いでいる。だが迂回パイプラインの余力は日量350〜550万バレルにとどまり、海峡を通る約1,500万バレルの穴を埋めきれない。航路の迂回はコストと時間を、備蓄は数カ月という限りを抱える。結局、地理は変えられず、「脱ホルムズ」は緩和策ではあっても根本解決にはならない。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">日本への含意 — 9割依存という宿題</div>
+              <div class="insight-text">
+                日本にとってホルムズ封鎖は、遠い海の出来事ではない。原油の中東依存は約94%、そのほとんどがこの海峡を通る。封鎖はガソリンや電気料金に直結し、家計と産業を直撃する。約8カ月分の石油備蓄が時間を稼ぎ、LNGは調達先の多角化が進んで中東依存が約1割にとどまる点は救いだ。だが原油の依存構造は変わらない。備蓄の厚みに頼るだけでなく、調達先の多角化と中東外交の地道な積み重ねこそが、エネルギー安全保障の本筋になる。
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/hormuz-pipeline.jpg"
+                   alt="湾岸を避けて沿岸の輸出ターミナルへ延びる原油パイプライン" loading="lazy">
+              <figcaption>海峡を避ける、もう一本の道。だが砂漠を貫くパイプラインの能力では、海峡を通る量の穴は埋めきれない。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源</h2>
+            <div class="sources-grid">
+
+              <a class="source-item" href="https://www.eia.gov/todayinenergy/detail.php?id=65504" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">U.S. EIA — Amid Regional Conflict, the Strait of Hormuz Remains Critical Oil Chokepoint</div>
+                  <div class="source-desc">米エネルギー情報局による解説。海峡を通る原油・ガスの量と世界に占める比重を整理</div>
+                  <div class="source-country">【アメリカ・エネルギー情報局】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.iea.org/about/oil-security-and-emergency-response/strait-of-hormuz" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">IEA — Strait of Hormuz: Oil Security</div>
+                  <div class="source-desc">国際エネルギー機関による海峡の通過量・迂回パイプラインの余力に関する基礎データ</div>
+                  <div class="source-country">【国際エネルギー機関】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.aljazeera.com/news/2026/6/17/iran-confirms-that-mou-has-been-signed-electronically-by-both-sides" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Al Jazeera — Iran, US Presidents Sign Deal to Extend Ceasefire, Reopen Strait of Hormuz</div>
+                  <div class="source-desc">6月17日の停戦覚書署名を報じる記事。60日停戦・海峡の無料再開・米封鎖解除の内容</div>
+                  <div class="source-country">【国際メディア】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.aljazeera.com/economy/2026/6/22/shipping-stalls-in-strait-of-hormuz-after-iran-declares-key-waterway-shut" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Al Jazeera — Shipping Stalls in Strait of Hormuz After Iran Declares Key Waterway Shut</div>
+                  <div class="source-desc">6月22日の再封鎖を報じる記事。通航が35隻から12隻へ激減したことを伝える</div>
+                  <div class="source-country">【国際メディア】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.cnbc.com/2026/03/12/strait-of-hormuz-oil-pipelines-iran-war-saudi-arabia-uae.html" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">CNBC — The Two Oil Pipelines Helping Saudi Arabia and UAE Bypass the Strait of Hormuz</div>
+                  <div class="source-desc">サウジの東西パイプラインとUAEのハブシャン-フジャイラ管の能力と限界を解説</div>
+                  <div class="source-country">【アメリカ・経済メディア】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.aljazeera.com/news/2026/4/3/how-chinas-teapot-refineries-are-cushioning-it-from-iran-war-oil-crisis" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Al Jazeera — How China's 'Teapot' Refineries Are Cushioning It from the Iran War Oil Crisis</div>
+                  <div class="source-desc">中国のイラン産原油依存と山東省の独立系製油所の役割を分析</div>
+                  <div class="source-country">【国際メディア】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://commonslibrary.parliament.uk/research-briefings/cbp-10636/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">House of Commons Library — Israel/US-Iran Conflict 2026: Reopening the Strait of Hormuz</div>
+                  <div class="source-desc">英議会下院図書館の調査ブリーフィング。危機の経緯と海峡再開の論点を整理</div>
+                  <div class="source-country">【イギリス・議会調査局】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.enecho.meti.go.jp/category/others/energysecurity/index.html" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">資源エネルギー庁 — 中東情勢を踏まえた石油及び関連製品等に関する対応</div>
+                  <div class="source-desc">日本の中東原油依存・石油備蓄・安定供給策に関する経済産業省の公式情報</div>
+                  <div class="source-country">【日本・経済産業省】</div>
+                </div>
+              </a>
+
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>核心と問い</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>5つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/middle-east/index.html">中東情勢</a></div>
+            <div>2026年6月26日</div>
+            <div style="margin-top:0.5rem;">5つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer"><p>WorldView — 多視点で読む世界情勢</p></footer>
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 目次のスクロールハイライトは main.js が処理（.toc-list a + .is-current）
+  // タブ切り替えは main.js が処理（.tab-btn + .tab-pane）
+
+  // Chart.js — ブレント原油価格の推移（折れ線）
+  (function() {
+    var ctx = document.getElementById('oilChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
+        datasets: [{
+          label: 'ブレント原油（ドル/バレル）',
+          data: [68, 74, 118, 112, 104, 88],
+          borderColor: 'rgba(184,120,104,0.95)',
+          backgroundColor: 'rgba(184,120,104,0.14)',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.3,
+          pointRadius: 3,
+          pointBackgroundColor: 'rgba(184,120,104,1)'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(ctx) { return '約' + ctx.parsed.y + 'ドル'; } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: '#8a9aaa', font: { size: 11 } } },
+          y: {
+            grid: { color: 'rgba(255,255,255,0.06)' },
+            ticks: { color: '#8a9aaa', font: { size: 11 }, callback: function(v) { return v + '$'; } },
+            beginAtZero: false,
+            suggestedMin: 50,
+            suggestedMax: 130
+          }
+        }
+      }
+    });
+  })();
+
+  // Chart.js — ホルムズ通過量 vs 迂回余力（縦棒）
+  (function() {
+    var ctx = document.getElementById('bypassChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['ホルムズ通過量', '迂回パイプラインの余力'],
+        datasets: [{
+          label: '日量（百万バレル）',
+          data: [15, 5],
+          backgroundColor: [
+            'rgba(184,120,104,0.85)',
+            'rgba(184,120,104,0.38)'
+          ],
+          borderColor: 'transparent',
+          borderWidth: 1,
+          borderRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(ctx) { return '日量 約' + ctx.parsed.y + '百万バレル'; } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: '#8a9aaa', font: { size: 11 } } },
+          y: {
+            grid: { color: 'rgba(255,255,255,0.06)' },
+            ticks: { color: '#8a9aaa', font: { size: 11 }, callback: function(v) { return v + 'M'; } },
+            beginAtZero: true,
+            max: 18
+          }
+        }
+      }
+    });
+  })();
+</script>
+</body>
+</html>
