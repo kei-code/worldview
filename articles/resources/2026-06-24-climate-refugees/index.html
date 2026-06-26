@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2050年までに最大2.16億人が移動を迫られうる——だが多くは国内・近距離の移動で、確定した未来でもない。海面上昇で居住地が脅かされる島嶼国、砂漠化するサヘル。『最も排出していない国が最初に土地を脅かされる』非対称が生む南北対立を、規模の実像・法的空白・損失と損害基金・受入国政治の観点から6視点で読み解く。なお『気候難民』は国際法上の正式資格ではなく通称。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/resources/2026-06-24-climate-refugees/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="気候難民 2050年 — 国土を失う国々と「気候正義」の南北対立 — WorldView">
+  <meta property="og:description" content="2050年までに最大2.16億人が移動を迫られうる——だが多くは国内・近距離の移動で、確定した未来でもない。海面上昇で居住地が脅かされる島嶼国、砂漠化するサヘル。『最も排出していない国が最初に土地を脅かされる』非対称が生む南北対立を、規模の実像・法的空白・損失と損害基金・受入国政治の観点から6視点で読み解く。なお『気候難民』は国際法上の正式資格ではなく通称。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/resources/2026-06-24-climate-refugees/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/climate-hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="気候難民 2050年 — 国土を失う国々と「気候正義」の南北対立 — WorldView">
+  <meta name="twitter:description" content="2050年までに最大2.16億人が移動を迫られうる——だが多くは国内・近距離の移動で、確定した未来でもない。海面上昇で居住地が脅かされる島嶼国、砂漠化するサヘル。『最も排出していない国が最初に土地を脅かされる』非対称が生む南北対立を、規模の実像・法的空白・損失と損害基金・受入国政治の観点から6視点で読み解く。なお『気候難民』は国際法上の正式資格ではなく通称。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/climate-hero.jpg">
+  <title>気候難民 2050年 — 国土を失う国々と「気候正義」の南北対立 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent3);
+      opacity: 0.7;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    .article-question {
+      border-left: 3px solid var(--accent3);
+      padding: 1rem 1.4rem;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.8rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent3);
+    }
+    .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image { position: relative; background: none; overflow: hidden; min-height: 680px; display: flex; align-items: center; }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/climate-hero.jpg');
+      background-size: cover; background-position: center 45%;
+      filter: brightness(1.35) contrast(1.04) saturate(1.06);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.14) 0%, rgba(14,17,23,0.20) 45%, rgba(14,17,23,0.42) 100%);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title,
+    .article-hero.has-image .article-summary { text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65); }
+    .article-hero.has-image .article-summary {
+      color: #eef2f6;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.92), 0 1px 5px rgba(0,0,0,0.8);
+      background: rgba(14,17,23,0.52);
+      box-shadow: -2px 0 16px rgba(0,0,0,0.40);
+      border-left-color: rgba(255,255,255,0.5);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; width: 100%; }
+    .article-hero.has-image .key-point {
+      background: rgba(18,23,31,0.40);
+      border: 1px solid rgba(255,255,255,0.18);
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+      box-shadow: 0 2px 14px rgba(0,0,0,0.28);
+    }
+    .article-hero.has-image .key-point:hover { background: rgba(18,23,31,0.54); }
+    .article-hero.has-image .key-point .kp-value { color: #f2f5f9; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+    .article-hero.has-image .key-point .kp-label { color: rgba(255,255,255,0.74); }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* 情報源リンク */
+    a.source-item { color: inherit; text-decoration: none; cursor: pointer; }
+    a.source-item:hover { border-color: var(--accent3); background: var(--bg-card2); }
+    a.source-item:hover .source-name { color: var(--accent3); }
+    a.source-item .source-name { transition: color 0.2s; }
+
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent3);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+    }
+
+    .pull-quote {
+      border-left: 3px solid var(--accent3);
+      background: rgba(122,170,130,0.10);
+      padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text); line-height: 1.65;
+    }
+
+    .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+    .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
+    .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .depth-bar-fill { height: 100%; background: var(--accent3); border-radius: 5px; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag tag-green">資源・環境</span>
+        <span class="tag tag-green">気候・南北対立</span>
+        <span class="date">2026年6月24日</span>
+      </div>
+      <h1 class="article-title">気候難民 2050年<br>— 国土を失う国々と「気候正義」の南北対立</h1>
+      <p class="article-summary">
+        気候変動で移動を迫られる人々は、その多くが国境を越える「難民」ではなく、自国内を動く。そして、最も排出してこなかった国ほど、最初に住む土地を脅かされる。この非対称が生む南北の対立を、6つの視点で読み解く。
+      </p>
+      <div class="key-points" style="margin-top:1.5rem;">
+        <div class="key-point" style="--kp-color:var(--accent3)">
+          <div class="kp-label">移動の規模</div>
+          <div class="kp-value">2050年までに最大2.16億人。だが多くは国境を越えず、自国内を動く</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent3)">
+          <div class="kp-label">法的な空白</div>
+          <div class="kp-value">「気候難民」は難民条約の対象外。守る国際的枠組みがない</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent3)">
+          <div class="kp-label">責任の非対称</div>
+          <div class="kp-value">歴史的なCO₂排出は先進国に集中。最も排出していない国が先に被害を受ける</div>
+        </div>
+        <div class="key-point" style="--kp-color:var(--accent3)">
+          <div class="kp-label">資金のギャップ</div>
+          <div class="kp-value">損失と損害基金の拠出は約7.7億ドル。必要額に遠く届かない</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 核心と問い -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>核心と問い — 「規模」ではなく「責任と負担」</h2>
+
+            <div class="article-question">
+              誰の責任で、誰が負担するのか——気候変動による移住は、すでに「起きるか否か」の段階を過ぎ、規模と速度を増しているとされる。だが問うべきは「何人動くか」だけではない。最も温室効果ガスを排出してこなかった国々が、住む土地と暮らしの基盤を最初に脅かされる。この非対称を前に、移住の費用と責任を誰がどう引き受けるのかが問われている。
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.9;margin-bottom:1.5rem;padding:0.9rem 1.2rem;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border-subtle);">
+              <strong style="color:var(--text);">用語について。</strong>本稿で使う「気候難民」という言葉は通称であり、国際法上の正式な難民資格を意味しない。1951年難民条約の「難民」は、迫害を理由に国境を越えた人を対象とするため、気候変動を理由とする移動者は原則として対象外である。ここでは、海面上昇・干ばつ・砂漠化・熱波など気候変動の影響によって移動を迫られる人々を広く指す便宜的な言葉として用いる。
+            </p>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              世界銀行のGroundswell報告は、有効な排出削減と開発支援が不十分な場合、2050年までにサブサハラ・アフリカ、南アジア、中南米など6地域で最大2億1,600万人が「自国内」で移動する可能性があると試算する。ただしこれは確定した未来ではなく条件付きの最大推計であり、早期の気候対策と包摂的な開発によって、この規模は大幅に抑えられる可能性もある。重要なのは、この多くが国境を越える「難民」ではなく国内・近距離の移動だという点だ。「気候難民が先進国の国境に殺到する」というイメージは実態と大きく異なる。一方で、IDMC〈国内避難民監視センター〉によれば、2024年だけで災害を理由とする国内避難は約4,580万件に達し、その大半は気象関連の事象によるものだった。ただしこれは人数ではなく避難・移動の発生件数であり、同じ人が年内に複数回避難した場合も含まれうる。また、個々の災害をすべて気候変動だけに帰すことはできない。いずれにせよ、気候移動はすでに「未来の問題」ではなく現在進行形である。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              にもかかわらず、本記事が焦点を当てるのは規模そのものではなく「責任と負担の分配」だ。海面上昇・砂漠化・熱波という誘因をつくった歴史的責任は主に産業化した先進国にあるが、最初に被害を受けるのは排出にほとんど寄与していない島嶼国やサヘルの人々だ。この非対称こそが「気候正義（climate justice）」を巡る南北対立の核心であり、本記事は規模の実像・法的空白・損失と損害基金・受入国政治の4軸から、この問題を読み解く。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2rem 0 0.75rem;font-weight:700;">気候移動を規定する3つの構造</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">誘因 — 海・砂・熱</div>
+                <div class="factor-desc">
+                  海面上昇は低地の島嶼国・三角州を侵食し、砂漠化はサヘルやサハラ周縁の農地を奪い、熱波と干ばつは居住と農業の限界を押し下げる。多くは単独でなく、紛争・貧困と絡み合って人を動かす「最後の一押し」として作用する。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">移動の実像 — 多くは国内・近距離</div>
+                <div class="factor-desc">
+                  気候を理由とする移動の大半は、国境を越えず同じ国の中で起きる。被害を受けた農村から都市へ、低地から高地へ。越境移動は相対的に少数で、しかも貧しい人ほど「動けずに留まる」。移動できることは、ある種の特権でもある。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">「気候難民」という法的空白</div>
+                <div class="factor-desc">
+                  「気候難民」という言葉は広く使われるが、国際法上の定義はない。1951年難民条約は「迫害」を要件とするため、気候を理由に移る人々は対象外。彼らを保護する確立した国際的枠組みは、いまだ存在しない。
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/climate-coast.jpg"
+                   alt="海面上昇で浸食される沿岸の村" loading="lazy">
+              <figcaption>海に削られていく故郷。海面上昇は低地の島嶼国や沿岸の村から、ゆっくりと、しかし確実に土地を奪っていく。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 「気候難民」を巡る30年</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">1990年</div>
+                <div class="timeline-content">
+                  <h4>気候変動と移住、初めて結びつく</h4>
+                  <p>気候変動に関する政府間パネル〈IPCC〉が第1次評価報告書を発表。気候変動による人の移動が、国際的な懸念として初めて公式に言及された。だが当時はまだ、対策も法的枠組みも存在しなかった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">IPCC第1次報告</span>
+                    <span class="reaction-chip">移住への初言及</span>
+                    <span class="reaction-chip">枠組みの不在</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2009年</div>
+                <div class="timeline-content">
+                  <h4>コペンハーゲン — 1,000億ドルの約束</h4>
+                  <p>気候変動枠組条約第15回締約国会議（COP〈国連気候変動枠組条約締約国会議〉15）で、先進国は2020年までに年1,000億ドルの気候資金を途上国へ拠出すると約束した。だがこの約束は長く未達のまま推移し、南北の不信の原点となった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">年1,000億ドルの約束</span>
+                    <span class="reaction-chip">達成の遅れ</span>
+                    <span class="reaction-chip">南北不信の原点</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2015年</div>
+                <div class="timeline-content">
+                  <h4>パリ協定 — だが「移住」は周縁に</h4>
+                  <p>世界の平均気温上昇を1.5〜2度に抑える目標で合意。だが気候移動への対応は本格的な制度化に至らず、タスクフォースの設置にとどまった。被害を受ける側の「損失と損害」の議論はなお先送りされた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">1.5度目標</span>
+                    <span class="reaction-chip">移住は制度化されず</span>
+                    <span class="reaction-chip">損失と損害は先送り</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2020年</div>
+                <div class="timeline-content">
+                  <h4>テイティオタ事件 — 司法が動いた</h4>
+                  <p>国連自由権規約委員会が、キリバス出身者の亡命を巡り初の国際的判断を示した。請求自体は退けたが、「気候変動は生命権への深刻な脅威であり、将来的には気候影響を理由とする送還が国際人権法上禁じられうる」と初めて認めた画期的な判断だった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">初の国際判断</span>
+                    <span class="reaction-chip">生命権への脅威を認定</span>
+                    <span class="reaction-chip">送還禁止の可能性</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2022〜2026年</div>
+                <div class="timeline-content">
+                  <h4>基金の始動と「最初の移住条約」</h4>
+                  <p>COP27（2022年）で「損失と損害」基金の設立が合意され、COP28（2023年）で始動した。だが拠出は2025年時点で約7.7億ドルにとどまり、必要額に遠く及ばない。一方、豪州とツバルが結んだ世界初の気候移住条約（ファレピリ連合）は2024年に発効し、2025年には年最大280人の移住枠に向けた初回抽選が開始された。アメリカは2025年に損失と損害基金の理事会から離脱し、基金への関与を後退させた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">損失と損害基金が始動</span>
+                    <span class="reaction-chip">ファレピリ連合発効</span>
+                    <span class="reaction-chip">米が基金理事会から離脱</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/climate-sahel.jpg"
+                   alt="砂漠化が進むサヘルの乾いた大地" loading="lazy">
+              <figcaption>砂漠化が呑み込む大地。サヘルでは干ばつと土地の劣化が農業を壊し、人々を移動へと押し出している。気候移動は島嶼国だけの問題ではない。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 3: 視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>6つの視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">各立場の主張</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- 沈みゆく島嶼国・最脆弱国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">沈みゆく島嶼国・最脆弱国</span>
+                      <span class="role-badge">生存と尊厳の論理</span>
+                    </div>
+                    <div class="pull-quote">「我々は最も排出していない。なのに、最初に住む土地を奪われる」</div>
+                    <div class="key-claim">
+                      <strong>存在そのものへの脅威</strong>
+                      ツバル・キリバスなど太平洋の島嶼国、バングラデシュの沿岸部、サヘルの農村は、海面上昇・高潮・砂漠化で居住可能な土地を実際に失いつつある。これは経済問題ではなく、暮らしと文化の基盤に関わる危機だ。ただし、物理的な土地の喪失と国家としての法的存続は同じではない。ツバルのように、海面上昇の影響を受けても国家性と主権の継続を国際的に認めようとする動きも始まっている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>「気候正義」の要求</strong>
+                      彼らは温暖化の原因をほとんどつくっていない。だからこそ、被害への補償（損失と損害）と、尊厳ある移住の権利を、歴史的責任を負う先進国に強く求める。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:100%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 先進国・排出大国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">先進国・排出大国（アメリカ・欧州）</span>
+                      <span class="role-badge">責任の限定と移民管理</span>
+                    </div>
+                    <div class="pull-quote">「人道的支援はする。だが法的な賠償責任は認められない」</div>
+                    <div class="key-claim">
+                      <strong>「責任」を認めることの重さ</strong>
+                      歴史的責任を法的な賠償義務として認めれば、際限のない請求に道を開きかねない。先進国は「損失と損害」を人道的な支援としては受け入れつつ、法的責任・賠償という枠組みは慎重に避けてきた。
+                    </div>
+                    <div class="key-claim">
+                      <strong>国内政治という制約</strong>
+                      とりわけアメリカは2025年に損失と損害基金の理事会から離脱し、基金への関与を後退させた。気候資金も移民受け入れも国内で支持を得にくく、「自国民の負担」への反発が国際的なコミットメントを縛る。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:90%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 損失と損害の推進派 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">損失と損害の推進派（G77＋中国・島嶼国連合）</span>
+                      <span class="role-badge">補償の制度化</span>
+                    </div>
+                    <div class="pull-quote">「善意ではなく、制度化された資金を」</div>
+                    <div class="key-claim">
+                      <strong>資金動員の枠組み化</strong>
+                      途上国連合（G77＋中国）や小島嶼国連合〈AOSIS〉は、その場限りの寄付ではなく、予測可能で十分な規模の資金メカニズムを求める。損失と損害基金はその第一歩だが、規模は必要額のごく一部にとどまる。
+                    </div>
+                    <div class="key-claim">
+                      <strong>「気候正義」の政治</strong>
+                      彼らは気候交渉を、排出責任と支払い能力に応じた負担配分を求める「正義」の問題と位置づける。先進国の「自発的拠出」という建付けそのものを、構造的に変えようとしている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:85%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 受入国の国内政治 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">受入国の国内政治（欧州・移民政策）</span>
+                      <span class="role-badge">誰を、どこまで</span>
+                    </div>
+                    <div class="pull-quote">「気候移動と経済移民の線引きは、誰にできるのか」</div>
+                    <div class="key-claim">
+                      <strong>難民条約の枠外という壁</strong>
+                      気候を理由に越境する人々は難民条約の保護対象ではない。受入国は法的義務を負わず、受け入れるか否かは各国の政治的判断に委ねられる。欧州では移民への反発が強まり、新規受け入れのハードルは上がっている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>「気候ビザ」という萌芽</strong>
+                      豪州とツバルのファレピリ連合のように、二国間で秩序ある移住の道を開く試みも現れている。だが対象は年280人規模で、来たるべき移動の規模に対してはなお限定的だ。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:80%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 国際機関・法律家 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">国際機関・法律家（国連難民高等弁務官事務所〈UNHCR〉・国際移住機関〈IOM〉）</span>
+                      <span class="role-badge">空白を埋める制度設計</span>
+                    </div>
+                    <div class="pull-quote">「『難民』か否かの論争より、現実に動く人をどう守るか」</div>
+                    <div class="key-claim">
+                      <strong>定義の空白を実務で補う</strong>
+                      UNHCR・IOM〈国際移住機関〉は、「気候難民」という新カテゴリーの創設よりも、既存の人権法・移住枠組みを使って現実の保護を積み上げる方針をとる。テイティオタ判断はその法的な足がかりになった。
+                    </div>
+                    <div class="key-claim">
+                      <strong>「秩序ある移住」への誘導</strong>
+                      避けられない移動を、無秩序な危機ではなく、計画され尊厳の保たれた移住へと誘導する。事前の再定住計画、移住者の権利保障、送り出し・受け入れ双方の支援が制度設計の焦点だ。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:75%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 現実主義・適応論 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">現実主義・適応論</span>
+                      <span class="role-badge">移住より適応か</span>
+                    </div>
+                    <div class="pull-quote">「全員が移るのか。それとも、留まって守るのか」</div>
+                    <div class="key-claim">
+                      <strong>適応という選択肢</strong>
+                      移住を前提とする前に、堤防・高床式住居・耐塩性作物・水管理といった「適応」への投資で、人々が住み続けられる余地を広げるべきだという立場。移転は最も費用が高く、社会的損失も大きい最終手段だと見る。
+                    </div>
+                    <div class="key-claim">
+                      <strong>適応の限界も直視する</strong>
+                      だが適応にも限界がある。一定以上の海面上昇に対しては、いかなる堤防も島を守れない。ツバルの事例が示すように、適応と計画的移住は二者択一ではなく、組み合わせて備えるべき現実的な課題だ。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">この問題との関係の深さ</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:70%;"></div></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>最も重視するもの</th>
+                        <th>求める解決</th>
+                        <th>最大の弱み</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>沈みゆく島嶼国</td><td>国家と文化の存続</td><td>補償＋尊厳ある移住</td><td>交渉上の発言力が小さい</td></tr>
+                      <tr><td>先進国・排出大国</td><td>国内の負担と支持</td><td>人道支援（賠償責任は回避）</td><td>歴史的責任への不誠実と映る</td></tr>
+                      <tr><td>損失と損害推進派</td><td>排出責任に応じた負担</td><td>予測可能な資金の制度化</td><td>資金規模が必要額に遠く届かない</td></tr>
+                      <tr><td>受入国の国内政治</td><td>社会の受容力</td><td>秩序ある限定的受け入れ</td><td>移動の規模に対し受け皿が小さい</td></tr>
+                      <tr><td>国際機関・法律家</td><td>現実の人の保護</td><td>既存枠組みでの実務的保護</td><td>強制力のある新条約は遠い</td></tr>
+                      <tr><td>現実主義・適応論</td><td>費用対効果</td><td>まず適応、移住は最終手段</td><td>適応の物理的限界を超える地域がある</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/climate-cop.jpg"
+                   alt="国際気候会議で交渉に臨む各国代表団" loading="lazy">
+              <figcaption>気候正義を巡る南北の攻防。国際会議の場では、排出責任と資金負担をめぐって先進国と脆弱国の主張が鋭く対立する。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- 地域別の気候移動予測人口 -->
+              <div class="data-card">
+                <h4>地域別の気候移動 予測人口（2050年・最大ケース、百万人）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="regionChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  世界銀行 Groundswell報告（2021年）。有効な気候対策がない場合の2050年の内部気候移民の推計。出典：World Bank, Groundswell
+                </p>
+              </div>
+
+              <!-- 歴史的なCO₂累積排出シェア -->
+              <div class="data-card">
+                <h4>歴史的なCO₂累積排出シェア（%）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="emissionChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  1750年以降の累積。概数。最も排出してきた国々と、最も被害を受ける国々が一致しない「気候正義」の核心。出典：Our World in Data
+                </p>
+              </div>
+
+              <!-- 注目の数字 -->
+              <div class="data-card">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">2.16億人</div>
+                    <div class="stat-label">2050年までに自国内で移動しうる人数の条件付き最大推計（世界銀行）。対策次第で大きく減りうる</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">99.5%</div>
+                    <div class="stat-label">2024年の災害起因の国内避難（約4,580万件）のうち気象関連が占めた割合（IDMC）。件数であり人数ではない</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">1951年</div>
+                    <div class="stat-label">難民条約の制定年。「気候難民」はこの条約の対象外で、国際法上の定義がない</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">約7.7億ドル</div>
+                    <div class="stat-label">損失と損害基金の拠出額（2025年時点）。必要額は2030年までに年最大5,800億ドル規模</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 気候移動の主要現場 -->
+              <div class="data-card">
+                <h4>気候移動の主要現場</h4>
+                <table style="width:100%;border-collapse:collapse;margin-top:1rem;font-size:0.82rem;">
+                  <thead>
+                    <tr style="border-bottom:1px solid var(--border);">
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">地域</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">主な誘因</th>
+                      <th style="text-align:left;padding:0.45rem 0.5rem;color:var(--text-dim);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;">移動の形</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">太平洋の島嶼国（ツバル・キリバス）</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">海面上昇・高潮</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">越境移住・条約による移住枠</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">バングラデシュ沿岸部</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">海面上昇・サイクロン・塩害</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">国内移動（農村→都市）</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-subtle);">
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">サヘル（西アフリカ）</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">砂漠化・干ばつ</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">国内・域内移動、紛争と複合</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-dim);">中東・南アジア都市部</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">熱波・水不足</td>
+                      <td style="padding:0.55rem 0.5rem;color:var(--text-muted);">居住・労働の限界による移動</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.75rem;">出典：世界銀行 Groundswell、IDMC、UNHCRを基に整理</p>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り — 法的空白・資金ギャップ・日本の立ち位置</h2>
+
+            <div class="insight-box">
+              <div class="insight-title">なぜ「気候難民」は国際法に存在しないのか</div>
+              <div class="insight-text">
+                1951年難民条約は、第二次大戦後の欧州を念頭に「人種・宗教・国籍・政治的意見などを理由とする迫害」を逃れる人を難民と定義した。気候変動による移動には、この「迫害」も「特定の加害者」も当てはまらない。新たな条約をつくる動きもあるが、先進国は新たな受け入れ義務を負うことを警戒し、合意は遠い。結果として、最も急速に増える移動の一類型が、国際的な保護の枠組みから抜け落ちたままになっている。テイティオタ判断のように既存の人権法で隙間を埋める試みが、現実的な前進になっている（IPCC〈気候変動に関する政府間パネル〉）。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">本当に2億人が国境を越えるのか — 国内移動という実像</div>
+              <div class="insight-text">
+                「2050年に2億人の気候難民が先進国へ」というイメージは、しばしば誤って語られる。世界銀行の2.16億人という数字は「国内移動」の推計であり、国境を越える難民の数ではない。実際、貧しく脆弱な人ほど移動の費用を負担できず、被災地に「取り残される」。気候移動の現実は、豊かな国への殺到ではなく、途上国の都市スラムへの集中と、その国の不安定化である。この誤解を正すことは、過剰な恐怖に基づく排外的な政策を避けるためにも重要だ。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">損失と損害基金は機能するか — 埋まらない資金ギャップ</div>
+              <div class="insight-text">
+                2022年のCOP27で合意され2023年に始動した損失と損害基金は、気候正義の歴史的な一歩だった。しかし2025年時点の拠出は約7.7億ドルにとどまり、脆弱国が必要とする年最大5,800億ドル規模（2030年見通し）とは桁が3つ違う。年間の拠出目標すら未達が続き、アメリカは2025年に基金の理事会から離脱して関与を後退させた。基金が「象徴」で終わるか「実効的な制度」に育つかは、先進国の政治的意志と、資金の出し方を自発的拠出から予測可能な仕組みへ変えられるかにかかっている。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">日本への含意 — 受け入れ・資金・適応支援</div>
+              <div class="insight-text">
+                日本は気候移動の主要な受け入れ先ではないが、この問題と無関係ではない。第一に、アジア太平洋は世界有数の気候移動ホットスポットであり、地域の不安定化は日本の安全保障と経済に波及する。第二に、日本は損失と損害基金や適応資金への主要な拠出国として、資金の質と規模を問われる立場にある。第三に、防災・水管理・耐災インフラといった日本が強みを持つ「適応」技術は、人々が住み続けられる余地を広げる現実的な貢献になりうる。気候移動は、遠い島国の物語ではなく、秩序ある国際協力の試金石である。
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/climate-resettle.jpg"
+                   alt="新たな土地での再定住を試みる人々" loading="lazy">
+              <figcaption>留まって守るか、移って生き延びるか。適応と計画的移住のどちらにも備えることが、気候移動の時代の現実的な解になる。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源</h2>
+            <div class="sources-grid">
+
+              <a class="source-item" href="https://www.worldbank.org/en/news/press-release/2021/09/13/climate-change-could-force-216-million-people-to-migrate-within-their-own-countries-by-2050" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">World Bank — Groundswell: Climate Change Could Force 216 Million People to Migrate by 2050</div>
+                  <div class="source-desc">世界銀行の内部気候移民推計報告。6地域・2050年までの移動規模をモデル化</div>
+                  <div class="source-country">【世界銀行・国際機関】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.internal-displacement.org/global-report/grid2025/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">IDMC — Global Report on Internal Displacement 2025 (GRID)</div>
+                  <div class="source-desc">国内避難民監視センターの年次報告。2024年の災害起因避難と気象関連の割合を集計</div>
+                  <div class="source-country">【国際NGO・避難民統計】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.ohchr.org/en/press-releases/2020/01/historic-un-human-rights-case-opens-door-climate-change-asylum-claims" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">OHCHR — Historic UN Human Rights Case (Teitiota) Opens Door to Climate Asylum Claims</div>
+                  <div class="source-desc">国連人権高等弁務官事務所による、テイティオタ事件の自由権規約委員会判断の解説</div>
+                  <div class="source-country">【国連・人権機関】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.dfat.gov.au/geo/tuvalu/australia-tuvalu-falepili-union-treaty" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Australian Government (DFAT) — Australia-Tuvalu Falepili Union Treaty</div>
+                  <div class="source-desc">世界初の気候移住条約。ツバルの主権承認と年280人の移住枠を定める豪州政府の公式解説</div>
+                  <div class="source-country">【オーストラリア政府・一次資料】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.wri.org/insights/loss-damage-climate-change" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">World Resources Institute — What to Know About Loss and Damage from Climate Change</div>
+                  <div class="source-desc">世界資源研究所による損失と損害の解説。基金の経緯・拠出額・必要額のギャップを整理</div>
+                  <div class="source-country">【アメリカ・研究機関】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://ourworldindata.org/contributed-most-global-co2" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Our World in Data — Who Has Contributed Most to Global CO₂ Emissions?</div>
+                  <div class="source-desc">歴史的累積CO₂排出の国別シェア。気候責任の非対称をデータで示す</div>
+                  <div class="source-country">【イギリス・データ機関】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://carnegieendowment.org/research/2025/09/australia-tuvalu-falepili-union-the-first-bilateral-climate-mobility-treaty" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Carnegie Endowment — The Australia-Tuvalu Falepili Union: The First Bilateral Climate Mobility Treaty</div>
+                  <div class="source-desc">カーネギー国際平和財団による気候移住条約の分析。先例としての意義と限界を論じる</div>
+                  <div class="source-country">【アメリカ・シンクタンク】</div>
+                </div>
+              </a>
+
+              <a class="source-item" href="https://www.amnesty.org/en/latest/news/2023/11/global-initial-pledges-at-cop28-to-finance-the-loss-damage-fund-fall-far-short-of-what-is-needed/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Amnesty International — Initial Pledges at COP28 to Finance the Loss & Damage Fund Fall Far Short</div>
+                  <div class="source-desc">COP28での損失と損害基金への初期拠出が必要額に遠く及ばないことを指摘</div>
+                  <div class="source-country">【国際人権NGO】</div>
+                </div>
+              </a>
+
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>核心と問い</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/resources/index.html">資源・環境</a></div>
+            <div>2026年6月24日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer"><p>WorldView — 多視点で読む世界情勢</p></footer>
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 目次のスクロールハイライトは main.js が処理（.toc-list a + .is-current）
+  // タブ切り替えは main.js が処理（.tab-btn + .tab-pane）
+
+  // Chart.js — 地域別の気候移動予測人口（横棒）
+  (function() {
+    var ctx = document.getElementById('regionChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['サブサハラ・アフリカ', '東アジア・太平洋', '南アジア', '北アフリカ', '中南米', '東欧・中央アジア'],
+        datasets: [{
+          label: '予測人口（百万人）',
+          data: [86, 49, 40, 19, 17, 5],
+          backgroundColor: 'rgba(122,170,130,0.78)',
+          borderColor: 'transparent',
+          borderWidth: 1,
+          borderRadius: 4
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(ctx) { return '約' + ctx.parsed.x + '百万人'; } } }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(255,255,255,0.06)' },
+            ticks: { color: '#8a9aaa', font: { size: 11 }, callback: function(v) { return v + 'M'; } },
+            beginAtZero: true
+          },
+          y: { grid: { display: false }, ticks: { color: '#8a9aaa', font: { size: 11 } } }
+        }
+      }
+    });
+  })();
+
+  // Chart.js — 歴史的なCO₂累積排出シェア（縦棒）
+  (function() {
+    var ctx = document.getElementById('emissionChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['アメリカ', '欧州連合', '中国', 'ロシア', '日本', 'アフリカ全体'],
+        datasets: [{
+          label: 'CO₂累積排出シェア（%）',
+          data: [25, 17, 15, 7, 4, 3],
+          backgroundColor: [
+            'rgba(184,120,104,0.80)',
+            'rgba(184,120,104,0.72)',
+            'rgba(184,120,104,0.64)',
+            'rgba(184,120,104,0.50)',
+            'rgba(184,120,104,0.40)',
+            'rgba(122,170,130,0.85)'
+          ],
+          borderColor: 'transparent',
+          borderWidth: 1,
+          borderRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(ctx) { return '約' + ctx.parsed.y + '%'; } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: '#8a9aaa', font: { size: 11 } } },
+          y: {
+            grid: { color: 'rgba(255,255,255,0.06)' },
+            ticks: { color: '#8a9aaa', font: { size: 11 }, callback: function(v) { return v + '%'; } },
+            beginAtZero: true,
+            max: 30
+          }
+        }
+      }
+    });
+  })();
+</script>
+</body>
+</html>
