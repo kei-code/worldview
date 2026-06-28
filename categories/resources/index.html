@@ -37,9 +37,9 @@
     .article-list { display: flex; flex-direction: column; gap: 1rem; }
     a.article-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius); display: flex; align-items: stretch; overflow: hidden; transition: border-color 0.2s, background 0.2s, transform 0.2s; color: inherit; text-decoration: none; }
     a.article-card:hover { border-color: var(--accent); background: var(--bg-card2); transform: translateX(3px); text-decoration: none; }
-    .ac-thumb { flex-shrink: 0; width: 120px; background-image: var(--thumb, none), linear-gradient(135deg, color-mix(in srgb, var(--c, var(--accent)) 25%, var(--bg)), var(--bg) 82%); background-size: cover; background-position: center; }
+    .ac-thumb { flex-shrink: 0; width: 200px; background-image: var(--thumb, none), linear-gradient(135deg, color-mix(in srgb, var(--c, var(--accent)) 25%, var(--bg)), var(--bg) 82%); background-size: cover; background-position: center; }
     .ac-inner { flex: 1; min-width: 0; display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.25rem 1.5rem; }
-    .ac-date { flex-shrink: 0; font-size: 0.78rem; color: var(--text-dim); padding-top: 0.15rem; white-space: nowrap; }
+    .ac-date { font-size: 0.78rem; color: var(--text-dim); white-space: nowrap; margin-left: auto; }
     .ac-body { flex: 1; min-width: 0; }
     .ac-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.5rem; }
     .ac-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.4; color: var(--text); }
@@ -54,10 +54,8 @@
       .ac-thumb { width: 100%; height: 160px; }
       .ac-inner { flex-direction: column; gap: 0.4rem; padding: 0.85rem 1.1rem 1rem; align-items: stretch; }
       .ac-date {
-        position: absolute; top: 0.55rem; left: 0.65rem; z-index: 2;
-        font-size: 0.7rem; color: rgba(255,255,255,0.88);
-        background: rgba(0,0,0,0.42); padding: 0.1rem 0.5rem;
-        border-radius: 4px; white-space: nowrap;
+        position: static; background: none; padding: 0;
+        font-size: 0.72rem; color: var(--text-dim); white-space: nowrap;
       }
       .ac-right {
         position: absolute; top: 0.55rem; right: 0.65rem; z-index: 2;
@@ -99,9 +97,8 @@
         <a class="article-card" href="../../articles/resources/2026-06-24-climate-refugees/index.html" style="--thumb:url('../../image/articles/climate-hero.jpg'); --c:#7aaa82;">
           <div class="ac-thumb"></div>
           <div class="ac-inner">
-            <div class="ac-date">2026.06.24</div>
             <div class="ac-body">
-              <div class="ac-meta"><span class="tag">資源・環境</span><span class="tag">気候・南北対立</span></div>
+              <div class="ac-meta"><span class="tag">資源・環境</span><span class="tag">気候・南北対立</span><span class="ac-date">2026.06.24</span></div>
               <div class="ac-title">気候難民 2050年 — 国土を失う国々と「気候正義」の南北対立</div>
               <div class="ac-summary">2050年までに最大2億1,600万人が住む土地を追われる可能性がある——だがその大半は国境を越える「難民」ではなく、自国内の移動だ。海面上昇で消えゆく島嶼国、砂漠化するサヘル。「最も排出していない国が、最初に国土を失う」非対称が生む南北対立を、規模の実像・法的空白・損失と損害基金・受入国政治の観点から6つの視点で読み解く。</div>
               <div class="ac-countries">島嶼国・サヘル・先進国・国際機関・グローバルサウス</div>
@@ -114,9 +111,8 @@
         <a class="article-card" href="../../articles/resources/2026-06-15-arctic-thaw/index.html" style="--thumb:url('../../image/articles/arctic-thaw-hero-icebreaker.jpg'); --c:#6f9fa8;">
           <div class="ac-thumb"></div>
           <div class="ac-inner">
-            <div class="ac-date">2026.06.15</div>
             <div class="ac-body">
-              <div class="ac-meta"><span class="tag">資源・環境</span><span class="tag">北極・地政学</span></div>
+              <div class="ac-meta"><span class="tag">資源・環境</span><span class="tag">北極・地政学</span><span class="ac-date">2026.06.15</span></div>
               <div class="ac-title">氷上のシルクロード — 温暖化が開いた航路と資源の地政学</div>
               <div class="ac-summary">北極の氷が史上最低水準まで後退し、閉ざされた海が「使える海」に変わりつつある。スエズ比4割短い北極海航路、海底に眠る世界有数の石油・天然ガス、急速な軍事化——氷が溶けて生まれた海は「協力の海」か「新冷戦」か。6つの視点で読み解く。</div>
               <div class="ac-countries">ロシア・中国・アメリカ・北欧・カナダ・先住民</div>
@@ -129,9 +125,8 @@
         <a class="article-card" href="../../articles/resources/2026-06-06-water-geopolitics/index.html" style="--thumb:url('../../image/articles/water-geopolitics-dam-reservoir.jpg'); --c:#6f9fa8;">
           <div class="ac-thumb"></div>
           <div class="ac-inner">
-            <div class="ac-date">2026.6.6</div>
             <div class="ac-body">
-              <div class="ac-meta"><span class="tag">水・安全保障</span></div>
+              <div class="ac-meta"><span class="tag">水・安全保障</span><span class="ac-date">2026.6.6</span></div>
               <div class="ac-title">水の地政学 — 川とダムをめぐる「静かな戦争」</div>
               <div class="ac-summary">国境を越える川が新たな紛争の火種に。エチオピアはアフリカ最大のダムを稼働させ、インドはパキスタンとの水条約を停止。ナイル・インダス・メコン・チグリスの対立を、上流国・下流国・国際機関の視点で整理する。</div>
               <div class="ac-countries">エチオピア・エジプト・インド・パキスタン・中国・トルコ</div>

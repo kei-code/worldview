@@ -37,9 +37,9 @@
     .article-list { display: flex; flex-direction: column; gap: 1rem; }
     a.article-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius); display: flex; align-items: stretch; overflow: hidden; transition: border-color 0.2s, background 0.2s, transform 0.2s; color: inherit; text-decoration: none; }
     a.article-card:hover { border-color: var(--accent); background: var(--bg-card2); transform: translateX(3px); text-decoration: none; }
-    .ac-thumb { flex-shrink: 0; width: 120px; background-image: var(--thumb, none), linear-gradient(135deg, color-mix(in srgb, var(--c, var(--accent)) 25%, var(--bg)), var(--bg) 82%); background-size: cover; background-position: center; }
+    .ac-thumb { flex-shrink: 0; width: 200px; background-image: var(--thumb, none), linear-gradient(135deg, color-mix(in srgb, var(--c, var(--accent)) 25%, var(--bg)), var(--bg) 82%); background-size: cover; background-position: center; }
     .ac-inner { flex: 1; min-width: 0; display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.25rem 1.5rem; }
-    .ac-date { flex-shrink: 0; font-size: 0.78rem; color: var(--text-dim); padding-top: 0.15rem; white-space: nowrap; }
+    .ac-date { font-size: 0.78rem; color: var(--text-dim); white-space: nowrap; margin-left: auto; }
     .ac-body { flex: 1; min-width: 0; }
     .ac-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.5rem; }
     .ac-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.4; color: var(--text); }
@@ -54,10 +54,8 @@
       .ac-thumb { width: 100%; height: 160px; }
       .ac-inner { flex-direction: column; gap: 0.4rem; padding: 0.85rem 1.1rem 1rem; align-items: stretch; }
       .ac-date {
-        position: absolute; top: 0.55rem; left: 0.65rem; z-index: 2;
-        font-size: 0.7rem; color: rgba(255,255,255,0.88);
-        background: rgba(0,0,0,0.42); padding: 0.1rem 0.5rem;
-        border-radius: 4px; white-space: nowrap;
+        position: static; background: none; padding: 0;
+        font-size: 0.72rem; color: var(--text-dim); white-space: nowrap;
       }
       .ac-right {
         position: absolute; top: 0.55rem; right: 0.65rem; z-index: 2;
@@ -99,9 +97,8 @@
         <a class="article-card" href="../../articles/ukraine/2026-06-23-war-of-attrition/index.html" style="--thumb:url('../../image/articles/attrition-hero.jpg'); --c:#8a99a8;">
           <div class="ac-thumb"></div>
           <div class="ac-inner">
-            <div class="ac-date">2026.6.23</div>
             <div class="ac-body">
-              <div class="ac-meta"><span class="tag">消耗戦</span></div>
+              <div class="ac-meta"><span class="tag">消耗戦</span><span class="ac-date">2026.6.23</span></div>
               <div class="ac-title">ウクライナ、終わらない消耗戦 — 戦線・経済・疲弊する欧州</div>
               <div class="ac-summary">全面侵攻から4年超。戦争は「どちらが勝つか」ではなく「どちらが先に尽きるか」の消耗戦に入った。膠着する戦線、停滞するロシア戦時経済、ウクライナの兵力・防空の枯渇、アメリカ撤退を埋めきれない欧州の「支援疲れ」を6視点で読み解く。</div>
               <div class="ac-countries">ウクライナ・ロシア・アメリカ・欧州連合・グローバルサウス</div>
@@ -114,9 +111,8 @@
         <a class="article-card" href="../../articles/ukraine/2026-06-02-ceasefire/index.html" style="--c:#bfa874;">
           <div class="ac-thumb"></div>
           <div class="ac-inner">
-            <div class="ac-date">2026.6.2</div>
             <div class="ac-body">
-              <div class="ac-meta"><span class="tag">停戦交渉</span></div>
+              <div class="ac-meta"><span class="tag">停戦交渉</span><span class="ac-date">2026.6.2</span></div>
               <div class="ac-title">ウクライナ停戦交渉の現在地 — トランプ仲介・プーチンの思惑・ゼレンスキーの苦境</div>
               <div class="ac-summary">5月の3日間停戦は双方の攻撃継続で崩壊。領土・NATO加盟・安全保障をめぐる根本的対立は解消されず。ゼレンスキーはNATO断念を示唆するも「安全の保証なくして停戦なし」と主張。中国の「戦略的中立」の実態も分析。</div>
               <div class="ac-countries">ウクライナ・ロシア・アメリカ・欧州連合・中国・日本</div>

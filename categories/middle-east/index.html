@@ -37,9 +37,9 @@
     .article-list { display: flex; flex-direction: column; gap: 1rem; }
     a.article-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius); display: flex; align-items: stretch; overflow: hidden; transition: border-color 0.2s, background 0.2s, transform 0.2s; color: inherit; text-decoration: none; }
     a.article-card:hover { border-color: var(--accent); background: var(--bg-card2); transform: translateX(3px); text-decoration: none; }
-    .ac-thumb { flex-shrink: 0; width: 120px; background-image: var(--thumb, none), linear-gradient(135deg, color-mix(in srgb, var(--c, var(--accent)) 25%, var(--bg)), var(--bg) 82%); background-size: cover; background-position: center; }
+    .ac-thumb { flex-shrink: 0; width: 200px; background-image: var(--thumb, none), linear-gradient(135deg, color-mix(in srgb, var(--c, var(--accent)) 25%, var(--bg)), var(--bg) 82%); background-size: cover; background-position: center; }
     .ac-inner { flex: 1; min-width: 0; display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.25rem 1.5rem; }
-    .ac-date { flex-shrink: 0; font-size: 0.78rem; color: var(--text-dim); padding-top: 0.15rem; white-space: nowrap; }
+    .ac-date { font-size: 0.78rem; color: var(--text-dim); white-space: nowrap; margin-left: auto; }
     .ac-body { flex: 1; min-width: 0; }
     .ac-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.5rem; }
     .ac-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.4; color: var(--text); }
@@ -54,10 +54,8 @@
       .ac-thumb { width: 100%; height: 160px; }
       .ac-inner { flex-direction: column; gap: 0.4rem; padding: 0.85rem 1.1rem 1rem; align-items: stretch; }
       .ac-date {
-        position: absolute; top: 0.55rem; left: 0.65rem; z-index: 2;
-        font-size: 0.7rem; color: rgba(255,255,255,0.88);
-        background: rgba(0,0,0,0.42); padding: 0.1rem 0.5rem;
-        border-radius: 4px; white-space: nowrap;
+        position: static; background: none; padding: 0;
+        font-size: 0.72rem; color: var(--text-dim); white-space: nowrap;
       }
       .ac-right {
         position: absolute; top: 0.55rem; right: 0.65rem; z-index: 2;
@@ -99,9 +97,8 @@
         <a class="article-card" href="../../articles/middle-east/2026-06-26-hormuz-strait/index.html" style="--thumb:url('../../image/articles/hormuz-hero.jpg'); --c:#c08a5e;">
           <div class="ac-thumb"></div>
           <div class="ac-inner">
-            <div class="ac-date">2026.6.26</div>
             <div class="ac-body">
-              <div class="ac-meta"><span class="tag">中東情勢</span><span class="tag">エネルギー安全保障</span></div>
+              <div class="ac-meta"><span class="tag">中東情勢</span><span class="tag">エネルギー安全保障</span><span class="ac-date">2026.6.26</span></div>
               <div class="ac-title">ホルムズ海峡封鎖 — 世界の石油2割を握る「最後の蛇口」</div>
               <div class="ac-summary">世界の石油・ガスの約2割が通るホルムズ海峡を、2026年にイランが封鎖した。原油は126ドルへ高騰し、中東に9割依存する日本も直撃。なぜ一本の海峡が世界経済を人質に取れるのか。封鎖の構造と「諸刃の剣」を5つの視点で読み解く。</div>
               <div class="ac-countries">イラン・湾岸産油国・アメリカ／有志連合・日本／アジア・中国</div>
@@ -114,9 +111,8 @@
         <a class="article-card" href="../../articles/middle-east/2026-06-12-iran-proxies/index.html" style="--thumb:url('../../image/articles/iran-proxies-hero-faded-posters.jpg'); --c:#c08a5e;">
           <div class="ac-thumb"></div>
           <div class="ac-inner">
-            <div class="ac-date">2026.6.12</div>
             <div class="ac-body">
-              <div class="ac-meta"><span class="tag">中東情勢</span><span class="tag">代理勢力</span></div>
+              <div class="ac-meta"><span class="tag">中東情勢</span><span class="tag">代理勢力</span><span class="ac-date">2026.6.12</span></div>
               <div class="ac-title">火の輪は、なぜ消えたか — イラン「抵抗の枢軸」の興亡</div>
               <div class="ac-summary">イランが40年かけて築いた代理勢力網「抵抗の枢軸」。ヒズボラ・ハマス・フーシ派・イラク民兵がイスラエルを囲む「火の輪」は、なぜ2年半で解体されたのか。前方防衛の論理と崩壊の連鎖を5勢力の視点で読み解く。</div>
               <div class="ac-countries">イラン/コッズ部隊・ヒズボラ・ハマス・フーシ派・イラク民兵</div>
@@ -129,9 +125,8 @@
         <a class="article-card" href="../../articles/middle-east/2026-06-11-nuclear-deterrence/index.html" style="--thumb:url('../../image/articles/nuclear-deterrence-hero-empty-silo.jpg'); --c:#8a7890;">
           <div class="ac-thumb"></div>
           <div class="ac-inner">
-            <div class="ac-date">2026.6.11</div>
             <div class="ac-body">
-              <div class="ac-meta"><span class="tag">中東情勢</span><span class="tag">核抑止</span></div>
+              <div class="ac-meta"><span class="tag">中東情勢</span><span class="tag">核抑止</span><span class="ac-date">2026.6.11</span></div>
               <div class="ac-title">核を手放した国の末路 — 「核抑止」という生存の論理</div>
               <div class="ac-summary">リビア・ウクライナ・イラクは核を持てず滅んだ。北朝鮮は持ち続けて存続した。2026年2月のイランへの攻撃が再確認させた核抑止のパラドックスと、NPT体制崩壊の危機を5つの立場から読み解く。</div>
               <div class="ac-countries">イラン強硬派・アメリカ/西側・NPT/IAEA・北朝鮮・サウジ/韓国</div>
@@ -144,9 +139,8 @@
         <a class="article-card" href="../../articles/middle-east/2026-06-02-iran-nuclear/index.html" style="--c:#c08a5e;">
           <div class="ac-thumb"></div>
           <div class="ac-inner">
-            <div class="ac-date">2026.6.2</div>
             <div class="ac-body">
-              <div class="ac-meta"><span class="tag">イラン核問題</span></div>
+              <div class="ac-meta"><span class="tag">イラン核問題</span><span class="ac-date">2026.6.2</span></div>
               <div class="ac-title">イラン核交渉の最新動向 — 米国・イスラエル・イランの三つ巴</div>
               <div class="ac-summary">2026年5月の核合意再交渉をめぐり各国の立場が鮮明に対立。イランは「平和利用の権利」を主張する一方、イスラエルは軍事オプションを示唆。アメリカは外交圧力と制裁の組み合わせを模索している。</div>
               <div class="ac-countries">イラン・アメリカ・イスラエル・ロシア・中国・ドイツ・サウジアラビア</div>

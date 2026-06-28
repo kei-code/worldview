@@ -37,9 +37,9 @@
     .article-list { display: flex; flex-direction: column; gap: 1rem; }
     a.article-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius); display: flex; align-items: stretch; overflow: hidden; transition: border-color 0.2s, background 0.2s, transform 0.2s; color: inherit; text-decoration: none; }
     a.article-card:hover { border-color: var(--accent); background: var(--bg-card2); transform: translateX(3px); text-decoration: none; }
-    .ac-thumb { flex-shrink: 0; width: 120px; background-image: var(--thumb, none), linear-gradient(135deg, color-mix(in srgb, var(--c, var(--accent)) 25%, var(--bg)), var(--bg) 82%); background-size: cover; background-position: center; }
+    .ac-thumb { flex-shrink: 0; width: 200px; background-image: var(--thumb, none), linear-gradient(135deg, color-mix(in srgb, var(--c, var(--accent)) 25%, var(--bg)), var(--bg) 82%); background-size: cover; background-position: center; }
     .ac-inner { flex: 1; min-width: 0; display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.25rem 1.5rem; }
-    .ac-date { flex-shrink: 0; font-size: 0.78rem; color: var(--text-dim); padding-top: 0.15rem; white-space: nowrap; }
+    .ac-date { font-size: 0.78rem; color: var(--text-dim); white-space: nowrap; margin-left: auto; }
     .ac-body { flex: 1; min-width: 0; }
     .ac-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.5rem; }
     .ac-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.4; color: var(--text); }
@@ -54,10 +54,8 @@
       .ac-thumb { width: 100%; height: 160px; }
       .ac-inner { flex-direction: column; gap: 0.4rem; padding: 0.85rem 1.1rem 1rem; align-items: stretch; }
       .ac-date {
-        position: absolute; top: 0.55rem; left: 0.65rem; z-index: 2;
-        font-size: 0.7rem; color: rgba(255,255,255,0.88);
-        background: rgba(0,0,0,0.42); padding: 0.1rem 0.5rem;
-        border-radius: 4px; white-space: nowrap;
+        position: static; background: none; padding: 0;
+        font-size: 0.72rem; color: var(--text-dim); white-space: nowrap;
       }
       .ac-right {
         position: absolute; top: 0.55rem; right: 0.65rem; z-index: 2;
@@ -99,9 +97,8 @@
         <a class="article-card" href="../../articles/asia/2026-06-16-india-pakistan/index.html" style="--thumb:url('../../image/articles/india-pakistan-hero-loc-border.jpg'); --c:#b87f8c;">
           <div class="ac-thumb"></div>
           <div class="ac-inner">
-            <div class="ac-date">2026.06.16</div>
             <div class="ac-body">
-              <div class="ac-meta"><span class="tag">アジア情勢</span><span class="tag">南アジア・核</span></div>
+              <div class="ac-meta"><span class="tag">アジア情勢</span><span class="tag">南アジア・核</span><span class="ac-date">2026.06.16</span></div>
               <div class="ac-title">世界で最も危険な国境 — カシミールが映す核時代の南アジア</div>
               <div class="ac-summary">2025年4月のパハルガム襲撃と続くシンドゥール作戦で、印パは核保有国同士の4日間の衝突に至った。3度の戦争、70年以上続く領土問題、互いに向け合う核——なぜカシミールでは対立が終わらないのか。6視点で読み解く。</div>
               <div class="ac-countries">インド・パキスタン・中国・アメリカ・カシミール住民・核拡散専門家</div>
@@ -114,9 +111,8 @@
         <a class="article-card" href="../../articles/asia/2026-06-14-taiwan-strait/index.html" style="--thumb:url('../../image/articles/taiwan-strait-hero-gray-standoff.jpg'); --c:#b87f8c;">
           <div class="ac-thumb"></div>
           <div class="ac-inner">
-            <div class="ac-date">2026.6.14</div>
             <div class="ac-body">
-              <div class="ac-meta"><span class="tag">アジア情勢</span><span class="tag">台湾海峡</span></div>
+              <div class="ac-meta"><span class="tag">アジア情勢</span><span class="tag">台湾海峡</span><span class="ac-date">2026.6.14</span></div>
               <div class="ac-title">台湾海峡の「新常態」— 火を使わない包囲という戦略</div>
               <div class="ac-summary">中国軍機の防空識別圏侵入回数はピーク時より減っている——にもかかわらず、台湾海峡はなぜ不安定になっているのか。侵攻でも封鎖でもなく「検疫」という法的抜け穴を使った恒常的包囲戦略を、5つの立場から読み解く。</div>
               <div class="ac-countries">中国・台湾・アメリカ・日本・ASEAN</div>
@@ -129,9 +125,8 @@
         <a class="article-card" href="../../articles/asia/2026-06-04-india-strategy/index.html" style="--c:#b87f8c;">
           <div class="ac-thumb"></div>
           <div class="ac-inner">
-            <div class="ac-date">2026.6.4</div>
             <div class="ac-body">
-              <div class="ac-meta"><span class="tag">地政学</span></div>
+              <div class="ac-meta"><span class="tag">地政学</span><span class="ac-date">2026.6.4</span></div>
               <div class="ac-title">インドの「全方位外交」— 米中どちらにも付かない14億人の大国</div>
               <div class="ac-summary">クワッドに参加しながらロシアから石油を買い続け、BRICSの議長国を務めながらアメリカとの「歴史的貿易合意」を発表する。世界第5位の経済大国として急成長するインドが、米中対立の時代に「戦略的自律」をどう実践しているか。6つの視点から整理する。</div>
               <div class="ac-countries">インド・アメリカ・中国・ロシア・グローバルサウス・日本</div>

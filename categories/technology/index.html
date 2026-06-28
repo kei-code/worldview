@@ -37,9 +37,9 @@
     .article-list { display: flex; flex-direction: column; gap: 1rem; }
     a.article-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius); display: flex; align-items: stretch; overflow: hidden; transition: border-color 0.2s, background 0.2s, transform 0.2s; color: inherit; text-decoration: none; }
     a.article-card:hover { border-color: var(--accent); background: var(--bg-card2); transform: translateX(3px); text-decoration: none; }
-    .ac-thumb { flex-shrink: 0; width: 120px; background-image: var(--thumb, none), linear-gradient(135deg, color-mix(in srgb, var(--c, var(--accent)) 25%, var(--bg)), var(--bg) 82%); background-size: cover; background-position: center; }
+    .ac-thumb { flex-shrink: 0; width: 200px; background-image: var(--thumb, none), linear-gradient(135deg, color-mix(in srgb, var(--c, var(--accent)) 25%, var(--bg)), var(--bg) 82%); background-size: cover; background-position: center; }
     .ac-inner { flex: 1; min-width: 0; display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.25rem 1.5rem; }
-    .ac-date { flex-shrink: 0; font-size: 0.78rem; color: var(--text-dim); padding-top: 0.15rem; white-space: nowrap; }
+    .ac-date { font-size: 0.78rem; color: var(--text-dim); white-space: nowrap; margin-left: auto; }
     .ac-body { flex: 1; min-width: 0; }
     .ac-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.5rem; }
     .ac-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.4; color: var(--text); }
@@ -54,10 +54,8 @@
       .ac-thumb { width: 100%; height: 160px; }
       .ac-inner { flex-direction: column; gap: 0.4rem; padding: 0.85rem 1.1rem 1rem; align-items: stretch; }
       .ac-date {
-        position: absolute; top: 0.55rem; left: 0.65rem; z-index: 2;
-        font-size: 0.7rem; color: rgba(255,255,255,0.88);
-        background: rgba(0,0,0,0.42); padding: 0.1rem 0.5rem;
-        border-radius: 4px; white-space: nowrap;
+        position: static; background: none; padding: 0;
+        font-size: 0.72rem; color: var(--text-dim); white-space: nowrap;
       }
       .ac-right {
         position: absolute; top: 0.55rem; right: 0.65rem; z-index: 2;
@@ -99,9 +97,8 @@
         <a class="article-card" href="../../articles/technology/2026-06-20-drone-warfare/index.html" style="--thumb:url('../../image/articles/drone-warfare-hero-swarm-night.jpg'); --c:#9a8ab4;">
           <div class="ac-thumb"></div>
           <div class="ac-inner">
-            <div class="ac-date">2026.6.20</div>
             <div class="ac-body">
-              <div class="ac-meta"><span class="tag">テクノロジー</span><span class="tag">ドローン・軍事技術</span></div>
+              <div class="ac-meta"><span class="tag">テクノロジー</span><span class="tag">ドローン・軍事技術</span><span class="ac-date">2026.6.20</span></div>
               <div class="ac-title">500ドルの空軍 — モスクワを襲ったドローン、その技術の中身</div>
               <div class="ac-summary">2026年6月18日、ウクライナは約200機のドローンでモスクワを攻撃した。数百ドルの機体が数百万ドルの兵器を脅かす——光ファイバー制御・AI標的識別・大量生産という3つの技術革新の中身と、戦争の変質を6つの視点で読み解く。</div>
               <div class="ac-countries">ウクライナ・ロシア・中国・西側軍需・倫理専門家・民間社会</div>
@@ -114,9 +111,8 @@
         <a class="article-card" href="../../articles/technology/2026-06-06-orbital-supremacy/index.html" style="--thumb:url('../../image/articles/orbital-supremacy-satellite-constellation.jpg'); --c:#9a8ab4;">
           <div class="ac-thumb"></div>
           <div class="ac-inner">
-            <div class="ac-date">2026.6.6</div>
             <div class="ac-body">
-              <div class="ac-meta"><span class="tag">テクノロジー</span><span class="tag">宇宙・安全保障</span></div>
+              <div class="ac-meta"><span class="tag">テクノロジー</span><span class="tag">宇宙・安全保障</span><span class="ac-date">2026.6.6</span></div>
               <div class="ac-title">軌道の覇権争い — スターリンクと「宇宙インフラの私物化」</div>
               <div class="ac-summary">全稼働衛星の約3分の2を一民間企業スターリンクが握り、戦場の通信さえ左右する。各国はこれを「主権の委譲」と警戒し、中国の国網・千帆、欧州連合のIRIS²、対衛星兵器で対抗。空が新たな国境になる構図を6つの視点で整理。</div>
               <div class="ac-countries">アメリカ・欧州連合・中国・ロシア・グローバルサウス</div>
