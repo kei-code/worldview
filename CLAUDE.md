@@ -144,6 +144,7 @@
 - **国名略語の禁止**：US・EU・UK等は使わず、アメリカ・欧州連合・イギリス等の日本語で表記
 - **絵文字アイコンの禁止**：記事本文・見出し・ラベルに絵文字を使わない（チープに見える）
 - **perspective-cardの色分け禁止**：`--card-color` のバリエーション指定はしない（全カード統一）
+- **メタ欄はカテゴリ＋日付のみ**：ヒーローの `article-meta` 欄には**カテゴリのタグ1つと日付だけ**を置く。トピック名などの追加タグ（例「スケーリング則」）は入れない。
 
 ### カラー原則
 - **ベース70%・メイン25%・アクセント5%** の比率を守る
@@ -185,6 +186,17 @@
   - 文字色は `kp-value: #f2f5f9`（影付き）、`kp-label: rgba(255,255,255,0.74)`
   - 透過の強さ（0.40）は画像の明るさで微調整。明るい画像なら濃く（数値↑）、暗い画像なら薄く（数値↓）。
 - **クレジット表記**：生成AI画像には `.hero-credit`（右下・小サイズ）で「イメージ画像（生成AI）」を明示。
+
+### ヒーローの本文構成・文字配置（案X型 / 推奨）
+
+ヒーロー上に重ねる文字は、**「見出し＞リード＞数字」の段差**をはっきりつける。4枚の等分カードを並べる旧キーポイント方式より、こちらを推奨する（手本：`articles/ai-tech/2026-06-29-scaling-to-reasoning/index.html`）。
+
+- **構成**：`article-meta`（カテゴリのタグ1つ＋日付のみ）→ `article-title`（h1）→ **宣言文 `.hero-deck`** → **数字ピル `.hero-pills`** の順。**表示用サマリー（`.article-summary`）は置かない**（タイトル・宣言文と内容が重複しやすいため）。※SEO用の `<meta name="description">` は別途必須（要約文を入れる）。
+- **アクセント色はカテゴリ色に依存（必須）**：宣言文のアクセント語・数字ピルの色は、**記事のテーマ色＝カテゴリ色 `var(--accentN)` に必ず合わせる**（色は直書きせず変数・`color-mix` で作る）。手本のAI記事が青なのは ai-tech のテーマ色が `--accent-tech`（#80acd8）だから。中東記事なら `--accent2`、アジア記事なら `--accent5`、というように記事ごとに変わる。
+- **タイポの段差**：タイトル（`.article-title`）が主役＝大・太・明色のまま。宣言文 `.hero-deck` は脇役にして段差をつける：`font-size:1.08rem; font-weight:400; line-height:1.75; color:#b4bfcc; max-width:560px; margin-top:1.5rem;`（影 `text-shadow:0 1px 8px rgba(0,0,0,0.55);`）。**強調したい1フレーズだけ** `.deck-accent` でテーマ色に太く：`color:var(--accentN); font-weight:700;`。
+- **宣言文の中身**：タイトルの言い換えにしない（**別角度**＝「なぜ転換したか」「何が変わるか」等で続きを読ませる）。**2〜3文**、強制改行（`<br>`）は使わず `max-width` 内で自然に折り返す。アクセントは1フレーズのみ。
+- **数字ピル**：記事の数字フックをガラス調ピルで3つ程度。色はテーマ色から `color-mix` で生成する：`.hero-pill { font-size:0.78rem; font-weight:700; color:color-mix(in srgb, var(--accentN) 60%, #fff); background:color-mix(in srgb, var(--accentN) 16%, transparent); border:1px solid color-mix(in srgb, var(--accentN) 34%, transparent); padding:0.38rem 0.75rem; border-radius:20px; backdrop-filter:blur(4px); }`、`.hero-pills { display:flex; gap:0.55rem; flex-wrap:wrap; margin-top:1.5rem; }`。
+- **高さと縦位置**：画像比率（16:9等）を活かして大きく見せ目を引く。`.article-hero.has-image { min-height:680px; display:flex; align-items:center; }`（＝**縦中央**）、`.article-hero.has-image .container { width:100%; }`。中央からわずかに上げたいときは `.container` に `transform: translateY(-Npx);`（記事ごとに微調整）。
 
 ### ページ共通のhead要素（SEO・OGP / 必須）
 

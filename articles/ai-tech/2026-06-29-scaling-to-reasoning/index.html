@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="「モデルを大きくすれば賢くなる」というスケーリング則が頭打ちに近づき、AIは『答える瞬間に長く考える』推論時計算へ軸足を移しつつある。スケーリング則とは何か、AIはそもそもどう考えるのか——初心者向け解説を交えながら、性能向上パラダイムの転換を多視点で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/ai-tech/2026-06-29-scaling-to-reasoning/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="スケーリングの終焉？ —AIは「大きくする」から「長く考える」へ — WorldView">
+  <meta property="og:description" content="「大きくすれば賢くなる」スケーリング則が頭打ちに近づき、AIは『答える瞬間に長く考える』推論時計算へ移りつつある。スケーリング則とは何か、AIはどう考えるのか——初心者解説を交え多視点で読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/ai-tech/2026-06-29-scaling-to-reasoning/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/scaling-to-reasoning-hero-datacenter-mind.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="スケーリングの終焉？ —AIは「大きくする」から「長く考える」へ — WorldView">
+  <meta name="twitter:description" content="「大きくすれば賢くなる」スケーリング則が頭打ちに近づき、AIは『答える瞬間に長く考える』推論時計算へ移りつつある。初心者解説を交え多視点で読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/scaling-to-reasoning-hero-datacenter-mind.jpg">
+  <title>スケーリングの終焉？ —AIは「大きくする」から「長く考える」へ — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* セクション番号 */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent-tech);
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* 記事の問い（冒頭フック） */
+    .article-question {
+      border-left: 3px solid var(--accent-tech);
+      padding: 1rem 1.4rem;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.8rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* 構造要因概観ボックス（3要因）*/
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent-tech);
+    }
+    .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ★AIの基礎知識（初心者向け Q&A）ブロック */
+    .primer-lead {
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.85;
+      margin: 0 0 1.4rem;
+    }
+    .primer-grid { display: grid; grid-template-columns: 1fr; gap: 0.9rem; }
+    .primer-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--accent-tech);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.2rem;
+    }
+    .primer-q {
+      font-size: 0.9rem; font-weight: 700; color: var(--text);
+      margin-bottom: 0.45rem; display: flex; align-items: baseline; gap: 0.5rem;
+    }
+    .primer-num {
+      font-size: 0.74rem; font-weight: 800; color: var(--accent-tech);
+      border: 1px solid rgba(128,172,216,0.5); border-radius: 5px;
+      padding: 0.05rem 0.4rem; white-space: nowrap;
+    }
+    .primer-a { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+    .primer-a strong { color: var(--text); font-weight: 700; }
+    /* カード内の図解（生成AIインフォグラフィック） */
+    .primer-figure { margin: 1.1rem 0 0.1rem; }
+    .primer-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius-sm); border: 1px solid var(--border);
+    }
+    .primer-figure figcaption {
+      font-size: 0.72rem; color: var(--text-dim);
+      margin-top: 0.5rem; line-height: 1.55;
+    }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/scaling-to-reasoning-hero-datacenter-mind.jpg');
+      background-size: cover; background-position: center 45%;
+      filter: brightness(1.18) contrast(1.03) saturate(1.05);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.40) 0%, rgba(14,17,23,0.52) 45%, rgba(14,17,23,0.80) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; width: 100%; transform: translateY(-44px); }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title,
+    .article-hero.has-image .article-summary {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    /* ガラス調キーポイント */
+    .article-hero.has-image .key-point {
+      background: rgba(18,23,31,0.42);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 2px 14px rgba(0,0,0,0.28);
+    }
+    .article-hero.has-image .key-point:hover { background: rgba(18,23,31,0.56); }
+    .article-hero.has-image .kp-value { color: #f2f5f9; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+    .article-hero.has-image .kp-label { color: rgba(255,255,255,0.74); }
+
+    /* ヒーロー：ビッグ・ステートメント（案X） */
+    .hero-deck {
+      font-size: 1.08rem;
+      font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b4bfcc; margin-top: 1.5rem; max-width: 560px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+    }
+    .hero-deck .deck-accent { color: var(--accent-tech); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent-tech) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent-tech) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent-tech) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* 本文中の図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* 比較バー */
+    /* 数字ストリップ（全幅） */
+    .stat-strip {
+      display: flex; gap: 0;
+      margin: 2rem 0 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.6rem 0;
+    }
+    .stat-strip-item {
+      flex: 1; text-align: center;
+      padding: 0 1.25rem;
+      border-right: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 1.55rem; font-weight: 800; line-height: 1.1;
+      color: var(--accent-tech); margin-bottom: 0.45rem;
+      letter-spacing: -0.01em;
+    }
+    .stat-desc {
+      font-size: 0.74rem; color: var(--text-muted); line-height: 1.5;
+    }
+    @media (max-width: 700px) {
+      .stat-strip { flex-wrap: wrap; }
+      .stat-strip-item { flex: 0 0 50%; border-right: none; border-bottom: 1px solid var(--border-subtle); padding: 1rem; }
+      .stat-strip-item:last-child { border-bottom: none; }
+    }
+
+    /* 深掘りセクション */
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent-tech);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* data-gridを2列に */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* 役割バッジ */
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+    }
+
+    /* プルクォート（核心の一文） */
+    .pull-quote {
+      border-left: 3px solid var(--accent-tech);
+      background: rgba(128,172,216,0.06);
+      padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text); line-height: 1.65;
+    }
+
+    /* 楽観⇔懐疑インジケーター */
+    .depth-meter { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+    .depth-label { font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
+    .depth-bar-track { flex: 1; max-width: 150px; height: 8px; background: var(--bg-card2); border-radius: 5px; overflow: hidden; }
+    .depth-bar-fill { height: 100%; background: var(--accent-tech); border-radius: 5px; }
+
+    /* 情報源リンク */
+    a.source-item { color: inherit; text-decoration: none; }
+    a.source-item:hover { border-color: var(--accent-tech); }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag">AI</span>
+        <span class="date">2026年6月29日</span>
+      </div>
+      <h1 class="article-title">スケーリングの終焉？<br>—AIは「大きくする」から「長く考える」へ</h1>
+
+      <div class="hero-deck">
+        10年間、AIは「規模を増やせば賢くなる」という法則だけで進歩してきた。だがその燃料となる良質なデータが底をつき、伸びは鈍りはじめている。そこで業界が見いだしたのが、<span class="deck-accent">「答える瞬間にじっくり考えさせる」</span>という新しい道だ。
+      </div>
+
+      <div class="hero-pills">
+        <span class="hero-pill">数学推論 15.6% → 71%</span>
+        <span class="hero-pill">推論が計算需要の6〜7割</span>
+        <span class="hero-pill">2026 全社が「思考」搭載</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 核心と問い -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>核心と問い — 「大きくする」から「長く考える」へ</h2>
+
+            <div class="article-question">
+              「もっと大きくすれば、もっと賢くなる」——この単純な法則がAIの進歩を10年支えてきた。だが、それが頭打ちに近づいているとしたら？　賢さを「学習時に詰め込む」のではなく「答える瞬間に作る」へと軸が移るとき、コスト・ハード・覇権の何が変わるのか。
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              2024年12月、AI研究の最大の祭典「NeurIPS」で、ある一言が会場をざわつかせた。
+              「<strong style="color:var(--text);">事前学習は、我々の知る形では終わる</strong>」——発言の主は、OpenAIの元主任研究者イリヤ・サツケバー。皮肉なことに彼は、「モデルを大きくすれば賢くなる」という<strong style="color:var(--text);">スケーリング仮説</strong>を最も強く信じ、実証してきた当の本人だった。その人物が「もう人類の文章（データ）を使い切った（ピークデータ）」と認めたのである。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              ただし、これは「AIの進歩が止まる」という話ではない。止まったのは「大きくし続ける」という<strong style="color:var(--text);">一つのやり方</strong>であって、AIはすでに別の軸で再び加速し始めている。それが本稿のテーマ——「答える瞬間に長く考えさせる」<strong style="color:var(--text);">推論時計算（test-time compute）</strong>への転換だ。
+            </p>
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2.2rem 0 0.75rem;font-weight:700;">転換の3つの論点</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">何が終わったのか</div>
+                <div class="factor-desc">
+                  「大きくすれば賢くなる」事前学習スケーリングの伸びが鈍化。良質なデータの枯渇（ピークデータ）と、巨大化に見合うほど性能が伸びない局面に入った。巨大化“だけ”では勝てなくなった。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">何が始まったのか</div>
+                <div class="factor-desc">
+                  推論時計算という新しい軸。答える瞬間に思考連鎖（下書き）を長く生成させ、強化学習で「考え方」を鍛える。o1やDeepSeek-R1が、学習だけでは届かない推論能力を引き出して見せた。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">何が変わるのか</div>
+                <div class="factor-desc">
+                  コスト構造が反転する。「速く安く即答」から「考えるほど高くつく」へ。半導体・電力の需要は推論側に移り、効率で追う者（DeepSeek型）と物量で押す者（巨大ラボ型）の覇権争いが始まる。
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure" style="margin:2.5rem 0 0;">
+              <img src="../../../image/articles/scaling-to-reasoning-core-neural-tokens.jpg"
+                   alt="光るプロセッサ上を信号が流れる接写——AIの進歩を支えてきた巨大な計算のイメージ" loading="lazy">
+              <figcaption>「大きくすれば賢くなる」——AIの進歩を10年支えたこの法則が頭打ちに近づき、軸足は「答える瞬間に長く考える」へと移りつつある。※イメージ画像（生成AI）</figcaption>
+            </figure>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin:2.2rem 0 0.4rem;">
+              ただし、この転換の意味を正しくつかむには、「そもそもAIはどう考えているのか」「スケーリング則とは何か」をまず押さえておく必要がある。技術に詳しくない読者のために、次の章で基礎を3つの問いに分けて噛み砕いておこう。
+            </p>
+          </section>
+
+          <!-- Section 2: AIの基礎知識 -->
+          <section class="section" id="sec-primer">
+            <h2 class="section-title"><span class="sec-num">02</span>AIの基礎知識 — 考え方とスケーリング則</h2>
+            <p class="primer-lead">
+              本論に入る前の前提知識。専門用語は最小限にして、3つの問いに答える形で説明する。ここを読めば、なぜ今「転換」が起きているのかがすっと入ってくるはずだ。
+            </p>
+            <div class="primer-grid">
+
+              <div class="primer-card">
+                <div class="primer-q"><span class="primer-num">Q1</span>そもそもAIはどう「考える」のか？</div>
+                <div class="primer-a">
+                  いま主流のAIは<strong>大規模言語モデル（LLM＝Large Language Model）</strong>と呼ばれる。インターネット上の膨大な文章を読み込んで訓練された“言葉のAI”だ。やっていることは驚くほど単純で、<strong>「次に来る単語を確率で当てる」</strong>こと。たとえば「空が」の次に「青い」が来やすい、と無数の例から学んでいる。これを一語ずつ繰り返して文章を作る。
+                  その「当てる勘どころ」を記憶しているのが<strong>パラメータ</strong>（数千億個におよぶ無数のつまみ）だ。つまりAIは意味を“理解”しているというより、膨大な経験から<strong>次の一語を予測し続ける機械</strong>に近い。
+                </div>
+                <figure class="primer-figure">
+                  <img src="../../../image/articles/scaling-to-reasoning-primer-how-ai-thinks.jpg"
+                       alt="AIが文章を作る仕組みの図解——入力「空が」をAIが受け取り、次の単語の候補「青い70%・曇って15%・広い8%」を予測し、一語ずつ付け足して繰り返す流れ" loading="lazy">
+                  <figcaption>AIは「次に来る単語を確率で当てる」を一語ずつ繰り返して文章を作る。その勘どころを担うのが数千億のパラメータだ。（図解：生成AI）</figcaption>
+                </figure>
+              </div>
+
+              <div class="primer-card">
+                <div class="primer-q"><span class="primer-num">Q2</span>「スケーリング則」とは何か？</div>
+                <div class="primer-a">
+                  2020年ごろ、研究者たちはある経験則を発見した。<strong>「モデル（パラメータ）・学習データ・計算量、この3つを増やすほど、AIは予測上手になり賢くなる」</strong>——これがスケーリング則だ。しかも性能が運任せではなく、規模に応じてなめらかに向上することがわかった。
+                  だからラボ各社は「とにかく大きくすれば勝てる」と巨大化競争に突き進んだ。GPT-4をはじめ近年の飛躍はこの法則の果実だ。だが3つの燃料のうち<strong>「データ」は有限</strong>——人類が書いた良質な文章には限りがある。これがいま指摘される「頭打ち」の正体だ。
+                </div>
+                <figure class="primer-figure">
+                  <img src="../../../image/articles/scaling-to-reasoning-primer-parameter-space.jpg"
+                       alt="パラメータ空間の損失地形図解——X・Y軸がパラメータ（つまみA・B）、Z軸が予測の誤り（損失）。学習とは高い尾根から谷底へ向かって傾きを見て少しずつ下りる作業だ" loading="lazy">
+                  <figcaption>学習とはパラメータ空間の「谷底（誤りが最小になる点）」を探して下りる作業だ。縦軸が予測の誤り、横2軸がパラメータの設定値。傾きを見て少しずつ下る手法を勾配降下法と呼ぶ。（図解：生成AI）</figcaption>
+                </figure>
+              </div>
+
+              <div class="primer-card">
+                <div class="primer-q"><span class="primer-num">Q3</span>「学習」と「推論」はどう違う？（今回の核心）</div>
+                <div class="primer-a">
+                  <p style="margin:0 0 0.75rem;">AIには2つの局面がある。<strong>学習（トレーニング）</strong>＝事前に大量の文章で“勉強”して賢さを身につける段階と、<strong>推論（インファレンス）</strong>＝実際に質問されて答えを出す段階だ。受験にたとえるなら、学習は「試験前の勉強」、推論は「試験本番で問題を解くこと」にあたる。</p>
+                  <p style="margin:0 0 0.75rem;">もう少し踏み込むと、推論とは、訓練済みのAIが新しい質問を受け取り、覚えた勘どころ（パラメータ）を使って<strong>答えを一語ずつ生成していく“本番”の処理</strong>だ。「一語ずつ生成する」とはどういうことか。スマホで文字を打つと、次に来そうな単語を予測して候補が出る——AIの答え方は、あれの超強力版だと思えばいい。質問を受けると、AIはまず<strong>最初の一語</strong>を予測して置く。次に、その一語を含めた文章全体を見て<strong>次の一語</strong>を予測する。さらにそれを含めて次の一語……と、<strong>自分が今まで書いた言葉を毎回読み直しながら、一語ずつ書き足していく</strong>。これを「ここで終わり」と判断するまで繰り返して、ようやく一つの答えができあがる。</p>
+                  <p style="margin:0 0 0.75rem;">大事なのは、AIは<strong>どこかに保存してある完成品の答えを取り出しているのではない</strong>という点だ。質問されるたびに、その場で一語ずつ組み立て直している。だから推論は、学習（一度きりの“勉強”）と違って<strong>AIが使われるたびに毎回ゼロから発生する</strong>。利用者が増え、長く考えさせるほど、推論にかかる計算と電力はそのつど積み上がっていく。ここが後半で見る「コスト構造の反転」の伏線になる。</p>
+                  <p style="margin:0;">従来は<strong>学習時に賢さをすべて詰め込み</strong>、推論は一瞬で即答させるのが当たり前だった。試験本番で、思いついた答えをそのまま書くようなものだ。だが新しい発想は逆——推論のとき、<strong>すぐ答えず「下書き」のように長く考えてから答えさせる</strong>。難しい問題を小さく分け、途中式を書き、自分の答えを見直す。すると同じLLMでも正答率が大きく上がるとわかった。これが推論時計算だ。「賢さは、答える瞬間にも作れる」——この一点が、本稿で追う転換のすべてである。</p>
+                </div>
+                <figure class="primer-figure">
+                  <img src="../../../image/articles/scaling-to-reasoning-primer-train-vs-infer.jpg"
+                       alt="学習と推論の違いの図解——左：学習は事前に一度だけ「次の単語のクセ」を覚える段階。右：推論は使うたびに、覚えたクセで一語ずつ予測して書き足し、「ここで終わり」と判断するまで繰り返して答えを完成させる段階" loading="lazy">
+                  <figcaption>学習＝事前に「次の単語のクセ」を覚える段階、推論＝使うたびにそのクセで一語ずつ答えを組み立てる段階。スマホの予測変換にたとえると分かりやすい。（図解：生成AI）</figcaption>
+                </figure>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 3: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">03</span>タイムライン — 「規模の時代」から「思考の時代」へ</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2020年</div>
+                <div class="timeline-content">
+                  <h4>スケーリング則の発見 — 「大きくすれば賢くなる」が法則に</h4>
+                  <p>OpenAIの研究者らが、モデル・データ・計算量を増やすほど性能がなめらかに向上することを論文で定式化した。「賢さは規模で買える」という確信が業界を貫き、その後の巨大化競争すべての号砲となった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">規模と性能の関係が法則化</span>
+                    <span class="reaction-chip">巨大化競争の理論的根拠に</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2022年</div>
+                <div class="timeline-content">
+                  <h4>チンチラ則 — 「大きさ」だけでなく「データ量」も</h4>
+                  <p>DeepMindが、モデルの大きさに対して学習データが足りていないと指摘（チンチラ則）。最適な賢さには規模とデータの“バランス”が要ることが分かり、各社はより多くのデータを求めて走った。良質なデータの価値が一気に高まった転機だった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">データ量の重要性が判明</span>
+                    <span class="reaction-chip">データ獲得競争が激化</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2022年末〜2023年</div>
+                <div class="timeline-content">
+                  <h4>スケーリングの黄金期 — ChatGPTとGPT-4</h4>
+                  <p>ChatGPTが世界を席巻し、続くGPT-4が「大きくすれば賢くなる」を見事に体現した。スケーリング則は最盛期を迎え、「あと数世代、巨大化を続ければ人間を超える」という楽観が広がった。投資も計算資源も青天井で積み上がっていった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">巨大化が性能を証明</span>
+                    <span class="reaction-chip">「あと数世代で超える」楽観</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-neutral"></div>
+                <div class="timeline-date">2024年</div>
+                <div class="timeline-content">
+                  <h4>頭打ちの兆候 — 「ピークデータ」と巨大化の鈍化</h4>
+                  <p>次世代の巨大モデルが、規模の拡大に見合うほど賢くならない——そんな声が業界内から漏れ始めた。12月、サツケバーがNeurIPSで「事前学習は終わる」「ピークデータに達した」と明言。スケーリング仮説の旗手自身による“限界の告白”は、強い衝撃を与えた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">巨大化の費用対効果が低下</span>
+                    <span class="reaction-chip">良質データの枯渇が表面化</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年末〜2025年</div>
+                <div class="timeline-content">
+                  <h4>推論モデルの登場 — o1とDeepSeek-R1</h4>
+                  <p>OpenAIのo1が「答える前に長く考える」ことで数学・科学・コードの成績を一変させ、推論時計算が本物だと示した。さらに中国のDeepSeek-R1が、<strong>純粋な強化学習だけで</strong>同等の推論能力を獲得（AIME正答率15.6%→71%）。しかも安価。「賢さは推論で作れる」が広く共有された瞬間だった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">o1が推論時計算を実証</span>
+                    <span class="reaction-chip">DeepSeek-R1が低コストで追随</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年〜2026年</div>
+                <div class="timeline-content">
+                  <h4>推論が標準に — 「思考するAI」が前提の時代へ</h4>
+                  <p>2026年半ばには、Claude・GPT・Geminiといった主要モデルがいずれも「思考（Thinking）」機能を標準搭載。推論モデルであることが当たり前になった。同時に計算需要は学習から推論へと移り、<strong>推論がAI計算全体の6〜7割</strong>を占めるまでに膨らんだ。ハードと電力の主戦場も推論側へ動いている。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">全フロンティアが思考機能を搭載</span>
+                    <span class="reaction-chip">計算需要の主役が推論へ</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/scaling-to-reasoning-timeline-gpu-racks.jpg"
+                   alt="データセンターにそびえるGPUサーバーラックの長い列——スケーリングの時代を象徴する光景" loading="lazy">
+              <figcaption>「規模の時代」は、GPUを敷き詰めたデータセンターの果てしない拡張として現れた。だが良質なデータという燃料が尽きかけたいま、勝負の軸は「どれだけ大きいか」から「どれだけ上手く考えるか」へ移りつつある。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 4: 技術陣営の視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">04</span>5つの視点 — 技術陣営の見取り図</h2>
+
+            <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.9;margin-bottom:1.4rem;">
+              「スケーリングは終わったのか」をめぐり、技術者・企業・投資家の見方は割れている。国家の対立ではなく、<strong style="color:var(--text);">どの戦略に賭けるか</strong>という技術陣営の対立軸で、5つの立場を整理する。下のバーは「スケーリング継続への楽観度」を示す。
+            </p>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- スケーリング継続派 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">スケーリング継続派（巨大ラボ・ハイパースケーラー）</span>
+                      <span class="role-badge">物量で押す</span>
+                    </div>
+                    <div class="pull-quote">「壁ではない。踊り場だ。計算を積み増せば、まだ伸びる」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      事前学習の鈍化は“終わり”ではなく一時的な踊り場だ。データが足りないなら合成データで補い、計算資源をさらに積み増せばよい。実際、設備投資を続ける陣営は性能を伸ばし続けていると主張する。推論時計算も「スケーリングの新しい軸が増えただけ」と捉える。
+                    </div>
+                    <div class="key-claim">
+                      <strong>賭けの中身</strong>
+                      年間数千億ドル規模の設備投資を続け、計算量で他を引き離す。学習・推論の両面でハードを握る者が勝つという「物量の論理」に賭けている。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">スケーリング継続への楽観度</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:95%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 推論時計算・効率化派 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">推論時計算・効率化派（推論モデル推進）</span>
+                      <span class="role-badge">考え方で勝つ</span>
+                    </div>
+                    <div class="pull-quote">「賢さは“事前”に詰め込むものではない。“答える瞬間”に作るものだ」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      巨大化に頼らずとも、答える瞬間に長く思考連鎖を生成させ、強化学習で「考え方」を鍛えれば性能は伸びる。o1やDeepSeek-R1は、学習だけでは届かない領域に推論時計算で到達して見せた。これは事前学習の限界を“迂回”する正攻法だと考える。
+                    </div>
+                    <div class="key-claim">
+                      <strong>賭けの中身</strong>
+                      モデルの大きさよりも「推論アルゴリズムと強化学習の設計」に投資する。同じ規模のモデルから、より多くの知性を引き出すことを狙う。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">スケーリング継続への楽観度</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:45%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 懐疑・限界論派 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">懐疑・限界論派（バブル警戒）</span>
+                      <span class="role-badge">過熱を疑う</span>
+                    </div>
+                    <div class="pull-quote">「投資は天井知らず、収益は地を這う。これはどこかで見た光景だ」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      スケーリングの鈍化は、AIへの過剰な期待が現実に追いつかれる兆候だ。巨額の設備投資に見合う収益はまだ立っていない。投資銀行は「いまのAI熱狂は1997年のITバブル前夜に似る」と警告する。推論時計算も「コスト増を正当化する新しい物語」にすぎない、と冷ややかに見る。
+                    </div>
+                    <div class="key-claim">
+                      <strong>賭けの中身</strong>
+                      誇大広告と実需を切り分け、過熱の調整局面に備える。技術の進歩そのものより、投資回収の現実性を厳しく問う。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">スケーリング継続への楽観度</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:20%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- ハード・電力の制約視点 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ハード・電力の制約視点（半導体・インフラ）</span>
+                      <span class="role-badge">物理が律速</span>
+                    </div>
+                    <div class="pull-quote">「アルゴリズムが何を望もうと、最後は電気と半導体が天井を決める」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      論争の決着は、最終的に物理的制約がつける。推論時計算は「答えるたびに長く考える」ぶん、推論側の計算と電力を急増させる。すでに推論はAI計算需要の6〜7割を占め、データセンターの電力需要は2026年に1,000テラワット時を超える見込みだ。賢さの上限は、もはやアルゴリズムより<strong>電力と半導体供給</strong>が決める。
+                    </div>
+                    <div class="key-claim">
+                      <strong>賭けの中身</strong>
+                      電力・冷却・先端半導体という“ボトルネック”を握ることが、AIの実効的な上限を支配すると見る。発電所と半導体工場こそが新しい主戦場だ。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">スケーリング継続への楽観度</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:40%;"></div></div>
+                    </div>
+                  </div>
+
+                  <!-- オープン・低コストモデル派 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">オープン・低コストモデル派（蒸留・小型化）</span>
+                      <span class="role-badge">効率で追う</span>
+                    </div>
+                    <div class="pull-quote">「巨人と同じ土俵で戦う必要はない。安く・小さく・賢くで追い抜く」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      巨大化が頭打ちなら、勝負は効率に移る。大きなモデルの“考え方”を小さなモデルに移植する蒸留や、計算を絞る工夫で、はるかに安く同等の賢さに迫れる。DeepSeek-R1は競合の20〜50分の1のコストを実現し、その手法を公開した。「賢さの民主化」が起きると見る。
+                    </div>
+                    <div class="key-claim">
+                      <strong>賭けの中身</strong>
+                      オープンな低コストモデルで、巨大ラボの寡占を切り崩す。資金力より工夫で勝負し、普及の速さで存在感を高める。
+                    </div>
+                    <div class="depth-meter">
+                      <span class="depth-label">スケーリング継続への楽観度</span>
+                      <div class="depth-bar-track"><div class="depth-bar-fill" style="width:35%;"></div></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本スタンス</th>
+                        <th>最大の主張</th>
+                        <th>賭けの中身</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>スケーリング継続派</td><td>物量で押す</td><td>壁ではなく踊り場、まだ伸びる</td><td>計算量への巨額投資で引き離す</td></tr>
+                      <tr><td>推論時計算・効率化派</td><td>考え方で勝つ</td><td>賢さは答える瞬間に作れる</td><td>推論アルゴリズム・強化学習に投資</td></tr>
+                      <tr><td>懐疑・限界論派</td><td>過熱を疑う</td><td>投資と収益の乖離、バブル前夜</td><td>誇大広告と実需を切り分ける</td></tr>
+                      <tr><td>ハード・電力の制約視点</td><td>物理が律速</td><td>最後は電力と半導体が天井を決める</td><td>電力・冷却・先端半導体を握る</td></tr>
+                      <tr><td>オープン・低コスト派</td><td>効率で追う</td><td>安く小さく賢くで追い抜く</td><td>蒸留と公開で寡占を崩す</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure" style="margin-top:2rem;">
+              <img src="../../../image/articles/scaling-to-reasoning-perspectives-bigger-vs-deeper.jpg"
+                   alt="積み上がった巨大なプロセッサ群と、凝縮した思考の光の球体が対峙するイメージ" loading="lazy">
+              <figcaption>「大きさ」で押すのか、「深さ（考え方）」で勝つのか——AIの次の覇権は、この天秤がどちらに傾くかで決まる。物量・効率・電力・投資、それぞれの陣営が異なる戦略に賭けている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 5: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">05</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- 推論の効果 -->
+              <div class="data-card">
+                <h4>「長く考えさせる」と何が変わるか（数学AIME 正答率, %）</h4>
+                <div style="position:relative;height:220px;margin-top:1rem;">
+                  <canvas id="reasoningGainChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  同じ系統のモデルでも、答える前に思考連鎖を生成させる「推論あり」にすると、難関数学（AIME）の正答率が大きく跳ね上がる。DeepSeek-R1は純粋な強化学習で15.6%→71%へ。
+                  出典：DeepSeek-R1 論文・各種ベンチマーク
+                </p>
+              </div>
+
+              <!-- 計算需要の移動 -->
+              <div class="data-card">
+                <h4>AI計算需要に占める「推論」の割合（%）</h4>
+                <div style="position:relative;height:220px;margin-top:1rem;">
+                  <canvas id="inferenceShareChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  計算需要の主役が「学習」から「推論」へ移っている。2024年の約40%から2026年には6〜7割へ。2030年には75%に達するとの予測も。
+                  出典：業界アナリスト各種・Deloitte 2026予測
+                </p>
+              </div>
+
+            </div>
+
+            <!-- 数字ストリップ（全幅） -->
+            <div class="stat-strip">
+              <div class="stat-strip-item">
+                <div class="stat-num">15.6%→71%</div>
+                <div class="stat-desc">DeepSeek-R1が強化学習で伸ばした数学推論（AIME）正答率</div>
+              </div>
+              <div class="stat-strip-item">
+                <div class="stat-num">60〜70%</div>
+                <div class="stat-desc">推論がAI計算需要に占める割合（2026年・2024年は約40%）</div>
+              </div>
+              <div class="stat-strip-item">
+                <div class="stat-num">1/20〜1/50</div>
+                <div class="stat-desc">DeepSeek-R1の推論コスト（競合モデル比）</div>
+              </div>
+              <div class="stat-strip-item">
+                <div class="stat-num">7,250億ドル</div>
+                <div class="stat-desc">2026年ハイパースケーラー設備投資（最大・各社合計）</div>
+              </div>
+              <div class="stat-strip-item">
+                <div class="stat-num">1,000TWh超</div>
+                <div class="stat-desc">2026年データセンター電力需要（2023年比 約2倍）</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 6: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">06</span>深掘り — これから2〜3年で何が起きるか</h2>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              「スケーリングは終わった」のではなく、「スケーリングの軸が増えた」と捉えるのが正確だ。では、この先はどう動くのか。終わり方・コスト・覇権・物理の壁という4つの観点で、今後2〜3年を見通す。
+            </p>
+
+            <div class="insight-box">
+              <div class="insight-title">① スケーリングは「終わる」のではなく「形を変える」</div>
+              <div class="insight-text">
+                頭打ちになったのは「事前学習をひたすら大きくする」という一つのやり方にすぎない。賢さを増やす軸は、いまや三層に分かれた——<strong>事前学習（知識の土台）・事後学習（強化学習で考え方を鍛える）・推論時計算（答える瞬間に長く考える）</strong>。今後は、巨大化の伸びが鈍るぶんを後者2つで補う形が主流になる。「データの壁」を越える鍵は、人間が書いた文章ではなく、AI自身が生成・検証する合成データと、自分の推論を自分で採点する強化学習に移っていく。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">② コスト構造の反転 — 「考えるほど高くつく」時代へ</div>
+              <div class="insight-text">
+                従来のAIは「一度学習させれば、あとは安く即答」が前提だった。だが推論時計算では、難しい問いほど長く考え、そのぶん計算と電力を消費する。コストは「使うたび・考えるたび」に発生する変動費へと性質を変える。これは利用が増えるほど運用費が膨らむことを意味し、<strong>「いつ長く考えさせ、いつ即答させるか」を見極める設計</strong>が競争力を左右する。安く深く考えさせる効率化が、次の主戦場になる。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">③ 覇権の分岐 — 「物量」か「効率」か</div>
+              <div class="insight-text">
+                巨大ラボは計算量への巨額投資（物量）で先行し、DeepSeekに代表される陣営は蒸留と公開（効率）で追う。事前学習一本槍の時代は資金力がそのまま序列だったが、推論時計算と効率化の時代には「同じ規模からどれだけ知性を引き出すか」という工夫が効いてくる。資金の少ない国・企業にも勝ち筋が生まれ、<strong>覇権図はやや開かれる</strong>可能性がある。一方で、推論需要を支える電力と半導体を握る者の優位はむしろ強まる。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">④ 最後の壁は「物理」 — 電力と半導体が天井を決める</div>
+              <div class="insight-text">
+                アルゴリズムがどれだけ賢くなろうと、それを動かすのは電気と半導体だ。推論が計算需要の6〜7割を占め、データセンターの電力需要が2026年に1,000テラワット時を超えるいま、AIの実効的な上限は次第に<strong>発電所と半導体工場の能力</strong>に縛られていく。「もっと考えさせたい」という欲求は、そのまま「もっと電力が要る」に直結する。AIの未来を最終的に律速するのは、モデルの賢さではなく、社会がそのエネルギーをどれだけ用意できるかかもしれない。
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.8rem;">
+              「もっと大きく」という単純な処方箋が効きにくくなったいま、AIの進歩はより多面的で、より戦略的なものになった。
+              データの壁、コストの反転、効率と物量のせめぎ合い、そして電力という物理の天井——次の2〜3年は、これらの制約をどう乗り越えるかが、技術と覇権の両面で問われる時間になる。「賢さは、もはやただ買えるものではない」という現実が、いま静かに広がっている。
+            </p>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/scaling-to-reasoning-analysis-inference-future.jpg"
+                   alt="無数に枝分かれする光の鎖が一点へ収束する——AIが多くの可能性を辿って答えを出す思考連鎖のイメージ" loading="lazy">
+              <figcaption>推論時計算の本質は「答える前に、多くの可能性を辿って考える」こと。だがその一手ごとに計算と電力を食う。賢さを“答える瞬間に作る”時代は、エネルギーという物理の壁と背中合わせで進む。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 7: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">07</span>情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <a class="source-item" href="https://hai.stanford.edu/ai-index" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Stanford HAI — AI Index 2026</div>
+                  <div class="source-desc">スケーリングの鈍化と推論モデルの台頭を含むAI動向の年次統計。性能・計算量・コストの推移。</div>
+                  <div class="source-country">【AI動向の年次ベンチマーク】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">DeepSeek-R1 論文（arXiv）</div>
+                  <div class="source-desc">純粋な強化学習だけで推論能力を獲得（AIME 15.6%→71%）し、蒸留で小型モデルへ移植した一次資料。</div>
+                  <div class="source-country">【推論モデルの一次研究】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://arxiv.org/abs/2504.09037" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">A Survey of Frontiers in LLM Reasoning（arXiv）</div>
+                  <div class="source-desc">推論時スケーリング・思考連鎖・強化学習による推論の研究を体系化したサーベイ論文。</div>
+                  <div class="source-country">【推論研究の総説】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.techmeme.com/241213/p33" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">The Verge / Techmeme — Sutskever「pre-training will end」</div>
+                  <div class="source-desc">NeurIPS 2024でのサツケバー発言「事前学習は終わる」「ピークデータ」の報道まとめ。</div>
+                  <div class="source-country">【スケーリング転換の報道】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-cost-of-compute-a-7-trillion-dollar-race-to-scale-data-centers" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">McKinsey — The cost of compute</div>
+                  <div class="source-desc">データセンター拡張の設備投資規模と、推論需要が押し上げる計算コストの分析。</div>
+                  <div class="source-country">【計算インフラの経済分析】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/compute-power-ai.html" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Deloitte — 2026 Technology Predictions（Compute Power）</div>
+                  <div class="source-desc">推論需要の増大と「AIの次段階はより多くの計算を要する」という2026年予測。電力需要の見通し。</div>
+                  <div class="source-country">【技術予測レポート】</div>
+                </div>
+              </a>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>核心と問い</a></li>
+            <li><a href="#sec-primer"><span class="toc-icon">02</span>AIの基礎知識</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">03</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">04</span>5つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">05</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">06</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">07</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/ai-tech/index.html">AI</a></div>
+            <div>2026年6月29日</div>
+            <div style="margin-top:0.5rem;">5つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/ai-tech/index.html">AI一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 「長く考えさせる」と何が変わるか（棒グラフ）
+  (function() {
+    var ctx = document.getElementById('reasoningGainChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['推論なし（即答）', '推論あり（長く考える）'],
+        datasets: [{
+          data: [15.6, 71],
+          backgroundColor: ['rgba(136,144,160,0.55)', 'rgba(128,172,216,0.85)'],
+          borderColor: 'transparent',
+          borderWidth: 0,
+          borderRadius: 4,
+          barPercentage: 0.6,
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' 正答率 ' + c.parsed.y + '%'; }
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 0, max: 100,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + '%'; } }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 11 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // AI計算需要に占める「推論」の割合（折れ線）
+  (function() {
+    var ctx = document.getElementById('inferenceShareChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['2024', '2025', '2026', '2030（予測）'],
+        datasets: [{
+          label: '推論の割合',
+          data: [40, 55, 65, 75],
+          borderColor: 'rgba(128,172,216,0.9)',
+          backgroundColor: 'rgba(128,172,216,0.10)',
+          pointBackgroundColor: 'rgba(128,172,216,0.9)',
+          tension: 0.3,
+          fill: true,
+          borderWidth: 2,
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' 推論が約' + c.parsed.y + '%'; }
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 0, max: 100,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + '%'; } }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          }
+        }
+      }
+    });
+  })();
+</script>
+</body>
+</html>
