@@ -270,8 +270,8 @@
 
       <div class="hero-pills">
         <span class="hero-pill">数学推論 15.6% → 71%</span>
-        <span class="hero-pill">推論が計算需要の6〜7割</span>
-        <span class="hero-pill">2026 全社が「思考」搭載</span>
+        <span class="hero-pill">推論が計算需要の約2/3（予測）</span>
+        <span class="hero-pill">主要各社が推論機能を提供</span>
       </div>
     </div>
   </div>
@@ -443,7 +443,7 @@
                 <div class="timeline-date">2024年末〜2025年</div>
                 <div class="timeline-content">
                   <h4>推論モデルの登場 — o1とDeepSeek-R1</h4>
-                  <p>OpenAIのo1が「答える前に長く考える」ことで数学・科学・コードの成績を一変させ、推論時計算が本物だと示した。さらに中国のDeepSeek-R1が、<strong>純粋な強化学習だけで</strong>同等の推論能力を獲得（AIME正答率15.6%→71%）。しかも安価。「賢さは推論で作れる」が広く共有された瞬間だった。</p>
+                  <p>OpenAIのo1が「答える前に長く考える」ことで数学・科学・コードの成績を一変させ、推論時計算が本物だと示した。さらに中国のDeepSeekが公開したR1-Zeroは、<strong>教師あり調整（SFT）なしの純粋な強化学習だけで</strong>AIME 2024の正答率を15.6%→71.0%へ伸ばし、続く製品版DeepSeek-R1も低コストで高い推論力を実現した。「賢さは推論で作れる」が広く共有された瞬間だった。</p>
                   <div class="timeline-reactions">
                     <span class="reaction-chip">o1が推論時計算を実証</span>
                     <span class="reaction-chip">DeepSeek-R1が低コストで追随</span>
@@ -456,7 +456,7 @@
                 <div class="timeline-date">2025年〜2026年</div>
                 <div class="timeline-content">
                   <h4>推論が標準に — 「思考するAI」が前提の時代へ</h4>
-                  <p>2026年半ばには、Claude・GPT・Geminiといった主要モデルがいずれも「思考（Thinking）」機能を標準搭載。推論モデルであることが当たり前になった。同時に計算需要は学習から推論へと移り、<strong>推論がAI計算全体の6〜7割</strong>を占めるまでに膨らんだ。ハードと電力の主戦場も推論側へ動いている。</p>
+                  <p>2026年には、Claude・GPT・Geminiといった主要モデルがいずれも推論・「思考（Thinking）」系の機能を提供するようになり、推論モデルが広く使われるようになった（利用条件はモデル・プラン・APIごとに異なる）。同時に計算需要は学習から推論へと移り、<strong>Deloitteは2026年に推論がAI計算需要の約3分の2を占めると予測する</strong>。ハードと電力の主戦場も推論側へ動いている。</p>
                   <div class="timeline-reactions">
                     <span class="reaction-chip">全フロンティアが思考機能を搭載</span>
                     <span class="reaction-chip">計算需要の主役が推論へ</span>
@@ -562,7 +562,7 @@
                     <div class="pull-quote">「アルゴリズムが何を望もうと、最後は電気と半導体が天井を決める」</div>
                     <div class="key-claim">
                       <strong>核心的主張</strong>
-                      論争の決着は、最終的に物理的制約がつける。推論時計算は「答えるたびに長く考える」ぶん、推論側の計算と電力を急増させる。すでに推論はAI計算需要の6〜7割を占め、データセンターの電力需要は2026年に1,000テラワット時を超える見込みだ。賢さの上限は、もはやアルゴリズムより<strong>電力と半導体供給</strong>が決める。
+                      論争の決着は、最終的に物理的制約がつける。推論時計算は「答えるたびに長く考える」ぶん、推論側の計算と電力を押し上げる。推論はすでにAI計算需要の中心へ移りつつあり、データセンターの電力需要はIEAの見通しで2024年の約415テラワット時から2030年には約950テラワット時へ倍増する。賢さの上限は、もはやアルゴリズムより<strong>電力と半導体供給</strong>が決める。
                     </div>
                     <div class="key-claim">
                       <strong>賭けの中身</strong>
@@ -583,7 +583,7 @@
                     <div class="pull-quote">「巨人と同じ土俵で戦う必要はない。安く・小さく・賢くで追い抜く」</div>
                     <div class="key-claim">
                       <strong>核心的主張</strong>
-                      巨大化が頭打ちなら、勝負は効率に移る。大きなモデルの“考え方”を小さなモデルに移植する蒸留や、計算を絞る工夫で、はるかに安く同等の賢さに迫れる。DeepSeek-R1は競合の20〜50分の1のコストを実現し、その手法を公開した。「賢さの民主化」が起きると見る。
+                      巨大化が頭打ちなら、勝負は効率に移る。大きなモデルの“考え方”を小さなモデルに移植する蒸留や、計算を絞る工夫で、はるかに安く同等の賢さに迫れる。DeepSeekは自社発表でOpenAI o1比20〜50分の1のコストとされ、その手法を公開した。「賢さの民主化」が起きると見る。
                     </div>
                     <div class="key-claim">
                       <strong>賭けの中身</strong>
@@ -640,20 +640,20 @@
                   <canvas id="reasoningGainChart"></canvas>
                 </div>
                 <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
-                  同じ系統のモデルでも、答える前に思考連鎖を生成させる「推論あり」にすると、難関数学（AIME）の正答率が大きく跳ね上がる。DeepSeek-R1は純粋な強化学習で15.6%→71%へ。
+                  同じ系統のモデルでも、答える前に思考連鎖を生成させる「推論あり」にすると、難関数学（AIME）の正答率が大きく跳ね上がる。DeepSeek-R1-Zeroは教師あり調整なしの純粋な強化学習だけでAIME 2024を15.6%→71.0%へ伸ばした。
                   出典：DeepSeek-R1 論文・各種ベンチマーク
                 </p>
               </div>
 
               <!-- 計算需要の移動 -->
               <div class="data-card">
-                <h4>AI計算需要に占める「推論」の割合（%）</h4>
+                <h4>AI計算需要に占める「推論」の割合の見通し（%・予測）</h4>
                 <div style="position:relative;height:220px;margin-top:1rem;">
                   <canvas id="inferenceShareChart"></canvas>
                 </div>
                 <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
-                  計算需要の主役が「学習」から「推論」へ移っている。2024年の約40%から2026年には6〜7割へ。2030年には75%に達するとの予測も。
-                  出典：業界アナリスト各種・Deloitte 2026予測
+                  計算需要の主役が「学習」から「推論」へ移りつつある。Deloitteは2026年に推論がAI計算需要の約3分の2を占めると予測している。図は各種推計に基づく見通し。
+                  出典：Deloitte 2026 Technology Predictions
                 </p>
               </div>
 
@@ -663,23 +663,23 @@
             <div class="stat-strip">
               <div class="stat-strip-item">
                 <div class="stat-num">15.6%→71%</div>
-                <div class="stat-desc">DeepSeek-R1が強化学習で伸ばした数学推論（AIME）正答率</div>
+                <div class="stat-desc">DeepSeek-R1-Zeroが純粋な強化学習だけで伸ばした数学推論（AIME 2024）正答率</div>
               </div>
               <div class="stat-strip-item">
-                <div class="stat-num">60〜70%</div>
-                <div class="stat-desc">推論がAI計算需要に占める割合（2026年・2024年は約40%）</div>
+                <div class="stat-num">約2/3</div>
+                <div class="stat-desc">推論がAI計算需要に占める割合（2026年・Deloitte予測）</div>
               </div>
               <div class="stat-strip-item">
                 <div class="stat-num">1/20〜1/50</div>
-                <div class="stat-desc">DeepSeek-R1の推論コスト（競合モデル比）</div>
+                <div class="stat-desc">DeepSeekの推論コスト（OpenAI o1比・同社発表）</div>
               </div>
               <div class="stat-strip-item">
                 <div class="stat-num">7,250億ドル</div>
                 <div class="stat-desc">2026年ハイパースケーラー設備投資（最大・各社合計）</div>
               </div>
               <div class="stat-strip-item">
-                <div class="stat-num">1,000TWh超</div>
-                <div class="stat-desc">2026年データセンター電力需要（2023年比 約2倍）</div>
+                <div class="stat-num">約950TWh</div>
+                <div class="stat-desc">2030年のデータセンター電力需要見通し（2024年比 約2倍・IEA）</div>
               </div>
             </div>
           </section>
@@ -716,7 +716,7 @@
             <div class="insight-box">
               <div class="insight-title">④ 最後の壁は「物理」 — 電力と半導体が天井を決める</div>
               <div class="insight-text">
-                アルゴリズムがどれだけ賢くなろうと、それを動かすのは電気と半導体だ。推論が計算需要の6〜7割を占め、データセンターの電力需要が2026年に1,000テラワット時を超えるいま、AIの実効的な上限は次第に<strong>発電所と半導体工場の能力</strong>に縛られていく。「もっと考えさせたい」という欲求は、そのまま「もっと電力が要る」に直結する。AIの未来を最終的に律速するのは、モデルの賢さではなく、社会がそのエネルギーをどれだけ用意できるかかもしれない。
+                アルゴリズムがどれだけ賢くなろうと、それを動かすのは電気と半導体だ。推論が計算需要の中心へと移り、データセンターの電力需要が2030年に約950テラワット時へ倍増すると見込まれるいま、AIの実効的な上限は次第に<strong>発電所と半導体工場の能力</strong>に縛られていく。「もっと考えさせたい」という欲求は、そのまま「もっと電力が要る」に直結する。AIの未来を最終的に律速するのは、モデルの賢さではなく、社会がそのエネルギーをどれだけ用意できるかかもしれない。
               </div>
             </div>
 
@@ -746,7 +746,7 @@
               <a class="source-item" href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener">
                 <div class="source-info">
                   <div class="source-name">DeepSeek-R1 論文（arXiv）</div>
-                  <div class="source-desc">純粋な強化学習だけで推論能力を獲得（AIME 15.6%→71%）し、蒸留で小型モデルへ移植した一次資料。</div>
+                  <div class="source-desc">実験版R1-Zeroが純粋な強化学習だけで推論能力を獲得（AIME 2024で15.6%→71.0%）、製品版R1はcold-startデータとSFT・多段階の強化学習を組み合わせた一次資料。</div>
                   <div class="source-country">【推論モデルの一次研究】</div>
                 </div>
               </a>
@@ -774,8 +774,15 @@
               <a class="source-item" href="https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/compute-power-ai.html" target="_blank" rel="noopener">
                 <div class="source-info">
                   <div class="source-name">Deloitte — 2026 Technology Predictions（Compute Power）</div>
-                  <div class="source-desc">推論需要の増大と「AIの次段階はより多くの計算を要する」という2026年予測。電力需要の見通し。</div>
+                  <div class="source-desc">推論需要の増大と「AIの次段階はより多くの計算を要する」という2026年予測。推論がAI計算需要の約3分の2を占めるとの見通し。</div>
                   <div class="source-country">【技術予測レポート】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.iea.org/reports/energy-and-ai" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">IEA — Energy and AI</div>
+                  <div class="source-desc">データセンターの電力消費が2024年の約415TWhから2030年に約950TWhへ倍増するとのIEA見通し。AI・暗号資産を含む合算値との区別も明示。</div>
+                  <div class="source-country">【エネルギー需要見通し】</div>
                 </div>
               </a>
             </div>
