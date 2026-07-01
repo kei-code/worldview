@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="生成AIが偽情報の生産コストを崩壊させ、2026年に選挙を行う国々で外国干渉やAI偽情報への警戒が高まっている。ロシア・中国・イランの攻勢、台湾の防衛最前線、欧州の規制強化と米国の規制解体——AIが加速させる「見えない戦争」を6つの視点で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/security/2026-07-01-information-warfare/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="見えない戦争 — AIが加速させる情報操作の世界地図 — WorldView">
+  <meta property="og:description" content="生成AIが偽情報の生産コストを崩壊させ、2026年に選挙を行う国々で外国干渉やAI偽情報への警戒が高まっている。ロシア・中国・イランの攻勢、台湾の防衛最前線、欧州の規制強化と米国の規制解体——「見えない戦争」を6つの視点で読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/security/2026-07-01-information-warfare/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/information-warfare-hero-control-room.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="見えない戦争 — AIが加速させる情報操作の世界地図 — WorldView">
+  <meta name="twitter:description" content="生成AIが偽情報の生産コストを崩壊させ、2026年に選挙を行う国々で外国干渉やAI偽情報への警戒が高まっている。「見えない戦争」を6つの視点で読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/information-warfare-hero-control-room.jpg">
+  <title>見えない戦争 — AIが加速させる情報操作の世界地図 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* セクション番号 */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent2);
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* 記事の問い（冒頭フック） */
+    .article-question {
+      border-left: 3px solid var(--accent2);
+      padding: 1rem 1.4rem;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.8rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* 構造要因概観ボックス（3要因） */
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent2);
+    }
+    .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/information-warfare-hero-control-room.jpg');
+      background-size: cover; background-position: center 42%;
+      filter: brightness(1.22) contrast(1.04) saturate(1.05);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.42) 0%, rgba(14,17,23,0.54) 45%, rgba(14,17,23,0.82) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; width: 100%; transform: translateY(-40px); }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* ヒーロー：ビッグ・ステートメント（案X） */
+    .hero-deck {
+      font-size: 1.08rem;
+      font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b4bfcc; margin-top: 1.5rem; max-width: 560px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+    }
+    .hero-deck .deck-accent { color: var(--accent2); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent2) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent2) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent2) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* 本文中の図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* 深掘りセクション */
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent2);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* data-gridを2列に */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* 役割バッジ */
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+    }
+
+    /* プルクォート（核心の一文） */
+    .pull-quote {
+      border-left: 3px solid var(--accent2);
+      background: rgba(184,127,140,0.07);
+      padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text); line-height: 1.65;
+    }
+
+    /* 情報源リンク */
+    a.source-item { color: inherit; text-decoration: none; }
+    a.source-item:hover { border-color: var(--accent2); }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag">安全保障</span>
+        <span class="date">2026年7月1日</span>
+      </div>
+      <h1 class="article-title">見えない戦争<br>— AIが加速させる情報操作の世界地図</h1>
+
+      <div class="hero-deck">
+        戦車もミサイルも使わずに、選挙の結果や社会の結束を揺さぶれるとしたら——生成AIは偽情報の生産コストを崩壊させ、一人の工作員が数千の「人格」を操れる時代を開いた。<span class="deck-accent">AIを使った偽情報や外国からの干渉は、2026年に選挙を行う国々にとって共通のリスク</span>になりつつある。
+      </div>
+
+      <div class="hero-pills">
+        <span class="hero-pill">40カ国超で干渉を警戒</span>
+        <span class="hero-pill">台湾で偽情報231万件超</span>
+        <span class="hero-pill">人間の検出率はわずか24.5%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 核心と問い -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>核心と問い — 「攻める側」と「護る側」の非対称</h2>
+
+            <div class="article-question">
+              「銃弾も戦車も使わずに、選挙の結果や社会の団結を突き崩せるとしたら」——生成AIが偽情報の生産コストを限りなくゼロに近づけたいま、この問いはもはや仮定ではない。規制を強める国と、規制を解体する国。真実を検証する体制を持つ社会と、その手段すら持たない社会。この非対称性は、世界をどこへ導くのか。
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              情報操作（インフルエンス・オペレーション）は目新しい手法ではない。だが2022年以降の生成AIの普及は、その性質を根本から変えた。かつて偽情報の作成には人手と時間がかかる「職人芸」の側面があったが、いまや一人のオペレーターが生成AIを使い、数千の異なる「人格」を持つアカウントから、それぞれ微妙に異なる文面・画像・動画を無限に生成できる。手作業の工作は、工業化された生産ラインへと変わった。2026年に国政選挙を予定する40カ国超で、外国発の組織的な干渉や偽情報工作への警戒が広がっているのは、この工業化がもたらした帰結にほかならない。
+            </p>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2rem 0 0.75rem;font-weight:700;">3つの論点</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">攻める側 — 生成AIによる工業化</div>
+                <div class="factor-desc">
+                  ロシア・中国・イランは国家予算を投じて偽情報を量産する体制を構築した。中国の対外影響工作には年数十億ドル規模が投じられているとされ、一部報道では最大100億ドル規模との推計もある。ロシアは2026年予算で情報工作費を4.58億ドル増額した。生成コストの崩壊が、この規模拡大を可能にしている。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">護る側 — 割れる規制</div>
+                <div class="factor-desc">
+                  欧州連合は偽情報の行動規範をデジタルサービス法（DSA）の枠組みに組み込み規制を強めた一方、アメリカのトランプ政権は対偽情報インフラを「検閲」とみなして解体を進める。大西洋の両岸で、防御の思想そのものが分岐している。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">晒される側 — 非対称な脆弱性</div>
+                <div class="factor-desc">
+                  ファクトチェック体制の薄いグローバル・サウスでは、既存の社会的分断に偽情報が重なり実害化しやすい。世界経済フォーラムは偽情報を「今後2年間で最大のグローバルリスク」と評価している。
+                </div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg-card);border:1px solid var(--border-subtle);border-left:3px solid var(--accent2);border-radius:0 var(--radius) var(--radius) 0;padding:0.9rem 1.2rem;margin-top:1.25rem;font-size:0.82rem;">
+              <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);font-weight:700;margin-bottom:0.45rem;">用語解説</div>
+              <span style="font-weight:700;color:var(--text);">認知戦（コグニティブ・ウォーフェア）</span>
+              <p style="color:var(--text-muted);line-height:1.75;margin-top:0.35rem;margin-bottom:0;">物理的な戦闘を伴わず、標的社会の認識・世論・意思決定そのものを操作対象とする作戦概念。台湾国家安全局は、中国がSNS上のボット網・提携マーケティング企業・生成AIツールを組み合わせ、台湾社会の内部分裂を煽り、抵抗の意志を弱め、同盟国の支援意欲を削ぐことを狙う「認知戦」を展開していると分析する。戦争が始まる前から、頭の中の戦場はすでに動いている、という認識がこの概念の核心にある。</p>
+            </div>
+
+            <figure class="article-figure" style="margin-top:2.5rem;">
+              <img src="../../../image/articles/information-warfare-core-operator-hands.jpg"
+                   alt="暗い室内でキーボードを操作する手元の接写——偽情報工作の現場を象徴するイメージ" loading="lazy">
+              <figcaption>生成AIは、偽情報の作成にかかっていた人手と時間を限りなくゼロに近づけた。一人のオペレーターが数千の「人格」を同時に操るコストは、いまや無視できるほど小さい。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 「発覚」から「工業化」へ</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2016年</div>
+                <div class="timeline-content">
+                  <h4>ロシアによる米大統領選干渉が発覚</h4>
+                  <p>ロシアの情報機関が関与したとされる組織的な偽情報拡散とハッキングが表面化し、「国家による選挙干渉」という概念が世界の安全保障議論の中心に躍り出た。現代的な情報戦認識の起点となった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">国家関与の干渉が表面化</span>
+                    <span class="reaction-chip">選挙安全保障が政策課題に</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2018年</div>
+                <div class="timeline-content">
+                  <h4>ケンブリッジ・アナリティカ事件</h4>
+                  <p>英選挙コンサルティング企業ケンブリッジ・アナリティカが、研究者アレクサンドル・コーガン開発のFacebook性格診断アプリを通じて、アプリ利用者本人だけでなくその「友人」のデータまで無断で収集し、最大8700万人分のFacebookユーザー情報を同意なく取得・悪用していたことが発覚した。有権者の心理特性に合わせた広告配信への転用が明らかになり、データ駆動型の世論誘導という手法の存在が広く知られるきっかけとなった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">データ悪用が発覚</span>
+                    <span class="reaction-chip">マイクロターゲティングの実態</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-neutral"></div>
+                <div class="timeline-date">2020年</div>
+                <div class="timeline-content">
+                  <h4>COVID-19「インフォデミック」</h4>
+                  <p>世界保健機関（WHO）が「インフォデミック」という語を公式に用い、パンデミックをめぐる偽情報の氾濫が公衆衛生上の脅威になり得ることを警告した。健康・科学分野が新たな標的として浮上した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">健康分野が標的に</span>
+                    <span class="reaction-chip">WHOが公式に警告</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2022〜2023年</div>
+                <div class="timeline-content">
+                  <h4>生成AIの普及で偽情報コストが崩壊</h4>
+                  <p>ChatGPTをはじめとする生成AIが一般に普及し、偽情報の作成・翻訳・大量生成にかかるコストと時間が劇的に低下した。単一の攻撃者が、無数の偽アカウント・偽人格を運用できる基盤が整った。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">生成コストがほぼゼロに</span>
+                    <span class="reaction-chip">大量の偽人格運用が可能に</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年</div>
+                <div class="timeline-content">
+                  <h4>インドネシア大統領選と台湾での記録的な偽情報</h4>
+                  <p>インドネシア大統領選ではほぼ全ての候補者組がディープフェイク攻撃の標的となり、虚偽情報件数は前回選挙の2倍に増加した。同年、台湾で確認された偽情報は216万件に達し、中国の「認知作戦」の常態化が指摘された。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">選挙ディープフェイクが常態化</span>
+                    <span class="reaction-chip">台湾の偽情報が過去最多に</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2025年</div>
+                <div class="timeline-content">
+                  <h4>選挙工作の資金源が問題に</h4>
+                  <p>暗号資産などを通じた不透明な資金の流れが、偽情報・影響工作の資金源になっているとの指摘が相次いだ。ただし具体的な金額や送金経路の全容は依然として不明な点が多い。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">資金追跡の難しさが課題に</span>
+                    <span class="reaction-chip">暗号資産が経由地との指摘</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年5月</div>
+                <div class="timeline-content">
+                  <h4>インド・パキスタン軍事衝突でAI偽情報が氾濫</h4>
+                  <p>両国間の軍事衝突の最中、AI生成の偽画像・偽映像がSNS上に大量に拡散し、戦況の実態把握を困難にした。実際の紛争と生成AIによる偽情報が同時進行する事例として注目された。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">紛争下でAI偽情報が氾濫</span>
+                    <span class="reaction-chip">戦況把握が困難に</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年7月</div>
+                <div class="timeline-content">
+                  <h4>欧州連合、偽情報の行動規範をDSAに組み込み</h4>
+                  <p>偽情報に関する行動規範が、デジタルサービス法（DSA）の枠組みに組み込まれた。任意の紳士協定だった規範が、巨大プラットフォームのリスク軽減策を評価する重要な基準へと位置づけを強めた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">DSAの評価基準に</span>
+                    <span class="reaction-chip">執行強化への布石</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年〜2026年</div>
+                <div class="timeline-content">
+                  <h4>トランプ政権下で偽情報研究への連邦資金が縮小</h4>
+                  <p>国防総省が偽情報を含む91件の社会科学研究への資金提供を停止したほか、国家科学財団（NSF）も偽情報関連研究への支援方針を見直した。政権は対策研究を「言論への政府介入」と位置づけた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">対策インフラが縮小</span>
+                    <span class="reaction-chip">「検閲」論争が本格化</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年3月</div>
+                <div class="timeline-content">
+                  <h4>イラン・イスラエル・米紛争でディープフェイクが急増</h4>
+                  <p>紛争をめぐり110件超のディープフェイクが「勝利するイラン」を演出する目的で拡散し、単一のキャンペーンが1.45億回再生を記録した。数万の偽アカウントが動員されたとみられる。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">1.45億回再生の工作</span>
+                    <span class="reaction-chip">戦場の実像を歪める</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/information-warfare-timeline-election-crowd.jpg"
+                   alt="夜の選挙集会でスマートフォンの画面を見上げる群衆——情報操作の時代背景を象徴する情景" loading="lazy">
+              <figcaption>一つの投稿、一つの拡散——集会でスマートフォンを掲げる群衆は、いまや偽情報が広がる最初の経路にもなる。2016年の発覚から10年足らずで、情報操作は「稀な事件」から「多くの国が共通して警戒すべきリスク」へと変わった。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 3: 各国・各勢力の視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>6つの視点</h2>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- ロシア・中国・イラン -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">ロシア・中国・イラン</span>
+                      <span class="role-badge">情報操作の輸出国</span>
+                    </div>
+                    <div class="pull-quote">「同じ嘘を三つの声で語れば、真実に近づいて聞こえる」</div>
+                    <div class="key-claim">
+                      <strong>予算規模と分業体制</strong>
+                      中国の対外影響工作には年数十億ドル規模が投じられているとされ、一部報道では最大100億ドル規模との推計もある。ロシアは2026年予算で情報工作費を4.58億ドル（約54%）増額した。イランが生成したディープフェイクを、ロシア・中国の国営メディアとSNSエコシステムが増幅するという分業構造が確認されている。
+                    </div>
+                    <div class="key-claim">
+                      <strong>中東紛争での実証</strong>
+                      2026年3月のイラン・イスラエル・アメリカ紛争では、110件超のディープフェイクが「勝利するイラン」を演出し、単一のキャンペーンが1.45億回再生を記録した。実戦下での情報操作が、技術と分業体制の有効性を証明する場になっている。
+                    </div>
+                  </div>
+
+                  <!-- 台湾 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">台湾</span>
+                      <span class="role-badge">認知戦の最前線</span>
+                    </div>
+                    <div class="pull-quote">「戦争が始まる前から、戦場はすでに私たちの頭の中にある」</div>
+                    <div class="key-claim">
+                      <strong>記録的な偽情報量</strong>
+                      2025年に台湾で確認された偽情報は231万件超にのぼり、2024年の216万件から増加した。国家安全局（NSB）は、中国がSNS上のボット網・提携マーケティング企業・生成AIツールを組み合わせた「認知作戦」を強化していると警告する。
+                    </div>
+                    <div class="key-claim">
+                      <strong>日本を巻き込む便乗工作</strong>
+                      高市早苗首相の台湾有事関連発言を受け、中国国営メディア・SNS上では日本関連の投稿が急増した。台湾のファクトチェック網は、こうした対日世論工作が「台湾有事」情報戦の一部として設計されていると分析している。
+                    </div>
+                  </div>
+
+                  <!-- アメリカ -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">アメリカ（トランプ政権）</span>
+                      <span class="role-badge">規制解体と「検閲」論争</span>
+                    </div>
+                    <div class="pull-quote">「政府が『何が真実か』を決めることこそ、最大の脅威だ」</div>
+                    <div class="key-claim">
+                      <strong>対偽情報インフラの解体</strong>
+                      国務省・国土安全保障省の対外干渉対策部門を縮小し、国防総省は偽情報を含む91件の社会科学研究への資金提供を打ち切った。国家科学財団（NSF）も同種の助成金を取り消している。
+                    </div>
+                    <div class="key-claim">
+                      <strong>「検閲」としての正当化</strong>
+                      政権は偽情報対策研究を「政府による言論への介入」と位置づけ、真偽の判断は民間と市民の議論に委ねるべきだと主張する。批判派は、この空白が外国からの干渉に対する脆弱性を広げると懸念している。
+                    </div>
+                  </div>
+
+                  <!-- 欧州連合 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">欧州連合</span>
+                      <span class="role-badge">DSAによる規制強化</span>
+                    </div>
+                    <div class="pull-quote">「プラットフォームの自主規制だけには頼らない。法の枠組みで評価する」</div>
+                    <div class="key-claim">
+                      <strong>行動規範の法制化</strong>
+                      偽情報に関する行動規範は2025年7月1日からデジタルサービス法（DSA）の枠組みに組み込まれ、巨大プラットフォームのリスク軽減策を評価する重要な基準となった。
+                    </div>
+                    <div class="key-claim">
+                      <strong>プラットフォームへの調査圧力</strong>
+                      Xに対する複数の調査を進めており、違反が確定すれば10億ドルを超える制裁金が科される可能性がある。組織的な虚偽行動（CIB）への対応と、研究者向けデータアクセスの拡充を各社に求めている。
+                    </div>
+                  </div>
+
+                  <!-- プラットフォーム企業 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">プラットフォーム企業（Meta・X）</span>
+                      <span class="role-badge">モデレーションの板挟み</span>
+                    </div>
+                    <div class="pull-quote">「欧州に従えば米国で『検閲』と呼ばれ、従わなければ欧州で制裁される」</div>
+                    <div class="key-claim">
+                      <strong>引き裂かれる基準</strong>
+                      欧州の法的義務と、米国政権による「言論の自由」圧力の間で、コンテンツモデレーション方針が大西洋の両岸で分岐しつつある。Metaは組織的虚偽行動（CIB）という分類のもとで対応を続けるが、透明性を巡る批判は根強い。
+                    </div>
+                    <div class="key-claim">
+                      <strong>相互検証モデルの限界</strong>
+                      専門チームによる事実確認から、利用者投稿による相互検証型の仕組みへの転換が進むが、AI生成コンテンツが拡散する速度に、検証が追いつかない構造的な遅れが指摘されている。
+                    </div>
+                  </div>
+
+                  <!-- グローバル・サウス -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">グローバル・サウス（インドネシア・インド・メキシコ等）</span>
+                      <span class="role-badge">検証手段を持たない標的</span>
+                    </div>
+                    <div class="pull-quote">「攻撃側はAIを使い、防御側はいまだに人力でファクトチェックしている」</div>
+                    <div class="key-claim">
+                      <strong>実害化した選挙干渉</strong>
+                      インドネシアでは2024年大統領選でほぼ全ての候補者組がディープフェイク攻撃の標的となり、虚偽情報件数は前回選挙の2倍に増加した。インド・パキスタンの軍事衝突時には、AI生成の偽情報がSNS上に氾濫した。
+                    </div>
+                    <div class="key-claim">
+                      <strong>検証インフラの欠如</strong>
+                      世界経済フォーラムは偽情報を「今後2年間で最大のグローバルリスク」と評価する。メキシコではニュース・メディア分野への偽情報の影響が48%に達し世界平均（33%）を大きく上回るなど、検証体制の薄い地域ほど実被害が集中している。
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本スタンス</th>
+                        <th>最大の主張</th>
+                        <th>課題・懸念</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>ロシア・中国・イラン</td><td>情報操作の輸出国</td><td>分業体制で偽情報を増幅</td><td>国際的な非難と制裁リスク</td></tr>
+                      <tr><td>台湾</td><td>認知戦の最前線</td><td>民主主義体制を防衛する</td><td>物量に対する防御コストの増大</td></tr>
+                      <tr><td>アメリカ</td><td>規制解体と「検閲」論争</td><td>政府介入こそが最大の脅威</td><td>対策インフラの空白化</td></tr>
+                      <tr><td>欧州連合</td><td>DSAによる規制強化</td><td>法的拘束力で実効的に統制</td><td>プラットフォームとの摩擦</td></tr>
+                      <tr><td>プラットフォーム企業</td><td>モデレーションの板挟み</td><td>大西洋間で基準が分岐</td><td>AI生成の速度に検証が追いつかない</td></tr>
+                      <tr><td>グローバル・サウス</td><td>検証手段を持たない標的</td><td>最も実害が集中する地域</td><td>ファクトチェック体制の欠如</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/information-warfare-perspectives-fractured-screens.jpg"
+                   alt="複数の画面に異なる報道が映し出され対立する構図——視点の対立を象徴するイメージ" loading="lazy">
+              <figcaption>同じ出来事を伝える二つの画面が、まったく異なる見出しを映し出す。何を信じるかは、どちらの画面を手にしているかで変わる——攻める側・護る側・晒される側、6つの視点が示す利害の非対称性は、この分断の縮図でもある。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <!-- 国家の情報工作関連予算 -->
+              <div class="data-card">
+                <h4>主要国の情報操作関連予算（推計）</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="budgetChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  中国の対外影響工作には年数十億ドル規模が投じられているとされ、一部報道では最大100億ドル規模との推計もある。ロシアは2026年予算で情報工作費を4.58億ドル増額した。いずれも算出基盤が異なる推計値であり、直接比較には注意が必要。出典：CEPA、各種報道
+                </p>
+              </div>
+
+              <!-- 台湾の偽情報件数推移 -->
+              <div class="data-card">
+                <h4>台湾で確認された偽情報件数の推移</h4>
+                <div style="position:relative;height:240px;margin-top:1rem;">
+                  <canvas id="taiwanChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  2024年の216万件から2025年には231万件超へ増加した。国家安全局は、中国の認知戦がAIツールを取り入れて拡大していると分析する。出典：台湾国家安全局（NSB）
+                </p>
+              </div>
+
+              <!-- 注目の数字 -->
+              <div class="data-card" style="grid-column: 1 / -1;">
+                <h4>注目の数字</h4>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:0.5rem;">
+                  <div>
+                    <div class="stat-value">40カ国超</div>
+                    <div class="stat-label">2026年に選挙を予定する国のうち、外国干渉や偽情報工作への警戒が報じられている国の目安</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">231万件超</div>
+                    <div class="stat-label">台湾で2025年に確認された偽情報件数（国家安全局）</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">24.5%</div>
+                    <div class="stat-label">人間が高品質なディープフェイク動画を見抜ける確率</div>
+                  </div>
+                  <div>
+                    <div class="stat-value">3倍</div>
+                    <div class="stat-label">ディープフェイク検知ツール市場の成長（2023年→2026年）</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り — これから2〜3年で何が起きるか</h2>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              情報操作は「発覚すれば止められる」段階を過ぎ、「常に一定量が存在する」ことを前提に社会が対応する段階へ移りつつある。生成AIの構造・規制の分断・非対称な脆弱性・終わらない検知競争という4つの軸で、今後2〜3年を見通す。
+            </p>
+
+            <div class="insight-box">
+              <div class="insight-title">① なぜAIが情報戦を変えたか — 「無限の人格」による工業化</div>
+              <div class="insight-text">
+                生成AIが変えたのは、偽情報の「質」以上に「量」と「速度」だ。一人のオペレーターが生成AIを使えば、数千の異なる人格・文体・言語で同時多発的に投稿を生成できる。かつて職人芸だった工作は、工業製品のように反復生産できるようになった。この生産能力の跳躍こそが、40カ国超で外国干渉や偽情報への警戒が広がるという規模の異常さを説明する。攻撃コストの崩壊は、資金力に劣る主体にも情報操作の門戸を開きつつある。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">② 規制のジレンマ — 大西洋を隔てる分断が生む「草刈り場」</div>
+              <div class="insight-text">
+                欧州連合はDSAを通じて偽情報規制を法的拘束力を持つ枠組みへ引き上げた一方、アメリカのトランプ政権は同種の対策を「検閲」とみなして解体を進めている。この大西洋間の分断は、プラットフォーム企業のモデレーション方針を引き裂くだけでなく、規制の緩い地域を狙って攻撃を集中させる「草刈り場」を作り出しかねない。国家間で防御思想が統一されない限り、情報操作の攻撃側は常に規制の隙間を選んで動くことができる。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">③ 非対称な脆弱性 — グローバル・サウスでの実害化</div>
+              <div class="insight-text">
+                インドネシアの選挙、インド・パキスタンの軍事衝突が示すように、ファクトチェック体制の薄い地域ほど偽情報が既存の社会的分断（民族・宗教・政治対立）と重なり、実際の暴力や混乱に転化しやすい。メキシコのようにニュース・メディア分野への影響が世界平均を大きく上回る国もある。攻撃側の技術力が先進国と途上国で変わらない一方、防御側の検証体制には大きな格差があり、この非対称性が被害を一部地域に集中させている。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">④ 終わらない検知競争 — 生成と検知のいたちごっこ</div>
+              <div class="insight-text">
+                ディープフェイク検知ツールの市場は2023年から2026年で3倍に成長したが、人間がディープフェイク動画を見抜ける確率はいまだ24.5%にとどまる。生成技術の進化速度に検知技術が追いつかない構造的なギャップは、今後も解消されにくい。検知は常に既知の生成手法を後追いする性質を持ち、新しい生成技術が登場するたびにこの競争はリセットされる。人間の判断力に頼る防御には、構造的な限界がある。
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.8rem;">
+              情報操作は、もはや「特定の選挙を守る」問題ではなく、「情報空間そのものをどう設計するか」という恒常的な課題になった。規制する側とされない側、検証できる側とできない側——この非対称性が埋まらない限り、「見えない戦争」は形を変えながら続いていく。
+            </p>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/information-warfare-analysis-synthetic-face.jpg"
+                   alt="人間か合成映像か判別しがたい顔のクローズアップ——AI生成メディアの将来像を象徴するイメージ" loading="lazy">
+              <figcaption>生成技術と検知技術のいたちごっこは、今後も終わりが見えない。人間の目では、もはや本物と合成物を見分けることが構造的に難しくなりつつある。※イメージ画像（生成AI）</figcaption>
+            </figure>
+
+            <div style="background:var(--bg-card);border:1px solid var(--border-subtle);border-left:3px solid var(--accent2);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.3rem;margin-top:2rem;font-size:0.82rem;">
+              <p style="color:var(--text-muted);line-height:1.85;margin:0;">
+                かくいうこの記事もAIによって執筆されています。特定の視点だけに触れ続けることは、物事を客観的に見る力を静かに奪っていく——その危機感から、一つの出来事を複数の立場で並べて伝えるこのメディアを始めました。事実確認には別のAIによるチェックを設け、できる限り正確な記述を心がけていますが、この世のすべての情報が完全な真実とは限りません。この記事についても鵜呑みにせず、特定の言論に流されない目で読んでいただければ幸いです。
+              </p>
+            </div>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <a class="source-item" href="https://cepa.org/comprehensive-reports/sino-russian-convergence-in-foreign-information-manipulation-and-interference/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">CEPA — Sino-Russian Convergence in Foreign Information Manipulation and Interference</div>
+                  <div class="source-desc">中国とロシアの情報操作エコシステムの連携構造を分析した包括的レポート。</div>
+                  <div class="source-country">【欧州政策分析センター（米）】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.fdd.org/analysis/2026/03/19/deepfakes-on-the-front-lines-irans-ai-disinformation-campaign/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">FDD — Deepfakes on the Front Lines: Iran's AI Disinformation Campaign</div>
+                  <div class="source-desc">イラン・イスラエル・米紛争下でのディープフェイク拡散キャンペーンの実証分析。</div>
+                  <div class="source-country">【民主主義防衛財団（米）】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.taipeitimes.com/News/front/archives/2026/01/12/2003850442" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Taipei Times — Chinese online manipulation soars: NSB</div>
+                  <div class="source-desc">台湾国家安全局による、中国の認知戦拡大に関する年次報告の報道。</div>
+                  <div class="source-country">【台北タイムズ（台湾）】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.techpolicy.press/the-eus-code-of-practice-on-disinformation-is-now-part-of-the-digital-services-act-what-does-it-mean/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">TechPolicy.Press — The EU's Code of Practice on Disinformation is Now Part of the DSA</div>
+                  <div class="source-desc">偽情報の行動規範がデジタルサービス法へ統合された経緯と意味を解説。</div>
+                  <div class="source-country">【テックポリシー・プレス】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.cato.org/blog/cease-government-funding-counter-misinformation-research-activism-agenda-policymakers" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Cato Institute — Cease Government Funding of Counter-Misinformation Research</div>
+                  <div class="source-desc">偽情報対策研究への政府資金提供に反対する立場からの政策提言。</div>
+                  <div class="source-country">【ケイトー研究所（米）】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.brennancenter.org/our-work/research-reports/cost-trump-administrations-attacks-research-funding" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Brennan Center for Justice — The Cost of the Trump Administration's Attacks on Research Funding</div>
+                  <div class="source-desc">偽情報対策を含む研究資金の削減がもたらす影響についての分析。</div>
+                  <div class="source-country">【ブレナン司法センター（米）】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.adaptivesecurity.com/blog/deepfake-statistics-2026-the-data-security-leaders-need-to-know" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Adaptive Security — Deepfake Statistics 2026</div>
+                  <div class="source-desc">ディープフェイクの検出率・市場規模など最新統計をまとめたレポート。</div>
+                  <div class="source-country">【セキュリティ企業レポート】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.globalsouthforum.org/article/deepfake-disinformation-by-design" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Global South Forum — Deepfake: Disinformation by Design</div>
+                  <div class="source-desc">グローバル・サウスにおける偽情報の非対称な被害構造を論じた分析。</div>
+                  <div class="source-country">【グローバル・サウス・フォーラム】</div>
+                </div>
+              </a>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>核心と問い</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/security/index.html">安全保障</a></div>
+            <div>2026年7月1日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/security/index.html">安全保障一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 主要国の情報操作関連予算（棒グラフ）
+  (function() {
+    var ctx = document.getElementById('budgetChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['中国（対外影響工作、報道ベースの推計）', 'ロシア（2026年予算 増額分）'],
+        datasets: [
+          {
+            label: '推定予算（億ドル）',
+            data: [100, 4.58],
+            backgroundColor: 'rgba(184,127,140,0.78)',
+            borderColor: 'transparent',
+            borderRadius: 3,
+          }
+        ]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: { color: '#8890a0', font: { size: 11 } }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' ' + c.dataset.label + ': ' + c.parsed.y.toLocaleString() + '億ドル'; }
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 9 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // 台湾の偽情報件数推移（棒グラフ）
+  (function() {
+    var ctx = document.getElementById('taiwanChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2024年', '2025年'],
+        datasets: [
+          {
+            label: '確認された偽情報件数（万件）',
+            data: [216, 231],
+            backgroundColor: 'rgba(184,127,140,0.78)',
+            borderColor: 'transparent',
+            borderRadius: 3,
+          }
+        ]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: { color: '#8890a0', font: { size: 11 } }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' ' + c.dataset.label + ': ' + c.parsed.y.toLocaleString() + '万件'; }
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          }
+        }
+      }
+    });
+  })();
+</script>
+</body>
+</html>

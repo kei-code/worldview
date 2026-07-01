@@ -340,6 +340,13 @@
     .concept-card h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.55rem; }
     .concept-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
 
+    .concept-note {
+      max-width: 720px; margin: 2.5rem auto 0; padding: 1.7rem 1.9rem;
+      background: var(--glass); border: 1px solid var(--glass-border); border-radius: 16px;
+    }
+    .concept-note p { font-size: 0.86rem; color: var(--text-muted); line-height: 1.9; }
+    .concept-note p + p { margin-top: 0.9rem; }
+
     /* ===================== Responsive ===================== */
     @media (max-width: 1000px) {
       .bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 168px; }
@@ -389,7 +396,7 @@
           <span class="hero-stat-label">カテゴリ</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-num" data-count="31">0</span>
+          <span class="hero-stat-num" data-count="32">0</span>
           <span class="hero-stat-label">記事</span>
         </div>
       </div>
@@ -516,7 +523,7 @@
           <div class="tile-body">
             <span class="tile-kicker">Security</span>
             <div class="tile-name">安全保障</div>
-            <span class="tile-count"><i class="dot"></i> 記事 5件</span>
+            <span class="tile-count"><i class="dot"></i> 記事 6件</span>
           </div>
         </a>
 
@@ -543,6 +550,17 @@
         </div>
       </div>
       <div class="articles-list">
+
+        <!-- Information Warfare -->
+        <a class="article-row" href="articles/security/2026-07-01-information-warfare/index.html" style="--c:#b87868; --thumb:url('image/articles/information-warfare-hero-control-room.jpg');">
+          <div class="ar-thumb"></div>
+          <div class="ar-left">
+            <div class="ar-meta"><span class="tag">安全保障</span><span class="ar-date">2026.07.01</span></div>
+            <h3 class="ar-title">見えない戦争 — AIが加速させる情報操作の世界地図</h3>
+            <div class="ar-sum">生成AIが偽情報の生産コストを崩壊させ、2026年に選挙を行う国々で外国干渉やAI偽情報への警戒が高まっている。ロシア・中国・イランの攻勢、台湾の防衛最前線、欧州の規制強化と米国の規制解体——「見えない戦争」を6つの視点で読み解く。</div>
+          </div>
+          <div class="ar-right"><div class="ar-angle-num">6</div><div class="ar-angle-label">視点</div></div>
+        </a>
 
         <!-- Scaling to Reasoning -->
         <a class="article-row" href="articles/ai-tech/2026-06-29-scaling-to-reasoning/index.html" style="--c:#7fa6b8; --thumb:url('image/articles/scaling-to-reasoning-hero-datacenter-mind.jpg');">
@@ -917,6 +935,11 @@
           <h3>体系的アーカイブ</h3>
           <p>カテゴリ・日付別に整理。過去の経緯を遡って読むことができます。</p>
         </div>
+      </div>
+
+      <div class="concept-note" id="editorial-note">
+        <p>WorldViewの記事は、AIによって執筆されています。特定の立場からの情報ばかりに触れ続けることは、知らないうちに物事を見る目を一方向へ偏らせてしまう——そんな危機感から、一つの出来事を複数の視点で並べて伝えるこのメディアを始めました。</p>
+        <p>記事の作成にあたっては、別のAIによるファクトチェックの仕組みを設け、できる限り事実に基づいた記述を心がけています。とはいえ、この世に存在する情報が常に完全な真実であるとは限りません。この記事も例外ではなく、数ある情報源の一つとして受け止め、特定の主張を鵜呑みにせず、ご自身の判断軸を持って読んでいただければと思います。</p>
       </div>
     </section>
 
