@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="クルド人は中東でアラブ・トルコ・ペルシャに次ぐ4番目の民でありながら、独自の国家を持たない世界最大級の「国のない民族」。4000万人はなぜトルコ・イラン・イラク・シリアの4カ国にまたがって暮らし、いまも独立できないのか。歴史・6つの視点・データで読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/middle-east/2026-07-14-kurds-stateless/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="国家なき最大の民族 — クルド人はなぜ独立できないのか — WorldView">
+  <meta property="og:description" content="4000万人を抱えながら、クルド人はなぜトルコ・イラン・イラク・シリアの4カ国にまたがって暮らし、いまも国家を持てないのか。セーヴル条約の失効とローザンヌ条約に始まる分断の歴史、4カ国の思惑、内部分裂、大国の裏切りの構造を、6つの視点とデータで読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/middle-east/2026-07-14-kurds-stateless/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/kurds-stateless-hero-mountains.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="国家なき最大の民族 — クルド人はなぜ独立できないのか — WorldView">
+  <meta name="twitter:description" content="4000万人を抱えながら、クルド人はなぜ4カ国にまたがって暮らし独立できないのか。分断の歴史・6つの視点・データで読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/kurds-stateless-hero-mountains.jpg">
+  <title>国家なき最大の民族 — クルド人はなぜ独立できないのか — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,600;1,9..144,900&family=Shippori+Mincho+B1:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* =========================================================
+       クルド記事 専用意匠（frontend-design）
+       — 標準コンポーネント（common.css / article.css）は維持し、
+         .kurds-article にスコープして上書きする。
+       ========================================================= */
+    .kurds-article {
+      /* 地の色は「高地の玄武岩」＝ほぼ無彩色の石。
+         暖色（土・太陽）はアクセント・写真・署名の太陽だけに担わせ、
+         背景に橙のモヤを出さない。 */
+      --k-ink:    #191817;   /* 玄武岩の夜（ベース・ほぼ無彩） */
+      --k-panel:  #212020;   /* 石のパネル */
+      --k-panel2: #2b2928;
+      --k-border: #393633;
+      --k-earth:  #c65d3b;   /* テラコッタ＝高地の土／国旗の赤帯 */
+      --k-sun:    #e8a33d;   /* 黄金＝国旗の太陽Roj */
+      --k-green:  #3e7d5a;   /* 国旗の緑（生命・支持） */
+      --k-bone:   #ece7dd;   /* 石灰岩の骨色（本文の主色） */
+      --k-mut:    #b8b1a5;   /* 本文のミュート */
+      --k-dim:    #948d83;   /* トープ（キャプション） */
+      /* キリム（クルドの幾何学織）の帯：土と黄金の菱形が交互に並ぶ */
+      --kilim-band: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M0 4L4 0L8 4L4 8Z' fill='%23c65d3b'/%3E%3Cpath d='M8 4L12 0L16 4L12 8Z' fill='%23e8a33d'/%3E%3C/svg%3E");
+      --font-mincho: 'Shippori Mincho B1', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho ProN', serif;
+      --font-latin:  'Fraunces', Georgia, 'Times New Roman', serif;
+      background: var(--k-ink);
+      color: var(--k-bone);
+    }
+
+    .kurds-article .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* ---- セクション見出し：明朝＋Fraunces数字＋太陽レイの目印 ---- */
+    .kurds-article .section-title {
+      display: flex !important; align-items: baseline; gap: 0.75rem;
+      font-family: var(--font-mincho); font-weight: 700;
+      font-size: 1.4rem; letter-spacing: 0.02em; line-height: 1.4;
+      color: var(--k-bone);
+      text-transform: none;
+      border-bottom: 1px solid var(--k-border);
+      box-shadow: none;
+      padding-bottom: 0.75rem; margin-bottom: 1.7rem;
+    }
+    .kurds-article .section-title .sec-num {
+      font-family: var(--font-latin); font-style: italic; font-weight: 600;
+      font-size: 1.05rem; color: var(--k-earth); opacity: 1;
+      letter-spacing: 0; line-height: 1;
+      position: relative; padding-left: 1.05rem; flex-shrink: 0;
+    }
+    .kurds-article .section-title .sec-num::before {
+      content: ''; position: absolute; left: 0; top: 0.15em;
+      width: 0; height: 0;
+      border-top: 4px solid transparent; border-bottom: 4px solid transparent;
+      border-left: 7px solid var(--k-sun);
+    }
+
+    /* ---- 記事タイトル：明朝の重厚な組み ---- */
+    .kurds-article .article-title {
+      font-family: var(--font-mincho); font-weight: 800;
+      font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.34;
+      letter-spacing: 0.015em; color: #fbf6ee;
+    }
+    .kurds-article .article-title .title-sub {
+      display: block; font-size: 0.56em; font-weight: 600;
+      color: #e2d6c3; margin-top: 0.7rem; letter-spacing: 0.05em;
+    }
+
+    /* ---- 冒頭の問い ---- */
+    .kurds-article .article-question {
+      border-left: 3px solid var(--k-earth);
+      background: var(--k-panel);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.1rem 1.5rem; margin-bottom: 1.9rem;
+      font-family: var(--font-mincho);
+      font-size: 1.02rem; font-weight: 600; line-height: 1.9;
+      color: #efe6d8;
+    }
+
+    /* ---- 本文パラグラフ ---- */
+    .kurds-article .body-p {
+      color: var(--k-mut); font-size: 0.95rem; line-height: 2.0; margin-bottom: 1.2rem;
+    }
+    .kurds-article .body-p strong { color: var(--k-bone); font-weight: 700; }
+    .kurds-article .proverb {
+      font-family: var(--font-mincho); color: #e7d9c2;
+      font-size: 1.05rem; font-style: normal; font-weight: 500;
+    }
+    .kurds-article .eyebrow-label {
+      font-family: var(--font-latin); font-style: italic;
+      font-size: 0.78rem; letter-spacing: 0.04em; color: var(--k-earth);
+      margin: 2.2rem 0 0.85rem; font-weight: 600;
+    }
+
+    /* =========================================================
+       3つの論点 / 用語：塗り箱をやめ、罫線だけで組む。
+       目印はキリム（クルドの幾何学織）の帯——国家を持たない民が
+       国境を越えて受け継いできた文化を、構造の記号として使う。
+       ========================================================= */
+    .kurds-article .factor-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0; margin: 1.5rem 0 0;
+      border-top: 1px solid var(--k-border);
+    }
+    .kurds-article .factor-card {
+      background: none; border: none; border-radius: 0;
+      border-right: 1px solid var(--k-border);
+      padding: 1.5rem 1.5rem 0.4rem;
+    }
+    .kurds-article .factor-card:first-child { padding-left: 0; }
+    .kurds-article .factor-card:last-child { border-right: none; padding-right: 0; }
+    .kurds-article .factor-card::before {
+      content: ''; display: block; width: 48px; height: 8px; margin-bottom: 1rem;
+      background-image: var(--kilim-band);
+      background-repeat: repeat-x; background-size: 16px 8px;
+    }
+    .kurds-article .factor-title {
+      font-family: var(--font-mincho); font-size: 1rem; font-weight: 700;
+      margin-bottom: 0.55rem; color: var(--k-bone);
+    }
+    .kurds-article .factor-desc { font-size: 0.82rem; color: var(--k-mut); line-height: 1.85; }
+
+    /* 用語：辞書の一葉のように、罫線と菱形の目印だけで */
+    .kurds-article .glossary-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      column-gap: 2.6rem; row-gap: 0; margin: 1.4rem 0 0;
+    }
+    .kurds-article .glossary-card {
+      background: none; border: none; border-radius: 0;
+      border-top: 1px solid var(--k-border);
+      padding: 1.05rem 0 1.15rem;
+    }
+    .kurds-article .glossary-term {
+      font-family: var(--font-mincho); font-size: 0.92rem; font-weight: 700;
+      color: var(--k-bone); margin-bottom: 0.42rem;
+      display: flex; align-items: center; gap: 0.55rem;
+    }
+    .kurds-article .glossary-term::before {
+      content: ''; flex-shrink: 0;
+      width: 7px; height: 7px; background: var(--k-earth);
+      transform: rotate(45deg);
+    }
+    .kurds-article .glossary-def { font-size: 0.79rem; color: var(--k-mut); line-height: 1.8; }
+
+    /* =========================================================
+       Signature: 分断された太陽（国旗のRojを4カ国の人口比で割る）
+       ========================================================= */
+    .kurds-article .sun-figure {
+      margin: 2.4rem 0 1.4rem; text-align: center;
+    }
+    .kurds-article .divided-sun {
+      width: 100%; max-width: 560px; height: auto; display: block; margin: 0 auto;
+      overflow: visible;
+    }
+    .kurds-article .sun-ray { fill: var(--k-sun); opacity: 0.92; }
+    .kurds-article .sun-wedge {
+      stroke: var(--k-ink); stroke-width: 2.5;
+      transform: translate(0, 0);
+      transition: transform 1.15s cubic-bezier(.34, 1.08, .5, 1);
+    }
+    .kurds-article .divided-sun.is-split .sun-wedge {
+      transform: translate(var(--ox), var(--oy));
+    }
+    .kurds-article .sl-name { font-family: var(--font-mincho); font-size: 15px; font-weight: 700; fill: var(--k-bone); }
+    .kurds-article .sl-num  { font-family: var(--font-latin); font-size: 12.5px; fill: var(--k-dim); }
+    .kurds-article .sun-cap {
+      font-size: 0.78rem; color: var(--k-dim); line-height: 1.7;
+      max-width: 560px; margin: 0.4rem auto 0;
+    }
+
+    /* ---- 図版 ---- */
+    .kurds-article .article-figure { margin: 2.6rem 0; }
+    .kurds-article .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--k-border);
+    }
+    .kurds-article .article-figure figcaption {
+      font-size: 0.77rem; color: var(--k-dim); margin-top: 0.6rem; line-height: 1.7;
+    }
+
+    /* =========================================================
+       ヒーロー（案X型・カテゴリ色＝土/太陽）
+       ========================================================= */
+    .kurds-article .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 660px; display: flex; align-items: center;
+    }
+    .kurds-article .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/kurds-stateless-hero-mountains.jpg');
+      background-size: cover; background-position: center 46%;
+      filter: contrast(1.03) saturate(1.05);
+    }
+    .kurds-article .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(20,19,18,0.34) 0%, rgba(20,19,18,0.54) 45%, rgba(20,19,18,0.9) 100%);
+    }
+    .kurds-article .article-hero.has-image .container { position: relative; z-index: 1; width: 100%; transform: translateY(-30px); }
+    .kurds-article .article-hero.has-image .article-meta,
+    .kurds-article .article-hero.has-image .article-title {
+      text-shadow: 0 2px 18px rgba(0,0,0,0.82), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .kurds-article .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.6); letter-spacing: 0.04em;
+    }
+    .kurds-article .hero-deck {
+      font-family: var(--font-mincho);
+      font-size: 1.08rem; font-weight: 500; line-height: 1.95; letter-spacing: 0.01em;
+      color: #e8dccb; margin-top: 1.6rem; max-width: 580px;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.6);
+    }
+    .kurds-article .hero-deck .deck-accent { color: var(--k-sun); font-weight: 700; }
+    .kurds-article .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.6rem; }
+    .kurds-article .hero-pill {
+      font-family: var(--font-latin); font-weight: 600;
+      font-size: 0.82rem; letter-spacing: 0.01em;
+      color: color-mix(in srgb, var(--k-sun) 74%, #ffffff);
+      background: color-mix(in srgb, var(--k-earth) 22%, transparent);
+      border: 1px solid color-mix(in srgb, var(--k-sun) 36%, transparent);
+      padding: 0.4rem 0.8rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* =========================================================
+       標準コンポーネントの暖色化
+       ========================================================= */
+    .kurds-article .article-question,
+    .kurds-article .perspective-card,
+    .kurds-article .timeline-content,
+    .kurds-article .data-card,
+    .kurds-article .insight-box,
+    .kurds-article .compare-table,
+    .kurds-article a.source-item { background: var(--k-panel); }
+
+    .kurds-article .perspective-card,
+    .kurds-article .compare-table { border-color: var(--k-border); }
+    .kurds-article .timeline-content,
+    .kurds-article .data-card,
+    .kurds-article a.source-item { border-color: var(--k-border); }
+    .kurds-article .perspective-card:hover,
+    .kurds-article .timeline-content:hover,
+    .kurds-article a.source-item:hover { background: var(--k-panel2); }
+
+    /* カード上端のスイープ光を土色に */
+    .kurds-article .perspective-card::before,
+    .kurds-article .data-card::before {
+      background: linear-gradient(90deg, transparent 0%, var(--k-earth) 50%, transparent 100%);
+    }
+
+    /* 視点カード */
+    .kurds-article .country-name { font-family: var(--font-mincho); font-weight: 700; color: var(--k-bone); font-size: 1rem; }
+    .kurds-article .role-badge {
+      font-size: 0.7rem; font-weight: 600; color: var(--k-dim);
+      background: var(--k-panel2); border: 1px solid var(--k-border); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em; margin-left: auto;
+    }
+    .kurds-article .perspective-card .key-claim { color: var(--k-bone); font-size: 0.87rem; line-height: 1.75; }
+    .kurds-article .perspective-card .key-claim strong:first-child { color: var(--k-dim); }
+    .kurds-article .perspective-card .interests { color: var(--k-mut); border-top-color: var(--k-border); }
+    .kurds-article .pull-quote {
+      font-family: var(--font-mincho);
+      border-left: 2px solid var(--k-earth); background: none;
+      padding: 0.15rem 0 0.15rem 0.95rem; margin: 0.2rem 0 1rem;
+      border-radius: 0;
+      font-size: 0.92rem; font-weight: 600; color: #efe9de; line-height: 1.8;
+    }
+
+    /* tone-meter（クルドの権利・自決への姿勢：敵対⇔支持） */
+    .kurds-article .tone-meter { margin: 0.9rem 0 0.7rem; }
+    .kurds-article .tone-meter-label { color: var(--k-dim); }
+    .kurds-article .tone-track { background: rgba(236,227,213,0.12); }
+    .kurds-article .tone-fill { background: var(--k-earth); }
+    .kurds-article .tone-hostile .tone-fill { background: #b23b27; }
+    .kurds-article .tone-supportive .tone-fill { background: var(--k-green); }
+    .kurds-article .stance-label { margin-left: 0.6rem; }
+    .kurds-article .stance-hostile   { background: rgba(178,59,39,0.18);  color: #e2937c; }
+    .kurds-article .stance-supportive { background: rgba(62,125,90,0.20);  color: #93c8a6; }
+    .kurds-article .stance-cautious,
+    .kurds-article .stance-neutral   { background: rgba(236,227,213,0.08); color: var(--k-dim); }
+
+    /* 比較表 */
+    .kurds-article .compare-table th { background: var(--k-panel2); color: var(--k-dim); border-bottom-color: var(--k-border); }
+    .kurds-article .compare-table td { color: var(--k-bone); border-bottom-color: var(--k-border); }
+    .kurds-article .compare-table tr:hover td { background: var(--k-panel2); }
+
+    /* タイムライン */
+    .kurds-article .timeline-date { font-family: var(--font-latin); font-style: italic; color: var(--k-earth); font-size: 0.82rem; letter-spacing: 0.02em; }
+    .kurds-article .timeline-content h4 { font-family: var(--font-mincho); color: var(--k-bone); font-size: 0.98rem; line-height: 1.5; }
+    .kurds-article .timeline-content p { color: var(--k-mut); }
+    .kurds-article .reaction-chip { background: var(--k-panel2); border-color: var(--k-border); color: var(--k-mut); }
+    /* レール・ドットのにじみ（グロー）は出さず、輪郭を締める */
+    .kurds-article .timeline::before {
+      background: linear-gradient(180deg, rgba(232,163,61,0.55) 0%, rgba(232,163,61,0.06) 100%);
+      box-shadow: none;
+    }
+    .kurds-article .timeline-dot { background: var(--k-sun); border-color: transparent; animation: none; box-shadow: none; }
+
+    /* データ */
+    .kurds-article #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    .kurds-article .data-card h4 { color: var(--k-dim); font-size: 0.74rem; }
+    .kurds-article .data-card:hover { border-color: rgba(198,93,59,0.4); }
+    .kurds-article .stat-strip { border-top: 1px solid var(--k-border); border-bottom: 1px solid var(--k-border); padding: 1.6rem 0; margin-top: 2rem; display: flex; }
+    .kurds-article .stat-strip-item { flex: 1; text-align: center; padding: 0 1.25rem; border-right: 1px solid var(--k-border); }
+    .kurds-article .stat-strip-item:last-child { border-right: none; }
+    .kurds-article .stat-num { font-family: var(--font-latin); font-weight: 600; font-size: 1.55rem; line-height: 1.1; color: var(--k-earth); margin-bottom: 0.45rem; letter-spacing: -0.01em; }
+    .kurds-article .stat-desc { font-size: 0.75rem; color: var(--k-mut); line-height: 1.55; }
+
+    /* 深掘り */
+    .kurds-article .insight-box { border: 1px solid var(--k-border); border-left: 3px solid var(--k-earth); border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.3rem 0; }
+    .kurds-article .insight-title { font-family: var(--font-mincho); font-size: 0.98rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--k-bone); }
+    .kurds-article .insight-text { font-size: 0.86rem; color: var(--k-mut); line-height: 1.9; }
+    .kurds-article .insight-text strong { color: var(--k-bone); }
+
+    /* 情報源 */
+    .kurds-article a.source-item { color: inherit; text-decoration: none; }
+    .kurds-article a.source-item:hover { border-color: var(--k-earth); }
+    .kurds-article .source-name { font-family: var(--font-mincho); font-weight: 700; color: var(--k-bone); }
+    .kurds-article .source-desc { color: var(--k-mut); }
+    .kurds-article .source-country { color: var(--k-dim); }
+
+    /* TOC */
+    .kurds-article .toc-title { color: var(--k-dim); }
+    .kurds-article .toc-sidebar { border-left-color: var(--k-border); }
+    .kurds-article .toc-list a { color: var(--k-dim); }
+    .kurds-article .toc-list a::before { background: var(--k-earth); }
+    .kurds-article .toc-list a:hover,
+    .kurds-article .toc-list a.is-current { color: var(--k-bone); }
+    .kurds-article .toc-meta a { color: var(--k-earth); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .kurds-article .sun-wedge { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .kurds-article .layout { grid-template-columns: 1fr; }
+      .kurds-article .toc-sidebar { display: none; }
+      /* 縦罫の仕切りをやめ、上罫で積む */
+      .kurds-article .factor-grid { grid-template-columns: 1fr; border-top: none; }
+      .kurds-article .factor-card {
+        border-right: none; border-top: 1px solid var(--k-border);
+        padding: 1.4rem 0 0.7rem;
+      }
+      .kurds-article .glossary-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .kurds-article #sec-data .data-grid { grid-template-columns: 1fr; }
+      .kurds-article .stat-strip { flex-wrap: wrap; }
+      .kurds-article .stat-strip-item { flex: 0 0 50%; border-right: none; border-bottom: 1px solid var(--k-border); padding: 1rem; }
+    }
+  </style>
+</head>
+<body class="kurds-article">
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag">中東情勢</span>
+        <span class="date">2026年7月14日</span>
+      </div>
+      <h1 class="article-title">国家なき最大の民族<span class="title-sub">— クルド人はなぜ独立できないのか</span></h1>
+
+      <div class="hero-deck">
+        一つの民族が、四つの国境で切り分けられている。クルド人はアラブ・トルコ・ペルシャに次ぐ中東第4の民でありながら、地図の上に自分たちの色を持たない。<span class="deck-accent">なぜ4000万人は、いまだ国家を持てないのか。</span>その答えは、彼ら自身の中ではなく、彼らを取り囲む国境線の引かれ方の中にある。
+      </div>
+
+      <div class="hero-pills">
+        <span class="hero-pill">約4000万人・国家なし</span>
+        <span class="hero-pill">4カ国に分断</span>
+        <span class="hero-pill">公式な自治は1地域のみ</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 論点 -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>論点 — 地図に色を持たない民</h2>
+
+            <p class="body-p">
+              <span class="proverb">「クルド人に友はなく、あるのは山だけ」</span>——彼らのあいだで、幾世代にもわたって語り継がれてきた言葉だ。裏切られ、見捨てられ、そのたびに山へ退いて生き延びてきた民族の記憶が、この短い一句に凝縮されている。
+            </p>
+            <p class="body-p">
+              クルド人は、トルコ・シリア・イラク・イランの国境が交わる山岳地帯——通称「クルディスタン」——に暮らす民族だ。人口は推定<strong>約4000万人</strong>。アラブ、トルコ、ペルシャに次ぐ<strong>中東で4番目に大きい民族</strong>であり、独自の言語（クルド語）と文化を持つ。にもかかわらず、彼らは<strong>自分たちの国家を持たない世界最大級の民族</strong>——「国のない最大の民（the largest stateless nation）」と呼ばれる。
+            </p>
+
+            <div class="article-question">
+              独自の言葉を持ち、独自の文化を持ち、4000万という人口を抱えながら、クルド人はなぜ独立国家を持てないのか。そして2025年、PKKが解散と武装解除を決定し、長年の武装闘争が大きな転換点を迎えたいま、その問いはどこへ向かうのか。
+            </div>
+
+            <div class="eyebrow-label">The core of the question</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">何が「問題」なのか</div>
+                <div class="factor-desc">
+                  4000万人が、一つの民族としてまとまった国土を持てず、4つの主権国家の中に少数民族として分散している。どの国でも「その国の一部」とされ、独立や自治を求めれば弾圧の対象になってきた。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">なぜ分断されたのか</div>
+                <div class="factor-desc">
+                  1920年のセーヴル条約は、クルド人多数地域の自治と、一定の条件下での独立の可能性を示した。しかし条約は発効せず、1923年のローザンヌ条約ではその規定が削除された。旧オスマン帝国側の居住地域は戦後の国境形成で主にトルコ・イラク・シリアに分かれ、以前からイラン領だった地域と合わせて、クルド人は4カ国にまたがって暮らすことになった。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">なぜ、いま問うのか</div>
+                <div class="factor-desc">
+                  2025年、40年続いたクルド労働者党（PKK）が解散と武装解除を決定し、武装闘争は終結に向けた過程に入った。シリアではクルド主導勢力が新政権への統合に動いており、銃による闘争から政治的解決へ移行できるかが問われている。
+                </div>
+              </div>
+            </div>
+
+            <!-- Signature: 分断された太陽 -->
+            <div class="sun-figure">
+              <svg class="divided-sun" id="dividedSun" viewBox="0 0 560 450" xmlns="http://www.w3.org/2000/svg" role="img"
+                   aria-label="クルド国旗の太陽を、4カ国に住むクルド人口の比率で4つに分割した図。トルコ約1,750万・イラン約1,100万・イラク約800万・シリア約330万。">
+              </svg>
+              <p class="sun-cap">
+                クルド国旗の中央に輝く「21条の光を放つ太陽（Roj）」を、4カ国に暮らすクルド人口の比率で割ったもの。一つの民＝一つの太陽が、四つの国境で切り分けられている——これがこの記事の主題だ。（人口は概数）
+              </p>
+            </div>
+
+            <div class="eyebrow-label">Key terms</div>
+            <div class="glossary-grid">
+              <div class="glossary-card">
+                <div class="glossary-term">クルディスタン</div>
+                <div class="glossary-def">「クルド人の地」を意味する地理的呼称。トルコ南東部・シリア北部・イラク北部・イラン北西部にまたがる山岳地帯を指し、独立した国家ではない。</div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">PKK（クルド労働者党）</div>
+                <div class="glossary-def">1978年結成、1984年からトルコ国家と武装闘争を続けたクルド組織。トルコと欧米はテロ組織に指定。2025年5月に解散・武装解除を宣言した。</div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">SDF（シリア民主軍）</div>
+                <div class="glossary-def">シリア北東部のクルド主導の軍事組織。対「イスラム国（ISIS）」戦でアメリカと連携し主力を担った。2025年以降、シリア新政権への統合が進む。</div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">KRG（クルディスタン地域政府）</div>
+                <div class="glossary-def">イラク北部の自治政府。2005年のイラク新憲法で正式に承認された、クルド人が唯一の公式な自治を得ている地域。独自の議会・治安部隊を持つ。</div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">ペシュメルガ</div>
+                <div class="glossary-def">「死に立ち向かう者」を意味する、イラク・クルド自治区の治安部隊。対ISIS戦で存在感を示した。</div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">オジャラン</div>
+                <div class="glossary-def">PKKの創設者アブドラ・オジャラン。1999年からトルコで終身刑に服す。解散後も和平プロセスの鍵を握り、クルド側は釈放を求めている。</div>
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/kurds-stateless-highland-village.jpg"
+                   alt="山腹に石造りの家々が積み重なるクルド高地の村。細い山道を歩く老人の姿" loading="lazy">
+              <figcaption>山肌に張りつくように築かれたクルドの高地の村。国家を持たずとも、彼らは山とともに独自の言葉と文化を千年以上守ってきた。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 分断の形成から、武装闘争の転換点まで</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">1920年</div>
+                <div class="timeline-content">
+                  <h4>セーヴル条約 — クルド人自治と条件付き独立への言及</h4>
+                  <p>第一次大戦で敗れたオスマン帝国を解体する講和条約が、クルド人多数地域の自治と、一定の条件を満たした場合に独立へ進む可能性を規定した。だが条約は批准・発効されず、実際には実施されなかった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">自治と条件付き独立に言及</span>
+                    <span class="reaction-chip">条約は発効せず</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">1923年</div>
+                <div class="timeline-content">
+                  <h4>ローザンヌ条約 — クルド自治の規定が消滅</h4>
+                  <p>トルコ共和国の建国とともに、セーヴル条約はローザンヌ条約に置き換えられた。新条約からはクルド人の自治・独立に関する規定が削除された。旧オスマン帝国側のクルド人居住地域は、その後の国境形成を通じて主にトルコ・イラク・シリアへと分かれていく。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">クルド自治の規定が消滅</span>
+                    <span class="reaction-chip">戦後の国境形成で分断が固定化</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">1946年</div>
+                <div class="timeline-content">
+                  <h4>マハバード共和国 — 11か月で消えた「幻の国家」</h4>
+                  <p>イラン北西部に、ソ連の支援を背景としてクルド人の共和国が樹立された。近代クルド民族運動を象徴する代表的な国家建設の試みだったが、ソ連軍が撤退すると後ろ盾を失い、わずか11か月で崩壊。指導者カジ・ムハンマドは処刑された。大国に利用され、用が済めば見捨てられる——後に何度も繰り返される構図の一例となった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">近代クルド史を象徴する共和国</span>
+                    <span class="reaction-chip">ソ連撤退後に後ろ盾を失う</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">1984年</div>
+                <div class="timeline-content">
+                  <h4>PKKの武装闘争開始 — 40年の紛争へ</h4>
+                  <p>アブドラ・オジャラン率いるPKKが、トルコ国家に対する武装闘争を開始した。以後、この紛争はおよそ4万人の命を奪い、トルコ社会の最も深い亀裂となっていく。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">死者 約4万人</span>
+                    <span class="reaction-chip">トルコの最大の内政課題に</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">1988年</div>
+                <div class="timeline-content">
+                  <h4>ハラブジャ事件 — 化学兵器による虐殺</h4>
+                  <p>イラン・イラク戦争末期、サダム・フセイン政権がイラク北部のクルド人の町ハラブジャに化学兵器を使用し、数千人が死亡した。クルド人が国家を持たないことの代償が、最も残酷な形で刻まれた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">数千人が死亡</span>
+                    <span class="reaction-chip">迫害の象徴に</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-neutral"></div>
+                <div class="timeline-date">1991年</div>
+                <div class="timeline-content">
+                  <h4>湾岸戦争後 — イラク北部に自治の芽</h4>
+                  <p>湾岸戦争後、米英仏がイラク北部に飛行禁止区域を設定し、サダム政権の攻撃からクルド人を保護した。この「傘」の下で、イラク・クルドは事実上の自治を築き始める。後のKRGの原型となった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">飛行禁止区域で保護</span>
+                    <span class="reaction-chip">事実上の自治が始動</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2005年</div>
+                <div class="timeline-content">
+                  <h4>イラク新憲法 — KRGが正式承認される</h4>
+                  <p>サダム政権崩壊後のイラク新憲法が、クルディスタン地域政府（KRG）を連邦内の自治政府として正式に認めた。クルド人が国際的に承認された自治を得た、初めての——そして今のところ唯一の——ケースとなった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">憲法で自治を承認</span>
+                    <span class="reaction-chip">独自議会・治安部隊を保持</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2014〜2015年</div>
+                <div class="timeline-content">
+                  <h4>コバニ攻防とSDF結成 — 対ISIS戦の主要勢力へ</h4>
+                  <p>2014年から2015年にかけてのコバニ攻防では、シリア・クルド人部隊のYPG・女性部隊のYPJが中心となり、イラクのペシュメルガや米国主導連合の空爆支援を受けて「イスラム国（ISIS）」を退けた。その後、2015年10月に結成されたSDFが、シリアにおける対ISIS戦の主要な地上勢力となり、アメリカの重要な同盟者として国際的評価を高めた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">YPG・YPJがコバニを死守</span>
+                    <span class="reaction-chip">SDF結成・対ISIS戦の主力に</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2017年</div>
+                <div class="timeline-content">
+                  <h4>独立住民投票 — 賛成9割超も、国際社会は認めず</h4>
+                  <p>イラク・クルド自治区が独立の是非を問う住民投票を実施し、賛成が9割を超えた。だがイラク中央政府・トルコ・イラン・アメリカまでもが反対。イラクは軍を進め、係争地キルクークの油田を奪還した。独立の夢は、むしろ後退した。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">賛成 9割超</span>
+                    <span class="reaction-chip">国際的に不承認・領土喪失</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2019年</div>
+                <div class="timeline-content">
+                  <h4>トルコの北シリア侵攻 — 「裏切られる」クルド</h4>
+                  <p>アメリカがシリア北部から部隊を撤収すると、その間隙を突いてトルコが越境侵攻した。対ISIS戦をともに戦ったSDFは、後ろ盾を失って撤退を迫られた。「山しか友がいない」という言葉が、またも現実となった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">米軍撤収の直後に侵攻</span>
+                    <span class="reaction-chip">同盟者に見捨てられる</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2024年末〜2026年</div>
+                <div class="timeline-content">
+                  <h4>アサド崩壊・PKK解散決定・SDF統合 — 武装闘争の終結に向けた転換点</h4>
+                  <p>2024年末にシリアのアサド政権が崩壊。2025年5月、PKKは<strong>解散と武装解除を決定</strong>し、7月には一部構成員が象徴的に武器を焼却、10月にはトルコ国内からの撤退を表明した。シリアではSDFが新政権への統合で合意。ただし完全な武装解除や構成員の法的処遇は未確定であり、40年に及ぶ紛争は終結に向けた過程に入った段階である。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">PKKが解散・武装解除を決定</span>
+                    <span class="reaction-chip">SDFがシリア新政権へ統合</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/kurds-stateless-displaced-families.jpg"
+                   alt="荷物を抱え、山あいの道を長い列をなして歩く避難民の家族たち。遠くに軍用車両" loading="lazy">
+              <figcaption>迫害と戦火のたびに、クルドの人々は家財を背負って山道を越えてきた。「国を持たない」ことは、幾度もこうした避難の列となって現れてきた。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 3: 各勢力の視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>6つの視点 — 分断する4カ国、当事者、そして大国</h2>
+
+            <p class="body-p">
+              クルド問題は、当事者が多い多国間の構図だ。彼らを分割する<strong>4カ国（トルコ・イラン・イラク・シリア）</strong>、当事者である<strong>クルド勢力</strong>、そして利用しては見捨ててきた大国<strong>アメリカ</strong>——6つの立場から整理する。各カードのバーは「クルドの権利・自決への姿勢」を、<strong>敵対（左）⇔ 支持（右）</strong>で示す。
+            </p>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- トルコ -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">トルコ</span>
+                      <span class="stance-label stance-hostile">敵対</span>
+                    </div>
+                    <div class="pull-quote">「国家の一体性は交渉の対象ではない。分離主義には屈しない」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      最大のクルド人口（1,500〜2,000万人）を抱え、PKKを国家の存立を脅かすテロ組織とみなしてきた。クルド独立は自国領土の分裂に直結するため、断固反対。一方でPKK解散を受け、和平プロセスを主導する立場にも立つ。
+                    </div>
+                    <div class="tone-meter tone-hostile">
+                      <div class="tone-meter-label"><span>敵対</span><span>支持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="12%"></div></div>
+                    </div>
+                    <div class="interests">最大の関心：国内の分離主義の封じ込めと領土の一体性。</div>
+                  </div>
+
+                  <!-- イラン -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">イラン</span>
+                      <span class="stance-label stance-hostile">敵対</span>
+                    </div>
+                    <div class="pull-quote">「体制の安定を揺るがす動きは、国境の外でも許さない」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      国内に1,000万人超のクルド人を抱え、クルド政党（KDPI等）の活動を厳しく弾圧してきた。イラク北部のクルド拠点へ越境ミサイル攻撃を行うこともある。イラク・クルドの自治が自国クルドへ波及することを最も警戒する。
+                    </div>
+                    <div class="tone-meter tone-hostile">
+                      <div class="tone-meter-label"><span>敵対</span><span>支持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="15%"></div></div>
+                    </div>
+                    <div class="interests">最大の関心：体制の安定と、国内クルドへの波及の遮断。</div>
+                  </div>
+
+                  <!-- イラク -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">イラク（連邦政府）</span>
+                      <span class="stance-label stance-cautious">限定的容認</span>
+                    </div>
+                    <div class="pull-quote">「自治は認める。だが独立と、石油の自由な売却は認めない」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      クルドに公式な自治（KRG）を認める唯一の国。だが石油輸出の収入配分をめぐり、自治政府と対立が続く。2025年にはKRG産油の輸出を連邦の管理下に置く合意が成立し、自治の財政的な自立はむしろ狭まった。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>敵対</span><span>支持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="55%"></div></div>
+                    </div>
+                    <div class="interests">最大の関心：石油収入の掌握と、連邦としての統合維持。</div>
+                  </div>
+
+                  <!-- シリア -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">シリア（暫定政府）</span>
+                      <span class="stance-label stance-cautious">統合を模索</span>
+                    </div>
+                    <div class="pull-quote">「一つのシリアへ。ただし、分権はどこまで認めるのか」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      アサド政権崩壊後の新政権は、クルド主導のSDFを国家組織に統合する方向で合意した。国家再統一を優先しつつ、クルド側が求める分権とどう折り合うかが焦点。背後にはトルコの強い圧力があり、綱引きが続く。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>敵対</span><span>支持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="40%"></div></div>
+                    </div>
+                    <div class="interests">最大の関心：国家の再統一と、トルコとの関係の安定。</div>
+                  </div>
+
+                  <!-- クルド勢力 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">クルド勢力</span>
+                      <span class="stance-label stance-supportive">当事者</span>
+                    </div>
+                    <div class="pull-quote">「独立は悲願だ。だが現実は、生き延びるための自治を選ばせる」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      自決と権利、そして生存が悲願。だが「独立の夢」と「現実的な自治」の間で揺れ、路線は一枚岩ではない。イラクではKDPとPUKが対立し、PKK系とKRGも足並みがそろわない。この内部分裂が、対外交渉での力を削いできた。
+                    </div>
+                    <div class="tone-meter tone-supportive">
+                      <div class="tone-meter-label"><span>敵対</span><span>支持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="95%"></div></div>
+                    </div>
+                    <div class="interests">最大の関心：自決・権利・生存。分裂の克服が課題。</div>
+                  </div>
+
+                  <!-- アメリカ -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">アメリカ</span>
+                      <span class="stance-label stance-cautious">是々非々</span>
+                    </div>
+                    <div class="pull-quote">「対テロでは頼る。だが独立国家までは、支えない」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      対ISIS戦ではSDF・ペシュメルガを最重要の地上パートナーとした。だがNATO同盟国トルコとの関係を優先し、クルド独立は支持しない。2019年には撤収でSDFを危機にさらした。「利用しては見捨てる」歴史の、最新の当事者でもある。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>敵対</span><span>支持</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="50%"></div></div>
+                    </div>
+                    <div class="interests">最大の関心：対テロの実利と、対トルコ同盟の維持の両立。</div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>クルドへの姿勢</th>
+                        <th>最大の関心事</th>
+                        <th>独立への態度</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>トルコ</td><td>強く敵対</td><td>国内分離主義の封じ込め</td><td>断固反対（自国分裂の恐れ）</td></tr>
+                      <tr><td>イラン</td><td>敵対</td><td>体制の安定・越境影響の遮断</td><td>反対（国内クルドへの波及を警戒）</td></tr>
+                      <tr><td>イラク（連邦政府）</td><td>限定的に容認</td><td>石油収入の掌握と連邦統合</td><td>自治は容認・独立は反対</td></tr>
+                      <tr><td>シリア（暫定政府）</td><td>統合を模索</td><td>国家再統一・トルコとの関係</td><td>中央集権下の分権にとどめたい</td></tr>
+                      <tr><td>クルド勢力</td><td>当事者</td><td>自決・権利・生存</td><td>独立が悲願、現実は自治</td></tr>
+                      <tr><td>アメリカ</td><td>是々非々</td><td>対テロの実利・対トルコ同盟</td><td>独立は支持せず、自治を黙認</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure" style="margin-top:2rem;">
+              <img src="../../../image/articles/kurds-stateless-border-fence.jpg"
+                   alt="山の高原をまっすぐ横切る有刺鉄線の国境フェンスと、遠くの監視塔。両側に同じ地形が続く" loading="lazy">
+              <figcaption>同じ地形、同じ民が暮らす土地を、一本の国境線が断ち切る。クルディスタンは4つの主権国家の「辺境」として分割され、その分断がクルドの独立を阻む最大の壁になっている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 数字で見る「国のない民」</h2>
+            <div class="data-grid">
+
+              <div class="data-card">
+                <h4>4カ国別のクルド人口（推定・百万人）</h4>
+                <div style="position:relative;height:230px;margin-top:1rem;">
+                  <canvas id="popByCountryChart"></canvas>
+                </div>
+                <p style="font-size:0.74rem;color:var(--k-dim);margin-top:0.6rem;line-height:1.6;">
+                  クルド人の約4割がトルコに集中し、イラン・イラク・シリアと続く。総数は約4000万人。推計には幅があり、図は中位の概数。
+                  出典：Britannica / Kurdish population 統計
+                </p>
+              </div>
+
+              <div class="data-card">
+                <h4>各国の総人口に占めるクルド人の割合（%・概算）</h4>
+                <div style="position:relative;height:230px;margin-top:1rem;">
+                  <canvas id="shareInCountryChart"></canvas>
+                </div>
+                <p style="font-size:0.74rem;color:var(--k-dim);margin-top:0.6rem;line-height:1.6;">
+                  どの国でもクルド人は人口の1〜2割を占める無視できない少数派。だからこそ各国は分離主義を強く警戒する。
+                  出典：各種人口統計（推計に幅あり）
+                </p>
+              </div>
+
+            </div>
+
+            <div class="stat-strip">
+              <div class="stat-strip-item">
+                <div class="stat-num">約4,000万</div>
+                <div class="stat-desc">クルド人の総人口。国家を持たない世界最大級の民族</div>
+              </div>
+              <div class="stat-strip-item">
+                <div class="stat-num">約4万</div>
+                <div class="stat-desc">PKKとトルコの40年の紛争による死者数</div>
+              </div>
+              <div class="stat-strip-item">
+                <div class="stat-num">9割超</div>
+                <div class="stat-desc">2017年イラク・クルド独立住民投票の賛成率（だが不承認）</div>
+              </div>
+              <div class="stat-strip-item">
+                <div class="stat-num">1</div>
+                <div class="stat-desc">公式な自治を得ているクルド地域の数（イラクのKRGのみ）</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り — なぜ独立できないのか、そしてこれから</h2>
+
+            <p class="body-p">
+              4000万人という規模も、独自の言語も文化も、独立の十分条件にはならなかった。クルドが国家を持てない理由は、彼らの「力不足」ではなく、彼らを取り巻く<strong>構造</strong>にある。4つの観点から解き明かす。
+            </p>
+
+            <div class="insight-box">
+              <div class="insight-title">① 4カ国の「共通の恐怖」— 敵同士さえ、ここでは一致する</div>
+              <div class="insight-text">
+                トルコ・イラン・イラク・シリアは、互いに対立することも多い。だがクルド独立という一点では、利害が完全に一致する。どの国にとっても、自国内のクルド地域が独立すれば<strong>領土の一部を失い、国家分裂の連鎖が始まる</strong>からだ。敵対しあう国々が「クルド独立の阻止」で足並みをそろえる——この包囲網こそ、独立を阻む最大の壁である。2017年の住民投票が、賛成9割でありながらイラン・トルコ・アメリカにまで一斉に反対されたのは、その象徴だった。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">② 「山しか友がいない」— 利用しては見捨てる大国</div>
+              <div class="insight-text">
+                クルドはたびたび大国の戦略に組み込まれてきた。1946年のマハバード共和国はソ連に、対ISIS戦ではアメリカに——だが目的が達成されると、後ろ盾はしばしば引き上げられた。2019年、アメリカ軍の撤収直後にトルコが北シリアへ侵攻した出来事は、この構図の最新版だ。<strong>クルドは「使える駒」ではあっても、「守るべき同盟国」とは扱われてこなかった</strong>。地政学の道具として消費される限り、独立の後ろ盾は生まれにくい。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">③ 一枚岩でない民 — 内部分裂が交渉力を削ぐ</div>
+              <div class="insight-text">
+                「クルド人」とひとくくりにされがちだが、その内部は決して一体ではない。イラクではバルザニ家のKDPとタラバニ家のPUKが長く主導権を争い、内戦に至ったこともある。トルコ・シリアのPKK系勢力と、イラクのKRGも路線が異なる。<strong>国境で分断されただけでなく、政治的にも分裂している</strong>ことが、対外交渉での一貫した「クルドの声」を生みにくくし、各国につけ込む隙を与えてきた。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">④ 武装闘争の終結に向けた転換点 — 「独立」から「現実的自治」へ</div>
+              <div class="insight-text">
+                2025年のPKK解散決定は、大きな転換点だ。40年に及ぶ武装闘争は終結に向けた過程に入り、闘いの軸は議会・法律・権利といった<strong>政治の領域</strong>へ移れるかが問われている。もっとも、道は平坦ではない。全構成員の武装解除が完了したとは確認されておらず、構成員の法的処遇や社会復帰制度も確定していない。クルド側はオジャランの釈放や憲法改正、恩赦を求めるが、トルコは「完全な武装解除が先」と主張し、和平プロセスは進行中ながら停滞も見られる。シリアでのSDF統合も、分権の程度をめぐって綱引きが続く。夢は「独立国家」から「一つの国の中で、いかに権利と自治を確保するか」へと、静かに現実化しつつある。
+              </div>
+            </div>
+
+            <p class="body-p" style="margin-top:1.8rem;">
+              クルド人が国家を持てないのは、彼らが弱いからではない。彼らを分断する国境が強固で、その国境を維持したい国々の利害が一致し、後ろ盾となるべき大国が信頼に足りず、そして彼ら自身が分かれているからだ。武装闘争が終結へ向かう過程にあるいま問われるのは、独立という遠い夢ではなく、<strong>四つの国の中で、どこまで自分たちの言葉と権利を守れるか</strong>という、より地に足のついた闘いである。「山しか友がいない」民が、政治という土俵によりいっそう軸足を移そうとしている。
+            </p>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/kurds-stateless-valley-future.jpg"
+                   alt="日の出の丘に立ち、クルド旗を掲げて広い谷を見つめる女性たち。眼下に暖かな光を浴びた大地が広がる" loading="lazy">
+              <figcaption>武装闘争の終結に向かう過程にあるクルドが見つめるのは、独立という遠い地平か、それとも「国の中で権利を守る」という現実か。転換点のさなかに、新しい問いが開かれている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <a class="source-item" href="https://www.osw.waw.pl/en/publikacje/analyses/2025-12-18/one-step-forward-one-step-back-a-year-turkish-kurdish-peace-process" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">OSW — トルコ・クルド和平プロセスの1年</div>
+                  <div class="source-desc">2025年のPKK解散・武装解除・イラクへの撤退から、停滞する和平交渉までを追った分析。</div>
+                  <div class="source-country">【欧州の地政学研究機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.pbs.org/newshour/world/kurdish-militant-group-pkk-will-disband-as-part-of-a-peace-deal-with-turkey" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">PBS News — PKKが解散へ</div>
+                  <div class="source-desc">40年の武装闘争を続けたPKKが、トルコとの和平の一環として解散を決めた経緯の報道。</div>
+                  <div class="source-country">【米公共放送】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://studies.aljazeera.net/en/policy-briefs/dissolution-pkk-strengthening-turkey-internally-and-externally" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Al Jazeera Centre for Studies — PKK解散の意味</div>
+                  <div class="source-desc">PKK解散がトルコの内政・対外関係にもたらす影響を論じたポリシーブリーフ。</div>
+                  <div class="source-country">【中東の政策研究】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.chathamhouse.org/2026/04/political-deadlock-has-left-iraqs-kurdistan-region-dangerously-exposed-amid-iran-war" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Chatham House — 岐路のイラク・クルド自治区</div>
+                  <div class="source-desc">内部の政治的対立と連邦政府による財政・石油の締め付けで、KRGの自治が揺らぐ現状分析。</div>
+                  <div class="source-country">【英王立国際問題研究所】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.britannica.com/topic/Kurd" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Britannica — Kurd</div>
+                  <div class="source-desc">クルド人の歴史・言語・人口・4カ国への分布についての百科事典的な基礎解説。</div>
+                  <div class="source-country">【百科事典・基礎資料】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://en.wikipedia.org/wiki/Kurds" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Wikipedia — Kurds / Kurdish population</div>
+                  <div class="source-desc">人口の国別内訳（トルコ・イラン・イラク・シリア）や比率など、統計の出典整理に有用。</div>
+                  <div class="source-country">【統計・出典の整理】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.middleeasteye.net/explainers/war-iran-kurds-krg" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Middle East Eye — Who are the Kurds</div>
+                  <div class="source-desc">クルド勢力の各派（KRG・SDF・PKK等）と、大国・周辺国との関係を整理した解説記事。</div>
+                  <div class="source-country">【中東専門メディア】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.newsweekjapan.jp/headlines/world/2025/03/541326.php" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Newsweek日本版 — クルド系勢力のシリア暫定政権合流</div>
+                  <div class="source-desc">SDFがシリア新政権へ統合されることで合意し、トルコが歓迎したとする2025年の報道（日本語）。</div>
+                  <div class="source-country">【日本語メディア】</div>
+                </div>
+              </a>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--k-border);margin:1.25rem 0;">
+          <div class="toc-meta" style="font-size:0.75rem;color:var(--k-mut);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/middle-east/index.html">中東情勢</a></div>
+            <div>2026年7月14日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/middle-east/index.html">中東情勢一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  /* ===== Signature: 分断された太陽を生成 ===== */
+  (function () {
+    var svg = document.getElementById('dividedSun');
+    if (!svg) return;
+    var NS = 'http://www.w3.org/2000/svg';
+    var cx = 280, cy = 220, R = 130, rayIn = 136, rayOut = 168, nRays = 21;
+
+    // 21条の光（Roj）
+    for (var i = 0; i < nRays; i++) {
+      var a = (i / nRays) * Math.PI * 2 - Math.PI / 2;
+      var aw = (Math.PI * 2 / nRays) * 0.30;
+      var x1 = cx + rayIn * Math.cos(a - aw), y1 = cy + rayIn * Math.sin(a - aw);
+      var x2 = cx + rayOut * Math.cos(a),     y2 = cy + rayOut * Math.sin(a);
+      var x3 = cx + rayIn * Math.cos(a + aw), y3 = cy + rayIn * Math.sin(a + aw);
+      var ray = document.createElementNS(NS, 'path');
+      ray.setAttribute('d', 'M' + x1 + ' ' + y1 + 'L' + x2 + ' ' + y2 + 'L' + x3 + ' ' + y3 + 'Z');
+      ray.setAttribute('class', 'sun-ray');
+      svg.appendChild(ray);
+    }
+
+    // 4カ国の人口比で円盤を分割
+    var data = [
+      { name: 'トルコ', num: '約1,750万', share: 0.44, color: '#c65d3b' },
+      { name: 'イラン', num: '約1,100万', share: 0.28, color: '#a8492f' },
+      { name: 'イラク', num: '約800万',  share: 0.20, color: '#d98a3a' },
+      { name: 'シリア', num: '約330万',  share: 0.08, color: '#7f5230' }
+    ];
+    var start = -Math.PI / 2;
+    data.forEach(function (d) {
+      var ang = d.share * Math.PI * 2;
+      var mid = start + ang / 2;
+      var ex = 7;
+      var ox = ex * Math.cos(mid), oy = ex * Math.sin(mid);
+      var x1 = cx + R * Math.cos(start),       y1 = cy + R * Math.sin(start);
+      var x2 = cx + R * Math.cos(start + ang), y2 = cy + R * Math.sin(start + ang);
+      var large = ang > Math.PI ? 1 : 0;
+      var wedge = document.createElementNS(NS, 'path');
+      wedge.setAttribute('d', 'M' + cx + ' ' + cy + 'L' + x1 + ' ' + y1 +
+        'A' + R + ' ' + R + ' 0 ' + large + ' 1 ' + x2 + ' ' + y2 + 'Z');
+      wedge.setAttribute('fill', d.color);
+      wedge.setAttribute('class', 'sun-wedge');
+      wedge.style.setProperty('--ox', ox.toFixed(2) + 'px');
+      wedge.style.setProperty('--oy', oy.toFixed(2) + 'px');
+      svg.appendChild(wedge);
+
+      // ラベル（国名＝明朝、人数＝Fraunces）
+      var lr = 200;
+      var lx = cx + lr * Math.cos(mid), ly = cy + lr * Math.sin(mid);
+      var anchor = Math.cos(mid) > 0.25 ? 'start' : (Math.cos(mid) < -0.25 ? 'end' : 'middle');
+      var t = document.createElementNS(NS, 'text');
+      t.setAttribute('text-anchor', anchor);
+      var n1 = document.createElementNS(NS, 'tspan');
+      n1.setAttribute('x', lx.toFixed(1)); n1.setAttribute('y', ly.toFixed(1));
+      n1.setAttribute('class', 'sl-name'); n1.textContent = d.name;
+      var n2 = document.createElementNS(NS, 'tspan');
+      n2.setAttribute('x', lx.toFixed(1)); n2.setAttribute('dy', '1.35em');
+      n2.setAttribute('class', 'sl-num'); n2.textContent = d.num;
+      t.appendChild(n1); t.appendChild(n2);
+      svg.appendChild(t);
+
+      start += ang;
+    });
+
+    // スクロールで「分断」を演出（reduced-motion は即・分割状態）
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { svg.classList.add('is-split'); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { svg.classList.add('is-split'); io.unobserve(e.target); } });
+    }, { threshold: 0.4 });
+    io.observe(svg);
+  })();
+
+  /* ===== Chart 1: 4カ国別クルド人口 ===== */
+  (function () {
+    var ctx = document.getElementById('popByCountryChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['トルコ', 'イラン', 'イラク', 'シリア'],
+        datasets: [{
+          data: [17.5, 11, 8, 3.3],
+          backgroundColor: ['rgba(198,93,59,0.9)', 'rgba(168,73,47,0.9)', 'rgba(217,138,58,0.9)', 'rgba(127,82,48,0.9)'],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 4, barPercentage: 0.62
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' 約' + c.parsed.y + '百万人'; } } }
+        },
+        scales: {
+          y: { min: 0, max: 20, grid: { color: 'rgba(236,227,213,0.08)' },
+               ticks: { color: '#9a8d7c', font: { size: 10 }, callback: function (v) { return v + 'M'; } } },
+          x: { grid: { display: false }, ticks: { color: '#bcac97', font: { size: 12 } } }
+        }
+      }
+    });
+  })();
+
+  /* ===== Chart 2: 各国内のクルド人比率 ===== */
+  (function () {
+    var ctx = document.getElementById('shareInCountryChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['トルコ', 'イラク', 'イラン', 'シリア'],
+        datasets: [{
+          data: [19, 18, 10, 9],
+          backgroundColor: 'rgba(232,163,61,0.85)',
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 4, barPercentage: 0.62
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' 人口の約' + c.parsed.x + '%'; } } }
+        },
+        scales: {
+          x: { min: 0, max: 30, grid: { color: 'rgba(236,227,213,0.08)' },
+               ticks: { color: '#9a8d7c', font: { size: 10 }, callback: function (v) { return v + '%'; } } },
+          y: { grid: { display: false }, ticks: { color: '#bcac97', font: { size: 12 } } }
+        }
+      }
+    });
+  })();
+</script>
+</body>
+</html>
