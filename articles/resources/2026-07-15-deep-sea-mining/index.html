@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="太平洋の水深4,000〜6,000メートルの海底に、電池に要るニッケル・コバルトを含む「マンガン団塊」が眠る。公海の海底は「人類の共同遺産」とされながら、その採掘ルールは未完成のまま。アメリカが国内法で先行許可を出し、既成事実化が進む深海採掘を6つの視点で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/resources/2026-07-15-deep-sea-mining/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="海底のゴールドラッシュ — ルールなき深海に、誰が最初に手を伸ばすか — WorldView">
+  <meta property="og:description" content="公海の海底は「人類の共同遺産」とされながら、採掘ルールは未完成のまま。アメリカが国内法で先行許可を出し、既成事実化が進む。ルールが決まる前に始まる深海採掘を、6つの視点とデータで読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/resources/2026-07-15-deep-sea-mining/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/deep-sea-mining-hero-submersible.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="海底のゴールドラッシュ — ルールなき深海に、誰が最初に手を伸ばすか — WorldView">
+  <meta name="twitter:description" content="「人類の共同遺産」とされる公海の海底で、ルールが決まる前に採掘が始まろうとしている。深海のレアメタル争奪を6つの視点で読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/deep-sea-mining-hero-submersible.jpg">
+  <title>海底のゴールドラッシュ — ルールなき深海に、誰が最初に手を伸ばすか — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    /* セクション番号：雑誌風の大きな薄い数字 */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent3);
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* 記事の問い（冒頭フック）— 透明ガラス（ぼかしなし・対角の反射光）。
+       地の色はほぼ透明（5%）でページの暗い背景がそのまま透け、輪郭の光と
+       斜めの反射帯だけでガラスの存在を示す。左帯を持たない唯一のcalloutとして
+       insight-box / pull-quote と構造的に区別する。accentN依存のみの汎用処方。 */
+    .article-question {
+      position: relative;
+      overflow: hidden;
+      background: color-mix(in srgb, var(--accent3) 5%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent3) 50%, transparent);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.9rem 1.85rem;
+      margin: 2.5rem 0 2rem;
+      box-shadow: 0 0 20px -6px color-mix(in srgb, var(--accent3) 35%, transparent);
+      color: var(--text);
+    }
+    .article-question::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(115deg,
+        transparent 28%,
+        color-mix(in srgb, var(--accent3) 11%, transparent) 46%,
+        transparent 64%);
+    }
+    .article-question::before {
+      content: 'この記事の問い';
+      position: relative; display: block; margin-bottom: 0.9rem;
+      font-size: 0.76rem; font-weight: 700; letter-spacing: 0.18em; line-height: 1;
+      color: color-mix(in srgb, var(--accent3) 85%, #fff);
+    }
+    .article-question > p {
+      position: relative; margin: 0;
+      font-size: 1.08rem; font-weight: 600; line-height: 1.95;
+    }
+    .article-question strong { font-weight: 700; }
+    @media (max-width: 700px) {
+      .article-question { padding: 1.5rem 1.4rem 1.6rem; }
+      .article-question > p { font-size: 1rem; }
+    }
+
+    /* 論点カード（3要因） */
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent3);
+    }
+    .factor-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .factor-desc  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* 用語解説グリッド */
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .glossary-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-top: 2px solid var(--accent3);
+    }
+    .glossary-term { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .glossary-def  { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/deep-sea-mining-hero-submersible.jpg');
+      background-size: cover; background-position: center 50%;
+      filter: brightness(1.22) contrast(1.04) saturate(1.05);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.30) 0%, rgba(14,17,23,0.46) 45%, rgba(14,17,23,0.82) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; width: 100%; transform: translateY(-34px); }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* ヒーロー：ビッグ・ステートメント（案X） */
+    .hero-deck {
+      font-size: 1.08rem;
+      font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b9c6c2; margin-top: 1.5rem; max-width: 570px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent3); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent3) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent3) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent3) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* 本文中の図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* 数字ストリップ（全幅） */
+    .stat-strip {
+      display: flex; gap: 0;
+      margin: 2rem 0 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.6rem 0;
+    }
+    .stat-strip-item {
+      flex: 1; text-align: center;
+      padding: 0 1.25rem;
+      border-right: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 1.55rem; font-weight: 800; line-height: 1.1;
+      color: var(--accent3); margin-bottom: 0.45rem;
+      letter-spacing: -0.01em;
+    }
+    .stat-desc {
+      font-size: 0.74rem; color: var(--text-muted); line-height: 1.5;
+    }
+    @media (max-width: 700px) {
+      .stat-strip { flex-wrap: wrap; }
+      .stat-strip-item { flex: 0 0 50%; border-right: none; border-bottom: 1px solid var(--border-subtle); padding: 1rem; }
+      .stat-strip-item:last-child { border-bottom: none; }
+    }
+
+    /* 深掘りセクション */
+    .insight-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.5rem 0;
+      border-left: 3px solid var(--accent3);
+    }
+    .insight-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .insight-text { font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* data-gridを2列に */
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* 役割バッジ */
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+      margin-left: auto;
+    }
+
+    /* プルクォート（核心の一文） */
+    .pull-quote {
+      border-left: 3px solid var(--accent3);
+      background: rgba(122,170,130,0.06);
+      padding: 0.85rem 1.1rem; margin: 0.9rem 0 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text); line-height: 1.65;
+    }
+
+    /* 情報源リンク */
+    a.source-item { color: inherit; text-decoration: none; }
+    a.source-item:hover { border-color: var(--accent3); }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag">資源・環境</span>
+        <span class="date">2026年7月15日</span>
+      </div>
+      <h1 class="article-title">海底のゴールドラッシュ<br>— ルールなき深海に、誰が最初に手を伸ばすか</h1>
+
+      <div class="hero-deck">
+        太平洋の海底に、電池に要る金属を含んだ黒い塊が無数に転がっている。公海の海底は条約で「人類の共同遺産」と定められ、国際機関が管理するはずだった。だが<span class="deck-accent">その採掘ルールは、いまも完成していない。</span>ルールが決まらないうちに、掘り始めようとする国が現れた。
+      </div>
+
+      <div class="hero-pills">
+        <span class="hero-pill">水深 4,000〜6,000m</span>
+        <span class="hero-pill">採掘規章は未完成</span>
+        <span class="hero-pill">40カ国が停止を要求</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 論点 -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>論点 — 誰のものでもない海底を、誰が最初に掘るのか</h2>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              ハワイとメキシコの間、太平洋のまん中に「<strong style="color:var(--text);">クラリオン・クリッパートン海域（CCZ）</strong>」と呼ばれる広大な海底平原がある。水深は4,000〜6,000メートル。太陽の光は届かず、水圧は地上の数百倍。その暗闇の底に、ジャガイモほどの大きさの黒い塊が、まるで畑に撒かれた種のように無数に転がっている。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              <strong style="color:var(--text);">マンガン団塊</strong>と呼ばれるこの塊には、マンガン・ニッケル・コバルト・銅が凝縮している。いずれも電気自動車のバッテリーや送電網に使われる金属だ。CCZに眠る団塊の資源量は推定<strong style="color:var(--text);">211億乾トン</strong>（水分を除いた乾燥重量での換算値。資源量を示す際の標準的な単位）。含まれるニッケルやコバルトの量は、陸上の全埋蔵量を上回るという推計もある。海底は、手つかずの巨大な鉱山なのだ。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              問題は、そこが<strong style="color:var(--text);">誰の国の領土でもない</strong>ことにある。国連海洋法条約は、どの国の管轄にも属さない公海の海底を「<strong style="color:var(--text);">人類の共同遺産</strong>」と定めた。人類全体のものだから、一国や一企業が勝手に取ってはならない——そのために設けられたのが、国際海底機構（ISA）という国際機関である。
+            </p>
+
+            <div class="article-question">
+              <p>では、なぜいま掘られようとしているのか。ISAは1994年の設立以来、30年余かけても<strong>採掘のルール（採掘規章）を完成させられずにいる</strong>。そしてルールの空白が続くなか、条約そのものに加わっていない国が、自国の法律で許可を出し始めた。ルールが決まる前に既成事実が積み上がるとき、「人類の共同遺産」は何を意味するのか。</p>
+            </div>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2.2rem 0 0.75rem;font-weight:700;">3つの論点</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">何が眠っているのか</div>
+                <div class="factor-desc">
+                  深海底のマンガン団塊に、電池に要るニッケル・コバルト・銅・マンガンが凝縮している。陸上の埋蔵量を上回るとの推計もあり、脱炭素の資源需要を背景に「最後のフロンティア」と見なされている。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">なぜルールがないのか</div>
+                <div class="factor-desc">
+                  公海の海底を管理する国際海底機構は、採掘規章の交渉を続けながら30年以上まとめきれていない。環境基準・利益配分・責任の所在という難題が、加盟国の利害対立で決着しないままだ。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">何が起きているのか</div>
+                <div class="factor-desc">
+                  国連海洋法条約を批准していないアメリカが、国内法にもとづく独自の許可手続きで先行しようとしている。国際的な枠組みの外側で採掘が始まれば、「人類の共同遺産」という原則は空文化しかねない。
+                </div>
+              </div>
+            </div>
+
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin:2.2rem 0 0.75rem;font-weight:700;">用語解説</div>
+            <div class="glossary-grid">
+              <div class="glossary-card">
+                <div class="glossary-term">マンガン団塊</div>
+                <div class="glossary-def">深海底に転がるジャガイモ大の黒い塊。数百万年かけて金属が沈殿してできる。マンガン・ニッケル・コバルト・銅を含む。多金属団塊とも呼ぶ。</div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">クラリオン・クリッパートン海域（CCZ）</div>
+                <div class="glossary-def">ハワイとメキシコの間に広がる太平洋の海底平原。日本の国土の十数倍にあたる広さで、団塊が最も豊富に分布する。探査契約が集中する主戦場。</div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">国際海底機構（ISA）</div>
+                <div class="glossary-def">国連海洋法条約にもとづき1994年に設立された国際機関。本部はジャマイカ。公海の海底鉱物資源を人類全体のために管理し、探査・採掘の許可とルール策定を担う。</div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">国連海洋法条約（UNCLOS）</div>
+                <div class="glossary-def">1982年採択の「海の憲法」。公海の海底を「人類の共同遺産」と規定した。170を超える国・地域が加わるが、アメリカは批准していない。</div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">人類の共同遺産</div>
+                <div class="glossary-def">公海の海底資源は特定の国のものではなく人類全体のものであり、その利益は開発途上国を含めて公平に配分されるべきだという原則。深海採掘を巡る対立の根幹にある考え方。</div>
+              </div>
+              <div class="glossary-card">
+                <div class="glossary-term">採掘規章（マイニング・コード）</div>
+                <div class="glossary-def">ISAが定める、深海底の探査・採掘の規則群。環境保護基準や利益配分、事故時の責任などを定めるもので、商業採掘の前提となる。交渉が続き未完成。</div>
+              </div>
+            </div>
+
+            <figure class="article-figure" style="margin:2.5rem 0 0;">
+              <img src="../../../image/articles/deep-sea-mining-nodule-closeup.jpg"
+                   alt="深海の堆積物の上に置かれたマンガン団塊の接写。カリフラワー状のざらついた表面と、周囲に散らばる小さな破片" loading="lazy">
+              <figcaption>争奪の対象は、この黒い塊だ。数百万年かけて海水中の金属が沈殿してできたマンガン団塊に、電池に要るニッケル・コバルト・銅が凝縮している。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 60年越しの「深海の夢」と、ルールの空白</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">1960〜70年代</div>
+                <div class="timeline-content">
+                  <h4>深海の富への熱狂と、最初の挫折</h4>
+                  <p>海底の団塊が莫大な富をもたらすという期待が広がり、欧米や日本の企業連合が試験採鉱に乗り出した。だが技術的な困難と、陸上鉱山に対するコスト競争力の低さから、熱狂はやがて冷めていった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">試験採鉱が行われる</span>
+                    <span class="reaction-chip">採算が合わず停滞</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">1982年</div>
+                <div class="timeline-content">
+                  <h4>国連海洋法条約の採択 — 海底は「人類の共同遺産」へ</h4>
+                  <p>公海の海底とその資源を、特定の国のものではなく人類全体のものと定めた。開発の利益は途上国を含めて公平に配分されるべきだという原則が国際法に書き込まれた。ただしアメリカは、深海底制度が自国企業に不利だとして批准を見送った。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">共同遺産の原則を明文化</span>
+                    <span class="reaction-chip">アメリカは未批准のまま</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-neutral"></div>
+                <div class="timeline-date">1994年</div>
+                <div class="timeline-content">
+                  <h4>国際海底機構（ISA）が発足</h4>
+                  <p>条約の発効にともない、公海の海底資源を管理する国際機関がジャマイカに設立された。各国や企業に探査契約を発給する一方、商業採掘のルールづくりという宿題を背負うことになった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">探査契約の発給が始まる</span>
+                    <span class="reaction-chip">採掘ルールは先送り</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2021年</div>
+                <div class="timeline-content">
+                  <h4>ナウルが「2年ルール」を発動 — 時限爆弾を仕掛ける</h4>
+                  <p>太平洋の島国ナウルが、企業をスポンサーする立場から条約の規定を発動した。「2年以内に規章を完成させよ。できなければ、暫定的な条件で採掘申請を審査せよ」——ルールづくりを加速させる狙いだったが、結果的に制度の空白を露呈させる引き金となった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">2年の期限を突きつける</span>
+                    <span class="reaction-chip">交渉が一気に緊迫化</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2023年</div>
+                <div class="timeline-content">
+                  <h4>期限切れ — それでも規章は完成せず</h4>
+                  <p>2年の期限が到来したが、環境基準や利益配分をめぐる対立は解けず、規章は未完成のまま残った。同時に、モラトリアム（一時停止）を求める国が増えはじめ、ISAの内部で推進派と慎重派の分裂が鮮明になった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">規章は未完成のまま</span>
+                    <span class="reaction-chip">モラトリアム要求が拡大</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2025年4月</div>
+                <div class="timeline-content">
+                  <h4>アメリカが独自路線へ — 大統領令14285</h4>
+                  <p>トランプ大統領が大統領令14285に署名し、海底鉱物の探査と商業回収でアメリカが主導する方針を打ち出した。根拠となるのは条約ではなく、1980年制定の国内法（深海底硬質鉱物資源法）である。国際的な枠組みの外側で許可を出す道が開かれた。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">国内法で許可を出す方針</span>
+                    <span class="reaction-chip">中国が国際法違反と反発</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年1月</div>
+                <div class="timeline-content">
+                  <h4>手続きの簡素化 — 申請から許可までを一本化</h4>
+                  <p>アメリカ海洋大気庁（NOAA）が最終規則を公布し、探査ライセンスと商業回収許可を一つの申請で処理できる手続きを新設した。審査の迅速化を掲げるこの改定は、企業にとって参入のハードルを大きく下げるものだった。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">探査と採掘の申請を統合</span>
+                    <span class="reaction-chip">審査の迅速化を明言</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年3月</div>
+                <div class="timeline-content">
+                  <h4>二つの出来事が同じ月に — 申請受理と、交渉決裂</h4>
+                  <p>3月9日、NOAAはザ・メタルズ・カンパニー（TMC）の子会社による統合申請を「実質的に法定要件を満たす」と判定した。新手続きの第1号である。ところが同じ3月、ジャマイカで開かれたISA理事会は<strong>採掘規章の合意に至らないまま閉幕した</strong>。国際ルールが決まらないうちに、一国の国内手続きだけが前に進んだ。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">アメリカで申請第1号が前進</span>
+                    <span class="reaction-chip">ISA理事会は合意できず</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot dot-event"></div>
+                <div class="timeline-date">2026年7月（進行中）</div>
+                <div class="timeline-content">
+                  <h4>正念場を迎えるISA第31会期 — 「不遵守」契約者の去就</h4>
+                  <p>ISA第31会期の後半（7月13〜31日、ジャマイカ）が開かれている。焦点の一つが、無許可の単独採掘を試みたとされるナウル・オーシャン・リソーシズ（NORI）とトンガ・オフショア・マイニング（TOML）の探査契約を更新するかどうかだ。法律技術委員会（LTC）による不遵守調査の報告もこの会期に予定されており、規章の行方だけでなく、既存契約者への対応そのものが問われている。</p>
+                  <div class="timeline-reactions">
+                    <span class="reaction-chip">NORI・TOMLの契約更新が争点</span>
+                    <span class="reaction-chip">LTCの不遵守調査報告も焦点</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/deep-sea-mining-vessel-dusk.jpg"
+                   alt="夕暮れの洋上に立つ大型の海洋採掘プラットフォーム。クレーンと太いライザー管が海中へ伸び、甲板に作業員のシルエット" loading="lazy">
+              <figcaption>これは構想でも研究段階の話でもない。船と重機はすでに海の上にあり、あとは許可が下りるのを待っている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 3: 6つの視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>6つの視点 — 掘りたい者、止めたい者、決められない者</h2>
+
+            <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.9;margin-bottom:1.4rem;">
+              深海採掘をめぐる対立は、単純な「開発 対 環境」ではない。制度の外から動く国、制度の中で優位を固める国、決められない国際機関、生き残りを賭ける企業、割れる島国、そして警告する科学者——立場はいくつもの層に分かれている。下のバーは<strong style="color:var(--text);">採掘への姿勢</strong>を、停止要求（左）⇔ 推進（右）で示す。
+            </p>
+
+            <div class="tabs-wrap">
+              <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-cards">カード表示</button>
+                <button class="tab-btn" data-tab="tab-table">比較表</button>
+              </div>
+
+              <div class="tab-pane active" id="tab-cards">
+                <div class="perspectives-grid">
+
+                  <!-- アメリカ -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">アメリカ</span>
+                      <span class="role-badge">制度の外から動く</span>
+                    </div>
+                    <div class="pull-quote">「加わっていない条約に、縛られる理由はない」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      国連海洋法条約を批准していないため、ISAの管轄下にないという立場をとる。1980年制定の国内法にもとづき独自に許可を出す道を選び、2026年1月には申請手続きを簡素化した。背景にあるのは、重要鉱物の供給を中国に依存する現状からの脱却という戦略的な動機だ。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>停止要求</span><span>推進</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="92%"></div></div>
+                    </div>
+                    <div class="interests">最大の関心：重要鉱物の自前確保と、対中依存の解消。</div>
+                  </div>
+
+                  <!-- 中国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">中国</span>
+                      <span class="role-badge">制度の中で優位を固める</span>
+                    </div>
+                    <div class="pull-quote">「一国の判断で海底を切り取ることは、国際法への挑戦だ」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      アメリカの大統領令を「ISAの権限を損ない、国際法に違反する」と厳しく批判した。もっとも中国自身は、ISA体制の内側で最多級の探査契約を確保しており、ルールに従う姿勢を示しながら着実に権益を積み上げている。制度を守ることが、そのまま自国の優位につながる立場だ。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>停止要求</span><span>推進</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="70%"></div></div>
+                    </div>
+                    <div class="interests">最大の関心：制度内での権益確保と、アメリカの単独行動の封じ込め。</div>
+                  </div>
+
+                  <!-- 国際海底機構 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">国際海底機構（ISA）</span>
+                      <span class="role-badge">決められない管理者</span>
+                    </div>
+                    <div class="pull-quote">「人類の共同遺産を預かる機関が、その使い方を決められずにいる」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      公海の海底を人類全体のために管理する立場にある。だが30年以上かけても採掘規章を完成させられず、2026年3月の理事会も合意なく閉幕した。加盟国が推進派と慎重派に割れるなか、決定を先送りするほど「制度の外」で既成事実が進むという板挟みに陥っている。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>停止要求</span><span>推進</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="48%"></div></div>
+                    </div>
+                    <div class="interests">最大の関心：制度の実効性と、自らの権威の維持。</div>
+                  </div>
+
+                  <!-- 採掘企業 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">採掘企業</span>
+                      <span class="role-badge">時間との闘い</span>
+                    </div>
+                    <div class="pull-quote">「熱帯雨林を切り拓くより、人の住まない海底の方が傷は浅い」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      陸上鉱山は森林破壊や住民の強制移転、児童労働といった問題を抱えており、深海採掘の方が社会的・環境的な負荷は小さいと主張する。ザ・メタルズ・カンパニーなどは長年の探査投資を抱え、収益化の遅れが資金繰りに直結するため、許認可のスピードが死活問題となっている。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>停止要求</span><span>推進</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="98%"></div></div>
+                    </div>
+                    <div class="interests">最大の関心：早期の商業化と、投資回収の実現。</div>
+                  </div>
+
+                  <!-- 小島嶼国 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">太平洋の島嶼国</span>
+                      <span class="role-badge">割れる当事者</span>
+                    </div>
+                    <div class="pull-quote">「海は我々の暮らしそのもの。だからこそ、判断が割れる」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      立場は一枚岩ではない。ナウルのように企業をスポンサーし、乏しい財源を補う収入源として期待する国がある一方、パラオやフィジーなどは漁業資源と海洋環境への打撃を恐れてモラトリアムを求めてきた。同じ海に生きながら、採掘は希望にも脅威にもなりうる——その分裂こそが島嶼国の実像だ。
+                    </div>
+                    <div class="tone-meter">
+                      <div class="tone-meter-label"><span>停止要求</span><span>推進</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="45%"></div></div>
+                    </div>
+                    <div class="interests">最大の関心：財源の確保と、海洋環境・漁業の保全の両立。</div>
+                  </div>
+
+                  <!-- 科学者・環境団体 -->
+                  <div class="perspective-card">
+                    <div class="country-header">
+                      <span class="country-name">科学者・環境団体</span>
+                      <span class="role-badge">知らないまま壊すな</span>
+                    </div>
+                    <div class="pull-quote">「失われるものを数えられないうちは、失う判断もできない」</div>
+                    <div class="key-claim">
+                      <strong>核心的主張</strong>
+                      CCZだけで5,578種の生物が記録され、その約9割が学名すら付いていない未記載種だという研究がある。深海生態系の全体像はまだ分かっていない。採掘で舞い上がる堆積物の濁りは広範囲に拡散し、海底の回復には数十年から千年単位を要するとされる。70カ国以上の科学者ら約1,000人がモラトリアムを求める声明に署名した。
+                    </div>
+                    <div class="tone-meter tone-hostile">
+                      <div class="tone-meter-label"><span>停止要求</span><span>推進</span></div>
+                      <div class="tone-track"><div class="tone-fill" data-width="8%"></div></div>
+                    </div>
+                    <div class="interests">最大の関心：深海生態系の保全と、科学的知見の蓄積。</div>
+                  </div>
+
+                </div>
+              </div><!-- /tab-cards -->
+
+              <div class="tab-pane" id="tab-table">
+                <div style="overflow-x:auto;">
+                  <table class="compare-table">
+                    <thead>
+                      <tr>
+                        <th>立場</th>
+                        <th>基本スタンス</th>
+                        <th>最大の主張</th>
+                        <th>最大の関心事</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>アメリカ</td><td>制度の外から推進</td><td>批准していない条約には縛られない</td><td>重要鉱物の自前確保・対中依存の解消</td></tr>
+                      <tr><td>中国</td><td>制度内で推進</td><td>一国の単独行動は国際法違反</td><td>制度内での権益確保</td></tr>
+                      <tr><td>国際海底機構</td><td>決められない</td><td>海底は人類の共同遺産である</td><td>制度の実効性と権威の維持</td></tr>
+                      <tr><td>採掘企業</td><td>強く推進</td><td>陸上採掘より負荷は小さい</td><td>早期商業化と投資回収</td></tr>
+                      <tr><td>太平洋の島嶼国</td><td>賛否が割れる</td><td>収入源にも脅威にもなりうる</td><td>財源確保と海洋環境の保全</td></tr>
+                      <tr><td>科学者・環境団体</td><td>停止を要求</td><td>分からないまま壊してはならない</td><td>深海生態系の保全</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure" style="margin-top:2rem;">
+              <img src="../../../image/articles/deep-sea-mining-abyssal-life.jpg"
+                   alt="深海底の岩に付着した白いイソギンチャクが触手を広げ、周囲にクモヒトデが這う。暗闇のなかで淡く照らされている" loading="lazy">
+              <figcaption>採掘の反対側にあるのは、こうした生き物たちだ。CCZで記録された5,578種のうち約9割は、いまも学名すら付いていない。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <div class="data-card">
+                <h4>ポリメタリック団塊の探査契約22件 — CCZへの集中</h4>
+                <div style="position:relative;height:230px;margin-top:1rem;">
+                  <canvas id="isaContractsChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.6rem;line-height:1.6;">
+                  ISAがこれまでに発行した団塊の探査契約22件のうち、18件がクラリオン・クリッパートン海域（CCZ）に集中する。中国・ロシア・韓国・日本・フランス・ドイツ・イギリスなどが契約者を後援している。
+                  出典：国際海底機構（ISA）
+                </p>
+              </div>
+
+              <div class="data-card">
+                <h4>TMC USAの申請規模は、CCZ全体のごく一部</h4>
+                <div style="position:relative;height:230px;margin-top:1rem;">
+                  <canvas id="tmcShareChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.6rem;line-height:1.6;">
+                  NOAAが審査中のTMC USAの申請区域（約65,000平方キロメートル）に含まれる団塊は推定6.19億トン。CCZ全体の推定資源量211億トンの3%に満たない。
+                  出典：A&amp;O Shearman／USGS
+                </p>
+              </div>
+
+            </div>
+
+            <div class="stat-strip">
+              <div class="stat-strip-item">
+                <div class="stat-num">211億トン</div>
+                <div class="stat-desc">クラリオン・クリッパートン海域に眠る団塊の推定資源量（乾トン）</div>
+              </div>
+              <div class="stat-strip-item">
+                <div class="stat-num">5,578種</div>
+                <div class="stat-desc">同海域で記録された生物種。うち約9割が学名のない未記載種</div>
+              </div>
+              <div class="stat-strip-item">
+                <div class="stat-num">40カ国</div>
+                <div class="stat-desc">採掘の一時停止・禁止を求めている国の数</div>
+              </div>
+              <div class="stat-strip-item">
+                <div class="stat-num">30年以上</div>
+                <div class="stat-desc">国際海底機構の設立から、いまだ採掘規章が完成しない年月</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り — ルールの空白が生むもの</h2>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              この問題の本質は、資源の奪い合いそのものよりも、<strong style="color:var(--text);">ルールが決まらないうちに現実が先へ進んでしまう</strong>という構造にある。4つの観点から掘り下げる。
+            </p>
+
+            <div class="insight-box">
+              <div class="insight-title">① 「2年ルール」の逆効果 — 急かしたことで、空白が露呈した</div>
+              <div class="insight-text">
+                ナウルが2021年に発動した「2年ルール」は、停滞する規章づくりを加速させるための一手だった。だが結果は逆に働いた。期限が来ても合意はできず、<strong>「ルールがないまま申請を審査しなければならない」という制度の穴</strong>が誰の目にも明らかになったのである。締め切りは、準備が整っていない組織にとっては前進の力にならない。むしろ、間に合わなかったという事実だけが残った。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">② 批准していない国は縛れない — 「共同遺産」の弱点</div>
+              <div class="insight-text">
+                国連海洋法条約は170を超える国・地域が参加する「海の憲法」だが、アメリカは批准していない。したがって、アメリカから見ればISAの管轄は自国に及ばず、国内法で許可を出すことに法的な矛盾はない——これが同国の立場だ。一方、条約を支える側から見れば、これは<strong>参加しないことで義務だけを免れ、資源の利益は受け取るという「ただ乗り」</strong>に映る。人類の共同遺産という原則は、全員が参加してはじめて機能する。一国でも外にいれば、その国が抜け道になる。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">③ 何が失われるか分からない — 比較のしようがない環境影響</div>
+              <div class="insight-text">
+                深海は地球最大の生息域でありながら、最も知られていない場所でもある。CCZで記録された5,578種のうち約9割は学名すら付いていない未記載種で、生態系の全体像は把握されていない。採掘機が巻き上げる堆積物の濁り（プルーム）は広範囲に広がり、銅などの金属濃度を上げて中深層の生物に影響する恐れが指摘される。しかも海底の回復には数十年から千年単位かかるとされる。<strong>元の状態が分かっていないのだから、どれだけ失われたかを測ることもできない</strong>——この「基準線の不在」が、環境影響評価そのものを難しくしている。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">④ 掘る理由が揺らいでいる — 電池が変われば、前提が変わる</div>
+              <div class="insight-text">
+                深海採掘を正当化してきた最大の論拠は「脱炭素にはニッケルとコバルトが要る」だった。ところがその前提は急速に揺らいでいる。コバルトもニッケルも使わない<strong>リン酸鉄リチウム（LFP）電池</strong>が、価格の安さと安定性から世界的に普及し、電気自動車の主流の一角を占めるようになったからだ。BMW・Volvo・Samsung・Googleといった企業がモラトリアムを支持しているのも、供給網としてこの資源に依存しないという判断がある。技術が需要の形を変えれば、<strong>「掘らねばならない」という前提そのものが崩れうる</strong>。急いで深海を開くことが、本当に必要なのかが改めて問われている。
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-top:1.8rem;">
+              深海採掘が始まるかどうかは、まだ決着していない。だが確かなのは、<strong style="color:var(--text);">「人類の共同遺産」を決める場が機能しないまま、個別の国と企業の判断で現実が動きはじめている</strong>ということだ。ルールが後から追いつくころには、海底にはすでに機械の跡が刻まれているかもしれない。誰のものでもない場所を守る仕組みが試されているのは、深海だけの話ではない——公海も、宇宙も、極地も、同じ問いの前に立っている。
+            </p>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/deep-sea-mining-sediment-plume.jpg"
+                   alt="深海底から巻き上げられた堆積物の雲が水中に広く立ちのぼり、海底を覆い隠している" loading="lazy">
+              <figcaption>採掘機が海底をかき分けると、堆積物の濁りが巻き上がり、広範囲に漂う。海底が元に戻るには数十年から千年単位かかるとされる。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <a class="source-item" href="https://isa.org.jm/the-mining-code/draft-exploitation-regulations-2/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">国際海底機構 — 採掘規章の草案</div>
+                  <div class="source-desc">深海底の採掘規則（マイニング・コード）の交渉状況と草案テキストを公開する一次資料。</div>
+                  <div class="source-country">【海底資源を管理する国際機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://oceanservice.noaa.gov/deep-seabed-mineral-resources/deep-seabed-mining/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">アメリカ海洋大気庁 — 深海底採掘</div>
+                  <div class="source-desc">国内法にもとづく探査ライセンス・商業回収許可の制度と、審査中の申請一覧を掲載する公式ページ。</div>
+                  <div class="source-country">【アメリカ政府機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://enb.iisd.org/international-seabed-authority-isa-council-31-1-summary" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">IISD — 国際海底機構 理事会の総括（2026年3月）</div>
+                  <div class="source-desc">ジャマイカで開かれた理事会が採掘規章の合意に至らなかった経緯を詳細に記録した交渉報告。</div>
+                  <div class="source-country">【国際交渉の記録】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.aoshearman.com/en/insights/deep-sea-mining-in-2026-regulation-geopolitics-and-the-race-for-critical-minerals" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">A&amp;O Shearman — 2026年の深海採掘</div>
+                  <div class="source-desc">規制の現状、地政学的な対立、重要鉱物をめぐる競争を法務の視点から整理した分析。</div>
+                  <div class="source-country">【法務・規制分析】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://feeds.bbci.co.uk/news/articles/cx2v37z333lo" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">BBC — 中国「大統領令は国際法違反」</div>
+                  <div class="source-desc">アメリカの深海採掘に関する大統領令に対し、中国が国際法違反と批判した報道。</div>
+                  <div class="source-country">【イギリス公共放送】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.weforum.org/stories/2025/09/deep-sea-mining-critical-minerals/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">世界経済フォーラム — 深海採掘の賛否</div>
+                  <div class="source-desc">資源需要と環境リスクの両論を整理し、推進派・慎重派それぞれの根拠を並べた解説。</div>
+                  <div class="source-country">【国際経済フォーラム】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.usgs.gov/centers/pcmsc/news/deep-sea-mining-and-potential-impacts-marine-ecosystems-new-study-highlights" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">アメリカ地質調査所 — 海洋生態系への影響研究</div>
+                  <div class="source-desc">採掘が深海の生態系に与える潜在的な影響についての科学的知見をまとめた研究紹介。</div>
+                  <div class="source-country">【政府系の地質・海洋研究機関】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.lowyinstitute.org/the-interpreter/critical-minerals-us-bid-bypass-international-rules-deep-sea-mining" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">ローウィー研究所 — 国際ルールの迂回</div>
+                  <div class="source-desc">アメリカが国際的な枠組みを回避して深海採掘を進める動きの地政学的な意味を論じた分析。</div>
+                  <div class="source-country">【オーストラリアのシンクタンク】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://oceanographicmagazine.com/news/no-code-no-permits-isa-deep-sea-mining-talks-end-in-stalemate/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Oceanographic — ISA交渉、行き詰まりのまま閉幕</div>
+                  <div class="source-desc">2026年3月理事会の決裂と、モラトリアム支持40カ国、7月に予定される契約者調査の報告を報じる。</div>
+                  <div class="source-country">【海洋専門メディア】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.cell.com/current-biology/fulltext/S0960-9822(23)00534-1" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Current Biology — CCZの生物多様性目録</div>
+                  <div class="source-desc">Rabone et al. によるCCZの生物5,578種の記録と、その約9割が未記載種であることを示した学術論文。</div>
+                  <div class="source-country">【査読済み学術誌】</div>
+                </div>
+              </a>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/resources/index.html">資源・環境</a></div>
+            <div>2026年7月15日</div>
+            <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/resources/index.html">資源・環境一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // ISA団塊探査契約22件の内訳（CCZ集中）
+  (function() {
+    var ctx = document.getElementById('isaContractsChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'doughnut',
+      data: {
+        labels: ['クラリオン・クリッパートン海域（CCZ）', 'その他の海域'],
+        datasets: [{
+          // 出典：ISA公式「Polymetallic Nodules」exploration contracts 一覧
+          // https://isa.org.jm/exploration-contracts/polymetallic-nodules/
+          // 原記述：団塊の探査契約は計22件。うちCCZが18件、その他海域（インド洋・西太平洋）が4件。
+          data: [18, 4],
+          backgroundColor: ['rgba(122,170,130,0.85)', 'rgba(136,144,160,0.45)'],
+          borderColor: '#1a1e26', borderWidth: 2
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '62%',
+        plugins: {
+          legend: {
+            display: true, position: 'bottom',
+            labels: { color: '#c8d0da', font: { size: 10 }, boxWidth: 12, padding: 10 }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' ' + c.label + '：' + c.parsed + '件'; }
+            }
+          }
+        }
+      }
+    });
+  })();
+
+  // TMC USA申請区域の団塊量 対 CCZ全体（棒グラフ）
+  (function() {
+    var ctx = document.getElementById('tmcShareChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['CCZ全体の推定資源量', 'TMC USA申請区域分'],
+        datasets: [{
+          // 出典1（CCZ全体）：USGSレビュー。原記述「a conservative 21.1 billion dry tonnes」＝211億乾トン＝21,100百万トン
+          // 出典2（申請区域）：A&O Shearman「Deep sea mining in 2026」
+          //   原記述「approximately 65,000 km² ... estimated 619 million tonnes of polymetallic nodules」＝619百万トン
+          // 単位を百万トンに統一して比較。
+          data: [21100, 619],
+          backgroundColor: ['rgba(136,144,160,0.55)', 'rgba(122,170,130,0.85)'],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 4, barPercentage: 0.55
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(c) { return ' 約' + c.parsed.x.toLocaleString() + '百万トン'; }
+            }
+          }
+        },
+        scales: {
+          x: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return (v/1000) + '十億t'; } }
+          },
+          y: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          }
+        }
+      }
+    });
+  })();
+</script>
+</body>
+</html>

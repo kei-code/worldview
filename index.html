@@ -179,7 +179,6 @@
       background: #0e1117;
       transition: transform 0.35s cubic-bezier(.2,.7,.2,1), box-shadow 0.35s, border-color 0.35s;
     }
-    .cat-tile.feature { grid-column: span 2; }
 
     /* 写真＋グラデの背景レイヤー（hoverで拡大） */
     .cat-tile::before {
@@ -216,12 +215,6 @@
       font-size: 1.05rem; font-weight: 800; margin-bottom: 0.4rem;
       letter-spacing: 0.01em;
     }
-    .cat-tile.feature .tile-name { font-size: 1.6rem; }
-    .tile-desc {
-      font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;
-      margin-bottom: 0.85rem; display: none;
-    }
-    .cat-tile.feature .tile-desc { display: block; max-width: 90%; }
     .tile-count {
       display: inline-flex; align-items: center; gap: 0.45rem;
       font-size: 0.72rem; font-weight: 600; color: var(--text);
@@ -288,6 +281,32 @@
       border: 1px solid var(--border-subtle);
     }
 
+    /* ===== さらに読む（10件ずつ展開） ===== */
+    /* JSで付与。JS無効時は全記事が表示される（プログレッシブエンハンスメント） */
+    .article-row.is-hidden { display: none; }
+
+    .load-more-btn {
+      display: block;
+      margin: 1.75rem auto 0;
+      padding: 0.85rem 2.3rem;
+      font-family: var(--font);
+      font-size: 0.9rem; font-weight: 600; letter-spacing: 0.04em;
+      color: var(--text);
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 100px; cursor: pointer;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      transition: transform 0.25s cubic-bezier(.2,.7,.2,1), border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    }
+    .load-more-btn:hover {
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--main) 55%, transparent);
+      box-shadow: 0 14px 34px -16px color-mix(in srgb, var(--main) 45%, transparent);
+      background: rgba(255,255,255,0.04);
+    }
+    .load-more-btn:active { transform: translateY(0); }
+    .load-more-btn:focus-visible { outline: 2px solid var(--main); outline-offset: 3px; }
+
     @media (max-width: 560px) {
       .article-row { flex-direction: column; position: relative; }
       .ar-thumb {
@@ -350,8 +369,6 @@
     /* ===================== Responsive ===================== */
     @media (max-width: 1000px) {
       .bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 168px; }
-      .cat-tile.feature { grid-column: span 2; grid-row: span 1; }
-      .cat-tile.feature .tile-name { font-size: 1.3rem; }
     }
     @media (max-width: 640px) {
       .hero { min-height: 500px; }
@@ -359,8 +376,6 @@
       .hero-bg { background-position: 64% center; }
       .hero-title { white-space: normal; }
       .bento { grid-template-columns: 1fr; grid-auto-rows: 156px; }
-      .cat-tile.feature { grid-row: span 1; }
-      .tile-desc { display: none !important; }
       .hero-stats { gap: 1.75rem; }
     }
   </style>
@@ -396,7 +411,7 @@
           <span class="hero-stat-label">カテゴリ</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-num" data-count="33">0</span>
+          <span class="hero-stat-num" data-count="34">0</span>
           <span class="hero-stat-label">記事</span>
         </div>
       </div>
@@ -423,7 +438,6 @@
           <div class="tile-body">
             <span class="tile-kicker">Middle East</span>
             <div class="tile-name">中東情勢</div>
-            <div class="tile-desc">イラン核問題、イスラエル・パレスチナ紛争、湾岸諸国の動向を多角的に追う。</div>
             <span class="tile-count"><i class="dot"></i> 記事 5件</span>
           </div>
         </a>
@@ -512,7 +526,7 @@
           <div class="tile-body">
             <span class="tile-kicker">Resources</span>
             <div class="tile-name">資源・環境</div>
-            <span class="tile-count"><i class="dot"></i> 記事 3件</span>
+            <span class="tile-count"><i class="dot"></i> 記事 4件</span>
           </div>
         </a>
 
@@ -550,6 +564,17 @@
         </div>
       </div>
       <div class="articles-list">
+
+        <!-- Deep Sea Mining -->
+        <a class="article-row" href="articles/resources/2026-07-15-deep-sea-mining/index.html" style="--c:#7aaa82; --thumb:url('image/articles/deep-sea-mining-hero-submersible.jpg');">
+          <div class="ar-thumb"></div>
+          <div class="ar-left">
+            <div class="ar-meta"><span class="tag">資源・環境</span><span class="ar-date">2026.07.15</span></div>
+            <h3 class="ar-title">海底のゴールドラッシュ — ルールなき深海に、誰が最初に手を伸ばすか</h3>
+            <div class="ar-sum">太平洋の水深4,000〜6,000メートルの海底に、電池に要るニッケル・コバルトを含む「マンガン団塊」が無数に眠る。公海の海底は条約で「人類の共同遺産」と定められながら、その採掘ルールは30年経っても未完成のまま。国連海洋法条約を批准していないアメリカが国内法で先行許可を出し、既成事実が積み上がる構造を6つの視点で読み解く。</div>
+          </div>
+          <div class="ar-right"><div class="ar-angle-num">6</div><div class="ar-angle-label">視点</div></div>
+        </a>
 
         <!-- Kurds Stateless -->
         <a class="article-row" href="articles/middle-east/2026-07-14-kurds-stateless/index.html" style="--c:#c65d3b; --thumb:url('image/articles/kurds-stateless-hero-mountains.jpg');">
@@ -1002,9 +1027,53 @@
   nums.forEach(n => io.observe(n));
 })();
 
+/* ===== Home: 最新記事「さらに読む」（10件ずつ展開） =====
+   全記事は既にHTMLにあるため、11件目以降をJSで隠し、ボタンで10件ずつ表示する。
+   ・JS無効時は全件表示（is-hiddenを付けないため）
+   ・後段のスクロール出現処理は is-hidden の行を対象から外す
+   ・reveal時のフェードインは本処理側で担当（reduced-motion尊重） */
+(function () {
+  const STEP = 10;
+  const list = document.querySelector('.articles-list');
+  if (!list) return;
+  const rows = Array.from(list.querySelectorAll('.article-row'));
+  if (rows.length <= STEP) return;
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let shown = STEP;
+  rows.slice(STEP).forEach(r => r.classList.add('is-hidden'));
+
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'load-more-btn';
+  function update() { btn.textContent = 'さらに読む（残り' + (rows.length - shown) + '件）'; }
+  update();
+
+  btn.addEventListener('click', function () {
+    const next = rows.slice(shown, shown + STEP);
+    next.forEach(function (r) {
+      r.classList.remove('is-hidden');
+      if (!reduce) {
+        r.style.opacity = '0';
+        r.style.transform = 'translateY(22px)';
+        void r.offsetWidth; // レイアウトを確定させてからトランジション開始
+        r.style.transition = 'opacity 0.5s ease, transform 0.5s cubic-bezier(.2,.7,.2,1)';
+        r.style.opacity = '1';
+        r.style.transform = 'translateY(0)';
+      }
+    });
+    shown += STEP;
+    if (next[0]) next[0].focus({ preventScroll: true }); // 続きの先頭へフォーカス（画面は跳ねさせない）
+    if (shown >= rows.length) btn.remove(); else update();
+  });
+
+  list.insertAdjacentElement('afterend', btn);
+})();
+
 /* ===== Home: タイル/カードのスクロール出現 ===== */
 (function () {
-  const items = document.querySelectorAll('.cat-tile, .article-row, .concept-card');
+  const items = Array.from(document.querySelectorAll('.cat-tile, .article-row, .concept-card'))
+    .filter(el => !el.classList.contains('is-hidden')); // 隠れた行は出現処理の対象外
   items.forEach((el, i) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(26px)';
