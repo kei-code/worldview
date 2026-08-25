@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2024年、国連の集計で世界131か国が置換水準を下回った。世界最多の人口を持つインドも、すでにその一角にいる。韓国は18年で280兆ウォンを投じてなお最低水準が続き、中国は規制を反転させても出生数の減少が止まらない。人口が減ることは何を意味し、増えることは本当に強さなのかを6つの視点で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/economy/2026-08-26-population-decline/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="人口が減る国、増える国 — 国力の前提が崩れるとき — WorldView">
+  <meta property="og:description" content="世界131か国が置換水準を下回った。世界最多の人口を持つインドも、その一角にいる。人口が減ることは何を意味し、増えることは本当に強さなのかを6つの視点で読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/economy/2026-08-26-population-decline/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/population-decline-hero-empty-classroom.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="人口が減る国、増える国 — 国力の前提が崩れるとき — WorldView">
+  <meta name="twitter:description" content="人口が減ることは何を意味し、増えることは本当に強さなのか。6つの視点で読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/population-decline-hero-empty-classroom.jpg">
+  <title>人口が減る国、増える国 — 国力の前提が崩れるとき — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色は世界経済の --accent4（ベージュ）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/population-decline-hero-empty-classroom.jpg');
+      background-size: cover; background-position: center 38%;
+      filter: brightness(1.12) contrast(1.03) saturate(1.02);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.30) 0%, rgba(14,17,23,0.50) 45%, rgba(14,17,23,0.88) 100%);
+    }
+    .article-hero.has-image .container {
+      position: relative; z-index: 1; width: 100%; transform: translateY(-24px);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b6c1cd; margin-top: 1.5rem; max-width: 580px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent4); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent4) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent4) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent4) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent4); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       カード再設計 — テーマ色の淡いウォッシュで区別する
+       ========================================================== */
+    .article-body .perspectives-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.6rem 2.4rem;
+    }
+    .article-body .perspective-card {
+      position: relative;
+      background: rgba(196,168,130,0.08);
+      border: none; border-radius: 0;
+      padding: 1.5rem 1.6rem 1.6rem;
+      transition: background 0.12s linear;
+    }
+    .article-body .perspective-card:hover {
+      transform: none; box-shadow: none;
+      background: rgba(196,168,130,0.13);
+    }
+    .article-body .perspective-card::before { display: none; }
+
+    .article-body .perspective-card .country-header { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .country-name {
+      font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em;
+    }
+    .pull-quote {
+      font-size: 0.98rem; font-weight: 600; line-height: 1.75;
+      color: var(--text); margin-bottom: 1rem;
+    }
+    .article-body .perspective-card .key-claim { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .interests {
+      border-top: 1px solid var(--border-subtle); padding-top: 0.8rem;
+    }
+    .role-badge {
+      display: block; text-align: right; margin-top: 0.9rem;
+      font-size: 0.73rem; letter-spacing: 0.05em; color: var(--accent4);
+    }
+
+    .article-body .compare-table { background: none; border: none; border-radius: 0; }
+    .article-body .compare-table th {
+      background: none; border-bottom: 2px solid var(--accent4); color: var(--text-muted);
+    }
+    .article-body .compare-table td { border-bottom: 1px solid var(--border-subtle); }
+    .article-body .compare-table tr:hover td { background: rgba(0,0,0,0.20); }
+
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content {
+      background: none; border: none; border-radius: 0; padding: 0;
+    }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent4); }
+    .article-body .reaction-chip {
+      background: none; border: none; border-radius: 0;
+      border-left: 2px solid var(--border);
+      padding: 0 0 0 0.55rem; color: var(--text-dim);
+    }
+
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .article-body .data-card {
+      background: none; border: none; border-radius: 0; padding: 0;
+    }
+    .article-body .data-card::before { display: none; }
+    .article-body .data-card:hover { border-color: transparent; }
+    .article-body .data-card h4 {
+      font-size: 0.95rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem; padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.7rem; line-height: 1.65; }
+
+    .article-body .sources-grid { display: block; counter-reset: src; }
+    .article-body a.source-item {
+      display: flex; gap: 1rem; align-items: baseline;
+      background: none; border: none; border-radius: 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1rem 0.2rem;
+      color: inherit; text-decoration: none;
+      counter-increment: src;
+      transition: background 0.12s linear, border-color 0.12s linear;
+    }
+    .article-body a.source-item::before {
+      content: counter(src, decimal-leading-zero);
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--accent4); flex: 0 0 auto; min-width: 1.7rem;
+    }
+    .article-body a.source-item:hover {
+      background: rgba(0,0,0,0.20); border-bottom-color: var(--accent4);
+    }
+    .article-body a.source-item:focus-visible {
+      outline: 2px solid var(--accent4); outline-offset: 2px;
+    }
+
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(196,168,130,0.06);
+      border: 1px solid rgba(196,168,130,0.22);
+      box-shadow: 0 0 40px 10px rgba(196,168,130,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent4); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent4); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 2.4rem; }
+    .glossary-card { padding: 0.9rem 0; border-bottom: 1px solid var(--border-subtle); }
+    .glossary-term { font-size: 0.83rem; font-weight: 700; margin-bottom: 0.28rem; }
+    .glossary-def { font-size: 0.78rem; color: var(--text-muted); line-height: 1.75; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent4); line-height: 1.2; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    .insight-box { border-left: 2px solid var(--border); padding-left: 1.2rem; margin-bottom: 2.2rem; }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* ==========================================================
+       アクセシビリティ・レスポンシブ
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .glossary-grid { grid-template-columns: 1fr; gap: 0; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">世界経済</span>
+      <span class="date">2026年8月26日</span>
+    </div>
+    <h1 class="article-title">人口が減る国、増える国<br>— 国力の前提が崩れるとき</h1>
+
+    <div class="hero-deck">
+      2024年、世界237の国・地域のうち131か国が、人口を維持するのに必要な出生率を下回った。世界最多の人口を持つインドも、すでにその一角にいる。<span class="deck-accent">人口は増え続けるものだという前提は、もう当たり前ではない。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">131か国が置換水準割れ</span>
+      <span class="hero-pill">韓国 出生率0.80</span>
+      <span class="hero-pill">中国 出生792万人（過去最少）</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 「先進国の問題」という理解は、もう古い</h2>
+
+          <p class="lead">国連の人口推計によれば、2024年時点で237の国・地域のうち131か国が、合計特殊出生率で置換水準（2.1）を下回っている。世界人口の68%が、この131か国に住んでいる。</p>
+
+          <p class="lead">中でも目を引くのはインドである。2023年に中国を抜いて世界最多の人口国になったが、合計特殊出生率はすでに2.0で、置換水準を下回っている。人口が多いことと、出生率が高いことは、もう同じ意味ではない。</p>
+
+          <p class="lead">ここから2つの問いを考えたい。</p>
+
+          <div class="article-question">
+            <p>人口が減ることは、その国にとって具体的に何を意味するのか。そして、人口が増えることは、そのまま国力の強さにつながるのか。</p>
+          </div>
+
+          <div class="label-eyebrow">3つの論点</div>
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">「先進国の話」という前提が崩れている</div>
+              <div class="factor-desc">世界最多の人口を持つインドの出生率は、すでに置換水準を下回っている。人口減少は所得水準と無関係に起きている。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">出生率は、政策だけでは単純に戻らない</div>
+              <div class="factor-desc">韓国は18年間で280兆ウォンを投じたが、最低水準からの反発はわずか2年で0.08ポイントにとどまる。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">増える側にも、別の課題がある</div>
+              <div class="factor-desc">若年人口の多さは労働力になりうるが、雇用が伴わなければ、その多さが逆に不安定要因になる。</div>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">用語解説</div>
+          <div class="glossary-grid">
+            <div class="glossary-card">
+              <div class="glossary-term">合計特殊出生率</div>
+              <div class="glossary-def">一人の女性が生涯に産むと見込まれる子どもの数の推計値。ある年の年齢別出生率をもとに算出する。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">置換水準</div>
+              <div class="glossary-def">人口を長期的に維持するために必要な合計特殊出生率の水準。死亡率の低い国ではおよそ2.1とされる。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">人口ボーナス</div>
+              <div class="glossary-def">生産年齢人口（15〜64歳）の比率が高く、経済成長に有利に働くとされる人口構成の状態。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">人口オーナス</div>
+              <div class="glossary-def">人口ボーナスの逆。高齢者の比率が高まり、現役世代1人あたりの負担が重くなる状態。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">老年人口比率</div>
+              <div class="glossary-def">生産年齢人口に対する65歳以上人口の比率。社会保障制度の負担の重さを示す指標の一つ。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">「1.57ショック」</div>
+              <div class="glossary-def">1990年、前年（1989年）の日本の合計特殊出生率が1.57だったと判明し、少子化が社会問題として認識される転機になった出来事。</div>
+            </div>
+          </div>
+
+          <figure class="article-figure" style="margin:2.5rem 0 0;">
+            <img src="../../../image/articles/population-decline-closed-school.jpg" alt="閉校した日本の小学校の校舎。伸びた雑草に囲まれ、一部の窓は板で塞がれている。背後に山並みが見える曇りの日" loading="lazy">
+            <figcaption>人口減少が最も分かりやすく表れる場所の一つが、子どもの数を前提に作られた施設である。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 各国の対応には、40年以上の差がある</h2>
+
+          <p class="lead">人口減少への対応は、国によって始まった時期が大きく異なる。早く動いた国ほど、対策の効果と限界の両方が先に見えている。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">1979年</div>
+              <div class="timeline-content">
+                <h4>中国、一人っ子政策を開始</h4>
+                <p>人口増加を抑えるため、都市部を中心に一組の夫婦につき子ども一人を原則とする政策が始まった。以後35年余り続くことになる。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">人口抑制へ転換</span>
+                  <span class="reaction-chip">都市部を中心に適用</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">1990年</div>
+              <div class="timeline-content">
+                <h4>日本、「1.57ショック」で少子化を認識</h4>
+                <p>前年1989年の合計特殊出生率が1.57だったことが判明し、それまでの過去最低（1966年の1.58、特殊要因による年を除く）を下回ったとして社会問題化した。日本が少子化を政策課題として扱う出発点になった。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">過去最低を更新</span>
+                  <span class="reaction-chip">政策課題として認識</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-neutral"></div>
+              <div class="timeline-date">2016年</div>
+              <div class="timeline-content">
+                <h4>中国、二人っ子政策へ転換</h4>
+                <p>一人っ子政策を終え、すべての夫婦に二人目の出産を認める政策が1月1日に施行された。この年の出生数は1,790万人で、直近のピークとなった。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">35年ぶりの転換</span>
+                  <span class="reaction-chip">出生数はこの年がピーク</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2019〜2021年</div>
+              <div class="timeline-content">
+                <h4>インドの出生率が置換水準を下回る</h4>
+                <p>全国家族保健調査（NFHS-5）で、合計特殊出生率が2.0と算出された。置換水準の2.1を下回るのは、この調査で初めてである。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">NFHS-5の結果</span>
+                  <span class="reaction-chip">世界最多人口国での出来事</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2020年</div>
+              <div class="timeline-content">
+                <h4>韓国、死亡数が出生数を初めて上回る</h4>
+                <p>出生27万5,815人に対し死亡30万7,764人となり、統計を取り始めて以来初めて死亡数が出生数を上回った。総人口も前年から減少に転じた。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">人口の自然減が始まる</span>
+                  <span class="reaction-chip">総人口も減少へ</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-neutral"></div>
+              <div class="timeline-date">2021年</div>
+              <div class="timeline-content">
+                <h4>中国、三人っ子政策へ</h4>
+                <p>5月に政策転換が発表され、8月に法制化された。同時に、出産制限に違反した際に科してきた罰金（社会扶養費）も廃止された。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">さらなる緩和</span>
+                  <span class="reaction-chip">罰金も廃止</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2022年</div>
+              <div class="timeline-content">
+                <h4>中国の総人口が61年ぶりに減少</h4>
+                <p>国家統計局の発表で、総人口が前年より約85万人少ない14億1,100万人になったことが分かった。人口が減少するのは、1961年（大躍進政策後の飢饉の年）以来である。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">61年ぶりの減少</span>
+                  <span class="reaction-chip">規制緩和後も止まらず</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2023年</div>
+              <div class="timeline-content">
+                <h4>インド、世界最多の人口国に</h4>
+                <p>国連の推計により、4月にインドの人口が中国を上回ったとみられることが発表された。同じ年、韓国の合計特殊出生率は0.72まで落ち込み、当時世界最低の水準となった。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">国連推計による逆転</span>
+                  <span class="reaction-chip">韓国は当時世界最低に</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2024〜2025年</div>
+              <div class="timeline-content">
+                <h4>日本は最低更新、韓国は反発、中国は最少を記録</h4>
+                <p>日本の合計特殊出生率は2024年に1.15で過去最低を更新し、出生数も68万6千人で統計開始以来最少となった。韓国は2024年に0.75、2025年に0.80へと2年連続で上昇し、出生数は6.8%増えた（2007年以来最大の伸び）。中国は2025年の出生数が792万人となり、2026年1月の発表で4年連続の人口減少が確認された。同じ時期でも、国によって向かう方向は違う。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">日本は最低を更新</span>
+                  <span class="reaction-chip">韓国は2年連続で上昇</span>
+                  <span class="reaction-chip">中国は4年連続減少</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/population-decline-maternity-ward.jpg" alt="病院の産科病棟の廊下に並ぶ、使われていない空のベビーベッドの接写。柔らかい照明の中、清潔だが人けのない様子" loading="lazy">
+            <figcaption>出生数の減少は、こうした場所の使われ方の変化として現れる。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 6つの視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>6つの視点 — 減る国、増える国、その間の国</h2>
+
+          <p class="lead">人口減少への対応は、国ごとに事情が異なる。早く直面した国、最近になって数値で示された国、増える側でも別の課題を抱える国。6つの立場を並べる。</p>
+
+          <div class="tabs-wrap">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-cards">カードで読む</button>
+              <button class="tab-btn" data-tab="tab-table">表で比べる</button>
+            </div>
+
+            <div class="tab-pane active" id="tab-cards">
+              <div class="perspectives-grid">
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">日本</span></div>
+                  <div class="pull-quote">「30年以上前から対策を続けてきた。それでも下げ止まっていない」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    1990年の「1.57ショック」を機に、少子化を国内の政策課題として位置づけた。以来30年以上、保育や育児休業、給付の拡充を重ねてきたが、2024年の合計特殊出生率は1.15で過去最低を更新した（詳細は02参照）。ただし人口減少への対応では先行しており、省力化投資や自治体の統合、外国人材の受け入れ拡大など、「減った後にどう回すか」の実例を各国が参照している。
+                  </div>
+                  <div class="interests">最大の関心：労働力と社会保障制度の持続、地方の維持。</div>
+                  <div class="role-badge">— 対策の先行事例</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">韓国</span></div>
+                  <div class="pull-quote">「お金では戻らないと言われてきた。だが直近2年でわずかに動いた」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    2006年以降、280兆ウォン（約2,110億ドル）超を少子化対策に投じてきたが、合計特殊出生率は2023年に0.72まで落ち込み、当時世界最低となった（詳細は02参照）。2020年には死亡数が出生数を初めて上回り、総人口も減少に転じている。ただし2024年に0.75、2025年に0.80へと2年連続で上昇し、出生数も6.8%増えた。「政策は効かない」という見方に、直近のデータは小さな反例を示している。
+                  </div>
+                  <div class="interests">最大の関心：反発の持続性の見極めと、地方の人口流出への対応。</div>
+                  <div class="role-badge">— 最低水準からの反発</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">中国</span></div>
+                  <div class="pull-quote">「豊かになる前に、老いる」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    1979年の一人っ子政策、2016年の二人っ子政策、2021年の三人っ子政策と、45年余りで人口抑制から出産奨励へ規制を反転させてきた（詳細は02参照）。それでも出生数は2016年の1,790万人から2025年には792万人へ減少し、統計上最少となった。2022年には総人口も61年ぶりに減少に転じている。一人当たりの所得が先進国水準に届く前に高齢化が進む、いわゆる「未富先老」が現実の課題になっている。
+                  </div>
+                  <div class="interests">最大の関心：労働力の確保と、年金・医療制度の持続。</div>
+                  <div class="role-badge">— 規制を反転させても止まらない</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">インド</span></div>
+                  <div class="pull-quote">「世界最多の人口を持つ国が、すでに置換水準を下回っている」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    2023年に中国を抜いて世界最多の人口国になったが、合計特殊出生率はNFHS-5（2019〜2021年）の時点ですでに2.0で、置換水準2.1を下回っている（詳細は02参照）。人口の年齢構成が若いため、総人口の増加自体は今後数十年続く見通しである。「人口大国は増え続ける」という理解は、出生率の水準とは別の話になっている。
+                  </div>
+                  <div class="interests">最大の関心：若年層への雇用創出と、人口ボーナス期を成長に変えられるか。</div>
+                  <div class="role-badge">— 最多人口、しかし出生率は割れている</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">欧州（ドイツ）</span></div>
+                  <div class="pull-quote">「産む数では負けているが、来る人の数で人口を保ってきた」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    1990年の東西統一以降、ドイツでは出生数が死亡数を毎年下回り続けている（2024年の自然減は31万〜33万人）。それでも移民による純増（同年40万〜44万人）が上回り、総人口は微増を保っている。人口を維持する主な仕組みが出産ではなく移民になっている点は、他の欧州各国とも共通するが、移民の受け入れをめぐる政治的な反発は強まっている。
+                  </div>
+                  <div class="interests">最大の関心：移民受け入れの規模と、社会統合をめぐる国内世論の分断。</div>
+                  <div class="role-badge">— 移民で人口を保ってきた側</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">ナイジェリア（サハラ以南アフリカ）</span></div>
+                  <div class="pull-quote">「増える側にも、増えるなりの課題がある」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    合計特殊出生率は2018年の5.3から2024年には4.8まで下がったが、依然として置換水準を大きく上回る。人口は2024年時点で2億2,900万人、2050年には4億人に達し世界3位の人口大国になると見込まれている。若年人口の多さは労働力という意味で人口ボーナスになりうるが、雇用が伴わなければ若年層の不安定化につながるという指摘もある。
+                  </div>
+                  <div class="interests">最大の関心：若年層向けの雇用創出と、インフラ・教育投資の拡大。</div>
+                  <div class="role-badge">— 増える側、ただし課題も抱える</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-table">
+              <div style="overflow-x:auto;">
+                <table class="compare-table">
+                  <thead>
+                    <tr><th>立場</th><th>基本スタンス</th><th>最大の主張</th><th>最大の関心事</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>日本</td><td>対策の先行事例</td><td>30年以上対策を続けても出生率は最低を更新した</td><td>労働力と社会保障制度の持続</td></tr>
+                    <tr><td>韓国</td><td>最低水準からの反発</td><td>巨額の投資の効果は薄いが、直近で反発した</td><td>反発の持続性と地方の人口流出</td></tr>
+                    <tr><td>中国</td><td>規制を反転させても止まらない</td><td>抑制から奨励へ転じたが出生数は減り続ける</td><td>労働力の確保と社会保障の持続</td></tr>
+                    <tr><td>インド</td><td>最多人口、しかし出生率は割れている</td><td>人口最多と出生率低下は両立している</td><td>雇用創出と人口ボーナスの活用</td></tr>
+                    <tr><td>欧州（ドイツ）</td><td>移民で人口を保ってきた側</td><td>出生の不足を移民の純増が補ってきた</td><td>移民受け入れ規模と世論の分断</td></tr>
+                    <tr><td>ナイジェリア</td><td>増える側、ただし課題も抱える</td><td>出生率は高いが低下傾向にある</td><td>雇用創出とインフラ・教育投資</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure" style="margin-top:2rem;">
+            <img src="../../../image/articles/population-decline-young-market.jpg" alt="西アフリカの都市の賑わう青空市場。若者を中心とした人混みが行き交い、背景にバイクと露天商の屋台が並ぶ、日差しの強い昼の情景" loading="lazy">
+            <figcaption>増える側の社会では、若年人口の多さがそのまま見える形で表れる。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ・統計 ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 出生率の差と、止まらない減少</h2>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>6か国の合計特殊出生率</h4>
+              <div style="position:relative;height:250px;margin-top:1rem;">
+                <canvas id="tfrChart"></canvas>
+              </div>
+              <p class="chart-note">各国の統計時点は異なるため単純比較はできないが、置換水準（2.1）を境に大きく分かれていることが分かる。<br>出典：韓国＝統計庁（2025年速報値）／中国＝世界銀行 World Development Indicators（2023年）／日本＝厚生労働省人口動態統計（2024年）／ドイツ＝連邦統計局（2024年）／インド＝NFHS-5（2019〜21年）／ナイジェリア＝NDHS 2024</p>
+            </div>
+
+            <div class="data-card">
+              <h4>中国の出生数の推移（2016年〜2025年）</h4>
+              <div style="position:relative;height:250px;margin-top:1rem;">
+                <canvas id="chinaBirthsChart"></canvas>
+              </div>
+              <p class="chart-note">二人っ子政策・三人っ子政策で規制を緩めても、出生数は増えなかった。年ごとの発表値のみを使用し、未発表の年は補っていない。<br>出典：中国国家統計局の公表値（各年の報道を通じて確認）</p>
+            </div>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">131か国</div>
+              <div class="stat-desc">合計特殊出生率が置換水準（2.1）を下回る国の数（2024年、国連推計、対象237か国中）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">0.80</div>
+              <div class="stat-desc">韓国の合計特殊出生率（2025年、2年連続で上昇）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">792万人</div>
+              <div class="stat-desc">中国の出生数（2025年、統計を遡れる中で最少）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">4億人</div>
+              <div class="stat-desc">ナイジェリアの人口予測（2050年、世界3位の規模に）</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 規模という前提が崩れたあと、何が残るか</h2>
+
+          <p class="lead">出生率をめぐる議論は、しばしば「政策で戻るか、戻らないか」の二択で語られる。だが直近のデータは、そこまで単純ではないことを示している。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">① 出生率は、政策だけでは単純に戻らない — ただし無関係でもない</div>
+            <div class="insight-text">
+              少子化対策に280兆ウォン超を投じてきた韓国でも、合計特殊出生率は2023年に0.72まで落ち込んだ（詳細は03「韓国」参照）。住宅費や雇用の不安定さ、長時間労働といった構造的な要因が背景にあるとされ、政策だけで数値を大きく動かすのは難しい。ただし2024年に0.75、2025年に0.80へと2年連続で上昇し、出生数も6.8%増えている。政策が全く無関係だったわけではないことも、直近のデータは示している。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">② 人口ボーナスは、自動的な配当ではない</div>
+            <div class="insight-text">
+              ナイジェリアをはじめとするサハラ以南アフリカは、若年人口の多さで人口ボーナス期にあるとされる。だが、この人口構成が経済成長につながるかどうかは、雇用が用意されているかどうかに左右される。仕事のない若年層の多さは、労働力ではなく不安定要因になりうる。<strong>人口が増えていること自体は、成長を保証しない。</strong>
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">③ 「減る」は「衰退」と同義ではない</div>
+            <div class="insight-text">
+              総人口が減っても、一人当たりの所得や生活水準が下がるとは限らない。労働力人口の減少を、省力化投資や自動化で補う余地もあり、日本はその実例を先行して積み重ねている。<strong>ただし、年金や医療、政府債務のように総量で効く仕組みは別で、支える現役世代の数が減ること自体が負担を重くする。</strong>「減る」の影響は、何を指標に見るかで評価が変わる。
+            </div>
+          </div>
+
+          <p class="closing">
+            人口が減ることの意味は、国によって同じではない。日本は減少への対応を先行させ、韓国はわずかながら反発の兆しを見せ、中国は規制を反転させても出生数の減少を止められていない。増える側のインドやナイジェリアも、出生率の低下や雇用の不足という別の課題を抱えている。国力を人口の規模だけで測る前提は、増える国にも減る国にも、同じように崩れ始めている。
+          </p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/population-decline-elderly-care.jpg" alt="日本の高齢者介護施設の談話室。大きな窓の外に緑豊かな庭が広がり、数人の高齢の入居者が座り、介護士が一人を車椅子で介助している" loading="lazy">
+            <figcaption>人口構成の変化が行き着く先の一つが、高齢者を支える仕組みそのものである。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://www.un.org/en/desa/india-overtake-china-world-most-populous-country-april-2023-united-nations-projects" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">国連 — インドが2023年4月に世界最多人口国になるとの推計</div>
+                <div class="source-desc">国連経済社会局が、インドの人口が中国を上回る時期と根拠を示した公式発表。</div>
+                <div class="source-country">【国連の公式発表】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2025_wfr_2024_final.pdf" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">国連経済社会局 — World Fertility 2024</div>
+                <div class="source-desc">237の国・地域のうち131か国（世界人口の68%）が置換水準を下回るという集計を含む報告書。</div>
+                <div class="source-country">【国連の公式報告書】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2086511&reg=48&lang=2" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">インド政府PIB — 全国家族保健調査（NFHS-5）の結果</div>
+                <div class="source-desc">インドの合計特殊出生率が2.0となり置換水準（2.1）に達したことを発表した、保健家族福祉省の公式リリース。</div>
+                <div class="source-country">【インド政府の公式発表】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.koreaherald.com/article/10382593" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Korea Herald — 韓国の出生数、9年ぶりに反発</div>
+                <div class="source-desc">2024年の合計特殊出生率が0.75に上昇し、9年ぶりの反発となったことを報じた記事。</div>
+                <div class="source-country">【韓国の英字新聞】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.cnn.com/2021/01/04/asia/south-korea-2020-births-intl-hnk-scli" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">CNN — 韓国、死亡数が出生数を初めて上回る</div>
+                <div class="source-desc">2020年の韓国で人口の自然減が統計上初めて起きたことを報じた記事。</div>
+                <div class="source-country">【アメリカの国際報道】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aa.com.tr/en/asia-pacific/south-koreas-birth-rate-remains-alarmingly-low-despite-spending-200b-in-16-years/2879778" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">アナドル通信 — 韓国、16年で2,000億ドルを投じても出生率は低水準</div>
+                <div class="source-desc">2006年以降の少子化対策の累計支出額と、その効果の限界を報じた記事。</div>
+                <div class="source-country">【トルコの国際通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.japantimes.co.jp/news/2025/06/04/japan/fertility-rate-low/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Japan Times — 日本の合計特殊出生率、過去最低の1.15に</div>
+                <div class="source-desc">厚生労働省の人口動態統計をもとに、2024年の日本の出生率と出生数を報じた記事。</div>
+                <div class="source-country">【日本の英字新聞】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.destatis.de/EN/Press/2025/07/PE25_259_12.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ドイツ連邦統計局（Destatis） — 2024年の出生率低下は大きく鈍化</div>
+                <div class="source-desc">2024年のドイツの合計特殊出生率が1.35であったことを示す公式統計。</div>
+                <div class="source-country">【ドイツ政府統計局】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://dhsprogram.com/pubs/pdf/PR157/PR157.pdf" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">DHS Program — ナイジェリア人口保健調査2023〜24 主要指標</div>
+                <div class="source-desc">ナイジェリアの合計特殊出生率が2018年の5.3から2024年に4.8へ低下したことを示す一次調査。</div>
+                <div class="source-country">【国際的な保健統計調査】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.cnn.com/2023/01/16/economy/china-population-decline-sixty-years-intl-hnk" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">CNN — 中国の総人口、61年ぶりに減少</div>
+                <div class="source-desc">中国国家統計局の発表をもとに、2022年の人口減少と出生数の推移を報じた記事。</div>
+                <div class="source-country">【アメリカの国際報道】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.scmp.com/economy/china-economy/article/3340398/chinas-demographic-alarms-blare-births-hit-historic-low-and-population-shrinks-again" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">South China Morning Post — 中国、2025年の出生数が過去最少に</div>
+                <div class="source-desc">2026年1月発表の統計をもとに、中国の出生数が792万人で4年連続の人口減少になったことを報じた記事。</div>
+                <div class="source-country">【香港の経済報道】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.loc.gov/item/global-legal-monitor/2021-09-23/china-three-child-policy-becomes-law-social-maintenance-fee-abolished/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">米議会図書館 — 中国、三人っ子政策が法制化・罰金も廃止</div>
+                <div class="source-desc">2021年の中国の産児制限緩和と、違反時の罰金制度廃止の法的経緯をまとめた報告。</div>
+                <div class="source-country">【アメリカ議会図書館の法制度調査】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/economy/index.html">世界経済</a></div>
+          <div>2026年8月26日</div>
+          <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/economy/index.html">世界経済一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 6か国の合計特殊出生率（横棒）
+  (function() {
+    var ctx = document.getElementById('tfrChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['韓国（2025年）', '中国（2023年）', '日本（2024年）', 'ドイツ（2024年）', 'インド（2019〜21年）', 'ナイジェリア（2024年）'],
+        datasets: [{
+          // 出典：
+          // 韓国＝統計庁、報道（Yahoo/Newsほか）で2025年の合計特殊出生率が0.80と報じられた
+          // 中国＝世界銀行 World Development Indicators（FRED収録）2023年値 0.999（表示は0.99に丸め）
+          // 日本＝厚生労働省人口動態統計、2024年の合計特殊出生率1.15（過去最低）
+          // ドイツ＝連邦統計局(Destatis)プレスリリース PE25_259_12、2024年1.35
+          // インド＝全国家族保健調査（NFHS-5、2019〜21年）2.0
+          // ナイジェリア＝Nigeria DHS 2023-24 主要指標、4.8
+          data: [0.80, 0.99, 1.15, 1.35, 2.0, 4.8],
+          backgroundColor: function(context) {
+            var v = context.raw;
+            return v >= 2.1 ? 'rgba(122,170,130,0.75)' : 'rgba(196,168,130,0.85)';
+          },
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: { label: function(c) { return ' ' + c.parsed.x + '（置換水準は2.1）'; } }
+          }
+        },
+        scales: {
+          x: {
+            min: 0, max: 5,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 } }
+          },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // 中国の出生数の推移（横棒）
+  (function() {
+    var ctx = document.getElementById('chinaBirthsChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2016年', '2021年', '2022年', '2024年', '2025年'],
+        datasets: [{
+          // 出典：中国国家統計局の公表値（各年の報道を通じて確認）
+          // 2016年：1,790万人（二人っ子政策施行年、直近のピーク）
+          // 2021年：1,062万人
+          // 2022年：956万人
+          // 2024年：954万人
+          // 2025年：792万人（2026年1月発表、統計を遡れる中で最少）
+          // 発表のある年のみプロットし、未発表の年（2017〜2020, 2023）は補っていない
+          data: [1790, 1062, 956, 954, 792],
+          backgroundColor: [
+            'rgba(196,168,130,0.55)',
+            'rgba(196,168,130,0.55)',
+            'rgba(196,168,130,0.55)',
+            'rgba(196,168,130,0.55)',
+            'rgba(196,168,130,0.85)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: { label: function(c) { return ' ' + c.parsed.x + '万人'; } }
+          }
+        },
+        scales: {
+          x: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v) { return v + '万人'; } }
+          },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

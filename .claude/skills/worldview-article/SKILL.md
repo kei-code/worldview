@@ -18,29 +18,31 @@ WorldView（地政学ニュースサイト）の記事を新規作成するた�
 1. **記事案の提案**：既存記事と重複しないテーマをベスト3で提案（重複チェックはCLAUDE.md「既存記事一覧」を参照）
 2. **Web調査**：ユーザーが選んだテーマをWebSearchで調査
 3. **調査報告 ＋ Midjourneyプロンプト出力**：調査結果をユーザーへ口頭報告し、**続けて即座に**画像5枚分（ヒーロー1枚＋本文中4枚）×各2案 = 計10プロンプトを出力する。ユーザーはこの時点でMidjourneyでの生成を開始できる
-4. **記事HTML作成**：`articles/{カテゴリ}/{日付-スラッグ}/index.html` を新規作成（ユーザーが画像生成中に並行して進める）
-5. **カテゴリページ更新**：`categories/{カテゴリ}/index.html` に記事カード追加
-6. **ホームページ更新**：`index.html` の以下**3箇所**を必ず更新する（記事カード追加だけで終わらせない）
+4. **記事HTML作成**：`articles/{カテゴリ}/{日付-スラッグ}/index.html` を新規作成（ユーザーが画像生成中に並行して進める）。**凝った比喩を使わず、事実と論理で書く**（詳細は `/natural-japanese` スキル参照）。文章量は既存の基準記事（CLAUDE.md「記事レイアウト」参照）を超えないよう意識する
+5. **日本語の自然さチェック（必須）**：`/natural-japanese` スキルを実行する。カテゴリ／ホームへ転記する前のこの時点で行う（本文が確定してから転記したほうが、修正のたびに複数ファイルへ波及しない）。意味検査はサブエージェント（Sonnet）に委譲し、報告を重大度で仕分けしてユーザーへ提示。修正方針はユーザーと決める。**これを飛ばしてカテゴリ／ホーム更新に進まない**
+6. **カテゴリページ更新**：`categories/{カテゴリ}/index.html` に記事カード追加
+7. **ホームページ更新**：`index.html` の以下**3箇所**を必ず更新する（記事カード追加だけで終わらせない）
    - **最新記事リスト**（`.articles-list`）の先頭に記事カードを追加
    - **カテゴリタイルの記事数**（`.tile-count` の「記事 N件」）を、該当カテゴリのみ +1 する
    - **ヒーローの総記事数**（`.hero-stat-num` の `data-count` 属性）を +1 する。値は「既存記事一覧」の総数と一致させる
-7. **画像配置＆圧縮**：ユーザーが `image/tmp/` に格納後、下記「画像処理」の手順を実行
+   - ホームの記事サマリー（`.ar-sum`）は記事本文（ヒーロー宣言文等）からの転記・要約になるため、手順5の修正が入った場合は文言のズレがないか確認する
+8. **画像配置＆圧縮**：ユーザーが `image/tmp/` に格納後、下記「画像処理」の手順を実行
    - `image/articles/` へSEO対応ファイル名でコピー（例：`right-shift-hero-rally.png`）
    - Pillowで JPEG圧縮（quality=82）→ 元PNGを削除（拡張子が `.jpg` に変わる）
    - 記事HTMLのファイル参照を `.png` → `.jpg` に更新
    - `image/tmp/` の中身をすべて削除
-8. **ファクトチェック（必須）**：`/fact-check` スキルを実行する。検証はサブエージェント（Sonnet）に委譲し、報告を重大度で仕分けしてユーザーへ提示。修正方針はユーザーと決める。**これを飛ばしてコミットしない**（CLAUDE.md「運用上の絶対ルール」）
-9. **コミット＆公開**：ユーザー確認後に `git commit` → `git push`（無断実行しない＝CLAUDE.md「運用上の絶対ルール」）
+9. **ファクトチェック（必須）**：`/fact-check` スキルを実行する。検証はサブエージェント（Sonnet）に委譲し、報告を重大度で仕分けしてユーザーへ提示。修正方針はユーザーと決める。**これを飛ばしてコミットしない**（CLAUDE.md「運用上の絶対ルール」）
+10. **コミット＆公開**：ユーザー確認後に `git commit` → `git push`（無断実行しない＝CLAUDE.md「運用上の絶対ルール」）
 
 記事を追加したら、CLAUDE.md「既存記事一覧」表に1行追記する（重複防止インデックスの維持）。
 
 ### 実装担当（Opus / Sonnet の使い分け）
 
-記事HTML実装の担当は**その都度判断**する：
+**既定：記事HTML実装は Sonnet で行う。** `/natural-japanese` による意味検査も Sonnet サブエージェントに委譲する（従来通り）。
 
-- **凝った記事 → Opus が直接実装**：多視点で微妙なニュアンスが必要なもの、新しい構成・表現を試すもの、文章の質を最優先するもの
-- **定型的な記事 → Sonnet サブエージェントに委譲**：既存の雛形をほぼ踏襲できるもの。`Agent` ツール（model: "sonnet"）に委譲し、Opus はプラン・検証・コミットを担当
-- **判断基準**：出力単価は Opus が Sonnet の約5倍。記事は出力が重い作業なので、定型記事を Sonnet に回すと実装フェーズのコストが概ね 1/2〜1/3 になる。一方で凝った文章は Opus の方が筆致が安定する。コストと品質のバランスで都度決める
+- **理由**：出力単価は Opus が Sonnet の約5倍。記事は出力が重い作業であり、かつ「凝った文章」自体が不自然さの原因になりやすいことが分かっている（`/natural-japanese` のスキル参照）。Sonnetで短く素直に書き、`/natural-japanese` と `/fact-check` で仕上げる運用のほうが、コスト・品質の両面で安定する
+- **Opusが直接実装するのは例外**：新しい構成・表現の型を試すときや、特に難しい多視点の整理が要るときのみユーザーの指示で切り替える
+- プラン設計・検証・コミットの判断は、担当モデルに関わらず本体エージェントが行う
 
 ---
 
@@ -88,6 +90,33 @@ WorldView（地政学ニュースサイト）の記事を新規作成するた�
 - **宣言文の中身**：タイトルの言い換えにしない（**別角度**＝「なぜ転換したか」「何が変わるか」等で続きを読ませる）。**2〜3文**、強制改行（`<br>`）は使わず `max-width` 内で自然に折り返す。アクセントは1フレーズのみ。
 - **数字ピル**：記事の数字フックをガラス調ピルで3つ程度。色はテーマ色から `color-mix` で生成する：`.hero-pill { font-size:0.78rem; font-weight:700; color:color-mix(in srgb, var(--accentN) 60%, #fff); background:color-mix(in srgb, var(--accentN) 16%, transparent); border:1px solid color-mix(in srgb, var(--accentN) 34%, transparent); padding:0.38rem 0.75rem; border-radius:20px; backdrop-filter:blur(4px); }`、`.hero-pills { display:flex; gap:0.55rem; flex-wrap:wrap; margin-top:1.5rem; }`。
 - **高さと縦位置**：画像比率（16:9等）を活かして大きく見せ目を引く。`.article-hero.has-image { min-height:680px; display:flex; align-items:center; }`（＝**縦中央**）、`.article-hero.has-image .container { width:100%; }`。中央からわずかに上げたいときは `.container` に `transform: translateY(-Npx);`（記事ごとに微調整）。
+
+### 「この記事の問い」ボックスの標準スタイル（必須）
+
+`.article-question` は左罫線ではなく、**淡い背景ウォッシュ＋薄い縁取り＋背後からの柔らかい光**で立体感を出す（手本：`articles/economy/2026-08-26-population-decline/index.html`）。
+
+```css
+.article-question {
+  margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+  background: rgba(var(--accentN-rgb), 0.06);
+  border: 1px solid rgba(var(--accentN-rgb), 0.22);
+  box-shadow: 0 0 40px 10px rgba(var(--accentN-rgb), 0.20);
+}
+```
+
+- **border-left は使わない**（旧処方。左罫線ではなく縁取り＋グローで区別する）
+- 色はテーマ色の RGB 値を使う（`var(--accentN)` の16進をRGBに変換して直書き。例：economyの `--accent4` #c4a882 → `196,168,130`）
+- 外側マージンは上下とも `3.3rem`（前後のセクションから十分に離す。旧処方の `2.2rem 0 0` より広め）
+- 内側パディングは変更しない（`1.3rem 1.5rem 1.6rem`）
+
+### タイムラインは項目間の横線を引かない（必須）
+
+`.timeline-item` に `border-bottom` を付けない（旧処方は区切り線を入れていたが廃止）。年ごとの余白（`padding-bottom`）だけで区切る。
+
+```css
+.article-body .timeline-item { padding-bottom: 1.7rem; }
+.article-body .timeline-item:last-child { padding-bottom: 0; }
+```
 
 ### 情報源リンクのCSSスニペット
 
