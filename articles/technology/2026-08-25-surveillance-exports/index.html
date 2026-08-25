@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2026年8月13日、Appleは110か国の利用者に「標的にされた可能性がある」と通知した。街を覆うカメラと、特定の一台に忍び込むソフト——性質のまるで違う二つの商品が、同じ「安全」という言葉で売られている。監視技術の輸出はなぜ止まらないのかを6つの視点で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/technology/2026-08-25-surveillance-exports/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="「安全」という商品 — 街を覆うカメラと、記者を狙うソフト — WorldView">
+  <meta property="og:description" content="制裁も禁輸も大統領令も出そろった。それでも監視技術の輸出は止まらない。二つの輸出路の違いから、規制が効かない理由を6つの視点で読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/technology/2026-08-25-surveillance-exports/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/surveillance-exports-hero-camera-street.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="「安全」という商品 — 街を覆うカメラと、記者を狙うソフト — WorldView">
+  <meta name="twitter:description" content="街をまるごと見張る設備と、特定の一台に忍び込むソフト。同じ「安全」の名で売られる二つの商品を分けて考える。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/surveillance-exports-hero-camera-street.jpg">
+  <title>「安全」という商品 — 街を覆うカメラと、記者を狙うソフト — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色はテクノロジーの --accent-tech（青）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/surveillance-exports-hero-camera-street.jpg');
+      background-size: cover; background-position: center 45%;
+      filter: brightness(1.30) contrast(1.05) saturate(1.03);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.26) 0%, rgba(14,17,23,0.46) 45%, rgba(14,17,23,0.86) 100%);
+    }
+    .article-hero.has-image .container {
+      position: relative; z-index: 1; width: 100%; transform: translateY(-24px);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b6c1cd; margin-top: 1.5rem; max-width: 580px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent-tech); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent-tech) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent-tech) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent-tech) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    /* セクション番号：雑誌風の大きな薄い数字（既存記事と同じ処方） */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent-tech); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       カード再設計 — テーマ色の淡いウォッシュで区別する
+       原則：枠なし／角丸0／影なし／グローなし／浮きなし
+       ========================================================== */
+    .article-body .perspectives-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.6rem 2.4rem;
+    }
+    .article-body .perspective-card {
+      position: relative;
+      background: rgba(128,172,216,0.06);
+      border: none; border-radius: 0;
+      padding: 1.5rem 1.6rem 1.6rem;
+      transition: background 0.12s linear;
+    }
+    .article-body .perspective-card:hover {
+      transform: none; box-shadow: none;
+      background: rgba(128,172,216,0.10);
+    }
+    .article-body .perspective-card::before { display: none; }
+
+    .article-body .perspective-card .country-header { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .country-name {
+      font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em;
+    }
+    .pull-quote {
+      font-size: 0.98rem; font-weight: 600; line-height: 1.75;
+      color: var(--text); margin-bottom: 1rem;
+    }
+    .article-body .perspective-card .key-claim { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .interests {
+      border-top: 1px solid var(--border-subtle); padding-top: 0.8rem;
+    }
+    .role-badge {
+      display: block; text-align: right; margin-top: 0.9rem;
+      font-size: 0.73rem; letter-spacing: 0.05em; color: var(--accent-tech);
+    }
+
+    /* --- 比較表：外枠・背景・角丸を外し、ヘッダ下の罫だけ残す --- */
+    .article-body .compare-table { background: none; border: none; border-radius: 0; }
+    .article-body .compare-table th {
+      background: none; border-bottom: 2px solid var(--accent-tech); color: var(--text-muted);
+    }
+    .article-body .compare-table td { border-bottom: 1px solid var(--border-subtle); }
+    .article-body .compare-table tr:hover td { background: rgba(0,0,0,0.20); }
+
+    /* --- タイムライン：中身の塗り・枠を外し、軸の罫に構造を任せる --- */
+    .article-body .timeline-item { padding-bottom: 1.7rem; border-bottom: 1px solid var(--border-subtle); }
+    .article-body .timeline-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .article-body .timeline-content {
+      background: none; border: none; border-radius: 0; padding: 0;
+    }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent-tech); }
+    .article-body .reaction-chip {
+      background: none; border: none; border-radius: 0;
+      border-left: 2px solid var(--border);
+      padding: 0 0 0 0.55rem; color: var(--text-dim);
+    }
+
+    /* --- データ：枠を外し、見出しを本物の見出しに戻す --- */
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .article-body .data-card {
+      background: none; border: none; border-radius: 0; padding: 0;
+    }
+    .article-body .data-card::before { display: none; }
+    .article-body .data-card:hover { border-color: transparent; }
+    .article-body .data-card h4 {
+      font-size: 0.95rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem; padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.7rem; line-height: 1.65; }
+
+    /* --- 情報源：カードをやめ、番号つきの典拠リストにする --- */
+    .article-body .sources-grid { display: block; counter-reset: src; }
+    .article-body a.source-item {
+      display: flex; gap: 1rem; align-items: baseline;
+      background: none; border: none; border-radius: 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1rem 0.2rem;
+      color: inherit; text-decoration: none;
+      counter-increment: src;
+      transition: background 0.12s linear, border-color 0.12s linear;
+    }
+    .article-body a.source-item::before {
+      content: counter(src, decimal-leading-zero);
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--accent-tech); flex: 0 0 auto; min-width: 1.7rem;
+    }
+    .article-body a.source-item:hover {
+      background: rgba(0,0,0,0.20); border-bottom-color: var(--accent-tech);
+    }
+    .article-body a.source-item:focus-visible {
+      outline: 2px solid var(--accent-tech); outline-offset: 2px;
+    }
+
+    /* ==========================================================
+       この記事で使うブロック（もともと箱にしない）
+       ========================================================== */
+    .article-question {
+      margin: 2.2rem 0 0; padding: 1.3rem 0 1.3rem 1.3rem;
+      border-left: 2px solid var(--accent-tech);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent-tech); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent-tech); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 2.4rem; }
+    .glossary-card { padding: 0.9rem 0; border-bottom: 1px solid var(--border-subtle); }
+    .glossary-term { font-size: 0.83rem; font-weight: 700; margin-bottom: 0.28rem; }
+    .glossary-def { font-size: 0.78rem; color: var(--text-muted); line-height: 1.75; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent-tech); line-height: 1.2; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    .insight-box { border-left: 2px solid var(--border); padding-left: 1.2rem; margin-bottom: 2.2rem; }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* 二つの輸出路：対置ブロック */
+    .route-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2rem; margin-top: 1.6rem; }
+    .route-col { padding: 1.4rem 1.5rem 1.6rem; background: rgba(128,172,216,0.05); }
+    .route-label { font-size: 0.72rem; letter-spacing: 0.12em; font-weight: 700; color: var(--accent-tech); margin-bottom: 0.5rem; }
+    .route-head { font-size: 1rem; font-weight: 700; margin-bottom: 0.7rem; line-height: 1.55; }
+    .route-body { font-size: 0.85rem; color: var(--text-muted); line-height: 1.9; }
+    .route-body dl { margin-top: 0.9rem; }
+    .route-body dt { font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.06em; margin-top: 0.7rem; }
+    .route-body dd { font-size: 0.84rem; color: var(--text-muted); line-height: 1.75; margin: 0.15rem 0 0; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* ==========================================================
+       アクセシビリティ・レスポンシブ
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .glossary-grid { grid-template-columns: 1fr; gap: 0; }
+      .route-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">テクノロジー</span>
+      <span class="date">2026年8月25日</span>
+    </div>
+    <h1 class="article-title">「安全」という商品<br>— 街を覆うカメラと、記者を狙うソフト</h1>
+
+    <div class="hero-deck">
+      2026年8月13日、Appleは110か国の利用者に「あなたは標的にされた可能性がある」と通知した。街をまるごと見張る設備と、特定の一台に忍び込むソフト——<span class="deck-accent">性質のまるで違う二つの商品が、同じ「安全」という言葉で売られている。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">110か国に通知</span>
+      <span class="hero-pill">中国系AI監視 63か国</span>
+      <span class="hero-pill">差止命令の6日後に再開</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 「監視の輸出」は、一つの現象ではない</h2>
+
+          <p class="lead">2026年8月13日、Appleは新たな脅威通知を送った。対象は110か国の利用者で、累計の通知先は150か国を超えた。受け取るのは、記者・活動家・政治家・外交官——「その人が何者であるか、何をしているか」を理由に個別に狙われた人々である。</p>
+
+          <p class="lead">この通知が可視化するのは、監視技術の輸出という産業の一断面にすぎない。同じ言葉で語られるものの中には、まったく性質の違う二つの商品が混在している。<strong>一方は、街をまるごと見張る設備。もう一方は、特定の一台に忍び込むソフト</strong>である。</p>
+
+          <p class="lead">この二つを一括りに「監視技術」と呼ぶことが、議論を鈍らせてきた。まず、分けるところから始めたい。</p>
+
+          <div class="label-eyebrow">二つの輸出路</div>
+          <div class="route-grid">
+            <div class="route-col">
+              <div class="route-label">面の監視</div>
+              <div class="route-head">街をまるごと見張る設備</div>
+              <div class="route-body">
+                カメラ・顔認証・管制センター・融資までを一括納入する「安全都市（Safe City）」型のインフラ輸出。中心はHuawei・Hikvision・Dahuaら中国企業である。
+                <dl>
+                  <dt>買い手</dt><dd>都市、内務省、警察機構</dd>
+                  <dt>値段の桁</dt><dd>数千万〜数億ドル（融資込み）</dd>
+                  <dt>効くとされる規制</dt><dd>政府調達の禁止・機器の排除</dd>
+                  <dt>被害の形</dt><dd>誰が写ったかを本人が知らないまま蓄積される</dd>
+                </dl>
+              </div>
+            </div>
+            <div class="route-col">
+              <div class="route-label">点の監視</div>
+              <div class="route-head">特定の一台に忍び込むソフト</div>
+              <div class="route-body">
+                端末に侵入し、通話・位置・メッセージ・マイクを取得する商用スパイウェア。NSO Groupの「Pegasus」、Intellexaの「Predator」、Paragonの「Graphite」が代表的で、供給の中心はイスラエル系企業群である。
+                <dl>
+                  <dt>買い手</dt><dd>情報機関、法執行機関</dd>
+                  <dt>値段の桁</dt><dd>非公開。標的1件あたりの課金が一般的</dd>
+                  <dt>効くとされる規制</dt><dd>制裁・輸出許可・エンティティリスト</dd>
+                  <dt>被害の形</dt><dd>外部の調査で見つかるまで、存在しないことになる</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+
+          <div class="article-question">
+            <p>制裁も、調達禁止も、大統領令も出そろった。輸出許可は国家が一件ずつ審査している。それでも監視技術の輸出は止まっていない。規制は、どこで空振りしているのか。</p>
+          </div>
+
+          <div class="label-eyebrow">3つの論点</div>
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">規制の主語が、供給側に寄っている</div>
+              <div class="factor-desc">制裁も禁輸も、売る側を対象にしている。だが買う側の需要は制裁では消えない。一社が消えれば、別の社が同じ需要に応える。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">同じ技術が、犯罪捜査にも弾圧にも使える</div>
+              <div class="factor-desc">顔認証も端末侵入も、テロ捜査の道具としては各国が正当だと認めている。用途で線を引くしかないが、用途は納入後に決まる。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">規制を書く側が、使う側でもある</div>
+              <div class="factor-desc">乱用は権威主義国だけの話ではない。欧州の域内でも記者が標的にされ、アメリカでは制裁がいったん科されたのち解除されている。</div>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">用語解説</div>
+          <div class="glossary-grid">
+            <div class="glossary-card">
+              <div class="glossary-term">安全都市（Safe City）</div>
+              <div class="glossary-def">カメラ・顔認証・通信網・管制システムを都市に一括導入するパッケージ商品。Huaweiが公共安全の解決策として売り込んできた。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">ゼロクリック攻撃</div>
+              <div class="glossary-def">標的が操作しなくても端末に侵入できる攻撃手法。Pegasusはこの方式でiOS・Androidに入り込むとされ、気づく機会がほとんど残らない。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">エンティティリスト</div>
+              <div class="glossary-def">アメリカ商務省が管理する輸出規制の対象企業リスト。掲載されるとアメリカ製の技術を調達できなくなる。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">大統領令14093</div>
+              <div class="glossary-def">2023年3月27日にバイデン大統領が署名した命令。国家安全保障上の危険をもたらす商用スパイウェアの連邦政府による使用を禁じる。ただし全面禁止ではなく、連邦政府の調達に限った条件つきの制限にとどまる。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">防衛輸出管理局（DECA）</div>
+              <div class="glossary-def">イスラエル国防省の輸出許可機関。Pegasusのような製品の国外販売にこの許可が要り、販売は商取引であると同時に外交判断でもある。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">脅威通知（Threat Notification）</div>
+              <div class="glossary-def">Appleが2021年後半に始めた、国家が関与する高度な標的型攻撃の対象になった可能性のある利用者への通知。</div>
+            </div>
+          </div>
+
+          <figure class="article-figure" style="margin:2.5rem 0 0;">
+            <img src="../../../image/articles/surveillance-exports-city-cctv-pole.jpg" alt="昼間の住宅街の角。街灯と道路標識と小型の監視カメラ2台が同じ電柱に取り付けられ、背後のバルコニーには洗濯物が干されている" loading="lazy">
+            <figcaption>街灯や標識と同じ支柱に、同じ金具で取り付けられている。監視が「例外的な措置」ではなく都市の標準装備になるとき、それは反対の対象ですらなくなる。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 暴露と制裁の10年、そしてその後</h2>
+
+          <p class="lead">この10年、監視技術の乱用はほぼ一定のリズムで暴かれてきた——調査機関が見つけ、報道が広がり、政府が制裁を科す。だが2025年以降、リズムの後半（制裁の側）がほどけ始めている。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2016年8月</div>
+              <div class="timeline-content">
+                <h4>1通のSMSから — 一人の活動家が、三つの製品に狙われていた</h4>
+                <p>人権活動家アフメド・マンスールの携帯に届いた不審なリンクを、トロント大学の研究機関シチズン・ラボが解析するとNSO GroupのPegasusだと判明した。同ラボは既に2012年にFinFisher、2014年にHacking Teamの運用網も記録しており、<strong>マンスールは過去にその両方の標的でもあった</strong>。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">同一人物が三製品の標的に</span>
+                  <span class="reaction-chip">iPhoneの未知の脆弱性</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">2018年9月</div>
+              <div class="timeline-content">
+                <h4>45か国 — 一社の製品が、世界地図に広がっていた</h4>
+                <p>シチズン・ラボが2年間のインターネット走査の結果を公表し、Pegasusの運用に関係する痕跡が<strong>45か国</strong>で見つかった——個別の事件でなく、市場として存在することが示された。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">走査で痕跡を追跡</span>
+                  <span class="reaction-chip">市場として可視化</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-neutral"></div>
+              <div class="timeline-date">2019年</div>
+              <div class="timeline-content">
+                <h4>もう一方の輸出路 — 都市ごと納入するモデルが数字になる</h4>
+                <p>カーネギー国際平和財団の調査で、少なくとも75か国がAI監視技術を導入していると報告された（供給元別の内訳は04参照）。同じ年、ウガンダはHuaweiの顔認証システムに<strong>1億2,600万ドル</strong>を投じている。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">75か国が導入</span>
+                  <span class="reaction-chip">Huaweiは50か国</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2021年7〜11月</div>
+              <div class="timeline-content">
+                <h4>ペガサス・プロジェクトと、エンティティリスト入り</h4>
+                <p>国際報道連合がPegasusの標的候補とされる電話番号リストをもとに調査を公表し、各国の記者・政治家が並んでいたことを報じた。同年11月、アメリカ商務省はNSO GroupとCandiruを<strong>エンティティリスト</strong>に追加した。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">国際報道連合の調査</span>
+                  <span class="reaction-chip">米国技術から遮断</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-neutral"></div>
+              <div class="timeline-date">2023年3月</div>
+              <div class="timeline-content">
+                <h4>大統領令14093 — 「買わない」と決めることの意味</h4>
+                <p>バイデン大統領が、商用スパイウェアの連邦政府による使用を禁じる大統領令14093に署名した（定義は01参照）。狙いは自国の職員の保護と、<strong>業界への需要そのものの抑制</strong>である。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">需要側を絞る規制</span>
+                  <span class="reaction-chip">全面禁止ではない</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2024年3月・9月</div>
+              <div class="timeline-content">
+                <h4>Intellexaへの制裁 — 「説明責任を避けるための企業の網」</h4>
+                <p>アメリカ財務省がPredatorを手がけるIntellexa連合と創業者タル・ディリアンらを制裁対象に指定し、この連合を「責任の所在をぼかすために設計された不透明な企業の網」だと説明した。<strong>制裁の対象が「会社」でなく「網」だという認識は、この時点ですでにあった。</strong></p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">創業者個人を指定</span>
+                  <span class="reaction-chip">分散した企業構造</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2025年1〜6月</div>
+              <div class="timeline-content">
+                <h4>イタリア — 民主国家の内側で記者が狙われる</h4>
+                <p>1月、WhatsAppが約90人の利用者にParagonの「Graphite」で狙われたと通知した。6月にはシチズン・ラボとアムネスティが記者フランチェスコ・カンチェッラートらの被害を確認、議会の監督委員会が使用を認めた報告ののち、<strong>Paragonは契約を打ち切った</strong>。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">記者5人が標的に</span>
+                  <span class="reaction-chip">カナダはHikvision排除</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2025年10〜12月</div>
+              <div class="timeline-content">
+                <h4>反転が始まる — 差止命令、米資本による買収、そして制裁解除</h4>
+                <p>10月、連邦地裁がNSOにWhatsAppを標的にすることを恒久的に禁じる命令を出した。同じ月、<strong>アメリカの投資家グループがNSOの支配権を取得した</strong>——ブラックリスト企業が、アメリカ資本の会社になった。12月には財務省がIntellexa関連の制裁の一部を解除する。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">恒久的差止命令</span>
+                  <span class="reaction-chip">制裁の一部が解除</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2026年1〜8月</div>
+              <div class="timeline-content">
+                <h4>命令が効かないことが、記録に残る</h4>
+                <p>1月28日に差止命令が発効。だがNSOに関連する活動は<strong>2月3日から7日</strong>にかけて再開し、4月にも第二波があった。6月8日、Metaは法廷侮辱を申し立てた（上院の追及は03参照）。「面の監視」側でも6月26日、連邦通信委員会がHuawei・Hikvision・Dahuaの<strong>旧型機器にも輸入認可を認めない措置</strong>を決めた。そして8月13日、Appleの通知が110か国に届く。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">発効6日後に再開</span>
+                  <span class="reaction-chip">法廷侮辱の申立て</span>
+                  <span class="reaction-chip">旧型機器も輸入禁止へ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/surveillance-exports-trade-show-booth.jpg" alt="セキュリティ技術見本市の会場。ガラスの展示ケースに監視カメラとレンズが小売商品のように並び、背後には大型スクリーンの出展ブースとぼやけた来場者が見える" loading="lazy">
+            <figcaption>これは陰謀ではなく、産業である。監視機器は見本市で仕様と価格を掲げて売買され、商談は各国の警察機構や内務省と結ばれる。暴露と制裁が繰り返されても、売る場所そのものはなくなっていない。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 6つの視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>6つの視点 — 売る側、買う側、規制する側、見つける側</h2>
+
+          <p class="lead">この産業には、悪役と被害者だけがいるわけではない。売る国には売る理屈が、買う国には買う理由がある。6つの立場を、それぞれの言い分のまま並べる。</p>
+
+          <div class="tabs-wrap">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-cards">カードで読む</button>
+              <button class="tab-btn" data-tab="tab-table">表で比べる</button>
+            </div>
+
+            <div class="tab-pane active" id="tab-cards">
+              <div class="perspectives-grid">
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">中国</span></div>
+                  <div class="pull-quote">「売っているのは治安の設備だ。どう使うかは、その国が決めることだ」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    Huawei・Hikvision・Dahuaを軸に、都市インフラを一括納入するモデルを広げてきた（規模は04参照）。北京の立場は「公共安全のための輸出であり、運用は購入国の主権に属する」というものだ。アフリカ複数国での政敵追跡関与の報道を、企業側は否定している。
+                  </div>
+                  <div class="interests">最大の関心：輸出産業の規模維持と、「治安の技術」を国際標準に近づけること。</div>
+                  <div class="role-badge">— 面を売る側</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">イスラエル</span></div>
+                  <div class="pull-quote">「輸出は国家が一件ずつ審査している。無制限に売っているわけではない」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    アラブ首長国連邦とバーレーンには輸出許可が下り、ウクライナには2019年以降下りなかったと報じられる——<strong>許可制は歯止めであると同時に、外交の道具でもある。</strong>NSOは顧客を限られた国家機関に限ると説明するが、確認された運用の痕跡は45か国に及んだ（詳細は02参照）。
+                  </div>
+                  <div class="interests">最大の関心：外交カードとしての価値と、国内産業の維持。</div>
+                  <div class="role-badge">— 点を許可する側</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">導入国（グローバルサウス）</span></div>
+                  <div class="pull-quote">「押しつけられたのではない。安くて早いから、買ったのだ」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    ウガンダは1億2,600万ドルでHuaweiの顔認証システムを導入した。エクアドルのECU-911は中国開発銀行の2億4,000万ドルの融資で作られ、担保は石油の供給契約で主権保証は伴わなかった——安く早く、人権を条件にされない資金がつく。<strong>ただし効果が検証された形跡は乏しく</strong>、エクアドルの殺人件数は2016年の約1,000件から2022年には4,800件を超えた。
+                  </div>
+                  <div class="interests">最大の関心：目に見える治安対策の成果と、条件の緩い資金調達。</div>
+                  <div class="role-badge">— 選んで買った側</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">アメリカ</span></div>
+                  <div class="pull-quote">「危険な製品は政府が使わない。だが、産業を根絶するとは言っていない」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    エンティティリスト・大統領令14093・Intellexa制裁と、世界で最も細かい網を張ってきたのはアメリカである（詳細は02参照）。だが2025年10月、NSOの支配権をアメリカの投資家グループが取得し、12月にはIntellexa関連の制裁も一部解除された。<strong>2026年2月、上院銀行委員会が説明を求めている。</strong>
+                  </div>
+                  <div class="interests">最大の関心：自国の職員と市民が標的にされないこと。産業の消滅ではない。</div>
+                  <div class="role-badge">— 規制の主体、かつ買い手</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">欧州</span></div>
+                  <div class="pull-quote">「規範を書いてきたのは我々だ。そして、破ってきたのも我々の中にいる」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    デュアルユース規則の改定で人権配慮を輸出管理に組み込み、欧州議会は2022年に特別委員会を設置した。だが2025年、イタリアでParagonの「Graphite」により記者が標的にされた（詳細は02参照）。<strong>契約は打ち切られたが、2026年4月時点で捜査に非協力と報じられている</strong>——規範を書く場所と乱用の現場が、同じ域内にある。
+                  </div>
+                  <div class="interests">最大の関心：法の支配の信頼性と、加盟国の安全保障権限との折り合い。</div>
+                  <div class="role-badge">— 書いた側が、使っていた</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">調査機関・プラットフォーム</span></div>
+                  <div class="pull-quote">「見つけるまで、その被害は存在しないことになっている」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    シチズン・ラボ、アムネスティ・インターナショナル、そしてAppleとMetaの脅威分析チーム——この産業の被害は、外部の調査によってしか可視化されない（規模は04参照）。<strong>ただし可視化と救済は別だ。</strong>WhatsApp対NSOの訴訟は、提訴から判決まで5年以上を要した。
+                  </div>
+                  <div class="interests">最大の関心：被害の記録を残すことと、企業と政府に説明責任を負わせること。</div>
+                  <div class="role-badge">— 見つける側</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-table">
+              <div style="overflow-x:auto;">
+                <table class="compare-table">
+                  <thead>
+                    <tr><th>立場</th><th>基本スタンス</th><th>最大の主張</th><th>最大の関心事</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>中国</td><td>面を売る側</td><td>治安インフラの提供であり、運用は購入国の主権</td><td>輸出産業の規模と、運用モデルの標準化</td></tr>
+                    <tr><td>イスラエル</td><td>点を許可する側</td><td>輸出は国家が一件ずつ審査している</td><td>外交カードとしての価値と産業の維持</td></tr>
+                    <tr><td>導入国（グローバルサウス）</td><td>選んで買った側</td><td>押しつけではなく、安く早いから購入した</td><td>目に見える治安対策と、条件の緩い資金</td></tr>
+                    <tr><td>アメリカ</td><td>規制の主体、かつ買い手</td><td>危険な製品は使わないが、産業の根絶は目的でない</td><td>自国の職員と市民が標的にされないこと</td></tr>
+                    <tr><td>欧州</td><td>書いた側が、使っていた</td><td>規範を整備したが、域内で乱用が確認された</td><td>法の支配の信頼性と加盟国の権限の折り合い</td></tr>
+                    <tr><td>調査機関・プラットフォーム</td><td>見つける側</td><td>見つけるまで被害は存在しないことになる</td><td>被害の記録と、説明責任の追及</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure" style="margin-top:2rem;">
+            <img src="../../../image/articles/surveillance-exports-journalist-phone.jpg" alt="薄暗い部屋の木製デスクに画面を上にして置かれたスマートフォンの接写。横にノートとICレコーダーがあり、一灯のランプの光が机の表面を斜めに照らしている" loading="lazy">
+            <figcaption>もう一方の監視は、この一台の中で起きる。街を覆うカメラと違って目に見えず、通知が届くまで本人にも分からない。Appleが2026年8月に110か国へ送った警告は、その「見えなさ」を外から破る数少ない手段である。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ・統計 ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 二つの輸出路の、それぞれの広がり</h2>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>面の監視 — 供給元別に見た導入国の数（2019年時点）</h4>
+              <div style="position:relative;height:250px;margin-top:1rem;">
+                <canvas id="supplierChart"></canvas>
+              </div>
+              <p class="chart-note">Huawei一社が少なくとも50か国にAI監視技術を供給し、非中国系最大のNECの14か国を大きく引き離す（合計は下のstat参照）。調査時点は2019年で、その後の広がりは反映していない。<br>出典：カーネギー国際平和財団「The Global Expansion of AI Surveillance」（2019年9月）</p>
+            </div>
+
+            <div class="data-card">
+              <h4>点の監視 — 調査で特定された「疑わしい政府顧客」の広がり</h4>
+              <div style="position:relative;height:250px;margin-top:1rem;">
+                <canvas id="spywareChart"></canvas>
+              </div>
+              <p class="chart-note">いずれもトロント大学シチズン・ラボが公表した「顧客とみられる政府がある国」の数。年次も手法も異なり単純比較はできないが、どの製品も数十か国規模で使われてきたことが分かる（Graphiteの6か国は2025年3月時点）。<br>出典：シチズン・ラボの個別報告 — Hide and Seek（2018年9月）／Mapping FinFisher's Continuing Proliferation（2015年10月）／Running in Circles（2020年12月）／Mapping Hacking Team's "Untraceable" Spyware（2014年2月）／A First Look at Paragon（2025年3月）</p>
+            </div>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">110か国</div>
+              <div class="stat-desc">Appleが2026年8月13日に脅威通知を送った国の数。累計の通知先は150か国を超えた</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">63か国</div>
+              <div class="stat-desc">中国企業に連なるAI監視技術が入っている国の数。うち36か国は一帯一路の署名国（2019年時点）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">1億2,600万ドル</div>
+              <div class="stat-desc">ウガンダがHuaweiの顔認証を含む監視システムに投じた額（2019年）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">6日</div>
+              <div class="stat-desc">恒久的差止命令の発効（2026年1月28日）から、Metaが違反行為の再開を記録した2月3日までの日数</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 規制は、どこで空振りしているのか</h2>
+
+          <p class="lead">制裁の網は年々細かくなっている。それでも輸出は続いている——安く早い治安対策として、効果不問のまま買われ続けるからだ（実例は03「導入国」参照）。加えて、規制の設計そのものに埋め込まれた3つのずれが、空振りを生む。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">① 会社は消せても、人は残る — 供給側を叩く規制の構造的な限界</div>
+            <div class="insight-text">
+              アメリカ財務省がIntellexa連合を制裁したとき、対象にしたのは<strong>「不透明な企業の網」</strong>だった（詳細は02参照）。侵入技術の中核にあるのは、工場でも生産ラインでもなく、脆弱性を見つけて武器化できる少数の技術者である。会社が制裁で機能を失っても、人材と知見は別の法人へ移る。<strong>規制が「法人」を単位にしている限り、対象は名前を変えるだけで規制の外に出られる。</strong>
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">② 差止命令の6日後 — 命令が効かなかったことが、記録に残った</div>
+            <div class="insight-text">
+              2026年に起きたことは、この構造を最も分かりやすく示している。WhatsAppへの恒久的差止命令は<strong>発効からわずか6日</strong>で破られ、4月の第二波を経てMetaは6月8日に法廷侮辱を申し立てた（詳細は02参照）。<strong>司法の最も強い手段である差止命令ですら、それだけでは動作を止められなかったという事実が、公的な記録として残ったことになる。</strong>
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">③ 規制を書く側が、使う側でもある — 一貫性の欠如が規範を弱める</div>
+            <div class="insight-text">
+              この産業を「権威主義国の道具」として語ると、事実の半分を落とすことになる。イタリアでは記者を標的にした主体が自国の情報機関だったと確認され、アメリカでは制裁を解除した側が同時に規制を書く側でもある（詳細は03参照）。<strong>規制する側が同時に買う側でもあり、制裁が政権の判断で戻る余地を残しているとき、その規制は他国に対する規範としては機能しにくい。</strong>「あなたの国では乱用だが、我々の国では捜査である」という線引きは、外からは説得力を持たない。
+            </div>
+          </div>
+
+          <p class="closing">
+            監視技術の輸出を止める方法は、供給側を狙う三つの手段——制裁・調達禁止・輸出許可——に集中してきた。だが2026年に見えてきたのは、供給側だけを対象にする限り、法人は名を変え、命令は6日で破られ、需要は残るという事実である。効きうるとすれば、<strong>買う側を見えるようにすること</strong>——どの機関が何を、いくらで調達したのかを開示させる方向だろう。その試みはすでに動いている。イギリスとフランスが2024年に立ち上げたポールモール・プロセスは、国家向け行動規範を2025年4月に採択し27か国が署名した（産業側は2026年11月公表予定）。<strong>ただしいずれも法的拘束力を持たず、守るかどうかは各国と各社の自主性に委ねられている。</strong>皮肉にも、いま被害を可視化しているのは政府ではなく、大学の研究機関と端末を作る企業である。Appleの通知が110か国に届いたという事実は、この産業の広がりと同時に、それを数えているのが誰かも示している。
+          </p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/surveillance-exports-control-room.jpg" alt="自治体の監視管制室。湾曲した壁面を数十の街頭カメラ映像が埋め、コンソールに座る2人のオペレーターを背後から捉えている。部屋はモニタの光だけで照らされている" loading="lazy">
+            <figcaption>輸出された設備は、最後にこうした一室へ集まる。何を映すかを決めるのは納入した企業ではない。決めるのは、この部屋を運用する側だ。だからこそ規制は、売った者だけでなく、この部屋を持つ者に向けられる必要がある。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://citizenlab.ca/2018/09/hide-and-seek-tracking-nso-groups-pegasus-spyware-to-operations-in-45-countries/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">シチズン・ラボ — Hide and Seek：45か国でのPegasus運用の追跡</div>
+                <div class="source-desc">2年間のインターネット走査でPegasusの運用インフラを特定し、45か国に痕跡があることを示した調査。</div>
+                <div class="source-country">【トロント大学の研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://citizenlab.ca/research/running-in-circles-uncovering-the-clients-of-cyberespionage-firm-circles/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">シチズン・ラボ — Running in Circles：Circlesの顧客</div>
+                <div class="source-desc">電話網の信号方式の欠陥を利用する監視企業Circlesについて、25か国の政府顧客を特定した報告。</div>
+                <div class="source-country">【トロント大学の研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://citizenlab.ca/2015/10/mapping-finfishers-continuing-proliferation/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">シチズン・ラボ — FinFisherの拡散状況の地図化（研究報告 No.64）</div>
+                <div class="source-desc">匿名化プロキシの背後を特定する手法で、32の政府がFinFisherを運用している可能性を示した2015年の報告。</div>
+                <div class="source-country">【トロント大学の研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://citizenlab.ca/2014/02/mapping-hacking-teams-untraceable-spyware/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">シチズン・ラボ — Hacking Teamの「追跡不能な」スパイウェアの地図化</div>
+                <div class="source-desc">プロキシ網の解析により、21の政府がHacking TeamのRCSの現在または過去の利用者と疑われることを示した報告。</div>
+                <div class="source-country">【トロント大学の研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://citizenlab.ca/research/a-first-look-at-paragons-proliferating-spyware-operations/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">シチズン・ラボ — Paragonのスパイウェア運用の初期調査</div>
+                <div class="source-desc">Paragonの「Graphite」の基盤・顧客・被害者を分析し、複数国での運用疑いを示した2025年の報告。</div>
+                <div class="source-country">【トロント大学の研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://citizenlab.ca/italian-prosecutors-confirm-journalist-was-hacked-with-paragon-spyware/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">シチズン・ラボ — イタリア検察が記者への侵入を確認</div>
+                <div class="source-desc">イタリア人記者がParagonのスパイウェアで実際に侵入されていたことが公的に確認された経緯。</div>
+                <div class="source-country">【トロント大学の研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.amnesty.org/en/latest/news/2025/06/italy-new-case-of-journalist-targeted-with-graphite-spyware-confirms-widespread-use-of-unlawful-surveillance/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">アムネスティ・インターナショナル — イタリアの記者標的事件</div>
+                <div class="source-desc">Graphiteによる新たな被害を法医学的に確認し、違法な監視の広がりを指摘した声明。</div>
+                <div class="source-country">【国際人権団体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://carnegieendowment.org/research/2019/09/the-global-expansion-of-ai-surveillance" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">カーネギー国際平和財団 — AI監視の世界的拡大</div>
+                <div class="source-desc">176か国を対象にAI監視技術の導入と供給元を集計した調査。本記事のチャートAの出典。</div>
+                <div class="source-country">【アメリカのシンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.federalregister.gov/documents/2021/11/04/2021-24123/addition-of-certain-entities-to-the-entity-list" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">連邦官報 — エンティティリストへの企業追加（2021年11月）</div>
+                <div class="source-desc">NSO GroupとCandiruを含む企業をアメリカの輸出規制リストに加えた官報の告示。</div>
+                <div class="source-country">【アメリカ政府の公報】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.federalregister.gov/documents/2023/03/30/2023-06730/prohibition-on-use-by-the-united-states-government-of-commercial-spyware-that-poses-risks-to" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">連邦官報 — 大統領令14093の全文</div>
+                <div class="source-desc">国家安全保障上の危険がある商用スパイウェアの連邦政府による使用を禁じる大統領令。</div>
+                <div class="source-country">【アメリカ政府の公報】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://therecord.media/treasury-sanctions-intellexa-removed" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Record — 財務省がIntellexa関連3個人の制裁を解除</div>
+                <div class="source-desc">Predatorに関わったとして制裁を科された個人が名簿から外された経緯を報じた記事。</div>
+                <div class="source-country">【サイバーセキュリティ専門報道】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://techcrunch.com/2025/10/10/spyware-maker-nso-group-confirms-acquisition-by-us-investors/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">TechCrunch — NSO Groupがアメリカ投資家による買収を認める</div>
+                <div class="source-desc">エンティティリストに載ったままのNSOの支配権が、アメリカの投資家グループに移った経緯。</div>
+                <div class="source-country">【アメリカのテクノロジー報道】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://techcrunch.com/2026/04/28/paragon-is-not-collaborating-with-italian-authorities-probing-spyware-attacks-report-says/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">TechCrunch — Paragonがイタリア当局の捜査に非協力</div>
+                <div class="source-desc">契約打ち切り後も、被害の技術的確認にParagonが応じていないと報じた2026年4月の記事。</div>
+                <div class="source-country">【アメリカのテクノロジー報道】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.rferl.org/a/exclusive-safe-city-china-surveillance-huawei-facial-recognition/33501155.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ラジオ・フリー・ヨーロッパ — セルビアの「安全都市」拡張</div>
+                <div class="source-desc">流出文書をもとに、セルビアが中国製監視システムを拡張していた経緯を報じた調査報道。</div>
+                <div class="source-country">【アメリカ議会が出資する報道機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://privacyinternational.org/case-study/3969/huawei-infiltration-uganda" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">プライバシー・インターナショナル — ウガンダにおけるHuawei</div>
+                <div class="source-desc">1億2,600万ドルの監視システム導入と、その運用をめぐる懸念をまとめた事例研究。</div>
+                <div class="source-country">【イギリスのプライバシー擁護団体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://freedomhouse.org/report/freedom-net/2025/uncertain-future-global-internet" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">フリーダム・ハウス — Freedom on the Net 2025</div>
+                <div class="source-desc">72か国を対象に、監視・検閲を含むインターネット自由度を評価した年次報告。15年連続の低下を記録。</div>
+                <div class="source-country">【アメリカの国際人権監視団体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.sdmmag.com/articles/101401-fcc-expands-ban-on-hikvision-dahua-and-other-chinese-firms" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">SDM Magazine — FCCがHikvision・Dahuaらへの規制を拡大</div>
+                <div class="source-desc">2026年6月26日の決定で、旧型機器にも輸入認可を認めない措置に踏み切った経緯を伝えた業界報道。</div>
+                <div class="source-country">【アメリカのセキュリティ業界誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.justsecurity.org/113115/agreement-spyware-regulation-pall-mall-process/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Just Security — ポールモール・プロセスにおけるスパイウェア規制の合意</div>
+                <div class="source-desc">英仏が主導する多国間の枠組みと、2025年4月に採択された国家向け行動規範の内容と限界を分析。</div>
+                <div class="source-country">【国際法・安全保障の専門メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://9to5mac.com/2026/08/13/apple-sends-fresh-wave-of-mercenary-spyware-warnings-worldwide/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">9to5Mac — Appleが110か国へ脅威通知</div>
+                <div class="source-desc">2026年8月13日の一斉通知と、ロック画面での警告表示に変わった経緯を伝えた記事。</div>
+                <div class="source-country">【Apple専門の報道サイト】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/technology/index.html">テクノロジー</a></div>
+          <div>2026年8月25日</div>
+          <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/technology/index.html">テクノロジー一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 供給元別のAI監視技術導入国数（横棒）
+  (function() {
+    var ctx = document.getElementById('supplierChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['Huawei（中国）', 'NEC（日本）', 'IBM（アメリカ）', 'Palantir（アメリカ）', 'Cisco（アメリカ）'],
+        datasets: [{
+          // 出典：Carnegie Endowment for International Peace
+          //       "The Global Expansion of AI Surveillance"（2019年9月）
+          // https://carnegieendowment.org/research/2019/09/the-global-expansion-of-ai-surveillance
+          // 原記述："Huawei alone is responsible for providing AI surveillance technology to at least
+          //          fifty countries worldwide. No other company comes close."
+          //         "The next largest non-Chinese supplier of AI surveillance tech is Japan's NEC
+          //          Corporation (fourteen countries)."
+          //         "IBM (eleven countries), Palantir (nine countries), and Cisco (six countries)."
+          // 記載値をそのまま使用。中国系全体の63か国は本文・注記で扱い、グラフには入れない。
+          data: [50, 14, 11, 9, 6],
+          backgroundColor: [
+            'rgba(128,172,216,0.85)',
+            'rgba(136,144,160,0.45)',
+            'rgba(136,144,160,0.45)',
+            'rgba(136,144,160,0.45)',
+            'rgba(136,144,160,0.45)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: { label: function(c) { return ' 少なくとも' + c.parsed.x + 'か国'; } }
+          }
+        },
+        scales: {
+          x: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, stepSize: 10, callback: function(v) { return v + 'か国'; } }
+          },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // スパイウェア別・調査で特定された政府顧客のいる国の数（横棒）
+  (function() {
+    var ctx = document.getElementById('spywareChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['Pegasus / NSO（2018年）', 'FinFisher（2015年）', 'Circles（2020年）', 'Hacking Team（2014年）', 'Graphite / Paragon（2025年）'],
+        datasets: [{
+          // 出典：すべてトロント大学シチズン・ラボの公表報告
+          // ① Pegasus：https://citizenlab.ca/2018/09/hide-and-seek-tracking-nso-groups-pegasus-spyware-to-operations-in-45-countries/
+          //    原記述："identify 45 countries in which operators of NSO Group's Pegasus spyware may be conducting operations"
+          // ② FinFisher：シチズン・ラボ研究報告 No.64「Pay No Attention to the Server Behind the Proxy:
+          //    Mapping FinFisher's Continuing Proliferation」（2015年10月）
+          //    https://citizenlab.ca/2015/10/mapping-finfishers-continuing-proliferation/
+          //    原記述："32 governments across the world may be deploying the FinFisher software"
+          // ③ Circles：https://citizenlab.ca/research/running-in-circles-uncovering-the-clients-of-cyberespionage-firm-circles/
+          //    原記述："25 governments around the world are using tools developed by the Israeli company Circles"（2020年12月）
+          // ④ Hacking Team：シチズン・ラボ研究報告 No.33「Mapping Hacking Team's "Untraceable" Spyware」（2014年2月）
+          //    https://citizenlab.ca/2014/02/mapping-hacking-teams-untraceable-spyware/
+          //    原記述："identifies 21 governments that are suspected to be current or former users of RCS"
+          // ⑤ Graphite / Paragon：https://citizenlab.ca/research/a-first-look-at-paragons-proliferating-spyware-operations/
+          //    原記述：suspected Paragon deployments linked to Australia, Canada, Cyprus, Denmark, Israel and Singapore（＝6か国／2025年3月）
+          // 各調査は年次も手法も異なるため、ラベルに公表年を明示している。
+          data: [45, 32, 25, 21, 6],
+          backgroundColor: [
+            'rgba(128,172,216,0.85)',
+            'rgba(128,172,216,0.55)',
+            'rgba(128,172,216,0.55)',
+            'rgba(128,172,216,0.55)',
+            'rgba(128,172,216,0.55)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: { label: function(c) { return ' ' + c.parsed.x + 'か国'; } }
+          }
+        },
+        scales: {
+          x: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, stepSize: 10, callback: function(v) { return v + 'か国'; } }
+          },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -109,6 +109,8 @@
 | 2026-07-01 | security | 見えない戦争 — AIが加速させる情報操作の世界地図 | 2026-07-01-information-warfare |
 | 2026-07-14 | middle-east | 国家なき最大の民族 — クルド人はなぜ独立できないのか | 2026-07-14-kurds-stateless |
 | 2026-07-15 | resources | 海底のゴールドラッシュ — ルールなき深海に、誰が最初に手を伸ばすか | 2026-07-15-deep-sea-mining |
+| 2026-08-04 | security | 「裏庭」と呼ばれた大陸 — アメリカはなぜ、大統領を連れ去れたのか | 2026-08-04-latin-america-intervention |
+| 2026-08-25 | technology | 「安全」という商品 — 街を覆うカメラと、記者を狙うソフト | 2026-08-25-surveillance-exports |
 
 ---
 

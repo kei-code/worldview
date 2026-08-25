@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2026年1月、アメリカ軍がカラカスを空爆しベネズエラ大統領マドゥロを拘束、ニューヨークの法廷に立たせた。現職の国家元首の連行は1989年のパナマ以来。だが中南米は非難声明ひとつ出せなかった。地域はなぜ割れたのかを6つの視点で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/security/2026-08-04-latin-america-intervention/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="「裏庭」と呼ばれた大陸 — アメリカはなぜ、大統領を連れ去れたのか — WorldView">
+  <meta property="og:description" content="2026年1月、アメリカ軍はベネズエラ大統領を連れ去りニューヨークの法廷に立たせた。だが中南米は、非難声明ひとつ出せなかった。地域はなぜ割れたのかを6つの視点で読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/security/2026-08-04-latin-america-intervention/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/latin-america-intervention-hero-warship-night.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="「裏庭」と呼ばれた大陸 — アメリカはなぜ、大統領を連れ去れたのか — WorldView">
+  <meta name="twitter:description" content="現職の大統領が他国の軍に連れ去られ、隣国はそれを止められなかった。中南米はなぜ一つの声で反対できなかったのか。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/latin-america-intervention-hero-warship-night.jpg">
+  <title>「裏庭」と呼ばれた大陸 — アメリカはなぜ、大統領を連れ去れたのか — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色は安全保障の --accent2（テラコッタ）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/latin-america-intervention-hero-warship-night.jpg');
+      background-size: cover; background-position: center 48%;
+      filter: brightness(1.28) contrast(1.05) saturate(1.02);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.28) 0%, rgba(14,17,23,0.46) 45%, rgba(14,17,23,0.84) 100%);
+    }
+    .article-hero.has-image .container {
+      position: relative; z-index: 1; width: 100%; transform: translateY(-28px);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #c6bab6; margin-top: 1.5rem; max-width: 580px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent2); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent2) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent2) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent2) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    /* セクション番号：雑誌風の大きな薄い数字（既存記事と同じ処方） */
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent2); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       カード再設計 — テーマ色の淡いウォッシュで区別する
+       共有CSSは触らず、この記事の .article-body 配下だけを上書きする
+       原則：枠なし／角丸0／影なし／グローなし／浮きなし
+       ========================================================== */
+
+    /* --- 視点＝テーマ色を薄く敷いた地で区別する --- */
+    .article-body .perspectives-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.6rem 2.4rem;
+    }
+    .article-body .perspective-card {
+      position: relative;
+      background: rgba(184,120,104,0.06);
+      border: none; border-radius: 0;
+      padding: 1.5rem 1.6rem 1.6rem;
+      transition: background 0.12s linear;
+    }
+    .article-body .perspective-card:hover {
+      transform: none; box-shadow: none;
+      background: rgba(184,120,104,0.10);
+    }
+    /* 共有CSSの上端スイープ光（グロー演出）を無効化 */
+    .article-body .perspective-card::before { display: none; }
+
+    .article-body .perspective-card .country-header { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .country-name {
+      font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em;
+    }
+    .pull-quote {
+      font-size: 0.98rem; font-weight: 600; line-height: 1.75;
+      color: var(--text); margin-bottom: 1rem;
+    }
+    .article-body .perspective-card .key-claim { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .interests {
+      border-top: 1px solid var(--border-subtle); padding-top: 0.8rem;
+    }
+    /* 閉じ括弧の直後に置く帰属行 */
+    .role-badge {
+      display: block; text-align: right; margin-top: 0.9rem;
+      font-size: 0.73rem; letter-spacing: 0.05em; color: var(--accent2);
+    }
+
+    /* --- 比較表：外枠・背景・角丸を外し、ヘッダ下の罫だけ残す --- */
+    .article-body .compare-table { background: none; border: none; border-radius: 0; }
+    .article-body .compare-table th {
+      background: none; border-bottom: 2px solid var(--accent2); color: var(--text-muted);
+    }
+    .article-body .compare-table td { border-bottom: 1px solid var(--border-subtle); }
+    .article-body .compare-table tr:hover td { background: rgba(0,0,0,0.20); }
+
+    /* --- タイムライン：中身の塗り・枠を外し、軸の罫に構造を任せる --- */
+    .article-body .timeline-item { padding-bottom: 1.7rem; border-bottom: 1px solid var(--border-subtle); }
+    .article-body .timeline-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .article-body .timeline-content {
+      background: none; border: none; border-radius: 0; padding: 0;
+    }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent2); }
+    .article-body .reaction-chip {
+      background: none; border: none; border-radius: 0;
+      border-left: 2px solid var(--border);
+      padding: 0 0 0 0.55rem; color: var(--text-dim);
+    }
+
+    /* --- データ：枠を外し、見出しを本物の見出しに戻す --- */
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .article-body .data-card {
+      background: none; border: none; border-radius: 0; padding: 0;
+    }
+    .article-body .data-card::before { display: none; }
+    .article-body .data-card:hover { border-color: transparent; }
+    .article-body .data-card h4 {
+      font-size: 0.95rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem; padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.7rem; line-height: 1.65; }
+
+    /* --- 情報源：カードをやめ、番号つきの典拠リストにする --- */
+    .article-body .sources-grid { display: block; counter-reset: src; }
+    .article-body a.source-item {
+      display: flex; gap: 1rem; align-items: baseline;
+      background: none; border: none; border-radius: 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1rem 0.2rem;
+      color: inherit; text-decoration: none;
+      counter-increment: src;
+      transition: background 0.12s linear, border-color 0.12s linear;
+    }
+    .article-body a.source-item::before {
+      content: counter(src, decimal-leading-zero);
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--accent2); flex: 0 0 auto; min-width: 1.7rem;
+    }
+    .article-body a.source-item:hover {
+      background: rgba(0,0,0,0.20); border-bottom-color: var(--accent2);
+    }
+    .article-body a.source-item:focus-visible {
+      outline: 2px solid var(--accent2); outline-offset: 2px;
+    }
+
+    /* ==========================================================
+       この記事で新規に使うブロック（もともと箱にしない）
+       ========================================================== */
+    .article-question {
+      margin: 2.2rem 0 0; padding: 1.3rem 0 1.3rem 1.3rem;
+      border-left: 2px solid var(--accent2);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent2); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent2); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 2.4rem; }
+    .glossary-card { padding: 0.9rem 0; border-bottom: 1px solid var(--border-subtle); }
+    .glossary-term { font-size: 0.83rem; font-weight: 700; margin-bottom: 0.28rem; }
+    .glossary-def { font-size: 0.78rem; color: var(--text-muted); line-height: 1.75; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent2); line-height: 1.2; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    .insight-box { border-left: 2px solid var(--border); padding-left: 1.2rem; margin-bottom: 2.2rem; }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* ==========================================================
+       アクセシビリティ・レスポンシブ
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .glossary-grid { grid-template-columns: 1fr; gap: 0; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">安全保障</span>
+      <span class="date">2026年8月4日</span>
+    </div>
+    <h1 class="article-title">「裏庭」と呼ばれた大陸<br>— アメリカはなぜ、大統領を連れ去れたのか</h1>
+
+    <div class="hero-deck">
+      2026年1月、アメリカ軍はカラカスを空爆し、ベネズエラ大統領を連れ去ってニューヨークの法廷に立たせた。国家元首が他国の軍に拘束されるのは、1989年のパナマ以来である。だが本当に異例だったのは、その後だ——<span class="deck-accent">中南米は、一つの声で反対できなかった。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">確認埋蔵量 世界1位</span>
+      <span class="hero-pill">非難声明は出せず</span>
+      <span class="hero-pill">海上攻撃で221人が死亡</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 力の行使と、それを止められなかった地域</h2>
+
+          <p class="lead">2026年1月2日の深夜から3日の未明にかけて、アメリカ軍はベネズエラの首都カラカスを含む複数の地点を空爆した。同じ夜、特殊部隊が大統領ニコラス・マドゥロと妻シリア・フローレスを拘束し、海上の艦艇へ移送する。二人はその後ニューヨークへ運ばれ、1月5日にマンハッタンの連邦地裁で麻薬テロ・武器などの罪状について無罪を主張した。</p>
+
+          <p class="lead">アメリカ国務省と司法省は、これを「戦争」とは呼んでいない。2020年3月に司法省がマドゥロを麻薬テロ容疑で起訴しており、今回はその<strong>法執行の完遂</strong>である、という立場をとる。1月5日には副大統領だったデルシー・ロドリゲスが暫定大統領に就任し、トランプ大統領は「安全で適切な移行ができるまで、我々がこの国を運営する」と述べた。</p>
+
+          <p class="lead">国連事務総長は軍事作戦において国際法の規則が尊重されなかったと懸念を表明し、中国とロシアも法的根拠を欠くと非難した。しかし——ここがこの記事の主題なのだが——<strong>当のラテンアメリカは、この件について一つの声を持てなかった</strong>。中南米カリブ海諸国共同体（CELAC）の緊急会合は、非難声明を出せないまま終わっている。</p>
+
+          <div class="article-question">
+            <p>現職の大統領が他国の軍に連れ去られ、隣国はそれを止められなかった。8か月が経ったいま、ラテンアメリカはなぜ、一つの声で反対することができなかったのか。</p>
+          </div>
+
+          <div class="label-eyebrow">3つの論点</div>
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">「戦争ではない」という位置づけ</div>
+              <div class="factor-desc">起訴が6年前に済んでいたことで、武力行使は「法執行」として語られた。宣戦布告も安保理決議も要らないというこの論法が、実際に何を可能にしたのか。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">割れた地域</div>
+              <div class="factor-desc">ブラジル・メキシコ・コロンビア・チリは強く非難した。一方でアルゼンチンら10か国が地域としての非難声明を阻んだ。分裂は偶然ではなく、構造から来ている。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">埋蔵量世界1位という賞品</div>
+              <div class="factor-desc">ベネズエラの確認原油埋蔵量は3,030億バレルで世界最大。ただし動機と結果は切り分けて考える必要がある。掘られていない資源は、それだけでは力にならない。</div>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">用語解説</div>
+          <div class="glossary-grid">
+            <div class="glossary-card">
+              <div class="glossary-term">モンロー主義</div>
+              <div class="glossary-def">1823年、アメリカ大統領ジェームズ・モンローが議会への教書で示した原則。西半球への欧州列強の干渉を認めないと宣言した。以後、アメリカが中南米への関与を正当化する枠組みとして繰り返し援用されてきた。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">トランプ系論（Donroe Doctrine）</div>
+              <div class="glossary-def">モンロー主義の現代版として、トランプ政権が掲げる西半球への介入原則。国防総省は「トランプ帰結（Trump Corollary）」として、麻薬カルテルとの戦いに中南米各国を動員する枠組みに位置づけている。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">CELAC（中南米カリブ海諸国共同体）</div>
+              <div class="glossary-def">2011年に発足した、アメリカとカナダを含まない中南米・カリブ海33か国の地域機構。今回の緊急会合では非難声明の合意に至らず、地域統合の枠組みとしての脆さが露呈した。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">Operation Southern Spear</div>
+              <div class="glossary-def">2025年9月に始まった、カリブ海と東太平洋で麻薬密輸船とされる小型船を攻撃するアメリカ軍の作戦。人権団体ワシントン・ラテンアメリカ問題事務所（WOLA）は2026年7月時点で221人が死亡したと報告している。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">外国テロ組織指定</div>
+              <div class="glossary-def">アメリカ政府が特定の組織をテロ組織として指定する制度。トランプ政権は中南米の犯罪組織およそ20団体をこの枠に入れ、軍事的な対処を正当化する根拠として用いてきた。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">PDVSA（ベネズエラ石油公社）</div>
+              <div class="glossary-def">ベネズエラの国営石油会社。外国企業との合弁事業を通じて生産を行う。長年の投資不足と制裁で生産能力が落ち込み、埋蔵量に見合わない産油量にとどまってきた。</div>
+            </div>
+          </div>
+
+          <figure class="article-figure" style="margin:2.5rem 0 0;">
+            <img src="../../../image/articles/latin-america-intervention-orinoco-refinery.jpg" alt="熱帯の低地にある老朽化した製油所。錆びた配管と貯蔵タンクが並び、曇り空にフレアスタックの炎が上がる。ひび割れたコンクリートから雑草が伸びている" loading="lazy">
+            <figcaption>争われているのは、この設備の下に眠るものだ。埋蔵量は世界一でも、掘り出す装置は長い投資不足のなかで錆びていった。埋蔵量と生産量の落差こそが、この国の政治を規定してきた。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 200年の原則が、6年の起訴状と結びつくまで</h2>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">1823年12月</div>
+              <div class="timeline-content">
+                <h4>モンロー宣言 — 「西半球への干渉を認めない」</h4>
+                <p>アメリカ大統領ジェームズ・モンローが議会への教書で、欧州列強による西半球への干渉を拒否する原則を示した。当初は独立したばかりの中南米諸国を欧州の再植民地化から守る主張だったが、のちにアメリカ自身の関与を正当化する根拠へと転じていく。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">欧州の干渉を拒否</span>
+                  <span class="reaction-chip">のちに介入の根拠へ</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">1989年12月</div>
+              <div class="timeline-content">
+                <h4>パナマ侵攻 — ノリエガを拘束し、アメリカの法廷へ</h4>
+                <p>アメリカ軍がパナマに侵攻し、実権を握っていたマヌエル・ノリエガを拘束。麻薬取引の容疑でフロリダの連邦裁判所に立たせた。<strong>他国の指導者を軍事力で連行し、自国の刑事司法にかける</strong>という形の、今回に直接つながる唯一の前例である。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">麻薬容疑での連行</span>
+                  <span class="reaction-chip">37年前の先例</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-neutral"></div>
+              <div class="timeline-date">2020年3月</div>
+              <div class="timeline-content">
+                <h4>アメリカ司法省がマドゥロを起訴 — 6年後の作戦の土台</h4>
+                <p>司法省がマドゥロを麻薬テロ、麻薬密輸、武器関連の容疑で起訴した。この時点では執行の見通しはなかったが、<strong>この起訴状の存在が、2026年の軍事作戦を「戦争」ではなく「法執行」と呼ぶための土台になる</strong>。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">麻薬テロで起訴</span>
+                  <span class="reaction-chip">法執行という枠組み</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2024年7月</div>
+              <div class="timeline-content">
+                <h4>大統領選挙 — 二つの「勝利宣言」</h4>
+                <p>大統領選挙が行われ、マドゥロが続投を宣言。一方、野党側はエドムンド・ゴンサレス・ウルティアの勝利を主張した。選挙結果をめぐる対立は決着せず、ゴンサレスは国外へ出る。国内の正統性の空白が、その後の展開の前提となった。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">結果をめぐる対立</span>
+                  <span class="reaction-chip">正統性の空白</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2025年9月</div>
+              <div class="timeline-content">
+                <h4>Operation Southern Spear 開始 — 海上での攻撃が始まる</h4>
+                <p>カリブ海と東太平洋で、麻薬密輸船とされる小型船へのアメリカ軍の攻撃が始まった。乗員は多くの場合身元が特定されないまま死亡している。国際法の専門家からは、武力紛争が存在しない以上これは人権法の問題であり、<strong>超法規的処刑にあたる</strong>という批判が相次いだ。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">小型船への攻撃</span>
+                  <span class="reaction-chip">国際法上の批判</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-neutral"></div>
+              <div class="timeline-date">2025年10月</div>
+              <div class="timeline-content">
+                <h4>マリア・コリナ・マチャドにノーベル平和賞</h4>
+                <p>ベネズエラの野党指導者マリア・コリナ・マチャドがノーベル平和賞を受賞。国内の民主化運動の象徴として国際的な地位を得た。のちに彼女はこの賞をトランプ大統領に贈るが、それが自身の帰国を後押しすることにはならなかった。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">民主化運動の象徴</span>
+                  <span class="reaction-chip">賞をトランプへ</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2026年1月2〜3日</div>
+              <div class="timeline-content">
+                <h4>Operation Absolute Resolve — 空爆と、大統領の連行</h4>
+                <p>アメリカ軍がカラカスを含む複数地点を空爆し、特殊部隊がマドゥロと妻シリア・フローレスを拘束した。トランプ大統領はアメリカ側に死傷者はなかったと述べている。二人は海上の艦艇を経てニューヨークへ移送され、<strong>1月5日</strong>にマンハッタンの連邦地裁で罪状認否に臨み、いずれも無罪を主張した。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">空爆と特殊部隊</span>
+                  <span class="reaction-chip">ニューヨークで罪状認否</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2026年1月5〜9日</div>
+              <div class="timeline-content">
+                <h4>暫定政権の発足、CELACの不調、キューバ封鎖</h4>
+                <p>副大統領だったデルシー・ロドリゲスが暫定大統領に就任。国連安保理はベネズエラとコロンビアの要請で緊急会合を開いた。一方、<strong>CELACの緊急会合はアルゼンチンら10か国が阻んで非難声明に至らなかった</strong>。同じ月、アメリカはキューバへの燃料封鎖に踏み切る。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">地域は合意できず</span>
+                  <span class="reaction-chip">キューバ燃料封鎖</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2026年3〜8月</div>
+              <div class="timeline-content">
+                <h4>石油、地震、そして移行協議</h4>
+                <p>3月にはシェブロンとシェルが、マドゥロ拘束後初となる大型の生産契約に向けた協議に入った。6月には大規模な地震が起き、6,000人を超える死者を出した。7月、WOLAは海上攻撃による死者を221人と報告。8月、アメリカが後押しする移行協議が始まったが、<strong>マチャドはそこにいない</strong>。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">石油メジャーの参入</span>
+                  <span class="reaction-chip">マチャド不在の移行協議</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/latin-america-intervention-hillside-barrio.jpg" alt="夕暮れの丘に密集するラテンアメリカの住宅街。コンクリートの家々の間に洗濯物のロープが渡され、一本の街灯が灯る。眼下には都市の灯が広がっている" loading="lazy">
+            <figcaption>首都を見下ろす丘には、これらの出来事の下でも変わらず生活が続いている。790万人がすでに国を出た一方、残った人々にとって政変は日々の物価と燃料と食料の問題として現れる。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 6つの視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>6つの視点 — 同じ出来事を、誰がどう呼んだか</h2>
+
+          <p class="lead">この作戦を「法執行」と呼ぶ者と「侵略」と呼ぶ者がいる。歓迎したのに蚊帳の外に置かれた者もいれば、非難しながら実利を守らねばならない者もいる。6つの立場を、それぞれの言い分のまま並べる。</p>
+
+          <div class="tabs-wrap">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-cards">カードで読む</button>
+              <button class="tab-btn" data-tab="tab-table">表で比べる</button>
+            </div>
+
+            <div class="tab-pane active" id="tab-cards">
+              <div class="perspectives-grid">
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">アメリカ</span></div>
+                  <div class="pull-quote">「これは戦争ではない。2020年に起訴した容疑の、法執行の完遂だ」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    国務省と司法省は、今回の作戦を武力行使ではなく長年の法執行の完了と位置づける。麻薬テロ組織の指定と6年前の起訴状があれば、宣戦布告も安保理の授権も不要だという論法である。トランプ大統領は移行が終わるまで「我々が国を運営する」と述べ、モンロー主義の現代版を公然と掲げた。
+                  </div>
+                  <div class="interests">最大の関心：麻薬流入の遮断という国内向けの成果と、西半球における影響力の再確立。</div>
+                  <div class="role-badge">— 力で決着をつけた側</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">ベネズエラ暫定政権</span></div>
+                  <div class="pull-quote">「国家の連続性を保ちながら、移行を進める責任がある」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    マドゥロ政権で副大統領を務めたデルシー・ロドリゲスが、その政権を倒した側の後ろ盾を得て暫定大統領に就いた。倒された体制のナンバー2が移行を仕切るという構図であり、旧与党の支持基盤とアメリカの要求の双方をつなぎ止める役割を負う。左派からは、ワシントンが認めた顔ぶれだけの協議だという不信が向けられている。
+                  </div>
+                  <div class="interests">最大の関心：体制の崩壊を避けつつ、自らが移行後も残る余地を確保すること。</div>
+                  <div class="role-badge">— 敵の副官が残った</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">ベネズエラ野党（マチャド）</span></div>
+                  <div class="pull-quote">「近いうちに必ず帰国する」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    ノーベル平和賞受賞者であり、マドゥロ体制の打倒を最も強く求めてきた側。だが8月に始まった移行協議に彼女はいない。受賞した賞をトランプ大統領に贈っても帰国は実現せず、ワシントンが彼女の復帰を望んでいないという見方も出ている（アメリカ政府は否定）。<strong>介入を最も歓迎した勢力が、その結果からは外されている。</strong>
+                  </div>
+                  <div class="interests">最大の関心：自由で公正な選挙の実施と、自らの政治的復権。</div>
+                  <div class="role-badge">— 望んだのに外された</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">ブラジル</span></div>
+                  <div class="pull-quote">「越えてはならない一線を越えた」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    ルラ大統領は、ベネズエラ領内への爆撃と大統領の拘束が「許容できない一線を越えた」と述べ、これが<strong>「暴力と混乱の世界、最強者の法が多国間主義に優越する世界」への第一歩</strong>になりうると警告した。3月にはコロンビアでの首脳会議で、旧植民地に対する植民地主義的な手法の復活だと批判している。
+                  </div>
+                  <div class="interests">最大の関心：多国間主義の枠組みを守り、地域が大国の裁量に委ねられる前例を作らせないこと。</div>
+                  <div class="role-badge">— 多国間主義の擁護</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">コロンビア</span></div>
+                  <div class="pull-quote">「隣国が受けているのは、社会的・経済的な絞殺だ」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    ペトロ大統領は介入を強く非難し、7月末には封鎖下のキューバを訪問して実情を確かめると表明した。だが<strong>8月7日、トランプ大統領が支持したデ・ラ・エスプリエジャが新大統領に就任する</strong>。新政権はキューバとニカラグアとの断交を掲げており、この国は数日のうちに立場が反転する。地域の分裂を、一国のなかで凝縮して示している。
+                  </div>
+                  <div class="interests">最大の関心：対米関係の再構築と、国内の治安・麻薬問題での主導権。</div>
+                  <div class="role-badge">— 数日で反転する国</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">中国</span></div>
+                  <div class="pull-quote">「主権国家に対する公然たる武力の行使であり、国際法の重大な違反だ」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    北京は作戦を明確に非難した。同時に、ベネズエラに対して抱えるおよそ100億ドルの債権が宙に浮いている。国内のSNSでは「台湾でも同じことを」という投稿が広がったが、政府は<strong>「台湾は中国の内政であり、外部の干渉を許さない」として、両者はまったく別のカテゴリだという線を引いた</strong>。
+                  </div>
+                  <div class="interests">最大の関心：債権の回収と原油調達の維持、そしてこの前例が台湾問題に転用されないこと。</div>
+                  <div class="role-badge">— 非難と実利のあいだ</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-table">
+              <div style="overflow-x:auto;">
+                <table class="compare-table">
+                  <thead>
+                    <tr><th>立場</th><th>基本スタンス</th><th>最大の主張</th><th>最大の関心事</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>アメリカ</td><td>力で決着をつけた側</td><td>戦争ではなく、起訴済み容疑の法執行である</td><td>麻薬流入の遮断と西半球での影響力の再確立</td></tr>
+                    <tr><td>ベネズエラ暫定政権</td><td>敵の副官が残った</td><td>国家の連続性を保ちながら移行を進める</td><td>体制崩壊の回避と、自らの残存余地</td></tr>
+                    <tr><td>ベネズエラ野党（マチャド）</td><td>望んだのに外された</td><td>自由で公正な選挙が実現されなければならない</td><td>帰国と政治的復権</td></tr>
+                    <tr><td>ブラジル</td><td>多国間主義の擁護</td><td>越えてはならない一線が越えられた</td><td>最強者の法が前例になることを防ぐ</td></tr>
+                    <tr><td>コロンビア</td><td>数日で反転する国</td><td>（現政権）封鎖は隣国への絞殺である</td><td>対米関係の再構築と国内治安の主導権</td></tr>
+                    <tr><td>中国</td><td>非難と実利のあいだ</td><td>主権侵害だが、台湾問題とは別のカテゴリだ</td><td>投資・債権の回収と、前例の転用阻止</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure" style="margin-top:2rem;">
+            <img src="../../../image/articles/latin-america-intervention-empty-summit.jpg" alt="国際会議場の一席の接写。磨かれたテーブルの上に置かれた、何も書かれていない名札とマイク。背後の椅子は空でぼやけている" loading="lazy">
+            <figcaption>CELACの緊急会合は、非難声明を出さないまま終わった。33か国が名を連ねる地域機構が、域内で起きた最大級の出来事について一つの文章も作れなかったという事実そのものが、この記事の問いである。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ・統計 ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 賞品の大きさと、賭け金の小ささ</h2>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>埋蔵量は世界1位、生産量は21位 — 賞品は掘られないまま置かれていた</h4>
+              <div style="position:relative;height:250px;margin-top:1rem;">
+                <canvas id="reservesChart"></canvas>
+              </div>
+              <p class="chart-note">ベネズエラの確認原油埋蔵量は世界最大で、2位のサウジアラビアを大きく上回る。しかし2024年の産油量は世界21位、日量約96万バレルにとどまった。資源があることと、それを力に変えられることは別である。<br>出典：OPEC年次統計報（2024年末時点）／アメリカエネルギー情報局</p>
+            </div>
+
+            <div class="data-card">
+              <h4>輸入原油のわずか4パーセント — 中国が非難以上に動けない理由</h4>
+              <div style="position:relative;height:250px;margin-top:1rem;">
+                <canvas id="chinaShareChart"></canvas>
+              </div>
+              <p class="chart-note">中国は近年ベネズエラ産原油の輸出の大半を割安で買い取ってきたが、それでも中国の海上原油輸入に占める割合は約4パーセントにすぎない。一方で、およそ100億ドルの債権が現地に残っている。強く非難しながら行動が伴わない理由が、この非対称にある。<br>出典：ラジオ・フリー・ヨーロッパ／ラジオ・リバティ</p>
+            </div>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">3,030億バレル</div>
+              <div class="stat-desc">ベネズエラの確認原油埋蔵量。世界最大で、全世界の約17パーセントにあたる（2024年末時点）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">221人</div>
+              <div class="stat-desc">2025年9月以降、カリブ海と東太平洋の小型船への攻撃で死亡した人数（WOLA・2026年7月報告）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">790万人</div>
+              <div class="stat-desc">国外へ逃れたベネズエラ人。うち690万人超が中南米・カリブ海域内に滞在している</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">10か国</div>
+              <div class="stat-desc">CELAC緊急会合で、地域としての非難声明の合意を阻んだ国の数（アルゼンチンほか）</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 分裂は、どこから来たのか</h2>
+
+          <p class="lead">起きたことは1月の数日間で完結している。だが問いは、その後の8か月のほうにある。4つの観点から掘り下げる。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">① 「戦争ではない」という論法 — 次に要るのは、軍事力ではなく起訴状になる</div>
+            <div class="insight-text">
+              この作戦の最も重要な設計は、軍事的な部分ではなく法的な部分にある。<strong>2020年に起訴を済ませておいたことで、2026年の空爆と拘束は「戦争」ではなく「法執行の完遂」として語れるようになった。</strong>宣戦布告も安保理の授権も要らない。国際法の専門家の多くは、武力紛争が存在しない以上これは人権法が適用される場面であり、この論法は成立しないと批判している。だが批判が成立するかどうかと、その論法が実際に機能するかどうかは別の問題だった。この形が定着するなら、次の介入に必要なのは軍事力の増強ではなく、数年前に用意された一通の起訴状になる。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">② 地域はなぜ割れたか — 理念ではなく、関税と送金という現実</div>
+            <div class="insight-text">
+              CELACの分裂は、しばしばイデオロギーの分散として説明される。左派政権は非難し、右派政権は黙認した、という図式である。だがそれだけでは、アルゼンチンら10か国が<strong>「非難しない」ではなく「非難させない」という積極的な行動をとった</strong>ことを説明しきれない。より重い要因は、対米依存の構造そのものにある。中南米の多くの国にとってアメリカは最大の貿易相手であり、在米移民からの送金は国家財政に匹敵する規模を持ち、関税は政権の一存で動く。ここで一国が地域の非難声明に賛成することの代償は、理念の問題ではなく歳入の問題として現れる。CELACが声明を出せなかったのは、地域統合が存在しないからではない。<strong>存在する統合が、対米依存の前では機能しないことが可視化された</strong>のである。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">③ 石油は誰のものになったか — 権益の移動と、その不安定さ</div>
+            <div class="insight-text">
+              3月、シェブロンとシェルがマドゥロ拘束後初となる大型の生産契約に向けた協議に入った。シェブロンのPDVSAとの合弁事業は2026年上半期に日量約28万バレルを産出し、前の半年から15パーセント増えている。一方、ロシアが持つ複数の合弁権益と、中国が抱えるおよそ100億ドルの債権の扱いは不透明なままだ。ただし勝者側の足場も強固ではない。<strong>シェブロンのベネズエラ事業はアメリカ財務省のライセンスの上に成り立っており、外交方針が変われば予告なく条件が変わりうる。</strong>埋蔵量が動いたというより、埋蔵量をめぐる不確実性の担い手が入れ替わった、と見るほうが正確だろう。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">④ 前例は輸出されるか — 中国が自ら引いた線</div>
+            <div class="insight-text">
+              作戦の直後、中国のSNSではマドゥロに関する投稿が6億5,000万回以上閲覧され、「台湾でも同じようにすべきだ」という声が広がった。だが政府の対応はその逆だった。台湾事務弁公室は作戦を国際法違反として非難したうえで、<strong>「台湾は中国の台湾であり、その解決は中国人だけの問題で、外部の干渉を許さない」</strong>と述べている。つまり北京は、この件を主権侵害の事例として非難する立場と、台湾を国際法の問題として扱わせない立場を、同時に維持しなければならない。前例が独り歩きしないよう線を引いたのは、他ならぬ中国自身だった。専門家の多くも、今回の作戦が台湾をめぐる中国の判断に直接的な影響を与えるとは見ていない。
+            </div>
+          </div>
+
+          <p class="closing">
+            1月に起きたことは、力の行使としては数日で終わっている。だがその後の8か月が示したのは、力の行使そのものよりも、それに対して<strong>地域が集団としての声を持てなかったという事実</strong>のほうが持続的な意味を持つ、ということだった。ブラジルが警告した「最強者の法が多国間主義に優越する世界」は、力を持つ側が押し通すことによってではなく、押し返す側が一つにまとまれないことによって近づいてくる。8月7日にコロンビアの政権が交代すれば、地域の勢力図はさらに動く。問われているのはベネズエラの行方だけではない。
+          </p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/latin-america-intervention-return-border.jpg" alt="夕暮れ、スーツケースや包みを抱えて土埃の道を国境検問所へ歩く人々。長い影が背後に伸び、前方には簡素な遮断機と小さな建物が見える" loading="lazy">
+            <figcaption>国連難民高等弁務官事務所の2026年の調査では、域内に暮らすベネズエラ人の3分の1が帰国を検討しうると答えた。政変の帰結は、最終的にこの人々がどちらへ歩くかとして現れる。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://www.congress.gov/crs_external_products/IN/PDF/IN12618/IN12618.6.pdf" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">アメリカ議会調査局 — マドゥロ拘束に関する報告</div>
+                <div class="source-desc">作戦の経緯、法的根拠をめぐる論点、議会での議論を整理した公式の調査報告。</div>
+                <div class="source-country">【アメリカ議会の調査機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://commonslibrary.parliament.uk/research-briefings/cbp-10452/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">イギリス下院図書館 — リサーチブリーフィング CBP-10452</div>
+                <div class="source-desc">アメリカによるマドゥロ拘束の経過と国際的な反応を、第三国の議会調査機関の視点でまとめた資料。</div>
+                <div class="source-country">【イギリス議会の調査機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.brookings.edu/articles/making-sense-of-the-us-military-operation-in-venezuela/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ブルッキングス研究所 — 軍事作戦をどう理解するか</div>
+                <div class="source-desc">作戦の戦略的な位置づけと、その後のベネズエラ統治をめぐる課題を分析。</div>
+                <div class="source-country">【アメリカのシンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.wola.org/2026/07/new-report-from-wola-documents-221-people-killed-on-the-high-seas-in-latin-america-and-the-caribbean-calls-for-accountability/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">WOLA — 公海上の221人の死者に関する報告</div>
+                <div class="source-desc">小型船への攻撃で死亡した人数を記録し、超法規的処刑にあたるとして説明責任を求める報告書。</div>
+                <div class="source-country">【アメリカの人権擁護団体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.justsecurity.org/124002/timeline-vessel-strikes-related-actions/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Just Security — 船舶攻撃と関連行動のタイムライン</div>
+                <div class="source-desc">個々の攻撃を日付順に記録し、適用される国際法の枠組みを検討する法律家によるサイト。</div>
+                <div class="source-country">【国際法・安全保障の専門メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.as-coa.org/articles/reactions-us-operation-venezuela-latin-america-and-beyond" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">米州協会・米州評議会 — 各国の反応まとめ</div>
+                <div class="source-desc">中南米各国の政府声明を国別に整理。どの国が非難し、どの国が支持したかを一覧で確認できる。</div>
+                <div class="source-country">【米州関係の専門機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aljazeera.com/news/2026/1/5/venezuela-after-maduro-oil-power-and-the-limits-of-intervention" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">アルジャジーラ — マドゥロ後のベネズエラ：石油・権力・介入の限界</div>
+                <div class="source-desc">石油産業の実態と、介入によって何が変わり何が変わらないのかを検討した記事。</div>
+                <div class="source-country">【カタールの国際報道機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.rferl.org/a/oil-venezuela-trade-partners-russia-china-iran/33641204.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ラジオ・フリー・ヨーロッパ／ラジオ・リバティ — 石油取引の相手国</div>
+                <div class="source-desc">ベネズエラ産原油の輸出先と、中国・ロシア・イランとの取引規模を数値で示した記事。</div>
+                <div class="source-country">【アメリカ議会が出資する報道機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.csis.org/analysis/are-us-operations-venezuela-blueprint-china-taiwan" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">戦略国際問題研究所 — ベネズエラ作戦は台湾の青写真か</div>
+                <div class="source-desc">今回の前例が中国の台湾政策に与える影響を検討し、両者の条件の違いを分析。</div>
+                <div class="source-country">【アメリカのシンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.unhcr.org/news/briefing-notes/unhcr-survey-shows-third-displaced-venezuelans-latin-america-could-consider" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">国連難民高等弁務官事務所 — 帰国意向に関する調査</div>
+                <div class="source-desc">域内6か国のベネズエラ人1,288人への聞き取りをもとに、帰国意向の変化を報告。</div>
+                <div class="source-country">【国連の難民支援機関】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/security/index.html">安全保障</a></div>
+          <div>2026年8月4日</div>
+          <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/security/index.html">安全保障一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 世界の確認原油埋蔵量トップ5（横棒）
+  (function() {
+    var ctx = document.getElementById('reservesChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['ベネズエラ', 'サウジアラビア', 'イラン', 'カナダ', 'イラク'],
+        datasets: [{
+          // 出典：OPEC Annual Statistical Bulletin 2025（2024年末時点）／アメリカエネルギー情報局（EIA）
+          // 原記述："Venezuela holds an estimated 303 billion barrels of proven oil reserves, the largest of any country"
+          //         "Saudi Arabia holds the second-largest proven reserves at roughly 267 billion barrels,
+          //          followed by Iran (209 billion), Canada (163 billion), and Iraq (145 billion)."
+          // 単位を「億バレル」に換算（303 billion = 3,030億）。
+          data: [3030, 2670, 2090, 1630, 1450],
+          backgroundColor: [
+            'rgba(184,120,104,0.85)',
+            'rgba(136,144,160,0.45)',
+            'rgba(136,144,160,0.45)',
+            'rgba(136,144,160,0.45)',
+            'rgba(136,144,160,0.45)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: { label: function(c) { return ' 約' + c.parsed.x.toLocaleString() + '億バレル'; } }
+          }
+        },
+        scales: {
+          x: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v) { return (v / 1000) + '千億'; } }
+          },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // 中国の海上原油輸入に占めるベネズエラ産の割合（ドーナツ）
+  (function() {
+    var ctx = document.getElementById('chinaShareChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'doughnut',
+      data: {
+        labels: ['ベネズエラ産', 'その他の産油国'],
+        datasets: [{
+          // 出典：Radio Free Europe/Radio Liberty「How Will Turmoil In Oil-Rich Venezuela Impact Trade With Far-Flung Partners?」
+          // https://www.rferl.org/a/oil-venezuela-trade-partners-russia-china-iran/33641204.html
+          // 原記述："in 2025, Venezuelan exports to China averaged roughly 395,000 barrels per day
+          //          —about 4% of China's seaborne crude imports."
+          // 記載値の4%をそのまま用い、残余を96%とした。
+          data: [4, 96],
+          backgroundColor: ['rgba(184,120,104,0.85)', 'rgba(136,144,160,0.30)'],
+          borderColor: '#1a1e26', borderWidth: 2
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        cutout: '62%',
+        plugins: {
+          legend: {
+            display: true, position: 'bottom',
+            labels: { color: '#c8d0da', font: { size: 10 }, boxWidth: 12, padding: 10 }
+          },
+          tooltip: {
+            callbacks: { label: function(c) { return ' ' + c.label + '：約' + c.parsed + 'パーセント'; } }
+          }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
