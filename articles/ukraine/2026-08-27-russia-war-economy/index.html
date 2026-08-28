@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="ロシアの戦時経済を数字で追う。国民福祉基金の流動資産は侵攻直前の9.73兆ルーブルから3.69兆へ。2026年は第1四半期だけで通年目標を超える赤字を出した。歳入・歳出・金利・人手を6つのグラフで検証する。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/ukraine/2026-08-27-russia-war-economy/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="ロシアはあと何年、戦争を続けられるのか — 戦時経済を数字で追う | WorldView">
+  <meta property="og:description" content="ロシアの戦時経済を数字で追う。国民福祉基金の流動資産は侵攻直前の9.73兆ルーブルから3.69兆へ。2026年は第1四半期だけで通年目標を超える赤字を出した。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/ukraine/2026-08-27-russia-war-economy/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/russia-war-economy-hero-ministry.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ロシアはあと何年、戦争を続けられるのか — 戦時経済を数字で追う | WorldView">
+  <meta name="twitter:description" content="ロシアの戦時経済を数字で追う。国民福祉基金の流動資産は侵攻直前の9.73兆ルーブルから3.69兆へ。2026年は第1四半期だけで通年目標を超える赤字を出した。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/russia-war-economy-hero-ministry.jpg">
+
+  <title>ロシアはあと何年、戦争を続けられるのか — 戦時経済を数字で追う | WorldView</title>
+
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色は ukraine = --accent2（#b87868 / 184,120,104）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url('../../../image/articles/russia-war-economy-hero-ministry.jpg');
+      background-size: cover; background-position: center 48%;
+      filter: brightness(1.12) contrast(1.03) saturate(1.02);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(100deg, rgba(14,17,23,0.82) 0%, rgba(14,17,23,0.52) 46%, rgba(14,17,23,0.18) 100%),
+        linear-gradient(180deg, rgba(14,17,23,0.18) 0%, rgba(14,17,23,0.22) 45%, rgba(14,17,23,0.50) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; width: 100%; }
+    .article-hero .article-meta,
+    .article-hero .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65);
+    }
+    .hero-credit {
+      position: absolute; right: 1.1rem; bottom: 0.9rem; z-index: 2;
+      font-size: 0.66rem; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.52);
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75;
+      color: #b4bfcc; max-width: 560px; margin-top: 1.5rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+    }
+    .deck-accent { color: var(--accent2); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent2) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent2) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent2) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent2); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       ダッシュボード帯（この記事のための新規パーツ）
+       ========================================================== */
+    .dash {
+      margin: 0 0 3.4rem; padding: 0;
+    }
+    .dash-head-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      flex-wrap: wrap; gap: 0.4rem 1rem; margin-bottom: 1.3rem;
+    }
+    .dash-head {
+      font-size: 0.72rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent2); margin-bottom: 0;
+    }
+    .dash-fx { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0; font-weight: 400; }
+    .dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem 2.2rem; }
+    .dash-card { padding-bottom: 0.2rem; }
+    .dash-label {
+      font-size: 0.72rem; letter-spacing: 0.08em; color: var(--text-dim);
+      line-height: 1.5; margin-bottom: 0.5rem; min-height: 2.2em;
+    }
+    .dash-value {
+      font-size: 1.6rem; font-weight: 700; color: var(--accent2);
+      line-height: 1.15; letter-spacing: -0.01em;
+    }
+    .dash-value .unit { font-size: 0.9rem; font-weight: 700; margin-left: 0.15rem; }
+    .dash-note { font-size: 0.72rem; color: var(--text-muted); line-height: 1.6; margin-top: 0.35rem; }
+    .spark-wrap { position: relative; margin-top: 0.8rem; height: 104px; }
+    .spark { display: block; width: 100%; height: 28px; overflow: visible; }
+    .spark polyline { fill: none; stroke: rgba(184,120,104,0.85); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+    .spark circle { fill: rgba(184,120,104,1); vector-effect: non-scaling-stroke; }
+    .spark-leader { position: absolute; width: 1px; background: rgba(255,255,255,0.16); }
+    .spark-callout {
+      position: absolute; font-size: 0.62rem; line-height: 1.4;
+      color: var(--text-dim); white-space: nowrap;
+    }
+    .spark-callout .cval { display: block; color: var(--text-muted); font-weight: 700; }
+    .spark-callout.anchor-l { left: 0; text-align: left; }
+    .spark-callout.anchor-r { right: 0; text-align: right; }
+    .spark-callout.anchor-c { transform: translateX(-50%); text-align: center; }
+
+    /* 国防・治安カード：単一の内訳バー */
+    .dash-share { margin-top: 0.9rem; }
+    .share-track { height: 9px; background: rgba(255,255,255,0.07); }
+    .share-fill { display: block; height: 100%; background: rgba(184,120,104,0.85); }
+    .share-labels {
+      display: flex; justify-content: space-between; margin-top: 0.4rem;
+      font-size: 0.68rem; color: var(--text-dim);
+    }
+    .share-labels .hi { color: var(--accent2); font-weight: 700; }
+
+    /* 財政赤字カード：実績バー＋目標マーカーのバレットチャート */
+    .dash-bullet { margin-top: 0.9rem; }
+    .bullet-track { position: relative; height: 10px; background: rgba(255,255,255,0.07); }
+    .bullet-fill { display: block; height: 100%; width: 100%; background: rgba(184,120,104,0.55); }
+    .bullet-target {
+      position: absolute; top: -3px; bottom: -3px; width: 2px;
+      background: var(--text);
+    }
+    .bullet-target::after {
+      content: ''; position: absolute; bottom: -4px; left: 50%;
+      width: 5px; height: 5px; background: var(--text);
+      transform: translateX(-50%) rotate(45deg);
+    }
+    .bullet-labels {
+      display: flex; justify-content: space-between; margin-top: 0.5rem;
+      font-size: 0.68rem; color: var(--text-dim);
+    }
+    .bullet-labels .hi { color: var(--accent2); font-weight: 700; }
+
+    /* ==========================================================
+       本文パーツ（テーマ色を --accent2 に統一）
+       ========================================================== */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(184,120,104,0.06);
+      border: 1px solid rgba(184,120,104,0.22);
+      box-shadow: 0 0 40px 10px rgba(184,120,104,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent2); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent2); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent2); line-height: 1.2; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    .insight-box { border-left: 2px solid var(--border); padding-left: 1.2rem; margin-bottom: 2.2rem; }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* カード再設計 — テーマ色の淡いウォッシュで区別する */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 2.6rem 2.4rem; }
+    .article-body .perspective-card {
+      position: relative;
+      background: rgba(184,120,104,0.08);
+      border: none; border-radius: 0;
+      padding: 1.5rem 1.6rem 1.6rem;
+      transition: background 0.12s linear;
+    }
+    .article-body .perspective-card:hover { transform: none; box-shadow: none; background: rgba(184,120,104,0.13); }
+    .article-body .perspective-card::before { display: none; }
+    .article-body .perspective-card .country-header { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .pull-quote { font-size: 0.98rem; font-weight: 600; line-height: 1.75; color: var(--text); margin-bottom: 1rem; }
+    .article-body .perspective-card .key-claim { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .interests { border-top: 1px solid var(--border-subtle); padding-top: 0.8rem; }
+    .role-badge {
+      display: block; text-align: right; margin-top: 0.9rem;
+      font-size: 0.73rem; letter-spacing: 0.05em; color: var(--accent2);
+    }
+
+    .article-body .compare-table { background: none; border: none; border-radius: 0; }
+    .article-body .compare-table th { background: none; border-bottom: 2px solid var(--accent2); color: var(--text-muted); }
+    .article-body .compare-table td { border-bottom: 1px solid var(--border-subtle); }
+    .article-body .compare-table tr:hover td { background: rgba(0,0,0,0.20); }
+    .table-scroll { overflow-x: auto; }
+    .num-cell { font-family: var(--font-mono); font-size: 0.82rem; white-space: nowrap; }
+
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent2); }
+
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .article-body .data-card { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .data-card::before { display: none; }
+    .article-body .data-card:hover { border-color: transparent; }
+    .article-body .data-card h4 {
+      font-size: 0.95rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem; padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .data-card.wide { grid-column: 1 / -1; }
+    .chart-box { position: relative; height: 260px; }
+    .chart-box.tall { height: 340px; }
+    .chart-box.short { height: 200px; }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.7rem; line-height: 1.65; }
+
+    .article-body .sources-grid { display: block; counter-reset: src; }
+    .article-body a.source-item {
+      display: flex; gap: 1rem; align-items: baseline;
+      background: none; border: none; border-radius: 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1rem 0.2rem;
+      color: inherit; text-decoration: none;
+      counter-increment: src;
+      transition: background 0.12s linear, border-color 0.12s linear;
+    }
+    .article-body a.source-item::before {
+      content: counter(src, decimal-leading-zero);
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--accent2); flex: 0 0 auto; min-width: 1.7rem;
+    }
+    .article-body a.source-item:hover { background: rgba(0,0,0,0.20); border-bottom-color: var(--accent2); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); }
+    .article-figure figcaption { font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* アクセシビリティ・レスポンシブ */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-hero.has-image::after {
+        background: linear-gradient(180deg, rgba(14,17,23,0.42) 0%, rgba(14,17,23,0.52) 45%, rgba(14,17,23,0.72) 100%);
+      }
+      .dash-grid { grid-template-columns: 1fr 1fr; gap: 1.4rem 1.6rem; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">ウクライナ</span>
+      <span class="date">2026年8月27日</span>
+    </div>
+    <h1 class="article-title">ロシアはあと何年、戦争を続けられるのか<br>— 戦時経済を数字で追う</h1>
+
+    <div class="hero-deck">
+      店には物が並び、失業率は2.1%と過去最低の水準にある。ロシア経済が破綻する兆候は、表からはほとんど見えない。それでも2026年に入ってから、戦費の資金繰りだけが急に苦しくなった。<span class="deck-accent">細っているのは経済そのものではなく、戦費を出し続けるための余力のほうだ。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">流動資産 3.69兆ルーブル</span>
+      <span class="hero-pill">1〜7月の赤字は通年目標を超過</span>
+      <span class="hero-pill">歳出の38%が国防・治安</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ ダッシュボード ============ -->
+        <section class="dash" id="sec-dash">
+          <div class="dash-head-row">
+            <div class="dash-head">戦時経済の6指標</div>
+            <div class="dash-fx">1ルーブル ≈ 1.9円（2026年8月27日の参考レート）</div>
+          </div>
+          <div class="dash-grid">
+
+            <div class="dash-card">
+              <div class="dash-label">国民福祉基金の流動資産<br>（2026年8月1日）</div>
+              <div class="dash-value">3.69<span class="unit">兆ルーブル</span></div>
+              <!-- 出典：ロシア財務省の月次公表値。9730(2022年2月)→8700(2022年8月)→6450(2023年3月)
+                   →6740(2023年12月)→5010(2024年1月)→4854(2024年9月)→3810(2025年1月)
+                   →2840(2025年6月)→4115(2025年12月)→3690(2026年8月)。単位:10億ルーブル -->
+              <div class="spark-wrap">
+                <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="0,2 11.1,5.6 22.2,13.4 33.3,12.4 44.4,18.4 55.6,19 66.7,22.6 77.8,26 88.9,21.6 100,23"></polyline>
+                  <circle cx="0" cy="2" r="1.6"></circle>
+                  <circle cx="77.8" cy="26" r="1.6"></circle>
+                  <circle cx="100" cy="23" r="1.6"></circle>
+                </svg>
+                <span class="spark-leader" style="left:0%; top:2px; height:32.0px;"></span>
+                <span class="spark-callout anchor-l" style="left:0%; top:34px;"><span class="cval">最高 9.73兆</span>22年2月</span>
+                <span class="spark-leader" style="left:77.8%; top:26px; height:42.0px;"></span>
+                <span class="spark-callout anchor-c" style="left:77.8%; top:68px;"><span class="cval">最低 2.84兆</span>25年6月</span>
+                <span class="spark-leader" style="left:100%; top:23px; height:11px;"></span>
+                <span class="spark-callout anchor-r" style="top:34px;"><span class="cval">終点 3.69兆</span>26年8月</span>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-label">政策金利<br>（2026年8月25日）</div>
+              <div class="dash-value">14.00<span class="unit">%</span></div>
+              <!-- 出典：ロシア中央銀行。20.0(2022年2月)→7.5(2022年9月)→16.0(2023年12月)
+                   →21.0(2024年10月)→16.5(2025年10月)→16.0(2025年12月)→14.5(2026年4月)→14.0(2026年7月) -->
+              <div class="spark-wrap">
+                <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="0,3.8 14.3,26 28.6,10.9 42.9,2 57.1,10 71.4,10.9 85.7,13.6 100,14.4"></polyline>
+                  <circle cx="0" cy="3.8" r="1.6"></circle>
+                  <circle cx="14.3" cy="26" r="1.6"></circle>
+                  <circle cx="42.9" cy="2" r="1.6"></circle>
+                  <circle cx="100" cy="14.4" r="1.6"></circle>
+                </svg>
+                <span class="spark-leader" style="left:0%; top:3.8px; height:30.2px;"></span>
+                <span class="spark-callout anchor-l" style="left:0%; top:34px;"><span class="cval">始点 20.0%</span>22年2月</span>
+                <span class="spark-leader" style="left:14.3%; top:26px; height:42.0px;"></span>
+                <span class="spark-callout anchor-c" style="left:14.3%; top:68px;"><span class="cval">最低 7.5%</span>22年9月</span>
+                <span class="spark-leader" style="left:42.9%; top:2px; height:32.0px;"></span>
+                <span class="spark-callout anchor-c" style="left:42.9%; top:34px;"><span class="cval">最高 21.0%</span>24年10月</span>
+                <span class="spark-leader" style="left:100%; top:14.4px; height:53.6px;"></span>
+                <span class="spark-callout anchor-r" style="top:68px;"><span class="cval">終点 14.0%</span>26年7月</span>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-label">石油ガス歳入<br>（2025年の実績）</div>
+              <div class="dash-value">8.4<span class="unit">兆ルーブル</span></div>
+              <div class="dash-note">2026年1〜7月は前年同期比 16.8%減</div>
+              <!-- 出典：ロシア財務省。8.8(2023年)→11.13(2024年)→8.4(2025年)。単位:兆ルーブル
+                   dash-note の「1〜7月 16.8%減」は財務省の1〜7月速報（石油ガス歳入4.595兆ルーブル、Interfax報道） -->
+              <div class="spark-wrap">
+                <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="0,22.5 50,2 100,26"></polyline>
+                  <circle cx="0" cy="22.5" r="1.6"></circle>
+                  <circle cx="50" cy="2" r="1.6"></circle>
+                  <circle cx="100" cy="26" r="1.6"></circle>
+                </svg>
+                <span class="spark-leader" style="left:0%; top:22.5px; height:11.5px;"></span>
+                <span class="spark-callout anchor-l" style="left:0%; top:34px;"><span class="cval">始点 8.8兆</span>2023年</span>
+                <span class="spark-leader" style="left:50%; top:2px; height:66.0px;"></span>
+                <span class="spark-callout anchor-c" style="left:50%; top:68px;"><span class="cval">最高 11.13兆</span>2024年</span>
+                <span class="spark-leader" style="left:100%; top:26px; height:8px;"></span>
+                <span class="spark-callout anchor-r" style="top:34px;"><span class="cval">最低 8.4兆</span>2025年</span>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-label">実質GDP成長率<br>（2025年）</div>
+              <div class="dash-value">1.0<span class="unit">%</span></div>
+              <div class="dash-note">2026年第1四半期は −0.2%（3年ぶりのマイナス）</div>
+              <!-- 出典：BOFIT（フィンランド銀行）2026年3月30日公表。4.1(2023年)→4.9(2024年)→1.0(2025年)→1.0(2026年予測)
+                   dash-note の第1四半期 −0.2% はロシア連邦統計局の速報値（Interfax報道）。
+                   経済発展省は0.3%減、中央銀行は0.5%減としており、機関によって幅がある。本記事は統計局の値を採る -->
+              <div class="spark-wrap">
+                <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="0,6.9 33.3,2 66.7,26 100,26"></polyline>
+                  <circle cx="0" cy="6.9" r="1.6"></circle>
+                  <circle cx="33.3" cy="2" r="1.6"></circle>
+                  <circle cx="66.7" cy="26" r="1.6"></circle>
+                  <circle cx="100" cy="26" r="1.6"></circle>
+                </svg>
+                <span class="spark-leader" style="left:0%; top:6.9px; height:27.1px;"></span>
+                <span class="spark-callout anchor-l" style="left:0%; top:34px;"><span class="cval">始点 4.1%</span>2023年</span>
+                <span class="spark-leader" style="left:33.3%; top:2px; height:66.0px;"></span>
+                <span class="spark-callout anchor-c" style="left:33.3%; top:68px;"><span class="cval">最高 4.9%</span>2024年</span>
+                <span class="spark-leader" style="left:66.7%; top:26px; height:8.0px;"></span>
+                <span class="spark-callout anchor-c" style="left:66.7%; top:34px;"><span class="cval">最低 1.0%</span>2025年</span>
+                <span class="spark-leader" style="left:100%; top:26px; height:42px;"></span>
+                <span class="spark-callout anchor-r" style="top:68px;"><span class="cval">終点 1.0%</span>26年予測</span>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-label">国防・治安が歳出に占める割合<br>（2026年予算）</div>
+              <div class="dash-value">38<span class="unit">%</span></div>
+              <!-- 出典：OSW（ポーランド東方研究センター）。国防と国家安全保障の合計が名目歳出の38% -->
+              <div class="dash-share">
+                <div class="share-track"><span class="share-fill" style="width:38%"></span></div>
+                <div class="share-labels"><span class="hi">国防・治安 38%</span><span>その他 62%</span></div>
+              </div>
+              <div class="dash-note">国防は前年比 −4%、治安は11%超の増</div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-label">財政赤字<br>（2026年1〜7月の実績 ／ 通年目標）</div>
+              <div class="dash-value">6.46<span class="unit">兆ルーブル</span></div>
+              <!-- 出典：ロシア財務省（Interfax報道）。1〜7月の実績6.455兆＝GDP比2.8%、前年同期4.622兆＝同2.2%、
+                   通年計画3.786兆＝同1.6%。マーカー位置は 3.786/6.455＝59% -->
+              <div class="dash-bullet">
+                <div class="bullet-track">
+                  <span class="bullet-fill"></span>
+                  <span class="bullet-target" style="left:59%"></span>
+                </div>
+                <div class="bullet-labels"><span class="hi">実績 6.46兆</span><span>◆ 通年目標 3.79兆</span></div>
+              </div>
+              <div class="dash-note">前年同期の実績は4.62兆ルーブル</div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 経済の話と、戦費の話は別である</h2>
+
+          <p class="lead">ロシア経済がいつ破綻するのか、という問いは4年半のあいだ繰り返されてきた。そして4年半、破綻していない。店の棚には物があり、失業率は2026年5月に2.1%と過去最低の水準にある。この数字だけを見れば、制裁は効いていないように見える。</p>
+
+          <p class="lead">だが2026年に入り、財政の数字は急激に悪化した。1〜7月の赤字は6.455兆ルーブル（国内総生産比2.8%）で、通年目標3.79兆ルーブルをすでに大きく超えている。前年同期は4.622兆ルーブルだった。</p>
+
+          <p class="lead">経済が回っていることと、政府が戦費を出し続けられることは別問題だ。前者は民間の活動、後者は歳入と手元資金の問題である。本稿が追うのは後者である。</p>
+
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">入るお金が細っている</div>
+              <div class="factor-desc">石油ガス歳入は2026年も1〜7月で16.8%減（詳細は03）。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">手元の資金が薄い</div>
+              <div class="factor-desc">国民福祉基金の流動資産は侵攻直前の9.73兆から3.69兆ルーブルへ（詳細は04）。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">出るお金は削れない</div>
+              <div class="factor-desc">国防と治安で歳出の38%を占め、ほぼ削れない（詳細は03）。</div>
+            </div>
+          </div>
+
+          <div class="article-question">
+            <p>ロシアの戦時経済で本当に減っているのは何か。そしてその減少は、戦争を続ける能力に、いつ、どのような形で影響するのか。</p>
+          </div>
+
+          <figure class="article-figure" style="margin:2.5rem 0 0;">
+            <img src="../../../image/articles/russia-war-economy-street.jpg" alt="夕方の商店街を歩く人々。店先には灯りがともり、カフェの席は埋まっている">
+            <figcaption>表面上、日常の経済は動いている。破綻の兆候が見えないことと、戦費を出し続けられることは別の問題である。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 時系列 ============ -->
+        <section class="section" id="sec-phases">
+          <h2 class="section-title"><span class="sec-num">02</span>時系列 — 4年半を4つの局面に分ける</h2>
+
+          <p class="lead">戦時経済は一本調子で悪化してきたわけではない。衝撃、好況、減速、資金繰りの悪化という4つの局面がある。局面を分ける指標として、実質GDP成長率と政策金利を並べると輪郭がはっきりする。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">第1局面　2022年 — 衝撃と緊急対応</div>
+                <p>中央銀行は政策金利を20%へ引き上げ資本流出を止め、同年9月には7.5%へ戻した。国民福祉基金の流動資産は9.73兆から7.87兆ルーブルへ減った。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">第2局面　2023〜2024年 — 軍需に押し上げられた成長</div>
+                <p>実質GDPは2023年に4.1%、2024年に4.9%伸びた。軍需生産と兵員への支払いが需要を押し上げた統計上の好況だった。ただし人手不足と賃金上昇でインフレが加速し、中央銀行は2024年10月に政策金利を、2013年の現行キーレート制度のもとで過去最高となる21%へ引き上げた。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">第3局面　2025年 — 成長の停止</div>
+                <p>成長率は1.0%に落ち込み、インフレは8.7%で高止まり。石油ガス歳入は8.4兆ルーブルまで減少し、国民福祉基金の流動資産は6月に2.84兆ルーブルと2019年以来の低水準に達した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">第4局面　2026年 — 資金繰りの悪化</div>
+                <p>第1四半期の実質GDPは前年同期比0.2%減で3年ぶりのマイナス。財政赤字は1〜7月で6.455兆ルーブルに達し、金利を14.00%まで下げても成長は戻っていない。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="data-grid" style="margin-top:2.6rem;">
+            <div class="data-card">
+              <h4>実質GDP成長率 — 好況からゼロ近傍へ</h4>
+              <div class="chart-box"><canvas id="gdpChart"></canvas></div>
+              <p class="chart-note">2026年以降は予測値。軍需が押し上げた2023〜24年の伸びは2025年に止まり、1%を下回る水準が続く見込み。<br>出典：BOFIT（フィンランド銀行の移行経済研究所）「BOFIT Forecast for Russia 2026–2028」2026年3月30日公表</p>
+            </div>
+            <div class="data-card">
+              <h4>政策金利 — 2度の急上昇</h4>
+              <div class="chart-box"><canvas id="rateChart"></canvas></div>
+              <p class="chart-note">侵攻直後の緊急利上げと2024年のインフレ対応で2度の山ができた。<br>出典：ロシア中央銀行の政策金利決定（2026年8月25日時点の適用金利は14.00%）</p>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/russia-war-economy-factory.jpg" alt="夜勤の重機械工場の内部。天井灯の下に加工ラインが伸び、遠くに数人の作業員がいる">
+            <figcaption>2023年から2024年の成長を作ったのは軍需生産だった。同時にそれは、民間部門と労働力を奪い合う関係にもある。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 財政 ============ -->
+        <section class="section" id="sec-budget">
+          <h2 class="section-title"><span class="sec-num">03</span>財政 — 入るお金と、削れない支出</h2>
+
+          <p class="lead">2026年予算は歳入40.3兆・歳出44.1兆・赤字3.79兆ルーブル（国内総生産比1.6%）という設計で組まれた。数字の上では健全だが、この前提は年の初めから崩れている。</p>
+
+          <p class="lead">崩れ方には注意が必要だ。歳入が落ちたからではない。付加価値税の増収が石油ガス歳入の減少を補ったが、歳出の伸びがそれを上回った。財務省は支出の前倒し執行が理由と説明する（内訳は下表）。</p>
+
+          <div class="table-scroll">
+            <table class="compare-table">
+              <thead>
+                <tr><th>項目</th><th>2026年予算の設計</th><th>年前半に起きたこと</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>歳入</td>
+                  <td class="num-cell">40.3兆ルーブル<br>（国内総生産比 17.1%）</td>
+                  <td>1〜7月は22.112兆ルーブル（前年同期比 8.8%増）</td>
+                </tr>
+                <tr>
+                  <td>歳出</td>
+                  <td class="num-cell">44.1兆ルーブル<br>（国内総生産比 18.7%）</td>
+                  <td>1〜7月は28.567兆ルーブル（同 14.5%増）</td>
+                </tr>
+                <tr>
+                  <td>財政赤字</td>
+                  <td class="num-cell">3.79兆ルーブル<br>（国内総生産比 1.6%）</td>
+                  <td>1〜7月で6.455兆ルーブル（同 2.8%）。前年同期は4.622兆</td>
+                </tr>
+                <tr>
+                  <td>石油ガス歳入の比率</td>
+                  <td class="num-cell">歳入の22%</td>
+                  <td>1〜7月の石油ガス歳入は4.595兆ルーブル（同 16.8%減）</td>
+                </tr>
+                <tr>
+                  <td>国防・治安の比率</td>
+                  <td class="num-cell">歳出の38%</td>
+                  <td>国防は4%減、治安は11%超の増で、合計ではほぼ据え置き</td>
+                </tr>
+                <tr>
+                  <td>穴埋めの手段</td>
+                  <td class="num-cell">付加価値税を20%から22%へ</td>
+                  <td>1〜7月の付加価値税収は9.791兆ルーブル（同 24.9%増）</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="lead" style="margin-top:2rem;">歳入の振れ幅は大きい。石油ガス歳入は油価と為替、買い手の動向で年ごとに3割近く動く。歳出はその振れ幅に合わせて動かせない。</p>
+
+          <div class="data-grid" style="margin-top:2rem;">
+            <div class="data-card">
+              <h4>石油ガス歳入 — 予算の前提が崩れている</h4>
+              <div class="chart-box"><canvas id="oilGasChart"></canvas></div>
+              <p class="chart-note">2026年は当初予算の8.9兆ルーブルに対し、会計検査院の見込みは7.8兆ルーブル。<br>出典：ロシア財務省の公表値、The Moscow Times（2026年1月16日）、会計検査院の見込みを伝えた報道</p>
+            </div>
+            <div class="data-card">
+              <h4>財政赤字 — 目標と実績の開き</h4>
+              <div class="chart-box"><canvas id="deficitChart"></canvas></div>
+              <p class="chart-note">通年の目標は3か月で埋まり、7か月で6.455兆ルーブルに達した。2026年7月には歳出45.11兆・歳入40.28兆による赤字4.83兆ルーブルへの上方修正も報じられている。財務相は「多少」目標を超えるとしつつ、国内借入の大幅増にはつながらないとしている。<br>出典：ロシア財務省（Interfax報道、2026年4月・8月）、Reuters（2026年7月16日報道）</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 04 緩衝材 ============ -->
+        <section class="section" id="sec-buffer">
+          <h2 class="section-title"><span class="sec-num">04</span>緩衝材 — 国民福祉基金に、あといくら残っているか</h2>
+
+          <p class="lead">国民福祉基金は、原油価格が基準を上回った超過収入を積み立て、不足時に取り崩す仕組みだ。赤字の穴埋めはこの基金と国債発行でまかなわれてきた。</p>
+
+          <p class="lead">ここでは区別が必要だ。基金の総額は2026年8月1日時点で12.72兆ルーブルだが、すぐ使える流動資産は3.69兆ルーブルにすぎない。残りは国内企業の株式などに投じられ、赤字の穴埋めには回せない。戦費の余力を測るなら、見るべきは流動資産のほうだ。</p>
+
+          <div class="data-grid" style="margin-top:2.4rem;">
+            <div class="data-card wide">
+              <h4>国民福祉基金の流動資産 — 侵攻から4年半の推移</h4>
+              <div class="chart-box tall"><canvas id="nwfChart"></canvas></div>
+              <p class="chart-note">財務省が毎月公表している流動資産の残高。減り方は一本調子ではなく、2025年後半には一度積み増している。それでも侵攻直前の水準からは大きく下がった。国内総生産比では侵攻前の6.5%から2026年8月に1.6%へ。<br>出典：ロシア財務省の月次公表値（Interfax・TASSの各報道で確認）、国内総生産比はBOFITおよび財務省発表</p>
+            </div>
+          </div>
+
+          <p class="lead" style="margin-top:2.4rem;">1〜7月の赤字はすでに6.455兆ルーブル、手元の流動資産は3.69兆ルーブル。基金だけではこの穴は埋められない。ただし基金が尽きたら戦争が止まるわけではなく、調達方法が「貯金の取り崩し」から「借入」や「増税」へ移るだけだ。どちらも国内への負担として表面化する。</p>
+        </section>
+
+        <!-- ============ 05 転嫁 ============ -->
+        <section class="section" id="sec-spillover">
+          <h2 class="section-title"><span class="sec-num">05</span>転嫁 — 負担はどこに出ているか</h2>
+
+          <p class="lead">戦費の負担は、財政の帳簿だけで完結しない。物価、金利、労働力という形で、企業と家計に移っている。</p>
+
+          <p class="lead">インフレ率は2023年の5.9%から2025年に8.7%へ上昇した。中央銀行は2024年10月に政策金利を21%へ引き上げ、軍需以外の投資をほぼ止める水準まで締めた。2026年に14.00%へ下げても成長が戻らないのは、金利では解消できない停滞であることを示す。</p>
+
+          <p class="lead">労働力の逼迫はさらに構造的だ。失業率2.1%は通常なら好調の証拠だが、ロシアでは動員・軍需産業への採用・国外流出によって働き手そのものが減った結果である。中央銀行総裁は2026年4月、現代のロシアが経験したことのない人手不足だと述べた。</p>
+
+          <p class="lead">人手の奪い合いは賃金を押し上げる。賃金の伸びが生産性を超える状態はインフレ圧力として働き続け、金利を下げにくくしている。</p>
+
+          <div class="data-grid" style="margin-top:2.4rem;">
+            <div class="data-card">
+              <h4>インフレ率 — 目標の4%から離れたまま</h4>
+              <div class="chart-box short"><canvas id="inflationChart"></canvas></div>
+              <p class="chart-note">中央銀行の目標は4%。2026年については通年で4.0〜5.0%まで低下するとの見通しを示している。<br>出典：BOFIT「Forecast for Russia 2026–2028」、ロシア中央銀行の見通し</p>
+            </div>
+            <div class="data-card">
+              <h4>負担の出どころ</h4>
+              <p class="insight-text">高い金利は民間投資を止め、増税は家計に直接かかる。人手不足は賃金を押し上げ、それがまた物価を押し上げる。戦費の不足分はこの3つの経路を通じて国内へ転嫁されている。</p>
+              <p class="insight-text" style="margin-top:1rem;">付加価値税の20%から22%への引き上げは、最も分かりやすい転嫁だ。見込まれる増収1.2兆ルーブルは、1〜7月の赤字6.455兆ルーブルの一部を埋めるにとどまる。</p>
+            </div>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">2.1%</div>
+              <div class="stat-desc">失業率（2026年5月）。働き手が減った結果の過去最低水準</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">150万人</div>
+              <div class="stat-desc">労働市場の均衡回復に必要な追加の働き手（ブルームバーグ・エコノミクス試算）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">310万人</div>
+              <div class="stat-desc">2030年時点で不足すると当局が見込む人数</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">22%</div>
+              <div class="stat-desc">2026年に引き上げられた付加価値税の税率（従来は20%）</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 06 視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">06</span>4つの視点 — 同じ数字を、誰がどう読むか</h2>
+
+          <p class="lead">ここまでの数字は、立場によってまったく違う結論に結びつく。</p>
+
+          <div class="perspectives-grid">
+            <div class="perspective-card">
+              <div class="country-header"><div class="country-name">ロシア政府</div></div>
+              <div class="pull-quote">財政は管理できる範囲にある</div>
+              <div class="key-claim">赤字は国内総生産比で見れば数%、政府債務残高も国際的に低い。国債発行や増税の余地があり、基金の流動資産の減少も制度が想定どおり機能した結果だと説明する。</div>
+              <div class="interests">重視：資金確保と、国内の安定した見え方の維持</div>
+              <span class="role-badge">支出の当事者</span>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header"><div class="country-name">ロシアの企業と家計</div></div>
+              <div class="pull-quote">負担は自分たちに回ってきている</div>
+              <div class="key-claim">14%の金利は設備投資を難しくし、軍需以外で人も採れない。賃金は上がるが物価も上がり、増税分は生活費として跳ね返る。</div>
+              <div class="interests">重視：借入コストの低下と、物価の落ち着き</div>
+              <span class="role-badge">負担の受け手</span>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header"><div class="country-name">ウクライナと欧州</div></div>
+              <div class="pull-quote">制裁は歳入の側に効いている</div>
+              <div class="key-claim">石油ガス歳入が第1四半期に45.4%減ったのは、価格上限と企業制裁が働いた証拠と見る。基金が薄くなるほど追加制裁の効き目は増す。凍結資産の活用も同じ発想にある。</div>
+              <div class="interests">重視：戦費調達能力を交渉に応じる水準まで下げること</div>
+              <span class="role-badge">圧力をかける側</span>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header"><div class="country-name">中国とインド</div></div>
+              <div class="pull-quote">割引がある限り、買う理由はある</div>
+              <div class="key-claim">ロシア産原油は指標価格より安い。2025年11月発効のロスネフチ・ルクオイル制裁は影響が大きく（ロスネフチだけで産出量の4割）、インドの輸入は同年11月の177万バレル/日から12月に約110万バレル/日へ落ちた。それでも仲介業者経由で購入は続けている。</div>
+              <div class="interests">重視：安価な原油の確保と、二次制裁との距離の取り方</div>
+              <span class="role-badge">歳入を左右する買い手</span>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">4つの視点の比較</div>
+          <div class="table-scroll">
+            <table class="compare-table">
+              <thead>
+                <tr><th>主体</th><th>いま最も重視するもの</th><th>次に打つ手</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>ロシア政府</td><td>戦費の調達手段を絶やさないこと</td><td>国債の増発と、さらなる増税の検討</td></tr>
+                <tr><td>ロシアの企業と家計</td><td>借入コストと物価</td><td>投資の先送り、人材確保のための賃上げ</td></tr>
+                <tr><td>ウクライナと欧州</td><td>ロシアの歳入を減らすこと</td><td>石油関連企業への制裁強化と凍結資産の活用</td></tr>
+                <tr><td>中国とインド</td><td>安価な原油と、制裁との距離</td><td>仲介業者を介した購入の継続</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/russia-war-economy-tanker.jpg" alt="夜明けの輸出ターミナルに係留された原油タンカー。甲板にローディングアームがつながれている">
+            <figcaption>歳入の2割強を占める石油ガス収入は、買い手が誰で、いくら値引きするかで決まる。財政の見通しは他国の判断に左右される。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 07 分岐 ============ -->
+        <section class="section" id="sec-scenarios">
+          <h2 class="section-title"><span class="sec-num">07</span>分岐 — 埋め方は3つしかない</h2>
+
+          <p class="lead">歳入が足りず国防費も削れないなら、残る選択肢は限られる。借りるか、取るか、他を削るかで、比重の置き方によって国内への影響が変わる。</p>
+
+          <div class="table-scroll">
+            <table class="compare-table">
+              <thead>
+                <tr><th>埋め方</th><th>すでに起きていること</th><th>続けた場合に出てくる負担</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>借りる<br>（国債の増発）</td>
+                  <td>基金の取り崩しと並行して国債発行が増加（詳細は04）。政府債務残高は低く余地は残る</td>
+                  <td>国内銀行が引き受けの中心となり、民間向け融資が圧迫される</td>
+                </tr>
+                <tr>
+                  <td>取る<br>（増税）</td>
+                  <td>付加価値税を20%から22%へ引き上げ済み（詳細は03）</td>
+                  <td>物価に転嫁されてインフレを押し戻し、中央銀行が金利を下げにくくなる</td>
+                </tr>
+                <tr>
+                  <td>削る<br>（国防以外の支出）</td>
+                  <td>国防は4%減、治安は11%超増で合計は据え置き。削減対象は社会支出や地方移転に向かう</td>
+                  <td>生活に直接かかわる分野の削減となり、国内の不満が表に出やすい</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="label-eyebrow" style="margin-top:2.8rem;">読み取れること</div>
+
+          <div class="insight-box">
+            <div class="insight-title">「破綻するか」は、たぶん間違った問いである</div>
+            <div class="insight-text">4年半、ロシア経済は崩壊しなかった。当面もそうだろう。変わったのは調達の方法だ。負担のかからない財源（超過収入の積立）が薄くなり、痛みの出る借入・増税へ移りつつある。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">歳入は他国の判断に左右される</div>
+            <div class="insight-text">石油ガス歳入が他国の判断で動くことは06で見た通りだ。制裁は買い手の行動を変えることで歳入に効く構造で、第1四半期の45.4%減はその結果だが、1〜7月では16.8%減まで戻り、効き目は一定ではない。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">金利を下げても成長が戻らない意味</div>
+            <div class="insight-text">05で見た金利と成長の乖離は、制約が需要でなく供給（働き手と設備）の側にあることを示す。金融政策では解消できない停滞である。</div>
+          </div>
+
+          <p class="closing">戦時経済の限界は、ある日訪れる破綻としてではなく、選べる手段が一つずつ減る形で近づいている。国民福祉基金の流動資産は、その残りを測る数字として毎月更新され続けている。</p>
+        </section>
+
+        <!-- ============ 08 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">08</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://tass.com/economy/2171007" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">TASS — 国民福祉基金、8月1日時点で1,593億ドル</div>
+                <div class="source-desc">2026年8月1日時点の基金総額と流動資産を伝えた財務省発表。</div>
+                <div class="source-country">【ロシアの国営通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://interfax.com/newsroom/top-stories/118657/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Interfax — 国民福祉基金、7月に3,833億ルーブル減少</div>
+                <div class="source-desc">財務省の月次発表による基金残高の報道。</div>
+                <div class="source-country">【ロシアの通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://interfax.com/newsroom/top-stories/117022/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Interfax — 第1四半期の連邦財政赤字が4.58兆ルーブル、国内総生産比1.9%に拡大</div>
+                <div class="source-desc">2026年1〜3月の赤字が通年目標を上回ったと報じた財務省統計。</div>
+                <div class="source-country">【ロシアの通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://interfax.com/newsroom/top-stories/118680/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Interfax — 1〜7月の連邦財政赤字は6.455兆ルーブル、国内総生産比2.8%</div>
+                <div class="source-desc">1〜7月の歳入・歳出・石油ガス歳入・付加価値税収の内訳を示した財務省の速報値。赤字拡大の理由を支出の前倒し執行と説明している。</div>
+                <div class="source-country">【ロシアの通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.pravda.com.ua/eng/news/2026/07/16/8044344/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Reuters（Ukrainska Pravda転載） — ロシアの財政赤字、予測を上回る見込み</div>
+                <div class="source-desc">歳出45.11兆・歳入40.28兆による赤字4.83兆ルーブルへの上方修正見込みと、シルアノフ財務相の「多少」超過するとの発言を報じた記事。</div>
+                <div class="source-country">【ロイターの報道をウクライナ語メディアが転載】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://interfax.com/newsroom/top-stories/117599/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Interfax — 第1四半期の実質GDPは0.2%減、ロシア連邦統計局の速報</div>
+                <div class="source-desc">2026年1〜3月の実質GDPが3年ぶりのマイナスになったとする統計局の発表。</div>
+                <div class="source-country">【ロシアの通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://meduza.io/en/news/2026/04/09/russia-s-oil-and-gas-revenues-fall-45-in-first-quarter-as-budget-deficit-exceeds-full-year-target" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Meduza — 石油ガス歳入が第1四半期に45%減、赤字は通年目標を超過</div>
+                <div class="source-desc">歳入の落ち込みと赤字拡大の関係を整理した報道。</div>
+                <div class="source-country">【ラトビア拠点のロシア語独立メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.osw.waw.pl/en/publikacje/osw-commentary/2025-12-09/russias-2026-budget-mounting-financial-challenges-and-economic" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">OSW — ロシアの2026年予算：積み上がる財政の課題と経済の停滞</div>
+                <div class="source-desc">2026年予算の歳入・歳出・国防治安比率・増税を分析したレポート。</div>
+                <div class="source-country">【ポーランドの東方研究センター】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.bofit.fi/en/forecasting/latest-forecast-for-russia/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">BOFIT — ロシア経済予測 2026〜2028年</div>
+                <div class="source-desc">実質GDP成長率・インフレ率の年次予測と、国民福祉基金の国内総生産比推移を示す2026年3月公表の予測。</div>
+                <div class="source-country">【フィンランド銀行の移行経済研究所】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.cbr.ru/eng/hd_base/KeyRate/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ロシア中央銀行 — 政策金利のデータベース</div>
+                <div class="source-desc">政策金利の公式な日次データ。</div>
+                <div class="source-country">【ロシアの中央銀行】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.sipri.org/publications/2026/sipri-insights-peace-and-security/budget-fifth-year-war-military-spending-russias-budget-2026" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">SIPRI — 5年目の戦争のための予算：ロシアの2026年予算における軍事支出</div>
+                <div class="source-desc">2025〜26年のロシアの戦争関連支出を推計したレポート。</div>
+                <div class="source-country">【スウェーデンの平和研究所】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.themoscowtimes.com/2026/01/16/russia-to-tap-national-wealth-fund-at-record-pace-as-oil-and-gas-revenues-slump-a91696" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Moscow Times — 石油ガス歳入の落ち込みで、国民福祉基金の取り崩しが過去最速に</div>
+                <div class="source-desc">石油ガス歳入の落ち込みと基金取り崩しペースを報じた記事。</div>
+                <div class="source-country">【ロシアの英字独立メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.themoscowtimes.com/2026/04/16/russian-central-bank-governor-warns-of-unprecedented-labor-shortage-a92517" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Moscow Times — 中央銀行総裁、前例のない人手不足に警鐘</div>
+                <div class="source-desc">労働市場の逼迫が経済に与える制約を報じた記事。</div>
+                <div class="source-country">【ロシアの英字独立メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.themoscowtimes.com/2025/10/28/what-new-us-sanctions-on-rosneft-and-lukoil-mean-for-russias-oil-trade-a90957" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Moscow Times — ロスネフチとルクオイルへの新たな制裁は、ロシアの石油取引に何を意味するか</div>
+                <div class="source-desc">ロスネフチの生産規模と、制裁の発効日を説明した解説記事。</div>
+                <div class="source-country">【ロシアの英字独立メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.themoscowtimes.com/2025/12/30/indias-russian-oil-imports-set-to-fall-to-lowest-level-since-2022-bloomberg-a91589" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Moscow Times — インドのロシア産原油輸入、2022年以来の低水準へ</div>
+                <div class="source-desc">2025年11月から12月にかけての輸入量の落ち込みを報じた記事。</div>
+                <div class="source-country">【ロシアの英字独立メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikipedia.org/wiki/Russian_National_Wealth_Fund" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Russian National Wealth Fund — 財務省月次公表値の集計表</div>
+                <div class="source-desc">財務省の各月発表を集計した基金総額・流動資産の一覧。本記事の推移グラフの出典。</div>
+                <div class="source-country">【月次一次データの集計】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-dash"><span class="toc-icon">—</span>6指標</a></li>
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-phases"><span class="toc-icon">02</span>時系列</a></li>
+          <li><a href="#sec-budget"><span class="toc-icon">03</span>財政</a></li>
+          <li><a href="#sec-buffer"><span class="toc-icon">04</span>緩衝材</a></li>
+          <li><a href="#sec-spillover"><span class="toc-icon">05</span>転嫁</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">06</span>4つの視点</a></li>
+          <li><a href="#sec-scenarios"><span class="toc-icon">07</span>分岐</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">08</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/ukraine/index.html">ウクライナ</a></div>
+          <div>2026年8月27日</div>
+          <div style="margin-top:0.5rem;">4つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/ukraine/index.html">ウクライナ一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  var AX = { grid: '#2a3a50', tick: '#8890a0' };
+
+  // 実質GDP成長率（縦棒）
+  (function () {
+    var ctx = document.getElementById('gdpChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2023年', '2024年', '2025年', '2026年\n予測', '2027年\n予測', '2028年\n予測'],
+        datasets: [{
+          // 出典：BOFIT（フィンランド銀行 移行経済研究所）
+          // 「BOFIT Forecast for Russia 2026–2028」2026年3月30日公表
+          // GDP growth (%): 2023=4.1 / 2024=4.9 / 2025=1.0 / 2026f=1.0 / 2027f=0.5 / 2028f=0.5
+          data: [4.1, 4.9, 1.0, 1.0, 0.5, 0.5],
+          backgroundColor: [
+            'rgba(184,120,104,0.85)',
+            'rgba(184,120,104,0.85)',
+            'rgba(184,120,104,0.45)',
+            'rgba(184,120,104,0.28)',
+            'rgba(184,120,104,0.28)',
+            'rgba(184,120,104,0.28)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.62
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' ' + c.parsed.y + '%'; } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: AX.tick, font: { size: 10 } } },
+          y: {
+            min: 0, max: 6,
+            grid: { color: AX.grid },
+            ticks: { color: AX.tick, font: { size: 10 }, callback: function (v) { return v + '%'; } }
+          }
+        }
+      }
+    });
+  })();
+
+  // 政策金利（折れ線）
+  (function () {
+    var ctx = document.getElementById('rateChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['2022年\n2月', '2022年\n9月', '2023年\n12月', '2024年\n10月', '2025年\n10月', '2025年\n12月', '2026年\n4月', '2026年\n7月'],
+        datasets: [{
+          // 出典：ロシア中央銀行の政策金利決定
+          // 2022-02-28 緊急利上げ 20.0 / 2022-09 7.5 / 2023-12 16.0
+          // 2024-10-25 21.0（過去最高）/ 2025-10-24 16.5 / 2025-12-19 16.0
+          // 2026-04-24 14.5 / 2026-07-24 14.0（2026年8月25日時点の適用金利も14.00）
+          // 変更のあった主な時点のみを抜き出しており、間の全会合は含まない
+          data: [20.0, 7.5, 16.0, 21.0, 16.5, 16.0, 14.5, 14.0],
+          borderColor: 'rgba(184,120,104,0.9)',
+          backgroundColor: 'rgba(184,120,104,0.10)',
+          borderWidth: 2, tension: 0, fill: true,
+          pointRadius: 3, pointBackgroundColor: 'rgba(184,120,104,1)', pointBorderWidth: 0
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' ' + c.parsed.y.toFixed(2) + '%'; } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: AX.tick, font: { size: 9 } } },
+          y: {
+            min: 0, max: 24,
+            grid: { color: AX.grid },
+            ticks: { color: AX.tick, font: { size: 10 }, callback: function (v) { return v + '%'; } }
+          }
+        }
+      }
+    });
+  })();
+
+  // 石油ガス歳入（横棒）
+  (function () {
+    var ctx = document.getElementById('oilGasChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2023年 実績', '2024年 実績', '2025年 実績', '2026年 当初予算', '2026年 見込み'],
+        datasets: [{
+          // 出典：ロシア財務省の公表値および報道
+          // 2023年＝8.8兆ルーブル（前年比24%減）
+          // 2024年＝11.13兆ルーブル（前年比26.2%増）
+          // 2025年＝8.4兆ルーブル（The Moscow Times 2026年1月16日：「8.4 trillion rubles ($108.4 billion)」）
+          // 2026年 当初予算＝8.9兆ルーブル（同記事）
+          // 2026年 見込み＝7.8兆ルーブル（会計検査院ベースの見込みとして報じられた値）
+          data: [8.8, 11.13, 8.4, 8.9, 7.8],
+          backgroundColor: [
+            'rgba(184,120,104,0.55)',
+            'rgba(184,120,104,0.85)',
+            'rgba(184,120,104,0.55)',
+            'rgba(184,120,104,0.28)',
+            'rgba(184,120,104,0.28)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.66
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' ' + c.parsed.x + '兆ルーブル'; } } }
+        },
+        scales: {
+          x: {
+            min: 0, max: 12,
+            grid: { color: AX.grid },
+            ticks: { color: AX.tick, font: { size: 10 }, callback: function (v) { return v + '兆'; } }
+          },
+          y: { grid: { display: false }, ticks: { color: AX.tick, font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // 財政赤字（横棒）
+  (function () {
+    var ctx = document.getElementById('deficitChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2026年の通年目標', '2026年1〜3月の実績', '2026年1〜7月の実績'],
+        datasets: [{
+          // 出典：ロシア財務省（Interfax 2026年4月・8月報道）
+          // 通年目標＝3.786兆ルーブル（国内総生産比1.6%）※本文では3.79兆と表記
+          // 第1四半期の実績＝4.58兆ルーブル（同1.9%）
+          // 1〜7月の実績＝6.455兆ルーブル（同2.8%）。前年同期は4.622兆ルーブル（同2.2%）
+          data: [3.79, 4.58, 6.455],
+          backgroundColor: ['rgba(184,120,104,0.35)', 'rgba(184,120,104,0.6)', 'rgba(184,120,104,0.9)'],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.5
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' ' + c.parsed.x + '兆ルーブル'; } } }
+        },
+        scales: {
+          x: {
+            min: 0, max: 8,
+            grid: { color: AX.grid },
+            ticks: { color: AX.tick, font: { size: 10 }, callback: function (v) { return v + '兆'; } }
+          },
+          y: { grid: { display: false }, ticks: { color: AX.tick, font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // 国民福祉基金の流動資産（面グラフ）
+  (function () {
+    var ctx = document.getElementById('nwfChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: [
+          '2022年2月', '2022年8月', '2022年11月',
+          '2023年3月', '2023年6月', '2023年9月', '2023年12月',
+          '2024年3月', '2024年6月', '2024年9月', '2024年12月',
+          '2025年3月', '2025年6月', '2025年9月', '2025年12月',
+          '2026年4月', '2026年6月', '2026年8月'
+        ],
+        datasets: [{
+          // 出典：ロシア財務省が毎月公表する国民福祉基金の流動資産残高（単位:10億ルーブル）
+          // 2022-02-01=9,730 / 2022-08-01=8,700 / 2022-11-01=7,873
+          // 2023-03-01=6,450 / 2023-06-01=6,640 / 2023-09-01=7,252 / 2023-12-01=6,740
+          // 2024-03-01=5,045 / 2024-06-01=5,046 / 2024-09-01=4,854 / 2024-12-01=5,792
+          // 2025-03-01=3,394 / 2025-06-01=2,840 / 2025-09-01=3,930 / 2025-12-01=4,115
+          // 2026-04-01=3,900 / 2026-06-01=3,410 / 2026-08-01=3,690
+          // 公表のある月から四半期ごとに抜き出しており、未公表の月は補っていない
+          data: [9730, 8700, 7873, 6450, 6640, 7252, 6740, 5045, 5046, 4854, 5792, 3394, 2840, 3930, 4115, 3900, 3410, 3690],
+          borderColor: 'rgba(184,120,104,0.95)',
+          backgroundColor: 'rgba(184,120,104,0.16)',
+          borderWidth: 2, tension: 0.25, fill: true,
+          pointRadius: 2.5, pointBackgroundColor: 'rgba(184,120,104,1)', pointBorderWidth: 0
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function (c) { return ' ' + (c.parsed.y / 1000).toFixed(2) + '兆ルーブル'; }
+            }
+          }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: AX.tick, font: { size: 9 }, maxRotation: 60, minRotation: 45 } },
+          y: {
+            min: 0, max: 10000,
+            grid: { color: AX.grid },
+            ticks: {
+              color: AX.tick, font: { size: 10 },
+              stepSize: 2000,
+              callback: function (v) { return (v / 1000) + '兆'; }
+            }
+          }
+        }
+      }
+    });
+  })();
+
+  // インフレ率（縦棒）
+  (function () {
+    var ctx = document.getElementById('inflationChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2023年', '2024年', '2025年'],
+        datasets: [{
+          // 出典：BOFIT「Forecast for Russia 2026–2028」2026年3月30日公表
+          // Inflation (%): 2023=5.9 / 2024=8.5 / 2025=8.7
+          // 2026年は中央銀行が通年4.0〜5.0%との見通しを示しているが、実績が未確定のため棒には含めない
+          data: [5.9, 8.5, 8.7],
+          backgroundColor: 'rgba(184,120,104,0.8)',
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.5
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' ' + c.parsed.y + '%'; } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: AX.tick, font: { size: 10 } } },
+          y: {
+            min: 0, max: 10,
+            grid: { color: AX.grid },
+            ticks: { color: AX.tick, font: { size: 10 }, callback: function (v) { return v + '%'; } }
+          }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

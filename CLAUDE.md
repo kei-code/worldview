@@ -112,6 +112,7 @@
 | 2026-08-04 | security | 「裏庭」と呼ばれた大陸 — アメリカはなぜ、大統領を連れ去れたのか | 2026-08-04-latin-america-intervention |
 | 2026-08-25 | technology | 「安全」という商品 — 街を覆うカメラと、記者を狙うソフト | 2026-08-25-surveillance-exports |
 | 2026-08-26 | economy | 人口が減る国、増える国 — 国力の前提が崩れるとき | 2026-08-26-population-decline |
+| 2026-08-27 | ukraine | ロシアはあと何年、戦争を続けられるのか — 戦時経済を数字で追う | 2026-08-27-russia-war-economy |
 
 ---
 
