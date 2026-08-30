@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ヘリオン（米）は2028年、中国は2030年、日本は2030年代の発電実証を掲げる一方、国際協調で進むITERの本格運転は2039年。核融合企業への投資は直近1年で44.8億ドルと過去最高を更新した。核分裂との違い、燃料の作り方、各国の到達点を5つの視点で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/technology/2026-08-28-fusion-race/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="太陽を、地上で — 核融合はいつ、誰の手で電気になるか — WorldView">
+  <meta property="og:description" content="ヘリオンは2028年、中国は2030年の発電実証を掲げる一方、ITERの本格運転は2039年。同じ核融合という技術で、なぜこれほど到達目標の年が違うのかを5つの視点で読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/technology/2026-08-28-fusion-race/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/fusion-race-hero-magnet-coil.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="太陽を、地上で — 核融合はいつ、誰の手で電気になるか — WorldView">
+  <meta name="twitter:description" content="核融合企業への投資は直近1年で44.8億ドルと過去最高を更新。核分裂との違いから各国の到達点までを5つの視点で読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/fusion-race-hero-magnet-coil.jpg">
+  <title>太陽を、地上で — 核融合はいつ、誰の手で電気になるか — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色はテクノロジーの --accent-tech（青）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/fusion-race-hero-magnet-coil.jpg');
+      background-size: cover; background-position: center 40%;
+      filter: brightness(1.12) contrast(1.05) saturate(1.03);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.30) 0%, rgba(14,17,23,0.52) 45%, rgba(14,17,23,0.90) 100%);
+    }
+    .article-hero.has-image .container {
+      position: relative; z-index: 1; width: 100%; transform: translateY(-24px);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b6c1cd; margin-top: 1.5rem; max-width: 580px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent-tech); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent-tech) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent-tech) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent-tech) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent-tech); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       カード再設計 — テーマ色の淡いウォッシュで区別する
+       ========================================================== */
+    .article-body .perspectives-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.6rem 2.4rem;
+    }
+    .article-body .perspective-card {
+      position: relative;
+      background: rgba(128,172,216,0.06);
+      border: none; border-radius: 0;
+      padding: 1.5rem 1.6rem 1.6rem;
+      transition: background 0.12s linear;
+    }
+    .article-body .perspective-card:hover {
+      transform: none; box-shadow: none;
+      background: rgba(128,172,216,0.10);
+    }
+    .article-body .perspective-card::before { display: none; }
+
+    .article-body .perspective-card .country-header { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .country-name {
+      font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em;
+    }
+    .pull-quote {
+      font-size: 0.98rem; font-weight: 600; line-height: 1.75;
+      color: var(--text); margin-bottom: 1rem;
+    }
+    .article-body .perspective-card .key-claim { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .interests {
+      border-top: 1px solid var(--border-subtle); padding-top: 0.8rem;
+    }
+    .role-badge {
+      display: block; text-align: right; margin-top: 0.9rem;
+      font-size: 0.73rem; letter-spacing: 0.05em; color: var(--accent-tech);
+    }
+
+    .article-body .compare-table { background: none; border: none; border-radius: 0; }
+    .article-body .compare-table th {
+      background: none; border-bottom: 2px solid var(--accent-tech); color: var(--text-muted);
+    }
+    .article-body .compare-table td { border-bottom: 1px solid var(--border-subtle); }
+    .article-body .compare-table tr:hover td { background: rgba(0,0,0,0.20); }
+
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content {
+      background: none; border: none; border-radius: 0; padding: 0;
+    }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent-tech); }
+    .article-body .reaction-chip {
+      background: none; border: none; border-radius: 0;
+      border-left: 2px solid var(--border);
+      padding: 0 0 0 0.55rem; color: var(--text-dim);
+    }
+
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .article-body .data-card {
+      background: none; border: none; border-radius: 0; padding: 0;
+    }
+    .article-body .data-card::before { display: none; }
+    .article-body .data-card:hover { border-color: transparent; }
+    .article-body .data-card h4 {
+      font-size: 0.95rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem; padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.7rem; line-height: 1.65; }
+
+    .article-body .sources-grid { display: block; counter-reset: src; }
+    .article-body a.source-item {
+      display: flex; gap: 1rem; align-items: baseline;
+      background: none; border: none; border-radius: 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1rem 0.2rem;
+      color: inherit; text-decoration: none;
+      counter-increment: src;
+      transition: background 0.12s linear, border-color 0.12s linear;
+    }
+    .article-body a.source-item::before {
+      content: counter(src, decimal-leading-zero);
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--accent-tech); flex: 0 0 auto; min-width: 1.7rem;
+    }
+    .article-body a.source-item:hover {
+      background: rgba(0,0,0,0.20); border-bottom-color: var(--accent-tech);
+    }
+    .article-body a.source-item:focus-visible {
+      outline: 2px solid var(--accent-tech); outline-offset: 2px;
+    }
+
+    /* ==========================================================
+       この記事で使うブロック
+       ========================================================== */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(128,172,216,0.06);
+      border: 1px solid rgba(128,172,216,0.22);
+      box-shadow: 0 0 40px 10px rgba(128,172,216,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent-tech); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent-tech); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 2.4rem; }
+    .glossary-card { padding: 0.9rem 0; border-bottom: 1px solid var(--border-subtle); }
+    .glossary-term { font-size: 0.83rem; font-weight: 700; margin-bottom: 0.28rem; }
+    .glossary-def { font-size: 0.78rem; color: var(--text-muted); line-height: 1.75; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent-tech); line-height: 1.2; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    .insight-box { border-left: 2px solid var(--border); padding-left: 1.2rem; margin-bottom: 2.2rem; }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* 核分裂と核融合：対置ブロック */
+    .route-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2rem; margin-top: 1.6rem; }
+    .route-col { padding: 1.4rem 1.5rem 1.6rem; background: rgba(128,172,216,0.05); }
+    .route-label { font-size: 0.72rem; letter-spacing: 0.12em; font-weight: 700; color: var(--accent-tech); margin-bottom: 0.5rem; }
+    .route-head { font-size: 1rem; font-weight: 700; margin-bottom: 0.7rem; line-height: 1.55; }
+    .route-body { font-size: 0.85rem; color: var(--text-muted); line-height: 1.9; }
+    .route-body dl { margin-top: 0.9rem; }
+    .route-body dt { font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.06em; margin-top: 0.7rem; }
+    .route-body dd { font-size: 0.84rem; color: var(--text-muted); line-height: 1.75; margin: 0.15rem 0 0; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* ==========================================================
+       アクセシビリティ・レスポンシブ
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .glossary-grid { grid-template-columns: 1fr; gap: 0; }
+      .route-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">テクノロジー</span>
+      <span class="date">2026年8月28日</span>
+    </div>
+    <h1 class="article-title">太陽を、地上で<br>— 核融合はいつ、誰の手で電気になるか</h1>
+
+    <div class="hero-deck">
+      核融合企業への投資は、直近1年間で44.8億ドルと過去最高を記録した。アメリカの民間企業ヘリオンは2028年の送電を、中国は2030年の発電実証を掲げる。<span class="deck-accent">同じ核融合という技術で、国際協調で進むITERの本格運転（2039年）とは10年以上の開きがある。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">累計投資 142.4億ドル</span>
+      <span class="hero-pill">中国 2030年に発電実証</span>
+      <span class="hero-pill">ITER本格運転は2039年</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 割る技術と、くっつける技術</h2>
+
+          <p class="lead">核融合は、太陽が輝き続ける仕組みそのものを地上で再現しようとする技術である。原理は1930年代から知られていたが、実用化はいまだ実現していない——にもかかわらず、2026年に入って投資も建設も、かつてない速度で進み始めた。</p>
+
+          <p class="lead">核融合を理解するうえでまず必要なのは、いま動いている原子力発電所（核分裂）との違いを明確にすることだ。どちらも原子核の反応から莫大なエネルギーを取り出す点は同じだが、<strong>核分裂は重い原子核を「割る」ことで、核融合は軽い原子核を「くっつける」ことでエネルギーを生む</strong>。この操作の向きの違いから、燃料・制御・廃棄物のすべての違いが生まれる。</p>
+
+          <p class="lead">では、核融合でエネルギーが生まれる理由は何か。仕組み自体は難しくない。重水素と三重水素という水素の仲間どうしが結合してヘリウムになるとき、結合後の質量は結合前よりわずかに軽くなる。<strong>この失われた質量が、アインシュタインの式（E=mc²）に従ってエネルギーに変わる</strong>——太陽の中心で起きているのと同じ反応である。</p>
+
+          <div class="label-eyebrow">二つの原子核反応</div>
+          <div class="route-grid">
+            <div class="route-col">
+              <div class="route-label">分裂 — 今の原発</div>
+              <div class="route-head">重いウランを、外から割る</div>
+              <div class="route-body">
+                中性子を重いウラン235にぶつけると原子核が二つに割れ、同時に新しい中性子が2〜3個飛び出す。この中性子が次のウランに当たり、さらに核を割る——これが連鎖反応である。
+                <dl>
+                  <dt>燃料</dt><dd>ウラン235（天然に存在する重い元素を濃縮して使う）</dd>
+                  <dt>反応の性質</dt><dd>自分で連鎖して続く。放っておくと反応が加速するため、制御棒などで意図的に抑え続ける必要がある</dd>
+                  <dt>廃棄物</dt><dd>核分裂生成物や超ウラン元素を含み、一部は数万年単位で高い放射能を保つ</dd>
+                </dl>
+              </div>
+            </div>
+            <div class="route-col">
+              <div class="route-label">融合 — 核融合</div>
+              <div class="route-head">軽い水素どうしを、無理やりくっつける</div>
+              <div class="route-body">
+                重水素と三重水素を1億度以上に加熱すると、原子から電子が離れた「プラズマ」という状態になり、原子核どうしが融合してヘリウムと中性子になる。プラズマは壁に触れると冷えて反応が止まるため、漏れ道のないドーナツ状の空間を強力な磁場で作って閉じ込める——その代表的な装置が「トカマク」である（用語解説参照）。生じる中性子はエネルギーが14.1MeVと大きく、これを熱として取り出して発電する。
+                <dl>
+                  <dt>燃料</dt><dd>重水素（海水中に豊富）と三重水素（自然界にほぼ存在せず、炉内でリチウムから作る必要がある。詳細は05）</dd>
+                  <dt>反応の性質</dt><dd>連鎖しない。超高温・高密度・十分な閉じ込め時間という条件がひとつでも崩れれば、反応は自然に止まる</dd>
+                  <dt>廃棄物</dt><dd>核分裂生成物を含まず、炉壁の放射化した部材の多くは約100年で低レベル放射性廃棄物相当まで減衰する</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+
+          <div class="article-question">
+            <p>核融合企業への投資は、この1年で44.8億ドルと過去最高を記録した。アメリカの民間企業は2028年、中国は2030年の発電実証を掲げる一方、国際協調で進むITERの本格運転は2039年。同じ技術で、なぜこれほど到達目標の年が違うのか。最初に電気を売るのは誰か。</p>
+          </div>
+
+          <div class="label-eyebrow">3つの論点</div>
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">「点火」の成功は、「発電」の成功ではない</div>
+              <div class="factor-desc">アメリカの国立点火施設（NIF）は2022年、史上初めて投入エネルギーを上回る出力を得た。だがこれはレーザーが標的に届けたエネルギーとの比であり、施設全体が消費する電力とは別の指標である（詳細は05）。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">燃料は、買うのではなく炉の中で作る</div>
+              <div class="factor-desc">三重水素は自然界にほとんど存在せず、炉を囲むブランケットの中でリチウムから作り出すしかない。濃縮したリチウム6の商業供給網はまだ整っていない（詳細は05）。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">国家主導と民間主導では、勝負のルールが違う</div>
+              <div class="factor-desc">中国は国有企業を束ねて建設速度で勝負し、アメリカは巨大テック企業の電力需要を追い風にした民間資本で勝負している。目指す到達点も評価の物差しも異なる（詳細は03）。</div>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">用語解説</div>
+          <div class="glossary-grid">
+            <div class="glossary-card">
+              <div class="glossary-term">トカマク</div>
+              <div class="glossary-def">磁場でプラズマをドーナツ状に閉じ込める核融合装置の方式。ITER・JET・BESTなど、現在最も普及している設計である。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">Q値（エネルギー利得）</div>
+              <div class="glossary-def">投入したエネルギーに対する、核融合反応で得られたエネルギーの比率。Q=1で「投入と産出が釣り合う」科学的な損益分岐点となる。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">点火（イグニッション）</div>
+              <div class="glossary-def">NIFが用いる「ターゲットゲイン」は、レーザーが標的に届けたエネルギーとの比を指す言葉で、施設全体の消費電力とは別の指標である（詳細は05）。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">ブランケット</div>
+              <div class="glossary-def">炉心を囲む構造材。中性子を受け止めて熱に変えると同時に、内部のリチウムから三重水素を作り出す役割を担う。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">超伝導磁石</div>
+              <div class="glossary-def">電気抵抗なく強力な磁場を作れる磁石。プラズマを閉じ込め続けるために不可欠で、部材の精度と製造能力が各国の実力差を生む。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">ステラレータ</div>
+              <div class="glossary-def">トカマクとは異なる磁場のねじり方でプラズマを閉じ込める方式。ドイツのProxima Fusionなどが採用し、構造は複雑だが安定した閉じ込めが期待される。</div>
+            </div>
+          </div>
+
+          <figure class="article-figure" style="margin:2.5rem 0 0;">
+            <img src="../../../image/articles/fusion-race-diagram-fission-fusion.jpg" alt="核分裂と核融合の反応を対比する図解。左側はウラン235に中性子が当たり核分裂生成物と中性子が飛び出して連鎖反応が起きる様子、右側は重水素と三重水素が結合しヘリウムと中性子になる様子を示す" loading="lazy">
+            <figcaption>「割る」と「くっつける」——操作の向きが逆であることが、燃料・制御・廃棄物のすべての違いの出発点になる。※イメージ図解（生成AI）</figcaption>
+          </figure>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/fusion-race-diagram-fuel-cycle.jpg" alt="核融合の燃料サイクルを示す図解。①海水から重水素を取り出し炉心へ、②炉心で1億度のプラズマとなり重水素と三重水素が融合、③生じた中性子が周囲のブランケットへ、④ブランケットのリチウムと中性子が反応して三重水素を作り燃料として炉心に戻す、⑤中性子の熱を電気に変える、という循環を中心から外側へ向かう構造で示す" loading="lazy">
+            <figcaption>燃料は市場で買うのではなく、炉の中で自ら作る——このサイクルが途切れなく回るかどうかが、発電所として成立するかの分かれ目になる。※イメージ図解（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 70年の実験と、この2年の建設ラッシュ</h2>
+
+          <p class="lead">核融合の研究は70年に及ぶが、実際に「発電所を建てる」段階へ各国がそろって動き出したのは、ここ2年ほどのことである。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">1950年代</div>
+              <div class="timeline-content">
+                <h4>トカマク方式の考案</h4>
+                <p>ソ連の物理学者たちが、磁場でプラズマをドーナツ状に閉じ込める「トカマク」方式を考案。以後70年、核融合研究の主流の設計となる。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">1997年5月</div>
+              <div class="timeline-content">
+                <h4>JETがQ=0.67の世界記録</h4>
+                <p>イギリスの欧州合同トーラス（JET）が、24MWの加熱入力に対し16MWの核融合出力を得てQ=0.67を記録。この値は26年間破られなかった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-neutral"></div>
+              <div class="timeline-date">2006年11月</div>
+              <div class="timeline-content">
+                <h4>ITER建設協定に7極が署名</h4>
+                <p>日本・アメリカ・欧州連合・ロシア・中国・韓国・インドの7極がITER建設協定に署名。南フランスのカダラッシュで建設が始まった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2022年12月5日</div>
+              <div class="timeline-content">
+                <h4>NIF、史上初の「点火」</h4>
+                <p>アメリカの国立点火施設（NIF）が、レーザーが標的に届けた2.05MJに対し3.15MJの核融合出力を得て、投入を上回る「点火」を史上初めて達成した（詳細は04）。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2023年10月3日</div>
+              <div class="timeline-content">
+                <h4>JET、69メガジュールで運転終了</h4>
+                <p>JETが最後の重水素・三重水素実験で69メガジュールの核融合エネルギーを記録し、35年に及ぶ運転に幕を閉じた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-neutral"></div>
+              <div class="timeline-date">2024年7月</div>
+              <div class="timeline-content">
+                <h4>ITER、新ベースラインを発表</h4>
+                <p>ITER機構が計画を見直し、重水素・三重水素運転の本格開始を2039年に設定。従来計画から4年遅らせ、費用も50億ユーロ超増加した。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">本格運転2039年</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-neutral"></div>
+              <div class="timeline-date">2025年6月</div>
+              <div class="timeline-content">
+                <h4>日本、発電実証を2030年代へ前倒し</h4>
+                <p>日本政府が「フュージョンエネルギー・イノベーション戦略」を改定。従来の2050年ごろという発電実証目標を、2030年代へ前倒しした。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2025年7月22日</div>
+              <div class="timeline-content">
+                <h4>中国、国有企業を束ねた新会社を設立</h4>
+                <p>中国核工業集団を中心とする国有企業群が「中国聚変能源有限公司」を上海に設立。登録資本は150億元（約21億ドル）に達する（詳細は03）。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">登録資本150億元</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2025年7月30日</div>
+              <div class="timeline-content">
+                <h4>ヘリオン、商用発電所の建設に着手</h4>
+                <p>アメリカの民間企業ヘリオン・エナジーが、ワシントン州で発電所「Orion」の建設に着手。Microsoftへ2028年に送電することを掲げる（詳細は03）。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">2028年送電目標</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-neutral"></div>
+              <div class="timeline-date">2025年10月1日</div>
+              <div class="timeline-content">
+                <h4>ドイツ、国内建設の行動計画を閣議決定</h4>
+                <p>ドイツ政府が「Fusion Action Plan」を閣議決定。連邦のインフラ基金から7億5,500万ユーロを投じ、2040年までに国内へ世界初の核融合発電所を建設する方針を示した。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2026年6〜7月</div>
+              <div class="timeline-content">
+                <h4>NIFが11回目の点火、投資は過去最高に</h4>
+                <p>6月20日、NIFが11回目の点火を記録（出力7.9MJ、target gain約3.8）。7月には核融合産業協会（FIA）が年次報告で、民間投資の累計が142.4億ドルに達したと発表した（詳細は04）。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">11回目の点火</span>
+                  <span class="reaction-chip">累計投資142.4億ドル</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot dot-event"></div>
+              <div class="timeline-date">2026年7月28日〜8月25日</div>
+              <div class="timeline-content">
+                <h4>CFSが10億ドルを追加調達、ITERの建設は前倒しで進む</h4>
+                <p>7月28日、ITERはトカマクのセクターモジュール9基のうち6基の設置を予定より半年早く完了。7月30日にはCFS（コモンウェルス・フュージョン・システムズ）が単独ラウンドで10億ドルを追加調達し、累計調達額は40億ドルに達した。8月25日には日本のQST・東芝が製造した超伝導コイルの低温通電試験にも成功している。</p>
+                <div class="timeline-reactions">
+                  <span class="reaction-chip">CFS累計調達40億ドル</span>
+                  <span class="reaction-chip">ITER建設が半年前倒し</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/fusion-race-archive-blueprint.jpg" alt="古い技術資料が並ぶ資料室。棚に技術報告書や設計図の巻物が並び、机の上には核融合装置とみられる断面図の大判設計図が広げられ、眼鏡が置かれている" loading="lazy">
+            <figcaption>核融合の設計思想の多くは、実は数十年前にすでに紙の上で固まっていた。時間がかかったのは、それを実際に建てて動かす技術と資金だった。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 5つの視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>5つの視点 — 誰が、どの物差しで競っているか</h2>
+
+          <p class="lead">「一番乗り」を目指す主体は一つではない。何をもって勝ちとするかの物差しも、主体ごとに違う。5つの立場を、それぞれの言い分のまま並べる。</p>
+
+          <div class="tabs-wrap">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-cards">カードで読む</button>
+              <button class="tab-btn" data-tab="tab-table">表で比べる</button>
+            </div>
+
+            <div class="tab-pane active" id="tab-cards">
+              <div class="perspectives-grid">
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">アメリカ（民間）</span></div>
+                  <div class="pull-quote">「私たちは、国家の計画表ではなく市場の需要で動いている」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    ヘリオン・エナジーは2025年7月30日、ワシントン州で商用発電所「Orion」の建設に着手し、Microsoftへの2028年送電を掲げる。コモンウェルス・フュージョン・システムズ（CFS）はSPARCの組み立てが80%を超え、初プラズマとネットエネルギー利得（Q>1）をともに2027年に見込む。2026年7月30日には単独ラウンドで10億ドルを追加調達し、累計調達額は40億ドルに達した（詳細は02）。商用炉ARCはバージニア州で2030年代前半の稼働を目指す。
+                  </div>
+                  <div class="interests">最大の関心：巨大テック企業の電力需要を、最速で満たすこと。</div>
+                  <div class="role-badge">— 民間主導、国家は下支え</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">中国</span></div>
+                  <div class="pull-quote">「国家が音頭を取れば、建設の速度で追い抜ける」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    2025年7月、中国核工業集団を中心とする国有企業群が「中国聚変能源有限公司」を設立、登録資本は150億元に達した。合肥の実験装置BESTは2027年末の完成、2030年の発電実証を掲げ、CFETRは2035年の系統送電を目標とする。
+                  </div>
+                  <div class="interests">最大の関心：エネルギー安全保障と、技術覇権の両方。</div>
+                  <div class="role-badge">— 国家主導、建設速度が武器</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">欧州＋ITER</span></div>
+                  <div class="pull-quote">「急ぐより、確実に届ける」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    ITERは2024年に新ベースラインを発表し、本格運転を2039年へ4年遅らせた（詳細は02）。だが建設そのものは近年前倒しで進み、2026年7月28日にはトカマクのセクターモジュール6基の設置が予定より半年早く完了した（詳細は02）。ドイツは2025年10月、7億5,500万ユーロを投じ2040年までに国内建設を目指す行動計画を閣議決定。ステラレータ方式のProxima Fusionは2026年7月、欧州最大となる4億1,100万ユーロを調達した。
+                  </div>
+                  <div class="interests">最大の関心：国際協調の枠組みを保ちながら、着実な技術基盤を作ること。</div>
+                  <div class="role-badge">— 国際協調、時間をかけて厚みを作る</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">日本</span></div>
+                  <div class="pull-quote">「早さより、部品で握る」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    2025年6月、政府は「フュージョンエネルギー・イノベーション戦略」を改定し、発電実証の目標を従来の2050年ごろから2030年代へ前倒しした。実験装置JT-60SAは2026年度中のプラズマ加熱運転に向け整備が進み、超伝導技術など部材の供給網で存在感を持つ。
+                  </div>
+                  <div class="interests">最大の関心：資源制約下のエネルギー安全保障と、部材分野での国際競争力。</div>
+                  <div class="role-badge">— 前倒しを掲げつつ、部品で握る</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">懐疑派</span></div>
+                  <div class="pull-quote">「『常に30年後』という看板は、まだ下ろせていない」</div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    核融合は半世紀にわたり「常に20〜30年後」と言われ続けてきた。ITERの費用は公式見積もりで220億ドルとされ、非公式には300億〜450億ドルにのぼるとの試算もあり、いまだ実験施設にすぎない。2026年8月、ヘルシンキ大学の研究チームが、候補材料タングステンの中性子損傷が既存モデルの想定より大きいとPhysical Review Lettersに発表した（詳細は05）。
+                  </div>
+                  <div class="interests">最大の関心：誇大な期待より、実証されたコストと部材寿命のデータ。</div>
+                  <div class="role-badge">— 記録の積み上げより、実証データを待つ側</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-table">
+              <div style="overflow-x:auto;">
+                <table class="compare-table">
+                  <thead>
+                    <tr><th>立場</th><th>基本スタンス</th><th>最大の主張</th><th>最大の関心事</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>アメリカ（民間）</td><td>民間主導、国家は下支え</td><td>市場の需要が動かす技術であり、国家の計画表ではない</td><td>巨大テック企業の電力需要を最速で満たすこと</td></tr>
+                    <tr><td>中国</td><td>国家主導、建設速度が武器</td><td>国家の音頭で建設速度そのものが競争力になる</td><td>エネルギー安全保障と技術覇権の両方</td></tr>
+                    <tr><td>欧州＋ITER</td><td>国際協調、時間をかけて厚みを作る</td><td>急ぐより、確実に技術基盤を積み上げる</td><td>国際協調の枠組みと着実な技術基盤</td></tr>
+                    <tr><td>日本</td><td>前倒しを掲げつつ、部品で握る</td><td>発電実証は前倒しし、部材で存在感を持つ</td><td>エネルギー安全保障と部材分野の競争力</td></tr>
+                    <tr><td>懐疑派</td><td>実証データを待つ側</td><td>「常に30年後」の看板はまだ下ろせていない</td><td>誇大な期待より、実証されたコストと寿命</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure" style="margin-top:2rem;">
+            <img src="../../../image/articles/fusion-race-cable-macro.jpg" alt="超伝導ケーブルの断面の接写。青いニトリル手袋の指がケーブル端を持ち、内部で銅とニオブチタンとみられる細い線材が撚り合わされている様子が写っている" loading="lazy">
+            <figcaption>核融合炉の実力を左右するのは、派手な発表よりもこうした部材の精度である。超伝導線材の量産能力は、国家間の実力差がもっとも表れる場所のひとつだ。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ・統計 ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 投資の急拡大と、実験の到達点</h2>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>民間投資の累計推移（年ごと）</h4>
+              <div style="position:relative;height:250px;margin-top:1rem;">
+                <canvas id="investmentChart"></canvas>
+              </div>
+              <p class="chart-note">2026年は7月時点。直近1年（2025年7月〜2026年7月）だけで44.8億ドルが投じられ、前年比69%増の過去最高となった。<br>出典：核融合産業協会（FIA）「Global Fusion Industry」各年版報告</p>
+            </div>
+
+            <div class="data-card">
+              <h4>NIF点火実験 — 出力エネルギーの到達点推移</h4>
+              <div style="position:relative;height:250px;margin-top:1rem;">
+                <canvas id="nifChart"></canvas>
+              </div>
+              <p class="chart-note">NIFが公表した点火実験（target gain 1超）の確認できたショットを、選別せず時系列で並べた。記録は単調に伸びているのではなく、上下しながら更新されている。レーザーが標的に届けたエネルギーに対する比率であり、施設全体の消費電力とは別の指標である点に注意（詳細は05）。<br>出典：ローレンス・リバモア国立研究所（LLNL）公表資料</p>
+            </div>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">142.4億ドル</div>
+              <div class="stat-desc">核融合企業への民間投資の累計額（2026年7月時点、FIA調べ）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">2028年</div>
+              <div class="stat-desc">ヘリオンが目指す、Microsoftへの送電開始の目標年</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">2039年</div>
+              <div class="stat-desc">ITERが重水素・三重水素の本格運転を開始する目標年</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">8.6MJ</div>
+              <div class="stat-desc">NIFの最高出力記録（2025年4月7日、target gain 4超）</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 「実験の成功」と「発電の実用化」の距離</h2>
+
+          <p class="lead">記録は着実に更新されている。だが実験施設としての到達点と、発電所として採算が取れる到達点の間には、まだ越えていない3つの関門がある。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">① 「点火」の意味 — 施設全体の電気代とは、まったく別の数字</div>
+            <div class="insight-text">
+              NIFが2022年12月に初めて達成した「点火」は、レーザーが標的に届けた2.05MJのエネルギーに対し3.15MJの核融合出力を得たという意味での利得である（target gain 1.54）。2025年4月7日には出力8.6MJ、利得4超まで記録が伸びた（詳細は02・04）。<strong>だがこの比較には、レーザーそのものを動かすために施設全体で消費する数百MJ規模の電力は含まれていない。</strong>「点火に成功した」というニュースと、「発電所として採算が取れる」という到達点の間には、まだ大きな距離がある。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">② 燃料は自然界になく、炉の中で作るしかない</div>
+            <div class="insight-text">
+              核融合の燃料である三重水素は放射性で半減期が約12年と短く、自然界にはほとんど存在しない。炉を囲む「ブランケット」の中でリチウムに中性子を当てて作り出すしかないが、<strong>反応効率の良いリチウム6を商業規模で濃縮する供給網はまだ整っていない</strong>。発電所を量産する段階に進めば年間で数十〜数百トン規模のリチウム6が必要になるとみられ、燃料の調達自体が新たな争奪戦になりうる。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">③ 部材が中性子に耐えられるかは、まだ実証されていない</div>
+            <div class="insight-text">
+              核融合反応で生じる中性子はエネルギーが14.1MeVと大きく、原子力発電所（核分裂）の中性子より炉壁の材料への損傷が大きい。2026年8月、ヘルシンキ大学の研究チームがPhysical Review Lettersに発表した計算によると、<strong>候補材料のタングステンは既存モデルの想定より大きな損傷を受ける領域がある</strong>という。数年単位の中性子照射に耐える部材は、いまだ実機で実証された例がない。
+            </div>
+          </div>
+
+          <p class="closing">
+            核融合の「一番乗り」を分けるのは、科学的なブレークスルーというより、誰が先に建設を終えるかという工学の速度になりつつある。中国は国家の力で複数の実験炉を並行建設し、アメリカの民間企業は巨大テック企業の電力需要を追い風に工期を切り詰める。国際協調で進むITERは、その両者よりゆっくりと、しかし最も広い実験データを積み上げている（詳細は03）。<strong>最初に電気を売る主体が、最も優れた技術を持つ主体だとは限らない。</strong>燃料の供給網と部材の耐久性という関門を最初に越えた者が、結局は最後まで残ることになるだろう。
+          </p>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://www.iter.org/node/20687/new-baseline-prioritize-robust-start-exploitation" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ITER機構 — 新ベースラインの発表</div>
+                <div class="source-desc">重水素・三重水素の本格運転開始を2039年とする新スケジュールと、その背景を説明する公式発表。</div>
+                <div class="source-country">【ITER機構の公式発表】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.fusionindustryassociation.org/fusion-industry-attracts-record-annual-funding-of-4-48bn-raising-total-to-14-24bn/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">核融合産業協会（FIA） — 2026年報告の発表記事</div>
+                <div class="source-desc">直近1年の投資44.8億ドル、累計142.4億ドルなど本記事のチャートAの出典。</div>
+                <div class="source-country">【業界団体の公式発表】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.fusionindustryassociation.org/wp-content/uploads/2026/07/FIA-Industry-report-2026_d9.pdf" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">FIA — 2026年版「The Global Fusion Industry」報告書本体</div>
+                <div class="source-desc">企業数・雇用者数・商用電力供給の見込み時期などを集計した年次報告書。</div>
+                <div class="source-country">【業界団体の年次報告】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://lasers.llnl.gov/science/achieving-fusion-ignition" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ローレンス・リバモア国立研究所（LLNL） — 核融合点火の解説</div>
+                <div class="source-desc">NIFの点火実験の意味と、target gainの定義を説明する公式解説ページ。本記事のチャートBの出典。</div>
+                <div class="source-country">【アメリカ国立研究所】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://euro-fusion.org/fusion/history-of-fusion/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">EUROfusion — 核融合研究の歴史</div>
+                <div class="source-desc">1997年のJET Q=0.67の世界記録を含む、核融合研究の主要な到達点をまとめた公式ページ。</div>
+                <div class="source-country">【欧州の核融合研究コンソーシアム】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://euro-fusion.org/eurofusion-news/dte3record/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">EUROfusion — JET、69メガジュールの最終記録</div>
+                <div class="source-desc">2023年10月のJET最終実験の詳細と、35年に及ぶ運転の締めくくりを伝える公式発表。</div>
+                <div class="source-country">【欧州の核融合研究コンソーシアム】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.caixinglobal.com/2025-07-24/china-launches-national-fusion-energy-firm-with-16-billion-investment-from-soes-102344438.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">財新（Caixin Global） — 中国、国有企業出資で核融合新会社を設立</div>
+                <div class="source-desc">中国聚変能源有限公司の設立経緯と、国有企業各社の出資構成を報じた記事。</div>
+                <div class="source-country">【中国の経済メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://english.cas.cn/newsroom/cas-in-media/202601/t20260119_1145881.shtml" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">中国科学院 — 発電実証を2030年に前倒しする方針</div>
+                <div class="source-desc">BESTやCFETRの開発計画と、中国の核融合工学の加速方針を伝える公式サイトの記事。</div>
+                <div class="source-country">【中国の国立研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.spglobal.com/energy/en/news-research/latest-news/electric-power/073025-helion-energy-breaks-ground-on-fusion-power-plant-slated-to-be-online-in-2028" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">S&amp;P Global — ヘリオン、2028年稼働の発電所に着工</div>
+                <div class="source-desc">Orion発電所の着工と、Microsoftへの送電計画の詳細を報じた記事。</div>
+                <div class="source-country">【アメリカのエネルギー専門報道】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://cfs.energy/technology/sparc/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Commonwealth Fusion Systems — SPARC公式ページ</div>
+                <div class="source-desc">SPARCの建設進捗と、商用炉ARCへの技術移転計画を説明する企業公式ページ。</div>
+                <div class="source-country">【アメリカの核融合スタートアップ】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.proximafusion.com/press-news/proxima-fusion-raises-eu411-million-to-build-europes-commercial-fusion-champion" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Proxima Fusion — 4億1,100万ユーロの資金調達を発表</div>
+                <div class="source-desc">欧州最大となった資金調達ラウンドの詳細と、ステラレータ方式の開発方針を伝える発表。</div>
+                <div class="source-country">【ドイツの核融合スタートアップ】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.world-nuclear-news.org/articles/agreement-to-build-german-fusion-power-plant" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">World Nuclear News — ドイツ国内建設の合意</div>
+                <div class="source-desc">Fusion Action Planの閣議決定と、2040年までの国内発電所建設方針を報じた記事。</div>
+                <div class="source-country">【核産業専門の国際報道】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.mext.go.jp/content/20250912-mxt_kaisen-000044655_05.pdf" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">文部科学省 — フュージョンエネルギー・イノベーション戦略の取組資料</div>
+                <div class="source-desc">2030年代への発電実証目標の前倒しと、JT-60SAの役割を説明する政府資料。</div>
+                <div class="source-country">【日本政府（文部科学省）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.iaea.org/bulletin/safety-in-fusion" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">国際原子力機関（IAEA） — 核融合における安全性</div>
+                <div class="source-desc">核融合と核分裂の廃棄物・安全上の性質の違いを解説した公式記事。</div>
+                <div class="source-country">【国際原子力機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://physicsworld.com/a/the-fusion-industry-must-rise-to-its-tritium-challenge/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Physics World — 核融合産業が直面する三重水素の課題</div>
+                <div class="source-desc">三重水素の供給不足とリチウム6の濃縮供給網の課題を分析した記事。</div>
+                <div class="source-country">【イギリスの物理学専門メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://phys.org/news/2026-08-tungsten-fusion-reactors.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Phys.org — タングステンの中性子損傷に関する新研究</div>
+                <div class="source-desc">ヘルシンキ大学のPhysical Review Letters掲載研究を紹介した2026年8月の記事。</div>
+                <div class="source-country">【科学ニュースメディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://cfs.energy/news-and-media/commonwealth-fusion-systems-raises-another-1-billion-bringing-total-capital-raised-to-4-billion/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Commonwealth Fusion Systems — 10億ドルの追加調達を発表</div>
+                <div class="source-desc">2026年7月30日の単独ラウンドと、累計調達額が40億ドルに達した経緯を伝える企業公式発表。</div>
+                <div class="source-country">【アメリカの核融合スタートアップ】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.scientificamerican.com/article/worlds-largest-fusion-project-is-in-big-trouble-new-documents-reveal/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Scientific American — ITERの費用と遅延をめぐる内部文書</div>
+                <div class="source-desc">公式見積もり220億ドルと、非公式試算が300億〜450億ドルに及ぶことを報じた記事。</div>
+                <div class="source-country">【アメリカの科学専門誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.engineeringnews.co.za/article/international-thermonuclear-experimental-reactor-project-franca-update-2026-08-07" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Engineering News — ITERのセクターモジュール設置が半年前倒し</div>
+                <div class="source-desc">2026年7月28日、トカマク9基のセクターモジュールのうち6基の設置が完了した進捗を報じた記事。</div>
+                <div class="source-country">【南アフリカのエンジニアリング専門誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://jp.ibtimes.com/qst-toshiba-clear-10000-amp-iter-coil-test-france-103960" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">International Business Times日本版 — QST・東芝がITERコイルの低温通電試験に成功</div>
+                <div class="source-desc">2026年8月25日、超伝導コイルが1万アンペアの電流試験に成功した経緯を報じた記事。</div>
+                <div class="source-country">【国際経済メディアの日本版】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>5つの視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/technology/index.html">テクノロジー</a></div>
+          <div>2026年8月28日</div>
+          <div style="margin-top:0.5rem;">5つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/technology/index.html">テクノロジー一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 核融合企業への民間投資の累計推移（年ごと）
+  (function() {
+    var ctx = document.getElementById('investmentChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2022', '2023', '2024', '2025', '2026\n(7月)'],
+        datasets: [{
+          // 出典：Fusion Industry Association の各年版報告プレスリリース
+          // 2022: https://www.fusionindustryassociation.org/the-global-fusion-industry-in-2022-report-in-the-news/
+          //   原記述："declared private funding surpasses $4.7 billion, plus an additional $117 million
+          //            in grants and other funding from governments, taking the total to over $4.8 billion"
+          // 2023: 原記述："the fusion industry attracted a total of $6.21 billion in investment"
+          // 2024: 原記述："the fusion industry attracted over $7.1 billion of investment"
+          // 2025: 原記述："Total funding for the 53 fusion companies surveyed has reached a
+          //               cumulative USD9.766 billion"
+          // 2026(7月): https://www.fusionindustryassociation.org/fusion-industry-attracts-record-annual-funding-of-4-48bn-raising-total-to-14-24bn/
+          //   原記述："Total fusion funding reported since 2021 stands at $14.24bn"
+          // 単位を「億ドル」に統一（10億ドル=100億ドルではなく1,000,000,000ドル=10億ドル ×10で億ドル換算）
+          data: [48, 62.1, 71, 97.7, 142.4],
+          backgroundColor: [
+            'rgba(128,172,216,0.45)',
+            'rgba(128,172,216,0.45)',
+            'rgba(128,172,216,0.45)',
+            'rgba(128,172,216,0.55)',
+            'rgba(128,172,216,0.85)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.6
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: { label: function(c) { return ' 累計' + c.parsed.y + '億ドル'; } }
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v) { return v + '億ドル'; } }
+          },
+          x: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // NIF点火実験の出力エネルギー（target gain）の推移
+  (function() {
+    var ctx = document.getElementById('nifChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['22/12/5', '23/7/30', '23/10/8', '23/10/30', '24/2/10', '24/11/18', '25/2/23', '25/4/7', '26/6/20'],
+        datasets: [{
+          // 出典：LLNL公式サイト（lasers.llnl.gov）およびLLNLプレスリリース各回分。確認できた点火ショット（target gain 1超）を
+          // 選別せず時系列ですべて掲載する（一部のみを恣意的に抜き出さない）。
+          // 2022/12/5：入力2.05MJ→出力3.15MJ（target gain 1.54） https://lasers.llnl.gov/science/achieving-fusion-ignition
+          // 2023/7/30：入力2.05MJ→出力3.88MJ
+          // 2023/10/8：入力1.9MJ→出力2.4MJ
+          // 2023/10/30：入力2.2MJ→出力3.4MJ
+          // 2024/2/10：入力2.2MJ→出力5.2MJ（target gain 約2.3）
+          // 2024/11/18：入力2.2MJ→出力4.1MJ
+          // 2025/2/23：入力2.05MJ→出力5.0MJ（target gain 2.44）
+          // 2025/4/7：入力2.08MJ→出力8.6MJ（target gain 4超） https://lasers.llnl.gov/news/target-breakthrough-enabled-fusion-record-nif
+          // 2026/6/20：出力7.9MJ（target gain 約3.8）
+          // いずれも「レーザーが標的に届けたエネルギー」との比（target gain）。施設全体消費電力とは別指標（詳細は05）。
+          data: [3.15, 3.88, 2.4, 3.4, 5.2, 4.1, 5.0, 8.6, 7.9],
+          backgroundColor: [
+            'rgba(128,172,216,0.40)',
+            'rgba(128,172,216,0.40)',
+            'rgba(128,172,216,0.25)',
+            'rgba(128,172,216,0.40)',
+            'rgba(128,172,216,0.55)',
+            'rgba(128,172,216,0.45)',
+            'rgba(128,172,216,0.55)',
+            'rgba(128,172,216,0.85)',
+            'rgba(128,172,216,0.65)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.6
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: { label: function(c) { return ' 出力' + c.parsed.y + 'MJ'; } }
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v) { return v + 'MJ'; } }
+          },
+          x: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

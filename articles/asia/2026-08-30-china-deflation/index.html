@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="中国のGDPデフレーターが2026年第2四半期に1.6%となり、12期連続のマイナスが止まった。だが上昇を主導したのは上流の素材価格で、新築住宅価格は37か月連続の下落、小売は1.3%増、固定資産投資は5.7%減。デフレ脱出の中身を6指標と2つのグラフで検証する。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/asia/2026-08-30-china-deflation/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="デフレは終わったのか — 中国経済、12期ぶりのプラスの中身 | WorldView">
+  <meta property="og:description" content="中国のGDPデフレーターが2026年第2四半期に1.6%となり、12期連続のマイナスが止まった。だが上昇を主導したのは上流の素材価格で、新築住宅価格は37か月連続の下落が続いている。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/asia/2026-08-30-china-deflation/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/china-deflation-hero-skyline.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="デフレは終わったのか — 中国経済、12期ぶりのプラスの中身 | WorldView">
+  <meta name="twitter:description" content="中国のGDPデフレーターが2026年第2四半期に1.6%となり、12期連続のマイナスが止まった。だが上昇を主導したのは上流の素材価格で、新築住宅価格は37か月連続の下落が続いている。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/china-deflation-hero-skyline.jpg">
+
+  <title>デフレは終わったのか — 中国経済、12期ぶりのプラスの中身 | WorldView</title>
+
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色は asia = --accent5（#9a8ab4 / 154,138,180）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url('../../../image/articles/china-deflation-hero-skyline.jpg');
+      background-size: cover; background-position: center 46%;
+      filter: brightness(1.16) contrast(1.03) saturate(1.02);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(100deg, rgba(14,17,23,0.84) 0%, rgba(14,17,23,0.54) 46%, rgba(14,17,23,0.18) 100%),
+        linear-gradient(180deg, rgba(14,17,23,0.18) 0%, rgba(14,17,23,0.22) 45%, rgba(14,17,23,0.50) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; width: 100%; }
+    .article-hero .article-meta,
+    .article-hero .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65);
+    }
+    .hero-credit {
+      position: absolute; right: 1.1rem; bottom: 0.9rem; z-index: 2;
+      font-size: 0.66rem; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.52);
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75;
+      color: #b4bfcc; max-width: 560px; margin-top: 1.5rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+    }
+    .deck-accent { color: var(--accent5); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent5) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent5) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent5) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent5); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       ダッシュボード帯
+       ========================================================== */
+    .dash { margin: 0 0 3.4rem; padding: 0; }
+    .dash-head-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      flex-wrap: wrap; gap: 0.4rem 1rem; margin-bottom: 1.3rem;
+    }
+    .dash-head {
+      font-size: 0.72rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent5); margin-bottom: 0;
+    }
+    .dash-fx { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0; font-weight: 400; }
+    .dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem 2.2rem; }
+    .dash-card { padding-bottom: 0.2rem; }
+    .dash-label {
+      font-size: 0.72rem; letter-spacing: 0.08em; color: var(--text-dim);
+      line-height: 1.5; margin-bottom: 0.5rem; min-height: 2.2em;
+    }
+    .dash-value {
+      font-size: 1.6rem; font-weight: 700; color: var(--accent5);
+      line-height: 1.15; letter-spacing: -0.01em;
+    }
+    .dash-value .unit { font-size: 0.9rem; font-weight: 700; margin-left: 0.15rem; }
+    .dash-note { font-size: 0.72rem; color: var(--text-muted); line-height: 1.6; margin-top: 0.35rem; }
+    .spark-wrap { position: relative; margin-top: 0.8rem; height: 104px; }
+    .spark { display: block; width: 100%; height: 28px; overflow: visible; }
+    .spark polyline { fill: none; stroke: rgba(154,138,180,0.85); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+    .spark circle { fill: rgba(154,138,180,1); vector-effect: non-scaling-stroke; }
+    .spark-leader { position: absolute; width: 1px; background: rgba(255,255,255,0.16); }
+    .spark-callout {
+      position: absolute; font-size: 0.62rem; line-height: 1.4;
+      color: var(--text-dim); white-space: nowrap;
+    }
+    .spark-callout .cval { display: block; color: var(--text-muted); font-weight: 700; }
+    .spark-callout.anchor-l { left: 0; text-align: left; }
+    .spark-callout.anchor-r { right: 0; text-align: right; }
+    .spark-callout.anchor-c { transform: translateX(-50%); text-align: center; }
+
+    /* 内訳バー */
+    .dash-share { margin-top: 0.9rem; }
+    .share-track { height: 9px; background: rgba(255,255,255,0.07); }
+    .share-fill { display: block; height: 100%; background: rgba(154,138,180,0.85); }
+    .share-labels {
+      display: flex; justify-content: space-between; margin-top: 0.4rem;
+      font-size: 0.68rem; color: var(--text-dim);
+    }
+    .share-labels .hi { color: var(--accent5); font-weight: 700; }
+
+    /* 名目と実質のバレットチャート */
+    .dash-bullet { margin-top: 0.9rem; }
+    .bullet-track { position: relative; height: 10px; background: rgba(255,255,255,0.07); }
+    .bullet-fill { display: block; height: 100%; width: 100%; background: rgba(154,138,180,0.55); }
+    .bullet-target {
+      position: absolute; top: -3px; bottom: -3px; width: 2px;
+      background: var(--text);
+    }
+    .bullet-target::after {
+      content: ''; position: absolute; bottom: -4px; left: 50%;
+      width: 5px; height: 5px; background: var(--text);
+      transform: translateX(-50%) rotate(45deg);
+    }
+    .bullet-labels {
+      display: flex; justify-content: space-between; margin-top: 0.5rem;
+      font-size: 0.68rem; color: var(--text-dim);
+    }
+    .bullet-labels .hi { color: var(--accent5); font-weight: 700; }
+
+    /* ==========================================================
+       本文パーツ（テーマ色を --accent5 に統一）
+       ========================================================== */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(154,138,180,0.06);
+      border: 1px solid rgba(154,138,180,0.22);
+      box-shadow: 0 0 40px 10px rgba(154,138,180,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent5); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent5); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent5); line-height: 1.2; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    .insight-box { border-left: 2px solid var(--border); padding-left: 1.2rem; margin-bottom: 2.2rem; }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* カード — テーマ色の淡いウォッシュで区別する */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 2.6rem 2.4rem; }
+    .article-body .perspective-card {
+      position: relative;
+      background: rgba(154,138,180,0.08);
+      border: none; border-radius: 0;
+      padding: 1.5rem 1.6rem 1.6rem;
+      transition: background 0.12s linear;
+    }
+    .article-body .perspective-card:hover { transform: none; box-shadow: none; background: rgba(154,138,180,0.13); }
+    .article-body .perspective-card::before { display: none; }
+    .article-body .perspective-card .country-header { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .pull-quote { font-size: 0.98rem; font-weight: 600; line-height: 1.75; color: var(--text); margin-bottom: 1rem; }
+    .article-body .perspective-card .key-claim { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .interests { border-top: 1px solid var(--border-subtle); padding-top: 0.8rem; }
+    .role-badge {
+      display: block; text-align: right; margin-top: 0.9rem;
+      font-size: 0.73rem; letter-spacing: 0.05em; color: var(--accent5);
+    }
+
+    .article-body .compare-table { background: none; border: none; border-radius: 0; }
+    .article-body .compare-table th { background: none; border-bottom: 2px solid var(--accent5); color: var(--text-muted); }
+    .article-body .compare-table td { border-bottom: 1px solid var(--border-subtle); }
+    .article-body .compare-table tr:hover td { background: rgba(0,0,0,0.20); }
+    .table-scroll { overflow-x: auto; }
+    .num-cell { font-family: var(--font-mono); font-size: 0.82rem; white-space: nowrap; }
+
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent5); }
+
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .article-body .data-card { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .data-card::before { display: none; }
+    .article-body .data-card:hover { border-color: transparent; }
+    .article-body .data-card h4 {
+      font-size: 0.95rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem; padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .data-card.wide { grid-column: 1 / -1; }
+    .chart-box { position: relative; height: 260px; }
+    .chart-box.tall { height: 340px; }
+    .chart-box.short { height: 200px; }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.7rem; line-height: 1.65; }
+
+    .article-body .sources-grid { display: block; counter-reset: src; }
+    .article-body a.source-item {
+      display: flex; gap: 1rem; align-items: baseline;
+      background: none; border: none; border-radius: 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1rem 0.2rem;
+      color: inherit; text-decoration: none;
+      counter-increment: src;
+      transition: background 0.12s linear, border-color 0.12s linear;
+    }
+    .article-body a.source-item::before {
+      content: counter(src, decimal-leading-zero);
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--accent5); flex: 0 0 auto; min-width: 1.7rem;
+    }
+    .article-body a.source-item:hover { background: rgba(0,0,0,0.20); border-bottom-color: var(--accent5); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent5); outline-offset: 2px; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); }
+    .article-figure figcaption { font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* アクセシビリティ・レスポンシブ */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-hero.has-image::after {
+        background: linear-gradient(180deg, rgba(14,17,23,0.42) 0%, rgba(14,17,23,0.52) 45%, rgba(14,17,23,0.72) 100%);
+      }
+      .dash-grid { grid-template-columns: 1fr 1fr; gap: 1.4rem 1.6rem; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">アジア情勢</span>
+      <span class="date">2026年8月30日</span>
+    </div>
+    <h1 class="article-title">デフレは終わったのか<br>— 中国経済、12期ぶりのプラスの中身</h1>
+
+    <div class="hero-deck">
+      2026年第2四半期、中国の物価は3年ぶりに上昇へ転じた。だが値を押し上げたのは鉄や石炭といった上流の素材で、家計が買う住宅の価格は37か月下がり続けている。<span class="deck-accent">出口に立っているのは、経済の片側だけである。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">GDPデフレーター 1.6%</span>
+      <span class="hero-pill">新築住宅価格 37か月連続の下落</span>
+      <span class="hero-pill">土地譲渡収入 31.5%減</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ ダッシュボード ============ -->
+        <section class="dash" id="sec-dash">
+          <div class="dash-head-row">
+            <div class="dash-head">中国経済の6指標</div>
+            <div class="dash-fx">断りのない指標は2026年上半期（1〜6月）の前年同期比</div>
+          </div>
+          <div class="dash-grid">
+
+            <div class="dash-card">
+              <div class="dash-label">GDPデフレーター<br>（2026年第2四半期）</div>
+              <div class="dash-value">1.6<span class="unit">%</span></div>
+              <!-- 出典：国家統計局の四半期公表値をもとにした報道（Bloomberg 2026年7月15日）。
+                   名目成長率5.9% − 実質成長率4.3% = デフレーター1.6%。
+                   2023年第1四半期以来のプラスで、12期連続のマイナスが止まった -->
+              <div class="dash-bullet">
+                <div class="bullet-track">
+                  <span class="bullet-fill"></span>
+                  <span class="bullet-target" style="left:72.9%"></span>
+                </div>
+                <div class="bullet-labels"><span class="hi">名目 5.9%</span><span>◆ 実質 4.3%</span></div>
+              </div>
+              <div class="dash-note">2つの差がデフレーター。12期ぶりのプラス</div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-label">新築住宅価格<br>（2026年7月・70都市の前年同月比）</div>
+              <div class="dash-value">−3.2<span class="unit">%</span></div>
+              <!-- 出典：国家統計局の70都市住宅販売価格指数を伝えた Trading Economics（2026年8月）。
+                   7月は前年同月比 −3.2%（6月は −3.3%）で37か月連続の下落。前月比は −0.1%（6月と同じ）。
+                   主要都市で前年同月比プラスは上海の +3.0% のみ（6月は +3.1%） -->
+              <div class="dash-note">37か月連続の下落。前月比は0.1%減。主要都市で前年同月比のプラスは上海の3.0%だけ</div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-label">不動産開発投資<br>（2026年上半期）</div>
+              <div class="dash-value">−18.0<span class="unit">%</span></div>
+              <!-- 出典：国家統計局「2026年上半期の国民経済」2026年7月15日。
+                   不動産開発投資 −18.0%、固定資産投資 −5.7%。
+                   1〜7月の固定資産投資は −6.7%、不動産を除いても −3.7%（新華社 2026年8月17日） -->
+              <div class="dash-note">固定資産投資は全体で5.7%減。1〜7月は6.7%減まで拡大し、不動産を除いても3.7%減</div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-label">土地譲渡収入<br>（2026年上半期の前年同期比）</div>
+              <div class="dash-value">−31.5<span class="unit">%</span></div>
+              <!-- 出典：財政部の公表値をもとにした報道。前年比の推移は
+                   2022年 −23.0% / 2023年 −13.2% / 2024年 −16.0% / 2025年 −14.7%（Yicai Global）
+                   2026年上半期 −31.5%（9,778億元、ほぼ10年で最大の落ち込み）。
+                   水準は2021年のピーク8.7兆元から2025年の4.15兆元へ -->
+              <div class="spark-wrap">
+                <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="0,14.85 25,2 50,5.67 75,3.97 100,26"></polyline>
+                  <circle cx="0" cy="14.85" r="1.6"></circle>
+                  <circle cx="25" cy="2" r="1.6"></circle>
+                  <circle cx="100" cy="26" r="1.6"></circle>
+                </svg>
+                <span class="spark-leader" style="left:0%; top:14.85px; height:19.15px;"></span>
+                <span class="spark-callout anchor-l" style="left:0%; top:34px;"><span class="cval">2022年 −23.0%</span>4年連続の減少へ</span>
+                <span class="spark-leader" style="left:25%; top:2px; height:66.0px;"></span>
+                <span class="spark-callout anchor-c" style="left:25%; top:68px;"><span class="cval">最小 −13.2%</span>2023年</span>
+                <span class="spark-leader" style="left:100%; top:26px; height:8px;"></span>
+                <span class="spark-callout anchor-r" style="top:34px;"><span class="cval">最大 −31.5%</span>26年上半期</span>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-label">若年失業率<br>（2026年7月・16〜24歳、在学者を除く）</div>
+              <div class="dash-value">17.9<span class="unit">%</span></div>
+              <!-- 出典：国家統計局の都市部調査失業率（Caixin Global 2026年8月20日報道）。
+                   7月は17.9%で、6月から3ポイント上昇。7月として過去3年で最も高い。
+                   2026年の大学卒業予定者1,270万人は教育部の公表値（Global Times 2025年11月）。
+                   都市部全体の調査失業率は上半期平均5.2%、6月は5.0%（国家統計局） -->
+              <div class="dash-share">
+                <div class="share-track"><span class="share-fill" style="width:17.9%"></span></div>
+                <div class="share-labels"><span class="hi">失業 17.9%</span><span>都市部全体は5.0%</span></div>
+              </div>
+              <div class="dash-note">今年の大学卒業予定者は1,270万人</div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-label">社会消費品小売総額<br>（2026年上半期）</div>
+              <div class="dash-value">1.3<span class="unit">%</span></div>
+              <!-- 出典：国家統計局「2026年上半期の国民経済」2026年7月15日。
+                   社会消費品小売総額 +1.3%、輸出入総額 25兆4,686億元（+16.9%）、
+                   一人当たり可処分所得 名目+5.2%・実質+4.2%、消費者物価 +1.0%、生産者物価 +1.5%（6月は+4.1%） -->
+              <div class="dash-note">同じ期間に輸出入総額は16.9%増。一人当たり可処分所得は実質4.2%増だが、消費には向かっていない</div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 値上がりした側と、下がり続けている側</h2>
+
+          <p class="lead">2026年7月15日、国家統計局は第2四半期の国内総生産を発表した。実質成長率は4.3%、名目成長率は5.9%。名目が実質を上回ったのは3年ぶりで、その差である国内総生産デフレーターは1.6%のプラスとなった。12期続いた物価の下落が、ここで止まった。</p>
+
+          <p class="lead">物価が上がることそのものは、中国政府が長く求めてきた状態である。ところが同じ日に発表された他の数字は、逆を向いていた。不動産開発投資は18.0%減、固定資産投資は5.7%減、社会消費品小売総額は1.3%増にとどまる。翌月の統計では新築住宅価格が37か月連続で下落した。</p>
+
+          <p class="lead">上がったものと下がったものを分けると、境界がはっきり見える。上がったのは生産者物価、つまり鉄鋼・石炭・非鉄といった上流の素材価格である。6月の生産者物価は前年同月比4.1%増と4年ぶりの高さになった。一方、消費者物価は1.0%増にとどまる。</p>
+
+          <p class="lead">物価下落を止めたのは、需要が戻ったからではない。供給を絞る政策と、資源価格の上昇である。この違いは、中国経済が転換点を越えたかどうかの判断を左右する。</p>
+
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">値上がりは上流に集中している</div>
+              <div class="factor-desc">生産者物価は6月に4.1%増。素材産業の設備を絞る「反内巻」政策が効いている（詳細は02）。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">家計が持つ資産は下がり続けている</div>
+              <div class="factor-desc">新築住宅価格は37か月連続の下落。値上がりしたものと、家計の資産は別である（詳細は05）。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">地方政府の収入は戻っていない</div>
+              <div class="factor-desc">土地譲渡収入は上半期で31.5%減。物価が上がっても、この収入は回復しない（詳細は04）。</div>
+            </div>
+          </div>
+
+          <div class="article-question">
+            <p>中国の物価下落を止めたのは何だったのか。そしてそれは、家計が使うお金の側にも届いているのか。</p>
+          </div>
+
+          <figure class="article-figure" style="margin:2.5rem 0 0;">
+            <img src="../../../image/articles/china-deflation-upstream-quarry.jpg" alt="真昼の露天掘り鉱山。段々になった岩壁が坑底へ向かって降りていき、運搬トラックが段の上を進んでいる">
+            <figcaption>値上がりしたのは、この側だった。鉄鉱石や石炭など上流の素材価格が生産者物価を押し上げ、統計上のデフレを終わらせた。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 時系列 ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>時系列 — 規制から6年、何が積み上がったか</h2>
+
+          <p class="lead">いまの物価は、2020年に始まった不動産規制の帰結である。開発業者の借入を止め、土地が売れなくなり、地方政府の収入が消え、家計の資産が目減りした。その順番で見ていく。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2020年8月 — 三条紅線</div>
+                <p>中国人民銀行と住宅都市農村建設部が、開発業者の借入に3つの基準を設けた。資産負債率70%以下、純負債資本倍率100%以下、短期債務に対する現金1倍以上。恒大集団は3つすべてに抵触していた。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2021年12月 — 恒大集団の債務不履行</div>
+                <p>恒大集団がドル建て債2本の利払いを履行できなかった。アジアのドル建て債市場に大きな衝撃が走り、他の開発業者の資金調達も止まった。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2023年10月 — 碧桂園の債務不履行</div>
+                <p>碧桂園が4億7,000万香港ドルの元本を期日に支払えなかった。恒大に続く大手の不履行となり、業界の縮小が一過性ではないことがはっきりした。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年11月 — 10兆元の債務借換え</div>
+                <p>全国人民代表大会常務委員会が、地方政府の債務上限を6兆元引き上げ、新規の専項債から年8,000億元を5年間充てる計画を承認した。合計10兆元。バラック改造にともなう2兆元は2029年以降に繰り延べられた。政府が認定した「隠れ債務」は2023年末で14.3兆元、2028年までに2.3兆元へ減らす計画である。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年7月 — 「反内巻」政策</div>
+                <p>中央財経委員会が、低価格競争の抑制と過剰設備の秩序ある退出を打ち出した。10の重点産業に2年間の計画が示され、2025〜26年の生産目標は2024年より低く設定された。需要を増やす政策ではない。供給を減らして価格を戻す方針である。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年7月 — デフレーターがプラスへ</div>
+                <p>第2四半期の国内総生産デフレーターが1.6%となり、12期連続のマイナスが止まった。同じ月、新築住宅価格は37か月連続で下落し、上半期の土地譲渡収入は9,778億元、前年同期比31.5%減となった。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年8月 — 需要側への緩和</div>
+                <p>北京が8月7日に住宅購入制限を緩めた。五環路内で購入する非居住者の社会保険・納税の要件を2年から1年へ短縮し、住宅積立金の融資上限も引き上げた。上海は2月、深圳は4月にすでに緩和しており、これで四大都市がそろった。年初から全国で導入された住宅関連の政策は680件を超える。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/china-deflation-construction-halt.jpg" alt="工事が止まった集合住宅の建設現場。未完成のコンクリート床から錆びた鉄筋が突き出し、足場に色あせた垂れ幕が残っている">
+            <figcaption>三条紅線から6年、途中で止まった現場が各地に残っている。不動産開発投資は2026年上半期に18.0%減った。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>5つの視点 — 同じ数字を、誰がどう読むか</h2>
+
+          <p class="lead">デフレーターがプラスに転じたという一つの事実は、立場によってまったく違う意味を持つ。</p>
+
+          <div class="perspectives-grid">
+            <div class="perspective-card">
+              <div class="country-header"><div class="country-name">中央政府</div></div>
+              <div class="pull-quote">価格は正常化に向かっている</div>
+              <div class="key-claim">供給側の過当競争を抑えた結果として価格が戻ったと説明する。高技術産業への投資は1〜7月に5%増え、知的財産関連の投資も9.1%増と、投資の中身は改善していると位置づける。2026年の成長目標は4.5〜5%。5%を下回る目標が示されたのは初めてで、未達を避ける余地は作ってある。</div>
+              <div class="interests">重視：成長目標の達成と、金融リスクの封じ込め</div>
+              <span class="role-badge">政策を決める側</span>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header"><div class="country-name">地方政府</div></div>
+              <div class="pull-quote">収入源が消えたまま、支出だけが残っている</div>
+              <div class="key-claim">土地譲渡収入は2021年のピーク8.7兆元から2025年に4.15兆元へ半減し、2026年上半期はさらに31.5%減った。10兆元の借換えは利払いを軽くする。だが消えた収入は戻らない。インフラ投資が1〜7月に3.6%減と縮んでいるのは、使える金がないからである。</div>
+              <div class="interests">重視：債務の繰り延べと、中央からの財源移転</div>
+              <span class="role-badge">資金繰りの当事者</span>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header"><div class="country-name">都市部の家計と若年層</div></div>
+              <div class="pull-quote">下がり続けているのは、自分の資産のほうだ</div>
+              <div class="key-claim">住宅は家計の資産の中心にある。その価格が37か月下がり続ける状況では、所得が増えても支出は増やしにくい。上半期の一人当たり可処分所得は実質4.2%増だったが、小売は1.3%増にとどまった。7月の若年失業率は17.9%、今年の大学卒業予定者は1,270万人にのぼる。</div>
+              <div class="interests">重視：雇用の確保と、資産価値の下げ止まり</div>
+              <span class="role-badge">需要の担い手</span>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header"><div class="country-name">開発業者と銀行</div></div>
+              <div class="pull-quote">在庫が減らないかぎり、次は始まらない</div>
+              <div class="key-claim">上半期の新築商品建物の販売面積は4億140万平方メートルで11.6%減。売れない在庫を抱えたまま新規着工はできず、開発投資は18.0%減った。銀行の側も重い。開発業者向け融資と、地方の融資平台向け債権が同時に効いてくる。</div>
+              <div class="interests">重視：在庫の消化と、借換えの継続</div>
+              <span class="role-badge">調整の最前線</span>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header"><div class="country-name">貿易相手国</div></div>
+              <div class="pull-quote">中国で売れなかった分が、輸出になって届く</div>
+              <div class="key-claim">国内で売れない分は外に向かう。欧州連合は2026年7月から鉄鋼の無関税枠を約3,300万トンから1,830万トンへ47%削減し、枠を超える分の関税を25%から50%へ引き上げた。2031年まで続く措置である。</div>
+              <div class="interests">重視：自国産業の防衛と、価格下落の遮断</div>
+              <span class="role-badge">波及の受け手</span>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">5つの視点の比較</div>
+          <div class="table-scroll">
+            <table class="compare-table">
+              <thead>
+                <tr><th>主体</th><th>いま最も重視するもの</th><th>次に打つ手</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>中央政府</td><td>成長目標の達成と金融リスクの抑制</td><td>供給側の設備調整の継続と、消費補助の延長</td></tr>
+                <tr><td>地方政府</td><td>消えた収入をどう埋めるか</td><td>債務の借換えと、中央への財源要請</td></tr>
+                <tr><td>都市部の家計と若年層</td><td>雇用と資産価値</td><td>支出の抑制と貯蓄の積み増し</td></tr>
+                <tr><td>開発業者と銀行</td><td>在庫の消化と資金繰り</td><td>値下げによる販売と、新規着工の見送り</td></tr>
+                <tr><td>貿易相手国</td><td>流入する安価な製品への対応</td><td>関税と数量枠による輸入の制限</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/china-deflation-jobfair-queue.jpg" alt="大きな展示ホールで開かれた就職説明会。採用ブースの前に若い求職者の長い列ができている">
+            <figcaption>今年の大学卒業予定者は1,270万人。7月の若年失業率は17.9%だった。統計上のデフレ脱出は、この層の実感には届いていない。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ — 消えた収入と、上下に割れた指標</h2>
+
+          <p class="lead">数字を2つの角度から見る。ひとつは地方政府の収入がどれだけ速く減っているか。もうひとつは、2026年上半期の主要指標が、どこで上を向きどこで下を向いたかである。</p>
+
+          <div class="data-grid" style="margin-top:2.4rem;">
+            <div class="data-card">
+              <h4>土地譲渡収入 — 5年目に入った減少</h4>
+              <div class="chart-box"><canvas id="landChart"></canvas></div>
+              <p class="chart-note">国有土地使用権の譲渡収入の前年比。2021年のピーク8.7兆元から2025年には4.15兆元へ半減した。2026年は上半期だけで9,778億元、前年同期比31.5%減。<br>出典：財政部の公表値（2022〜2025年はYicai Global、2026年上半期はThe Epoch Timesの各報道で確認）</p>
+            </div>
+            <div class="data-card">
+              <h4>2026年上半期 — 上を向いた指標と、下を向いた指標</h4>
+              <div class="chart-box"><canvas id="h1Chart"></canvas></div>
+              <p class="chart-note">同じ半年の前年同期比。外に売る側と作る側は伸び、国内で買う側と建てる側は縮んでいる。<br>出典：国家統計局「2026年上半期の国民経済」2026年7月15日公表</p>
+            </div>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">14.3兆元</div>
+              <div class="stat-desc">政府が認定した地方の「隠れ債務」（2023年末）。2028年までに2.3兆元へ減らす計画</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">−6.7%</div>
+              <div class="stat-desc">1〜7月の固定資産投資。不動産を除いても3.7%減で、上半期の5.7%減から悪化した</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">1.1兆元</div>
+              <div class="stat-desc">買い替え補助による上半期の販売額。前年同期の1.6兆元から縮んだ</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">16.9%</div>
+              <div class="stat-desc">上半期の輸出入総額の伸び。金額は25兆4,686億元</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 内需は、なぜ戻らないのか</h2>
+
+          <p class="lead">政府は消費を増やそうとしてきた。買い替え補助への配分は2026年に2,500億元。それでも小売の伸びは1.3%にとどまる。金を出しても消費が動かない理由は、家計の側の構造にある。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">値上がりを作ったのは、需要ではなく供給の制限だった</div>
+            <div class="insight-text">「反内巻」政策は、過当競争になった産業の設備を減らし価格を戻す試みである。効果は上流に出た。生産者物価は6月に4.1%増と4年ぶりの高さになり、7月は3.5%増。一方、消費者物価は上半期を通じて1.0%増にとどまる。上流だけが上がれば、下流の製造業には原価の上昇として跳ね返る。デフレーターのプラス転換は、需要が戻った証拠にはならない。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">家計の資産が住宅に偏っている</div>
+            <div class="insight-text">中国の家計は所得の3分の1程度を貯蓄に回している。国際的に見て高い水準で、その貯蓄の多くは住宅として保有されてきた。住宅価格が37か月下がり続ける局面では、所得が実質4.2%増えても、支出より貯蓄が優先される。家計消費が国内総生産に占める比率は40%を下回ったままである。上位中所得国の平均48%、高所得国の約60%と比べて低い。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">補助金の効き目は落ちている</div>
+            <div class="insight-text">買い替え補助による販売額は、2026年上半期に1.1兆元。前年同期の1.6兆元から3割減った。補助率が下がったことに加え、買い替える予定だった需要を、すでに取り込んでしまったためである。配分そのものも2025年の3,000億元から2,500億元へ減った。3年目に入った政策で、同じ手法の伸びしろは小さくなっている。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">埋まらない分は、外に向かう</div>
+            <div class="insight-text">国内で売れない生産は輸出に回る。上半期の輸出入総額は16.9%増えた。中国は世界の製造業生産の約30%を占める一方、世界の消費に占める比率は13%とされる。この差が輸出圧力として出続けるかぎり、相手国は関税や数量枠で受け止めることになる。内需の問題は、国境の外では通商の問題として現れる。</div>
+          </div>
+
+          <p class="closing">デフレーターがプラスに転じたことは事実である。ただしそれは、供給を絞る政策と資源価格が作った数字であって、家計が買う側で起きた変化ではない。転換が本物かどうかを測る指標は、デフレーターではなく、住宅価格が下げ止まるか、そして小売の伸びが所得の伸びに追いつくかのほうにある。どちらもまだ、その手前にある。8月に四大都市がそろって購入制限を緩めたのは、供給を絞るだけでは足りないという判断の表れだろう。</p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/china-deflation-price-tag-macro.jpg" alt="スーパーの棚に並ぶ値下げ札の接写。元の価格に取り消し線が引かれ、その下に低い価格が書かれている">
+            <figcaption>統計の上で物価は上向いたが、売り場では値下げが続く。上流の素材価格と、家計が払う価格は別々に動いている。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://www.stats.gov.cn/english/PressRelease/202607/t20260715_1964120.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">国家統計局 — 2026年上半期の国民経済</div>
+                <div class="source-desc">国内総生産、社会消費品小売総額、固定資産投資、不動産開発投資、輸出入総額、消費者物価、生産者物価、調査失業率、可処分所得の公表値。本記事の上半期の数字はすべてここによる。</div>
+                <div class="source-country">【中国政府の統計機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://english.news.cn/20260817/df5786d4fea2402699a2cd8b14c24265/c.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">新華社 — 1〜7月の固定資産投資は6.7%減</div>
+                <div class="source-desc">不動産を除く投資、インフラ投資、製造業投資、高技術産業投資の内訳を示した国家統計局の月次発表。</div>
+                <div class="source-country">【中国の国営通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.bloomberg.com/news/articles/2026-07-15/china-s-gdp-price-gauge-turns-positive-after-years-of-deflation" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Bloomberg — 中国の物価指標が3年ぶりにプラスへ</div>
+                <div class="source-desc">第2四半期の国内総生産デフレーターが1.6%となり、12期連続のマイナスが終わったことを報じた記事。名目成長率5.9%との関係も示している。</div>
+                <div class="source-country">【アメリカの経済通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.tradingview.com/news/te_news:575747:0-china-new-home-prices-fall-the-least-in-5-months/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Trading Economics — 7月の新築住宅価格は前年同月比3.2%減、37か月連続の下落</div>
+                <div class="source-desc">国家統計局の70都市住宅販売価格指数をもとに、前年同月比・前月比と都市別の内訳を伝えた記事。上海のみプラスであることを含む。</div>
+                <div class="source-country">【経済統計の集計・配信サービス】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.stats.gov.cn/english/PressRelease/202607/t20260716_1964150.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">国家統計局 — 70都市の住宅販売価格（2026年6月）</div>
+                <div class="source-desc">70都市の新築・中古住宅価格指数の月次公表。2026年1月から2025年を基準年とする新しい比較に切り替わっている。</div>
+                <div class="source-country">【中国政府の統計機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.globaltimes.cn/page/202511/1348697.shtml" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Global Times — 2026年の大学卒業予定者は1,270万人</div>
+                <div class="source-desc">教育部の公表値として、2026年の卒業予定者数と前年からの48万人増を伝えた記事。</div>
+                <div class="source-country">【中国の英字紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.caixinglobal.com/2026-08-20/chinas-youth-jobless-rate-climbs-to-179-in-july-102475860.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Caixin Global — 7月の若年失業率が17.9%へ上昇</div>
+                <div class="source-desc">16〜24歳（在学者を除く）の調査失業率と、卒業期の求職者数を報じた記事。</div>
+                <div class="source-country">【中国の経済メディアの英語版】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.yicaiglobal.com/news/chinese-local-govts-log-double-digit-drop-in-income-from-land-sales-for-fourth-straight-year-in-2025" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Yicai Global — 土地譲渡収入、2025年も2桁減で4年連続</div>
+                <div class="source-desc">2025年の4.15兆元（14.7%減）と、2022年から2024年までの前年比を示した財政部データの報道。本記事のグラフの出典。</div>
+                <div class="source-country">【中国の経済メディアの英語版】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.caixinglobal.com/2026-01-06/chinas-residential-land-sales-revenue-slumps-65-from-peak-as-state-backers-retreat-102400671.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Caixin Global — 住宅用地の譲渡収入、ピークから65%減</div>
+                <div class="source-desc">住宅用地の譲渡収入が2020年のピークから2025年に約65%減ったこと、国有企業による用地取得の後退を分析した記事。</div>
+                <div class="source-country">【中国の経済メディアの英語版】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://news.cgtn.com/news/2024-11-08/China-s-top-legislature-approves-bill-to-raise-local-govt-debt-ceiling-by-6-trillion-yuan-1ymH5tCk18I/p.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">CGTN — 全国人民代表大会常務委員会、地方債務の上限を6兆元引き上げ</div>
+                <div class="source-desc">2024年11月の承認内容。上限を29.52兆元から35.52兆元へ引き上げ、専項債から年8,000億元を5年間充てて合計10兆元とする枠組みと、2023年末の隠れ債務14.3兆元を2028年に2.3兆元へ減らす計画を伝えている。</div>
+                <div class="source-country">【中国の国営国際放送】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.theepochtimes.com/china/chinas-land-sale-revenue-slump-deepens-despite-rise-in-fiscal-income-6066681" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Epoch Times — 2026年上半期の土地譲渡収入は9,778億元、31.5%減</div>
+                <div class="source-desc">財政部の公表値にもとづく上半期の土地使用権譲渡収入。公表値が実態より小さいとする研究者の異論も併記されている。</div>
+                <div class="source-country">【アメリカ拠点の中国語系メディアの英語版】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.prcleader.org/post/china-s-consumption-challenge" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">China Leadership Monitor — 中国の消費という課題</div>
+                <div class="source-desc">家計が所得の3分の1を貯蓄に回していること、家計消費が国内総生産の40%を下回り、上位中所得国の平均48%・高所得国の約60%と開きがあることを整理した分析。</div>
+                <div class="source-country">【アメリカの中国政治経済専門誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.caixinglobal.com/2026-07-24/chinas-trade-in-program-sales-drop-as-stimulus-effect-fades-102467419.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Caixin Global — 買い替え補助の販売額が減少、刺激効果は薄れる</div>
+                <div class="source-desc">2026年上半期の1.1兆元と前年同期の1.6兆元の対比、補助率の低下と先食いされた需要について報じた記事。</div>
+                <div class="source-country">【中国の経済メディアの英語版】</div>
+              </div>
+            </a>
+            <a class="source-item" href="http://europe.chinadaily.com.cn/a/202608/13/WS6a7d1eb7a31073853ec5312f.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">China Daily — 主要都市が住宅購入のルールを緩和</div>
+                <div class="source-desc">2026年8月の北京の緩和内容（非居住者の社会保険・納税要件を2年から1年へ、住宅積立金の融資上限引き上げ）と、上海・深圳・広州を含む四大都市の緩和時期、年初からの住宅政策680件超を伝えた記事。</div>
+                <div class="source-country">【中国の英字紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.troweprice.com/institutional/us/en/insights/articles/2025/q4/will-chinas-anti-involution-policy-succeed-na.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">T. Rowe Price — 「反内巻」政策は成功するか</div>
+                <div class="source-desc">中央財経委員会の方針、10の重点産業への2年計画、2015年の設備削減との違いを整理した分析。</div>
+                <div class="source-country">【アメリカの資産運用会社の調査部門】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.atlanticcouncil.org/dispatches/europe-has-had-enough-of-chinas-export-surge/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Atlantic Council — 欧州は中国の輸出急増に耐えられなくなった</div>
+                <div class="source-desc">2026年7月からの鉄鋼の無関税枠削減と枠外関税の引き上げ、中国が世界の製造業生産の約30%を占める一方で世界の消費では13%にとどまることを整理した論考。</div>
+                <div class="source-country">【アメリカのシンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://english.www.gov.cn/2026special/2026npcandcpcc/202603/05/content_WS69a8ea12c6d00ca5f9a0987b.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">中国政府網 — 2026年の成長目標を4.5〜5%に設定</div>
+                <div class="source-desc">2026年3月5日の全国人民代表大会に提出された政府活動報告の内容。5%を下回る目標が示されたのはこれが初めて。</div>
+                <div class="source-country">【中国政府の公式サイトの英語版】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikipedia.org/wiki/Chinese_property_sector_crisis_(2020%E2%80%93present)" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Chinese property sector crisis（2020年〜） — 年表</div>
+                <div class="source-desc">三条紅線の3基準、恒大集団と碧桂園の債務不履行の日付と金額を確認するための年表項目。</div>
+                <div class="source-country">【一次資料へのリンクを備えた年表】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-dash"><span class="toc-icon">—</span>6指標</a></li>
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>時系列</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>5つの視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/asia/index.html">アジア情勢</a></div>
+          <div>2026年8月30日</div>
+          <div style="margin-top:0.5rem;">5つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/asia/index.html">アジア情勢一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  var AX = { grid: '#2a3a50', tick: '#8890a0' };
+
+  // 土地譲渡収入の前年比（縦棒）
+  (function () {
+    var ctx = document.getElementById('landChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2022年', '2023年', '2024年', '2025年', '2026年\n上半期'],
+        datasets: [{
+          // 出典：財政部の公表値をもとにした報道
+          // Yicai Global「Chinese Local Gov'ts Log Double-Digit Drop in Income From Land Sales
+          // for Fourth Straight Year in 2025」：2025年は4.15兆元で14.7%減、
+          // 2024年16%減、2023年13.2%減、2022年23%減
+          // 2026年上半期は9,778億元で31.5%減（The Epoch Times 2026年、財政部の公表値）
+          // すべて出典の記載値をそのまま用いており、水準からの逆算は行っていない
+          data: [-23.0, -13.2, -16.0, -14.7, -31.5],
+          backgroundColor: [
+            'rgba(154,138,180,0.55)',
+            'rgba(154,138,180,0.45)',
+            'rgba(154,138,180,0.55)',
+            'rgba(154,138,180,0.55)',
+            'rgba(154,138,180,0.90)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.62
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' ' + c.parsed.y + '%'; } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: AX.tick, font: { size: 10 } } },
+          y: {
+            min: -35, max: 0,
+            grid: { color: AX.grid },
+            ticks: { color: AX.tick, font: { size: 10 }, callback: function (v) { return v + '%'; } }
+          }
+        }
+      }
+    });
+  })();
+
+  // 2026年上半期の主要指標（横棒）
+  (function () {
+    var ctx = document.getElementById('h1Chart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['輸出入総額', '国内総生産', '社会消費品\n小売総額', '消費者物価', '固定資産投資', '不動産開発投資'],
+        datasets: [{
+          // 出典：国家統計局「National Economy Operated within an Appropriate Range with
+          // New Growth Drivers Developing Rapidly in the First Half Year」2026年7月15日公表
+          // 輸出入総額 25兆4,686億元＝+16.9% / 国内総生産 +4.7%
+          // 社会消費品小売総額 +1.3% / 消費者物価 +1.0%
+          // 固定資産投資 −5.7% / 不動産開発投資 −18.0%
+          // いずれも2026年上半期（1〜6月）の前年同期比。すべて同一の公表資料による
+          data: [16.9, 4.7, 1.3, 1.0, -5.7, -18.0],
+          backgroundColor: [
+            'rgba(154,138,180,0.90)',
+            'rgba(154,138,180,0.60)',
+            'rgba(154,138,180,0.40)',
+            'rgba(154,138,180,0.40)',
+            'rgba(154,138,180,0.60)',
+            'rgba(154,138,180,0.90)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.66
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' ' + c.parsed.x + '%'; } } }
+        },
+        scales: {
+          x: {
+            min: -20, max: 20,
+            grid: { color: AX.grid },
+            ticks: { color: AX.tick, font: { size: 10 }, callback: function (v) { return v + '%'; } }
+          },
+          y: { grid: { display: false }, ticks: { color: AX.tick, font: { size: 9 } } }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
