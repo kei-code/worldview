@@ -141,24 +141,14 @@
     }
     .share-labels .hi { color: var(--accent5); font-weight: 700; }
 
-    /* 名目と実質のバレットチャート */
-    .dash-bullet { margin-top: 0.9rem; }
-    .bullet-track { position: relative; height: 10px; background: rgba(255,255,255,0.07); }
-    .bullet-fill { display: block; height: 100%; width: 100%; background: rgba(154,138,180,0.55); }
-    .bullet-target {
-      position: absolute; top: -3px; bottom: -3px; width: 2px;
-      background: var(--text);
-    }
-    .bullet-target::after {
-      content: ''; position: absolute; bottom: -4px; left: 50%;
-      width: 5px; height: 5px; background: var(--text);
-      transform: translateX(-50%) rotate(45deg);
-    }
-    .bullet-labels {
-      display: flex; justify-content: space-between; margin-top: 0.5rem;
-      font-size: 0.68rem; color: var(--text-dim);
-    }
-    .bullet-labels .hi { color: var(--accent5); font-weight: 700; }
+    /* 名目成長率と実質成長率の二本バー比較 */
+    .dash-compare { margin-top: 0.9rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .compare-row { display: flex; align-items: center; gap: 0.6rem; }
+    .compare-label { flex: 0 0 auto; width: 4.6em; font-size: 0.68rem; color: var(--text-dim); }
+    .compare-track { flex: 1; height: 8px; background: rgba(255,255,255,0.07); }
+    .compare-fill { display: block; height: 100%; background: rgba(154,138,180,0.85); }
+    .compare-fill.dim { background: rgba(154,138,180,0.45); }
+    .compare-val { flex: 0 0 auto; width: 2.8em; text-align: right; font-size: 0.72rem; font-weight: 700; color: var(--accent5); }
 
     /* ==========================================================
        本文パーツ（テーマ色を --accent5 に統一）
@@ -331,7 +321,7 @@
         <section class="dash" id="sec-dash">
           <div class="dash-head-row">
             <div class="dash-head">中国経済の6指標</div>
-            <div class="dash-fx">断りのない指標は2026年上半期（1〜6月）の前年同期比</div>
+            <div class="dash-fx">1元 ≈ 23.7円（2026年8月31日の参考レート）</div>
           </div>
           <div class="dash-grid">
 
@@ -341,14 +331,19 @@
               <!-- 出典：国家統計局の四半期公表値をもとにした報道（Bloomberg 2026年7月15日）。
                    名目成長率5.9% − 実質成長率4.3% = デフレーター1.6%。
                    2023年第1四半期以来のプラスで、12期連続のマイナスが止まった -->
-              <div class="dash-bullet">
-                <div class="bullet-track">
-                  <span class="bullet-fill"></span>
-                  <span class="bullet-target" style="left:72.9%"></span>
+              <div class="dash-compare">
+                <div class="compare-row">
+                  <span class="compare-label">名目成長率</span>
+                  <div class="compare-track"><span class="compare-fill" style="width:73.8%"></span></div>
+                  <span class="compare-val">5.9%</span>
                 </div>
-                <div class="bullet-labels"><span class="hi">名目 5.9%</span><span>◆ 実質 4.3%</span></div>
+                <div class="compare-row">
+                  <span class="compare-label">実質成長率</span>
+                  <div class="compare-track"><span class="compare-fill dim" style="width:53.8%"></span></div>
+                  <span class="compare-val">4.3%</span>
+                </div>
               </div>
-              <div class="dash-note">2つの差がデフレーター。12期ぶりのプラス</div>
+              <div class="dash-note">名目から実質を引いた差（1.6%）がデフレーター。物価が上がった分だけ、名目の伸びが実質より大きくなる</div>
             </div>
 
             <div class="dash-card">
@@ -361,7 +356,7 @@
             </div>
 
             <div class="dash-card">
-              <div class="dash-label">不動産開発投資<br>（2026年上半期）</div>
+              <div class="dash-label">不動産開発投資<br>（2026年上半期・前年同期比）</div>
               <div class="dash-value">−18.0<span class="unit">%</span></div>
               <!-- 出典：国家統計局「2026年上半期の国民経済」2026年7月15日。
                    不動産開発投資 −18.0%、固定資産投資 −5.7%。
@@ -407,12 +402,12 @@
             </div>
 
             <div class="dash-card">
-              <div class="dash-label">社会消費品小売総額<br>（2026年上半期）</div>
+              <div class="dash-label">小売総額の伸び<br>（2026年上半期・前年同期比）</div>
               <div class="dash-value">1.3<span class="unit">%</span></div>
               <!-- 出典：国家統計局「2026年上半期の国民経済」2026年7月15日。
                    社会消費品小売総額 +1.3%、輸出入総額 25兆4,686億元（+16.9%）、
                    一人当たり可処分所得 名目+5.2%・実質+4.2%、消費者物価 +1.0%、生産者物価 +1.5%（6月は+4.1%） -->
-              <div class="dash-note">同じ期間に輸出入総額は16.9%増。一人当たり可処分所得は実質4.2%増だが、消費には向かっていない</div>
+              <div class="dash-note">小売店や飲食店での消費支出の伸び率（社会消費品小売総額という統計）。輸出入の伸び16.9%と対照的に低い</div>
             </div>
 
           </div>
@@ -420,15 +415,15 @@
 
         <!-- ============ 01 論点 ============ -->
         <section class="section" id="sec-core">
-          <h2 class="section-title"><span class="sec-num">01</span>論点 — 値上がりした側と、下がり続けている側</h2>
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 物価は上向き、住宅は下向き</h2>
 
-          <p class="lead">2026年7月15日、国家統計局は第2四半期の国内総生産を発表した。実質成長率は4.3%、名目成長率は5.9%。名目が実質を上回ったのは3年ぶりで、その差である国内総生産デフレーターは1.6%のプラスとなった。12期続いた物価の下落が、ここで止まった。</p>
+          <p class="lead">2026年7月15日、国家統計局は第2四半期の国内総生産を発表した。実質成長率は4.3%、名目成長率は5.9%。名目の伸びには、作られたモノやサービスの量そのものの増加と、物価の上昇の両方が含まれる。そこから量の増加分（実質成長率）を差し引くと、物価がどれだけ上がったかだけが残る。これが国内総生産デフレーターで、経済全体の物価動向を表す指標である。名目が実質を上回ったのは3年ぶりで、このデフレーターは1.6%のプラスとなった。12期続いた物価の下落が、ここで止まった。</p>
 
-          <p class="lead">物価が上がることそのものは、中国政府が長く求めてきた状態である。ところが同じ日に発表された他の数字は、逆を向いていた。不動産開発投資は18.0%減、固定資産投資は5.7%減、社会消費品小売総額は1.3%増にとどまる。翌月の統計では新築住宅価格が37か月連続で下落した。</p>
+          <p class="lead">物価が上がることそのものは、中国政府が長く求めてきた状態である。物価が下がり続けると、企業は値下げの圧力にさらされて利益と賃金の伸びが鈍り、抱えている借金の実質的な負担も重くなる。物価の上昇は、その悪循環を止める兆候として歓迎されてきた。ところが同じ日に発表された他の数字は、逆を向いていた。不動産開発投資は18.0%減、固定資産投資は5.7%減。小売店や飲食店での消費支出を示す社会消費品小売総額は1.3%増にとどまる。翌月の統計では新築住宅価格が37か月連続で下落した。</p>
 
           <p class="lead">上がったものと下がったものを分けると、境界がはっきり見える。上がったのは生産者物価、つまり鉄鋼・石炭・非鉄といった上流の素材価格である。6月の生産者物価は前年同月比4.1%増と4年ぶりの高さになった。一方、消費者物価は1.0%増にとどまる。</p>
 
-          <p class="lead">物価下落を止めたのは、需要が戻ったからではない。供給を絞る政策と、資源価格の上昇である。この違いは、中国経済が転換点を越えたかどうかの判断を左右する。</p>
+          <p class="lead">物価下落を止めたのは、需要が戻ったからではない。供給を絞る政策と、資源価格の上昇である。需要が戻って物価が上がったのか、それとも供給を絞っただけで物価が上がったのか——どちらであるかによって、中国経済が本当に転換点を越えたのかどうかの評価は変わる。</p>
 
           <div class="factor-grid">
             <div class="factor-card">
@@ -445,13 +440,15 @@
             </div>
           </div>
 
+          <p class="lead" style="margin-top:2.2rem;">物価が下がり続けている間、家計は「まだ下がるかもしれない」と支出を先延ばしにしやすい。物価の下落が止まれば、その様子見にも一区切りがつくはずである。</p>
+
           <div class="article-question">
             <p>中国の物価下落を止めたのは何だったのか。そしてそれは、家計が使うお金の側にも届いているのか。</p>
           </div>
 
           <figure class="article-figure" style="margin:2.5rem 0 0;">
             <img src="../../../image/articles/china-deflation-upstream-quarry.jpg" alt="真昼の露天掘り鉱山。段々になった岩壁が坑底へ向かって降りていき、運搬トラックが段の上を進んでいる">
-            <figcaption>値上がりしたのは、この側だった。鉄鉱石や石炭など上流の素材価格が生産者物価を押し上げ、統計上のデフレを終わらせた。イメージ画像（生成AI）</figcaption>
+            <figcaption>生産者物価を押し上げたのは、鉄鉱石や石炭など上流の素材価格だった。統計上のデフレは、ここで終わった。イメージ画像（生成AI）</figcaption>
           </figure>
         </section>
 
@@ -465,8 +462,8 @@
             <div class="timeline-item">
               <div class="timeline-dot"></div>
               <div class="timeline-content">
-                <div class="timeline-date">2020年8月 — 三条紅線</div>
-                <p>中国人民銀行と住宅都市農村建設部が、開発業者の借入に3つの基準を設けた。資産負債率70%以下、純負債資本倍率100%以下、短期債務に対する現金1倍以上。恒大集団は3つすべてに抵触していた。</p>
+                <div class="timeline-date">2020年8月 — 「三条紅線」規制の導入</div>
+                <p>中国人民銀行と住宅都市農村建設部が、開発業者の借入を制限する3つの財務基準を設けた。「三条紅線（3本の赤い線）」と呼ばれる。資産負債率70%以下、純負債資本倍率100%以下、短期債務に対する現金1倍以上。恒大集団は3つすべてに抵触していた。</p>
               </div>
             </div>
             <div class="timeline-item">
@@ -480,21 +477,21 @@
               <div class="timeline-dot"></div>
               <div class="timeline-content">
                 <div class="timeline-date">2023年10月 — 碧桂園の債務不履行</div>
-                <p>碧桂園が4億7,000万香港ドルの元本を期日に支払えなかった。恒大に続く大手の不履行となり、業界の縮小が一過性ではないことがはっきりした。</p>
+                <p>販売戸数で中国最大級だった開発業者・碧桂園が、4億7,000万香港ドルの元本を期日に支払えなかった。恒大に続く大手の不履行となり、業界の縮小が一過性ではないことがはっきりした。</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="timeline-dot"></div>
               <div class="timeline-content">
                 <div class="timeline-date">2024年11月 — 10兆元の債務借換え</div>
-                <p>全国人民代表大会常務委員会が、地方政府の債務上限を6兆元引き上げ、新規の専項債から年8,000億元を5年間充てる計画を承認した。合計10兆元。バラック改造にともなう2兆元は2029年以降に繰り延べられた。政府が認定した「隠れ債務」は2023年末で14.3兆元、2028年までに2.3兆元へ減らす計画である。</p>
+                <p>中央政府が、地方政府の借金返済を助ける対策を打ち出した。合計10兆元の枠を用意し、金利の高い簿外の借金を、金利の低い正式な借金に置き換えられるようにした返済負担の軽減策である。政府が把握している地方の「隠れ債務」は2023年末で14.3兆元。これを2028年までに2.3兆元へ減らす計画である。</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="timeline-dot"></div>
               <div class="timeline-content">
                 <div class="timeline-date">2025年7月 — 「反内巻」政策</div>
-                <p>中央財経委員会が、低価格競争の抑制と過剰設備の秩序ある退出を打ち出した。10の重点産業に2年間の計画が示され、2025〜26年の生産目標は2024年より低く設定された。需要を増やす政策ではない。供給を減らして価格を戻す方針である。</p>
+                <p>中央財経委員会が、行き過ぎた安売り競争を抑え、余っている生産設備を計画的に減らしていく方針を打ち出した。10の重点産業に2年間の計画が示され、2025〜26年の生産目標は2024年より低く設定された。需要を増やす政策ではない。供給を減らして価格を戻す方針である。</p>
               </div>
             </div>
             <div class="timeline-item">
@@ -545,7 +542,7 @@
             <div class="perspective-card">
               <div class="country-header"><div class="country-name">都市部の家計と若年層</div></div>
               <div class="pull-quote">下がり続けているのは、自分の資産のほうだ</div>
-              <div class="key-claim">住宅は家計の資産の中心にある。その価格が37か月下がり続ける状況では、所得が増えても支出は増やしにくい。上半期の一人当たり可処分所得は実質4.2%増だったが、小売は1.3%増にとどまった。7月の若年失業率は17.9%、今年の大学卒業予定者は1,270万人にのぼる。</div>
+              <div class="key-claim">中国の家計が持つ資産は、多くが住宅の形をしている。その住宅の価格が37か月下がり続けているため、家計は自分の資産が目減りしていると感じ、所得が増えても財布のひもを緩めにくい。上半期の一人当たり可処分所得は実質4.2%増だったが、小売は1.3%増にとどまった。7月の若年失業率は17.9%、今年の大学卒業予定者は1,270万人にのぼる。</div>
               <div class="interests">重視：雇用の確保と、資産価値の下げ止まり</div>
               <span class="role-badge">需要の担い手</span>
             </div>
@@ -619,7 +616,7 @@
             </div>
             <div class="stat-strip-item">
               <div class="stat-num">1.1兆元</div>
-              <div class="stat-desc">買い替え補助による上半期の販売額。前年同期の1.6兆元から縮んだ</div>
+              <div class="stat-desc">家電や自動車を買い替える人に政府が出す補助金による上半期の販売額。前年同期の1.6兆元から縮んだ</div>
             </div>
             <div class="stat-strip-item">
               <div class="stat-num">16.9%</div>
@@ -632,7 +629,7 @@
         <section class="section" id="sec-analysis">
           <h2 class="section-title"><span class="sec-num">05</span>深掘り — 内需は、なぜ戻らないのか</h2>
 
-          <p class="lead">政府は消費を増やそうとしてきた。買い替え補助への配分は2026年に2,500億元。それでも小売の伸びは1.3%にとどまる。金を出しても消費が動かない理由は、家計の側の構造にある。</p>
+          <p class="lead">政府は消費を増やそうとしてきた。家電や自動車を買い替える人に補助金を出す「買い替え補助」への配分は2026年に2,500億元。それでも小売の伸びは1.3%にとどまる。金を出しても消費が動かない理由は、家計の側の構造にある。</p>
 
           <div class="insight-box">
             <div class="insight-title">値上がりを作ったのは、需要ではなく供給の制限だった</div>
