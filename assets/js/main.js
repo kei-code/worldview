@@ -16,7 +16,7 @@
   var allCategories = [
     ['', 'ホーム'],
     ['middle-east', '中東情勢'],
-    ['ukraine', 'ウクライナ'],
+    ['ukraine', 'ウクライナ紛争'],
     ['ai-tech', 'AI'],
     ['technology', 'テクノロジー'],
     ['immigration', '移民政策'],
@@ -64,6 +64,13 @@
     header.appendChild(deskNav);
   }
   deskNav.innerHTML = '';
+
+  // ヘッダー右側（ナビ・検索ボタン・ハンバーガー）を1つの箱にまとめる。
+  // .site-header は space-between なので、右側に要素が増えても並びが崩れないようにする。
+  var right = document.createElement('div');
+  right.className = 'site-header-right';
+  header.insertBefore(right, deskNav);
+  right.appendChild(deskNav);
   [''].concat(primaryKeys).forEach(function (key) {
     var a = document.createElement('a');
     a.href = hrefFor(key);
@@ -85,7 +92,7 @@
   btn.setAttribute('aria-label', 'メニューを開く');
   btn.setAttribute('aria-expanded', 'false');
   btn.innerHTML = '<span></span><span></span><span></span>';
-  header.appendChild(btn);
+  right.appendChild(btn);
   header.appendChild(drawer);
 
   function openNav() {
@@ -265,3 +272,16 @@ const barObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.data-card, .perspective-card').forEach(el => barObserver.observe(el));
+
+
+/* ===== 記事検索スクリプトの読み込み =====
+   検索UIは search.js 側で組み立てる。各ページのHTMLを触らずに全ページへ載せるため、
+   ここから <script> を差し込む（ヘッダー右側の箱ができた後に実行される）。 */
+(function () {
+  var logoLink = document.querySelector('.site-header .site-logo a');
+  if (!logoLink) return;
+  var base = logoLink.getAttribute('href').replace('index.html', '');
+  var s = document.createElement('script');
+  s.src = base + 'assets/js/search.js';
+  document.body.appendChild(s);
+})();
