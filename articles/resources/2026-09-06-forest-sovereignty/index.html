@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="2026年、ブラジルは森林減少を統計開始以来の低さに近づけた一方、インドネシアは前年比66%増加した。欧州連合は森林破壊防止規則の適用を二度延期し、残せば払うと約束した熱帯林基金は目標額に届いていない。切る権利は、誰のものか。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/resources/2026-09-06-forest-sovereignty/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="森は誰のものか — 「切る権利」をめぐる五つの正義 | WorldView">
+  <meta property="og:description" content="2026年、ブラジルは森林減少を統計開始以来の低さに近づけた一方、インドネシアは前年比66%増加した。欧州連合は規則の適用を二度延期し、熱帯林基金は目標額に届いていない。切る権利は、誰のものか。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/resources/2026-09-06-forest-sovereignty/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/forest-sovereignty-hero-forest-edge.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="森は誰のものか — 「切る権利」をめぐる五つの正義 | WorldView">
+  <meta name="twitter:description" content="2026年、ブラジルは森林減少を統計開始以来の低さに近づけた一方、インドネシアは前年比66%増加した。欧州連合は規則の適用を二度延期し、熱帯林基金は目標額に届いていない。切る権利は、誰のものか。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/forest-sovereignty-hero-forest-edge.jpg">
+
+  <title>森は誰のものか — 「切る権利」をめぐる五つの正義 | WorldView</title>
+
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色は resources = --accent3（#7aaa82 / 122,170,130）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url('../../../image/articles/forest-sovereignty-hero-forest-edge.jpg');
+      background-size: cover; background-position: center 46%;
+      filter: brightness(1.0) contrast(1.04) saturate(1.02);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(100deg, rgba(14,17,23,0.84) 0%, rgba(14,17,23,0.54) 46%, rgba(14,17,23,0.18) 100%),
+        linear-gradient(180deg, rgba(14,17,23,0.18) 0%, rgba(14,17,23,0.22) 45%, rgba(14,17,23,0.50) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; width: 100%; }
+    .article-hero .article-meta,
+    .article-hero .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65);
+    }
+    .hero-credit {
+      position: absolute; right: 1.1rem; bottom: 0.9rem; z-index: 2;
+      font-size: 0.66rem; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.52);
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75;
+      color: #b4bfcc; max-width: 560px; margin-top: 1.5rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+    }
+    .deck-accent { color: var(--accent3); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent3) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent3) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent3) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent3); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       本文パーツ（テーマ色を --accent3 に統一）
+       ========================================================== */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(122,170,130,0.06);
+      border: 1px solid rgba(122,170,130,0.22);
+      box-shadow: 0 0 40px 10px rgba(122,170,130,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent3); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent3); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent3); line-height: 1.2; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    .insight-box { border-left: 2px solid var(--border); padding-left: 1.2rem; margin-bottom: 2.2rem; }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* カード — テーマ色の淡いウォッシュで区別する */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 2.6rem 2.4rem; }
+    .article-body .perspective-card {
+      position: relative;
+      background: rgba(122,170,130,0.08);
+      border: none; border-radius: 0;
+      padding: 1.5rem 1.6rem 1.6rem;
+      transition: background 0.12s linear;
+    }
+    .article-body .perspective-card:hover { transform: none; box-shadow: none; background: rgba(122,170,130,0.13); }
+    .article-body .perspective-card::before { display: none; }
+    .article-body .perspective-card .country-header { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .pull-quote { font-size: 0.98rem; font-weight: 600; line-height: 1.75; color: var(--text); margin-bottom: 1rem; }
+    .article-body .perspective-card .key-claim { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .interests { border-top: 1px solid var(--border-subtle); padding-top: 0.8rem; }
+    .role-badge {
+      display: block; text-align: right; margin-top: 0.9rem;
+      font-size: 0.73rem; letter-spacing: 0.05em; color: var(--accent3);
+    }
+
+    .article-body .compare-table { background: none; border: none; border-radius: 0; }
+    .article-body .compare-table th { background: none; border-bottom: 2px solid var(--accent3); color: var(--text-muted); }
+    .article-body .compare-table td { border-bottom: 1px solid var(--border-subtle); }
+    .article-body .compare-table tr:hover td { background: rgba(0,0,0,0.20); }
+    .table-scroll { overflow-x: auto; }
+    .num-cell { font-family: var(--font-mono); font-size: 0.82rem; white-space: nowrap; }
+
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent3); }
+
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .article-body .data-card { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .data-card::before { display: none; }
+    .article-body .data-card:hover { border-color: transparent; }
+    .article-body .data-card h4 {
+      font-size: 0.95rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem; padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .data-card.wide { grid-column: 1 / -1; }
+    .chart-box { position: relative; height: 260px; }
+    .chart-box.tall { height: 340px; }
+    .chart-box.short { height: 200px; }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.7rem; line-height: 1.65; }
+
+    .article-body .sources-grid { display: block; counter-reset: src; }
+    .article-body a.source-item {
+      display: flex; gap: 1rem; align-items: baseline;
+      background: none; border: none; border-radius: 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1rem 0.2rem;
+      color: inherit; text-decoration: none;
+      counter-increment: src;
+      transition: background 0.12s linear, border-color 0.12s linear;
+    }
+    .article-body a.source-item::before {
+      content: counter(src, decimal-leading-zero);
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--accent3); flex: 0 0 auto; min-width: 1.7rem;
+    }
+    .article-body a.source-item:hover { background: rgba(0,0,0,0.20); border-bottom-color: var(--accent3); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent3); outline-offset: 2px; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); }
+    .article-figure figcaption { font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* アクセシビリティ・レスポンシブ */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-hero.has-image::after {
+        background: linear-gradient(180deg, rgba(14,17,23,0.42) 0%, rgba(14,17,23,0.52) 45%, rgba(14,17,23,0.72) 100%);
+      }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">資源・環境</span>
+      <span class="date">2026年9月6日</span>
+    </div>
+    <h1 class="article-title">森は誰のものか<br>— 「切る権利」をめぐる五つの正義</h1>
+
+    <div class="hero-deck">
+      2026年、ブラジルはアマゾンの森林減少を統計開始以来の低さに近づけた。同じ年、「切るな」と求めた欧州連合は規則の適用を二度延ばし、「残したら払う」基金は目標額に届いていない。<span class="deck-accent">履行が遅れていたのは、切るなと言った側だった。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">ブラジルの森林減少 2,874km²（前年比36%減）</span>
+      <span class="hero-pill">インドネシアの森林減少 433,751ha（前年比66%増）</span>
+      <span class="hero-pill">森を残す対価 1ヘクタールに年4ドル</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 二つの顔を持つ森</h2>
+
+          <p class="lead">熱帯林は二重の性格を持つ。法的には、森はそれが生えている国の領土の一部であり、伐採するかどうかを決める権限はその国にある。同時に、地球の炭素循環と気候の安定に関わる共有財でもある。2026年、この二重性がはっきり表れた。</p>
+
+          <p class="lead">ブラジルは森林減少を4年連続で減らし、2025年度は近年で最も低い水準まで落とした。同じ年、「切るな」と求めてきた欧州連合は、森林破壊に関わる産品の域内取引を制限する規則の適用を二度延期し、「残したら払う」熱帯林基金は目標額の100億ドルに届いていない。</p>
+
+          <p class="lead">履行が遅れていたのは、切るなと言った側だった。だが森を守ってきたのは誰か、対価は誰に届くのか。所有と責任の所在は一致しないままである。</p>
+
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">切る権利の所在</div>
+              <div class="factor-desc">森はその国の領土内にある。伐採するかどうかを法的に決めるのは、その国自身である（詳細は03）。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">買わないという規制</div>
+              <div class="factor-desc">欧州連合は、森林を壊した土地で作られた産品を域内で売らせない規則を作った。輸入する企業に、その産品がどの区画で採れたかを位置情報で示させ、そこで森林破壊が起きていないことを証明させる（詳細は03）。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">残したら払うという取引</div>
+              <div class="factor-desc">森を残しても産地国に収入は入らないが、切って農地にすれば収入が生まれる。この非対称を埋めるため、熱帯林基金は残っている森1ヘクタールに年4ドルを支払う（詳細は04）。</div>
+            </div>
+          </div>
+
+          <div class="article-question">
+            <p>切る権利は、誰のものか。森はその国の資源なのか、地球の共有財なのか。この記事は、2026年に交錯した五つの立場から、その境界を探る。</p>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/forest-sovereignty-core-clearing-boundary.jpg" alt="熱帯雨林の中に直線的に切り開かれた伐採地の境界線。手前は緑の森が広がり、奥には伐採後の裸地が続いている" loading="lazy">
+            <figcaption>森の伐採地と原生林の境界線。この線をどこに引くかを決める権利が、争点になっている。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 時系列 ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>時系列 — 5年の規制と基金</h2>
+
+          <p class="lead">熱帯林をめぐる規制と資金の枠組みは、この5年で組み上がった。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2021年1月 — マレーシアが世界貿易機関に提訴</div>
+                <p>欧州連合は、森林破壊を招くおそれが大きいとして、パーム油由来のバイオ燃料を再生可能エネルギーの計算から段階的に除外した。マレーシアはこれを自国産品の狙い撃ちだとして世界貿易機関に提訴した（DS600）。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年3月 — 世界貿易機関が判断を示す</div>
+                <p>パネルは欧州連合の環境目的の規制権限を認めつつ、規則の作り方にマレーシアへの「不当な差別」があったと認定した。双方の主張が一部通った。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年5月22日 — 産地国を森林破壊リスクで格付け</div>
+                <p>欧州委員会が産地国を高・標準・低の3段階に分けた。低リスク国からの輸入は簡易な確認で通るが、それ以外は書類の点検や抜き取り検査が重くなる。高リスクはロシア・ベラルーシ・ミャンマー・北朝鮮の4カ国のみで、ブラジルとインドネシアは中間の「標準リスク」だった。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年11月6日 — 熱帯林基金が発足</div>
+                <p>ブラジル・ベレンのCOP30で熱帯林基金（TFFF）が発足した。森を残した国に毎年支払い、切るより残すほうが割に合う状態を作ることを目的とする。53カ国が宣言を支持し、初期表明額は55億ドルを超えた。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年12月4日 — 適用を二度目の延期</div>
+                <p>欧州連合が森林破壊防止規則の適用を二度目の延期で合意した。中規模・大規模は2026年12月30日、零細・小規模は2027年6月30日からとなった。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年8月 — 逆方向に動いた二つの国</div>
+                <p>ブラジルの衛星警報が捉えた森林減少は2,874平方キロメートルとなり、現行システム導入以来の最低だった。同じ年、インドネシアの森林減少は前年比66%増と発表されていた。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月3日 — イギリスが基金に加わる</div>
+                <p>イギリスが4億ポンドの融資を表明した。最大の出し手であるノルウェーは、基金全体が2026年末までに100億ドルに達することを自国の30億ドル拠出の条件としている。9月時点で、その水準には届いていない。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/forest-sovereignty-timeline-port-terminal.jpg" alt="港湾のコンテナターミナルに並ぶパーム油貯蔵タンクと、荷役作業中の貨物船" loading="lazy">
+            <figcaption>熱帯林由来の産品は、輸出港を通じて欧州市場に渡る。この流通経路が規則の対象になる。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>5つの視点 — 誰が「切る権利」を語るか</h2>
+
+          <p class="lead">立場により、「切る権利」の捉え方も次に打つ手も異なる。</p>
+
+          <div class="perspectives-grid">
+            <div class="perspective-card">
+              <div class="country-header"><div class="country-name">ブラジル政府</div></div>
+              <div class="pull-quote">「我々は減らした。次は、残せと言った側の番だ」</div>
+              <div class="key-claim">森林減少を4年連続で抑え、2025年度は5,796平方キロメートルまで減らした。国内の取り締まりの成果であり、残す側への対価を機能させるべきだと主張する。</div>
+              <div class="interests">重視：基金の実効性</div>
+              <span class="role-badge">森を持つ国</span>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header"><div class="country-name">インドネシアの小農</div></div>
+              <div class="pull-quote">「アメリカの大豆農家は、位置情報を欧州に渡すのか」</div>
+              <div class="key-claim">インドネシアのパーム油の41%、687万ヘクタールは小農が管理する。欧州連合に売るには、自分の畑の区画を位置情報で示し、そこが森林を壊した土地でないと書類で証明しなければならない。測量も記録も自前で用意することになり、収入の乏しい農家ほど負担が重い。</div>
+              <div class="interests">重視：証明費用を負担できない小規模生産者</div>
+              <span class="role-badge">規制の末端</span>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header"><div class="country-name">先住民コミュニティ</div></div>
+              <div class="pull-quote">「開発にも保全にも、我々の同意はなかった」</div>
+              <div class="key-claim">アマゾンでは2003年から2016年のあいだに、先住民の土地が失った森林の炭素はその0.3%未満だった。同じ期間、先住民地でも保護区でもない土地は3.6%を失っている。最も森を残してきたのに、切る権利も基金の配分も国家が握る。</div>
+              <div class="interests">重視：基金配分への直接の関与</div>
+              <span class="role-badge">主権を持たない当事者</span>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header"><div class="country-name">欧州連合</div></div>
+              <div class="pull-quote">「我々の消費が壊しているなら、買わないのが責任だ」</div>
+              <div class="key-claim">域内の消費が、世界の森林減少の約1割を引き起こしている。だから木材・ゴム・パーム油・大豆・牛肉・コーヒー・カカオの7品目について、森林を壊した土地で作られた産品は域内で売らせない。産地国に切るなと命じてはいない。自分たちが何を買うかを決めているだけだ、という立場をとる。</div>
+              <div class="interests">重視：域内市場からの排除の正当性</div>
+              <span class="role-badge">買う側</span>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header"><div class="country-name">輸入企業・商社</div></div>
+              <div class="pull-quote">「証明できない産品は、扱えない」</div>
+              <div class="key-claim">産品がどの区画で採れたかを、仕入れ先をさかのぼって一つ残らず集めなければならない。小規模な生産者が何千と連なる仕入れ経路ほど、その作業は難しい。欧州委員会は簡素化で対応費用を約75%削減できるとするが、残る負担を誰が持つかは決まっていない。</div>
+              <div class="interests">重視：対応コストの負担先</div>
+              <span class="role-badge">証明を負う側</span>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">5つの視点の比較</div>
+          <div class="table-scroll">
+            <table class="compare-table">
+              <thead>
+                <tr><th>主体</th><th>「切る権利」をどう考えるか</th><th>次に打つ手</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>ブラジル政府</td><td>対価の実効性を求める</td><td>基金の機能を検証</td></tr>
+                <tr><td>インドネシアの小農</td><td>証明コストだけを負わされる</td><td>負担軽減を要求</td></tr>
+                <tr><td>先住民コミュニティ</td><td>権利も配分も国家が握る</td><td>配分への直接関与を要求</td></tr>
+                <tr><td>欧州連合</td><td>命令せず、買うかどうかで応じる</td><td>規則の簡素化と施行</td></tr>
+                <tr><td>輸入企業・商社</td><td>証明できなければ扱えない</td><td>位置情報の収集体制整備</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/forest-sovereignty-perspectives-smallholder-hands.jpg" alt="小農の手のひらに乗った小さなアブラヤシの果房と、背景にぼやけて広がる農園" loading="lazy">
+            <figcaption>証明の費用を負うのは誰か。規則の負担は、書類を整えられる側とそうでない側で分かれる。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ — 同じ年に逆方向へ動いた森</h2>
+
+          <p class="lead">ブラジルとインドネシアは同じ年に反対方向へ動いた。</p>
+
+          <div class="data-grid" style="margin-top:2.4rem;">
+            <div class="data-card">
+              <h4>同じ年に、逆方向へ動いた森（前年比）</h4>
+              <div class="chart-box"><canvas id="deforestationChart"></canvas></div>
+              <p class="chart-note">ブラジルの2本は、確定値を出すPRODESと、速報の警報を出すDETERという別々の観測で、対象はアマゾンの法定区域。インドネシアの1本は民間団体が国全体を暦年で集計したもの。集計の仕方が違うため、減少幅の大小はそのまま比べられない。同じ時期に森が逆方向へ動いたことを示す図として見てほしい。<br>出典：ブラジル国立宇宙研究所（INPE）、Auriga Nusantara（詳細は06）</p>
+            </div>
+            <div class="data-card">
+              <h4>森林炭素を、誰が失わなかったか（アマゾン、2003〜2016年）</h4>
+              <div class="chart-box"><canvas id="carbonChart"></canvas></div>
+              <p class="chart-note">先住民地は原資料で「0.3%未満」とされ、上限値としてグラフに示している。<br>出典：World Resources Institute（詳細は06）</p>
+            </div>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">5,796km²</div>
+              <div class="stat-desc">ブラジル・アマゾンの2025年度の森林減少。11年ぶりの低さ</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">433,751ha</div>
+              <div class="stat-desc">インドネシア2025年の森林減少。8年ぶり高水準</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">100億ドル</div>
+              <div class="stat-desc">熱帯林基金が2026年末までに集める必要のある額。9月時点で未達</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">20%</div>
+              <div class="stat-desc">基金の支払いのうち先住民・地域社会に配分される最低割合</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 切った側が、基準を作っている</h2>
+
+          <p class="lead">数字の背後にあるのは、誰が先に切り、誰がいま基準を作るかという非対称である。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">先に切った国が、いま基準を作る</div>
+            <div class="insight-text">いま基準を作っている欧州も、かつては自分の森を切って豊かになった。地層に残る花粉の分析によれば、中緯度ヨーロッパの陸地に占める森林の割合は、この6,000年で約65%から約38%へ下がっている。切り終えた側が、いま切るなという基準を作っている。この経緯は規則を無効にするものではない。ただ、産地国が規則を受け入れにくい理由の一つはここにある。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">規制は誰を締め出すか</div>
+            <div class="insight-text">森林破壊防止規則は、産地国に伐採をやめろとは言わない。欧州連合の市場で売りたければ、その産品がどの区画で採れたかを示し、そこが森林を壊した土地でないと証明せよ、と求めるだけである。この規則が問うのは、伐採の有無そのものより、それを示せるかどうかである。すると負担は、書類を整える力のない側に集中する。インドネシアのパーム油の41%を担う小農がそこにいる。森を切っていなくても、切っていないと証明できなければ市場から外れる。締め出されるのは森を壊した国家ではなく、証明できない生産者だった。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">金で権利を買えるか</div>
+            <div class="insight-text">基金は残っている森1ヘクタールに年4ドルを払い、新たに切られた1ヘクタールにつき400〜800ドルを差し引く。切る権利を否定せず、行使しないことに値段をつける方式である。先住民・地域社会に回すよう定められているのは支払いの2割以上までで、残る8割は国家に渡る。最もよく森を守ってきた人々に届く保証はない。9月にイギリスが加わってなお、年末の100億ドルには届いていない。</div>
+          </div>
+
+          <p class="closing">「切る権利は誰のものか」という問いに、一つの答えは出ない。法的にはその国のもの、行使せず森を残してきたのは先住民、対価を払うと言ったのは消費国だった。所有する者、行使しない者、支払う者が、それぞれ別にいる。</p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/forest-sovereignty-analysis-river-village.jpg" alt="熱帯林の中を蛇行する川の岸辺に並ぶ高床式の家々。周囲を深い緑の森が囲んでいる" loading="lazy">
+            <figcaption>森を守ってきたのは、必ずしも法的な権利を持つ側ではなかった。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://news.mongabay.com/2026/08/amazon-deforestation-alerts-fall-to-lowest-level-since-2013-brazilian-data-show/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Mongabay — アマゾン警報、2013年以来の低水準</div>
+                <div class="source-desc">本記事02・04の出典。</div>
+                <div class="source-country">【環境ニュースサイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://news.mongabay.com/2025/10/heading-into-cop-brazils-amazon-deforestation-rate-is-falling-what-about-fires/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Mongabay — ブラジルの森林減少率は低下</div>
+                <div class="source-desc">本記事03・04の出典。</div>
+                <div class="source-country">【環境ニュースサイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://auriga.or.id/press_release/detail/65/status-of-deforestation-in-indonesia-2025" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Auriga Nusantara — インドネシア森林減少の現状</div>
+                <div class="source-desc">本記事02・04の出典。</div>
+                <div class="source-country">【インドネシアの環境調査団体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://news.mongabay.com/2026/04/indonesias-deforestation-surges-66-in-2025-reversing-years-of-decline/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Mongabay — インドネシアの森林減少、66%増</div>
+                <div class="source-desc">本記事02・03・04の出典。</div>
+                <div class="source-country">【環境ニュースサイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.jetro.go.jp/biznews/2025/12/821d3a2267ccfda4.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ジェトロ — 森林破壊規則、簡素化と再延期で合意</div>
+                <div class="source-desc">本記事02・03の出典。</div>
+                <div class="source-country">【日本貿易振興機構】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.jetro.go.jp/biznews/2026/05/cd649c4e591ac289.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ジェトロ — 森林破壊防止規則、適用へ新措置</div>
+                <div class="source-desc">本記事02・03の出典。</div>
+                <div class="source-country">【日本貿易振興機構】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.gov.uk/government/news/investment-boost-for-climate-action-and-forest-protection" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">英国政府 — 気候と森林保護への投資</div>
+                <div class="source-desc">本記事02・05の出典。</div>
+                <div class="source-country">【イギリス政府】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://cop30.br/en/news-about-cop30/over-usd-5-5-billion-announced-for-tropical-forest-forever-facility-as-53-countries-endorse-the-historic-tfff-launch-declaration" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">COP30公式 — 熱帯林基金に55億ドル超を表明</div>
+                <div class="source-desc">本記事02・04の出典。</div>
+                <div class="source-country">【COP30公式】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://earth.org/will-a-new-fund-fill-the-gap-left-by-cop30s-failure-on-tropical-forest-protection/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Earth.org — 新基金は熱帯林保護の不足を埋められるか</div>
+                <div class="source-desc">本記事04・05の出典。</div>
+                <div class="source-country">【環境ニュースサイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.wri.org/insights/4-ways-indigenous-and-community-lands-can-reduce-emissions" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">WRI — 先住民の土地が排出削減に果たす役割</div>
+                <div class="source-desc">本記事03・04の出典。</div>
+                <div class="source-country">【アメリカのシンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.nature.com/articles/s41598-017-18646-7" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Scientific Reports — 欧州の失われた森</div>
+                <div class="source-desc">本記事05の出典。</div>
+                <div class="source-country">【学術誌】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>時系列</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>5つの視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/resources/index.html">資源・環境</a></div>
+          <div>2026年9月6日</div>
+          <div style="margin-top:0.5rem;">5つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/resources/index.html">資源・環境一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  var AX = { grid: '#2a3a50', tick: '#8890a0' };
+
+  // 同じ年に、逆方向へ動いた森（前年比・縦棒）
+  (function () {
+    var ctx = document.getElementById('deforestationChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['ブラジル・アマゾン\n（PRODES 2024/25年度）', 'ブラジル・アマゾン\n（DETER警報 2025/26年度）', 'インドネシア全土\n（2025年・暦年）'],
+        datasets: [{
+          // 出典：ブラジル国立宇宙研究所（INPE）PRODES（2024年8月〜2025年7月）
+          // 原記述：2025年度の森林減少は5,796km²で、前年の6,518km²から11.08%減少
+          // 出典：INPE DETER（2025年8月〜2026年7月）
+          // 原記述：DETER警報は2,874km²で前年比36%減、過去10年平均比55.6%減、
+          // 2015年の現行システム導入以降で最低
+          // 出典：Auriga Nusantara「Status of deforestation in Indonesia 2025」
+          // 原記述：2025年の森林減少は433,751haで、2024年の261,575haから66%増加
+          data: [-11.08, -36.0, 66.0],
+          backgroundColor: function (c) {
+            var v = c.raw !== undefined ? c.raw : 0;
+            return v < 0 ? 'rgba(122,170,130,0.9)' : 'rgba(190,110,90,0.9)';
+          },
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.55
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' ' + (c.parsed.y > 0 ? '+' : '') + c.parsed.y + '%'; } } }
+        },
+        scales: {
+          x: {
+            grid: { display: false }, ticks: { color: AX.tick, font: { size: 10 } }
+          },
+          y: {
+            title: { display: true, text: '前年比の変化率（%）', color: AX.tick, font: { size: 10 } },
+            grid: { color: AX.grid },
+            ticks: { color: AX.tick, font: { size: 10 }, callback: function (v) { return (v > 0 ? '+' : '') + v + '%'; } }
+          }
+        }
+      }
+    });
+  })();
+
+  // 森林炭素を、誰が失わなかったか（アマゾン、2003〜2016年・縦棒）
+  (function () {
+    var ctx = document.getElementById('carbonChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['先住民地', '非先住民の保護区', 'それ以外の土地'],
+        datasets: [{
+          // 出典：World Resources Institute「4 Ways Indigenous and Community Lands
+          // Can Reduce Emissions」
+          // 原記述：2003〜2016年にアマゾンの先住民地が失った森林炭素は0.3%未満。
+          // 非先住民の保護区は0.6%、それ以外の土地は3.6%を喪失
+          data: [0.3, 0.6, 3.6],
+          backgroundColor: [
+            'rgba(122,170,130,0.45)',
+            'rgba(122,170,130,0.68)',
+            'rgba(122,170,130,0.90)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.55
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function (c) {
+                return c.dataIndex === 0 ? ' 0.3%未満' : ' ' + c.parsed.y + '%';
+              }
+            }
+          }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: AX.tick, font: { size: 10 } } },
+          y: {
+            min: 0, max: 4,
+            title: { display: true, text: '森林炭素の喪失率（%、2003〜2016年）', color: AX.tick, font: { size: 10 } },
+            grid: { color: AX.grid },
+            ticks: { color: AX.tick, font: { size: 10 }, callback: function (v) { return v + '%'; } }
+          }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

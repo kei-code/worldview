@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2025年9月、イギリス・フランス・カナダなど主要国が相次いでパレスチナを国家として承認した。国連加盟193ヵ国のうち157ヵ国が「パレスチナは国家だ」と認めるいま、なぜイスラエルとアメリカだけは頑なに拒み続けるのか。国家承認をめぐる5つの立場を、やさしい言葉で整理する。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/middle-east/2026-09-07-palestine-recognition/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="パレスチナ国家承認ラッシュ ―「国家」を誰が決めるのか — WorldView">
+  <meta property="og:description" content="2025年9月、主要国が相次いでパレスチナを国家として承認。国連加盟193ヵ国中157ヵ国が認めるいま、なぜイスラエルとアメリカは拒み続けるのか。5つの立場をやさしく整理する。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/middle-east/2026-09-07-palestine-recognition/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/palestine-recognition-hero-assembly-hall.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="パレスチナ国家承認ラッシュ ―「国家」を誰が決めるのか — WorldView">
+  <meta name="twitter:description" content="2025年9月、主要国が相次いでパレスチナを国家として承認。193ヵ国中157ヵ国が認めるいま、なぜイスラエルとアメリカは拒み続けるのか。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/palestine-recognition-hero-assembly-hall.jpg">
+  <title>パレスチナ国家承認ラッシュ ―「国家」を誰が決めるのか — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block;
+      font-family: var(--font);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent2);
+      opacity: 0.65;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.2rem;
+      border: none;
+      padding: 0;
+    }
+
+    /* この記事の問い（背景ウォッシュ＋グロー） */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(184,120,104,0.06);
+      border: 1px solid rgba(184,120,104,0.22);
+      border-radius: var(--radius);
+      box-shadow: 0 0 40px 10px rgba(184,120,104,0.20);
+      font-size: 0.96rem; font-weight: 700; color: var(--text); line-height: 1.75;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem; margin: 1.5rem 0;
+    }
+    .factor-card { border-left: 2px solid var(--accent2); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; color: var(--text); }
+    .factor-desc  { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* タイムライン（本文中は装飾を落として日付行に統合） */
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent2); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+    .article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* 5つの視点カード（テーマ色の淡いウォッシュで区別） */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 2.6rem 2.4rem; }
+    .article-body .perspective-card {
+      position: relative;
+      background: rgba(184,120,104,0.08);
+      border: none; border-radius: 0;
+      padding: 1.5rem 1.6rem 1.6rem;
+      transition: background 0.12s linear;
+    }
+    .article-body .perspective-card:hover { transform: none; box-shadow: none; background: rgba(184,120,104,0.13); }
+    .article-body .perspective-card::before { display: none; }
+    .article-body .perspective-card .country-header { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .article-body .perspective-card .key-claim { margin-bottom: 0.9rem; font-size: 0.87rem; color: var(--text); line-height: 1.8; }
+    .article-body .perspective-card .interests { border-top: 1px solid var(--border-subtle); padding-top: 0.8rem; font-size: 0.78rem; color: var(--text-muted); }
+    .article-body .perspective-card .role-badge {
+      display: block; text-align: right; margin-top: 0.9rem; background: none; border: none; padding: 0;
+      font-size: 0.73rem; letter-spacing: 0.05em; color: var(--accent2); white-space: normal;
+    }
+
+    /* ヒーロー画像 */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/palestine-recognition-hero-assembly-hall.jpg');
+      background-size: cover; background-position: center 40%;
+      filter: brightness(1.15) contrast(1.03) saturate(1.05);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background:
+        linear-gradient(100deg, rgba(14,17,23,0.52) 0%, rgba(14,17,23,0.30) 42%, rgba(14,17,23,0.06) 72%, rgba(14,17,23,0) 100%),
+        linear-gradient(180deg, rgba(14,17,23,0.20) 0%, rgba(14,17,23,0.30) 45%, rgba(14,17,23,0.62) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; width: 100%; }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title,
+    .article-hero.has-image .article-summary {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+
+    /* ヒーロー：ビッグ・ステートメント（案X） */
+    .hero-deck {
+      font-size: 1.08rem;
+      font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b4bfcc; margin-top: 1.5rem; max-width: 580px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+    }
+    .hero-deck .deck-accent { color: var(--accent2); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent2) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent2) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent2) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* 本文中の図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim);
+      margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* 数字ストリップ */
+    .stat-strip {
+      display: flex; gap: 0;
+      margin: 2rem 0 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.6rem 0;
+    }
+    .stat-strip-item {
+      flex: 1; text-align: center;
+      padding: 0 1.25rem;
+      border-right: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 1.5rem; font-weight: 800; line-height: 1.1;
+      color: var(--accent2); margin-bottom: 0.45rem;
+      letter-spacing: -0.01em;
+    }
+    .stat-desc {
+      font-size: 0.74rem; color: var(--text-muted); line-height: 1.5;
+    }
+    @media (max-width: 700px) {
+      .stat-strip { flex-wrap: wrap; }
+      .stat-strip-item { flex: 0 0 50%; border-right: none; border-bottom: 1px solid var(--border-subtle); padding: 1rem; }
+      .stat-strip-item:last-child { border-bottom: none; }
+    }
+
+    /* 深掘りセクション */
+    .insight-box { border-left: 2px solid var(--border); padding-left: 1.2rem; margin-bottom: 2.2rem; }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    #sec-data .data-grid { gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    #sec-data .data-card { padding: 1.5rem; }
+
+    /* プルクォート */
+    .pull-quote {
+      font-size: 0.98rem; font-weight: 600; line-height: 1.75;
+      color: var(--text); margin-bottom: 1rem;
+    }
+
+    a.source-item { color: inherit; text-decoration: none; }
+    a.source-item:hover { border-color: var(--accent2); }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      #sec-data .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<main>
+  <div class="article-hero has-image">
+    <span class="hero-credit">イメージ画像（生成AI）</span>
+    <div class="container">
+      <div class="article-meta">
+        <span class="tag">中東情勢</span>
+        <span class="date">2026年9月7日</span>
+      </div>
+      <h1 class="article-title">パレスチナ国家承認ラッシュ<br>―「国家」を誰が決めるのか</h1>
+
+      <div class="hero-deck">
+        2025年9月、イギリス・フランス・カナダなど主要国が相次いでパレスチナを国家として承認した。国連加盟193ヵ国のうち<span class="deck-accent">157ヵ国</span>が「パレスチナは国家だ」と認めるいま、なぜイスラエルとアメリカだけは頑なに拒み続けるのか。
+      </div>
+
+      <div class="hero-pills">
+        <span class="hero-pill">157/193ヵ国が承認（2025.9）</span>
+        <span class="hero-pill">G7で承認は英仏加の3ヵ国のみ</span>
+        <span class="hero-pill">国連加盟はアメリカが拒否権で阻止</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body" style="padding:2rem 0 4rem;">
+    <div class="container">
+      <div class="layout">
+        <div class="main-content">
+
+          <!-- Section 1: 論点 -->
+          <section class="section" id="sec-core">
+            <h2 class="section-title"><span class="sec-num">01</span>論点 ―「国家」と認めることの意味</h2>
+
+            <div class="article-question">
+              他の国が「あなたは独立した国家だ」と認める――それだけの行為が、なぜ当事国を激怒させるのか。「国家承認」は何を変え、何を変えないのか。
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              「国家承認」とは、ある国が別の国に対して「あなたを独立した国家として扱います」と表明する外交上の行為だ。世界に国境や国家を決める審判のような機関があるわけではなく、国と国が一つずつ「認める」か「認めないか」を選んでいる。パレスチナ問題でよく語られる<strong style="color:var(--text);">「二国家解決」</strong>とは、イスラエルとパレスチナという二つの国が並んで存在する形で、この争いを終わらせようという構想を指す。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              2025年9月、その二国家解決をめぐる状況が大きく動いた。イギリス・フランス・カナダ・オーストラリアなど10ヵ国以上が一斉にパレスチナを国家として承認したのだ。この中には、それまで承認を避け続けてきた主要7ヵ国（G7）のうちイギリス・フランス・カナダが含まれていた。この結果、国連加盟193ヵ国のうち<strong style="color:var(--text);">157ヵ国、8割以上がパレスチナを国家と認めた</strong>ことになる。
+            </p>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.1rem;">
+              ところが、当のイスラエルとアメリカはこの動きに強く反発している。ネタニヤフ首相は「テロへの報奨だ」と述べ、トランプ大統領も国連総会の演説で同じ立場を示した。8割の国が「国家だ」と認めても、パレスチナは本当に国家になれるのか。国家として認められることは、現実に何を変えるのか。
+            </p>
+
+            <div class="label-eyebrow">この記事の3つの論点</div>
+            <div class="factor-grid">
+              <div class="factor-card">
+                <div class="factor-title">何が起きたか</div>
+                <div class="factor-desc">
+                  2025年9月、G7で初めてイギリス・フランス・カナダがパレスチナを国家として承認。承認国は国連加盟193ヵ国中157ヵ国、8割超に達した。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">なぜ今なのか</div>
+                <div class="factor-desc">
+                  2023年10月に始まったガザ戦争で被害が拡大し、「このままでは二国家解決そのものが消えてしまう」という危機感が各国に広がったため。
+                </div>
+              </div>
+              <div class="factor-card">
+                <div class="factor-title">何が変わらないのか</div>
+                <div class="factor-desc">
+                  承認が増えても、パレスチナは国連の正式加盟国にはなれていない。2024年4月、加盟を求める決議はアメリカの拒否権で否決された。
+                </div>
+              </div>
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/palestine-recognition-core-vote-hand.jpg"
+                   alt="国連総会で投票用のプラカードを掲げる代表団の手元の接写" loading="lazy">
+              <figcaption>「国家として認める」かどうかの判断は、こうして一票ずつ積み重なっていく。だが票が積み上がっても、その先に何が変わるのかは別問題だ。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2: タイムライン -->
+          <section class="section" id="sec-timeline">
+            <h2 class="section-title"><span class="sec-num">02</span>タイムライン ― 半世紀にわたる「認められる」ための歩み</h2>
+            <div class="timeline">
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-date">1988年11月 ― 独立宣言、78ヵ国がすぐに承認</div>
+                  <p>PLO（パレスチナ解放機構）のアラファト議長が、アルジェでパレスチナの独立を宣言した。年末までに78ヵ国が承認したが、アメリカや西欧の主要国は動かなかった。</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-date">1993年 ― オスロ合意、相互承認と暫定自治の始まり</div>
+                  <p>イスラエルとPLOが互いを交渉相手として認め合うオスロ合意を締結。パレスチナ自治政府（PA）が発足し、ヨルダン川西岸とガザの一部で暫定的な自治が始まった。</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-date">2012年11月 ― 国連での格上げ、「オブザーバー国家」に</div>
+                  <p>国連総会が賛成138・反対9の投票で、パレスチナを国連総会に出席できる「非加盟オブザーバー国家」に格上げした。正式な加盟国ではないが、外交上の地位は一段上がった。</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-date">2023年10月〜 ― ガザ戦争の始まり</div>
+                  <p>ハマスによる越境攻撃をきっかけにガザ戦争が始まり、民間人の被害が急速に拡大した。2023年11月時点での承認国は138ヵ国だった。</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-date">2024年4〜6月 ― 拒否権と、最初の承認の波</div>
+                  <p>4月、パレスチナの国連正式加盟を求める決議に賛成12票が集まったが、アメリカが拒否権を発動し否決された。その直後の5月、ノルウェー・アイルランド・スペインが承認を発表し、6月にはスロベニアも続いた。</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-date">2025年7〜9月 ― 承認ラッシュ、G7の一角が動く</div>
+                  <p>7月末、フランスとサウジアラビアが共催した国連会議で「ニューヨーク宣言」が合意され、9月12日に国連総会で正式に採択された。その直後の9月21〜22日、イギリス・フランス・カナダ・オーストラリアなど10ヵ国以上が一斉に承認を発表し、承認国は157ヵ国に達した。</p>
+                </div>
+              </div>
+
+            </div>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/palestine-recognition-timeline-checkpoint.jpg"
+                   alt="夕暮れの検問所に立つ古びたコンクリート壁と監視塔" loading="lazy">
+              <figcaption>独立宣言から30年以上。国際社会での立場は少しずつ強まってきたが、現地の暮らしはほとんど変わっていない。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 3: 各国・各勢力の視点 -->
+          <section class="section" id="sec-perspectives">
+            <h2 class="section-title"><span class="sec-num">03</span>5つの視点 ― 同じ出来事が、まるで違って見える</h2>
+
+            <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.9;margin-bottom:1.4rem;">
+              「国家承認」という同じ出来事が、立場によってまったく違う意味を持つ。当事者と、それを取り巻く国々の見方を5つに整理する。
+            </p>
+
+            <div class="perspectives-grid">
+
+              <div class="perspective-card">
+                <div class="country-header"><div class="country-name">イスラエル政府</div></div>
+                <div class="pull-quote">「これはテロへの報奨だ」（ネタニヤフ首相）</div>
+                <div class="key-claim">交渉を経ない一方的な承認は、ハマスの攻撃を結果的に正当化することになり、和平交渉そのものを無意味にすると訴える。ネタニヤフ首相は承認発表後も「入植地の拡大を続ける」と明言し、2026年8月には「自分が首相である限り、イランに支配されたパレスチナ国家は、ガザにもヨルダン川西岸にも作らせない」と述べている。</div>
+                <div class="interests">重視：交渉抜きの一方的な承認を認めないこと</div>
+                <span class="role-badge">強く反対</span>
+              </div>
+
+              <div class="perspective-card">
+                <div class="country-header"><div class="country-name">パレスチナ自治政府（PA）</div></div>
+                <div class="pull-quote">「公正で永続的な平和への重要な一歩だ」（アッバス議長、イギリスの承認発表への反応）</div>
+                <div class="key-claim">半世紀近く待たされてきた自決権の当然の行使であり、承認の広がりは国際社会からの正統性の証明だと位置づける。アッバス議長はハマスの武装解除を求め、統治と治安を自治政府に一本化する「一つの国家、一つの法、一つの治安部隊」という構想を掲げている。</div>
+                <div class="interests">重視：国際的な正統性と統治の一本化</div>
+                <span class="role-badge">強く支持</span>
+              </div>
+
+              <div class="perspective-card">
+                <div class="country-header"><div class="country-name">承認に踏み切った国々（英・仏・加・豪など）</div></div>
+                <div class="key-claim">ガザの人道被害の拡大を前に、「これ以上待てば二国家解決そのものが消えてしまう」という危機感から承認に踏み切った。フランスとサウジアラビアが共催した2025年7月の国連会議には約160ヵ国が参加したが、アメリカとイスラエルは参加を拒んだ。</div>
+                <div class="interests">重視：二国家解決の可能性を残すこと</div>
+                <span class="role-badge">支持へ転換</span>
+              </div>
+
+              <div class="perspective-card">
+                <div class="country-header"><div class="country-name">アメリカ</div></div>
+                <div class="pull-quote">「ハマスのテロリストへの報奨があまりに大きくなってしまう」（トランプ大統領、国連総会演説）</div>
+                <div class="key-claim">同盟国イスラエルの安全保障を最優先し、当事者間の直接交渉を経ない承認は時期尚早だと主張。独自の和平案を優先する。2024年4月、国連安全保障理事会でパレスチナの正式加盟を求める決議に拒否権を発動。2025年9月の会議前には自治政府代表団のビザを拒否・取り消した。</div>
+                <div class="interests">重視：イスラエルの安全保障と独自の和平案</div>
+                <span class="role-badge">反対</span>
+              </div>
+
+              <div class="perspective-card">
+                <div class="country-header"><div class="country-name">アラブ・湾岸諸国（サウジアラビア中心）</div></div>
+                <div class="key-claim">パレスチナ国家の樹立を、イスラエルとの国交正常化の絶対条件として掲げる。承認自体は支持しつつ、ハマスの武装解除も同時に求める。サウジアラビアのムハンマド皇太子は「東エルサレムを首都とするパレスチナ国家の樹立なしに国交正常化はしない」と明言している。</div>
+                <div class="interests">重視：国交正常化とパレスチナ国家樹立の連動</div>
+                <span class="role-badge">条件付き支持</span>
+              </div>
+
+            </div>
+
+            <figure class="article-figure" style="margin-top:2rem;">
+              <img src="../../../image/articles/palestine-recognition-perspectives-negotiation-table.jpg"
+                   alt="無人の長い国際会議用テーブルに並ぶ各国の小さな国旗" loading="lazy">
+              <figcaption>同じ交渉の場にいながら、各国の立場の違いは埋まっていない。承認をめぐる意見の対立は、そのまま交渉の停滞にもつながっている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 4: データ・統計 -->
+          <section class="section" id="sec-data">
+            <h2 class="section-title"><span class="sec-num">04</span>データ・統計</h2>
+            <div class="data-grid">
+
+              <div class="data-card">
+                <h4>パレスチナを承認した国の数の推移（国連加盟193ヵ国中）</h4>
+                <div style="position:relative;height:220px;margin-top:1rem;">
+                  <canvas id="recognitionChart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  1988年の独立宣言直後は78ヵ国だったが、2025年9月の承認ラッシュを経て157ヵ国（全体の約81%）に達した。
+                  出典：国連総会資料、アルジャジーラ、アッバス議長の国連演説（2025年9月）
+                </p>
+              </div>
+
+              <div class="data-card">
+                <h4>G7（主要7ヵ国）の承認状況</h4>
+                <div style="position:relative;height:220px;margin-top:1rem;">
+                  <canvas id="g7Chart"></canvas>
+                </div>
+                <p style="font-size:0.73rem;color:var(--text-dim);margin-top:0.5rem;">
+                  G7のうちパレスチナを承認したのはイギリス・フランス・カナダの3ヵ国。アメリカ・ドイツ・イタリア・日本は未承認のまま。
+                  出典：各国政府発表、アルジャジーラまとめ（2025年9月時点）
+                </p>
+              </div>
+
+            </div>
+
+            <div class="stat-strip">
+              <div class="stat-strip-item">
+                <div class="stat-num">157/193</div>
+                <div class="stat-desc">パレスチナを承認した国連加盟国の数（2025年9月時点、全体の約81%）</div>
+              </div>
+              <div class="stat-strip-item">
+                <div class="stat-num">12対1</div>
+                <div class="stat-desc">国連正式加盟を求める決議の賛成票数と、これを阻んだアメリカの拒否権（2024年4月）</div>
+              </div>
+              <div class="stat-strip-item">
+                <div class="stat-num">3/7</div>
+                <div class="stat-desc">G7の中でパレスチナを承認した国の数（イギリス・フランス・カナダ）</div>
+              </div>
+              <div class="stat-strip-item">
+                <div class="stat-num">2015年</div>
+                <div class="stat-desc">パレスチナがICC（国際刑事裁判所）に加盟した年</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 5: 深掘り -->
+          <section class="section" id="sec-analysis">
+            <h2 class="section-title"><span class="sec-num">05</span>深掘り ― 承認が増えても、現実は動くのか</h2>
+
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.95;margin-bottom:1.5rem;">
+              承認国が8割を超えても、パレスチナを取り巻く現実はほとんど動いていない。この「象徴」と「実態」のずれを、3つの角度から見ていく。
+            </p>
+
+            <div class="insight-box">
+              <div class="insight-title">国家承認の効果は、どこまで実質的か</div>
+              <div class="insight-text">
+                国家承認は基本的に二国間の外交行為であり、相手国に領土の支配権を与えるものではない。パレスチナが国連の正式な加盟国になるには安全保障理事会の承認が必要だが、2024年4月にアメリカが拒否権を発動し、これを阻んだ。承認する国が増えても、国連の場でのパレスチナの実質的な地位はほとんど変わっていない。<br><br>
+                ただし、効果が全くないわけではない。パレスチナは2015年にICC（国際刑事裁判所）へ加盟しており、この地位を足がかりに2024年11月、ICCはネタニヤフ首相とガラント前国防相への逮捕状を出した。同じ2024年7月には、国際司法裁判所（ICJ）がイスラエルの占領そのものを「違法」とする勧告的意見を示している。国家承認の広がりは、こうした国際法上の追及を後押しする土台になっている。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">「承認」と「現地の現実」の落差</div>
+              <div class="insight-text">
+                国家承認が外交儀礼として積み上がる一方、ヨルダン川西岸では入植地の拡大が続いている。ネタニヤフ首相は承認発表後も「入植を続ける」と明言した。ガザでは2025年10月、トランプ大統領の仲介で停戦の第一段階が実現したものの、2026年に入っても武装解除など次の段階をめぐる交渉は行き詰まったままだ。国家として承認されることと、実際に主権が及ぶ領土を得ることの間には、大きな隔たりが残っている。
+              </div>
+            </div>
+
+            <div class="insight-box">
+              <div class="insight-title">これからの焦点</div>
+              <div class="insight-text">
+                焦点は、承認した国々がこの先どこまで行動を伴わせるかに移っていく。経済制裁や武器輸出の見直しといった具体的な圧力に踏み込むのか、それとも承認という象徴的な一歩で止まるのか。サウジアラビアが求める「東エルサレムを首都とする国家」の実現も、イスラエルの同意なしには進まない。国家承認ラッシュは、パレスチナを国家として扱う国を増やしたが、パレスチナに国家としての実権を与えたわけではない。この差がどう埋まるか、あるいは埋まらないままなのかが、今後数年の焦点になる。
+              </div>
+            </div>
+
+            <p class="closing">「国家承認は何を変えるのか」という問いに、単純な答えはない。外交上の地位は確かに積み上がったが、占領という現実、そして国連加盟という制度上の壁は、承認だけでは動かせないままだ。承認する側とされる側、双方が抱える国内事情もまた、この先の展開を左右する。</p>
+
+            <figure class="article-figure">
+              <img src="../../../image/articles/palestine-recognition-analysis-hillside-divide.jpg"
+                   alt="谷を挟んで対照的な二つの丘陵集落、片方は整然とした現代的な住宅街、片方は古く密集した街並み" loading="lazy">
+              <figcaption>外交の舞台で承認が積み上がっても、現地の暮らしの格差はそのまま残っている。※イメージ画像（生成AI）</figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 6: 情報源 -->
+          <section class="section" id="sec-sources">
+            <h2 class="section-title"><span class="sec-num">06</span>情報源・参考メディア</h2>
+            <div class="sources-grid">
+              <a class="source-item" href="https://news.un.org/en/story/2024/04/1148731" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">UN News — US vetoes Palestine's UN membership bid</div>
+                  <div class="source-desc">2024年4月、パレスチナの国連正式加盟決議をアメリカが拒否権で阻止した経緯の一次報道。</div>
+                  <div class="source-country">【国連公式ニュース】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://press.un.org/en/2024/sc15670.doc.htm" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">UN Meetings Coverage — Security Council Fails to Recommend Full Membership</div>
+                  <div class="source-desc">安全保障理事会での採決の詳細と各国の発言記録。</div>
+                  <div class="source-country">【国連公式記録】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://news.un.org/en/story/2025/09/1165835" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">UN News — General Assembly endorses New York Declaration</div>
+                  <div class="source-desc">2025年9月、国連総会が「ニューヨーク宣言」を正式採択した経緯。</div>
+                  <div class="source-country">【国連公式ニュース】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.aljazeera.com/news/2025/9/22/france-recognises-palestinian-state-ahead-of-the-unga-meeting" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Al Jazeera — France recognises Palestinian statehood ahead of the UNGA</div>
+                  <div class="source-desc">2025年9月の承認ラッシュの詳細と各国の反応。</div>
+                  <div class="source-country">【国際報道】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.icc-cpi.int/news/state-palestine-accedes-rome-statute" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">ICC — The State of Palestine accedes to the Rome Statute</div>
+                  <div class="source-desc">2015年、パレスチナがICC（国際刑事裁判所）に正式加盟した際の公式発表。</div>
+                  <div class="source-country">【国際刑事裁判所 公式】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.un.org/unispal/document/advisory-opinion-icj-19jul24/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">ICJ Advisory Opinion（2024年7月19日）</div>
+                  <div class="source-desc">国際司法裁判所がイスラエルの占領を違法とした勧告的意見の原文。</div>
+                  <div class="source-country">【国連公式文書】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://news.un.org/en/story/2024/11/1157286" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">UN News — ICC issues arrest warrants for Netanyahu, Gallant and Hamas commander</div>
+                  <div class="source-desc">2024年11月のICC逮捕状発行に関する一次報道。</div>
+                  <div class="source-country">【国連公式ニュース】</div>
+                </div>
+              </a>
+              <a class="source-item" href="https://www.timesofisrael.com/full-text-of-abbas-speech-at-2-state-summit-we-demand-a-ceasefire-hamas-must-hand-arms-to-pa/" target="_blank" rel="noopener">
+                <div class="source-info">
+                  <div class="source-name">Times of Israel — Full text of Abbas speech at 2-state summit</div>
+                  <div class="source-desc">2025年9月、アッバス議長が国連会議で行った演説の全文。</div>
+                  <div class="source-country">【一次発言記録】</div>
+                </div>
+              </a>
+            </div>
+          </section>
+
+        </div><!-- /main-content -->
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+            <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+            <li><a href="#sec-perspectives"><span class="toc-icon">03</span>5つの視点</a></li>
+            <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+            <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+            <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+          </ul>
+          <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+          <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+            <div style="margin-bottom:0.3rem;"><a href="../../../categories/middle-east/index.html">中東情勢</a></div>
+            <div>2026年9月7日</div>
+            <div style="margin-top:0.5rem;">5つの視点を掲載</div>
+          </div>
+        </aside>
+
+      </div><!-- /layout -->
+    </div><!-- /container -->
+  </div><!-- /article-body -->
+</main>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/middle-east/index.html">中東情勢一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 承認国数の推移
+  (function() {
+    var ctx = document.getElementById('recognitionChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['1988年末', '2023年11月', '2025年9月\n（ラッシュ前）', '2025年9月\n（ラッシュ後）'],
+        datasets: [{
+          data: [78, 138, 149, 157],
+          borderColor: 'rgba(184,120,104,0.9)',
+          backgroundColor: 'rgba(184,120,104,0.10)',
+          pointBackgroundColor: 'rgba(184,120,104,0.9)',
+          tension: 0.25,
+          fill: true,
+          borderWidth: 2,
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.y + 'ヵ国'; } } }
+        },
+        scales: {
+          y: {
+            min: 0, max: 193,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + 'ヵ国'; } }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8890a0', font: { size: 9 } }
+          }
+        }
+      }
+    });
+  })();
+
+  // G7の承認状況
+  (function() {
+    var ctx = document.getElementById('g7Chart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'doughnut',
+      data: {
+        labels: ['承認済み（英・仏・加）', '未承認（米・独・伊・日）'],
+        datasets: [{
+          data: [3, 4],
+          backgroundColor: ['rgba(184,120,104,0.85)', 'rgba(136,144,160,0.35)'],
+          borderColor: 'transparent',
+          borderWidth: 0,
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '62%',
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: '#8890a0', font: { size: 10 }, boxWidth: 12, padding: 12 }
+          },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.label + '：' + c.parsed + 'ヵ国'; } } }
+        }
+      }
+    });
+  })();
+</script>
+</body>
+</html>

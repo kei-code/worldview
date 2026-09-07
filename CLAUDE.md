@@ -121,6 +121,8 @@
 | 2026-08-28 | technology | 太陽を、地上で — 核融合はいつ、誰の手で電気になるか | 2026-08-28-fusion-race |
 | 2026-08-30 | asia | デフレは終わったのか — 中国経済、12期ぶりのプラスの中身 | 2026-08-30-china-deflation |
 | 2026-09-04 | resources | 38分後に届いた警報 — ヒマラヤは、誰も見ていない場所で崩れた | 2026-09-04-himalaya-glacier-collapse |
+| 2026-09-06 | resources | 森は誰のものか — 「切る権利」をめぐる五つの正義 | 2026-09-06-forest-sovereignty |
+| 2026-09-07 | middle-east | パレスチナ国家承認ラッシュ ―「国家」を誰が決めるのか | 2026-09-07-palestine-recognition |
 
 ---
 
