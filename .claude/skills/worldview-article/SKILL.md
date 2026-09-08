@@ -110,13 +110,29 @@ WorldView（地政学ニュースサイト）の記事を新規作成するた�
 - 外側マージンは上下とも `3.3rem`（前後のセクションから十分に離す。旧処方の `2.2rem 0 0` より広め）
 - 内側パディングは変更しない（`1.3rem 1.5rem 1.6rem`）
 
-### タイムラインは項目間の横線を引かない（必須）
+### タイムラインは「フラット・日付見出し統合」型を標準とする（必須）
 
-`.timeline-item` に `border-bottom` を付けない（旧処方は区切り線を入れていたが廃止）。年ごとの余白（`padding-bottom`）だけで区切る。
+`.timeline-item` に `border-bottom` を付けない（項目間の区切り線は廃止）。年ごとの余白（`padding-bottom`）だけで区切る。さらに、`timeline-content` 自体もカード化（背景・枠線・カード内パディング）しない。日付とその日の出来事の見出しを**1行に統合**し、`<h4>` 見出し・`timeline-reactions`（リアクションチップ）は使わない。手本：`palestine-recognition`、`us-abortion-divide` 各記事。
 
 ```css
 .article-body .timeline-item { padding-bottom: 1.7rem; }
 .article-body .timeline-item:last-child { padding-bottom: 0; }
+.article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+.article-body .timeline-content:hover { border-color: transparent; }
+.article-body .timeline-date { color: var(--accentN); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+.article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+```
+
+HTML側は `timeline-dot` はバリエーションを付けず常に無地（`dot-event` 等の色分けはしない）、`timeline-date` に「日付 ― 見出し」をまとめて書き、直後の `<p>` で本文を続ける：
+
+```html
+<div class="timeline-item">
+  <div class="timeline-dot"></div>
+  <div class="timeline-content">
+    <div class="timeline-date">2022年6月24日 ― 連邦最高裁、ロー対ウェイド判決を覆す</div>
+    <p>本文...</p>
+  </div>
+</div>
 ```
 
 ### 情報源リンクのCSSスニペット

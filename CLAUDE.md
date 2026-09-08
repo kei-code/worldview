@@ -123,6 +123,7 @@
 | 2026-09-04 | resources | 38分後に届いた警報 — ヒマラヤは、誰も見ていない場所で崩れた | 2026-09-04-himalaya-glacier-collapse |
 | 2026-09-06 | resources | 森は誰のものか — 「切る権利」をめぐる五つの正義 | 2026-09-06-forest-sovereignty |
 | 2026-09-07 | middle-east | パレスチナ国家承認ラッシュ ―「国家」を誰が決めるのか | 2026-09-07-palestine-recognition |
+| 2026-09-07 | elections | アメリカ、中絶をめぐる州境の分裂 — 全国共通の権利から、住む州で変わる権利へ | 2026-09-07-us-abortion-divide |
 
 ---
 
@@ -177,7 +178,7 @@
 - **ヒーローは案X型が標準**：フォトリアル画像を背景に敷き、`article-meta`→`article-title`→宣言文 `.hero-deck`→数字ピル `.hero-pills` を重ねる。宣言文のアクセント・数字ピルの色は**カテゴリのテーマ色 `var(--accentN)` に合わせる**（直書き禁止）。生成AI画像には `.hero-credit` で「イメージ画像（生成AI）」を明示。→ 具体的なCSS処方・数値は `/worldview-article` スキル。
 - **head要素（SEO・OGP）は全ページ必須**：`description`／`canonical`（絶対URL・ディレクトリ形）／`favicon`／OGP／Twitterカードを `<meta name="viewport">` 直後に入れる。`og:image`・`twitter:image` は絶対URL。→ 具体的なテンプレは `/worldview-article` スキル。
 - **「この記事の問い」ボックスは左罫線を使わない**：淡い背景ウォッシュ＋薄い縁取り＋背後からの柔らかい光（box-shadowのグロー）で立体感を出す。外側マージンは上下 `3.3rem`。→ 具体的なCSS処方は `/worldview-article` スキル。
-- **タイムラインは項目間に横線を引かない**：`.timeline-item` の区切りは余白のみで表現し、`border-bottom` は付けない。→ 具体的なCSS処方は `/worldview-article` スキル。
+- **タイムラインは「フラット・日付見出し統合」型**：`.timeline-item` の区切りは余白のみ（`border-bottom` なし）。`timeline-content` はカード化せず、日付とその日の出来事の見出しを1行に統合し、`<h4>` やリアクションチップは使わない。→ 具体的なCSS・HTML処方は `/worldview-article` スキル。
 
 ### ヘッダーナビ（単一ソース / 必須）
 

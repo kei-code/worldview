@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2022年、アメリカ連邦最高裁は50年近く続いた中絶の憲法上の権利を覆した。以来、全面禁止の13州から制限のない9州まで、州境を一本越えるだけで合法性が逆転する国になっている。保守派とリベラル派、双方の主張の根拠を、有権者の実際の声とともに4つの視点で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/elections/2026-09-07-us-abortion-divide/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="アメリカ、中絶をめぐる州境の分裂 — 全国共通の権利から、住む州で変わる権利へ — WorldView">
+  <meta property="og:description" content="2022年のドブス判決以来、アメリカは州境を越えるだけで中絶の合法性が反転する国になった。保守派とリベラル派、双方の主張の根拠を4つの視点で読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/elections/2026-09-07-us-abortion-divide/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/us-abortion-divide-hero-capitol.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="アメリカ、中絶をめぐる州境の分裂 — 全国共通の権利から、住む州で変わる権利へ — WorldView">
+  <meta name="twitter:description" content="州境を越えるだけで合法性が反転する国、アメリカ。保守派とリベラル派、双方の主張の根拠を4つの視点で読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/us-abortion-divide-hero-capitol.jpg">
+  <title>アメリカ、中絶をめぐる州境の分裂 — 全国共通の権利から、住む州で変わる権利へ — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色は世論・選挙の --accent4（ベージュ）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/us-abortion-divide-hero-capitol.jpg');
+      background-size: cover; background-position: center 40%;
+      filter: brightness(1.05) contrast(1.03) saturate(1.02);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.32) 0%, rgba(14,17,23,0.52) 45%, rgba(14,17,23,0.90) 100%);
+    }
+    .article-hero.has-image .container {
+      position: relative; z-index: 1; width: 100%; transform: translateY(-24px);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b6c1cd; margin-top: 1.5rem; max-width: 600px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent4); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent4) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent4) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent4) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent4); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       シグネチャー：フロストガラス — 記事全体を貫く透明感
+       ========================================================== */
+    .article-body .perspective-card,
+    .article-body .insight-box,
+    .article-body .glossary-card,
+    .article-body .data-card {
+      background: rgba(56,64,78,0.35);
+      border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    /* ---- perspective-card ---- */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+    .article-body .perspective-card { padding: 1.5rem 1.6rem 1.6rem; }
+    .article-body .perspective-card:hover {
+      transform: translateY(-2px); box-shadow: var(--shadow-lg);
+      background: rgba(56,64,78,0.48); border-color: rgba(255,255,255,0.16);
+    }
+    .article-body .perspective-card::before {
+      background: linear-gradient(90deg, transparent 0%, var(--accent4) 50%, transparent 100%);
+    }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .article-body .compare-table {
+      background: rgba(56,64,78,0.35); border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    }
+    .article-body .compare-table th { background: rgba(255,255,255,0.04); border-bottom: 2px solid var(--accent4); }
+    .article-body .compare-table tr:hover td { background: rgba(255,255,255,0.05); }
+
+    /* ---- timeline ---- */
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent4); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+    .article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- data-card ---- */
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .article-body .data-card:hover { border-color: rgba(255,255,255,0.18); }
+    .article-body .data-card h4 {
+      font-size: 0.92rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.8rem; line-height: 1.65; }
+
+    /* ---- 情報源 ---- */
+    .article-body .sources-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+    .article-body a.source-item {
+      background: rgba(56,64,78,0.28); border: 1px solid rgba(255,255,255,0.08);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      color: inherit; text-decoration: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .article-body a.source-item:hover { border-color: var(--accent4); background: rgba(56,64,78,0.42); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent4); outline-offset: 2px; }
+
+    /* ---- この記事の問い ---- */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(196,168,130,0.06);
+      border: 1px solid rgba(196,168,130,0.22);
+      box-shadow: 0 0 40px 10px rgba(196,168,130,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent4); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent4); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- 用語解説（フロストガラス） ---- */
+    .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .article-body .glossary-card { padding: 1rem 1.2rem; }
+    .article-body .glossary-card:hover { border-color: rgba(255,255,255,0.16); }
+    .glossary-term { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .glossary-def { font-size: 0.78rem; color: var(--text-muted); line-height: 1.75; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.4rem; font-weight: 700; color: var(--accent4); line-height: 1.25; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    /* ---- 深掘り（フロストガラス） ---- */
+    .article-body .insight-box { padding: 1.4rem 1.6rem; margin-bottom: 1.6rem; }
+    .article-body .insight-box:hover { border-color: rgba(255,255,255,0.16); }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* ==========================================================
+       アクセシビリティ・レスポンシブ
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body .timeline-content,
+      .article-body .glossary-card,
+      .article-body .insight-box,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .glossary-grid { grid-template-columns: 1fr; gap: 0.7rem; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">世論・選挙</span>
+      <span class="date">2026年9月7日</span>
+    </div>
+    <h1 class="article-title">アメリカ、中絶をめぐる州境の分裂<br>— 全国共通の権利から、住む州で変わる権利へ</h1>
+
+    <div class="hero-deck">
+      2022年、連邦最高裁は49年間続いた中絶の憲法上の権利を覆し、合否の判断を各州に委ねた。以来、州境を挟むだけで同じ行為が「合法」にも「犯罪」にもなる国になっている。<span class="deck-accent">「正しさ」の基準は、今も州ごとに違ったままだ。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">13州が全面禁止</span>
+      <span class="hero-pill">世論の60%は容認派</span>
+      <span class="hero-pill">2024年住民投票は7勝3敗</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — なぜ州境を越えるだけで法律が変わるのか</h2>
+
+          <p class="lead">1973年、アメリカ連邦最高裁は「ロー対ウェイド判決」で、中絶を選ぶ権利は憲法が保障するプライバシー権の一部だと認めた。以来49年間、アメリカのどこに住んでいても、一定の時期までは中絶が合法という状態が続いてきた。</p>
+
+          <p class="lead">その前提は、2022年6月24日に覆った。連邦最高裁は「ドブス対ジャクソン女性健康機構事件」で、憲法は中絶の権利を保障していないと判断し、ロー対ウェイド判決を覆した。判決は「中絶を規制する権限は、国民とその代表、つまり各州に返還される」としている。</p>
+
+          <p class="lead">この日を境に、中絶が合法かどうかを決める場所は、国全体から州ごとの判断へ移った。結果として今のアメリカは、50の州がそれぞれ違うルールを持つ国になっている。2026年9月時点で、13州が中絶をほぼ全期間で禁止し、28州が妊娠週数による制限を設け、9州とワシントンD.C.には目立った制限がない。</p>
+
+          <div class="article-question">
+            <p>同じ国に住みながら、州境を一本越えるだけで、同じ行為が合法にも違法にもなる。これは各州の民意を尊重した正しい姿なのか、それとも、権利の有無を「住む場所」が決めてしまう不公平なのか。</p>
+          </div>
+
+          <div class="label-eyebrow">3つの論点</div>
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">判断の重心が「連邦」から「州」へ移った</div>
+              <div class="factor-desc">2022年までは全国一律の基準があった。今は50州分の判断が並び立ち、州境を挟むだけで法律が正反対になる。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">世論と議会の判断は、必ずしも一致しない</div>
+              <div class="factor-desc">世論調査では6割が「合法であるべき」と答えるが、保守色の強い州の議会は必ずしもその通りには動かない（詳細は03参照）。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">対立は中絶そのものを越えて広がっている</div>
+              <div class="factor-desc">「胎児をいつから人と認めるか」という論点が、体外受精など生殖医療全体に影響し始めている（詳細は05参照）。</div>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">用語解説</div>
+          <div class="glossary-grid">
+            <div class="glossary-card">
+              <div class="glossary-term">トリガー法</div>
+              <div class="glossary-def">ロー対ウェイド判決が覆された場合に自動で効力を持つよう、あらかじめ州が用意していた中絶禁止法。ドブス判決の直後、複数の州で即座に施行された。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">シールド法</div>
+              <div class="glossary-def">自州の医師が他州の患者に中絶薬を処方するなどの行為について、他州からの訴追や身柄引き渡し要求に協力しないと定める州法。現在20前後の州に存在する。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">胎児の法的人格</div>
+              <div class="glossary-def">受精卵や胎児を法律上「人」として扱う考え方。中絶禁止の根拠になる一方、体外受精の凍結胚にも適用されると医療現場に混乱を招く。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">妊娠週数制限</div>
+              <div class="glossary-def">妊娠何週目まで中絶を認めるかという基準。6週、15週、妊娠中期（週数不定）など、州によって基準がまちまちである。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">原告適格（スタンディング）</div>
+              <div class="glossary-def">裁判を起こす資格のこと。訴えの内容が正しいかどうか以前に、「訴える資格があるか」だけで却下されることがある。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">特別多数</div>
+              <div class="glossary-def">通常の過半数（50%超）より高いハードルを設ける可決基準。フロリダ州の60%基準はこの一例（詳細は02参照）。</div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-abortion-divide-core-highway.jpg" alt="夜明けの二車線ハイウェイが霧の立ち込める地平線へ続く写真。両側に見分けのつかない同じ農地が広がっている" loading="lazy">
+            <figcaption>州境を越えても、道路の景色は何も変わらない。それでも、そこで合法かどうかだけが反転する。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 判決から4年、対立は今も続いている</h2>
+
+          <p class="lead">ドブス判決から4年が経ったが、対立に区切りはついていない。州ごとの住民投票、州同士の法廷闘争、生殖医療への波及と、争いの舞台は広がり続けている。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">1973年1月22日 ― 連邦最高裁、中絶を憲法上の権利と認める</div>
+                <p>「ロー対ウェイド判決」で、中絶を選ぶ権利は憲法が保障するプライバシー権に含まれると判断された。以来49年間、この判決がアメリカ全土での基準になった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2022年6月24日 ― 連邦最高裁、ロー対ウェイド判決を覆す</div>
+                <p>「ドブス対ジャクソン女性健康機構事件」で、5対1対3の評決により、憲法は中絶の権利を保障していないと判断された。中絶の合否を決める権限は各州に戻され、判決の即日、あらかじめ用意されていた「トリガー法」が複数の州で発動し、数時間のうちに中絶が禁止された。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2022年8月2日 ― カンザス州、有権者が中絶禁止条項を拒否</div>
+                <p>州議会が発議した「州憲法は中絶の権利を保障しない」とする改正案を、有権者は59.16%対40.84%の大差で否決した。ドブス判決後、初めて中絶が住民投票にかけられた州の結果であり、保守的な州でも民意が割れることを示す最初の事例になった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2023年8月〜11月 ― オハイオ州、可決基準の引き上げを拒否した末に中絶の権利を承認</div>
+                <p>共和党優勢の州議会は、11月に控えた中絶権利保護の改正案を通りにくくするため、8月に憲法改正の可決基準を過半数から60%へ引き上げる特別住民投票を実施した。有権者はこの引き上げ自体を57.1%対42.9%で否決。その結果、11月の本番の投票では通常の過半数基準が適用され、中絶の権利を認める改正案が56.78%の賛成で可決された。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年2月16日 ― アラバマ州最高裁、凍結胚を「子ども」と認定</div>
+                <p>体外受精（IVF）治療で作られた凍結胚が、州の「未成年の死亡に関する損害賠償法」上の「子ども」に当たるとの判断が下された。誤って廃棄された胚についてクリニックの責任を認めるものだったが、州内の複数のIVFクリニックが治療を一時停止する事態になり、超党派の反発を受けて19日後に州議会と知事がこの判断の効力を事実上覆す法律を成立させた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年6月13日 ― 連邦最高裁、中絶薬の規制強化を求める訴えを退ける</div>
+                <p>「FDA対ヒポクラテス医療同盟事件」で、連邦最高裁は9対0の全会一致で、中絶薬ミフェプリストンの規制強化を求めた医師団に訴訟を起こす資格（原告適格）がないと判断した。中絶の是非そのものには踏み込まず、郵送やテレメディシンによる処方は維持された。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年11月5日 ― 10州で住民投票、7州で可決・フロリダは過半数でも届かず</div>
+                <p>この日、10州で中絶に関する住民投票が実施された。中絶の権利拡大を求める改正案は、ネバダ州64.4%、アリゾナ州61.61%、モンタナ州57.76%、ミズーリ州51.60%の賛成で可決された一方、ネブラスカ州（49.01%）、サウスダコタ州（41.41%）では否決された。なおネブラスカ州では同じ日に、妊娠12週以降の中絶を制限する対立措置が54.94%の賛成で可決されている。フロリダ州は57.17%の賛成を得ながら、州が定める60%という特別多数の基準に届かず否決された（詳細は04参照）。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年12月〜2025年2月 ― テキサス州とニューヨーク州、州境を越えた処方をめぐり対立</div>
+                <p>テキサス州司法長官は、ニューヨーク州の医師がテレメディシンで中絶薬をテキサスの患者に処方したとして2024年12月に提訴した。2025年1月にはルイジアナ州の大陪審も同じ医師を重罪で起訴したが、ニューヨーク州のホークル知事は同州の「シールド法」を理由に身柄引き渡しを拒否した。2025年2月、テキサスの裁判所は同医師に10万ドル超の支払いと、テキサスへの処方停止を命じる欠席判決を下した。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年1月 ― 世論調査、6割が中絶容認を支持</div>
+                <p>ピュー・リサーチ・センターの調査では、「すべて/ほとんどの場合で中絶は合法であるべき」と答えた割合が全体で60%、民主党支持者では84%以上、共和党支持者では36%だった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年8月13日〜9月3日 ― アイダホ州、ドブス後初となる連邦地裁の権利容認判断</div>
+                <p>アイダホ州の連邦地方裁判所は、妊娠による健康被害を理由とする中絶まで禁止するのは違憲だと判断し、同州のほぼ全面禁止法の一部差し止めを命じた。ドブス判決以降、連邦地裁が中絶に関する憲法上の権利を認めたのはこれが初めてとされる。ただし9月3日、この命令は原告の医師1人への適用に限定されたうえで、第9巡回区控訴裁判所により一時停止された。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年11月3日（予定） ― ネバダ・ミズーリに加え、アイダホ・バージニアでも住民投票</div>
+                <p>ネバダ州は憲法改正に2回連続の住民投票を必要とする制度のため、2024年に64.4%の賛成を得た改正案（詳細は04参照）は、この日の2回目投票で可否が最終的に決まる。ミズーリ州では2024年に成立したばかりの中絶の権利を認める改正案を廃止する住民投票が、アイダホ州では中絶を含む「生殖の自由」を法律で定める住民発議が、バージニア州では中絶の権利を州憲法に明記する改正案が、それぞれ同時に問われる（詳細は05参照）。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-abortion-divide-timeline-protest.jpg" alt="夕暮れの州議会議事堂前に集まる大勢の群衆。手書きの抗議プラカードを掲げる人々の姿" loading="lazy">
+            <figcaption>ドブス判決の直後、各地の州議会議事堂前で抗議が相次いだ。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 4つの視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>4つの視点 — 保守とリベラル、その間にある声</h2>
+
+          <p class="lead">中絶をめぐる対立は、単純な「賛成」対「反対」では説明しきれない。議会の判断と有権者の本音がずれる場面もあれば、政治的立場とは別に医療現場から声を上げる人々もいる。4つの立場を並べる。</p>
+
+          <div class="tabs-wrap">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-cards">カードで読む</button>
+              <button class="tab-btn" data-tab="tab-table">表で比べる</button>
+            </div>
+
+            <div class="tab-pane active" id="tab-cards">
+              <div class="perspectives-grid">
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">中絶禁止派（保守派）</span>
+                    <span class="stance-label stance-cautious">反対（禁止を支持）</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    受精した瞬間から生命は始まっており、胎児にも生きる権利があるという立場を取る。ドブス判決は、中絶を「権利」として全国一律に認めてきたこれまでのあり方こそが誤りで、本来は各州の議会と有権者が決めるべき問題だったと捉える。全面禁止の13州の多くは、この立場に基づいて州法を定めている。
+                  </div>
+                  <div class="interests">最大の関心：中絶を規制する権限を州に取り戻すこと、将来的な連邦レベルでの統一的な制限。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">中絶容認派（リベラル派）</span>
+                    <span class="stance-label stance-cautious">賛成（容認を支持）</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    中絶するかどうかを決める権利は本人の身体に関する自己決定権であり、政府が介入すべきではないという立場を取る。禁止は中絶そのものをなくすのではなく、州外へ移動する費用や時間を工面できる層とできない層との間に、医療アクセスの格差を生むだけだと主張する。
+                  </div>
+                  <div class="interests">最大の関心：医療アクセスの平等の確保、シールド法など州境を越えた保護の維持・強化。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">一般世論・穏健多数派</span>
+                    <span class="stance-label stance-neutral">中間（条件付き容認）</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    全面禁止にも無制限の容認にも与しない、条件付きの容認を支持する層。共和党が強い州でも、議会が発議した中絶禁止の強化案を有権者が拒否する例が相次いでいる（カンザス州59.16%、オハイオ州57.1%で拒否、詳細は02参照）。世論調査でも「合法であるべき」との回答は6割にのぼり、議会の判断が必ずしも有権者の本音を反映していないことを示している。
+                  </div>
+                  <div class="interests">最大の関心：議会の判断と住民投票の結果とのずれの是正。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">医療従事者・専門家団体</span>
+                    <span class="stance-label stance-neutral">中立（実務上の懸念）</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    政治的な賛否ではなく、医療現場への影響を懸念する立場。アラバマ州の判決が示したように、胎児を法的な「人」として扱う考え方は、体外受精など生殖医療全体に波及しうる（詳細は02参照）。救急医療の現場でも「母体の生命を守るための処置」との線引きが曖昧なため、医師が訴追を恐れて処置を遅らせる例が報告されている。
+                  </div>
+                  <div class="interests">最大の関心：医学的判断への法的介入を最小限にとどめること。</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-table">
+              <div style="overflow-x:auto;">
+                <table class="compare-table">
+                  <thead>
+                    <tr><th>立場</th><th>基本スタンス</th><th>主な根拠</th><th>最大の関心事</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>中絶禁止派（保守派）</td><td>反対（禁止を支持）</td><td>胎児の生命・法的人格、州の自治権</td><td>規制権限を州に取り戻す</td></tr>
+                    <tr><td>中絶容認派（リベラル派）</td><td>賛成（容認を支持）</td><td>身体的自己決定権、医療アクセスの平等</td><td>医療アクセスの平等確保</td></tr>
+                    <tr><td>一般世論・穏健多数派</td><td>中間（条件付き容認）</td><td>議会と有権者の判断のずれ</td><td>議会の判断と民意のずれの是正</td></tr>
+                    <tr><td>医療従事者・専門家</td><td>中立（実務上の懸念）</td><td>生殖医療への波及、訴追リスク</td><td>法的介入の最小化</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-abortion-divide-perspectives-ballot.jpg" alt="投票ブースで紙の投票用紙に記入する手元の接写。柔らかい照明の中、背景に他の有権者のシルエット" loading="lazy">
+            <figcaption>議会の判断と有権者の本音がずれるとき、それが最もはっきり表れるのが投票の場である。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ・統計 ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 州法の分布と、住民投票の結果</h2>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>中絶に関する州法の分布（2026年9月時点、50州）</h4>
+              <div style="position:relative;height:230px;margin-top:1rem;">
+                <canvas id="stateLawChart"></canvas>
+              </div>
+              <p class="chart-note">中絶を規制する州法の内訳。出典：Guttmacher Institute（2026年9月2日時点の集計）。ワシントンD.C.は今回の集計に含めていない。</p>
+            </div>
+
+            <div class="data-card">
+              <h4>2024年11月の住民投票 — 中絶の権利を「守る」改正案への賛成率</h4>
+              <div style="position:relative;height:230px;margin-top:1rem;">
+                <canvas id="ballotChart"></canvas>
+              </div>
+              <p class="chart-note">数値が高いほど、中絶を合法として守る（範囲を広げる）改正案への支持が厚かったことを示す。ベージュ＝可決、赤＝否決。フロリダ州のみ可決基準が60%、他の州は過半数（50%超）。ネバダ州は制度上2回連続の投票が必要で、最終確定は2026年11月の2回目投票を待つ。<br>出典：各州の公式集計に基づくBallotpedia／Wikipediaの記録</p>
+            </div>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">13州</div>
+              <div class="stat-desc">中絶を全面禁止している州の数（Guttmacher Institute、2026年9月時点）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">60%</div>
+              <div class="stat-desc">中絶は「合法であるべき」と答えた割合（Pew Research Center、2026年1月調査）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">84%対36%</div>
+              <div class="stat-desc">同調査での民主党支持者と共和党支持者の賛成率の差</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">7勝3敗</div>
+              <div class="stat-desc">2024年11月の住民投票、権利拡大案の可決・否決の内訳（Ballotpedia集計）</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 対立は、中絶そのものを越えて広がっている</h2>
+
+          <p class="lead">中絶をめぐる議論は、しばしば「賛成か反対か」の二択で語られる。だが実際に起きていることは、もっと入り組んでいる。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">① 「胎児の法的人格」は、IVFだけにとどまらない</div>
+            <div class="insight-text">
+              アラバマ州のIVF判決（詳細は02参照）は、孤立した一例ではない。妊婦の刑事訴追を追跡する非営利団体プレグナンシー・ジャスティスの集計では、ドブス判決後1年間（2022年6月〜2023年6月）だけで210件以上の「妊娠に関連する訴追」が起き、同団体が統計を取り始めた1973年以降で最多を記録した。2025年3月にはジョージア州で、妊娠19週での流産をめぐり「死体遺棄」「死亡の隠蔽」の容疑で女性が逮捕される事例も起きている。胎児を法的な「人」として扱う州法は現在17州に広がっており、IVFへの影響は、この大きな流れの一部にすぎない。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">② シールド法が突きつける、決着のつかない憲法問題</div>
+            <div class="insight-text">
+              テキサス州とニューヨーク州の対立（詳細は02参照）が厄介なのは、決着のつけ方を定めた明確な判例がまだないからだ。憲法の「完全な信頼と信用条項」は、ある州の判決を他州も尊重するよう求めるが、対立する中絶規制を持つ州同士の争いにこの条項がどこまで及ぶかは、法学者の間でも「五分五分」とされるほど見解が割れている。最終的には連邦最高裁が判断を迫られる可能性がある。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">③ 議会と有権者のねじれは、なぜ起きるのか</div>
+            <div class="insight-text">
+              カンザス州やオハイオ州で見られたねじれ（詳細は02参照）の背景には、選挙区の区割りがある。ミズーリ州やオハイオ州の議会は、区割りの影響で州全体の有権者よりも保守的な構成になりやすい。このねじれを避けて住民投票で直接権利を勝ち取る戦略が広がる一方、フロリダ・ユタ・モンタナ・アーカンソー・オクラホマ・アリゾナ・オハイオ・ノースダコタ・サウスダコタなど複数州の共和党指導部は、住民発議そのものを制限する動きを進めている。ミズーリ州議会では、州全体の過半数で足りる議会提案とは異なり、住民提案の改正には全下院選挙区での過半数を求める案まで検討された。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">④ この先の展望 — 議会を通さない「裏口」の一手</div>
+            <div class="insight-text">
+              連邦レベルで統一ルールを作るには議会と大統領の意向がそろう必要があり、当面その見込みは薄い。だが、これを迂回する経路も存在する。1873年制定のコムストック法は、中絶に使う薬品や器具の郵送を禁じる条文を今も残しており、これを政権が執行すれば、新たな立法なしに事実上の全国的な規制が可能になる。2026年8月7日には保守系5団体が連名で司法長官へ同法の執行を求める書簡を送った一方、上院では民主党の議員25人が同法の廃止法案を再提出している。中絶薬ミフェプリストンの安全性再審査（詳細は04参照）の行方とあわせ、対立の決着は議会よりも先に、行政や司法の場でつく可能性がある。
+            </div>
+          </div>
+
+          <p class="closing">
+            中絶をめぐる対立は、「賛成か反対か」という単純な図式では捉えきれない。同じ州の中でも、議会の判断と有権者の本音がずれることがあり、政治的な立場とは別に医療現場からの懸念もある。ドブス判決から4年が経った今も、アメリカは「どこに住むか」によって法律が変わる国であり続けている。
+          </p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-abortion-divide-analysis-hospital.jpg" alt="夜の静かな病院の廊下。天井の案内サインが柔らかく光り、脇に誰も乗っていない車椅子が置かれている" loading="lazy">
+            <figcaption>対立の最前線は、法廷や議会だけでなく、医療の現場にも広がっている。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://www.law.cornell.edu/wex/dobbs_v._jackson_women's_health_organization_(2022)" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Cornell Law School（LII） — ドブス対ジャクソン女性健康機構事件の解説</div>
+                <div class="source-desc">2022年6月24日の判決内容と、5対1対3という評決の内訳をまとめた法学解説。</div>
+                <div class="source-country">【法学教育機関の判例解説】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.themarshallproject.org/2025/04/02/law-pregnancy-california-ohio-georgia-alabama" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Marshall Project — 流産・死産をめぐる刑事訴追の広がり</div>
+                <div class="source-desc">ジョージア州での逮捕事例と、ドブス判決後1年間で210件以上の妊娠関連訴追があったという集計の報道。</div>
+                <div class="source-country">【刑事司法専門の非営利報道機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://nyulawreview.org/online-features/the-full-faith-and-credit-clause-and-the-puzzle-of-abortion-laws/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">NYU Law Review — 完全な信頼と信用条項と中絶法の難問</div>
+                <div class="source-desc">シールド法が州際対立の中で合憲かどうか、法学者の間でも見解が割れている状況を解説する法学論考。</div>
+                <div class="source-country">【法学専門誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.propublica.org/article/red-state-ballot-initiatives-gop-republicans-florida-missouri" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ProPublica — 共和党優勢州の議会による住民発議の制限</div>
+                <div class="source-desc">ミズーリ州の二重基準案など、複数州の共和党指導部が住民発議を制限しようとする動きの調査報道。</div>
+                <div class="source-country">【調査報道の非営利メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://stateline.org/2026/08/10/anti-abortion-groups-urge-attorney-general-to-halt-mailing-of-abortion-pills/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Stateline — 保守系団体、司法長官にコムストック法の執行を要請</div>
+                <div class="source-desc">2026年8月7日付の書簡の内容と、署名した5団体を報じた記事。</div>
+                <div class="source-country">【州政治専門の非営利報道機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.cortezmasto.senate.gov/news/press-releases/cortez-masto-smith-reintroduce-legislation-to-repeal-the-comstock-act/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">コルテス・マスト上院議員 — コムストック法廃止法案の再提出発表</div>
+                <div class="source-desc">上院議員25人が共同提案した廃止法案「Stop Comstock Act」の公式発表。</div>
+                <div class="source-country">【連邦上院議員の公式発表】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.guttmacher.org/state-policy/explore/state-policies-abortion-bans" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Guttmacher Institute — 州別の中絶禁止状況</div>
+                <div class="source-desc">全面禁止13州、妊娠週数制限28州、制限なし9州+ワシントンD.C.という現在の州法分布の集計。</div>
+                <div class="source-country">【生殖医療政策を専門とする非営利研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.pewresearch.org/politics/2026/03/12/majority-of-americans-continue-to-say-abortion-should-be-legal-in-all-or-most-cases/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Pew Research Center — 中絶に関する世論調査（2026年3月発表）</div>
+                <div class="source-desc">2026年1月20〜26日実施の調査。全体60%、民主党支持者84%以上、共和党支持者36%が「合法であるべき」と回答。</div>
+                <div class="source-country">【世論調査機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://ballotpedia.org/Results_for_abortion-related_ballot_measures,_2024" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Ballotpedia — 2024年の中絶関連住民投票 結果一覧</div>
+                <div class="source-desc">2024年11月5日に10州で行われた住民投票の全結果（7州で可決、3州で否決）をまとめた記録。</div>
+                <div class="source-country">【選挙情報サイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://ballotpedia.org/Florida_Amendment_4,_Right_to_Abortion_Initiative_(2024)" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Ballotpedia — フロリダ州修正案4</div>
+                <div class="source-desc">57.17%の賛成を得ながら、60%の特別多数の基準に届かず否決された経緯の記録。</div>
+                <div class="source-country">【選挙情報サイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://ballotpedia.org/Arizona_Proposition_139,_Right_to_Abortion_Initiative_(2024)" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Ballotpedia — アリゾナ州提案139</div>
+                <div class="source-desc">61.61%の賛成で可決された、中絶の権利を州憲法に明記する改正案の記録。</div>
+                <div class="source-country">【選挙情報サイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikipedia.org/wiki/2024_Nevada_Question_6" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia — ネバダ州質問6</div>
+                <div class="source-desc">64.4%で可決されたが、ネバダ州の制度上、2026年11月の2回目投票で最終確定するという記録。</div>
+                <div class="source-country">【百科事典（一次報道に基づく記述）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikipedia.org/wiki/2024_Montana_Initiative_128" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia — モンタナ州発議128</div>
+                <div class="source-desc">57.76%の賛成で可決された、中絶の権利を州憲法に明記する発議の記録。</div>
+                <div class="source-country">【百科事典（一次報道に基づく記述）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://ballotpedia.org/Missouri_Amendment_3,_Right_to_Reproductive_Freedom_Initiative_(2024)" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Ballotpedia — ミズーリ州修正案3（2024年）</div>
+                <div class="source-desc">51.60%の僅差で可決された、中絶を含む生殖に関する権利を認める改正案の記録。</div>
+                <div class="source-country">【選挙情報サイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikipedia.org/wiki/2026_Missouri_Amendment_3" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia — ミズーリ州修正案3（2026年）</div>
+                <div class="source-desc">2024年に成立した権利保護条項の廃止を問う、2026年11月投票予定の新たな改正案の記録。</div>
+                <div class="source-country">【百科事典（一次報道に基づく記述）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://ballotpedia.org/Kansas_No_State_Constitutional_Right_to_Abortion_and_Legislative_Power_to_Regulate_Abortion_Amendment_(August_2022)" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Ballotpedia — カンザス州2022年8月住民投票</div>
+                <div class="source-desc">59.16%対40.84%で中絶禁止条項が否決された、ドブス判決後初の住民投票の記録。</div>
+                <div class="source-country">【選挙情報サイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikipedia.org/wiki/August_2023_Ohio_Issue_1" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia — オハイオ州2023年8月特別投票（Issue 1）</div>
+                <div class="source-desc">可決基準を60%に引き上げる議会提案が57.1%対42.9%で否決された経緯の記録。</div>
+                <div class="source-country">【百科事典（一次報道に基づく記述）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://ballotpedia.org/Ohio_Issue_1,_Right_to_Make_Reproductive_Decisions_Including_Abortion_Initiative_(2023)" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Ballotpedia — オハイオ州2023年11月中絶権利改正案</div>
+                <div class="source-desc">56.78%の賛成で可決された、中絶を含む生殖に関する権利を州憲法に明記する改正案の記録。</div>
+                <div class="source-country">【選挙情報サイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.sidley.com/en/insights/newsupdates/2024/02/alabama-supreme-court-holds-embryos-are-children" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Sidley Austin法律事務所 — アラバマ州IVF判決の解説</div>
+                <div class="source-desc">凍結胚を「子ども」と認定した判決の内容と、生殖医療業界への影響をまとめた法律解説。</div>
+                <div class="source-country">【国際法律事務所の解説】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.supremecourt.gov/opinions/23pdf/23-235_n7ip.pdf" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">連邦最高裁判所 — FDA対ヒポクラテス医療同盟事件 意見書</div>
+                <div class="source-desc">2024年6月13日、9対0の全会一致で原告適格なしと判断した公式の意見書。</div>
+                <div class="source-country">【連邦最高裁判所の公式意見書】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://ag.ny.gov/press-release/2025/attorney-general-james-defends-new-yorks-shield-law-against-texas-attack" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ニューヨーク州司法長官 — シールド法防衛の発表</div>
+                <div class="source-desc">テキサス州からの身柄引き渡し要求に対し、シールド法を根拠に拒否したことを説明する公式発表。</div>
+                <div class="source-country">【州司法長官の公式発表】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.jurist.org/news/2025/02/texas-judge-finds-new-york-doctor-liable-for-unlawfully-providing-abortion-inducing-drugs-to-texas-woman/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">JURIST — テキサス州、ニューヨーク州の医師に欠席判決</div>
+                <div class="source-desc">2025年2月、テキサスの裁判所が同医師に10万ドル超の支払いと処方停止を命じた欠席判決の報道。</div>
+                <div class="source-country">【法律専門ニュースサイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikipedia.org/wiki/2024_Nebraska_Initiative_439" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia — ネブラスカ州発議439・434</div>
+                <div class="source-desc">中絶の権利拡大を問う発議439（49.01%で否決）と、同日に可決された対立措置・発議434（54.94%）の記録。</div>
+                <div class="source-country">【百科事典（一次報道に基づく記述）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://idahocapitalsun.com/2026/09/03/federal-judges-order-allowing-an-idaho-doctor-to-perform-certain-abortions-is-put-on-hold/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Idaho Capital Sun — アイダホ州の連邦地裁判断と控訴審での一時停止</div>
+                <div class="source-desc">2026年8月13日の連邦地裁判断の内容と、9月3日に第9巡回区控訴裁判所が適用範囲を限定した経緯の報道。</div>
+                <div class="source-country">【地方政治専門の非営利報道機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.kff.org/womens-health-policy/abortion-on-the-2026-ballot-the-evolving-landscape-of-state-abortion-initiatives/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">KFF — 2026年の中絶関連住民投票の一覧</div>
+                <div class="source-desc">2026年11月に予定されるネバダ・ミズーリ・アイダホ・バージニア各州の住民投票をまとめた集計。</div>
+                <div class="source-country">【医療政策を専門とする非営利研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://thehill.com/policy/healthcare/5911664-fda-review-mifepristone-abortion-drug-safety/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Hill — FDAによる中絶薬ミフェプリストンの安全性再審査</div>
+                <div class="source-desc">ルイジアナ州の連邦地裁の命令を受け、FDAが2026年10月7日までに審査の進捗を裁判所へ報告する義務を負うとの報道。</div>
+                <div class="source-country">【アメリカの政治専門報道】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>4つの視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/elections/index.html">世論・選挙</a></div>
+          <div>2026年9月7日</div>
+          <div style="margin-top:0.5rem;">4つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/elections/index.html">世論・選挙一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 州法の分布（横棒）
+  (function() {
+    var ctx = document.getElementById('stateLawChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['中絶の全面禁止', '妊娠週数による制限', '目立った制限なし'],
+        datasets: [{
+          // 出典：Guttmacher Institute（2026年9月2日時点）
+          // 全面禁止＝13州、妊娠週数制限＝28州（18週未満7州＋18週以降21州）、制限なし＝9州
+          data: [13, 28, 9],
+          backgroundColor: ['rgba(196,168,130,0.85)', 'rgba(196,168,130,0.55)', 'rgba(154,180,196,0.55)'],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.55
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.x + '州'; } } }
+        },
+        scales: {
+          x: { min: 0, max: 30, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + '州'; } } },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // 2024年11月住民投票の賛成率（横棒）
+  (function() {
+    var ctx = document.getElementById('ballotChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['ネバダ州', 'アリゾナ州', 'モンタナ州', 'フロリダ州', 'ミズーリ州', 'ネブラスカ州', 'サウスダコタ州'],
+        datasets: [{
+          // 出典：各州公式集計に基づくBallotpedia/Wikipediaの記録（2024年11月5日）
+          // ネバダ64.4%（可決・要2回目投票）／アリゾナ61.61%（可決）／モンタナ57.76%（可決）
+          // フロリダ57.17%（60%基準未達で否決）／ミズーリ51.60%（可決）
+          // ネブラスカ49.01%（否決）／サウスダコタ41.41%（否決）
+          data: [64.4, 61.61, 57.76, 57.17, 51.60, 49.01, 41.41],
+          backgroundColor: function(context) {
+            var idx = context.dataIndex;
+            var failed = [3, 5, 6]; // フロリダ・ネブラスカ・サウスダコタは否決
+            return failed.indexOf(idx) >= 0 ? 'rgba(184,120,104,0.55)' : 'rgba(196,168,130,0.85)';
+          },
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' 賛成 ' + c.parsed.x + '%'; } } }
+        },
+        scales: {
+          x: { min: 0, max: 70, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + '%'; } } },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
