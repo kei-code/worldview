@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ChatGPTに送る一言の質問にも、電気と水が使われている。1クエリあたり電力0.34Wh・水0.3ml(OpenAI公表)から、GPT-3の学習に使われた約70万リットルの淡水、Googleの年間水消費量109億ガロンまで、AIが実際に使う電力・水の量を具体的な数字で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/ai-tech/2026-09-15-ai-power-water/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="AIの代償を数字で見る ― 1つの質問が使う電力と水 — WorldView">
+  <meta property="og:description" content="ChatGPT1クエリの電力0.34Wh・水0.3mlから、GPT-3学習の約70万リットル、Googleの年間水消費量109億ガロンまで、AIが実際に使う電力・水を具体的な数字で読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/ai-tech/2026-09-15-ai-power-water/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/ai-power-water-hero-datacenter-cooling.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AIの代償を数字で見る ― 1つの質問が使う電力と水 — WorldView">
+  <meta name="twitter:description" content="ChatGPT1クエリの電力0.34Wh・水0.3mlから、GPT-3学習の約70万リットルまで、AIが使う電力・水を具体的な数字で読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/ai-power-water-hero-datacenter-cooling.jpg">
+  <title>AIの代償を数字で見る ― 1つの質問が使う電力と水 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色はAIの --accent-tech（青）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/ai-power-water-hero-datacenter-cooling.jpg');
+      background-size: cover; background-position: center 45%;
+      filter: brightness(1.12) contrast(1.03) saturate(1.04);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.36) 0%, rgba(14,17,23,0.54) 45%, rgba(14,17,23,0.86) 100%);
+    }
+    .article-hero.has-image .container {
+      position: relative; z-index: 1; width: 100%; transform: translateY(-24px);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b4bfcc; margin-top: 1.5rem; max-width: 600px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent-tech); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent-tech) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent-tech) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent-tech) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent-tech); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       シグネチャー：フロストガラス
+       ========================================================== */
+    .article-body .perspective-card,
+    .article-body .insight-box,
+    .article-body .glossary-card,
+    .article-body .data-card {
+      background: rgba(56,64,78,0.35);
+      border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    /* ---- perspective-card ---- */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+    .article-body .perspective-card { padding: 1.5rem 1.6rem 1.6rem; }
+    .article-body .perspective-card:hover {
+      transform: translateY(-2px); box-shadow: var(--shadow-lg);
+      background: rgba(56,64,78,0.48); border-color: rgba(255,255,255,0.16);
+    }
+    .article-body .perspective-card::before {
+      background: linear-gradient(90deg, transparent 0%, var(--accent-tech) 50%, transparent 100%);
+    }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .article-body .compare-table {
+      background: rgba(56,64,78,0.35); border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    }
+    .article-body .compare-table th { background: rgba(255,255,255,0.04); border-bottom: 2px solid var(--accent-tech); }
+    .article-body .compare-table tr:hover td { background: rgba(255,255,255,0.05); }
+    .role-badge {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--text-dim); background: var(--bg-card2);
+      border: 1px solid var(--border-subtle); border-radius: 20px;
+      padding: 0.15rem 0.65rem; white-space: nowrap; letter-spacing: 0.03em;
+    }
+
+    /* ---- timeline ---- */
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent-tech); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+    .article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- data-card ---- */
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .article-body .data-card:hover { border-color: rgba(255,255,255,0.18); }
+    .article-body .data-card h4 {
+      font-size: 0.92rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.8rem; line-height: 1.65; }
+
+    /* ---- 情報源 ---- */
+    .article-body .sources-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+    .article-body a.source-item {
+      background: rgba(56,64,78,0.28); border: 1px solid rgba(255,255,255,0.08);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      color: inherit; text-decoration: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .article-body a.source-item:hover { border-color: var(--accent-tech); background: rgba(56,64,78,0.42); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent-tech); outline-offset: 2px; }
+
+    /* ---- この記事の問い ---- */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(128,172,216,0.06);
+      border: 1px solid rgba(128,172,216,0.22);
+      box-shadow: 0 0 40px 10px rgba(128,172,216,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent-tech); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent-tech); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- 用語解説（フロストガラス） ---- */
+    .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .article-body .glossary-card { padding: 1rem 1.2rem; }
+    .article-body .glossary-card:hover { border-color: rgba(255,255,255,0.16); }
+    .glossary-term { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .glossary-def { font-size: 0.78rem; color: var(--text-muted); line-height: 1.75; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.4rem; font-weight: 700; color: var(--accent-tech); line-height: 1.25; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    /* ---- 深掘り（フロストガラス） ---- */
+    .article-body .insight-box { padding: 1.4rem 1.6rem; margin-bottom: 1.6rem; }
+    .article-body .insight-box:hover { border-color: rgba(255,255,255,0.16); }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* ==========================================================
+       アクセシビリティ・レスポンシブ
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body .timeline-content,
+      .article-body .glossary-card,
+      .article-body .insight-box,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .glossary-grid { grid-template-columns: 1fr; gap: 0.7rem; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">AI</span>
+      <span class="date">2026年9月15日</span>
+    </div>
+    <h1 class="article-title">AIの代償を数字で見る<br>― 1つの質問が使う電力と水</h1>
+
+    <div class="hero-deck">
+      ChatGPTに送るたった一言のメッセージにも、実は電気と水が動いている。1回あたりの量はわずかでも、世界中で1日に数十億回積み重なれば、<span class="deck-accent">国全体の電力需要や、干ばつ地域の生活用水と競合するほどの規模</span>になる。
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">1クエリ 0.34Wh・水0.3ml</span>
+      <span class="hero-pill">GPT-3学習に淡水 約70万L</span>
+      <span class="hero-pill">世界の電力需要 2030年945TWh</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 一言の質問が、なぜ電気と水を使うのか</h2>
+
+          <p class="lead">ChatGPTやGeminiに「今日の天気は?」と一言送るだけでも、その裏では実際に電気と水が動いている。送ったメッセージはインターネットを通じて「データセンター」と呼ばれる巨大な施設に届き、そこに並ぶ数万台のコンピューター（サーバー）が計算して答えを作る。</p>
+
+          <p class="lead">この計算を担うのは、GPU(ジーピーユー)と呼ばれる特殊な半導体チップだ。GPUは計算中に大量の熱を出す。GPUを積んだサーバーの棚(ラック)1台分の消費電力は10〜30キロワットにのぼり、一般的なサーバーラック(3〜5キロワット)の2〜6倍にあたる。この熱を逃がすために、電気で動く冷房と、水を循環させる冷却設備の両方が使われる。「AIが電力と水を使う」というのは、この「計算(電気)」と「冷却(水)」が同時に起きているということだ。</p>
+
+          <div class="article-question">
+            <p>スマホから送るたった一言の質問に、電気と水はどれくらい使われているのか。そして、それが世界中で積み重なると、どれほどの規模になるのか。</p>
+          </div>
+
+          <div class="label-eyebrow">3つの論点</div>
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">なぜ計算に電気を使うのか</div>
+              <div class="factor-desc">GPUという特殊なチップが、質問に答える文章を一語ずつ計算して作る。計算のたびに熱が出るため、稼働中は常に強い電力を使い続ける。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">なぜ冷却に水を使うのか</div>
+              <div class="factor-desc">発生した熱を逃がすため、多くのデータセンターは水を循環させる冷却設備を使う。水の一部は蒸発して失われるため、常に新しい水を補給する必要がある(詳細は03参照)。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">なぜ「1回分」の数字に幅があるのか</div>
+              <div class="factor-desc">企業が公表する数値の多くは、施設内の冷却だけを数えたものだ。しかし電気を作る発電所でも水は使われる。どこまでを含めるかで、同じ1回の質問でも結果は10倍以上変わる(詳細は05参照)。</div>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">用語解説</div>
+          <div class="glossary-grid">
+            <div class="glossary-card">
+              <div class="glossary-term">ワット時(Wh)</div>
+              <div class="glossary-def">電力の使用量を表す単位。1ワット時は、1ワットの電球を1時間つけ続けたときに使う電気の量にあたる。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">テラワット時(TWh)</div>
+              <div class="glossary-def">ワット時の1兆倍にあたる、非常に大きな単位。国全体の年間電力消費量を語るときに使われる。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">クエリ</div>
+              <div class="glossary-def">AIチャットへの1回分の質問・指示のこと。「プロンプト」とも呼ばれる。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">冷却水</div>
+              <div class="glossary-def">サーバーの熱を吸収し、外に逃がすために循環させる水。蒸発して失われた分は、新しい水で補充される。</div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/ai-power-water-core-query-glow.jpg" alt="暗い部屋でスマートフォン画面が光る接写。チャットメッセージが入力されている様子" loading="lazy">
+            <figcaption>たった一言の質問が、遠く離れたデータセンターで実際の電気と水を動かす。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 表面化した「AIの水とエネルギー」問題</h2>
+
+          <p class="lead">AIが使う電力・水の規模が表に出てきたのは、ここ数年のことだ。学習にかかった水の推計、企業自身による開示、電力を確保するための原発再稼働——主な出来事を追う。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2022年7月〜8月 ― Microsoftのアイオワ施設、学習期に月1,150万〜1,340万ガロンの水を消費</div>
+                <p>Microsoftのアイオワ州データセンターは、大規模モデルの学習が最盛期を迎えた2022年7月に1,150万ガロン、8月に1,340万ガロン(約5,070万リットル)の水を消費した。8月分は、地元の水道区が供給する水全体の6%に相当する量だったとされる。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2023年4月 ― 研究者、GPT-3の学習に約70万リットルの淡水が使われたと推計</div>
+                <p>カリフォルニア大学リバーサイド校とテキサス大学アーリントン校の研究チームが、GPT-3の学習だけでMicrosoftの米国データセンターが約70万リットルの淡水を直接蒸発させたとする推計を論文で発表した。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年3月 ― Amazon、原発に隣接するデータセンター施設を取得</div>
+                <p>Amazonは、ペンシルベニア州のサスケハナ原子力発電所に隣接するデータセンターキャンパスを買収した。発電所から直接電力を得られる立地を確保する動きの一つ。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年6月 ― xAIがメンフィスで「Colossus」稼働開始、後に無許可ガスタービンが発覚</div>
+                <p>イーロン・マスク率いるxAIが、テネシー州メンフィスの旧工場跡地でスーパーコンピューター「Colossus」の運用を始めた。稼働にあたり最大35基のガスタービン発電機を許可なく稼働させていたことが後に問題視され、大気汚染を規制するアメリカの法律「大気浄化法」をめぐる訴訟に発展した。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年9月 ― Microsoft、スリーマイル島原発の再稼働に20年間・837メガワット全量の電力購入契約</div>
+                <p>Microsoftは電力会社コンステレーション・エナジーと、停止していたスリーマイル島原発(2号機)を再稼働させ、20年間にわたり発電量の100%を買い取る契約を結んだ。再稼働は当初2028年を見込んでいたが、送電網接続の早期承認を受け、2027年末までの前倒しを目指す計画に変わっている。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年10月 ― Google、Kairos Powerと企業初の小型モジュール炉(SMR)契約</div>
+                <p>Googleは新興の原子力企業Kairos Powerと、小型モジュール炉(SMR)6〜7基・出力500メガワット分の電力購入で合意した。企業によるSMR調達としては初めての事例とされ、最初の1基は2030年の稼働を見込む。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年6月 ― OpenAI CEO、ChatGPT1クエリの消費量は電力0.34Wh・水0.3mlと公表</div>
+                <p>サム・アルトマンCEOはブログで、平均的なChatGPTへの質問1回が消費する電力は約0.34ワット時、水は約0.3ミリリットル(ティースプーンの15分の1ほど)だとする数値を公表した。ただし、どの範囲の処理を含む数値か、学習にかかった分が含まれるかは明示されていない。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年8月 ― アイオワ州で、データセンター敷地内の無許可井戸40本が発覚</div>
+                <p>アイオワ州シーダーラピッズのデータセンター用地で、許可を取得していない井戸が40本見つかった。リン郡は運営会社に2万ドルの罰金を求めた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年 ― Google、年間水消費量が109億ガロンに到達。IEAはデータセンター電力が2030年に945TWhへ倍増すると予測</div>
+                <p>Googleが公表した2026年版環境報告書によると、同社データセンター全体の2025年の水消費量は109億ガロン(約413億リットル)で、前年から34%増加した。同じ年、国際エネルギー機関(IEA)は世界のデータセンター電力消費が2024年の415TWhから2030年には945TWhへほぼ倍増すると予測した。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年4月 ― NAACP、xAIのメンフィス第2データセンターを大気浄化法違反で提訴</div>
+                <p>全米黒人地位向上協会(NAACP)は、xAIとその子会社が無許可のガスタービン発電機(提訴時点で27基、その後33基に増設)を稼働させ続けているとして、ミシシッピ州の連邦地方裁判所に提訴した。周辺住民の健康への影響を理由に、操業差し止めの緊急命令も求めている。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/ai-power-water-timeline-nuclear-restart.jpg" alt="澄んだ空の下、稼働停止していた原子力発電所の冷却塔。根元にクレーンと足場、作業員の姿" loading="lazy">
+            <figcaption>電力確保のため、停止していた原発を再稼働させる動きがこの2年で相次いだ。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 5つの視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>5つの視点 — 誰が、何を主張しているか</h2>
+
+          <p class="lead">AIの電力・水消費をめぐっては、それを推進する側、検証する側、影響を受ける側、供給する側がそれぞれ違う立場に立っている。5つの立場を並べる。</p>
+
+          <div class="tabs-wrap">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-cards">カードで読む</button>
+              <button class="tab-btn" data-tab="tab-table">表で比べる</button>
+            </div>
+
+            <div class="tab-pane active" id="tab-cards">
+              <div class="perspectives-grid">
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">AI企業（Google・Microsoft）</span>
+                    <span class="role-badge">効率化を強調</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    水使用効率(WUE)を大きく改善してきたと主張する。Microsoftは2000年代初頭の2.3L/kWhから平均0.27L/kWhまで下げ、9割近く改善したとする。2030年までに消費する以上の水を地域へ還元する「水ポジティブ」目標を掲げ、原子力など低炭素電源への切り替えも進めている。
+                  </div>
+                  <div class="interests">最大の関心：効率改善と電源の脱炭素化を両立させながら、拡張を続けること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">独立研究者</span>
+                    <span class="role-badge">開示の不透明さを指摘</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    企業が公表する数値は測定範囲がそろっていない。施設内の冷却水だけを数えるか、発電に使われる水まで含めるかで、同じ1回の質問でも結果は10倍以上変わりうる。学習にかかった水・電力を明示しない企業も多く、第三者が検証できる形での開示を求める。
+                  </div>
+                  <div class="interests">最大の関心：測定手法の標準化と、学習・推論を含む全体の数値開示。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">干ばつ地域の住民・自治体</span>
+                    <span class="role-badge">生活用水との競合を懸念</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    深刻な干ばつが続く地域に、データセンターが新たに大量の水を求めることへの反発が広がっている。ウルグアイでは当初の取水計画に抗議が起き、冷却方式の見直しにつながった。アイオワ州では無許可の井戸が発覚し、自治体が罰金を科した。
+                  </div>
+                  <div class="interests">最大の関心：生活・農業用水の確保と、データセンター誘致の透明性。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">電力・原子力産業</span>
+                    <span class="role-badge">新たな大口顧客として歓迎</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    長年伸び悩んでいた原子力発電に、データセンターという安定した非常に大きな顧客が現れたと見る。スリーマイル島原発は20年間・837メガワット全量の契約で再稼働が決まり、数千人規模の雇用と数十億ドルの税収が見込まれる。小型モジュール炉(SMR)への投資も相次いでいる。
+                  </div>
+                  <div class="interests">最大の関心：長期契約による収益の安定化と、新規プロジェクトへの投資回収。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">規制が整う前に拡大するAI企業（xAI）</span>
+                    <span class="role-badge">規制の前で先に動く</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    許認可を待たず、ガスタービン発電機を自前で設置して電力を確保する動きも出ている。xAIはメンフィスで無許可のガスタービンを稼働させ、後に一部のみ許可を取得したが、大気浄化法をめぐる訴訟は続いている。開発の速さを、環境規制への対応より優先している。
+                  </div>
+                  <div class="interests">最大の関心：電力確保のスピードを優先し、競争で先行すること。</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-table">
+              <div style="overflow-x:auto;">
+                <table class="compare-table">
+                  <thead>
+                    <tr><th>立場</th><th>基本スタンス</th><th>主な主張</th><th>最大の関心事</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>AI企業（Google・Microsoft）</td><td>効率化を強調</td><td>水使用効率を大幅改善、水ポジティブ目標</td><td>効率改善と拡張の両立</td></tr>
+                    <tr><td>独立研究者</td><td>開示の不透明さを指摘</td><td>測定範囲の違いで数値が10倍以上変動</td><td>測定手法の標準化・全体開示</td></tr>
+                    <tr><td>干ばつ地域の住民・自治体</td><td>生活用水との競合を懸念</td><td>取水計画への抗議、無許可井戸の発覚</td><td>生活・農業用水の確保</td></tr>
+                    <tr><td>電力・原子力産業</td><td>新たな大口顧客として歓迎</td><td>原発再稼働・SMR投資が加速</td><td>長期契約による収益安定化</td></tr>
+                    <tr><td>規制が整う前に拡大するAI企業</td><td>規制の前で先に動く</td><td>無許可のガスタービン稼働と訴訟</td><td>電力確保のスピード優先</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/ai-power-water-perspectives-drought-datacenter.jpg" alt="手前にひび割れた干ばつの農地、地平線の遠くに大きなデータセンター建屋が見える写真" loading="lazy">
+            <figcaption>同じ施設でも、歓迎する側と懸念する側とで評価が分かれる。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ・統計 ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 電力と水、それぞれの伸び</h2>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>世界のデータセンター電力消費（TWh）</h4>
+              <div style="position:relative;height:230px;margin-top:1rem;">
+                <canvas id="electricityChart"></canvas>
+              </div>
+              <p class="chart-note">世界のデータセンター電力消費は2024年の415TWhから、2030年には945TWhへほぼ倍増する見通し。2024年時点の国別シェアは米国45%・中国25%・欧州15%。出典：IEA「Energy and AI」</p>
+            </div>
+
+            <div class="data-card">
+              <h4>Googleのデータセンター 年間水消費量（億ガロン）</h4>
+              <div style="position:relative;height:230px;margin-top:1rem;">
+                <canvas id="waterChart"></canvas>
+              </div>
+              <p class="chart-note">Googleのデータセンター全体の水消費量は、2021年の43億ガロンから2025年には109億ガロン(前年比+34%)まで増加した。1ガロン=約3.785リットルで換算すると、2025年分はおよそ413億リットルにあたる。出典：Google 2026年環境報告書</p>
+            </div>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">0.34Wh</div>
+              <div class="stat-desc">ChatGPT1回分の質問が消費する電力(OpenAI公表、2025年6月)</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">約70万L</div>
+              <div class="stat-desc">GPT-3の学習で消費されたと推計される淡水量(カリフォルニア大学リバーサイド校等の研究、2023年)</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">415→945TWh</div>
+              <div class="stat-desc">世界のデータセンター電力消費、2024→2030年の予測(IEA)</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">109億ガロン</div>
+              <div class="stat-desc">Googleデータセンターの2025年の年間水消費量(前年比+34%)</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 数字の裏にある構造</h2>
+
+          <p class="lead">電力と水の数字を並べるだけでは、問題の全体像はつかめない。なぜ数字に幅があるのか、電力と水の問題はどう違うのか、この先どうなるのかを見ていく。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">① なぜ数字に大きな幅があるのか</div>
+            <div class="insight-text">
+              ChatGPT1回あたりの水消費量は、発表によって0.3mlから10ml以上まで幅がある。この違いは、何を測っているかの差だ。OpenAIが示す0.3mlは、データセンター内の冷却だけを数えた値とみられる。一方、独立研究者の推計は、電気を作る発電所で使われる水まで含めたより広い範囲の数値で、こちらのほうが大きくなる。どちらも数字自体が誤っているわけではなく、測定範囲が違うだけだが、企業がどちらの数字を選んで公表するかによって、受け取る印象は大きく変わる。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">② 電力は「原子力回帰」、水は「地域対立」という違う道をたどる</div>
+            <div class="insight-text">
+              電力不足への対応は比較的わかりやすい方向に進んでいる。原発の再稼働や小型モジュール炉(SMR)の新設など、供給を増やす動きが世界規模で広がっており、Microsoft・Google・Amazonはいずれも原子力への投資を発表した(詳細は02参照)。一方、水の問題はそう単純ではない。電力は送電網を通じて広い地域に融通できるが、水は基本的にその土地の水源に縛られる。干ばつ地域に建つデータセンターは、電力網の外から電気を持ってくることはできても、水源を他の地域から借りてくることは難しい。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">③ 情報開示の差が、規制の抜け穴を生んでいる</div>
+            <div class="insight-text">
+              Google・Microsoftのような大手は、毎年環境報告書で水・電力の数値を開示している。一方、xAIのような新興のAI企業は、同様の開示をほとんど行っていない。メンフィスでのガスタービン問題が示すように、開示や許認可の手続きより開発の速さを優先する動きが、業界全体の「効率化と透明性」というイメージを揺るがしかねない(詳細は03参照)。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">④ 効率化技術だけで、増え続ける需要を追い越せるか</div>
+            <div class="insight-text">
+              Microsoftが達成した水使用効率0.27L/kWh(詳細は03参照)を筆頭に、液冷方式などほとんど水を使わない冷却技術への切り替えも進んでいる。ただし、これらの技術改善はAI需要そのものの伸びには追いついていない。効率が上がっても、データセンターの数と規模が拡大するスピードがそれを上回れば、電力・水の消費量そのものは増え続けることになる。
+            </div>
+          </div>
+
+          <p class="closing">
+            AIチャットへの一言は、確かにごくわずかな電気と水しか使わない。だが、その一言が1日に数十億回積み重なるとき、規模は一つの国の電力需要や、干ばつ地域の生活用水と競合するところまで膨らむ。数字の裏にあるのは、便利さの代償を誰がどこで払うのかという、まだ答えの出ていない問いだ。
+          </p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/ai-power-water-analysis-liquid-cooling.jpg" alt="データセンター内部の先進的な液冷システム。冷却液に浸されたサーバー部品と、青い光に包まれた設備" loading="lazy">
+            <figcaption>液冷方式などの効率化技術は着実に進むが、需要そのものの伸びには追いついていない。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">IEA — Energy and AI（データセンター電力需要）</div>
+                <div class="source-desc">世界のデータセンター電力消費が2024年の415TWhから2030年に945TWhへ倍増するとの見通し。国別シェアも掲載。</div>
+                <div class="source-country">【国際エネルギー機関のエネルギー需要分析】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://blog.samaltman.com/the-gentle-singularity" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Sam Altman — The Gentle Singularity</div>
+                <div class="source-desc">OpenAI CEOによる、ChatGPT1クエリあたりの消費電力(0.34Wh)・水量(約0.3ml)の公表。</div>
+                <div class="source-country">【OpenAI CEOの公式ブログ】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://arxiv.org/abs/2304.03271" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Making AI Less "Thirsty"（arXiv）</div>
+                <div class="source-desc">カリフォルニア大学リバーサイド校等の研究チームによる、GPT-3学習時の淡水消費量(約70万リットル)の推計論文。</div>
+                <div class="source-country">【査読前公開の学術論文】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://sustainability.google/google-2026-environmental-report/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Google — 2026年環境報告書</div>
+                <div class="source-desc">2025年の水消費量109億ガロン(前年比+34%)を含む、データセンターの水・電力使用状況の公式開示。</div>
+                <div class="source-country">【企業公式のサステナビリティ報告書】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/msc/documents/presentations/CSR/2025-Microsoft-Environmental-Sustainability-Report.pdf" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Microsoft — 2025年環境サステナビリティ報告書</div>
+                <div class="source-desc">水使用効率0.27L/kWh(2000年代初頭の2.3L/kWhから9割近く改善)など、データセンターの効率化実績の公式開示。</div>
+                <div class="source-country">【企業公式のサステナビリティ報告書】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.datacenterdynamics.com/en/news/three-mile-island-nuclear-power-plant-to-return-as-microsoft-signs-20-year-835mw-ai-data-center-ppa/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Data Center Dynamics — スリーマイル島原発とMicrosoftの契約</div>
+                <div class="source-desc">Microsoftとコンステレーション・エナジーによる20年間・837MW全量の電力購入契約の報道。</div>
+                <div class="source-country">【データセンター専門ニュースメディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.datacenterfrontier.com/energy/article/55235902/google-and-amazon-make-major-inroads-with-smrs-to-bring-nuclear-energy-to-data-centers" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Data Center Frontier — Google・AmazonのSMR契約</div>
+                <div class="source-desc">GoogleとKairos Powerの小型モジュール炉契約、AmazonのX-energy投資・Susquehanna原発隣接施設の取得を報じる記事。</div>
+                <div class="source-country">【データセンター専門ニュースメディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.datacenterdynamics.com/en/news/musks-xai-gets-go-ahead-for-41-natural-gas-turbines-in-mississippi-to-power-colossus-data-centers/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Data Center Dynamics — xAIのガスタービン問題</div>
+                <div class="source-desc">メンフィスのColossusデータセンターで無許可稼働していたガスタービンの経緯と許可取得の報道。</div>
+                <div class="source-country">【データセンター専門ニュースメディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://techcrunch.com/2025/06/18/xai-is-facing-a-lawsuit-for-operating-over-400-mw-of-gas-turbines-without-permits" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">TechCrunch — xAI、無許可ガスタービンで提訴される</div>
+                <div class="source-desc">大気浄化法をめぐるxAIへの訴訟(NAACP等)についての報道。</div>
+                <div class="source-country">【テクノロジー専門報道】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://naacp.org/articles/naacp-sues-xai-illegal-pollution-data-center-power-plant" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">NAACP — xAIのメンフィス第2データセンター提訴に関する公式発表</div>
+                <div class="source-desc">2026年4月の提訴内容と、無許可ガスタービンの基数(27基、その後33基)についての一次発表。</div>
+                <div class="source-country">【提訴当事者の公式発表】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://fortune.com/2026/05/13/data-center-georgia-arizona-water-wars/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Fortune — データセンターと地域の「水戦争」</div>
+                <div class="source-desc">ジョージア州・アリゾナ州における干ばつとデータセンター建設をめぐる住民との摩擦、アイオワ州の無許可井戸発覚を報じる記事。</div>
+                <div class="source-country">【経済専門メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.thecooldown.com/green-business/google-uruguay-data-center-environmental-impact/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Cool Down — ウルグアイのGoogleデータセンター計画</div>
+                <div class="source-desc">干ばつ下での取水計画への抗議と、冷却方式見直しの経緯を報じる記事。</div>
+                <div class="source-country">【環境専門メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Epoch AI — How much energy does ChatGPT use?</div>
+                <div class="source-desc">ChatGPT1クエリあたりの消費電力について、複数の推計手法を比較した独立系研究機関の分析。</div>
+                <div class="source-country">【AI研究の独立系シンクタンク】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>5つの視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/ai-tech/index.html">AI</a></div>
+          <div>2026年9月15日</div>
+          <div style="margin-top:0.5rem;">5つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/ai-tech/index.html">AI一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 世界のデータセンター電力消費（棒グラフ）
+  (function() {
+    var ctx = document.getElementById('electricityChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2024年', '2030年（予測）'],
+        datasets: [{
+          // 出典：IEA「Energy and AI」
+          // 2024年415TWh／2030年945TWh（Base Caseでの倍増予測）
+          data: [415, 945],
+          backgroundColor: ['rgba(136,144,160,0.55)', 'rgba(128,172,216,0.85)'],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 4, barPercentage: 0.5
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.y + ' TWh'; } } }
+        },
+        scales: {
+          y: { min: 0, max: 1000, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + 'TWh'; } } },
+          x: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 11 } } }
+        }
+      }
+    });
+  })();
+
+  // Googleデータセンターの年間水消費量（棒グラフ）
+  (function() {
+    var ctx = document.getElementById('waterChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2021年', '2024年', '2025年'],
+        datasets: [{
+          // 出典：Google 2026年環境報告書
+          // 2021年43億ガロン／2024年81億ガロン／2025年109億ガロン（前年比+34%）
+          data: [43, 81, 109],
+          backgroundColor: 'rgba(128,172,216,0.85)',
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 4, barPercentage: 0.55
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.y + '億ガロン'; } } }
+        },
+        scales: {
+          y: { min: 0, max: 120, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + '億gal'; } } },
+          x: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 11 } } }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
