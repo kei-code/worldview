@@ -188,6 +188,7 @@
     .stat-strip-item:last-child { border-right: none; }
     .stat-num { font-size: 1.4rem; font-weight: 700; color: var(--accent-tech); line-height: 1.25; margin-bottom: 0.45rem; }
     .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+    .stat-example { color: var(--accent-tech); font-weight: 600; }
 
     /* ---- 深掘り（フロストガラス） ---- */
     .article-body .insight-box { padding: 1.4rem 1.6rem; margin-bottom: 1.6rem; }
@@ -270,9 +271,9 @@
         <section class="section" id="sec-core">
           <h2 class="section-title"><span class="sec-num">01</span>論点 — 一言の質問が、なぜ電気と水を使うのか</h2>
 
-          <p class="lead">ChatGPTやGeminiに「今日の天気は?」と一言送るだけでも、その裏では実際に電気と水が動いている。送ったメッセージはインターネットを通じて「データセンター」と呼ばれる巨大な施設に届き、そこに並ぶ数万台のコンピューター（サーバー）が計算して答えを作る。</p>
+          <p class="lead">ClaudeやChatGPT、Geminiに「今日の天気は?」と一言送るだけでも、その裏では実際に電気と水が使われている。送ったメッセージはインターネットを通じて「データセンター」と呼ばれる巨大な施設に届き、そこに並ぶ数万台のコンピューター（サーバー）が計算して答えを作る。</p>
 
-          <p class="lead">この計算を担うのは、GPU(ジーピーユー)と呼ばれる特殊な半導体チップだ。GPUは計算中に大量の熱を出す。GPUを積んだサーバーの棚(ラック)1台分の消費電力は10〜30キロワットにのぼり、一般的なサーバーラック(3〜5キロワット)の2〜6倍にあたる。この熱を逃がすために、電気で動く冷房と、水を循環させる冷却設備の両方が使われる。「AIが電力と水を使う」というのは、この「計算(電気)」と「冷却(水)」が同時に起きているということだ。</p>
+          <p class="lead">この計算を担うのは、GPU(ジーピーユー)と呼ばれる特殊な半導体チップだ。GPUは計算中に大量の熱を出す。GPUを積んだサーバーの棚(ラック)1台分の消費電力は10〜30キロワットにのぼり、一般的なサーバーラック(3〜5キロワット)の2〜6倍、家庭用エアコン(1台1キロワット)10〜30台を同時に稼働させる電力に相当する。この熱を逃がすために、電気で動く冷房と、水を循環させる冷却設備の両方が使われる。「AIが電力と水を使う」というのは、この「計算(電気)」と「冷却(水)」が同時に起きているということだ。</p>
 
           <div class="article-question">
             <p>スマホから送るたった一言の質問に、電気と水はどれくらい使われているのか。そして、それが世界中で積み重なると、どれほどの規模になるのか。</p>
@@ -282,7 +283,7 @@
           <div class="factor-grid">
             <div class="factor-card">
               <div class="factor-title">なぜ計算に電気を使うのか</div>
-              <div class="factor-desc">GPUという特殊なチップが、質問に答える文章を一語ずつ計算して作る。計算のたびに熱が出るため、稼働中は常に強い電力を使い続ける。</div>
+              <div class="factor-desc">GPUという特殊なチップが、質問に答える文章を一語ずつ計算して作る。稼働中はこの計算が休みなく続くため、常に大量の電力を消費し、その分だけ発熱し続ける。</div>
             </div>
             <div class="factor-card">
               <div class="factor-title">なぜ冷却に水を使うのか</div>
@@ -379,7 +380,7 @@
               <div class="timeline-dot"></div>
               <div class="timeline-content">
                 <div class="timeline-date">2025年6月 ― OpenAI CEO、ChatGPT1クエリの消費量は電力0.34Wh・水0.3mlと公表</div>
-                <p>サム・アルトマンCEOはブログで、平均的なChatGPTへの質問1回が消費する電力は約0.34ワット時、水は約0.3ミリリットル(ティースプーンの15分の1ほど)だとする数値を公表した。ただし、どの範囲の処理を含む数値か、学習にかかった分が含まれるかは明示されていない。</p>
+                <p>サム・アルトマンCEOはブログで、平均的なChatGPTへの質問1回が消費する電力は約0.34ワット時(LED電球を2〜3分点灯させる程度)、水は約0.3ミリリットル(ティースプーンの15分の1ほど)だとする数値を公表した。ただし、どの範囲の処理を含む数値か、学習にかかった分が含まれるかは明示されていない。</p>
               </div>
             </div>
 
@@ -541,19 +542,19 @@
           <div class="stat-strip">
             <div class="stat-strip-item">
               <div class="stat-num">0.34Wh</div>
-              <div class="stat-desc">ChatGPT1回分の質問が消費する電力(OpenAI公表、2025年6月)</div>
+              <div class="stat-desc">ChatGPT1回分の質問が消費する電力(OpenAI公表、2025年6月)。<br><span class="stat-example">LED電球(8W)を2〜3分点灯させる電力に相当</span></div>
             </div>
             <div class="stat-strip-item">
               <div class="stat-num">約70万L</div>
-              <div class="stat-desc">GPT-3の学習で消費されたと推計される淡水量(カリフォルニア大学リバーサイド校等の研究、2023年)</div>
+              <div class="stat-desc">GPT-3の学習で消費されたと推計される淡水量(カリフォルニア大学リバーサイド校等の研究、2023年)。<br><span class="stat-example">家庭用浴槽(200L)で約3,500杯分に相当</span></div>
             </div>
             <div class="stat-strip-item">
               <div class="stat-num">415→945TWh</div>
-              <div class="stat-desc">世界のデータセンター電力消費、2024→2030年の予測(IEA)</div>
+              <div class="stat-desc">世界のデータセンター電力消費、2024→2030年の予測(IEA)。<br><span class="stat-example">エアコン(1kW)を1年中つけっぱなしにした場合、2024年分で約4,700万台、2030年予測分で約1億800万台に相当する規模</span></div>
             </div>
             <div class="stat-strip-item">
               <div class="stat-num">109億ガロン</div>
-              <div class="stat-desc">Googleデータセンターの2025年の年間水消費量(前年比+34%)</div>
+              <div class="stat-desc">Googleデータセンターの2025年の年間水消費量(前年比+34%、約413億リットル)。<br><span class="stat-example">オリンピック公式プール(250万リットル)で約1万6,500杯分に相当</span></div>
             </div>
           </div>
         </section>
