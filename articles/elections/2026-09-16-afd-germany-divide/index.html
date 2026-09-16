@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2026年、ドイツの全国世論調査で極右政党AfDが優位を保ち続けている。東部の若い男性、党内強硬派、主流保守、左翼党、BSW——支持する側も反対する側も一枚岩ではない。6つの立場からAfD躍進の実像を読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/elections/2026-09-16-afd-germany-divide/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="「引き裂かれたドイツ」— AfD支持拡大の実像と、対抗する側の主張 — WorldView">
+  <meta property="og:description" content="2026年、ドイツの全国世論調査で極右政党AfDが優位を保ち続けている。支持する側も反対する側も一枚岩ではない実像を、6つの立場から読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/elections/2026-09-16-afd-germany-divide/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/afd-germany-divide-hero-street.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="「引き裂かれたドイツ」— AfD支持拡大の実像と、対抗する側の主張 — WorldView">
+  <meta name="twitter:description" content="世論調査で優位を保ち続ける極右政党AfD。支持する側も反対する側も一枚岩ではない実像を、6つの立場から読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/afd-germany-divide-hero-street.jpg">
+  <title>「引き裂かれたドイツ」— AfD支持拡大の実像と、対抗する側の主張 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色は世論・選挙の --accent4（ベージュ）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/afd-germany-divide-hero-street.jpg');
+      background-size: cover; background-position: center 42%;
+      filter: brightness(1.1) contrast(1.04) saturate(1.04);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.30) 0%, rgba(14,17,23,0.50) 45%, rgba(14,17,23,0.90) 100%);
+    }
+    .article-hero.has-image .container {
+      position: relative; z-index: 1; width: 100%; transform: translateY(-24px);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b6c1cd; margin-top: 1.5rem; max-width: 600px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent4); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent4) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent4) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent4) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent4); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       シグネチャー：フロストガラス — 記事全体を貫く透明感
+       ========================================================== */
+    .article-body .perspective-card,
+    .article-body .insight-box,
+    .article-body .glossary-card,
+    .article-body .data-card {
+      background: rgba(56,64,78,0.35);
+      border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    /* ---- perspective-card ---- */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+    .article-body .perspective-card { padding: 1.5rem 1.6rem 1.6rem; }
+    .article-body .perspective-card:hover {
+      transform: translateY(-2px); box-shadow: var(--shadow-lg);
+      background: rgba(56,64,78,0.48); border-color: rgba(255,255,255,0.16);
+    }
+    .article-body .perspective-card::before {
+      background: linear-gradient(90deg, transparent 0%, var(--accent4) 50%, transparent 100%);
+    }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .article-body .compare-table {
+      background: rgba(56,64,78,0.35); border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    }
+    .article-body .compare-table th { background: rgba(255,255,255,0.04); border-bottom: 2px solid var(--accent4); }
+    .article-body .compare-table tr:hover td { background: rgba(255,255,255,0.05); }
+
+    /* ---- timeline ---- */
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent4); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+    .article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- data-card ---- */
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .article-body .data-card:hover { border-color: rgba(255,255,255,0.18); }
+    .article-body .data-card h4 {
+      font-size: 0.92rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.8rem; line-height: 1.65; }
+
+    /* ---- 情報源 ---- */
+    .article-body .sources-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+    .article-body a.source-item {
+      background: rgba(56,64,78,0.28); border: 1px solid rgba(255,255,255,0.08);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      color: inherit; text-decoration: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .article-body a.source-item:hover { border-color: var(--accent4); background: rgba(56,64,78,0.42); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent4); outline-offset: 2px; }
+
+    /* ---- この記事の問い ---- */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(196,168,130,0.06);
+      border: 1px solid rgba(196,168,130,0.22);
+      box-shadow: 0 0 40px 10px rgba(196,168,130,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent4); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent4); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- 用語解説（フロストガラス） ---- */
+    .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .article-body .glossary-card { padding: 1rem 1.2rem; }
+    .article-body .glossary-card:hover { border-color: rgba(255,255,255,0.16); }
+    .glossary-term { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .glossary-def { font-size: 0.78rem; color: var(--text-muted); line-height: 1.75; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.4rem; font-weight: 700; color: var(--accent4); line-height: 1.25; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    /* ---- 深掘り（フロストガラス） ---- */
+    .article-body .insight-box { padding: 1.4rem 1.6rem; margin-bottom: 1.6rem; }
+    .article-body .insight-box:hover { border-color: rgba(255,255,255,0.16); }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* ==========================================================
+       アクセシビリティ・レスポンシブ
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body .timeline-content,
+      .article-body .glossary-card,
+      .article-body .insight-box,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .glossary-grid { grid-template-columns: 1fr; gap: 0.7rem; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">世論・選挙</span>
+      <span class="date">2026年9月16日</span>
+    </div>
+    <h1 class="article-title">「引き裂かれたドイツ」<br>— AfD支持拡大の実像と、対抗する側の主張</h1>
+
+    <div class="hero-deck">
+      2026年、ドイツの全国世論調査で、極右政党AfDが優位を保ち続けている。支持しているのは誰で、なぜなのか。反対する側は、何を主張しているのか。<span class="deck-accent">「反AfD」の側も、一枚岩ではない。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">全国世論調査で優位を維持 26.0%</span>
+      <span class="hero-pill">州議会選挙で過去最高 43.8%</span>
+      <span class="hero-pill">6つの立場が交錯</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — AfDを支持しているのは誰か、反対しているのは誰か</h2>
+
+          <p class="lead">2026年、ドイツの全国世論調査で、極右政党「ドイツのための選択肢（AfD）」が優位を保ち続けている。2025年2月の連邦議会選挙で第2党に躍進してから、1年余りでの出来事だ。</p>
+
+          <p class="lead">ニュースでは「ドイツの右傾化」とひとことで語られがちだが、実態はもっと入り組んでいる。AfDを支持しているのは、貧しい人たちだけではない。党の内部でも、穏健に見せようとする指導部と、もっと過激な地方組織との間に対立がある。そしてAfDに反対する側——CDU（キリスト教民主同盟）などの主流保守、左翼党、BSW（新しい左派政党）も、一枚岩ではない。「防火壁」と呼ばれる、AfDとは協力しないというドイツ政界の申し合わせを守るかどうかで、この3者の足並みはそろっていない。</p>
+
+          <div class="article-question">
+            <p>AfDを実際に支持しているのは、具体的に誰で、なぜなのか。それに反対しているのは誰で、どのように反対しているのか。そして「反AfD」側は、本当に一つにまとまっているのか。</p>
+          </div>
+
+          <div class="label-eyebrow">3つの論点</div>
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">支持は「貧しい人の反乱」だけでは説明できない</div>
+              <div class="factor-desc">東ドイツの若い男性に特に強いが、豊かな南部バイエルン州でも支持が伸びている。単純な経済格差の話では終わらない（詳細は03参照）。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">AfD自身も一枚岩ではない</div>
+              <div class="factor-desc">穏健さを演出する党指導部と、より急進的な地方組織との間に、公然とした対立がある（詳細は03参照）。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">反対する側も一致していない</div>
+              <div class="factor-desc">主流保守・左翼党・BSWは、AfDとどう向き合うかでそれぞれ異なる判断をしている（詳細は05参照）。</div>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">用語解説</div>
+          <div class="glossary-grid">
+            <div class="glossary-card">
+              <div class="glossary-term">連邦議会（Bundestag）</div>
+              <div class="glossary-def">ドイツ全体を代表する国の議会。日本の国会にあたり、法律や予算はここで決まる。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">州議会（Landtag）</div>
+              <div class="glossary-def">ドイツを構成する16の州それぞれに置かれる議会。教育や治安など、州ごとに決められる政策も多い。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">憲法擁護庁（Verfassungsschutz）</div>
+              <div class="glossary-def">民主主義を脅かす動きを監視するドイツの官庁。政党や団体を「疑わしい」「確認された極右」などに分類する権限を持つ。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">防火壁（Brandmauer）</div>
+              <div class="glossary-def">主流の政党がAfDと連立を組んだり、法案の可決にAfDの協力を借りたりしないという、ドイツ政界で長く守られてきた申し合わせ。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">連立政権</div>
+              <div class="glossary-def">一つの政党だけでは議会の過半数に届かないとき、複数の政党が組んで作る政権。ドイツでは連立政権が一般的。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">「確認された極右」認定</div>
+              <div class="glossary-def">憲法擁護庁が「自由で民主的な秩序を脅かしていると確証を持てる」と判断したときに使う分類。監視の強化などにつながる。</div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/afd-germany-divide-core-rally.jpg" alt="夕暮れの東ドイツの小さな町で行われた政治集会。群衆を背後から捉え、掲げられたドイツ国旗と遠くの舞台照明が見える" loading="lazy">
+            <figcaption>躍進の勢いを実感させるのは、街頭の熱気だ。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 州議会での第1党から、全国世論調査の首位まで</h2>
+
+          <p class="lead">州議会での初勝利から、全国世論調査での首位まで。この2年間で、AfDをめぐる状況は大きく動いた。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年9月1日 ― テューリンゲン州議会選挙、AfDが州議会選挙史上初の第1党に</div>
+                <p>ビョルン・ヘッケ氏が率いるテューリンゲン州のAfDが32.8%を獲得し、第2党のCDU（23.6%）を大きく引き離した。AfDがドイツの州議会選挙で第1党になったのは、これが初めてだった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年1月29日〜2月2日 ― メルツ氏（当時野党党首）、AfDの票を受け入れ「防火壁」を破る</div>
+                <p>移民規制を強化する動議が、AfDの賛成票を加えることで連邦議会を通過した。AfDの協力によって法案が可決されたのはこれが初めてで、メルケル前首相が公然と批判し、2月2日にはベルリンで16万人規模の抗議デモが起きた。連邦議会選挙を3週間後に控えたタイミングだった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年2月23日 ― 連邦議会選挙、AfDが第2党に躍進</div>
+                <p>AfDは20.8%を獲得し、152議席で連邦議会の第2党になった。得票率は2021年の前回選挙からほぼ倍増した。同じ選挙で左翼党も8.8%と予想を上回る躍進を見せ、投票率は82.5%とドイツ統一後で最も高い数字を記録した。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年5月 ― 連邦憲法擁護庁、AfD全体を「確認された極右」に分類</div>
+                <p>それまで一部の州支部にとどまっていた極右認定が、党全体に対して初めて下された。AfDはこの分類の取り消しを求めて提訴した。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年2月26日 ― ケルン行政裁判所、極右認定を一時的に差し止め</div>
+                <p>裁判所は、憲法擁護庁がAfD全体を「確認された極右」として扱うことを当面認めないとする判断を示した。本訴訟の決着はまだついていない。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年5月 ― AfDが主要世論調査で最も支持される政党に、メルツ政権の支持率は11%に急落</div>
+                <p>複数の世論調査でAfDへの支持が26〜28%に達し、CDU・CSUを上回る「最も支持される政党」になった。同じ頃、フォルサの調査ではメルツ政権（CDU・SPD連立）への満足度が2025年7月の38%から11%まで急落したことも明らかになった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月2日 ― 全国世論調査（フォルサ）で、AfDが26.0%を維持</div>
+                <p>フォルサの調査で、AfDは26.0%を記録し、CDU・CSU（25.0%）を上回る状態が続いている。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月6日 ― ザクセン・アンハルト州議会選挙、AfDが過去最高の43.8%を獲得</div>
+                <p>AfDは州議会選挙で統一後最高となる得票率を記録し、絶対過半数まであと3議席に迫った。CDUは17.2%で過去最低となり、BSWは5.3%でぎりぎり議席を確保した。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/afd-germany-divide-timeline-protest.jpg" alt="夜のベルリン中心部を行進する大規模な抗議デモ。何千人もが光る看板やキャンドルを掲げ、背景に照らされた政府庁舎が見える" loading="lazy">
+            <figcaption>「防火壁」が破られた2025年2月、ベルリンでは16万人規模の抗議デモが起きた。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 各勢力の視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>各勢力の視点 — 支持する側も、反対する側も一枚岩ではない</h2>
+
+          <p class="lead">AfDをめぐる対立は、「賛成か反対か」という単純な話ではない。党の内部にも、支持者の中にも、そして反対する側にも、それぞれ違う立場がある。6つの視点から見る。</p>
+
+          <div class="tabs-wrap">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-cards">カードで読む</button>
+              <button class="tab-btn" data-tab="tab-table">表で比べる</button>
+            </div>
+
+            <div class="tab-pane active" id="tab-cards">
+              <div class="perspectives-grid">
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">AfD公式方針（党指導部）</span>
+                    <span class="stance-label stance-cautious">体制転換を要求</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>公式見解</strong>
+                    ワイデル共同党首らが掲げる綱領は、国境管理の恒久化、シリア人の帰還、シェンゲン圏・ユーロからの離脱を求めている。党は経済学博士という党首の肩書きなどで穏健な印象を演出しているが、掲げる政策そのものは急進的だ。
+                  </div>
+                  <div class="interests">最大の関心：世論調査の首位を、実際の政権獲得につなげること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">東部・地方の若い男性支持者</span>
+                    <span class="stance-label stance-cautious">実質的な支持基盤</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>実態</strong>
+                    2024年のテューリンゲン州議会選挙では、29歳以下の男性の41%がAfDに投票した一方、同年代の女性は28%にとどまった。東西ドイツの支持率の差は、収入や失業率といった経済状況を考慮してもなお残ることが研究で分かっており、豊かな南部バイエルン州でも支持が伸びている。「貧しい人たちの反乱」という単純な説明では足りない。
+                  </div>
+                  <div class="interests">最大の関心：既存政党への不満を、AfDへの支持につなげること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">党内強硬派（ヘッケ／テューリンゲン）</span>
+                    <span class="stance-label stance-hostile">党内で最も急進</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>実態</strong>
+                    ビョルン・ヘッケ氏は2015年に党内の強硬派グループ「フリューゲル」を共同設立し、テューリンゲン州でAfD史上初の州議会第1党を実現させた立役者だ。西ドイツ人を見下すような発言をして、ワイデル氏ら党指導部からも公然と距離を置かれたことがある。テューリンゲン州のAfD支部は、2021年に州の憲法擁護庁から「確認された極右」に分類されている。
+                  </div>
+                  <div class="interests">最大の関心：東部での支持基盤をさらに固めること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">CDU/CSU主流保守（メルツ政権）</span>
+                    <span class="stance-label stance-cautious">防火壁を一部踏み越えた</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>公式見解</strong>
+                    メルツ氏は2025年1月、移民規制を強化する動議の可決にAfDの票を受け入れ、長年守られてきた「防火壁」の一線を越えた。メルケル前首相からの公然とした批判や、ベルリンでの16万人規模の抗議デモを招き、その後首相に就いた連立政権の支持率は2025年7月の38%から2026年5月には11%まで急落している。
+                  </div>
+                  <div class="interests">最大の関心：AfDに有権者を奪われずに政権を維持すること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">左翼党（Die Linke）</span>
+                    <span class="stance-label stance-supportive">対AfDの若年層動員を主導</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>公式見解</strong>
+                    2025年2月の連邦議会選挙で8.8%という予想を上回る躍進を果たし、若い都市部の女性からの支持に支えられた。ハイディ・ライヒネック議員は、「防火壁」を守る重要性を訴えた演説がSNS全体で約3,000万回再生される人気ぶりで、住宅費や経済格差を主な争点に掲げている。
+                  </div>
+                  <div class="interests">最大の関心：AfDに流れかねない若年層の不満を、自党の支持に変えること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">BSW（ザラ・ヴァーゲンクネヒト同盟）</span>
+                    <span class="stance-label stance-neutral">防火壁原則を拒否</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>公式見解</strong>
+                    2024年1月に左翼党から分裂し、東ドイツに地域基盤を持つ。左派を名乗りながら、「防火壁」の原則そのものには同意しておらず、AfDとの協力を明確には否定していない。反AfD陣営が一枚岩でないことを、最もはっきり示す存在だ。
+                  </div>
+                  <div class="interests">最大の関心：左翼党と競合する東部の低所得層の支持を維持すること。</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-table">
+              <div style="overflow-x:auto;">
+                <table class="compare-table">
+                  <thead>
+                    <tr><th>立場</th><th>防火壁への姿勢</th><th>主な根拠</th><th>最大の関心事</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>AfD公式方針（党指導部）</td><td>既存の枠組みへの対決姿勢</td><td>移民不安・ユーロ懐疑・穏健さの演出</td><td>世論調査の首位を政権獲得につなげる</td></tr>
+                    <tr><td>東部・地方の若い男性支持者</td><td>直接関与しない一般有権者</td><td>東西格差、若年男性の既存政党離れ</td><td>不満をAfDへの支持につなげること</td></tr>
+                    <tr><td>党内強硬派（ヘッケ／テューリンゲン）</td><td>党指導部とも摩擦</td><td>州議会での実績、東部での急進路線</td><td>東部の支持基盤を固める</td></tr>
+                    <tr><td>CDU/CSU主流保守（メルツ政権）</td><td>一部踏み越え、支持を失う</td><td>移民規制の強化を優先</td><td>政権を維持すること</td></tr>
+                    <tr><td>左翼党（Die Linke）</td><td>厳格に維持すべき</td><td>住宅費・経済格差、若年層の動員</td><td>若年層の不満を自党支持に変える</td></tr>
+                    <tr><td>BSW（ザラ・ヴァーゲンクネヒト同盟）</td><td>原則自体に同意しない</td><td>東部の低所得層への訴求</td><td>左翼党との票の奪い合いに勝つこと</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/afd-germany-divide-perspectives-generations.jpg" alt="左右分割構図の写真。左半分は夜のベルリンの賑やかな通りでスマホを見る若者たち、右半分は静かな田舎の町民集会に集まる年配の人々" loading="lazy">
+            <figcaption>都市の若者と地方の年配層——支持基盤の分断は、世代にも地域にも及んでいる。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ・統計 ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 3つの異なる指標で見る躍進の規模</h2>
+
+          <p class="lead">以下は、性質の異なる3つの物差し——全国での選挙結果・全国世論調査・一つの州の選挙結果——でAfDへの支持の広がりを比べたものだ。</p>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>AfDの得票率・支持率（%） — 異なる3つの物差しで比較</h4>
+              <div style="position:relative;height:230px;margin-top:1rem;">
+                <canvas id="afdTrendChart"></canvas>
+              </div>
+              <p class="chart-note">連邦議会選挙（全国での実際の得票率）、全国世論調査（フォルサ社の調査）、ザクセン・アンハルト州議会選挙（一つの州だけの得票率）は、それぞれ性質が異なる数字であり、連続した推移ではない。出典：連邦選挙管理官（2025年2月23日確定結果）／フォルサ（2026年9月2日発表）／ザクセン・アンハルト州選挙管理官（2026年9月6日確定結果）。</p>
+            </div>
+
+            <div class="data-card">
+              <h4>ザクセン・アンハルト州議会選挙（2026年9月6日）政党別得票率</h4>
+              <div style="position:relative;height:230px;margin-top:1rem;">
+                <canvas id="saxonyAnhaltChart"></canvas>
+              </div>
+              <p class="chart-note">投票率77.8%。出典：ザクセン・アンハルト州選挙管理官、2026年9月6日確定結果。</p>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">政党比較</div>
+          <div style="overflow-x:auto;">
+            <table class="compare-table">
+              <thead>
+                <tr><th>政党</th><th>移民政策</th><th>経済政策</th><th>支持層</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>AfD<br><span style="font-size:0.72rem;color:var(--text-dim);">極右</span></td>
+                  <td>国境管理の恒久化、シリア人の帰還、シェンゲン圏・ユーロからの離脱を要求</td>
+                  <td>所得税・法人税を一律の税率にする「フラットタックス」化、相続税は廃止を主張</td>
+                  <td>東部・地方の若い男性。富裕州バイエルンにも拡大</td>
+                </tr>
+                <tr>
+                  <td>CDU/CSU<br><span style="font-size:0.72rem;color:var(--text-dim);">中道右派</span></td>
+                  <td>2025年1月、AfD票も受け入れて庇護・国境管理を強化する動議を可決</td>
+                  <td>法人税の段階的減税、社会保障制度の改革で経済成長率2%を目標に掲げる</td>
+                  <td>伝統的な保守層・経済界。一部はAfDに流出しつつある</td>
+                </tr>
+                <tr>
+                  <td>左翼党（Die Linke）<br><span style="font-size:0.72rem;color:var(--text-dim);">左派</span></td>
+                  <td>戦争・政治的迫害からの避難者の送還に反対。EU共通庇護制度には反対の立場</td>
+                  <td>家賃の上限規制・公営住宅の拡大を掲げ、経済格差の是正を主な争点にする</td>
+                  <td>都市部の若い女性</td>
+                </tr>
+                <tr>
+                  <td>BSW<br><span style="font-size:0.72rem;color:var(--text-dim);">左派（移民政策は保守寄り）</span></td>
+                  <td>移民数の大幅な抑制を求める国民投票を主張。送還の迅速化を掲げる</td>
+                  <td>家賃上限・公営住宅拡大など左翼党に近いが、自由貿易協定には反対の立場</td>
+                  <td>東ドイツの低所得層</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="lead" style="margin-top:1.8rem;">2025年の学術調査では、AfD支持者は移民への否定的な感情を共通点としながら、「穏健保守」（他の争点では穏健な立場を取る層）・「ハードライン保守」（移民や治安により厳格な対応を求める層）・「急進右翼権威主義」（権威主義的な価値観を強く持つ層）という3つのグループに分かれる。</p>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">13%</div>
+              <div class="stat-desc">AfD支持者に占める「穏健保守」の割合</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">67%</div>
+              <div class="stat-desc">AfD支持者に占める「ハードライン保守」の割合（最も多い層）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">20%</div>
+              <div class="stat-desc">AfD支持者に占める「急進右翼権威主義」の割合</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">152議席</div>
+              <div class="stat-desc">2025年2月の連邦議会選挙でAfDが獲得した議席数</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — この先、ドイツの政治地図はどう動くか</h2>
+
+          <p class="lead">ここまでの事実を土台に、4つの点を検討する。AfD自身の内部構造、反対する側の分裂、司法判断の意味、そしてこの先の分岐点について。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">① 「穏健な顔」と「急進的な現場」という二重構造</div>
+            <div class="insight-text">ワイデル氏ら党指導部は、経済学博士という肩書きや落ち着いた話し方で、AfDを「まともな選択肢」に見せようとしている。だがテューリンゲン州を率いるヘッケ氏は、党指導部自身が公然と距離を置くほど過激な発言を重ねてきた（詳細は03参照）。この二重構造は、AfDがどこまで浮動票——特定の政党に決まった支持を持たない有権者——を取り込めるかを左右する。穏健な「顔」がある限り、極右のイメージだけでは説明できない層にも、支持は広がりうる。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">② 「反AfD」側が、同じ有権者を奪い合っている</div>
+            <div class="insight-text">左翼党とBSWは、どちらも東ドイツの低所得層に支持を訴えている。同じ有権者層を取り合いながら、「防火壁」への態度では正反対の立場を取っており（詳細は03参照）、反AfD票が一つにまとまらない一因になっている。ザクセン・アンハルト州選挙でBSWがわずか5.3%で議席獲得の基準ラインぎりぎりだったこと（詳細は04参照）は、左派の票が割れている実態を映している。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">③ 極右認定の「宙づり」が意味すること</div>
+            <div class="insight-text">憲法擁護庁による「確認された極右」という分類は2025年5月に下されたが、2026年2月にケルン行政裁判所によって一時的に差し止められた（詳細は02参照）。本訴訟の結論はまだ出ていない。この法的な宙づり状態は、AfDが世論調査で優位を固めていった時期と重なっており、極右政党という重いレッテルの効果を、意図せず弱めている可能性がある。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">④ メルツの賭けは、他州にも広がるか</div>
+            <div class="insight-text">「防火壁」を一部踏み越えたメルツ首相への支持は急落した（詳細は02参照）。この経験は、他のCDU州支部にとって反面教師になるのか、それとも先例になるのか。2026年9月20日には、メクレンブルク＝フォアポンメルン州議会選挙が投開票を迎える。世論調査ではAfD35%に対しSPD（社会民主党）32%という僅差が伝えられており、防火壁を守れるかどうかの次の試金石になる。</div>
+          </div>
+
+          <p class="closing">AfDの躍進は、単純な物語では説明できない。支持する側にも反対する側にも、それぞれ内部の対立がある。ドイツの政治地図がこの先どちらへ動くのかは、党の指導部と地方組織のどちらが主導権を握るか、そして割れたままの反対勢力が足並みをそろえられるかにかかっている。</p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/afd-germany-divide-analysis-ballots.jpg" alt="投票終了後、誰もいなくなった深夜の投票所。木製のテーブルに積まれた開票済みの投票用紙、吊り下げられた一つの電球の下" loading="lazy">
+            <figcaption>票は数えられたが、分裂の答えはまだ出ていない。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://www.bpb.de/kurz-knapp/hintergrund-aktuell/581006/landtagswahl-in-sachsen-anhalt-2026-afd-staerkste-kraft/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">bpb.de（連邦政治教育センター） — ザクセン・アンハルト州議会選挙2026、AfDが第1党に</div>
+                <div class="source-desc">2026年9月6日の選挙結果と各党の得票率、投票率の解説。</div>
+                <div class="source-country">【ドイツ連邦政府傘下の政治教育機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.afpbb.com/articles/-/3600099" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">AFPBB News — AfD、旧東ドイツ5州で支持率トップに</div>
+                <div class="source-desc">2025年9月の世論調査でAfDが東部各州で首位に立った状況の報道。</div>
+                <div class="source-country">【国際通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.scgr.co.jp/report/survey/2026090483535/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">住友商事グローバルリサーチ — ドイツ極右AfDの台頭と東独諸州議会選挙</div>
+                <div class="source-desc">2026年の州議会選挙とAfD躍進の背景を分析したレポート。</div>
+                <div class="source-country">【シンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.bpb.de/kurz-knapp/hintergrund-aktuell/551667/landtagswahl-thueringen-2024/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">bpb.de（連邦政治教育センター） — テューリンゲン州議会選挙2024</div>
+                <div class="source-desc">AfDが州議会選挙で初めて第1党になった2024年9月1日の選挙結果の解説。</div>
+                <div class="source-country">【ドイツ連邦政府傘下の政治教育機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://de.wikipedia.org/wiki/Landtagswahl_in_Th%C3%BCringen_2024" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia（独語版） — テューリンゲン州議会選挙2024</div>
+                <div class="source-desc">得票率32.8%、CDU23.6%という確定結果と、AfD支部の極右認定に関する記録。</div>
+                <div class="source-country">【百科事典（一次報道に基づく記述）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.vg-koeln.nrw.de/behoerde/presse/Pressemitteilungen/05_26022026/index.php" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ケルン行政裁判所 公式発表 — 極右認定の一時差し止め</div>
+                <div class="source-desc">2026年2月、憲法擁護庁によるAfDの「確認された極右」分類を当面認めないとした決定の公式発表。</div>
+                <div class="source-country">【ドイツの裁判所公式】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://foreignpolicy.com/2025/01/31/germany-election-merz-cdu-afd-migration/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Foreign Policy — メルツ氏、移民政策で急転換</div>
+                <div class="source-desc">2025年1月、メルツ氏がAfDの票を受け入れて移民規制動議を可決させた経緯の報道。</div>
+                <div class="source-country">【米外交専門誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aljazeera.com/news/2025/1/30/germanys-merkel-blasts-cdu-leader-for-cooperating-with-far-right-afd" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Jazeera — メルケル氏、メルツ氏の対応を批判</div>
+                <div class="source-desc">「防火壁」を破ったメルツ氏への、メルケル前首相による公然とした批判の報道。</div>
+                <div class="source-country">【国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.irishtimes.com/world/europe/2026/05/05/merzs-first-year-germanys-impulsive-chancellor-sees-poll-ratings-slump-to-record-low/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Irish Times — メルツ政権の1年、支持率は過去最低に</div>
+                <div class="source-desc">就任1年でメルツ首相の支持率が急落し、AfDが世論調査で最も支持される政党になったことの報道。</div>
+                <div class="source-country">【アイルランド大手紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.yahoo.com/news/articles/german-governments-approval-ratings-slide-125431465.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Yahoo News（Forsa調査） — 連立政権の支持率、11%に急落</div>
+                <div class="source-desc">2026年4月30日〜5月4日実施のフォルサ調査。連立政権への満足度11%・不満87%、2025年7月の38%からの急落を報じた記事。</div>
+                <div class="source-country">【世論調査に基づく報道】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://eutoday.net/weidel-germany-withdrawal-euro-schengen-afd-programme/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">EU Today — ワイデル氏、ユーロ・シェンゲン離脱を明言</div>
+                <div class="source-desc">2026年8月、ワイデル共同党首が国境閉鎖・シェンゲン離脱・ユーロ離脱・シリア人の帰還を掲げた発言の報道。</div>
+                <div class="source-country">【欧州政治専門メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.emma.de/artikel/bsw-341273" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">EMMA — 東部選挙が映す性別による支持格差</div>
+                <div class="source-desc">2024年テューリンゲン州議会選挙で、29歳以下男性の41%・同年代女性の28%がAfDに投票したという集計。</div>
+                <div class="source-country">【ドイツの政治文化誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13246345/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">PMC（学術論文） — 東西ドイツの支持格差を説明する</div>
+                <div class="source-desc">経済要因を統制しても東西差が残ることを示す、有権者レベルの実証研究。</div>
+                <div class="source-country">【学術誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://link.springer.com/article/10.1007/s12286-026-00658-1" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Zeitschrift für Vergleichende Politikwissenschaft（学術誌） — AfD支持者の3類型</div>
+                <div class="source-desc">穏健保守13%・ハードライン保守67%・急進右翼権威主義20%という分類を示した2025年の研究。</div>
+                <div class="source-country">【比較政治学の学術誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://jacobin.com/2026/03/die-linke-schwerdtner-class-afd" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Jacobin — 左翼党、労働者層の支持を取り戻す戦い</div>
+                <div class="source-desc">左翼党の2025年選挙での躍進と、AfDとの支持層の重なりを分析した記事。</div>
+                <div class="source-country">【左派系政治メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.smartsteuer.de/blog/2025/01/30/die-steuerplaene-der-afd-zur-bundestagswahl-2025/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">smartsteuer — AfDの税制プラン（2025年連邦議会選挙）</div>
+                <div class="source-desc">所得税・法人税の一律化、相続税廃止など、AfDの税制公約をまとめた解説。</div>
+                <div class="source-country">【税務専門メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.marktundmittelstand.de/politik/cdu-geht-ins-detail-so-will-merz-fuer-zwei-prozent-wachstum-sorgen" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Markt und Mittelstand — CDUの経済成長プラン「アジェンダ2030」</div>
+                <div class="source-desc">法人税の段階的減税や2%の経済成長目標など、メルツ氏の経済政策の報道。</div>
+                <div class="source-country">【経済専門メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.dielinkebt.de/themen/a-z/detailansicht/migration/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">左翼党 連邦議会会派 公式 — 移民政策</div>
+                <div class="source-desc">戦争・迫害からの避難者の送還への反対、EU共通庇護制度への反対を掲げる公式の政策解説。</div>
+                <div class="source-country">【左翼党の公式発表】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://taz.de/Wagenknecht-und-Migration/!6063423/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">taz — ヴァーゲンクネヒト氏と移民政策</div>
+                <div class="source-desc">BSWが移民数の大幅抑制を求める国民投票を主張していることの報道。</div>
+                <div class="source-country">【ドイツ大手紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://de.wikipedia.org/wiki/B%C3%BCndnis_Sahra_Wagenknecht" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia（独語版） — ザラ・ヴァーゲンクネヒト同盟（BSW）</div>
+                <div class="source-desc">再工業化・自由貿易協定への反対など、BSWの経済政策の記録。</div>
+                <div class="source-country">【百科事典（一次報道に基づく記述）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikipedia.org/wiki/Heidi_Reichinnek" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia（英語版） — ハイディ・ライヒネック</div>
+                <div class="source-desc">左翼党議員としての経歴と、SNSでの「防火壁」演説が全プラットフォーム合計で約3,000万回再生された経緯の記録。</div>
+                <div class="source-country">【百科事典（一次報道に基づく記述）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikipedia.org/wiki/Sahra_Wagenknecht_Alliance" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia（英語版） — ザラ・ヴァーゲンクネヒト同盟（BSW）</div>
+                <div class="source-desc">2024年1月の左翼党からの分裂経緯と、「防火壁」原則への立場の記録。</div>
+                <div class="source-country">【百科事典（一次報道に基づく記述）】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>各勢力の視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/elections/index.html">世論・選挙</a></div>
+          <div>2026年9月16日</div>
+          <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/elections/index.html">世論・選挙一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // AfDの選挙・世論調査結果の推移（横棒）
+  (function() {
+    var ctx = document.getElementById('afdTrendChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2025年2月 連邦議会選挙', '2026年9月 全国世論調査(フォルサ)', '2026年9月 ザクセン・アンハルト州選挙'],
+        datasets: [{
+          // 出典：連邦選挙管理官（2025年2月23日確定結果, 20.8%）
+          // フォルサ社世論調査（2026年9月2日発表, 26.0%）
+          // ザクセン・アンハルト州選挙管理官（2026年9月6日確定結果, 43.8%）
+          data: [20.8, 26.0, 43.8],
+          backgroundColor: 'rgba(196,168,130,0.85)',
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 4, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.x + '%'; } } }
+        },
+        scales: {
+          x: { min: 0, max: 50, title: { display: true, text: '得票率・支持率（%）', color: '#8890a0', font: { size: 10 } }, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + '%'; } } },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // ザクセン・アンハルト州議会選挙 政党別得票率（横棒）
+  (function() {
+    var ctx = document.getElementById('saxonyAnhaltChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['AfD', 'CDU', 'SPD', '緑の党', '左翼党', 'BSW'],
+        datasets: [{
+          // 出典：ザクセン・アンハルト州選挙管理官（2026年9月6日確定結果）
+          // AfD43.8％／CDU17.2％／SPD9.3％／緑の党8.9％／左翼党8.6％／BSW5.3％
+          data: [43.8, 17.2, 9.3, 8.9, 8.6, 5.3],
+          backgroundColor: 'rgba(196,168,130,0.85)',
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 4, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.x + '%'; } } }
+        },
+        scales: {
+          x: { min: 0, max: 50, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + '%'; } } },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
