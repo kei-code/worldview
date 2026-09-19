@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="アメリカでは不法滞在者への強制送還が急増し、無犯罪歴者の拘束も相次いでいる。全員送還を求める賛成派、行き過ぎだとする反対派、重罪者のみの送還を支持する中間派——三つの立場の言い分を、やさしい言葉で解説する。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/immigration/2026-09-19-us-deportation-divide/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="不法移民は、全員送還すべきか ― アメリカを割る三つの言い分 — WorldView">
+  <meta property="og:description" content="強制送還が急増するアメリカ。無犯罪歴者の拘束や誤認送還も相次ぐ中、賛成派・反対派・中間派、三つの立場の言い分を読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/immigration/2026-09-19-us-deportation-divide/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/us-deportation-divide-border-wall.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="不法移民は、全員送還すべきか ― アメリカを割る三つの言い分 — WorldView">
+  <meta name="twitter:description" content="強制送還が急増するアメリカ。賛成派・反対派・中間派、三つの立場の言い分を読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/us-deportation-divide-border-wall.jpg">
+  <title>不法移民は、全員送還すべきか ― アメリカを割る三つの言い分 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色は移民政策の --accent4（ベージュ）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/us-deportation-divide-border-wall.jpg');
+      background-size: cover; background-position: center 45%;
+      filter: brightness(1.12) contrast(1.04) saturate(1.05);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.30) 0%, rgba(14,17,23,0.50) 45%, rgba(14,17,23,0.90) 100%);
+    }
+    .article-hero.has-image .container {
+      position: relative; z-index: 1; width: 100%; transform: translateY(-24px);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b6c1cd; margin-top: 1.5rem; max-width: 600px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent4); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent4) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent4) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent4) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent4); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       シグネチャー：フロストガラス — 記事全体を貫く透明感
+       ========================================================== */
+    .article-body .perspective-card,
+    .article-body .insight-box,
+    .article-body .glossary-card,
+    .article-body .data-card {
+      background: rgba(56,64,78,0.35);
+      border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    /* ---- perspective-card ---- */
+    .article-body .perspectives-grid { grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+    .article-body .perspective-card { padding: 1.5rem 1.6rem 1.6rem; }
+    .article-body .perspective-card:hover {
+      transform: translateY(-2px); box-shadow: var(--shadow-lg);
+      background: rgba(56,64,78,0.48); border-color: rgba(255,255,255,0.16);
+    }
+    .article-body .perspective-card::before {
+      background: linear-gradient(90deg, transparent 0%, var(--accent4) 50%, transparent 100%);
+    }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .article-body .compare-table {
+      background: rgba(56,64,78,0.35); border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    }
+    .article-body .compare-table th { background: rgba(255,255,255,0.04); border-bottom: 2px solid var(--accent4); }
+    .article-body .compare-table tr:hover td { background: rgba(255,255,255,0.05); }
+
+    /* ---- timeline ---- */
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent4); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+    .article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- data-card ---- */
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .article-body .data-card:hover { border-color: rgba(255,255,255,0.18); }
+    .article-body .data-card h4 {
+      font-size: 0.92rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.8rem; line-height: 1.65; }
+
+    /* ---- 情報源 ---- */
+    .article-body .sources-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+    .article-body a.source-item {
+      background: rgba(56,64,78,0.28); border: 1px solid rgba(255,255,255,0.08);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      color: inherit; text-decoration: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .article-body a.source-item:hover { border-color: var(--accent4); background: rgba(56,64,78,0.42); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent4); outline-offset: 2px; }
+
+    /* ---- この記事の問い ---- */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(196,168,130,0.06);
+      border: 1px solid rgba(196,168,130,0.22);
+      box-shadow: 0 0 40px 10px rgba(196,168,130,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent4); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent4); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- 用語解説（フロストガラス） ---- */
+    .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .article-body .glossary-card { padding: 1rem 1.2rem; }
+    .article-body .glossary-card:hover { border-color: rgba(255,255,255,0.16); }
+    .glossary-term { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .glossary-def { font-size: 0.78rem; color: var(--text-muted); line-height: 1.75; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.4rem; font-weight: 700; color: var(--accent4); line-height: 1.25; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    /* ---- 深掘り（フロストガラス） ---- */
+    .article-body .insight-box { padding: 1.4rem 1.6rem; margin-bottom: 1.6rem; }
+    .article-body .insight-box:hover { border-color: rgba(255,255,255,0.16); }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* ==========================================================
+       アクセシビリティ・レスポンシブ
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body .timeline-content,
+      .article-body .glossary-card,
+      .article-body .insight-box,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .glossary-grid { grid-template-columns: 1fr; gap: 0.7rem; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">移民政策</span>
+      <span class="date">2026年9月19日</span>
+    </div>
+    <h1 class="article-title">不法移民は、全員送還すべきか<br>― アメリカを割る三つの言い分</h1>
+
+    <div class="hero-deck">
+      アメリカでは今、正式な許可なく国内に住む人をどこまで国外へ送り返すべきかをめぐって、意見が大きく割れている。全員を例外なく送るべきだという声がある一方、家族や仕事を持つ人まで一律に送るのは行き過ぎだという声も強い。<span class="deck-accent">賛成・反対・中間、三つの立場の言い分を並べて読む。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">内部摘発 前政権比4.6倍</span>
+      <span class="hero-pill">送還者の3割超が無犯罪歴</span>
+      <span class="hero-pill">世論最多派は「重罪者のみ送還」41%</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — なぜ「全員送還」が議論の的になっているのか</h2>
+
+          <p class="lead">アメリカでは、正式な許可を得ずに国内に住んでいる人を「不法滞在者」と呼ぶ。この人たちを見つけ出し、本人の意思に関わらず出身国へ強制的に送り返すことを「強制送還」という。アメリカには以前から不法滞在者を取り締まる仕組みがあったが、2025年1月に発足した第二次トランプ政権のもとで、その規模が大きく変わった。</p>
+
+          <p class="lead">摘発を担当するのは、アメリカ移民・関税執行局（略称ICE)という政府機関だ。政権発足から9か月間で、職場や自宅など通常の方法による摘発は前の政権のおよそ4.6倍に増えた。街なかでいきなり逮捕する「街頭逮捕」は、11倍以上に増えている。2026年1〜6月だけで、およそ59万人が国外へ送り出されたと報じられている。</p>
+
+          <p class="lead">政権は2029年までにICEと国境警備の予算を1,700億ドル増やし、一日あたり11万6,000人分の拘束施設を用意する計画を進めている。急激に規模が拡大する中で、アメリカ社会は大きく三つの立場に分かれている。</p>
+
+          <div class="article-question">
+            <p>不法に入国した人は、例外なく国外へ送り返すべきなのか。それとも、犯罪歴や家族の事情に応じて扱いを変えるべきなのか。「法律を守ること」と「一人ひとりの事情への配慮」、この二つはどちらを優先すべきなのだろうか。</p>
+          </div>
+
+          <div class="label-eyebrow">3つの論点</div>
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">摘発の規模が、かつてない速さで拡大している</div>
+              <div class="factor-desc">内部摘発は前政権比4.6倍、街頭逮捕は11倍以上。予算も2029年までに1,700億ドル増える計画で、規模の拡大そのものが論点になっている。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">送還される人の中に、犯罪歴のない人が多く含まれる</div>
+              <div class="factor-desc">送還された人の3人に1人以上には犯罪歴がない。この事実をどう受け止めるかで、賛成派と反対派の評価が真っ二つに分かれる（詳細は03参照）。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">世論は割れており、実は「全員送還」は多数派ではない</div>
+              <div class="factor-desc">2026年8月の調査で最も多かったのは「重罪者のみ送還」の41%。「全員送還」の24%を上回っている（詳細は04参照）。</div>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">用語解説</div>
+          <div class="glossary-grid">
+            <div class="glossary-card">
+              <div class="glossary-term">不法滞在</div>
+              <div class="glossary-def">正式な許可を得ずに、アメリカ国内に住み続けている状態のこと。ビザなしで入国した場合や、ビザの期限が切れた後も残っている場合などがある。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">ICE（アイス）</div>
+              <div class="glossary-def">アメリカ移民・関税執行局の略称。不法滞在者の摘発や、拘束、国外への送還を担当する連邦政府の機関。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">強制送還</div>
+              <div class="glossary-def">国が、本人の意思に関わらずその人を出身国へ強制的に送り返すこと。裁判や審査の手続きを経て決定される。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">拘束施設</div>
+              <div class="glossary-def">送還の手続きが終わるまでの間、対象者を収容しておく施設。民間業者が運営する施設や、州が用意した施設もある。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">H-2Aビザ</div>
+              <div class="glossary-def">季節性のある農業労働のために、外国人がアメリカで働くことを認める就労許可の一種。一定の条件下で発行される。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">無犯罪歴（犯罪歴なし）</div>
+              <div class="glossary-def">逮捕や有罪判決の記録が一切ないこと。ICEに摘発された人の中には、交通違反のような軽い違反の記録さえ持たない人も含まれている。</div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-deportation-divide-detention-fence.jpg" alt="拘束施設を囲む金属製のフェンスの接写。夕方の光の中、フェンスの網目越しに施設の建物がぼんやりと見える" loading="lazy">
+            <figcaption>取り締まりの規模が拡大するほど、拘束・送還される人の数も増えていく。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 州兵派遣から世論の変化まで</h2>
+
+          <p class="lead">強制送還の強化は、2025年半ばから段階を踏んで進んできた。都市への軍の派遣、大規模な摘発作戦、そして世論の変化まで、主な出来事を時系列で追う。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年6月 ― ロサンゼルスへ連邦州兵を派遣</div>
+                <p>政権は、移民摘発に対する抗議活動が起きたロサンゼルスへ、連邦の判断で州兵（各州に置かれ、非常時に知事や大統領の指示で動く予備の軍事組織）を派遣した。都市への軍の展開という強硬な対応が、この後の一連の流れの始まりになった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年8月 ― ワシントンD.C.へも州兵派遣</div>
+                <p>首都ワシントンD.C.にも州兵が派遣され、都市部での摘発強化を軍の展開で後押しする方針が続いた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年9月 ― シカゴで「オペレーション・ミッドウェイ・ブリッツ」開始</div>
+                <p>シカゴを対象にした大規模な摘発作戦が始まった。都市を名指しした集中的な作戦は、この後も各地で繰り返されることになる。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年11月 ― 政権、農場への摘発を一時的に緩和</div>
+                <p>摘発によって働き手がいなくなり、収穫ができなくなるという農業団体の懸念を受け、政権は農場での摘発を一時的に緩める方針を打ち出した。あわせて、H-2Aビザで雇う際に農場側が支払うべき最低賃金の基準を引き下げ、外国人労働者を雇いやすくする策も発表した。これは労働者向けではなく、人手不足に悩む農場側の負担を軽くするための措置だった。取り締まりを強めながら、産業界の実情にも配慮する動きが早くも見られた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年1月20日 ― 政権発足1年、「記録的な年」と自己評価</div>
+                <p>この日、政権発足からちょうど1年となった国土安全保障省は「記録的な年」だったとする声明を発表した。声明は、就任から最初の100日間で6.6万人以上を逮捕し、6.5万人以上を送還したという実績を強調している。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年初頭 ― ミネアポリス・セントポールで過去最大級の摘発作戦</div>
+                <p>「オペレーション・メトロ・サージ」が開始され、3,789人以上が摘発された。単独の摘発作戦としては、これまでで最大規模とされている。作戦の過程で、銃撃により2人が死亡、拘束中に1人が死亡する事態も起きた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年3月 ― UMass Amherst世論調査、54%が送還対応に不支持</div>
+                <p>大学の世論調査機関による調査で、政権の送還対応を「支持しない」と答えた人が54%にのぼった。取り締まりが拡大する一方で、世論には慎重な見方が広がり始めていた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年6月 ― 自動判定システムによる誤認送還リスクが司法の場でも問題に</div>
+                <p>政府が摘発対象を絞り込むために使うコンピューターの自動判定システムについて、誤って送還対象にしてしまうリスクが連邦最高裁の審理対象にもなっていると報じられた（詳細は05参照）。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年6月25日 ― 「アリゲーター・アルカトラズ」拘束施設が閉鎖</div>
+                <p>フロリダ州知事が、湿地帯に建設された拘束施設「アリゲーター・アルカトラズ」の閉鎖を発表した。施設の劣悪な環境を問題視する訴訟や批判が続く中での決定だった（詳細は03参照）。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年7月 ― 送還政策への支持率、49%へ低下</div>
+                <p>2月の時点で59%あった送還政策への支持率が、この時点で49%まで下がった。政策の中身は変わらないまま、世論の評価だけが動いていた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年8月12日 ― Economist/YouGov世論調査、三つの立場の内訳が判明</div>
+                <p>「全員即時送還」24%、「重罪者のみ送還」41%、「全員に滞在許可」6%という内訳の世論調査結果が発表された。単純な「賛成か反対か」では語れない実態が数字で示された（詳細は04参照）。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月8日 ― 夏の摘発急増、無犯罪歴者の割合が過去最高水準に</div>
+                <p>Deportation Data Projectの分析によると、2026年6月と7月のICE摘発件数は、政権発足以来の月別最多を記録した。7月には、摘発対象のうち有罪判決歴のある人の割合が27%まで下がっており、無犯罪歴者の割合が調査開始以来もっとも高い水準になっている。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月14〜15日 ― 閉鎖済みの「アリゲーター・アルカトラズ」、実態調査が公表</div>
+                <p>6月に閉鎖されたフロリダ州の拘束施設について、国土安全保障省監察官室（政府機関の運営を内部から監視する組織）の報告書が公表された。収容者が電話ボックスほどの大きさの金属製の檻に「懲罰」として入れられていたなど、稼働当時の劣悪な環境の実態が指摘された（詳細は03参照）。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-deportation-divide-national-guard.jpg" alt="夜の市街地に停まる州兵の車両。赤いテールランプが並ぶ通りに、ヘッドライトの光が反射している" loading="lazy">
+            <figcaption>移民摘発をめぐる抗議活動に対し、州兵が都市へ派遣される場面が繰り返されてきた。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 各陣営の視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>各陣営の視点 — 賛成・反対・中間、三つの言い分</h2>
+
+          <p class="lead">強制送還をめぐる対立は、単純な「賛成か反対か」だけでは語れない。全員送還を求める側、行き過ぎだと訴える側、そのどちらでもない立場を取る側。三つの言い分を見る。</p>
+
+          <div class="tabs-wrap">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-cards">カードで読む</button>
+              <button class="tab-btn" data-tab="tab-table">表で比べる</button>
+            </div>
+
+            <div class="tab-pane active" id="tab-cards">
+              <div class="perspectives-grid">
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">送還賛成派</span>
+                    <span class="stance-label stance-supportive">賛成（全員送還を支持）</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    不法に入国した時点で法を破っており、例外を認めればそれが「抜け道」になると考える。国境担当のトム・ホーマン氏は、不法入国者は「システムを欺いた」のだから送還に他の選択肢はないと述べている。移民担当のスティーブン・ミラー氏は年間100万人の送還という目標を掲げ、テキサス州に大規模な拘束施設の建設を進めてきた。世論調査でも共和党支持層の91%がこの方針を支持しており、党派によって意見が大きく分かれている。
+                  </div>
+                  <div class="interests">最大の関心：法の秩序を守ること、政権が掲げた公約を実現すること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">送還反対派</span>
+                    <span class="stance-label stance-cautious">反対（大量送還に反対）</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    今のやり方は行き過ぎだと考える。送還された人のうち3人に1人以上には犯罪歴がなく、2026年7月には有罪判決歴のある人の割合が27%まで下がった。ホーマン氏自身も、無犯罪歴者が一定の割合を占めることは認めている（発言の時期により「3〜4割」から「半数近い」までばらつきがある）。それでも「世界へのメッセージ」として必要だと説明する。さらに2002年から2017年までの記録では、実際にはアメリカ国民である2,840人が誤って送還対象とされ、214人が実際に拘束されていた。フロリダ州の湿地帯にあった拘束施設「アリゲーター・アルカトラズ」（2026年6月に閉鎖）では、収容者が電話ボックスほどの金属製の檻に「懲罰」として入れられていた実態が、閉鎖後に公表された報告書で指摘された。
+                  </div>
+                  <div class="interests">最大の関心：一人ひとりの人権を守ること、行き過ぎた摘発による経済的な損失を防ぐこと（詳細は04参照）。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">条件付き中間派</span>
+                    <span class="stance-label stance-neutral">中間（重罪者のみ送還）</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    全員一律の送還にも、全員を滞在させることにも賛成しない。2026年8月の世論調査で最も多かった41%が、この立場だ。農業や建設の現場では人手不足が深刻になっており、超党派の議員が、一定の条件を満たす農業労働者にH-2Aビザの資格を与える法案を議会に提出している。政権自身も2025年11月に農場への摘発を一時的に緩めるなど、この立場に歩み寄る動きを見せた。
+                  </div>
+                  <div class="interests">最大の関心：治安を保ちながら、労働力不足という現実の問題も解決すること。</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-table">
+              <div style="overflow-x:auto;">
+                <table class="compare-table">
+                  <thead>
+                    <tr><th>立場</th><th>基本スタンス</th><th>主な根拠</th><th>最大の関心事</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>賛成派</td><td>不法滞在者は例外なく送還すべき</td><td>法を破った以上、例外を認めれば「抜け道」になる。共和党支持層の圧倒的多数が支持</td><td>法の秩序を守ること、政権公約の実現</td></tr>
+                    <tr><td>反対派</td><td>大量送還の中止、人道的な対応への転換</td><td>無犯罪歴者が3割超、誤認拘束や施設の劣悪な環境、GDP・税収への打撃</td><td>人権の保護、経済的損失の回避</td></tr>
+                    <tr><td>条件付き中間派</td><td>重罪者は送還、それ以外は合法化の道を</td><td>世論調査で最多の立場。労働力不足が現実の産業被害に直結している</td><td>治安と経済、両方を成立させる制度設計</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-deportation-divide-protest.jpg" alt="街頭で対峙する抗議デモの参加者と法執行官たち。夕方の逆光の中、プラカードを掲げる人々のシルエットが見える" loading="lazy">
+            <figcaption>賛成派と反対派、そしてその中間にいる人々——街頭にはその温度差がそのまま表れる。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ・統計 ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 世論の内訳と、経済への影響</h2>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>不法移民への対応、どうすべきか（世論の内訳）</h4>
+              <div style="position:relative;height:230px;margin-top:1rem;">
+                <canvas id="opinionChart"></canvas>
+              </div>
+              <p class="chart-note">出典：Economist/YouGov世論調査（2026年8月12日発表）。残りは「わからない・その他」の回答のため、3つの数字を足しても100%にはならない。</p>
+            </div>
+
+            <div class="data-card">
+              <h4>全面的な大量送還を実施した場合の産業別労働力損失見込み</h4>
+              <div style="position:relative;height:230px;margin-top:1rem;">
+                <canvas id="laborLossChart"></canvas>
+              </div>
+              <p class="chart-note">出典：American Immigration Council「Mass Deportation」レポート。建設業・農業は労働者の8人に1人（約12.5%）、ホスピタリティ業は14人に1人（約7%）を失うと試算されている。</p>
+            </div>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">4.6倍</div>
+              <div class="stat-desc">内部摘発数の増加率（前政権比、Deportation Data Project）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">3割超</div>
+              <div class="stat-desc">送還された人のうち、犯罪歴がない人の割合（American Immigration Council）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">1.1〜1.7兆ドル</div>
+              <div class="stat-desc">全面的な大量送還が実施された場合のGDP（国内総生産）減少の試算（American Immigration Council）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">41%</div>
+              <div class="stat-desc">「重罪者のみ送還」を支持する割合。三つの立場の中で最多（Economist/YouGov、2026年8月）</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — この先、対立はどこへ向かうのか</h2>
+
+          <p style="font-size:0.78rem;color:var(--text-dim);letter-spacing:0.02em;margin-bottom:0.8rem;">※ ここから先は、ここまでの事実にもとづく筆者個人の見解です。</p>
+          <p class="lead">この先の展開を、摘発の規模、手法の変化、そして議会が動くかどうかという3つの視点から予想する。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">① 摘発の規模は、当面縮まらないと見られる</div>
+            <div class="insight-text">
+              政権は2029年までにICE・国境警備の予算を1,700億ドル増やし、11万6,000人分の拘束施設を整備する計画を進めている。これだけの設備投資を終えたあとで規模を縮小すれば、今度は「税金の無駄遣いだった」という別の批判を招きかねない。世論の支持が落ちていることと、拘束インフラが稼働を続けることは、当面は両立していくと考えられる。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">② 派手な摘発は減っても、件数そのものは増え続ける可能性が高い</div>
+            <div class="insight-text">
+              2026年9月8日の分析によると、6〜7月のICEは都市部での大規模な一斉摘発を控える一方で、地元警察と連携する制度を通じた逮捕を増やし、摘発件数そのものは過去最多を更新していた。11月には中間選挙も控えている。ニュースになりやすい大規模作戦を目立たせないまま、実績の数字だけを積み増していく運用が、今後も続く可能性がある。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">③ 業界ごとの例外は広がっても、移民制度そのものの見直しは近いうちには実現しないだろう</div>
+            <div class="insight-text">
+              農業労働者向けのH-2Aビザ改革法案は、「不法滞在者は例外なく送還する」という原則を掲げながら、経済的な打撃が大きい産業だけを個別に例外扱いする対応の一例だ。建設業やホスピタリティ業も農業と同水準の労働力損失が見込まれており、同じような業界別の例外が今後広がる可能性がある。一方、世論調査で最多だった「重罪者のみ送還」という中間的な立場を法律に反映し、不法滞在者の扱いを一律に定め直すような制度改革は、超党派の合意が必要な政策分野として過去に何度も試みられながら実現してこなかった経緯があり、近いうちに動く見通しは立っていない。
+            </div>
+          </div>
+
+          <p class="closing">
+            つまり、この対立が「賛成か反対か」の決着によって解消される見通しは薄い。摘発の規模と手法は現状のまま続き、経済的な痛みが大きい業界から順に、個別の例外が積み重なっていく——それが、ここまでの事実から見えてくる、もっとも起こりやすい展開だ。
+          </p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-deportation-divide-hearing-room.jpg" alt="誰もいない議会の公聴会室。並んだ木製の机と椅子に、窓から差し込む柔らかな光が当たっている" loading="lazy">
+            <figcaption>対立の決着をつけるはずの議会は、今のところ動いていない。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://www.americanimmigrationcouncil.org/blog/ice-arrest-statistics-americans-noncriminals/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">American Immigration Council — ICE Arrest Statistics</div>
+                <div class="source-desc">摘発者のうち無犯罪歴者が占める割合や、ホーマン氏の発言などをまとめた記事。</div>
+                <div class="source-country">【移民政策を専門とする非営利団体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://deportationdata.org/analysis/immigration-enforcement-first-nine-months-trump.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Deportation Data Project — Immigration Enforcement in the First Nine Months</div>
+                <div class="source-desc">政権発足後9か月間の摘発データを分析した集計。内部摘発・街頭逮捕の増加率の出典。</div>
+                <div class="source-country">【学術機関による移民データ分析プロジェクト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.americanimmigrationcouncil.org/report/mass-deportation/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">American Immigration Council — Mass Deportation レポート</div>
+                <div class="source-desc">大量送還がもたらすGDP・税収・産業別労働力への影響を試算したレポート。</div>
+                <div class="source-country">【移民政策を専門とする非営利団体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://reason.com/2026/09/14/alligator-alcatraz-held-detainees-in-small-metal-cages-inspector-general-report-finds/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Reason — 'Alligator Alcatraz' held detainees in small metal cages</div>
+                <div class="source-desc">拘束施設の環境に関する監察官報告書の内容を報じた記事。</div>
+                <div class="source-country">【アメリカの政治専門メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.newsweek.com/republican-bill-seeks-major-overhaul-of-h-2a-visas-12177090" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Newsweek — Republican Bill Seeks Major Overhaul of H-2A Visas</div>
+                <div class="source-desc">農業労働者向けビザ制度を40年ぶりに見直す超党派法案に関する報道。</div>
+                <div class="source-country">【アメリカの大手ニュース誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aclu.org/press-releases/federal-court-orders-ice-to-provide-people-detained-access-to-legal-counsel-at-alligator-alcatraz-detention-facility" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ACLU — Federal Court Orders ICE to Provide People Detained Access to Legal Counsel</div>
+                <div class="source-desc">拘束施設の収容者への弁護士アクセスを保障する仮命令についての公式発表。</div>
+                <div class="source-country">【人権擁護団体の公式発表】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.cbsnews.com/news/cbs-news-poll-trump-deportation-program-prices/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">CBS News — CBS News poll finds support for Trump's deportation program falls</div>
+                <div class="source-desc">送還政策への支持率が2月から7月にかけて低下したことを示す世論調査報道。</div>
+                <div class="source-country">【アメリカの大手ニュースメディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.umass.edu/news/article/new-umass-poll-finds-continued-partisan-division-and-erosion-support-president-trumps" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">UMass Amherst — New UMass Poll Finds Continued Partisan Division</div>
+                <div class="source-desc">2026年3月実施、送還対応への不支持が54%に達したという世論調査の公式発表。</div>
+                <div class="source-country">【大学の世論調査機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://news.gallup.com/poll/692522/surge-concern-immigration-abated.aspx" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Gallup — Surge in U.S. Concern About Immigration Has Abated</div>
+                <div class="source-desc">2026年6月調査、トランプ氏の移民対応への支持率35%・不支持62%を報告。</div>
+                <div class="source-country">【世論調査を専門とする機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://deportationdata.org/analysis/immigration-arrests-in-2026.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Deportation Data Project — Understanding the Summer 2026 Surge in ICE Arrests</div>
+                <div class="source-desc">2026年9月8日公表。夏の摘発急増と、無犯罪歴者の割合が過去最高水準になったことの分析。</div>
+                <div class="source-country">【学術機関による移民データ分析プロジェクト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.jetro.go.jp/biznews/2025/07/bb3c70a10726f9a5.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ジェトロ — トランプ米政権の移民摘発対応に不支持が56％、世論調査(米国)</div>
+                <div class="source-desc">2026年1〜6月の国外退去者数（約59万人）を含む、移民摘発対応に関する報道。</div>
+                <div class="source-country">【日本貿易振興機構の海外ニュース】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>各陣営の視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/immigration/index.html">移民政策</a></div>
+          <div>2026年9月19日</div>
+          <div style="margin-top:0.5rem;">3つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/immigration/index.html">移民政策一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 不法移民への対応、世論の内訳（横棒）
+  (function() {
+    var ctx = document.getElementById('opinionChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['全員即時送還', '重罪者のみ送還', '全員に滞在許可'],
+        datasets: [{
+          // 出典：Economist/YouGov世論調査（2026年8月12日発表）
+          // 全員即時送還=24%／重罪者のみ送還=41%／全員に滞在許可=6%
+          data: [24, 41, 6],
+          backgroundColor: ['rgba(196,168,130,0.55)', 'rgba(196,168,130,0.85)', 'rgba(154,180,196,0.55)'],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 4, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.x + '%'; } } }
+        },
+        scales: {
+          x: { min: 0, max: 50, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + '%'; } } },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // 産業別の労働力損失見込み（横棒）
+  (function() {
+    var ctx = document.getElementById('laborLossChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['建設業・農業', 'ホスピタリティ業'],
+        datasets: [{
+          // 出典：American Immigration Council「Mass Deportation」レポート
+          // 建設業・農業＝労働者の8人に1人（約12.5%）／ホスピタリティ業＝14人に1人（約7%）
+          data: [12.5, 7],
+          backgroundColor: 'rgba(196,168,130,0.85)',
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 4, barPercentage: 0.5
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.x + '%'; } } }
+        },
+        scales: {
+          x: { min: 0, max: 20, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + '%'; } } },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
