@@ -343,7 +343,7 @@
               <div class="timeline-dot"></div>
               <div class="timeline-content">
                 <div class="timeline-date">2025年8月 ― テキサス州、任期途中で選挙区の地図を書き換え</div>
-                <p>トランプ大統領の要請を受け、共和党が多数派のテキサス州議会は、10年に一度の国勢調査を待たずに下院の選挙区地図を書き換えた。新しい地図は共和党に有利な形に境界を引き直したもので、この変更だけで共和党が最大5議席を上積みできると見られていた。</p>
+                <p>トランプ大統領の要請を受け、共和党が多数派のテキサス州議会は、10年に一度の国勢調査を待たずに下院の選挙区地図を書き換えた。狙われたのはヒューストン・ダラス・南部テキサスにある民主党優位の5つの選挙区だ。具体的には、黒人など特定の人種の住民が多い地域を一つの選挙区に囲い込んでしまう手法と、同じような住民をあえて複数の選挙区に分散させて、どの選挙区でも少数派にしてしまう手法が使われた。テキサスの下院議席(38議席)は当時共和党25・民主党12だったが、この変更によって共和党は最大30議席まで増やせると見られていた。</p>
               </div>
             </div>
 
@@ -367,7 +367,7 @@
               <div class="timeline-dot"></div>
               <div class="timeline-content">
                 <div class="timeline-date">2025年12月5日 ― 連邦最高裁判所、地裁判決の効力を一時停止。テキサスは新地図を使えることに</div>
-                <p>連邦地方裁判所は、この新しい地図を「使ってはいけない」と命じていた。テキサス州の求めに応じ、連邦最高裁判所は6対3の判断で、その命令の効力を一時的に止めた。候補者の届け出締め切りが迫っていたこともあり、この決定によって2026年の選挙はテキサスに有利な新地図で行われる見通しになった。</p>
+                <p>連邦地方裁判所は、この新しい地図を「使ってはいけない」と命じていた。テキサス州の求めに応じ、連邦最高裁判所は6対3の判断で、その命令の効力を一時的に止めた。候補者の届け出締め切りが迫っていたこともあり、この決定によって2026年の選挙は共和党に有利なテキサスの新地図（民主党優位の選挙区の住民構成を組み替えた地図）で行われる見通しになった。</p>
               </div>
             </div>
 
@@ -524,7 +524,15 @@
         <section class="section" id="sec-data">
           <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 歴史のパターンと、今の世論調査</h2>
 
-          <p class="lead">中間選挙には、大統領の支持率と議席の増減をめぐる長年のパターンがある。そのパターンと、投票日6週間前の世論調査を並べて見る。</p>
+          <p class="lead">中間選挙には、大統領の支持率と議席の増減をめぐる長年のパターンがある。まず現在の議席構成を確認したうえで、そのパターンと投票日6週間前の世論調査を並べて見る。</p>
+
+          <div class="data-card" style="margin-bottom:1.6rem;">
+            <h4>下院・上院の現在の議席構成</h4>
+            <div style="position:relative;height:200px;margin-top:1rem;">
+              <canvas id="chamberCompositionChart"></canvas>
+            </div>
+            <p class="chart-note">点線は過半数ライン（50%）。下院は共和党218・民主党214・無所属1・欠員2（無所属は共和党会派に残留）、上院は共和党53・民主党45・無所属2（無所属は民主党会派）。2026年9月時点。出典：米下院プレスギャラリー「Party Breakdown」、米上院「Party Division」。</p>
+          </div>
 
           <div class="data-grid">
             <div class="data-card">
@@ -550,8 +558,8 @@
               <div class="stat-desc">接戦とされる下院選挙区の数（民主党22・共和党20が保有、出典：Ballotpedia）</div>
             </div>
             <div class="stat-strip-item">
-              <div class="stat-num">37%</div>
-              <div class="stat-desc">トランプ大統領の経済政策への支持率（2026年、複数の世論調査平均）</div>
+              <div class="stat-num">34%</div>
+              <div class="stat-desc">トランプ大統領の経済政策への支持率（CBS News/YouGov調査、2026年9月8〜11日実施）</div>
             </div>
             <div class="stat-strip-item">
               <div class="stat-num">民主党+7.5pt</div>
@@ -572,7 +580,7 @@
 
           <div class="insight-box">
             <div class="insight-title">① 下院は逆転、上院はねじれで終わる可能性が高い</div>
-            <div class="insight-text">支持率が50%を下回る大統領は、中間選挙で平均37議席を失ってきた。トランプ大統領の経済政策への支持率は37%にとどまり、世論調査でも民主党が優勢だ。わずか3議席差の下院は、民主党が奪還する可能性が高いとみている。一方、上院で必要な4議席の入れ替えは下院よりハードルが高い。最も起こりやすいのは、下院だけ多数派が入れ替わる「ねじれ」だろう。</div>
+            <div class="insight-text">支持率が50%を下回る大統領は、中間選挙で平均37議席を失ってきた。トランプ大統領の経済政策への支持率は34%にとどまり、世論調査でも民主党が優勢だ。わずか3議席差の下院は、民主党が奪還する可能性が高いとみている。一方、上院で必要な4議席の入れ替えは下院よりハードルが高い。最も起こりやすいのは、下院だけ多数派が入れ替わる「ねじれ」だろう。</div>
           </div>
 
           <div class="insight-box">
@@ -598,6 +606,20 @@
           <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
 
           <div class="sources-grid">
+            <a class="source-item" href="https://pressgallery.house.gov/member-data/party-breakdown" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">米下院プレスギャラリー — Party Breakdown</div>
+                <div class="source-desc">下院の現在の政党別議席数（共和党218・民主党214・無所属1・欠員2）の公式集計。</div>
+                <div class="source-country">【米下院公式】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.senate.gov/history/partydiv.htm" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">米上院 — Party Division</div>
+                <div class="source-desc">上院の現在の政党別議席数（共和党53・民主党45・無所属2）の公式集計。</div>
+                <div class="source-country">【米上院公式】</div>
+              </div>
+            </a>
             <a class="source-item" href="https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections" target="_blank" rel="noopener">
               <div class="source-info">
                 <div class="source-name">Wikipedia（英語版） — 2026年アメリカ下院選挙</div>
@@ -629,8 +651,15 @@
             <a class="source-item" href="https://www.brookings.edu/articles/gop-midterm-prospects-darken-as-trump-approval-falls/" target="_blank" rel="noopener">
               <div class="source-info">
                 <div class="source-name">Brookings — トランプ支持率の低下と共和党の中間選挙見通し</div>
-                <div class="source-desc">経済運営への支持率が37%にとどまるなど、支持率低下が共和党の議席防衛にとって逆風になっているとする分析。</div>
+                <div class="source-desc">支持率低下が共和党の議席防衛にとって逆風になっているとする分析。</div>
                 <div class="source-country">【シンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.cbsnews.com/news/poll-trump-battleground-tracker-house-control-2026-midterm-elections/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">CBS News/YouGov — トランプ大統領の経済政策への支持率34%</div>
+                <div class="source-desc">2026年9月8〜11日実施、成人2,460人対象の世論調査。経済34%・インフレ27%への支持率、下院投票の意向54対46という結果。</div>
+                <div class="source-country">【米大手メディア】</div>
               </div>
             </a>
             <a class="source-item" href="https://www.foxnews.com/politics/fox-news-power-rankings-whats-economy" target="_blank" rel="noopener">
@@ -750,6 +779,73 @@
 
 <script src="../../../assets/js/main.js"></script>
 <script>
+  // 下院・上院の現在の議席構成（政党別・積み上げ横棒）
+  (function() {
+    var ctx = document.getElementById('chamberCompositionChart');
+    if (!ctx) return;
+    var majorityLinePlugin = {
+      id: 'majorityLine',
+      afterDraw: function(chart) {
+        var xScale = chart.scales.x;
+        var yScale = chart.scales.y;
+        var x = xScale.getPixelForValue(50);
+        var c = chart.ctx;
+        c.save();
+        c.beginPath();
+        c.moveTo(x, yScale.top);
+        c.lineTo(x, yScale.bottom);
+        c.lineWidth = 1.5;
+        c.strokeStyle = 'rgba(230,230,230,0.55)';
+        c.setLineDash([4, 3]);
+        c.stroke();
+        c.restore();
+      }
+    };
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['下院（435議席）', '上院（100議席）'],
+        datasets: [
+          {
+            label: '共和党',
+            // 出典：米下院プレスギャラリー「Party Breakdown」（2026年9月時点）218議席／435=50.1%
+            // 米上院「Party Division」（2026年9月時点）53議席／100=53%
+            data: [50.1, 53],
+            backgroundColor: 'rgba(184,120,104,0.85)',
+            borderColor: 'transparent', borderWidth: 0, stack: 's'
+          },
+          {
+            label: '民主党',
+            // 下院214議席／435=49.2%、上院45議席／100=45%
+            data: [49.2, 45],
+            backgroundColor: 'rgba(128,172,216,0.85)',
+            borderColor: 'transparent', borderWidth: 0, stack: 's'
+          },
+          {
+            label: 'その他（無所属・欠員）',
+            // 下院：無所属1＋欠員2＝3議席／435=0.7%、上院：無所属2議席／100=2%
+            data: [0.7, 2],
+            backgroundColor: 'rgba(150,150,150,0.55)',
+            borderColor: 'transparent', borderWidth: 0, stack: 's'
+          }
+        ]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: true, position: 'bottom', labels: { color: '#8890a0', font: { size: 10 }, boxWidth: 12, padding: 12 } },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.dataset.label + ' ' + c.parsed.x + '%'; } } }
+        },
+        scales: {
+          x: { stacked: true, min: 0, max: 100, title: { display: true, text: '議席の割合（%）', color: '#8890a0', font: { size: 10 } }, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + '%'; } } },
+          y: { stacked: true, grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      },
+      plugins: [majorityLinePlugin]
+    });
+  })();
+
   // 大統領支持率と中間選挙での下院議席減（平均）
   (function() {
     var ctx = document.getElementById('seatLossChart');
