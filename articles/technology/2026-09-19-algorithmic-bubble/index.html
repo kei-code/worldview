@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="同じニュースでも、あなたと友達のスマホには違う投稿が並ぶ。推薦アルゴリズムは嘘を混ぜなくても、並べ替えるだけで見える世界を変える。フィルターバブルは人の考えを本当に変えているのか、5つの視点で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/technology/2026-09-19-algorithmic-bubble/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="あなた用に作られた世界 — おすすめ表示は、人の考えまで変えるのか — WorldView">
+  <meta property="og:description" content="嘘を混ぜなくても、並べ替えるだけで見える世界は変わる。フィルターバブルは人の考えを本当に変えているのか、5つの視点で読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/technology/2026-09-19-algorithmic-bubble/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/algorithmic-bubble-hero-two-screens.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="あなた用に作られた世界 — おすすめ表示は、人の考えまで変えるのか — WorldView">
+  <meta name="twitter:description" content="同じニュースでも、あなたと友達のスマホには違う投稿が並ぶ。フィルターバブルは人の考えを本当に変えているのか、5つの視点で読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/algorithmic-bubble-hero-two-screens.jpg">
+  <title>あなた用に作られた世界 — おすすめ表示は、人の考えまで変えるのか — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色はテクノロジーの --accent-tech（青）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/algorithmic-bubble-hero-two-screens.jpg');
+      background-size: cover; background-position: center 42%;
+      filter: brightness(1.10) contrast(1.03) saturate(1.02);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.30) 0%, rgba(14,17,23,0.50) 45%, rgba(14,17,23,0.88) 100%);
+    }
+    .article-hero.has-image .container {
+      position: relative; z-index: 1; width: 100%; transform: translateY(-24px);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b6c1cd; margin-top: 1.5rem; max-width: 580px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent-tech); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent-tech) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent-tech) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent-tech) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent-tech); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       シグネチャー：フロストガラス
+       ========================================================== */
+    .article-body .perspective-card,
+    .article-body .insight-box,
+    .article-body .data-card {
+      background: rgba(56,64,78,0.35);
+      border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    /* ---- perspective-card ---- */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+    .article-body .perspective-card { padding: 1.5rem 1.6rem 1.6rem; }
+    .article-body .perspective-card:hover {
+      transform: translateY(-2px); box-shadow: var(--shadow-lg);
+      background: rgba(56,64,78,0.48); border-color: rgba(255,255,255,0.16);
+    }
+    .article-body .perspective-card::before {
+      background: linear-gradient(90deg, transparent 0%, var(--accent-tech) 50%, transparent 100%);
+    }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .article-body .compare-table {
+      background: rgba(56,64,78,0.35); border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    }
+    .article-body .compare-table th { background: rgba(255,255,255,0.04); border-bottom: 2px solid var(--accent-tech); }
+    .article-body .compare-table tr:hover td { background: rgba(255,255,255,0.05); }
+
+    /* ---- タイムライン（フラット・日付見出し統合型） ---- */
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent-tech); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+    .article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- data-card ---- */
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .article-body .data-card:hover { border-color: rgba(255,255,255,0.18); }
+    .article-body .data-card h4 {
+      font-size: 0.92rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.8rem; line-height: 1.65; }
+    /* 注目の数字カード（data-gridの3枚目に全幅で置く） */
+    .article-body .data-card.spotlight-card { grid-column: 1 / -1; }
+    .mini-stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem 1.4rem; }
+    .mini-stat-num { font-size: 1.35rem; font-weight: 800; color: var(--accent-tech); line-height: 1.25; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
+    .mini-stat-desc { font-size: 0.76rem; color: var(--text-dim); line-height: 1.65; }
+
+    /* ---- 情報源 ---- */
+    .article-body .sources-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+    .article-body a.source-item {
+      background: rgba(56,64,78,0.28); border: 1px solid rgba(255,255,255,0.08);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      color: inherit; text-decoration: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .article-body a.source-item:hover { border-color: var(--accent-tech); background: rgba(56,64,78,0.42); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent-tech); outline-offset: 2px; }
+
+    /* ---- この記事の問い ---- */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(128,172,216,0.06);
+      border: 1px solid rgba(128,172,216,0.22);
+      box-shadow: 0 0 40px 10px rgba(128,172,216,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent-tech); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    /* ---- 用語の整理 ---- */
+    .term-box {
+      margin: 2.4rem 0; padding: 1.2rem 1.4rem 1.3rem;
+      background: rgba(128,172,216,0.05);
+      border: 1px solid rgba(128,172,216,0.18);
+      border-radius: var(--radius);
+    }
+    .term-box::before {
+      content: '用語の整理'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent-tech); margin-bottom: 0.7rem;
+    }
+    .term-box dl { margin: 0; }
+    .term-box dt { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-top: 0.7rem; }
+    .term-box dt:first-child { margin-top: 0; }
+    .term-box dd { margin: 0.25rem 0 0; font-size: 0.87rem; line-height: 1.8; color: var(--text-muted); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent-tech); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.4rem; font-weight: 700; color: var(--accent-tech); line-height: 1.25; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    /* ---- 深掘り（フロストガラス） ---- */
+    .article-body .insight-box { padding: 1.4rem 1.6rem; margin-bottom: 1.6rem; }
+    .article-body .insight-box:hover { border-color: rgba(255,255,255,0.16); }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .disclaimer { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 1.6rem; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* 情報源リンクのリセット */
+    a.source-item { color: inherit; text-decoration: none; }
+    a.source-item:hover { border-color: var(--accent-tech); }
+
+    /* ==========================================================
+       アクセシビリティ・レスポンシブ
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body .timeline-content,
+      .article-body .insight-box,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .article-body .data-card.spotlight-card { grid-column: 1 / -1; }
+      .mini-stat-grid { grid-template-columns: repeat(2, 1fr); }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">テクノロジー</span>
+      <span class="date">2026年9月19日</span>
+    </div>
+    <h1 class="article-title">あなた用に作られた世界<br>— おすすめ表示は、人の考えまで変えるのか</h1>
+
+    <div class="hero-deck">
+      友達とあなたのスマートフォンには、同じニュースでもまったく違う投稿が並ぶ。誰かが情報を書き換えているわけではない。<span class="deck-accent">見せる順番を変えるだけで、見える世界そのものが変わってしまう。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">SNS 54% ＞ ニュースサイト 51%</span>
+      <span class="hero-pill">SNSのニュースを信頼 22%</span>
+      <span class="hero-pill">制裁金 最大で世界売上の6%</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 見ているものが、そもそも違う</h2>
+
+          <p class="lead">大きなニュースが流れた日を思い浮かべてほしい。友達とあなたは、同じような機種のスマートフォンを持っている。でも、アプリを開くと、画面に並ぶ投稿はまったく違う。</p>
+
+          <p class="lead">友達の画面には、その出来事を批判する投稿が並ぶ。あなたの画面には、擁護する投稿が並ぶ。どちらの投稿にも、嘘は書かれていない。並ぶ順番が違うだけだ。</p>
+
+          <p class="lead">この「並び方の違い」を生んでいるのが、<strong>推薦アルゴリズム</strong>と呼ばれる仕組みである。</p>
+
+          <div class="term-box">
+            <dl>
+              <dt>推薦アルゴリズム</dt>
+              <dd>利用者の行動（見た・押した・止まった）から「次に表示するもの」を選び、並べ替える仕組み。</dd>
+              <dt>フィード</dt>
+              <dd>アプリを開いたときに流れてくる投稿の一覧。推薦アルゴリズムが並べ替えているのは、このフィードである。</dd>
+              <dt>フィルターバブル</dt>
+              <dd>アルゴリズムが検索履歴やクリック履歴を学習し、その人にとって見たい情報が優先して表示され、合わない情報から隔てられる現象。</dd>
+              <dt>エコーチェンバー</dt>
+              <dd>自分と似た関心の人をフォローした結果、発信すると自分と似た意見ばかりが返ってくる状態。</dd>
+              <dt>ターゲティング</dt>
+              <dd>年齢・地域・関心などの推定にもとづき、人ごとに違う広告や投稿を届けること。</dd>
+            </dl>
+          </div>
+
+          <p class="lead">推薦アルゴリズムは、情報の中身を書き換えているわけではない。すでにある投稿の中から、どれを先に見せるかを決めているだけである。人は上から順に見て、どこかでやめる。<strong>だから、順番を決めることは、何を見せて何を見せないかを決めることに近い。</strong></p>
+
+          <div class="article-question">
+            <p>見えるものが人によって違うことは、はっきりしている。では、それは人の考えそのものまで変えているのか。研究者の答えは、いまも割れている。</p>
+          </div>
+
+          <div class="label-eyebrow">3つの論点</div>
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">見ているものが、そもそも違う</div>
+              <div class="factor-desc">同じ出来事でも、表示される投稿の種類は利用者ごとに違う。同じ話題を話しているつもりでも、それぞれが読んできた投稿が違えば、議論はかみ合わなくなる。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">感情を動かす投稿ほど、伸びやすい</div>
+              <div class="factor-desc">順位づけの計算方法は、利用者の反応を数値化して優先順位を決める。強い感情を呼ぶ投稿ほど反応が集まりやすく、結果として上位に来やすい。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">効果を確かめるには、企業のデータが要る</div>
+              <div class="factor-desc">並べ替えが人の考えをどれだけ変えるかを調べるには、誰が何を見たかというデータが必要になる。そのデータの大半は、企業だけが持っている。</div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/algorithmic-bubble-core-feed-closeup.jpg" alt="木のテーブルに並べて置かれた2台のスマートフォンを接写した写真。どちらの画面も投稿の一覧で埋まっているが、並んでいる内容は互いに違う" loading="lazy">
+            <figcaption>同じアプリでも、画面に並ぶ投稿は一人ひとり違う。並べ替えているのは、あなたが見た・押した・止まった、その積み重ねだ。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 疑問から検証、そして規制へ</h2>
+
+          <p class="lead">推薦アルゴリズムをめぐる議論は、この15年で大きく動いてきた。研究者が疑問を投げかけ、内部の告発者が仕組みを明かし、規制当局が動き出す——その流れを追う。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2011年 ― 「フィルターバブル」ということばが生まれる</div>
+                <p>アメリカの活動家イーライ・パリサーが、著書と講演で「フィルターバブル」ということばを広めた。検索やSNSが人ごとに表示を変えることで、自分の考えに合う情報だけに包まれてしまう、という指摘だった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2018年1月 ― Facebook、「意味のあるつながり」を重視する方針へ</div>
+                <p>Facebookが、投稿の並び順を決める計算方法を変更した。内部文書によれば、「いいね」は1点として計算される一方、超いいね・大切だね・うける・すごいね・悲しいね・ひどいねといった感情を示すリアクションは、すべて5点として計算された。「怒り」だけが特別に重かったわけではなく、<strong>感情を示す反応すべてが重かった</strong>。結果として、強い感情や対立を呼ぶ投稿が伸びやすくなったと、のちに内部文書と外部研究者が指摘している。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2021年10月 ― 内部文書が流出、順位づけの副作用は社内でも把握されていた</div>
+                <p>Facebookの元社員フランシス・ホーゲンが、10月5日にアメリカ議会の上院公聴会で証言し、あわせて大量の社内文書が公開された。そこには自社で行った調査が含まれていた。<strong>いまの順位づけが対立をあおる投稿を広げている</strong>ことを社内でも把握しながら、それを抑えるための変更案の一部は、利用時間や反応の量が減ることを理由に採用されていなかった、という内容である。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2023年7月 ― フィードを時間順に戻す実験、意見の隔たりは変わらず</div>
+                <p>Metaと外部研究者による共同研究が、科学誌ScienceとNatureに掲載された。2020年のアメリカ大統領選挙のとき、Metaは利用者のフィードを3か月間、おすすめ順から投稿された時間順に戻す実験を行った。その結果、利用時間と反応の量は大きく減った。穏健な立場の友人の投稿や、左右の意見が混ざった発信源の投稿も増えた。それでも、争点への態度や相手陣営への感情といった<strong>政治的な分極（賛成派と反対派の隔たりが広がること）は、ほとんど変わらなかった</strong>。同時に発表された別の論文は、アルゴリズムを通した後の表示が、政治的な立場のうえで偏っていたことも示している。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年9月26日 ― 研究者5人、実験の前提に疑問を呈する</div>
+                <p>研究者5人が科学誌Scienceに書簡を寄せた。上の実験の期間は、2020年大統領選の直後にあたる。この時期のMetaは、選挙をめぐる偽情報の拡散を抑えるため、63の緊急措置をフィードに導入していた。ところが論文は、それを説明していなかった。<strong>比較対象だった「普通のフィード」自体が、普段より安全側に調整されていた可能性がある</strong>、という指摘だった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年10月 ― アムネスティ、危険な誘導は解消されていないと報告</div>
+                <p>国際人権団体アムネスティ・インターナショナルが、フランスで行った検証結果を公表した。同団体は2023年11月にも、先行調査を公表している。13歳を想定して作った新しいアカウントが心の健康に関心を示すと、<strong>20分以内に、おすすめの半数以上が心の不調に関する動画になった</strong>という内容だった。2025年の再検証でも、その危険は解消されていないとされた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年1月 ― X、推薦アルゴリズムのコードを公開</div>
+                <p>Xが、投稿の表示順を決めるプログラムのコードを公開した。公開されたのは、<strong>AIモデルが「この人はこの投稿にどう反応しそうか」を予測し、点数の高い順に並べる仕組み</strong>だった。かつては「新しい順」「友人の投稿を優先」といった、人が決めた条件で並べていた。その判断が、いまはAIに移っている。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年2月6日 ― 欧州委員会、TikTokの設計に予備的な見解</div>
+                <p>欧州委員会が、TikTokについて予備的な見解を示した。人を使い続けさせる設計が、デジタルサービス法に違反するという内容である。問題とされたのは、終わりのないスクロール・自動再生・プッシュ通知、そして<strong>高度に個人向けへ最適化された推薦システム</strong>だった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年2月18日 ― Xでの実験、意見が保守寄りに動いたと報告</div>
+                <p>科学誌Natureに、Xを対象にした実験の結果が載った。アメリカの利用者4,965人を、おすすめ順のフィードと時間順のフィードに無作為に振り分け、7週間追跡したものである。おすすめ順に切り替えられた人は、政策の優先順位やウクライナ戦争の受け止めなどで、<strong>意見が保守寄りに動いた</strong>。しかも、そのあと時間順に戻しても効果は消えなかった。一方で、感情的な分極と、自分がどの政党寄りかという意識には、はっきりした変化はなかった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年7月10日 ― 欧州委員会、Metaにも同じ見解</div>
+                <p>欧州委員会が、Meta（InstagramとFacebook）についても同じ趣旨の予備的な見解を示した。予備的な見解は、まだ最終的な決定ではない。ただし、このままデジタルサービス法違反が確定すれば、<strong>世界全体の年間売上高の最大6%</strong>にあたる制裁金を科されることがある。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/algorithmic-bubble-timeline-engineer.jpg" alt="深夜のオフィスの写真。広いフロアの照明は落とされ、一人の技術者が4枚のモニターに向かっている。画面にはコードが隙間なく並び、机にはコーヒーのカップが置かれている" loading="lazy">
+            <figcaption>並び順を計算しているのはAIだが、そのAIに何を目指させるかを決めているのは、こうした現場の人間である。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 5つの視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>5つの視点 — 売る側、疑う側、規制する側</h2>
+
+          <p class="lead">この論争には、悪者と被害者だけがいるわけではない。表示する側にも言い分があり、疑う側にも根拠がある。研究者の間でも意見は割れており、規制当局と発信者は、それぞれ別の理由でこの仕組みと向き合っている。5つの立場を、それぞれの言い分のまま並べる。</p>
+
+          <div class="tabs-wrap">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-cards">カードで読む</button>
+              <button class="tab-btn" data-tab="tab-table">表で比べる</button>
+            </div>
+
+            <div class="tab-pane active" id="tab-cards">
+              <div class="perspectives-grid">
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">プラットフォーム企業（Meta・TikTok・X）</span>
+                    <span class="stance-label stance-cautious">反論（影響を否定）</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    利用者が実際に見て、反応した投稿を優先して表示しているだけだと説明する。2023年の共同実験では、フィードをおすすめ順から時間順に戻しても、政治的な分極はほとんど変わらなかった。社会の分断を生んだという証拠はない、というのが基本的な立場である。
+                  </div>
+                  <div class="interests">最大の関心：利用時間と広告収入を保ちながら、規制の対象にされないこと。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">「アルゴリズムが原因」と見る側（人権団体・一部の研究者）</span>
+                    <span class="stance-label stance-hostile">強く批判</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    10代を想定したアカウントで試すと、短時間で有害な動画の連鎖に入り込むと指摘する。アムネスティ・インターナショナルの検証では、13歳を想定した新しいアカウントがメンタルヘルスへの関心を示すと、20分以内におすすめの半数以上がその種の動画になった。机の上で心配しているのではなく、同じ手順を試せば誰でも同じ結果を再現できる、という立場である。2026年2月に発表されたXでの実験も、おすすめ順のフィードが政治的な意見を動かしたと報告している。
+                  </div>
+                  <div class="interests">最大の関心：未成年や弱い立場の利用者を、有害な情報の連鎖から守ること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">「影響は過大評価されている」と見る研究者</span>
+                    <span class="stance-label stance-cautious">慎重</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    社会の分断は、インターネットが広まる前から進んでいたと指摘する。SNSや検索、ニュースアプリを使う人は、使わない人より触れるニュースの発信源が多く、政治的にも多様な情報源に触れていると報告している。2026年のXの実験でも、感情的な分極や、自分がどの政党寄りかという意識までは動かなかった。分断の原因をアルゴリズムだけに求めるのは単純化しすぎだ、という立場である。
+                  </div>
+                  <div class="interests">最大の関心：対策の議論を、根拠のある効果測定にもとづかせること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">規制する側（欧州委員会）</span>
+                    <span class="stance-label stance-supportive">介入を主張</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    個人の好みに合わせない表示方式を、利用者が選べるようにすべきだと主張する。デジタルサービス法第38条は、特に大きなプラットフォームに対し、個人のプロファイルに基づかない表示方式を少なくとも1つ用意する義務を課している。TikTokとMetaについては、人を使い続けさせる設計が同法に違反するという予備的な見解も示した。
+                  </div>
+                  <div class="interests">最大の関心：表示の仕組みを利用者に説明させ、選べる状態をつくること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">発信する側（クリエイター・報道機関）</span>
+                    <span class="stance-label stance-neutral">適応せざるを得ない</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    収益も、投稿がどれだけの人に届くかも、推薦の順位づけしだいで大きく変わる。目立つ投稿をつくろうとするほど、内容は自然と感情を強く動かす方向へ寄っていく。多くの発信者にとって、この仕組みの外で発信を続けるのは現実的ではない、という立場である。
+                  </div>
+                  <div class="interests">最大の関心：収益と影響力を保ちながら、発信を続けること。</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-table">
+              <div style="overflow-x:auto;">
+                <table class="compare-table">
+                  <thead>
+                    <tr><th>立場</th><th>基本スタンス</th><th>主な主張</th><th>最大の関心事</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>プラットフォーム企業</td><td>反論（影響を否定）</td><td>見たいものを見せているだけ</td><td>利用時間と広告収入の維持</td></tr>
+                    <tr><td>「アルゴリズムが原因」と見る側</td><td>強く批判</td><td>有害な動画への誘導は実際に観察できる</td><td>未成年を有害な連鎖から守る</td></tr>
+                    <tr><td>「影響は過大評価」と見る研究者</td><td>慎重</td><td>分断はSNS以前から進んでいた</td><td>根拠のある効果測定</td></tr>
+                    <tr><td>規制する側（欧州委員会）</td><td>介入を主張</td><td>個人に合わせない表示方式を選べるように</td><td>表示の仕組みを説明させること</td></tr>
+                    <tr><td>発信する側</td><td>適応せざるを得ない</td><td>伸びる作り方に合わせるほど内容が偏る</td><td>収益と影響力を保つこと</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/algorithmic-bubble-perspectives-meeting.jpg" alt="ガラス張りの会議室を外から撮った写真。長いテーブルを挟んで、スーツ姿で紙の資料を持つ側と、ラフな服装でノートパソコンを開く側が向き合っている" loading="lazy">
+            <figcaption>表示の仕組みをどこまで見せ、どこまで規制するのか。話し合いは、こうしたテーブルの上で続いている。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ・統計 ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — ニュースの入口は、もう検索やテレビだけではない</h2>
+
+          <p class="lead">世界規模の調査でも、この変化は数字に表れている。人々がニュースに出会う場所は、ニュースサイトからSNSへ移った。そして、そこで読んだニュースを信じている人は、多くない。</p>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>ニュースの入手先（2026年、48の国と地域）</h4>
+              <div style="position:relative;height:230px;margin-top:1rem;">
+                <canvas id="sourceChart"></canvas>
+              </div>
+              <p class="chart-note">「ソーシャルメディア・動画ネットワーク」が、ニュースサイト・アプリを初めて上回った。出典：Reuters Institute（ロイター研究所）『Digital News Report 2026』（48の国と地域・総回答97,520人、2026年6月公表）</p>
+            </div>
+
+            <div class="data-card">
+              <h4>ニュースへの信頼度</h4>
+              <div style="position:relative;height:230px;margin-top:1rem;">
+                <canvas id="trustChart"></canvas>
+              </div>
+              <p class="chart-note">ニュース全体への信頼は、2015年の調査開始以来で最低となった。出典：同上『Digital News Report 2026』</p>
+            </div>
+
+            <div class="data-card spotlight-card">
+              <h4>注目の数字</h4>
+              <div class="mini-stat-grid">
+                <div class="mini-stat">
+                  <div class="mini-stat-num">52%</div>
+                  <div class="mini-stat-desc">18〜24歳のうち、SNS・動画ネットワーク・AIチャットボットが主なニュースの入手経路だと答えた人の割合</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="mini-stat-num">42%</div>
+                  <div class="mini-stat-desc">ニュースを意識的に避けている人の割合（前年から横ばい）</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="mini-stat-num">10%</div>
+                  <div class="mini-stat-desc">AIチャットボットで週1回以上ニュースを見る人の割合（35歳未満では16%）</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="mini-stat-num">6%</div>
+                  <div class="mini-stat-desc">欧州連合のデジタルサービス法違反が確定した場合の、制裁金の上限（世界全体の年間売上高に対する割合）</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 並べ替えは、何を変えたのか</h2>
+
+          <p class="disclaimer">※ ここから先は、ここまでの事実にもとづく筆者個人の見解です。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">①おすすめ表示を止めても、見える世界は元に戻らない</div>
+            <div class="insight-text">
+              2023年のMetaの実験は、フィードを時間順に戻しても政治的な分極は変わらなかったと報告した。2026年のXの実験は、おすすめ順に切り替えた人の意見が保守寄りに動いたと報告した。正反対に見えるが、筆者は矛盾していないと考える。Xの実験で意見が動いたのは、<strong>おすすめ表示を新しく受け取り始めた人たち</strong>だった。おすすめ表示をきっかけに新しいアカウントをフォローすると、そのつながりは、あとでおすすめ表示を止めても残り続ける。影響は表示の仕組みそのものよりも、そこで作られた人間関係のほうに溜まっていく。だとすれば、何年も使ってきた人からおすすめ表示を外しても、見えるものが元どおりになるとは限らない。2023年のMetaの実験で変化が出なかったのも、参加者の多くがすでに何年もおすすめ表示を受け取ってきた人たちで、影響が残ったあとだったからではないか。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">②検証に必要なデータを企業が握る限り、この論争は決着しない</div>
+            <div class="insight-text">
+              推薦アルゴリズムが人の考えをどう変えるかを調べるには、誰が何を見て、どう反応したかというデータが要る。そのデータのほとんどは、企業の内部にしかない。外部の研究者は、企業が許可した範囲でしか検証できない。都合の悪い結果が出そうな実験を、企業がそもそも許可するとは考えにくい。データを企業だけが握っているこの不均衡が続く限り、「影響がある」派と「過大評価だ」派の議論は、いつまでも決着しないだろう。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">③コードを公開すれば、透明になったと言えるのか</div>
+            <div class="insight-text">
+              2026年1月、Xは推薦アルゴリズムのコードを公開した。歓迎すべき一歩だとは思う。ただし、コードを読み解けるのはごく一部の専門家に限られる。しかも、どのように学習させたかというデータや、実際にどんな結果を出しているかという運用実績までは、コードだけでは分からない。「公開した」という事実が、「説明した」ことと同じ扱いにならないよう、注意して見ていく必要がある。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">④「おすすめを切る」という選択肢は、ほとんど使われない</div>
+            <div class="insight-text">
+              欧州連合の規制は、個人向けに最適化されない表示方式を選べるようにすることを義務づけている。制度としては前進だが、実際に選ぶ人がどれだけいるかは別の話だ。時間順の表示は、多くの場合おすすめより見づらく、退屈に感じられる。「選べる」という状態をつくることと、「選ぶ人が増える」ことの間には、大きな距離があると筆者は見ている。
+            </div>
+          </div>
+
+          <p class="closing">
+            推薦アルゴリズムは、一つも嘘を流さずに、何が目に入り、何が目に入らないままで終わるかを決めている。その事実だけは、賛否の両陣営が共有している。残っている問いは、その変化がどれだけ深く、どれだけ長く人の考えに残るかであり、その答えを出すための材料は、いまも企業の手の中にある。規制やコード公開は一歩ではあるが、決着をつける手段ではない。この論争は、しばらく答えの出ないまま続いていくだろう。
+          </p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/algorithmic-bubble-analysis-family-dinner.jpg" alt="夜の食卓を撮った写真。4人が同じテーブルを囲んでいるが、料理にはほとんど手がつけられず、全員がそれぞれのスマートフォンを見つめている" loading="lazy">
+            <figcaption>同じテーブルを囲んでいても、手元に表示されているものは一人ずつ違う。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://www.nature.com/articles/s41586-026-10098-2" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Nature — Xのフィードアルゴリズムの政治的効果を検証した論文</div>
+                <div class="source-desc">アメリカの利用者4,965人をおすすめ順と時間順に無作為に振り分け、7週間追跡した実験。おすすめ順に切り替えた人の政治的意見が保守寄りに動き、その効果はアルゴリズムを止めたあとも残ったと報告した。</div>
+                <div class="source-country">【学術誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.science.org/doi/10.1126/science.abp9364" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Science — フィードを時間順に戻す実験の論文</div>
+                <div class="source-desc">2020年アメリカ大統領選のFacebook・Instagram利用者を対象に、フィードを時間順に戻す3か月間の実験を報告した論文。</div>
+                <div class="source-country">【学術誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.science.org/doi/10.1126/science.ade7138" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Science — アルゴリズム通過後の政治ニュース露出を分析した論文</div>
+                <div class="source-desc">アメリカの利用者2億800万人分の集計データから、アルゴリズムを通した後の表示が、政治的な立場のうえで偏っていたことを示した論文。</div>
+                <div class="source-country">【学術誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.science.org/content/article/study-found-facebook-algorithm-didnt-promote-political-polarization-critics-doubt" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Science（ニュース記事）— 上記研究への批判</div>
+                <div class="source-desc">実験期間中にMetaが導入していた63の緊急措置を論文が説明していなかったという、研究者5人の書簡を紹介した記事。</div>
+                <div class="source-country">【学術誌のニュース欄】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.nature.com/articles/d41586-023-02420-z" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Nature（ニュース記事）— フィード調整は分極の特効薬ではない</div>
+                <div class="source-desc">2023年の一連の実験結果を受け、アルゴリズム調整だけで政治的分極を解消できるわけではないと論じた記事。</div>
+                <div class="source-country">【学術誌のニュース欄】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.amnesty.org/en/latest/news/2025/10/tiktok-steering-children-towards-depressive-and-suicidal-content/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">アムネスティ・インターナショナル — フランスでの検証（2025年10月）</div>
+                <div class="source-desc">未成年を想定したアカウントへの誘導が、2025年時点でも解消されていないと報告した検証結果。</div>
+                <div class="source-country">【国際人権団体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.amnesty.org/en/latest/news/2023/11/tiktok-risks-pushing-children-towards-harmful-content/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">アムネスティ・インターナショナル — 先行調査（2023年11月）</div>
+                <div class="source-desc">13歳を想定したアカウントが、20分以内にメンタルヘルス関連の動画を大量に受け取ったとする先行調査。</div>
+                <div class="source-country">【国際人権団体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://ec.europa.eu/commission/presscorner/detail/en/ip_26_312" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">欧州委員会 — TikTokへの予備的見解（2026年2月6日）</div>
+                <div class="source-desc">TikTokの設計がデジタルサービス法に違反する可能性があるとした予備的な見解の発表。</div>
+                <div class="source-country">【欧州連合の行政機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1579" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">欧州委員会 — Metaへの予備的見解（2026年7月10日）</div>
+                <div class="source-desc">InstagramとFacebookの設計についても、同様の違反の可能性を示した発表。</div>
+                <div class="source-country">【欧州連合の行政機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026/dnr-executive-summary" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ロイター研究所 — 『Digital News Report 2026』要約</div>
+                <div class="source-desc">48の国と地域、総回答97,520人を対象にした年次調査。本記事のデータの主な出典。</div>
+                <div class="source-country">【オックスフォード大学の研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://reutersinstitute.politics.ox.ac.uk/echo-chambers-filter-bubbles-and-polarisation-literature-review" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ロイター研究所 — エコーチェンバーとフィルターバブルの研究レビュー</div>
+                <div class="source-desc">これまでの関連研究を横断的にまとめた文献レビュー。</div>
+                <div class="source-country">【オックスフォード大学の研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r05/html/nd123120.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">総務省 — 令和5年版情報通信白書</div>
+                <div class="source-desc">フィルターバブル・エコーチェンバーの定義を含む解説。</div>
+                <div class="source-country">【日本の行政機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.mozillafoundation.org/en/blog/action-recommended-how-the-digital-services-act-addresses-platform-recommender-systems/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Mozilla財団 — デジタルサービス法が推薦システムに課すもの</div>
+                <div class="source-desc">第27条・第38条を含む、推薦システムに関する規制の内容を解説した記事。</div>
+                <div class="source-country">【非営利のテクノロジー財団】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://knightcolumbia.org/content/understanding-social-media-recommendation-algorithms" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Knight First Amendment Institute — 推薦アルゴリズムの仕組み解説</div>
+                <div class="source-desc">SNSの推薦アルゴリズムが何を根拠に投稿を選ぶかを解説した記事。</div>
+                <div class="source-country">【コロンビア大学の研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.cnn.com/2021/10/27/tech/facebook-papers-meaningful-social-interaction-news-feed-math" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">CNN — 内部文書が示した順位づけの点数計算</div>
+                <div class="source-desc">2018年の方針転換で、感情を示すリアクションが「いいね」の5倍の重みで計算されていたことを報じた記事。</div>
+                <div class="source-country">【アメリカの報道機関】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>5つの視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/technology/index.html">テクノロジー</a></div>
+          <div>2026年9月19日</div>
+          <div style="margin-top:0.5rem;">5つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/technology/index.html">テクノロジー一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // ニュースの入手先（横棒）
+  (function() {
+    var ctx = document.getElementById('sourceChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['SNS・動画ネットワーク', 'テレビ', 'ニュースサイト・アプリ'],
+        datasets: [{
+          // 出典：Reuters Institute for the Study of Journalism, University of Oxford
+          //       「Digital News Report 2026」（48の国と地域・総回答97,520人、2026年6月公表）
+          // https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026/dnr-executive-summary
+          // 原記述：ソーシャルメディア・動画ネットワークからニュースに接する人の割合が54%となり、
+          //         テレビ（52%）、ニュースサイト・アプリ（51%）を初めて上回った。
+          // 記載値をそのまま使用。
+          data: [54, 52, 51],
+          backgroundColor: [
+            'rgba(128,172,216,0.85)',
+            'rgba(128,172,216,0.55)',
+            'rgba(128,172,216,0.55)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.x + '%'; } } }
+        },
+        scales: {
+          x: {
+            min: 0, max: 60,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, stepSize: 20, callback: function(v) { return v + '%'; } }
+          },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // ニュースへの信頼度（横棒）
+  (function() {
+    var ctx = document.getElementById('trustChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['ニュース全体', 'SNS上のニュース', 'AIチャットボットの回答'],
+        datasets: [{
+          // 出典：同上 Reuters Institute「Digital News Report 2026」（2026年6月公表）
+          // 原記述：ニュース全体を信頼すると答えた割合は37%で、2015年の調査開始以来で最低。
+          //         SNS上のニュースへの信頼は22%、AIチャットボットの回答への信頼は20%。
+          // 記載値をそのまま使用。検索エンジンへの信頼度は出典で数値が確認できないため掲載しない。
+          data: [37, 22, 20],
+          backgroundColor: [
+            'rgba(128,172,216,0.85)',
+            'rgba(128,172,216,0.55)',
+            'rgba(128,172,216,0.55)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.x + '%'; } } }
+        },
+        scales: {
+          x: {
+            min: 0, max: 60,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, stepSize: 20, callback: function(v) { return v + '%'; } }
+          },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

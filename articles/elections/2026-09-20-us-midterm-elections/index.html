@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2026年11月3日、投票日まで残り6週間。下院435議席と上院33議席が改選されるアメリカ中間選挙。トランプ政権の政策は止まるのか、続くのか。世論調査・歴史データ・区割り変更の攻防から、5つの立場で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/elections/2026-09-20-us-midterm-elections/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="止められるか、止められないか — アメリカ中間選挙、議会の勢力図はどう変わるか — WorldView">
+  <meta property="og:description" content="投票日まで残り6週間。議会の勢力が変われば、トランプ政権の何が止まり、何がそのまま続くのかを5つの立場で読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/elections/2026-09-20-us-midterm-elections/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/us-midterm-elections-hero-capitol.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="止められるか、止められないか — アメリカ中間選挙、議会の勢力図はどう変わるか — WorldView">
+  <meta name="twitter:description" content="投票日まで残り6週間。議会の勢力が変われば、トランプ政権の何が止まり、何がそのまま続くのかを5つの立場で読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/us-midterm-elections-hero-capitol.jpg">
+  <title>止められるか、止められないか — アメリカ中間選挙、議会の勢力図はどう変わるか — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色は世論・選挙の --accent4（ベージュ）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/us-midterm-elections-hero-capitol.jpg');
+      background-size: cover; background-position: center 45%;
+      filter: brightness(1.12) contrast(1.04) saturate(1.05);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.30) 0%, rgba(14,17,23,0.50) 45%, rgba(14,17,23,0.90) 100%);
+    }
+    .article-hero.has-image .container {
+      position: relative; z-index: 1; width: 100%; transform: translateY(-24px);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b6c1cd; margin-top: 1.5rem; max-width: 600px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent4); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent4) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent4) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent4) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent4); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       シグネチャー：フロストガラス — 記事全体を貫く透明感
+       ========================================================== */
+    .article-body .perspective-card,
+    .article-body .insight-box,
+    .article-body .glossary-card,
+    .article-body .data-card {
+      background: rgba(56,64,78,0.35);
+      border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    /* ---- perspective-card ---- */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+    .article-body .perspective-card { padding: 1.5rem 1.6rem 1.6rem; }
+    .article-body .perspective-card:hover {
+      transform: translateY(-2px); box-shadow: var(--shadow-lg);
+      background: rgba(56,64,78,0.48); border-color: rgba(255,255,255,0.16);
+    }
+    .article-body .perspective-card::before {
+      background: linear-gradient(90deg, transparent 0%, var(--accent4) 50%, transparent 100%);
+    }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .article-body .compare-table {
+      background: rgba(56,64,78,0.35); border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    }
+    .article-body .compare-table th { background: rgba(255,255,255,0.04); border-bottom: 2px solid var(--accent4); }
+    .article-body .compare-table tr:hover td { background: rgba(255,255,255,0.05); }
+
+    /* ---- timeline ---- */
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent4); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+    .article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- data-card ---- */
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .article-body .data-card:hover { border-color: rgba(255,255,255,0.18); }
+    .article-body .data-card h4 {
+      font-size: 0.92rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.8rem; line-height: 1.65; }
+
+    /* ---- 情報源 ---- */
+    .article-body .sources-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+    .article-body a.source-item {
+      background: rgba(56,64,78,0.28); border: 1px solid rgba(255,255,255,0.08);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      color: inherit; text-decoration: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .article-body a.source-item:hover { border-color: var(--accent4); background: rgba(56,64,78,0.42); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent4); outline-offset: 2px; }
+
+    /* ---- この記事の問い ---- */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(196,168,130,0.06);
+      border: 1px solid rgba(196,168,130,0.22);
+      box-shadow: 0 0 40px 10px rgba(196,168,130,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent4); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent4); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- 用語解説（フロストガラス） ---- */
+    .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .article-body .glossary-card { padding: 1rem 1.2rem; }
+    .article-body .glossary-card:hover { border-color: rgba(255,255,255,0.16); }
+    .glossary-term { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .glossary-def { font-size: 0.78rem; color: var(--text-muted); line-height: 1.75; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.4rem; font-weight: 700; color: var(--accent4); line-height: 1.25; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    /* ---- 深掘り（フロストガラス） ---- */
+    .article-body .insight-box { padding: 1.4rem 1.6rem; margin-bottom: 1.6rem; }
+    .article-body .insight-box:hover { border-color: rgba(255,255,255,0.16); }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* ==========================================================
+       アクセシビリティ・レスポンシブ
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body .timeline-content,
+      .article-body .glossary-card,
+      .article-body .insight-box,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .glossary-grid { grid-template-columns: 1fr; gap: 0.7rem; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">世論・選挙</span>
+      <span class="date">2026年9月20日</span>
+    </div>
+    <h1 class="article-title">止められるか、止められないか<br>— アメリカ中間選挙、議会の勢力図はどう変わるか</h1>
+
+    <div class="hero-deck">
+      大統領の任期はあと2年残っているのに、この選挙で大統領の椅子が動くことはない。変わるのは議会の顔ぶれだけだ。<span class="deck-accent">それでも、政権にブレーキをかけられるかどうかは、この6週間で決まる。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">投票日まで6週間</span>
+      <span class="hero-pill">下院はわずか3議席差</span>
+      <span class="hero-pill">世論調査で民主党+6〜8ポイント</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 大統領は変わらないのに、なぜ「審判」と呼ばれるのか</h2>
+
+          <p class="lead">2026年11月3日、投票日まで残り6週間。アメリカでは大統領を選ぶ選挙ではなく、議会を選び直す「中間選挙」が行われる。トランプ大統領の任期は2029年1月まであり、この選挙で大統領の椅子が入れ替わることはない。それでもこの選挙が「大統領への審判」と呼ばれるのには理由がある。</p>
+
+          <p class="lead">アメリカの議会は下院と上院の二つの院からなる。下院は435議席全部、上院は100議席のうち33議席が今回の対象だ。現在は下院・上院とも共和党が多数派を握っている。世論調査では民主党が優勢に立っており、下院はわずか3議席の入れ替えで多数派が逆転する僅差の議席配分になっている。</p>
+
+          <div class="article-question">
+            <p>大統領はまだ2年の任期を残しているのに、なぜこの選挙が「審判」と呼ばれるのか。議会の勢力が変わると、トランプ政権が進める政策のうち、何が止まり、何がそのまま続くのか。</p>
+          </div>
+
+          <div class="label-eyebrow">3つの論点</div>
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">下院：435議席が全部改選、過半数は218</div>
+              <div class="factor-desc">今は共和党が多数派。民主党はあと3議席取れば多数派が入れ替わる、きわめて僅差の勢力図になっている。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">上院：100議席のうち33議席が改選</div>
+              <div class="factor-desc">現在は共和党53・民主党45・無所属2。民主党が多数派になるには4議席の入れ替えが必要で、下院より難しい戦いになる。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">投票日：2026年11月3日</div>
+              <div class="factor-desc">大統領の任期はここでは終わらない。2029年1月まで続く。変わるのは議会の顔ぶれだけだ。</div>
+            </div>
+          </div>
+
+          <p class="lead" style="margin-top:1.8rem;">では、議会の勢力が変わると具体的に何が起きるのか。下院を民主党が奪えば、各委員会の主導権も民主党側に移る。委員会は「召喚状」を使って、政権関係者に証言や書類の提出を強制でき、それを公開の場で問いただす「公聴会」を開くことができる。すでに民主党側は、政権に関わるいくつかの疑問を調べる準備を進めていると報じられている。トランプ大統領一族の事業取引、すでに廃止された政権効率化省（DOGE）が活動していた間に何をしていたか、外国政府から大統領が利益を得ることを禁じる新しい法律——こうした点が調査・立法の対象になるとみられている。一方、共和党が両院を守り切れば、関税や不法移民の強制送還といった今の政策は、議会からのブレーキなしで続くことになる。</p>
+
+          <div class="label-eyebrow">用語解説</div>
+          <div class="glossary-grid">
+            <div class="glossary-card">
+              <div class="glossary-term">中間選挙</div>
+              <div class="glossary-def">大統領の4年の任期のうち、ちょうど2年が経過した時点で行われる議会の選挙。大統領を選ぶ選挙ではない。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">下院（House of Representatives）</div>
+              <div class="glossary-def">435人の議員からなる議会の一院。州の人口に応じて議席数が決まり、全員が2年ごとに改選される。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">上院（Senate）</div>
+              <div class="glossary-def">100人の議員からなる議会のもう一院。人口に関係なく各州2人で、任期は6年。約3分の1が2年ごとに改選される。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">過半数</div>
+              <div class="glossary-def">法律を可決したり委員会を仕切ったりするために必要な、議席の半分より多い数。下院は218、上院は51（同数なら副大統領が決定票を投じる）。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">区割りの変更（ゲリマンダー）</div>
+              <div class="glossary-def">自分の政党に有利になるよう、選挙区の境界線を書き換えること。本来は10年ごとの国勢調査後に行うのが通例だが、任期の途中で行われることもある。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">召喚状・公聴会</div>
+              <div class="glossary-def">議会の委員会が証人の出席や書類の提出を強制的に求める権限（召喚状）と、それを使って行う公開の聴取（公聴会）。政権の不正やミスを調べる主な手段になる。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">スイング層</div>
+              <div class="glossary-def">共和党・民主党のどちらか一方に決まった支持を持たず、そのときどきの争点で投票先を変える有権者。選挙の勝敗を左右しやすい。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">ジェネリックバロット</div>
+              <div class="glossary-def">「下院選挙で共和党・民主党どちらの候補に投票するか」を、具体的な候補者名を出さずに尋ねる世論調査。全米の勢いを測る指標として使われる。</div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-midterm-elections-core-hearing.jpg" alt="議会の公聴会室、証人席に並ぶマイクと書類の山のクローズアップ、奥にぼやけた委員会の壇" loading="lazy">
+            <figcaption>下院の多数派が変われば、召喚状と公聴会という調査の武器が持ち主を変える。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 地図の書き換え合戦から投票日まで</h2>
+
+          <p class="lead">今回の中間選挙をめぐっては、投票そのものより先に「選挙区の地図」をめぐる攻防が続いていた。テキサス州・カリフォルニア州・ミズーリ州、それぞれの動きを中心に追う。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年8月 ― テキサス州、任期途中で選挙区の地図を書き換え</div>
+                <p>トランプ大統領の要請を受け、共和党が多数派のテキサス州議会は、10年に一度の国勢調査を待たずに下院の選挙区地図を書き換えた。新しい地図は共和党に有利な形に境界を引き直したもので、この変更だけで共和党が最大5議席を上積みできると見られていた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年11月4日 ― カリフォルニア州、対抗する新地図を住民投票で承認。同日、バージニア州とニュージャージー州の知事選で民主党が勝利</div>
+                <p>カリフォルニア州は、テキサスの動きに対抗する目的で住民投票「プロポジション50」を実施し、64%の賛成で民主党に有利な新しい選挙区地図を承認した。同じ日に行われたバージニア州とニュージャージー州の知事選では、いずれも民主党の候補が勝利し、翌年の中間選挙を占う最初の指標として注目された。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年11月18日 ― 連邦地方裁判所、テキサスの新地図を「人種的な区割り変更」と認定し使用を差し止め</div>
+                <p>3人の判事のうち1人はトランプ大統領自身が任命した人物だったが、裁判所はテキサスの新しい地図について、人種を理由にした不当な区割り変更だと判断した。判決は、2026年の選挙を2021年に作られた古い地図で行うようテキサス州に命じた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年12月5日 ― 連邦最高裁判所、地裁判決の効力を一時停止。テキサスは新地図を使えることに</div>
+                <p>連邦地方裁判所は、この新しい地図を「使ってはいけない」と命じていた。テキサス州の求めに応じ、連邦最高裁判所は6対3の判断で、その命令の効力を一時的に止めた。候補者の届け出締め切りが迫っていたこともあり、この決定によって2026年の選挙はテキサスに有利な新地図で行われる見通しになった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年2月4日 ― 連邦最高裁判所、カリフォルニアの新地図を止めようとした申し立てを却下</div>
+                <p>共和党側はカリフォルニアの新しい地図についても使用差し止めを求めていたが、連邦最高裁判所はこの申し立てを退けた。この時点で、共和党に有利なテキサスの地図と、民主党に有利なカリフォルニアの地図が、どちらも2026年の選挙で使われる見通しになった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年4月27日 ― 連邦最高裁判所、テキサスの新地図を正式に支持する判決</div>
+                <p>12月の判断は一時的な措置だったが、この日の判決で連邦最高裁判所はテキサスの新地図を正式に認め、使用差し止めを命じていた下級審の判断を覆した。ケーガン・ソトマイヨル・ジャクソンの3判事は反対意見を述べた。これにより、共和党に有利なテキサスの地図と、民主党に有利なカリフォルニアの地図が、どちらも2026年の選挙でそのまま使われることが確定した。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月3日〜8日 ― ミズーリ州でも同様の攻防。今度は新地図の使用が阻止される</div>
+                <p>ミズーリ州でも2025年、共和党が主導し、民主党寄りの選挙区を解体する新しい地図が成立していた。だが有権者団体が30万人分を超える署名を集めて住民投票を求め、ミズーリ州最高裁は9月3日、この住民投票を認め、2026年の選挙は前の地図で行うよう命じた。ミズーリ州側は連邦最高裁に緊急の停止を求めたが、9月8日に却下され、新地図は使われないことが決まった。テキサス・カリフォルニアに続き、任期途中の地図変更をめぐる攻防は複数の州に広がっている。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月（現在） ― 世論調査で民主党が優勢に</div>
+                <p>投票日を6週間後に控えたこの時点で、下院にどちらの政党の候補へ投票するかを尋ねる世論調査では、民主党が共和党を6〜8ポイント上回っている。関税や物価高への不満が、この差の背景にあるとみられている。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年11月3日 ― 投票日</div>
+                <p>下院435議席と上院33議席の当落が決まる。接戦州を中心に、確定結果が判明するまで数日から数週間かかる見通しだ。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-midterm-elections-timeline-map.jpg" alt="テーブルに広げた選挙区地図に色付きの境界線を書き込む手元のクローズアップ、赤と青のマーカーペン" loading="lazy">
+            <figcaption>投票が始まる前から、地図の引き直しをめぐる攻防が続いていた。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 各勢力の視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>各勢力の視点 — 議会の勢力が変わることを、誰が望み、誰が望まないか</h2>
+
+          <p class="lead">「下院を奪還すべきか」という一つの問いをめぐって、党派だけでなく、有権者や国外の関係者も、それぞれ違う立場から選挙の行方を見ている。5つの視点から見る。</p>
+
+          <div class="tabs-wrap">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-cards">カードで読む</button>
+              <button class="tab-btn" data-tab="tab-table">表で比べる</button>
+            </div>
+
+            <div class="tab-pane active" id="tab-cards">
+              <div class="perspectives-grid">
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">共和党・トランプ政権</span>
+                    <span class="stance-label stance-hostile">続投を最優先</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>公式見解</strong>
+                    関税による国内産業の保護と、不法移民の強制送還を「実績」として掲げ、両院での多数派を守ることを最優先にしている。物価高への不満については、原因は前政権にあるとして、政策の効果が出るまで時間が必要だと主張している。
+                  </div>
+                  <div class="interests">最大の関心：下院・上院の両方で過半数を維持し、政権の政策が止められないようにすること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">民主党</span>
+                    <span class="stance-label stance-supportive">下院奪還を歯止めに</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>公式見解</strong>
+                    生活費や医療費の負担増を「トランプ政権の失政」として追及し、わずか3議席差で逆転できる下院の奪還を最優先の目標に掲げている。下院を取れば、政権や大統領一族の資金の流れなどを調べる委員会の調査を始める準備を進めているとされる。
+                  </div>
+                  <div class="interests">最大の関心：下院で過半数を握り、政権の政策に待ったをかける権限を持つこと。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">無党派・スイング層の有権者</span>
+                    <span class="stance-label stance-cautious">積極的な支持先がない</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>実態</strong>
+                    物価や生活費の高騰にはトランプ政権への不満が強いが、それが民主党への積極的な支持に直結しているわけではない。世論調査でも、民主党が優勢な理由は「共和党への不満」であって「民主党への期待」ではないとする分析が多い。
+                  </div>
+                  <div class="interests">最大の関心：暮らし向きが実際に良くなるかどうか。どちらの政党を勝たせたいかではない。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">ウクライナ・欧州の同盟国</span>
+                    <span class="stance-label stance-supportive">議会の顔ぶれを注視</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>実態</strong>
+                    ウクライナへの軍事支援を含む予算は議会が承認する。下院や上院の多数派が変われば、支援を続けるかどうかの判断にも影響が及びかねないため、同盟国は選挙の行方を注意深く見ている。
+                  </div>
+                  <div class="interests">最大の関心：どちらの党が多数派になっても、自国への支援方針が急に変わらないこと。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">関税の影響を受ける経済界</span>
+                    <span class="stance-label stance-neutral">ブレーキ役への期待</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>実態</strong>
+                    関税の対象になった企業や業界団体は、コスト増加や取引先との摩擦に直面している。議会の多数派が変われば行き過ぎた関税政策に歯止めがかかることを期待する声がある一方、政権に近い業界は現状維持を望んでいる。
+                  </div>
+                  <div class="interests">最大の関心：関税政策が今後どう変わるか、あるいは変わらないかの見通しを立てること。</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-table">
+              <div style="overflow-x:auto;">
+                <table class="compare-table">
+                  <thead>
+                    <tr><th>立場</th><th>下院奪還への姿勢</th><th>主な根拠</th><th>最大の関心事</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>共和党・トランプ政権</td><td>強く反対（続投を望む）</td><td>関税・移民取締りの実績、景気減速は一時的とみる</td><td>両院での過半数維持</td></tr>
+                    <tr><td>民主党</td><td>強く推進</td><td>生活費高騰の責任追及、歯止め役としての奪還</td><td>下院での過半数と調査権の獲得</td></tr>
+                    <tr><td>無党派・スイング層の有権者</td><td>消極的・中間的</td><td>物価高への不満はあるが民主党への期待は薄い</td><td>暮らし向きの改善そのもの</td></tr>
+                    <tr><td>ウクライナ・欧州の同盟国</td><td>推進寄り（期待）</td><td>議会の勢力が軍事支援予算を左右する</td><td>支援方針の継続性</td></tr>
+                    <tr><td>関税の影響を受ける経済界</td><td>中立〜期待</td><td>コスト増加、議会によるブレーキへの期待</td><td>関税政策の先行きの見通し</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-midterm-elections-perspectives-yard-signs.jpg" alt="夕暮れの郊外の住宅街、隣り合う芝生に立つ対立する2つの政党の選挙看板" loading="lazy">
+            <figcaption>隣り合う庭に立つ、違う政党の看板。分断は住宅街の芝生にも表れている。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ・統計 ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 歴史のパターンと、今の世論調査</h2>
+
+          <p class="lead">中間選挙には、大統領の支持率と議席の増減をめぐる長年のパターンがある。そのパターンと、投票日6週間前の世論調査を並べて見る。</p>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>大統領支持率と中間選挙での下院議席減（平均）</h4>
+              <div style="position:relative;height:230px;margin-top:1rem;">
+                <canvas id="seatLossChart"></canvas>
+              </div>
+              <p class="chart-note">1946年以降の中間選挙が対象。支持率50%未満の大統領は下院で平均37議席を失い、50%以上の大統領は平均14議席の減少にとどまった。出典：Gallup「Midterm Seat Loss Averages 37 for Unpopular Presidents」。</p>
+            </div>
+
+            <div class="data-card">
+              <h4>下院投票の意向（政党支持、2026年9月時点）</h4>
+              <div style="position:relative;height:230px;margin-top:1rem;">
+                <canvas id="genericBallotChart"></canvas>
+              </div>
+              <p class="chart-note">2026年9月時点の世論調査平均（このサイクルで民主党の最大リード）。出典：RealClearPolling「2026 Generic Congressional Vote」。</p>
+            </div>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">42選挙区</div>
+              <div class="stat-desc">接戦とされる下院選挙区の数（民主党22・共和党20が保有、出典：Ballotpedia）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">37%</div>
+              <div class="stat-desc">トランプ大統領の経済政策への支持率（2026年、複数の世論調査平均）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">民主党+7.5pt</div>
+              <div class="stat-desc">下院投票の意向を示すジェネリックバロットの差（Nate Silver集計、2026年9月）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">33議席</div>
+              <div class="stat-desc">上院の改選議席数。民主党が多数派になるには4議席の入れ替えが必要</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — この選挙は、何を止めて何を止めないのか</h2>
+
+          <p class="lead">※ ここから先は、ここまでの事実にもとづく筆者個人の見解です。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">① 下院は逆転、上院はねじれで終わる可能性が高い</div>
+            <div class="insight-text">支持率が50%を下回る大統領は、中間選挙で平均37議席を失ってきた。トランプ大統領の経済政策への支持率は37%にとどまり、世論調査でも民主党が優勢だ。わずか3議席差の下院は、民主党が奪還する可能性が高いとみている。一方、上院で必要な4議席の入れ替えは下院よりハードルが高い。最も起こりやすいのは、下院だけ多数派が入れ替わる「ねじれ」だろう。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">② 下院が変わっても、新しい法律は通らない</div>
+            <div class="insight-text">仮に民主党が下院を奪還しても、法律を新しく作る力にはならない。法律の成立には上院の可決と大統領の署名が必要で、そのどちらも共和党側が握ったままになる可能性が高いからだ。実際に起きるのは、法律の変化ではなく、委員会の調査・召喚状・公聴会による政権の減速だ。関税や移民取締りのように大統領の権限だけで進められる政策は、下院を失っても止まらない。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">③ 「有権者が選ぶ」から「地図が決める」へ</div>
+            <div class="insight-text">テキサスとカリフォルニアは、どちらも任期の途中で自党に有利な選挙区地図を作り、そして両方とも裁判所に認められた。結果として、共和党がテキサスで得るはずだった議席と、民主党がカリフォルニアで得る議席は、全国レベルではおおむね相殺し合う。ミズーリ州のように、有権者の署名運動と裁判所によって新地図が止められた例もあり、この攻防の勝ち負けはまだ固まっていない。だが、任期の途中で地図を描き直す動きがこれだけ広がった前例が残る意味は大きい。今後も選挙のたびに同じ手法が使われるようになれば、選挙結果は投票そのものではなく、地図を描く側の力関係によって決まる比重が増していく。</div>
+          </div>
+
+          <p class="closing">議会の勢力がどちらに転んでも、トランプ大統領が2029年まで在任し続けることは変わらない。変わるのは、政権にブレーキをかけられるかどうかという一点だけだ。</p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-midterm-elections-analysis-election-night.jpg" alt="夜、大型スクリーンで開票速報を見守る群衆、画面の光に照らされた顔" loading="lazy">
+            <figcaption>結果が出るまで、数日から数週間かかる見通しだ。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia（英語版） — 2026年アメリカ下院選挙</div>
+                <div class="source-desc">435議席の改選、過半数ライン、民主党が奪還に必要な議席数の解説。</div>
+                <div class="source-country">【百科事典（一次報道に基づく記述）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikipedia.org/wiki/2026_United_States_Senate_elections" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia（英語版） — 2026年アメリカ上院選挙</div>
+                <div class="source-desc">33議席の改選と、現在の議席配分（共和党53・民主党45・無所属2）の記録。</div>
+                <div class="source-country">【百科事典（一次報道に基づく記述）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://ballotpedia.org/United_States_Congress_elections,_2026" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Ballotpedia — 2026年連邦議会選挙</div>
+                <div class="source-desc">接戦とされる42選挙区（民主党22・共和党20保有）の集計。</div>
+                <div class="source-country">【選挙情報専門サイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://news.gallup.com/poll/242093/midterm-seat-loss-averages-unpopular-presidents.aspx" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Gallup — 支持率と中間選挙の議席減の関係</div>
+                <div class="source-desc">支持率50%未満の大統領は平均37議席減、50%以上は平均14議席減という集計データ。</div>
+                <div class="source-country">【世論調査機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.brookings.edu/articles/gop-midterm-prospects-darken-as-trump-approval-falls/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Brookings — トランプ支持率の低下と共和党の中間選挙見通し</div>
+                <div class="source-desc">経済運営への支持率が37%にとどまるなど、支持率低下が共和党の議席防衛にとって逆風になっているとする分析。</div>
+                <div class="source-country">【シンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.foxnews.com/politics/fox-news-power-rankings-whats-economy" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Fox News — 2026年中間選挙の争点は経済・医療・物価高</div>
+                <div class="source-desc">経済・医療・物価高が有権者の最大の関心事になっているとする世論調査結果の報道。</div>
+                <div class="source-country">【米大手メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.votebeat.org/texas/2025/11/18/redistricting-ruling-lawsuit-el-paso-court-2026-midterms/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Votebeat — 連邦地裁、テキサスの新地図を差し止め</div>
+                <div class="source-desc">2025年11月18日、テキサスの新しい選挙区地図を人種的な区割り変更と認定した判決の報道。</div>
+                <div class="source-country">【選挙報道専門メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.scotusblog.com/2025/12/supreme-court-allows-texas-to-use-redistricting-map-challenged-as-racially-discriminatory/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">SCOTUSblog — 連邦最高裁、テキサスの新地図使用を容認</div>
+                <div class="source-desc">2025年12月5日、6対3で地裁判決の効力を一時停止した最高裁の決定の解説。</div>
+                <div class="source-country">【最高裁専門報道サイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.cbsnews.com/news/supreme-court-california-congressional-map-midterms/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">CBS News — 連邦最高裁、カリフォルニアの新地図を容認</div>
+                <div class="source-desc">2026年2月4日、共和党側の差し止め申し立てを退けた最高裁の決定の報道。</div>
+                <div class="source-country">【米大手メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.texastribune.org/2026/04/27/texas-redistricting-map-ruling-us-supreme-court-upheld-2026-midterms/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Texas Tribune — 連邦最高裁、テキサスの新地図を正式に支持</div>
+                <div class="source-desc">2026年4月27日、下級審の判断を覆しテキサスの新地図を本案判決で認めた最高裁決定の報道。</div>
+                <div class="source-country">【テキサス州の非営利報道機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.stlpr.org/government-politics-issues/2026-09-03/missouri-supreme-court-referendum-congressional-map" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">St. Louis Public Radio — ミズーリ州最高裁、住民投票を認め新地図を差し止め</div>
+                <div class="source-desc">2026年9月3日、共和党主導の新地図を住民投票にかけることを認め、旧地図での選挙実施を命じた判決の報道。</div>
+                <div class="source-country">【公共放送】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.scotusblog.com/2026/09/supreme-court-grants-request-to-prevent-missouri-from-using-congressional-map-expected-to-aid-re/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">SCOTUSblog — 連邦最高裁、ミズーリ州の新地図使用停止を維持</div>
+                <div class="source-desc">2026年9月8日、ミズーリ州側の緊急停止申し立てを却下したカバノー判事の決定の解説。</div>
+                <div class="source-country">【最高裁専門報道サイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://blogs.lse.ac.uk/usappblog/2025/11/06/the-2026-midterms-election-day-2025-was-a-good-one-for-the-democrats/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">LSE USAPP Blog — 2025年の知事選が示す2026年への前触れ</div>
+                <div class="source-desc">バージニア・ニュージャージー両州知事選での民主党勝利の分析。</div>
+                <div class="source-country">【大学系政治分析ブログ】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.npr.org/2026/07/27/nx-s1-5907379/2026-midterm-election-senate-races" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">NPR — 2026年上院の注目レース</div>
+                <div class="source-desc">ジョージア・メイン・ノースカロライナ・ミシガン各州の接戦の解説。</div>
+                <div class="source-country">【公共放送】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.realclearpolling.com/polls/state-of-the-union/generic-congressional-vote" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">RealClearPolling — 2026年下院投票の意向（ジェネリックバロット）</div>
+                <div class="source-desc">民主党48.9%・共和党42.3%（6.6ポイント差）という、2026年9月時点でこのサイクル最大となった世論調査平均。</div>
+                <div class="source-country">【世論調査集計サイト】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.natesilver.net/p/generic-ballot-average-2026-nate-silver-bulletin-congress-polls" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Silver Bulletin — 2026年ジェネリックバロット集計</div>
+                <div class="source-desc">民主党+7.5ポイントという、2026年9月時点の世論調査集計値。</div>
+                <div class="source-country">【選挙予測専門メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://us.cnn.com/2026/09/13/politics/democrats-trump-investigations-midterms" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">CNN — 下院奪還時に民主党が計画する政権調査</div>
+                <div class="source-desc">大統領一族の事業取引、すでに廃止された政権効率化省（DOGE）の活動、外国政府からの大統領の利益取得を禁じる法案などを調べる準備の報道。</div>
+                <div class="source-country">【米大手メディア】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>各勢力の視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/elections/index.html">世論・選挙</a></div>
+          <div>2026年9月20日</div>
+          <div style="margin-top:0.5rem;">5つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/elections/index.html">世論・選挙一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 大統領支持率と中間選挙での下院議席減（平均）
+  (function() {
+    var ctx = document.getElementById('seatLossChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['支持率50%未満の大統領', '支持率50%以上の大統領'],
+        datasets: [{
+          // 出典：Gallup「Midterm Seat Loss Averages 37 for Unpopular Presidents」
+          // 支持率50%未満: 平均37議席減／50%以上: 平均14議席減
+          data: [37, 14],
+          backgroundColor: 'rgba(196,168,130,0.85)',
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 4, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' 平均' + c.parsed.x + '議席減'; } } }
+        },
+        scales: {
+          x: { min: 0, max: 45, title: { display: true, text: '下院議席減（平均・議席）', color: '#8890a0', font: { size: 10 } }, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 } } },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // 下院投票の意向（政党支持、2026年9月時点）
+  (function() {
+    var ctx = document.getElementById('genericBallotChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['民主党', '共和党'],
+        datasets: [{
+          // 出典：RealClearPolling「2026 Generic Congressional Vote」（2026年9月時点、このサイクルの最大リード）
+          // 民主党48.9%／共和党42.3%
+          data: [48.9, 42.3],
+          backgroundColor: 'rgba(196,168,130,0.85)',
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 4, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.x + '%'; } } }
+        },
+        scales: {
+          x: { min: 0, max: 60, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + '%'; } } },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
