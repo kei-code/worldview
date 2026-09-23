@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="政治的な確信が強まるほど、なぜ人間関係は壊れやすくなるのか。確証バイアス・信念の先鋭化という認知メカニズムと、アメリカの「政治的な別れ」37%、韓国の若年層のデータから、個人の視点で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/elections/2026-09-22-cost-of-being-right/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="正しさの代償 — 強い確信ほど、人間関係は狭くなるという逆説 — WorldView">
+  <meta property="og:description" content="政治的な確信が強まるほど、なぜ人間関係は壊れやすくなるのか。確証バイアス・信念の先鋭化という認知メカニズムと、アメリカの「政治的な別れ」37%のデータから読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/elections/2026-09-22-cost-of-being-right/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/cost-of-being-right-hero-table.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="正しさの代償 — 強い確信ほど、人間関係は狭くなるという逆説 — WorldView">
+  <meta name="twitter:description" content="政治的な確信が強まるほど、なぜ人間関係は壊れやすくなるのか。確証バイアス・信念の先鋭化という認知メカニズムと、アメリカの「政治的な別れ」37%のデータから読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/cost-of-being-right-hero-table.jpg">
+  <title>正しさの代償 — 強い確信ほど、人間関係は狭くなるという逆説 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色は世論・選挙の --accent4（ベージュ）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/cost-of-being-right-hero-table.jpg');
+      background-size: cover; background-position: center 40%;
+      filter: brightness(1.15) contrast(1.04) saturate(1.05);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.28) 0%, rgba(14,17,23,0.48) 45%, rgba(14,17,23,0.88) 100%);
+    }
+    .article-hero.has-image .container {
+      position: relative; z-index: 1; width: 100%; transform: translateY(-24px);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b6c1cd; margin-top: 1.5rem; max-width: 600px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent4); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent4) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent4) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent4) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent4); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       シグネチャー：フロストガラス — 記事全体を貫く透明感
+       ========================================================== */
+    .article-body .perspective-card,
+    .article-body .insight-box,
+    .article-body .glossary-card,
+    .article-body .data-card {
+      background: rgba(56,64,78,0.35);
+      border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    /* ---- perspective-card ---- */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+    .article-body .perspective-card { padding: 1.5rem 1.6rem 1.6rem; }
+    .article-body .perspective-card:hover {
+      transform: translateY(-2px); box-shadow: var(--shadow-lg);
+      background: rgba(56,64,78,0.48); border-color: rgba(255,255,255,0.16);
+    }
+    .article-body .perspective-card::before {
+      background: linear-gradient(90deg, transparent 0%, var(--accent4) 50%, transparent 100%);
+    }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .article-body .compare-table {
+      background: rgba(56,64,78,0.35); border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    }
+    .article-body .compare-table th { background: rgba(255,255,255,0.04); border-bottom: 2px solid var(--accent4); }
+    .article-body .compare-table tr:hover td { background: rgba(255,255,255,0.05); }
+
+    /* ---- timeline ---- */
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent4); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+    .article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- data-card ---- */
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .article-body .data-card:hover { border-color: rgba(255,255,255,0.18); }
+    .article-body .data-card h4 {
+      font-size: 0.92rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.8rem; line-height: 1.65; }
+
+    /* ---- 情報源 ---- */
+    .article-body .sources-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+    .article-body a.source-item {
+      background: rgba(56,64,78,0.28); border: 1px solid rgba(255,255,255,0.08);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      color: inherit; text-decoration: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .article-body a.source-item:hover { border-color: var(--accent4); background: rgba(56,64,78,0.42); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent4); outline-offset: 2px; }
+
+    /* ---- この記事の問い ---- */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(196,168,130,0.06);
+      border: 1px solid rgba(196,168,130,0.22);
+      box-shadow: 0 0 40px 10px rgba(196,168,130,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent4); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent4); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- 用語解説（フロストガラス） ---- */
+    .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .article-body .glossary-card { padding: 1rem 1.2rem; }
+    .article-body .glossary-card:hover { border-color: rgba(255,255,255,0.16); }
+    .glossary-term { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .glossary-def { font-size: 0.78rem; color: var(--text-muted); line-height: 1.75; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.4rem; font-weight: 700; color: var(--accent4); line-height: 1.25; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    /* ---- 深掘り（フロストガラス） ---- */
+    .article-body .insight-box { padding: 1.4rem 1.6rem; margin-bottom: 1.6rem; }
+    .article-body .insight-box:hover { border-color: rgba(255,255,255,0.16); }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* ==========================================================
+       アクセシビリティ・レスポンシブ
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body .timeline-content,
+      .article-body .glossary-card,
+      .article-body .insight-box,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .glossary-grid { grid-template-columns: 1fr; gap: 0.7rem; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">世論・選挙</span>
+      <span class="date">2026年9月22日</span>
+    </div>
+    <h1 class="article-title">正しさの代償<br>— 強い確信ほど、人間関係は狭くなるという逆説</h1>
+
+    <div class="hero-deck">
+      「自分は正しい」という確信が強まるほど、視界に入る意見の幅は狭くなっていく。<span class="deck-accent">アメリカでは、その先に「関係を切る」という選択をした人が、すでに3人に1人を超えている。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">政治が理由の関係断絶 37%</span>
+      <span class="hero-pill">断絶の62%は友人関係</span>
+      <span class="hero-pill">主観的な確信を語るほど意見が動きにくくなることも</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — なぜ「自分は正しい」という確信が、人を独りにするのか</h2>
+
+          <p class="lead">「政治的な分断」というと、政策の中身についての意見の違いを思い浮かべやすい。だが近年の政治心理学が注目しているのは、政策そのものより「相手陣営の人間そのものへの感情」だ。相手の主張への批判より先に、相手そのものを「不誠実だ」「愚かだ」とみなす感情が立つ状態を、研究者は「感情的分極化」と呼ぶ。政策の隔たりが実際にはそれほど大きくなくても、相手への嫌悪感だけが膨らんでいくことがある。</p>
+
+          <p class="lead">この感情はどこから来るのか。手がかりの一つが「確証バイアス」だ。人は同じ曖昧な情報に触れても、自分の元々の立場を支持する部分だけを信じやすく、反する部分は疑ってかかる。この偏った受け止め方を双方が繰り返すと、同じ事実から出発したはずの人同士が、かえって遠い意見へと分かれていく。これを「信念の先鋭化」と呼ぶ。SNSの推薦アルゴリズムが似た意見ばかりを集めて見せる「エコーチェンバー」は、この先鋭化を加速させる装置として働く。</p>
+
+          <p class="lead">さらに厄介なのは、確信そのものが自己増幅していく点だ。2026年の研究では、絵画の好みのような主観的な判断について、自分がどれだけ強く確信しているかを言葉にして表明する行為自体が、その後の意見をさらに動かしにくくすることが確認された（ただし年代の推定のような客観的な判断では、逆に意見が穏健化する結果も同じ研究で報告されている）。少なくとも主観的な判断については、「私は強くそう思う」と口にするたびに、後戻りのコストが上がっていく。</p>
+
+          <div class="article-question">
+            <p>「自分は正しい」と強く思うことが、なぜ人間関係を壊す方向に働くのか。そしてその確信は、本当に根拠に見合った強さなのか。</p>
+          </div>
+
+          <div class="label-eyebrow">3つのメカニズム</div>
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">確証バイアス — 都合の良い情報だけを信じる</div>
+              <div class="factor-desc">同じ情報でも、自分の立場を支持する部分は無批判に受け入れ、反する部分には粗探しをする。この非対称な検証が、意見の偏りを静かに積み重ねる。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">信念の先鋭化 — 同じ事実から意見が離れていく</div>
+              <div class="factor-desc">賛否の分かれる同一の証拠に触れても、確証バイアスを通すことで双方がそれぞれ「自分の立場が補強された」と受け止め、意見の距離はむしろ広がる。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">確信度の自己増幅 — 語ると動かなくなることがある</div>
+              <div class="factor-desc">確信の強さを言語化・表明する行為そのものが、主観的な判断についてはその後の態度変化を妨げることが実験で確認されている。ただし客観的な判断では逆に意見が穏やかになる場合もある。</div>
+            </div>
+          </div>
+
+          <p class="lead" style="margin-top:1.8rem;">この3つのメカニズムは、SNSや政治の場に限らず、家庭や職場でも同じように働く。情報に触れる目的が、相手を打ち負かすことから自分の立場を確認することへ移ったとき、人間関係への影響が静かに始まっている。</p>
+
+          <div class="label-eyebrow">用語解説</div>
+          <div class="glossary-grid">
+            <div class="glossary-card">
+              <div class="glossary-term">感情的分極化（affective polarization）</div>
+              <div class="glossary-def">政策上の意見の違いではなく、相手陣営の人間そのものへの否定的な感情が強まる現象。2012年にイエンガーらが体系化した概念。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">確証バイアス（confirmation bias）</div>
+              <div class="glossary-def">自分の既存の信念を支持する情報を無批判に受け入れ、反する情報を疑ってかかる認知の偏り。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">信念の先鋭化（belief polarization）</div>
+              <div class="glossary-def">同じ証拠に触れても、確証バイアスを通すことで対立する立場の人同士がそれぞれ元の意見を強め、結果として意見の差が広がる現象。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">エコーチェンバー</div>
+              <div class="glossary-def">似た意見の人・情報にばかり囲まれ、異なる意見に触れる機会が構造的に減っていく閉じたコミュニケーション環境。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">モチベーテッド・リーズニング</div>
+              <div class="glossary-def">結論を先に決めたうえで、その結論を正当化する理由を後付けで探す推論のあり方。感情的分極化の土台になる。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">バックファイア効果</div>
+              <div class="glossary-def">誤情報への訂正が、かえってその誤情報への確信を強めてしまうとされた効果。2010年に提唱されたが、近年の大規模な追試では再現性が低いと報告されている。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">ポリティカル・ブレイクアップ</div>
+              <div class="glossary-def">政治的な立場の違いを理由に、友人・家族・パートナー・同僚との関係を断つこと。2025年の研究で提唱された呼び方。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">選択的接触（selective exposure）</div>
+              <div class="glossary-def">自分の既存の意見に合う情報源だけを選んで接触し、反する情報源を避ける行動傾向。</div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/cost-of-being-right-core-phoneglow.jpg" alt="暗い部屋でスマートフォンの画面の光だけに照らされた人物の顔、集中して瞬きしない表情" loading="lazy">
+            <figcaption>確信を強めるほど、見える情報の範囲は狭くなっていく。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 「感情の分断」が学問の対象になるまで</h2>
+
+          <p class="lead">感情的分極化は、最近になって急に生まれた現象ではない。それが「政策の違い」とは別の問題として研究の対象になり、実態が数字で示されるようになった歩みを追う。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2010年 ― ナイハン&amp;ライフラー、「訂正が誤解を強める」現象を報告</div>
+                <p>政治学者ブレンダン・ナイハンとジェイソン・ライフラーが、政治的な誤情報に訂正を示しても効果がない、それどころかかえって誤解が強まる場合があるという実験結果を発表した。のちに「バックファイア効果」と呼ばれるこの報告は、確信の強い相手には事実を示しても無駄だという通説の土台になった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2012年 ― イエンガー・スード・レルケス、「感情的分極化」という概念を体系化</div>
+                <p>政治学者シャンタ・イエンガーらが、政策上の意見の隔たり（イデオロギー分極化）と、相手陣営の人間そのものへの感情的な敵意（感情的分極化）を切り分ける論文を発表。政策の中身が近づいても、相手への嫌悪感だけが独立して膨らみうることを示した。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2017年10月 ― Pew Research、政党を超えた友人関係の乏しさを調査</div>
+                <p>アメリカの共和党支持者の55%、民主党支持者の64%が、対立政党の親しい友人が「ほとんど・全くいない」と回答。対立政党に「非常に否定的な」印象を持つと答えた割合も、1994年の16〜17%から40%台へと倍以上に増えていた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2020年 ― 新型コロナ禍で感染対策への態度が政治的立場に沿って分岐</div>
+                <p>マスク着用や外出制限といった感染対策への賛否が、党派の立場に沿って分かれた。研究では、感情的分極化の強い人ほど、感染対策への評価をトランプ政権そのものへの評価と重ねて捉える傾向が確認され、政治的な感情が公衆衛生上の判断にまで及ぶことが示された。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2022年3月 ― 韓国大統領選、20代男女の支持政党が記録的に分岐</div>
+                <p>20代男性の59%、20代女性の34%が保守系候補に投票し、他の年代を大きく上回るジェンダー・イデオロギーギャップとして報じられた。「若年層の男女が政治的に分断している」という語りが、国内外のメディアで広く共有されるようになった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2023年4月 ― 大規模な追試研究が、バックファイア効果の再現に失敗</div>
+                <p>ワクチンをめぐる誤情報の訂正効果を検証した追試研究が、訂正によって誤解が強まる現象を確認できなかったと報告。これ以外にも複数の大規模追試が、2010年の報告ほど強いバックファイア効果は再現しないとする結果を積み重ねていった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年4月 ― UC Irvine、「政治的な別れ」を体系的に数値化</div>
+                <p>UC Irvineの研究チームがYouGovと共同で実施した調査で、アメリカ人の37%が政治的な違いを理由に友人・家族・パートナー・同僚との関係を断った経験があると回答。研究チームはこの現象を「political breakup（政治的な別れ）」と名付け、PNAS Nexus誌に発表した。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年 ― 確信度の自己増幅と、党派による非対称性を示す実験が発表</div>
+                <p>自分の確信度を言葉にする行為自体が信念の先鋭化を加速させるとする研究に加え、不確実性を示された際にリベラル派は意見を緩めるが保守派は意見を変えない、という非対称性を確認した大規模実験の結果が発表された。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/cost-of-being-right-timeline-emptychair.jpg" alt="家族の夕食の席に一つだけ空いた椅子、他の席にはぼやけた人影が座って食事をしている" loading="lazy">
+            <figcaption>政治的な立場の違いが、日常の食卓にも影を落としてきた。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 各勢力の視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>各勢力の視点 — 「関係を切ること」を、誰がどう捉えているか</h2>
+
+          <p class="lead">政治的な確信の強まりが人間関係に及ぼす影響を、実際に関係を断った人、断たれた人、研究者、そして修復を模索する立場から見る。5つの視点で読み解く。</p>
+
+          <div class="tabs-wrap">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-cards">カードで読む</button>
+              <button class="tab-btn" data-tab="tab-table">表で比べる</button>
+            </div>
+
+            <div class="tab-pane active" id="tab-cards">
+              <div class="perspectives-grid">
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">政治的な「別れ」を選んだ側（アメリカ）</span>
+                    <span class="stance-label stance-hostile">関係を切ることも選択</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>実態</strong>
+                    2025年4月のYouGov調査では、政治的な違いを理由に関係を断った経験を持つアメリカ人は37%。内訳は友人62%・家族40%・同僚29%・パートナー10%で、半数以上が複数の関係を同時に失っている。関係を断った側の66%は民主党支持者で、相手の政治的立場を「単なる意見の違い」ではなく「譲れない道徳の問題」として受け止める傾向が背景にあるとされる。
+                  </div>
+                  <div class="interests">最大の関心：自分の価値観に反する相手と、無理に関係を続けないこと。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">関係を切られた側・保守派の反論（アメリカ）</span>
+                    <span class="stance-label stance-cautious">政治と友情は別、という立場</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>実態</strong>
+                    同じ調査で、関係を断った側のうち共和党支持者は27%にとどまる。共和党支持者側からは「政治的な立場の違いは人格の欠陥ではない」という反論が根強く、政治を理由に関係を打ち切ること自体を、対話を拒む一つの不寛容だと批判する声がある。
+                  </div>
+                  <div class="interests">最大の関心：政治的な立場が違う相手とも、日常の関係を保つこと。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">韓国の若年層 — 自己認識と実態のギャップ</span>
+                    <span class="stance-label stance-neutral">対立の実態は語られ方ほど大きくない</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>実態</strong>
+                    2022年の大統領選で20代男性の59%・20代女性の34%が保守系候補に投票し、記録的なジェンダー・イデオロギーギャップとして報じられた。だが政策への態度を詳しく調べた学術研究では、男女間に実質的な違いはほとんど確認されていない。「分断している」という語られ方そのものが、実際の対立を固定化させている可能性がある。
+                  </div>
+                  <div class="interests">最大の関心：「対立している」という報道の枠組みが、対立を作り出していないか。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">政治心理学・認知科学の研究者</span>
+                    <span class="stance-label stance-neutral">メカニズムを解明する立場</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>公式見解</strong>
+                    確証バイアス・信念の先鋭化・エコーチェンバーという複数の認知メカニズムが絡み合って、個人の確信を強めていく。2026年の研究では、主観的な判断について自分の確信度を言葉にする行為自体が、その後の意見をさらに動かしにくくすることも確認されている（客観的な判断では逆の結果も報告されている）。
+                  </div>
+                  <div class="interests">最大の関心：分極化の原因を「SNSのせい」など単一の犯人に矮小化しないこと。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">対話・関係修復を模索する立場（心理学者・臨床家）</span>
+                    <span class="stance-label stance-supportive">対話の余地はまだあるという立場</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>実態</strong>
+                    「訂正しても意見はかえって強まる」というバックファイア効果は、近年の大規模な追試で再現性が低いことが繰り返し示されている。多くの場合、事実を示す訂正はむしろ意見を事実の方向へ動かす。関係を断つこと自体が幸福感を高めるとは限らないという指摘も、心理学者から出ている。
+                  </div>
+                  <div class="interests">最大の関心：確信を保ちながらも、対話の回路を完全には閉じないこと。</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-table">
+              <div style="overflow-x:auto;">
+                <table class="compare-table">
+                  <thead>
+                    <tr><th>立場</th><th>関係断絶への姿勢</th><th>主な根拠</th><th>最大の関心事</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>政治的な「別れ」を選んだ側（米）</td><td>断つことも選択</td><td>相手の立場を道徳の問題として受け止める</td><td>自分の価値観に沿った関係を保つこと</td></tr>
+                    <tr><td>関係を切られた側・保守派（米）</td><td>断つことに批判的</td><td>政治的立場と人格は別という考え</td><td>立場が違う相手とも関係を保つこと</td></tr>
+                    <tr><td>韓国の若年層</td><td>実態は語りより小さいとみる</td><td>政策態度の実証調査では性差が乏しい</td><td>対立の語られ方そのものの検証</td></tr>
+                    <tr><td>政治心理学・認知科学の研究者</td><td>中立（メカニズムの解明）</td><td>確証バイアス・信念の先鋭化の実験結果</td><td>原因を単純化しないこと</td></tr>
+                    <tr><td>対話・関係修復を模索する立場</td><td>断絶に否定的、対話を推奨</td><td>バックファイア効果の再現失敗という反証</td><td>対話の回路を閉じないこと</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/cost-of-being-right-perspectives-cafe.jpg" alt="同じカフェの中で別々のテーブルに座る二つの小さな人の集団、一方は身を乗り出して活発に話し、もう一方は静かに顔をそむけている" loading="lazy">
+            <figcaption>同じ場にいながら、互いに背を向け合う距離感。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ・統計 ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 「別れ」はどこで、誰の間で起きているか</h2>
+
+          <p class="lead">政治的な確信の強まりは、実際にどのような形で人間関係に表れているのか。関係の種類別の内訳と、党派による非対称性を見る。</p>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>政治的な「別れ」の内訳（関係の種類別）</h4>
+              <div style="position:relative;height:230px;margin-top:1rem;">
+                <canvas id="breakupTypeChart"></canvas>
+              </div>
+              <p class="chart-note">政治的な違いを理由に関係を断った経験がある人のうち、その相手の内訳（複数回答、合計は100%を超える）。友人62%・家族40%・同僚29%・パートナー10%。出典：UC Irvine研究チーム、YouGov調査（2025年4月実施）、PNAS Nexus掲載。</p>
+            </div>
+
+            <div class="data-card">
+              <h4>政党別の「政治的な別れ」経験率</h4>
+              <div style="position:relative;height:230px;margin-top:1rem;">
+                <canvas id="breakupPartyChart"></canvas>
+              </div>
+              <p class="chart-note">2025年4月調査時点で、政治的な違いを理由に関係を断った経験があると回答した割合。民主党支持者47%、共和党支持者29%。出典：UC Irvine研究チーム、YouGov調査、PNAS Nexus掲載。</p>
+            </div>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">37%</div>
+              <div class="stat-desc">政治的な違いを理由に関係を断った経験があるアメリカ人の割合（2025年4月調査）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">5.5か月</div>
+              <div class="stat-desc">2024年選挙後、「政治的な別れ」が18%に達するまでの期間。2016年選挙後は約1年かけて14%に達しており、ペースが加速している</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">59%対34%</div>
+              <div class="stat-desc">韓国20代男女の保守系候補への投票率（2022年大統領選）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">66%対27%</div>
+              <div class="stat-desc">関係を断った側が民主党支持者だった割合 対 共和党支持者だった割合</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 確信を保ちながら、独りにならずにいられるか</h2>
+
+          <p class="lead">※ ここから先は、ここまでの事実にもとづく筆者個人の見解です。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">① 「対立している」という物語自体が、対立を固定化する</div>
+            <div class="insight-text">韓国の若年男女をめぐる報道が示す教訓は大きい。選挙結果に表れた投票行動の差は確かに大きいが、政策への態度そのものを調べた研究では、男女間の実質的な違いはほとんど見つかっていない。それでも「20代の男女は分断している」という語りが繰り返されるほど、その語り自体が現実の受け止め方を形づくっていく。人間関係が壊れる前段階には、しばしば「相手とは分かり合えない」という思い込みが先に立っている。実際の意見の距離を確かめる前に、その思い込みを疑う余地はある。2026年9月には、感情的分極化の測定方法自体（相手を政治家と見て答えるか、一般の支持者と見て答えるかで結果が変わる)に方法論上の疑義を呈する分析も発表されており、「分断の大きさ」という数字自体、測り方によって動くことも踏まえておきたい。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">② バックファイア効果の失敗が示す、残っている望み</div>
+            <div class="insight-text">「確信の強い相手に事実を示しても無駄だ」という通説は、2010年の研究から広まった。だが2023年以降の大規模な追試は、この効果がめったに起きないことを繰り返し示している。多くの場合、訂正はむしろ意見を事実の方向へ動かす。この事実は、政治的な確信をめぐる悲観論に対する数少ない反証の一つだ。対話を続けても無駄だという確信自体が、実は根拠に見合わない先鋭化の産物かもしれない。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">③ 確信を弱めることと、関係を保つことは別の問題</div>
+            <div class="insight-text">政治的な確信を弱めることは、必ずしも解決策にならない。重要なのは、確信の強さと、相手を人として認める姿勢を切り離しておくことだ。「意見は違うが、この人物への評価まで塗り替える必要はない」という一線を保てるかどうかが、感情的分極化が関係の断絶にまで進むかどうかの分かれ目になる。政治的な立場を変える必要はなくても、その立場の強さを語る頻度や語調は、自分でコントロールできる領域として残っている。</div>
+          </div>
+
+          <p class="closing">確信が強まることと、人間関係が狭まることは、本来は別の出来事だ。両者が結びついてしまう仕組みを知ることが、その結びつきを緩める最初の一歩になる。</p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/cost-of-being-right-analysis-corridor.jpg" alt="長く何もない廊下の両端から互いに近づいていく二人のシルエット、その間にあるドアから漏れる暖かい光" loading="lazy">
+            <figcaption>断絶は固定されていない。歩み寄る余地はまだ残っている。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://academic.oup.com/pnasnexus/article/5/5/pgag067/8666534" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">PNAS Nexus — Political breakups: Interpersonal consequences of polarization</div>
+                <div class="source-desc">UC Irvine研究チームによる「政治的な別れ」の提唱論文。2025年4月のYouGov調査で37%が経験ありと回答した調査結果を掲載。</div>
+                <div class="source-country">【学術誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.universityofcalifornia.edu/news/new-study-finds-increase-political-breakups" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">University of California — New study finds increase in 'political breakups'</div>
+                <div class="source-desc">上記研究の大学広報によるまとめ。関係の内訳（友人62%・家族40%・同僚29%・パートナー10%）と党派別の非対称性を解説。</div>
+                <div class="source-country">【大学公式】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.pewresearch.org/politics/2017/10/05/8-partisan-animosity-personal-politics-views-of-trump/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Pew Research Center — Partisan animosity, personal politics, and views of Trump</div>
+                <div class="source-desc">2017年調査。共和党支持者55%・民主党支持者64%が対岸の党の親しい友人が「ほとんど・全くいない」と回答。</div>
+                <div class="source-country">【世論調査機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://academic.oup.com/poq/article-abstract/76/3/405/1894274" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Public Opinion Quarterly — Affect, Not Ideology: A Social Identity Perspective on Polarization</div>
+                <div class="source-desc">イエンガー・スード・レルケスによる2012年の論文。「感情的分極化」という概念を体系化した基礎文献。</div>
+                <div class="source-country">【学術誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://link.springer.com/article/10.1007/s11109-010-9112-2" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Political Behavior — When Corrections Fail: The Persistence of Political Misperceptions</div>
+                <div class="source-desc">ナイハン&amp;ライフラーによる2010年の論文。「バックファイア効果」の起点となった実験研究。</div>
+                <div class="source-country">【学術誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0281140" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">PLOS ONE — Correcting vaccine misinformation: A failure to replicate familiarity or fear-driven backfire effects</div>
+                <div class="source-desc">2023年4月発表。バックファイア効果の再現に失敗した大規模追試研究の一つ。</div>
+                <div class="source-country">【学術誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12880994/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">PMC — Rating our certainty: how confidence judgments amplify belief polarization</div>
+                <div class="source-desc">2026年発表。主観的な判断では確信度を言葉にする行為が信念の先鋭化を加速させ、客観的な判断では逆に穏健化させることを示した研究。</div>
+                <div class="source-country">【学術誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://doi.org/10.1177/1532673X261481513" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">American Politics Research — Inducing Motivated Reasoning</div>
+                <div class="source-desc">モリシ・ヨハンセン・ヨストによる2026年の実験研究。不確実性下でリベラル派は意見を緩め、保守派は変えないという非対称性を確認。</div>
+                <div class="source-country">【学術誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7550884/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">PMC — How Affective Polarization Shapes Americans' Political Beliefs: A Study of Response to the COVID-19 Pandemic</div>
+                <div class="source-desc">新型コロナ禍における感染対策への態度が、感情的分極化によって左右されたことを示す研究。</div>
+                <div class="source-country">【学術誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.npr.org/2024/04/09/1243752571/a-political-divide-along-gender-lines-is-growing-in-south-korea" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">NPR — A political divide along gender lines is growing in South Korea</div>
+                <div class="source-desc">韓国の20代男女における政治志向・投票行動の差についての報道。</div>
+                <div class="source-country">【公共放送】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://eastasiaforum.org/2024/06/14/scrutinising-south-koreas-gender-divide-narrative/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">East Asia Forum — Scrutinising South Korea's gender divide narrative</div>
+                <div class="source-desc">韓国の「ジェンダー分断」報道を検証し、政策態度の実証調査では男女差が乏しいと指摘する分析。</div>
+                <div class="source-country">【大学系政策分析メディア】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>各勢力の視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/elections/index.html">世論・選挙</a></div>
+          <div>2026年9月22日</div>
+          <div style="margin-top:0.5rem;">5つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/elections/index.html">世論・選挙一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 政治的な「別れ」の内訳（関係の種類別）
+  (function() {
+    var ctx = document.getElementById('breakupTypeChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['友人', '家族', '同僚', 'パートナー'],
+        datasets: [{
+          // 出典：UC Irvine研究チーム、YouGov調査（2025年4月実施）、PNAS Nexus掲載
+          // 友人62%・家族40%・同僚29%・パートナー10%（複数回答）
+          data: [62, 40, 29, 10],
+          backgroundColor: 'rgba(196,168,130,0.85)',
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 4, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.x + '%'; } } }
+        },
+        scales: {
+          x: { min: 0, max: 70, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + '%'; } } },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // 政党別の「政治的な別れ」経験率
+  (function() {
+    var ctx = document.getElementById('breakupPartyChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['民主党支持者', '共和党支持者'],
+        datasets: [{
+          // 出典：UC Irvine研究チーム、YouGov調査（2025年4月実施）、PNAS Nexus掲載
+          // 民主党支持者47%・共和党支持者29%
+          data: [47, 29],
+          backgroundColor: 'rgba(196,168,130,0.85)',
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 4, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.x + '%'; } } }
+        },
+        scales: {
+          x: { min: 0, max: 60, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v){ return v + '%'; } } },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

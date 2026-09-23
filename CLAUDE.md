@@ -130,6 +130,7 @@
 | 2026-09-19 | immigration | 不法移民は、全員送還すべきか ― アメリカを割る三つの言い分 | 2026-09-19-us-deportation-divide |
 | 2026-09-19 | technology | あなた用に作られた世界 — おすすめ表示は、人の考えまで変えるのか | 2026-09-19-algorithmic-bubble |
 | 2026-09-20 | elections | 3議席の攻防 — アメリカ中間選挙、下院を分ける薄氷の差 | 2026-09-20-us-midterm-elections |
+| 2026-09-22 | elections | 正しさの代償 — 強い確信ほど、人間関係は狭くなるという逆説 | 2026-09-22-cost-of-being-right |
 
 ---
 
