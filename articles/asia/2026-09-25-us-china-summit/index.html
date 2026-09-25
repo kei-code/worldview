@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="9月24日（現地時間）の米中首脳会談初日を終えた時点で、貿易休戦は2027年1月10日まで延長された。だが台湾向け武器売却140億ドルは保留のまま、半導体・イランでも溝が残る。両国が何を求め、何を差し出せるかを2つの対照表で整理する。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/asia/2026-09-25-us-china-summit/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="台湾とホルムズ — 米中首脳会談、両国は何を求め、何を狙ったか — WorldView">
+  <meta property="og:description" content="9月24日（現地時間）の米中首脳会談初日を終えた時点で、貿易休戦は2027年1月10日まで延長された。だが台湾向け武器売却140億ドルは保留のまま、半導体・イランでも溝が残る。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/asia/2026-09-25-us-china-summit/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/us-china-summit-hero-white-house.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="台湾とホルムズ — 米中首脳会談、両国は何を求め、何を狙ったか — WorldView">
+  <meta name="twitter:description" content="9月24日（現地時間）の米中首脳会談初日を終えた時点で、貿易休戦は2027年1月10日まで延長された。だが台湾向け武器売却140億ドルは保留のまま、半導体・イランでも溝が残る。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/us-china-summit-hero-white-house.jpg">
+  <title>台湾とホルムズ — 米中首脳会談、両国は何を求め、何を狙ったか — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色は asia = --accent5（#9a8ab4 / 154,138,180）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url('../../../image/articles/us-china-summit-hero-white-house.jpg');
+      background-size: cover; background-position: center 40%;
+      filter: brightness(0.9) contrast(1.03) saturate(0.95);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(100deg, rgba(14,17,23,0.82) 0%, rgba(14,17,23,0.50) 46%, rgba(14,17,23,0.16) 100%),
+        linear-gradient(180deg, rgba(14,17,23,0.20) 0%, rgba(14,17,23,0.24) 45%, rgba(14,17,23,0.52) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; width: 100%; }
+    .article-hero .article-meta,
+    .article-hero .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65);
+    }
+    .hero-credit {
+      position: absolute; right: 1.1rem; bottom: 0.9rem; z-index: 2;
+      font-size: 0.66rem; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.52);
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75;
+      color: #b4bfcc; max-width: 580px; margin-top: 1.5rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+    }
+    .deck-accent { color: var(--accent5); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent5) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent5) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent5) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent5); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       本文パーツ（テーマ色を --accent5 に統一）
+       ========================================================== */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(154,138,180,0.06);
+      border: 1px solid rgba(154,138,180,0.22);
+      box-shadow: 0 0 40px 10px rgba(154,138,180,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent5); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent5); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent5); line-height: 1.2; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    .insight-box { border-left: 2px solid var(--border); padding-left: 1.2rem; margin-bottom: 2.2rem; }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* カード — テーマ色の淡いウォッシュで区別する */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 2.6rem 2.4rem; }
+    .article-body .perspective-card {
+      position: relative;
+      background: rgba(154,138,180,0.08);
+      border: none; border-radius: 0;
+      padding: 1.5rem 1.6rem 1.6rem;
+      transition: background 0.12s linear;
+    }
+    .article-body .perspective-card:hover { transform: none; box-shadow: none; background: rgba(154,138,180,0.13); }
+    .article-body .perspective-card::before { display: none; }
+    .article-body .perspective-card .country-header { margin-bottom: 0.9rem; display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; flex-wrap: wrap; }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .article-body .perspective-card .key-claim { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .interests { border-top: 1px solid var(--border-subtle); padding-top: 0.8rem; }
+
+    .article-body .compare-table { background: none; border: none; border-radius: 0; }
+    .article-body .compare-table th { background: none; border-bottom: 2px solid var(--accent5); color: var(--text-muted); }
+    .article-body .compare-table td { border-bottom: 1px solid var(--border-subtle); }
+    .article-body .compare-table tr:hover td { background: rgba(0,0,0,0.20); }
+    .table-scroll { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
+    .article-body .main-content, .article-body .section { min-width: 0; }
+    .table-scroll .compare-table.table-demands { min-width: 700px; }
+    .table-scroll .compare-table.table-motives { min-width: 480px; }
+    .table-scroll .compare-table td:first-child { white-space: nowrap; }
+    .scroll-hint { display: none; font-size: 0.72rem; color: var(--text-dim); margin-bottom: 0.4rem; }
+    @media (max-width: 720px) { .scroll-hint { display: block; } }
+    .table-note { font-size: 0.72rem; color: var(--text-dim); line-height: 1.6; margin-top: 0.7rem; }
+
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent5); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+    .article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+
+    .article-body .data-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .article-body .data-card { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .data-card::before { display: none; }
+    .article-body .data-card:hover { border-color: transparent; }
+    .article-body .data-card h4 {
+      font-size: 0.95rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem; padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .chart-box { position: relative; height: 300px; }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.7rem; line-height: 1.65; }
+
+    .article-body .sources-grid { display: block; counter-reset: src; }
+    .article-body a.source-item {
+      display: flex; gap: 1rem; align-items: baseline;
+      background: none; border: none; border-radius: 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1rem 0.2rem;
+      color: inherit; text-decoration: none;
+      counter-increment: src;
+      transition: background 0.12s linear, border-color 0.12s linear;
+    }
+    .article-body a.source-item::before {
+      content: counter(src, decimal-leading-zero);
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--accent5); flex: 0 0 auto; min-width: 1.7rem;
+    }
+    .article-body a.source-item:hover { background: rgba(0,0,0,0.20); border-bottom-color: var(--accent5); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent5); outline-offset: 2px; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); }
+    .article-figure figcaption { font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* アクセシビリティ・レスポンシブ */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-hero.has-image::after {
+        background: linear-gradient(180deg, rgba(14,17,23,0.42) 0%, rgba(14,17,23,0.52) 45%, rgba(14,17,23,0.72) 100%);
+      }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .stat-strip { grid-template-columns: 1fr; }
+      .stat-strip-item { border-right: none; border-bottom: 1px solid var(--border-subtle); padding-left: 0; }
+      .stat-strip-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">アジア情勢</span>
+      <span class="date">2026年9月25日</span>
+    </div>
+    <h1 class="article-title">台湾とホルムズ<br>— 米中首脳会談、両国は何を求め、何を狙ったか</h1>
+
+    <div class="hero-deck">
+      貿易休戦は2か月延長されたが、台湾向け武器売却は保留されたまま動かない。イラン戦争で消耗したアメリカに対し、中国はイランへの影響力を交渉材料にしていると報じられている。<span class="deck-accent">初日の会談を終えた時点で、両国の要求が重なるのは貿易休戦だけだ。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">貿易休戦の延長 2027年1月10日まで</span>
+      <span class="hero-pill">台湾向け武器売却 140億ドルを保留</span>
+      <span class="hero-pill">ホルムズ海峡の通航 戦前比 約9割減</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 貿易休戦の延長と、譲れない台湾</h2>
+
+          <p class="lead">習近平国家主席が9月23日から25日（現地時間）の日程でワシントンを訪問している。中国の国家主席が国賓としてアメリカを訪れるのは2015年9月以来で、5月の北京訪問に続き、今年2回目の対面会談となる。24日にホワイトハウスで行われた会談は約3時間に及んだ。この記事は、初日の会談を終えた時点（日本時間9月25日）の報道をもとに、両国の要求と思惑を整理する。</p>
+
+          <p class="lead">会談の構図は単純ではない。貿易休戦を続けたい思惑は両国とも一致している。だが台湾、半導体などの先端技術、そしてイラン戦争をめぐっては、要求が正面からぶつかり合っている。とりわけイラン戦争でアメリカの軍事的な余力が削られているとされるなか、中国が「イランへの圧力」と「台湾での譲歩」を結びつける取引を示唆しているとの報道もある。</p>
+
+          <p class="lead">会談は25日（現地時間）の最終日を残しており、共同記者会見や共同声明は予定されていないと報じられている。</p>
+
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">貿易休戦は延長、期限は短い</div>
+              <div class="factor-desc">貿易休戦は2か月延長され、2027年1月10日までとなった。中国は長期の延長を望んだと報じられるが、アメリカは既存の約束の履行状況を見極める姿勢を崩さなかった。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">台湾が交渉の材料になっている</div>
+              <div class="factor-desc">台湾向け武器売却の停止を求めているのは中国で、アメリカは過去最大となる140億ドル分の売却案を保留したまま動かしていない。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">イランが両国を結びつけている</div>
+              <div class="factor-desc">イラン戦争は一時停戦を挟みながら7か月目に入り、ホルムズ海峡の商船通航は戦前より約9割減った。イランの海上原油輸出の約8割を買い取っているのは中国で、この影響力を交渉材料にしているとされる。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">共同声明は予定されていない</div>
+              <div class="factor-desc">成果は両国が別々に発表する見通しと報じられている。</div>
+            </div>
+          </div>
+
+          <div class="article-question">
+            <p>両国はそれぞれ何を求め、何を差し出せるのか。台湾は、その取引の材料になるのか。</p>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-china-summit-negotiation-table.jpg" alt="交渉用の長い机に並ぶアメリカと中国の小旗、「United States」「China」の名札と資料">
+            <figcaption>24日の会談は約3時間に及んだ。初日の時点で一致したのは貿易休戦の継続にとどまり、台湾・半導体・イランでは立場の隔たりが残った。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 釜山からワシントンまで</h2>
+
+          <p class="lead">今回の会談は、2025年10月の釜山会談から11か月をかけて積み上がった経緯の上にある。貿易休戦、イラン戦争の勃発、5月の北京訪問、そして直前の同盟国間の協議まで、順を追って見ていく。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年10月30日 ― 釜山で米中首脳会談、貿易休戦に合意</div>
+                <p>アメリカの対中関税を平均57%から47%へ、フェンタニル関連の関税を20%から10%へ引き下げることで合意。中国はレアアース輸出規制の実施を1年停止し、アメリカも一部の輸出規制を1年停止した。大豆など農産物の輸入再開も、この合意に含まれていた。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年12月 ― アメリカ、台湾向けに過去最大111億ドルの武器売却を承認</div>
+                <p>釜山会談から1か月余りで、アメリカは台湾向けとして過去最大となる約111億ドルの武器売却を承認した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年2月28日 ― アメリカとイスラエルがイランを攻撃、イラン戦争が始まる</div>
+                <p>アメリカとイスラエルによるイラン攻撃で戦争が始まった。3月27日には、イラン革命防衛隊がホルムズ海峡の封鎖を宣言した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年5月13〜15日 ― トランプ氏が北京を訪問</div>
+                <p>「建設的戦略安定関係」の構築で一致し、中国はボーイング機200機の購入に合意した。中国によるアメリカ製旅客機の発注は2017年以来となる。イランに核兵器を持たせないことと、ホルムズ海峡の開放維持でも一致したが、習氏は台湾を「最も重要な問題」と位置づけ、「台湾独立と台湾海峡の平和は水と火のように相いれない」と警告した。この後アメリカは、過去最大となる140億ドルの台湾向け武器売却案を保留し、トランプ氏はこれを「とても良い交渉カード」と表現した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月20〜22日 ― 関係国が相次いで協議</div>
+                <p>9月20日、ニューヨークでベッセント財務長官と何立峰副首相が会談し、アメリカはAIの安全に関わる事故を互いに通報する仕組みを提案した。21日には日米韓の外相が共同声明を発表し、台湾海峡の平和と安定の重要性、一方的な現状変更の試みへの反対を確認。22日には高市首相とトランプ大統領がニューヨークで会談し、中国をめぐる連携強化で一致した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月23日 ― 習近平氏がワシントン到着、貿易休戦の2か月延長を発表</div>
+                <p>トランプ氏が空港で習氏を出迎えた。同日、ベッセント財務長官が貿易休戦を2か月延長し、2027年1月10日までとすると発表した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月24日 ― ホワイトハウスで首脳会談、約3時間</div>
+                <p>トランプ氏は「共通の利益の追求は多くの違いを乗り越えて両国民を結びつけ、第2次世界大戦において私たちを同盟国にした」と述べた。当時アメリカと同盟していたのは、1949年成立の中華人民共和国ではなく中華民国（蒋介石政権）だった。習氏は台湾について「米国側が台湾独立に反対するという正しい立場を堅持し、台湾問題を慎重に処理するよう望む」と述べ、イランについては「対話と交渉への復帰を支持し、各方面が包括的な合意に達することを望む」と表明。AIについては「人間がAI技術の制御を保ち続けなければならない」と述べた。習氏はジャイアントパンダ2頭をアトランタ動物園に送ると表明した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月25日（現地時間） ― 最終日（予定）</div>
+                <p>茶会と国立公文書館の見学が予定されている。共同記者会見や共同声明は予定されておらず、両国がそれぞれ自国向けに発表する見通しと報じられている。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-china-summit-soybean-terminal.jpg" alt="港の積み込み設備から流れ落ち、山になっていく大豆">
+            <figcaption>2025年10月の貿易休戦の合意で、中国は大豆など農産物の輸入再開を約束した。ベッセント財務長官によれば、2,500万トンの購入は順調に進んでいる。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 各国の視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>4つの視点 — 何を求め、何を差し出すか</h2>
+
+          <p class="lead">同じ会談を、当事者と関係国はそれぞれ異なる立場から見ている。まず4つの視点を見たうえで、論点ごとの要求と、両国の思惑を表で整理する。</p>
+
+          <div class="perspectives-grid">
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">アメリカ（トランプ政権）</span>
+                <span class="stance-label stance-cautious">台湾を交渉材料に</span>
+              </div>
+              <div class="key-claim">貿易休戦の延長を主導しつつ、台湾向け武器売却をあえて保留し、これを交渉カードと位置づける。ルビオ国務長官は売却について「売れば、その分こちらの手元からなくなる」と述べ、在庫への懸念をにじませた。イラン戦争でホルムズ海峡の通航が滞り、ガソリン・軽油価格の高騰が続くなか、11月の中間選挙を控えたインフレへの警戒も強い。</div>
+              <div class="interests">最大の関心：中間選挙前のインフレ抑制と、ホルムズ海峡の通航回復</div>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">中国（習近平政権）</span>
+                <span class="stance-label stance-cautious">台湾での譲歩を要求</span>
+              </div>
+              <div class="key-claim">1982年の米中共同コミュニケを根拠に、台湾向け武器売却の停止と、すでに発注済みの兵器の引き渡し阻止を求めている。会談では台湾問題の「慎重な処理」を望むと表明した。イランの海上原油輸出の約8割を買い取る立場を保ち、この影響力を交渉材料にしているとも報じられている。</div>
+              <div class="interests">最大の関心：貿易休戦の安定した継続と、台湾での実質的な譲歩</div>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">台湾（頼清徳政権）</span>
+                <span class="stance-label stance-cautious">武器調達の継続を強調</span>
+              </div>
+              <div class="key-claim">頼清徳総統は台米関係を「盤石」と評し、協力事業は変わらず続くと述べた。国防部の副報道官は、国防総省と緊密に連絡を取り合い、武器調達を予定どおり進めると説明している。国防費は2027年に初めてGDP比3%を超える見通しで、頼総統は2030年までに5%への引き上げを公約している。</div>
+              <div class="interests">最大の関心：140億ドルの武器売却が実際に実行されるかどうか</div>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">日本・韓国（同盟国）</span>
+                <span class="stance-label stance-supportive">台湾海峡の平和を明記</span>
+              </div>
+              <div class="key-claim">9月21日、日米韓の外相がニューヨークで共同声明を発表し、台湾海峡の平和と安定の重要性と、一方的な現状変更の試みへの反対、両岸問題の平和的解決の奨励を確認した。翌22日には高市首相とトランプ大統領が中国をめぐる連携強化で一致している。経済・戦略上の成果と引き換えに、アメリカが台湾への支援を弱めるのではという懸念が同盟国側にはある。</div>
+              <div class="interests">最大の関心：アメリカの対中姿勢が、台湾支援の後退につながらないこと</div>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">論点別の対照表 — 何を求めたか</div>
+          <p class="scroll-hint">表は横にスクロールできます</p>
+          <div class="table-scroll">
+            <table class="compare-table table-demands">
+              <thead>
+                <tr><th>論点</th><th>アメリカの要求</th><th>中国の要求</th><th>台湾の懸念</th><th>会談での扱い</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>貿易休戦の延長</td><td>延長は短くし、既存の約束が守られるか見極める</td><td>長期の延長（2年程度と報道）</td><td>—</td><td>2か月延長し、2027年1月10日までとすることで合意</td></tr>
+                <tr><td>関税・購入約束</td><td>遅れている農産物170億ドル分の購入と、レアアースの引き渡し</td><td>対中関税の引き下げ（報道）</td><td>—</td><td>大豆2,500万トンの購入は順調、その他の農産物とレアアースは遅れ。重要でない品目300億ドル分の関税撤廃は発表があり得ると報じられた段階</td></tr>
+                <tr><td>台湾向け武器売却</td><td>140億ドルの売却案を保留し、「交渉カード」として手元に置く</td><td>売却の停止と、発注済み兵器の引き渡し阻止</td><td>予定どおりの実行。台湾が取引材料にされること</td><td>保留が続き、結論は出ていない</td></tr>
+                <tr><td>台湾の位置づけ</td><td>5月の北京会談後、トランプ氏は台湾独立を支持しないと発言</td><td>「台湾独立に反対」という立場の堅持と、慎重な処理</td><td>頼総統は台米関係を「盤石」と強調</td><td>習氏が「正しい立場の堅持」を求めた。アメリカ側の回答は報じられていない</td></tr>
+                <tr><td>先端半導体</td><td>輸出規制の維持</td><td>輸出規制の緩和（報道）</td><td>—</td><td>目立った進展は報じられていない</td></tr>
+                <tr><td>イラン・ホルムズ海峡</td><td>中国がイランに圧力をかけ、海峡の通航を回復させること</td><td>対話と交渉への復帰を支持。台湾での譲歩との交換を示唆（報道）</td><td>台湾がイラン問題の交換条件にされること</td><td>交換は提案の段階で、トランプ氏が受け入れた兆しはない</td></tr>
+                <tr><td>AIの安全管理</td><td>安全保障を脅かすAI事故を相互に通報する仕組み</td><td>「人間がAI技術の制御を保つべき」と表明。通報の提案には公式に触れず</td><td>—</td><td>20日の閣僚協議で米中AI対話の設置に一致。首脳会談での合意は報じられていない</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">台湾の列は、台湾が直接かかわる論点のみ記載。会談での扱いは、初日の会談を終えた時点（日本時間9月25日）の報道にもとづく。</p>
+
+          <div class="label-eyebrow">両国の思惑</div>
+          <p class="scroll-hint">表は横にスクロールできます</p>
+          <div class="table-scroll">
+            <table class="compare-table table-motives">
+              <thead>
+                <tr><th></th><th>アメリカ（トランプ政権）</th><th>中国（習近平政権）</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>最優先</td><td>11月の中間選挙を前に、燃料高とインフレを抑えること。そのためのホルムズ海峡の通航回復</td><td>貿易休戦を維持し、関係を安定させること（報道）</td></tr>
+                <tr><td>手札</td><td>台湾向け140億ドルの武器売却、対中関税、先端半導体の輸出規制</td><td>レアアース・重要鉱物の供給、イランの海上原油輸出の約8割を買う立場</td></tr>
+                <tr><td>抱える事情</td><td>イラン戦争は一時停戦を挟み7か月目。ホルムズ海峡の通航は戦前の約1割、弾薬の消耗も指摘されている</td><td>対米投資は細っている（2025年に発表された対米直接投資は30億ドル未満で、2010年代半ばのピーク以降で最低）。5月に合意した投資協議会も動いておらず、投資を増やす前に政治的な保証を求めている（報道）</td></tr>
+                <tr><td>見せたい姿</td><td>「共通の利益が、第2次世界大戦で両国を同盟国にした」と述べ、友好を強調</td><td>11年ぶりの国賓訪問で、アメリカと「対等」に並ぶ姿</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-china-summit-taiwan-air-defense.jpg" alt="夕暮れの海を見下ろす丘の上で、対空砲を囲む兵士たちのシルエット">
+            <figcaption>台湾は、保留中の140億ドルの武器売却が実行されるかを注視している。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ — 細る対中貿易と、貿易休戦の履行状況</h2>
+
+          <p class="lead">アメリカの対中貿易は、2025年に輸出入とも大きく落ち込んだ。2026年に入ってからの推移と、貿易休戦で約束された事柄がどこまで果たされているかを見る。</p>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>アメリカの対中輸出入（2017〜2025年）</h4>
+              <div class="chart-box"><canvas id="tradeChart"></canvas></div>
+              <p class="chart-note">単位は10億ドル（財の貿易、名目）。2025年の対中輸入は3,087億ドルで、2017年の5,052億ドルから約4割減った。2026年1〜7月の輸入は1,564億ドルで、前年同期（1,940億ドル）を約2割下回っている。<br>出典：アメリカ国勢調査局の対中貿易統計</p>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">中国が約束した購入・供給の履行状況</div>
+          <p class="scroll-hint">表は横にスクロールできます</p>
+          <div class="table-scroll">
+            <table class="compare-table table-motives">
+              <thead>
+                <tr><th>品目</th><th>約束の内容</th><th>いつの約束</th><th>状況（ベッセント財務長官の評価）</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>大豆</td><td>中国がアメリカから年2,500万トンを購入（2026〜2028年）</td><td>2025年10月<br>釜山会談</td><td>順調</td></tr>
+                <tr><td>大豆以外の農産物</td><td>中国がアメリカから年170億ドル分を購入（2028年まで）</td><td>2026年5月<br>北京会談</td><td>遅れている</td></tr>
+                <tr><td>レアアース</td><td>中国がアメリカ向けの輸出規制を止め、供給を続ける</td><td>2025年10月<br>釜山会談</td><td>引き渡しが遅れている</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">2,026.7億ドル</div>
+              <div class="stat-desc">2025年のアメリカの対中貿易赤字</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">912.2億ドル</div>
+              <div class="stat-desc">2026年1〜7月の対中貿易赤字</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">ほぼ進展なし</div>
+              <div class="stat-desc">5月に設けた貿易・投資の協議は、ほとんど進展していない</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 弱いアメリカ、強まる中国の手札</h2>
+
+          <p class="lead">※ ここから先は、ここまでの事実にもとづく筆者個人の見解です。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">2か月延長は「時間稼ぎ」、次の試金石は2027年1月10日</div>
+            <div class="insight-text">2か月という延長幅の短さは、双方が相手の履行をまだ信用していないことの表れである。順調とされるのは大豆の購入だけで、農産物170億ドル分とレアアースの引き渡しは滞ったままである。2027年1月10日までにこの空白が埋まらなければ、次の首脳会談を待たずに貿易休戦そのものが揺らぐ可能性がある。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">台湾とホルムズを結びつける取引は、同盟国の信頼を試す</div>
+            <div class="insight-text">中国がイランに圧力をかけてホルムズ海峡の通航を緩めさせる代わりに、アメリカが140億ドルの台湾向け武器売却を止めるという取引案が報じられている。まだ提案段階で、トランプ氏が受け入れた兆候はない。だがこの取引が実際に動けば、経済上・安全保障上の利益と引き換えに同盟国への武器供給を止めたという前例になる。日米韓が9月21日にわざわざ台湾海峡に触れた共同声明を発表したのは、その懸念を先回りして示した動きに見える。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">釜山から1年で、アメリカの手札は弱まった</div>
+            <div class="insight-text">2025年10月の釜山会談の時点で、アメリカはイラン戦争を抱えていなかった。いまは7か月に及ぶイラン戦争で、ホルムズ海峡の商船通航は戦前より約9割減り、国防総省の監察機関は弾薬が大きく減ったと指摘している（ホワイトハウスは否定）。一方の中国は、イランの海上原油輸出の約8割を買う立場と、レアアース・重要鉱物の供給というカードを握ったままである。アメリカが貿易休戦の延長を2か月に抑えたのは強気の表れにも見えるが、海峡を開けるために中国の協力を必要としている以上、交渉の力関係は1年前よりアメリカに不利になったとみる。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">共同声明を予定しないこと自体が、合意の薄さを示す</div>
+            <div class="insight-text">共同声明を予定しないのは、貿易休戦の延長のように数字で示せる合意は発表できても、台湾・半導体・イランのように立場の隔たりが埋まらない論点では、共通の文書にまとめられるほどの一致が見込めないからだろう。最終日に注目すべきは、両国が別々に出す発表の中身がどこまで食い違うかである。</div>
+          </div>
+
+          <p class="closing">現時点で確定しているのは、貿易休戦を2か月延ばしたことだけである。台湾、半導体、イランをめぐる要求は、双方とも譲っていない。</p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/us-china-summit-tankers-waiting.jpg" alt="夕暮れの沖合に錨を下ろして待機する数隻の大型タンカー">
+            <figcaption>ホルムズ海峡では、通航を待つタンカーの列が続く。石油の供給を握ることは、交渉の場でも強みであり続ける。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://www.cnbc.com/2026/09/24/us-china-trade-truce-bessent-trump-xi.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">CNBC — 米中の貿易休戦、2か月延長</div>
+                <div class="source-desc">ベッセント財務長官による貿易休戦延長の発表と、2027年1月10日という新たな期限を報じた記事。</div>
+                <div class="source-country">【アメリカの経済メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.investing.com/news/stock-market-news/us-treasurys-bessent-chinas-he-to-meet-on-unfinished-business-before-trumpxi-summit-4913529" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Reuters（Investing.com配信） — 延長の理由と履行状況</div>
+                <div class="source-desc">大豆2,500万トンの購入は順調、その他農産物170億ドル分とレアアース引き渡しの遅れなど、貿易休戦の履行状況を伝えた記事。</div>
+                <div class="source-country">【アメリカの通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.nbcnews.com/world/asia/trump-xi-summit-meet-white-house-tensions-taiwan-trade-ai-rcna598073" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">NBC News — 会談の論点：台湾・貿易・AI</div>
+                <div class="source-desc">台湾向け武器売却の保留、中国側のレアアース・イラン産原油というカード、ルビオ国務長官の発言などを整理した記事。</div>
+                <div class="source-country">【アメリカのニュースメディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.nbcnews.com/world/asia/us-proposes-exchanging-ai-safety-alerts-china-bessent-says-rcna598923" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">NBC News — アメリカ、AI安全に関する情報の相互通報を提案</div>
+                <div class="source-desc">9月20日のベッセント財務長官と何立峰副首相の協議内容と、新華社の報じ方の違いを伝えた記事。</div>
+                <div class="source-country">【アメリカのニュースメディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://asia.nikkei.com/spotlight/trump-xi-summit/trump-xi-summit-live-us-president-says-super-intelligence-will-be-big-topic" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Nikkei Asia — 米中首脳会談の速報</div>
+                <div class="source-desc">習氏の到着から会談当日までの経過を時系列で伝えたライブ記事。</div>
+                <div class="source-country">【日本経済新聞の英字媒体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.nikkei.com/article/DGXZQOGN242QU0U6A920C2000000/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">日本経済新聞 — 米中首脳が4カ月ぶり会談</div>
+                <div class="source-desc">9月24日の会談の概要と、トランプ氏の発言を伝えた記事。</div>
+                <div class="source-country">【日本の全国紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.nikkei.com/article/DGXZQOGM249K00U6A920C2000000/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">日本経済新聞 — 習氏「台湾問題の慎重処理を」</div>
+                <div class="source-desc">会談での習氏の台湾・イランに関する発言を伝えた記事。</div>
+                <div class="source-country">【日本の全国紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.nikkei.com/article/DGXZQOGN15BB30V10C26A9000000/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">日本経済新聞 — 「対等」演出の訪米</div>
+                <div class="source-desc">習氏の訪米が「対等」の演出にこだわった2泊3日だったと分析した記事。</div>
+                <div class="source-country">【日本の全国紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.newsweek.com/trump-xi-taiwan-china-iran-strait-12482075" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Newsweek — 台湾とホルムズ海峡を結ぶ取引案</div>
+                <div class="source-desc">中国がイランに圧力をかける代わりにアメリカが台湾向け武器売却を止めるという報じられた取引案、ルビオ国務長官の発言を伝えた記事。</div>
+                <div class="source-country">【アメリカのニュース雑誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.semafor.com/article/09/22/2026/xi-expected-to-press-trump-to-suspend-arms-sales-to-taiwan" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Semafor — 習氏、武器売却停止を迫る見通し</div>
+                <div class="source-desc">中国が1982年の米中共同コミュニケを根拠に台湾向け武器売却の停止を求めていることを伝えた記事。</div>
+                <div class="source-country">【アメリカのニュースメディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://wtop.com/world/2026/09/taiwan-is-watching-closely-as-xi-and-trump-meet-and-hopes-us-will-keep-up-its-arms-sales/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">AP通信（WTOP配信） — 台湾の反応</div>
+                <div class="source-desc">頼清徳総統・国防部報道官の発言、台湾の国防費の推移を伝えた記事。</div>
+                <div class="source-country">【アメリカの通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.state.gov/releases/office-of-the-spokesman/2026/09/joint-statement-from-the-trilateral-meeting-of-the-united-states-of-america-japan-and-the-republic-of-korea-in-new-york-city-2/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">アメリカ国務省 — 日米韓外相共同声明</div>
+                <div class="source-desc">2026年9月21日、ニューヨークでの日米韓外相会談の共同声明原文。台湾海峡の平和と安定への言及を含む。</div>
+                <div class="source-country">【アメリカ政府】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://news.web.nhk/newsweb/na/nd-20260922de51902" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">NHK — 日米首脳会談</div>
+                <div class="source-desc">9月22日の高市首相とトランプ大統領の会談内容を伝えた記事。</div>
+                <div class="source-country">【日本の公共放送】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikipedia.org/wiki/2026_state_visit_by_Donald_Trump_to_China" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia — 2026年のトランプ氏の中国訪問</div>
+                <div class="source-desc">5月13〜15日の北京訪問の合意内容と、習氏の台湾に関する発言を確認するための項目。</div>
+                <div class="source-country">【一次資料へのリンクを備えた年表】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikipedia.org/wiki/Busan_Summit" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia — 釜山サミット</div>
+                <div class="source-desc">2025年10月30日の米中首脳会談と、貿易休戦の合意内容を確認するための項目。</div>
+                <div class="source-country">【一次資料へのリンクを備えた年表】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikipedia.org/wiki/2026_Iran_war" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia — 2026年イラン戦争</div>
+                <div class="source-desc">2月28日の開戦とホルムズ海峡封鎖宣言の日付を確認するための項目。</div>
+                <div class="source-country">【一次資料へのリンクを備えた年表】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.census.gov/foreign-trade/balance/c5700.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">アメリカ国勢調査局 — 対中貿易統計</div>
+                <div class="source-desc">2017年から2025年までのアメリカの対中輸出入額、2026年1〜7月の実績を含む公式統計。本記事のグラフの出典。</div>
+                <div class="source-country">【アメリカ政府の統計機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.csis.org/programs/trump-xi-2026-summits" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">CSIS — 2026年の米中首脳会談</div>
+                <div class="source-desc">2026年の一連の米中首脳会談を追ったシンクタンクの特集ページ。</div>
+                <div class="source-country">【アメリカのシンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.koreajoongangdaily.com/world/trump-welcomes-xi-to-white-house-invokes-wwii-alliance-in-talks-on-trade-and-ai/12891250" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Korea JoongAng Daily — 歓迎式典で第2次世界大戦の同盟に言及</div>
+                <div class="source-desc">9月24日の歓迎式典で、トランプ氏が第2次世界大戦での米中の協力を持ち出して友好を強調したことを伝えた記事。</div>
+                <div class="source-country">【韓国の新聞】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://farmpolicynews.illinois.edu/2026/05/china-to-buy-17-billion-in-us-farm-goods-annually/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Farm Policy News（イリノイ大学） — 年170億ドルの農産物購入</div>
+                <div class="source-desc">5月の北京会談後、中国が大豆とは別に年170億ドル分のアメリカ産農産物を2028年まで購入すると約束した内容を整理した記事。</div>
+                <div class="source-country">【アメリカの大学の農業政策メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://rhg.com/research/why-chinese-fdi-in-the-us-wont-rebound/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Rhodium Group — 中国の対米直接投資はなぜ戻らないのか</div>
+                <div class="source-desc">2025年に発表された中国の対米直接投資が30億ドル未満にとどまり、2010年代半ばのピーク以降で最低になったことを示した調査レポート（2026年4月30日）。</div>
+                <div class="source-country">【アメリカの調査会社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.scmp.com/news/us/economy-trade-business/article/3363829/us-china-board-investment-stalls-expected-trump-xi-meeting" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">South China Morning Post — 米中「投資協議会」の停滞</div>
+                <div class="source-desc">5月に設置で合意した投資協議会が、協議の開始に至っていないことを伝えた記事。</div>
+                <div class="source-country">【香港の新聞】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>4つの視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/asia/index.html">アジア情勢</a></div>
+          <div>2026年9月25日</div>
+          <div style="margin-top:0.5rem;">4つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/asia/index.html">アジア情勢一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  var AX = { grid: '#2a3a50', tick: '#8890a0' };
+
+  // アメリカの対中輸出入（2017〜2025年、10億ドル）
+  (function () {
+    var ctx = document.getElementById('tradeChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+        datasets: [
+          {
+            label: '中国への輸出',
+            // 出典：アメリカ国勢調査局の対中貿易統計（百万ドル→10億ドルに換算、小数1桁）
+            // 2017:129,997.2 / 2018:120,281.2 / 2019:106,481.2 / 2020:124,581.5 / 2021:151,439.4
+            // 2022:153,987.4 / 2023:147,626.5 / 2024:143,271.7 / 2025:105,977.8（いずれも百万ドル）
+            data: [130.0, 120.3, 106.5, 124.6, 151.4, 154.0, 147.6, 143.3, 106.0],
+            backgroundColor: 'rgba(136,144,160,0.45)',
+            borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.7
+          },
+          {
+            label: '中国からの輸入',
+            // 出典：アメリカ国勢調査局の対中貿易統計（百万ドル→10億ドルに換算、小数1桁）
+            // 2017:505,165.1 / 2018:538,514.2 / 2019:449,110.7 / 2020:432,548.0 / 2021:504,246.3
+            // 2022:536,268.7 / 2023:427,234.3 / 2024:440,319.4 / 2025:308,651.9（いずれも百万ドル）
+            data: [505.2, 538.5, 449.1, 432.5, 504.2, 536.3, 427.2, 440.3, 308.7],
+            backgroundColor: 'rgba(154,138,180,0.95)',
+            borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.7
+          }
+        ]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: true, position: 'top', labels: { color: AX.tick, font: { size: 11 }, boxWidth: 12 } },
+          tooltip: { callbacks: { label: function (c) { return ' ' + c.dataset.label + ' ' + Math.round(c.parsed.y * 10).toLocaleString() + '億ドル'; } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: AX.tick, font: { size: 10 } } },
+          y: {
+            min: 0, max: 600,
+            grid: { color: AX.grid },
+            ticks: { color: AX.tick, font: { size: 10 }, callback: function (v) { return v; } }
+          }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
