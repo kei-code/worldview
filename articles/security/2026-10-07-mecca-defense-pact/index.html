@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2026年8月7日にメッカで署名されたサウジアラビア・トルコ・パキスタンの防衛協定が、10月5日に初めて発動された。トルコとパキスタンは部隊の速やかな展開で合意したが、トルコ議会の批准はまだで、派遣の規模や任務も公表されていない。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/security/2026-10-07-mecca-defense-pact/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="敵の違う同盟 — サウジ・トルコ・パキスタンの防衛協定は、誰を何から守るのか — WorldView">
+  <meta property="og:description" content="2026年8月7日にメッカで署名されたサウジアラビア・トルコ・パキスタンの防衛協定が、10月5日に初めて発動された。トルコとパキスタンは部隊の速やかな展開で合意したが、トルコ議会の批准はまだで、派遣の規模や任務も公表されていない。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/security/2026-10-07-mecca-defense-pact/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/mecca-defense-pact-hero-mecca-twilight.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="敵の違う同盟 — サウジ・トルコ・パキスタンの防衛協定は、誰を何から守るのか — WorldView">
+  <meta name="twitter:description" content="10月5日、サウジアラビア・トルコ・パキスタンの防衛協定が初めて発動された。ただしトルコ議会の批准はまだで、派遣の規模や任務も公表されていない。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/mecca-defense-pact-hero-mecca-twilight.jpg">
+  <title>敵の違う同盟 — サウジ・トルコ・パキスタンの防衛協定は、誰を何から守るのか — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色は security = --accent2（テラコッタ #b87868 / 184,120,104）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url('../../../image/articles/mecca-defense-pact-hero-mecca-twilight.jpg');
+      background-size: cover; background-position: center 40%;
+      filter: brightness(0.92) contrast(1.03) saturate(0.98);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(100deg, rgba(14,17,23,0.80) 0%, rgba(14,17,23,0.48) 46%, rgba(14,17,23,0.16) 100%),
+        linear-gradient(180deg, rgba(14,17,23,0.20) 0%, rgba(14,17,23,0.24) 45%, rgba(14,17,23,0.52) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; width: 100%; }
+    .article-hero .article-meta,
+    .article-hero .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65);
+    }
+    .hero-credit {
+      position: absolute; right: 1.1rem; bottom: 0.9rem; z-index: 2;
+      font-size: 0.66rem; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.52);
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75;
+      color: #b4bfcc; max-width: 580px; margin-top: 1.5rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+    }
+    .deck-accent { color: var(--accent2); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent2) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent2) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent2) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent2); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       本文パーツ（テーマ色を --accent2 に統一）
+       ========================================================== */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(184,120,104,0.06);
+      border: 1px solid rgba(184,120,104,0.22);
+      box-shadow: 0 0 40px 10px rgba(184,120,104,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent2); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent2); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent2); line-height: 1.2; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    .insight-box { border-left: 2px solid var(--border); padding-left: 1.2rem; margin-bottom: 2.2rem; }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* カード — テーマ色の淡いウォッシュで区別する */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 2.6rem 2.4rem; }
+    .article-body .perspective-card {
+      position: relative;
+      background: rgba(184,120,104,0.08);
+      border: none; border-radius: 0;
+      padding: 1.5rem 1.6rem 1.6rem;
+      transition: background 0.12s linear;
+    }
+    .article-body .perspective-card:hover { transform: none; box-shadow: none; background: rgba(184,120,104,0.13); }
+    .article-body .perspective-card::before { display: none; }
+    .article-body .perspective-card .country-header { margin-bottom: 0.9rem; display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; flex-wrap: wrap; }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .article-body .perspective-card .key-claim { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .interests { border-top: 1px solid var(--border-subtle); padding-top: 0.8rem; }
+
+    .article-body .compare-table { background: none; border: none; border-radius: 0; }
+    .article-body .compare-table th { background: none; border-bottom: 2px solid var(--accent2); color: var(--text-muted); }
+    .article-body .compare-table td { border-bottom: 1px solid var(--border-subtle); }
+    .article-body .compare-table tr:hover td { background: rgba(0,0,0,0.20); }
+    .table-scroll { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
+    .article-body .main-content, .article-body .section { min-width: 0; }
+    .table-scroll .compare-table.table-positions { min-width: 700px; }
+    .table-scroll .compare-table.table-pledges { min-width: 560px; }
+    .table-scroll .compare-table td:first-child { white-space: nowrap; }
+    .scroll-hint { display: none; font-size: 0.72rem; color: var(--text-dim); margin-bottom: 0.4rem; }
+    @media (max-width: 720px) { .scroll-hint { display: block; } }
+    .table-note { font-size: 0.72rem; color: var(--text-dim); line-height: 1.6; margin-top: 0.7rem; }
+
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent2); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+    .article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+
+    .article-body .data-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .article-body .data-card { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .data-card::before { display: none; }
+    .article-body .data-card:hover { border-color: transparent; }
+    .article-body .data-card h4 {
+      font-size: 0.95rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem; padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .chart-box { position: relative; height: 280px; }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.7rem; line-height: 1.65; }
+
+    .article-body .sources-grid { display: block; counter-reset: src; }
+    .article-body a.source-item {
+      display: flex; gap: 1rem; align-items: baseline;
+      background: none; border: none; border-radius: 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1rem 0.2rem;
+      color: inherit; text-decoration: none;
+      counter-increment: src;
+      transition: background 0.12s linear, border-color 0.12s linear;
+    }
+    .article-body a.source-item::before {
+      content: counter(src, decimal-leading-zero);
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--accent2); flex: 0 0 auto; min-width: 1.7rem;
+    }
+    .article-body a.source-item:hover { background: rgba(0,0,0,0.20); border-bottom-color: var(--accent2); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); }
+    .article-figure figcaption { font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* アクセシビリティ・レスポンシブ */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-hero.has-image::after {
+        background: linear-gradient(180deg, rgba(14,17,23,0.42) 0%, rgba(14,17,23,0.52) 45%, rgba(14,17,23,0.72) 100%);
+      }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .stat-strip { grid-template-columns: 1fr; }
+      .stat-strip-item { border-right: none; border-bottom: 1px solid var(--border-subtle); padding-left: 0; }
+      .stat-strip-item:last-child { border-bottom: none; }
+    }
+    /* 視点カード群の直後の段落（当事国以外の反応）との間隔 */
+    .article-body .perspectives-grid + .lead { margin-top: 2.6rem; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">安全保障</span>
+      <span class="date">2026年10月7日</span>
+    </div>
+    <h1 class="article-title">敵の違う同盟<br>— サウジ・トルコ・パキスタンの防衛協定は、誰を何から守るのか</h1>
+
+    <div class="hero-deck">
+      2026年8月、サウジアラビア・トルコ・パキスタンは、どこか1国が攻撃されたら3か国で守り合う防衛協定を結んだ。10月には、この協定が初めて発動された。<span class="deck-accent">ところが、3か国が警戒する「敵」はそれぞれ違う。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">署名 2026年8月7日</span>
+      <span class="hero-pill">3か国の軍事費 計1,251億ドル</span>
+      <span class="hero-pill">初の発動 2026年10月5日</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 発動はされたが、中身は見えない</h2>
+
+          <p class="lead">2026年8月7日、イスラム教の聖地メッカで、サウジアラビアのムハンマド・ビン・サルマン皇太子、トルコのエルドアン大統領、パキスタンのシャバズ・シャリフ首相が「メッカ共同防衛協定」に署名した。中核となる条項は「3か国のいずれかへの武力攻撃は、全員への攻撃とみなす」というもので、北大西洋条約機構（NATO）第5条をモデルにしたとされる。前身は2025年9月17日に結ばれたサウジアラビア・パキスタン戦略的相互防衛協定で、そこにトルコが加わる形で今回の協定が成立した。</p>
+
+          <p class="lead">3か国の組み合わせは異色である。世界最大級の石油輸出国であるサウジアラビア、兵員数ではNATO加盟国のなかでアメリカに次ぐ規模の軍を持つトルコ、そしてイスラム圏で唯一の核保有国であるパキスタン。資金・通常戦力・核という3つの異なる力が、ひとつの協定で結びついた。</p>
+
+          <p class="lead">一方で、協定には欠けているものが多い。条文そのものが公開されておらず、共同司令部・常設部隊は存在せず、発動の手順も公表されていない。トルコでは議会の批准も終わっていない。それでも10月5日、3か国は協定を初めて発動し、トルコとパキスタンが部隊をサウジアラビアに展開することで合意した。ただし派遣する部隊の規模や任務は公表されていない。さらに3か国が念頭に置く脅威もそれぞれ異なる。サウジアラビアはイランとフーシ派、パキスタンはインド、トルコはイスラエルとクルド勢力である。</p>
+
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">サウジアラビアの資金</div>
+              <div class="factor-desc">世界最大級の石油輸出国としての資金力を背景に協定を主導する立場にある。ただしアメリカ製兵器への依存は協定後も変わらず、9月にはF-35戦闘機48機、243億ドル分の売却がアメリカ議会に通知された。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">トルコの軍と防衛産業</div>
+              <div class="factor-desc">兵員数でNATO加盟国2番目の規模の軍を持ち、自前の防衛産業も抱える。フィダン外相は協定について「閣僚委員会・政治委員会・軍事委員会・常設事務局を備えたNATOに似た形」と説明している。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">パキスタンの兵力と核</div>
+              <div class="factor-desc">イスラム圏で唯一の核保有国であり、兵力を提供できる。2026年4月にはJF-17戦闘機部隊と兵員をサウジアラビアへ派遣した実績がある。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">欠けているもの</div>
+              <div class="factor-desc">条文は公開されていない。協定は10月に初めて発動されたが、共同司令部・常設部隊はなく、トルコ議会の批准も終わっていない。派遣する部隊の規模も明らかになっていない。</div>
+            </div>
+          </div>
+
+          <div class="article-question">
+            <p>この同盟は、誰を何から守るために結ばれたのか。そして実際に守れるのか。</p>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/mecca-defense-pact-treaty-closeup.jpg" alt="署名済みの条約文書に押された蝋印と、インクで書かれた3か国代表の署名の接写">
+            <figcaption>条文は公開されておらず、共同司令部も常設部隊もまだない。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 協力の系譜から初の発動まで</h2>
+
+          <p class="lead">サウジアラビアとパキスタンの軍事協力は60年以上前にさかのぼる。そこにイラン戦争という直近の危機が重なり、今回の3か国協定に至った経緯と、署名から初の発動までを追う。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">1960年代半ば ― サウジアラビアとパキスタンの軍事協力が始まる</div>
+                <p>両国の防衛関係は、今回の協定より半世紀以上前から続いている。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2015年 ― パキスタン、サウジアラビアのイエメン介入への参加要請を断る</div>
+                <p>サウジアラビア主導によるイエメン内戦への軍事介入が始まった際、パキスタンは参加を要請されたが見送った。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2023年10月7日以降 ― ハマスの対イスラエル攻撃の後、3か国の協議が始まる</div>
+                <p>パレスチナのイスラム組織ハマスによる攻撃とその後の戦闘を受け、サウジアラビア・トルコ・パキスタンの間で防衛協力に関する協議が始まったと報じられている。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年9月17日 ― サウジ・パキスタン戦略的相互防衛協定、リヤドで署名</div>
+                <p>「どちらかへの侵略は両国への侵略とみなす」との条項を含む協定に署名。核兵器の扱いは明記されなかった。パキスタンのアシフ国防相は核の傘の提供を示唆する発言をしたが、その後、本人が「核は議題にない」と発言を修正した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年11月18日 ― アメリカがサウジアラビアと戦略防衛協定を締結</div>
+                <p>アメリカはサウジアラビアをNATO非加盟の主要同盟国に指定し、F-35戦闘機の売却にも道を開いた。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年2月28日 ― アメリカとイスラエルがイランを攻撃、イラン戦争が始まる</div>
+                <p>イランは報復として湾岸各地を攻撃し、3月2日にはサウジアラビアのラス・タヌラ製油所がドローン攻撃を受けた。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年4月 ― アメリカ・イラン停戦とパキスタンのサウジ派兵</div>
+                <p>パキスタンの仲介で4月8日にアメリカとイランの停戦が成立した。同月、パキスタンは中国と共同開発したJF-17戦闘機を中心とする約16機の部隊をサウジアラビアに派遣。兵員約8,000人と中国製防空システムHQ-9もあわせて展開したと報じられている（2026年5月）。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年7月8日 ― 停戦が崩壊</div>
+                <p>トランプ大統領は停戦が終わったと表明した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年8月7日 ― メッカで3か国が防衛協定に署名</div>
+                <p>サウジアラビア・トルコ・パキスタンの首脳が署名。中核条項は「3か国のいずれかへの武力攻撃は、全員への攻撃とみなす」。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年8月16日（アメリカ時間） ― トランプ大統領が協定を歓迎</div>
+                <p>自身のSNS「トゥルース・ソーシャル」で「大きく大胆で重要な第一歩」と書き込んだ。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年8月31日 ― イスタンブールで初の委員会会合</div>
+                <p>3か国の外相・国防相・軍参謀長が出席した戦略・政治・防衛委員会の初会合で、同盟の名称を「メッカ防衛同盟」とし、常設事務局をリヤドに設置、初代事務局長はパキスタンから出すことで合意した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月9日 ― パキスタン国防相「協定は発動する」</div>
+                <p>フーシ派のミサイル攻撃でサウジアラビア南部の73人が負傷したと報じられるなか、アシフ国防相は「イエメンの事態がサウジアラビアに波及すれば、メッカ協定は確実に発動する」と述べた。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月中旬 ― 東西パイプラインへの攻撃、協定は動かず</div>
+                <p>フーシ派がサウジアラビアの東西パイプラインなどを攻撃した。トルコとパキスタンは非難声明を出したが、軍事行動はとらなかった。トルコの高官は「協定の義務はまだ法的に有効ではない」「体制づくりには数年かかりうる」と述べた（9月14日報道）。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月15日 ― メッカ方面のドローンをサウジアラビアが迎撃</div>
+                <p>サウジアラビアは、メッカ方面に向かったフーシ派のドローンを15日夜に迎撃したと発表した（フーシ派は関与を否定）。パキスタンのアシフ国防相は「メッカ協定は我々に適用される。義務は果たす」と述べたが、トルコは公式な反応を控え、批准前であることを障害に挙げた。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月17日（アメリカ時間） ― アメリカがサウジアラビアへのF-35売却を承認</div>
+                <p>アメリカ国務省はF-35戦闘機48機、243億ドル相当の売却を承認し、議会に通知した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月23日 ― 初代事務局長を任命</div>
+                <p>パキスタン外務省は、同国のナウマン・マフムード退役中将が、リヤドに置かれる常設事務局の初代事務局長（任期3年）に任命されたと発表した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月24日 ― 弾道ミサイル6発を迎撃、3か国外相が緊急協議</div>
+                <p>サウジアラビア主導の連合軍は、タイフやヤンブーに向けて発射された弾道ミサイル6発を迎撃したと発表した。ヤンブーでは、協定の加盟国ではないギリシャの部隊が運用するパトリオットも迎撃にあたった。同日、国連総会に合わせてニューヨークで3か国の外相が協議し、協定にもとづく支援を検討する軍参謀長の緊急会合を決めた。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月25日 ― リヤドで3か国の軍参謀長が会合</div>
+                <p>サウジアラビアの呼びかけで、パキスタンのムニール元帥、トルコのバイラクタロール参謀総長、サウジアラビアのルワイリ参謀総長が会合した。共同声明は情報協力・軍事調整・戦力の統合を挙げ、協定の約束を実効的な軍事協力として直ちに実行に移し始めると表明した。ただし共同司令部の設置や派兵は発表されなかった。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月29日 ― メディナの変電所にドローン攻撃</div>
+                <p>メディナの預言者のモスクに電力を送る変電所がドローン攻撃を受け、変圧器1基が止まった。サウジアラビア主導の連合軍は10月1日、フーシ派による攻撃だと発表した（フーシ派は否定）。多くの国や国際機関が攻撃を非難した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年10月5日 ― リヤドの緊急会合で、協定を初めて発動</div>
+                <p>3か国の外相・国防相・軍参謀長がリヤドに集まり、メッカとメディナを標的にした攻撃を受けて、「集団的な抑止措置」の発動を決めた。共同声明は、合意した部隊と装備をサウジアラビアに速やかに展開するとしたが、フーシ派を名指しはしなかった。署名以来、初めての発動である。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/mecca-defense-pact-air-defense.jpg" alt="夜の丘に展開した移動式の防空ミサイル発射機と、その脇に立つ兵士たち。上空には迎撃の光跡">
+            <figcaption>パキスタンは戦闘機部隊と兵員に加え、中国製の防空システムもサウジアラビアに展開したと報じられている。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 各国の視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>6つの視点 — 誰が何を求めているか</h2>
+
+          <p class="lead">同じ協定を、当事国と関係国はそれぞれ異なる立場から見ている。</p>
+
+          <div class="perspectives-grid">
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">サウジアラビア</span>
+                <span class="stance-label stance-cautious">相手を増やす保険</span>
+              </div>
+              <div class="key-claim">アメリカへの依存を減らしつつ、アメリカとの関係も同時に深めている。署名から約6週間後にはF-35売却が承認された。9月25日の軍参謀長会合を呼びかけたのもサウジアラビアで、10月5日の発動はハリド国防相が発表した。Arab Center Washington DCの論考はこの動きを「代替なき多角化」と呼ぶ。エジプトの協定参加には反対したと報じられている。</div>
+              <div class="interests">最大の関心：頼れる相手を増やしつつ、アメリカとの関係も維持すること</div>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">パキスタン</span>
+                <span class="stance-label stance-supportive">積極的な関与</span>
+              </div>
+              <div class="key-claim">中東の安全保障に深く入り込み、国際的な地位と影響力を高める機会と捉えている。イラン戦争ではアメリカとイランの仲介役も務めた。発動後、国防相は偵察などの「支援的な役割」をすでに担っていると述べ、イエメン政府軍への武器供与と軍事顧問の派遣も報じられている（ロイター）。ただし、戦闘任務での派兵は決めていないとしている。</div>
+              <div class="interests">最大の関心：中東での軍事的な存在感を高め、トランプ政権との関係を強化すること</div>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">トルコ</span>
+                <span class="stance-label stance-supportive">湾岸への足がかり</span>
+              </div>
+              <div class="key-claim">湾岸地域での影響力拡大とイスラエルへの牽制を狙う。政府は協定がNATO第5条と矛盾しないと主張し、国会議長はイランを含むイスラム世界への拡大にも言及した。10月5日の発動には加わったが、議会の批准は終わっておらず、部隊の派遣も公式には確認していない（10月6日時点）。</div>
+              <div class="interests">最大の関心：湾岸での発言力を高めつつ、NATO加盟国としての立場との整合性を保つこと</div>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">アメリカ</span>
+                <span class="stance-label stance-cautious">歓迎するが深入りせず</span>
+              </div>
+              <div class="key-claim">トランプ大統領は協定を「大きく大胆で重要な第一歩」と歓迎し、負担分担の成果とみている。地域には約5万人のアメリカ軍が展開している。一方で外交問題評議会（CFR）のスティーブン・クック氏は、この協定を「アメリカ主導の中東秩序は終わった」ことの表れと論じる。</div>
+              <div class="interests">最大の関心：地域の安全保障の負担を同盟国と分かち合いつつ、影響力を失わないこと</div>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">イスラエル</span>
+                <span class="stance-label stance-hostile">警戒</span>
+              </div>
+              <div class="key-claim">政府は公式にコメントしていない。匿名の当局者は「イスラエルに向けた同盟だ」と警戒し、エジプトの参加を懸念しているという。一方で国家安全保障研究所（INSS）のヨエル・グザンスキー氏は「同盟（alliance）ではなく連携（alignment）だ」と評価している。</div>
+              <div class="interests">最大の関心：協定が対イスラエルの軍事的な連合に発展しないかどうか</div>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">インド</span>
+                <span class="stance-label stance-cautious">懸念を表明</span>
+              </div>
+              <div class="key-claim">外務省は2026年8月、協定が「国家安全保障と地域の安定の両面」に与える影響を検討していると述べた。ジャイシャンカル外相は「署名国はそれぞれ現に軍事的な事態を抱えている。この協定はそれに対して何をしたのか」と述べた。インドの論評には、協定によってパキスタン指導部が紛争拡大のコストを以前より安く見積もるおそれがあるという指摘もある。</div>
+              <div class="interests">最大の関心：協定がパキスタンを対インドで強気にさせないかどうか</div>
+            </div>
+          </div>
+
+          <p class="lead">当事国以外の反応も分かれている。イランのアラグチ外相は協定を歓迎しイスラム諸国の団結を呼びかけた一方、イラン議会の議員からは「紙の協定では安全は得られない」との声が出ている。エジプトは加盟を検討しているとされるが、加盟すれば親しいギリシャやキプロスなどとの関係を損なうおそれがあり、慎重な姿勢をとっている。協定の発動後、イラン外務省のバガイ報道官は、パキスタンが「イエメンでの戦争のために」部隊を送ることに警告した。</p>
+
+          <div class="label-eyebrow">論点別の対照表 — 各国の立場</div>
+          <p class="scroll-hint">表は横にスクロールできます</p>
+          <div class="table-scroll">
+            <table class="compare-table table-positions">
+              <thead>
+                <tr><th>国・勢力</th><th>立場</th><th>主な脅威</th><th>評価・反応</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>サウジアラビア</td><td>推進しつつ対米関係も維持</td><td>イラン、フーシ派</td><td>F-35売却など対米関係は協定後も深化</td></tr>
+                <tr><td>パキスタン</td><td>積極推進</td><td>インド</td><td>偵察など支援的な役割をすでに担うと表明、イエメンにも武器を供与</td></tr>
+                <tr><td>トルコ</td><td>推進、国内手続きは未了</td><td>イスラエル、クルド勢力</td><td>発動に参加したが、議会の批准は未了</td></tr>
+                <tr><td>アメリカ</td><td>歓迎、当事者ではない</td><td>（地域秩序の変化そのもの）</td><td>F-35売却など二国間関係は協定後も継続</td></tr>
+                <tr><td>イスラエル</td><td>非公式に警戒</td><td>（協定そのものを懸念対象と見る）</td><td>「同盟ではなく連携」との見方も</td></tr>
+                <tr><td>インド</td><td>懸念を表明</td><td>パキスタン</td><td>実効性に疑問を呈しつつ、表立った反対はせず</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">評価・反応は、署名以降の報道にもとづく（2026年10月7日時点）。</p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/mecca-defense-pact-divided-map.jpg" alt="広げられた地図の上で、3組の手がそれぞれ別々の方向へ駒を置いている">
+            <figcaption>同じ協定を、サウジアラビア・トルコ・パキスタンはそれぞれ異なる脅威を念頭に見ている。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ — 数字で見る3か国の実力</h2>
+
+          <p class="lead">協定を支える3か国の実力を、軍事費・核戦力・経済負担の3つの指標で見る。</p>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>軍事費（2025年、億ドル）</h4>
+              <div class="chart-box"><canvas id="milexChart"></canvas></div>
+              <p class="chart-note">サウジアラビア・トルコ・パキスタンの合計は1,251億ドルで、グラフの6か国のなかで最も多いインドを上回る。ただしその約3分の2（66.5%）はサウジアラビア1国の支出である。比較のため関連国も添えた。サウジアラビアはSIPRIの推定値。金額は名目値で、世界全体の軍事費は2兆8,870億ドル、アメリカは9,540億ドル。<br>出典：ストックホルム国際平和研究所（SIPRI）Fact Sheet April 2026, Table 1</p>
+            </div>
+            <div class="data-card">
+              <h4>核弾頭の保有数（2026年1月時点）</h4>
+              <div class="chart-box"><canvas id="nukeChart"></canvas></div>
+              <p class="chart-note">数値はSIPRIの推計。サウジアラビア・トルコ・イランは核兵器を保有していない。2025年のサウジアラビア・パキスタン協定について、ベルファーセンターは公開された文言に核への言及はなく、核の傘にはあたらないと分析している。メッカ協定の条文は公開されていない。<br>出典：SIPRI Yearbook 2026 Summary「World nuclear forces, January 2026」</p>
+            </div>
+            <div class="data-card">
+              <h4>軍事費の対GDP比（2025年、%）</h4>
+              <div class="chart-box"><canvas id="gdpChart"></canvas></div>
+              <p class="chart-note">イランの軍事費は実質額で2年連続の減少だが、ストックホルム国際平和研究所（SIPRI）はインフレ率42%の影響と、ドローン・ミサイル計画の一部が予算外で賄われている点を指摘している。サウジアラビアは推定値。<br>出典：SIPRI Fact Sheet April 2026, Table 1</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 発動された同盟の、次の試練</h2>
+
+          <p class="lead">※ ここから先は、ここまでの事実にもとづく筆者個人の見解です。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">発動は「派兵」より「抑止の表明」に近い</div>
+            <div class="insight-text">10月5日の共同声明は部隊の展開をうたったが、規模も任務も示さず、フーシ派の名指しも避けた。パキスタン国防相が挙げたのは偵察などの「支援的な役割」で、トルコは議会の批准を終えていない。専門家は、パキスタンは防空部隊やドローンなどの専門部隊、トルコは情報共有や電子戦といった地上部隊以外の支援が中心になるとみている。サウジアラビア国内での中身は、当面、防空を補う防御的な支援にとどまるだろう。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">イエメンに踏み込むかが分かれ目</div>
+            <div class="insight-text">イランは、パキスタンが「イエメンでの戦争のために」部隊を送ることに警告している。イランにとっての一線は防御ではなく、フーシ派を攻撃する作戦への参加だという分析もある。一方でパキスタンは、すでにイエメン政府軍へ武器を送り、軍事顧問も置いていると報じられている。パキスタンはイラン戦争でアメリカとイランの仲介役を務めており、イランとの関係を壊せば仲介役としての立場も失う。そのため、武器の供与や顧問の派遣は続けても、戦闘部隊をイエメンに送ることには踏み込まない可能性が高い。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">トルコは批准の前に発動に加わった</div>
+            <div class="insight-text">トルコは議会の承認を得ないまま、発動の決定に名を連ねた。批准の審議では条文が公開され、地理的な範囲・発動の条件・核兵器の扱いが明らかになる。トルコはNATOの加盟国でもあり、北大西洋条約第8条は、加盟国が条約と矛盾する国際的な約束を結ぶことを禁じている。トルコがこの協定にもとづいて行動し、反撃を受けた場合に、NATOがどこまで支援するかをめぐって意見が割れる可能性がある。議会は批准を承認する可能性が高いが、条文には自国が巻き込まれないための留保が残されていそうだ。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">巻き込まれの非対称</div>
+            <div class="insight-text">今回の発動は、サウジアラビアの防衛のためにパキスタンとトルコが動く形だった。逆に、パキスタンとインドの対立にサウジアラビアとトルコが軍を出すとは考えにくい。それでもインドが警戒するのは、協定の存在そのものが、パキスタンの対インド判断を強気にさせうる点である。実際の兵力の動員よりも、相手の計算を変えるという政治的な効果のほうが大きいと考える。</div>
+          </div>
+
+          <p class="closing">協定は署名から2か月で、紙の上の約束から実際の決定へと進んだ。一方でサウジアラビアは、アメリカからF-35を買う手続きも同時に進めている。アメリカとの関係を切らずに頼れる相手を増やすという動きは、今後も続くだろう。協定が本当に試されるのは、部隊の規模と任務が明らかになり、イエメンでの作戦に加わるかどうかの判断を迫られたときである。</p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/mecca-defense-pact-desert-convoy.jpg" alt="夕暮れの砂漠の幹線道路を、砂ぼこりを上げて進む軍の車列">
+            <figcaption>部隊の展開は合意されたが、規模や任務は公表されていない。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://www.aljazeera.com/news/2026/8/7/turkiye-saudi-arabi-pakistan-sign-joint-defence-agreement-whats-in-it" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Jazeera — 3か国が防衛協定に署名</div>
+                <div class="source-desc">サウジアラビア・トルコ・パキスタンによる防衛協定の署名と、中核条項の内容を伝えた記事。</div>
+                <div class="source-country">【カタールの国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aljazeera.com/news/2026/8/31/pakistan-saudi-arabia-turkiye-meet-whats-next-for-their-defence-pact" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Jazeera — 初の委員会会合</div>
+                <div class="source-desc">イスタンブールでの初の委員会会合、同盟の名称と常設事務局の設置を伝えた記事。</div>
+                <div class="source-country">【カタールの国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aljazeera.com/news/2026/8/17/trump-hails-mecca-pact-can-it-replace-the-regions-us-security-umbrella" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Jazeera — トランプ大統領の歓迎</div>
+                <div class="source-desc">トランプ大統領による協定への歓迎発言と、アメリカの安全保障の傘との関係を論じた記事。</div>
+                <div class="source-country">【カタールの国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aljazeera.com/news/2026/9/16/saudi-led-coalition-intercepts-drone-headed-for-mecca" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Jazeera — メッカ方面のドローン迎撃</div>
+                <div class="source-desc">サウジアラビアがメッカ方面に向かったドローンを9月15日夜に迎撃したと発表したことを伝えた記事（9月16日掲載）。</div>
+                <div class="source-country">【カタールの国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.middleeasteye.net/news/why-mecca-defence-pact-hasnt-triggered-military-action-against-houthis" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Middle East Eye — フーシ派への対応</div>
+                <div class="source-desc">9月中旬のフーシ派によるパイプライン攻撃に対し、トルコ・パキスタンが軍事行動を取らなかった背景と、トルコ高官の発言を伝えた記事（9月14日掲載）。</div>
+                <div class="source-country">【イギリスの中東専門メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.middleeasteye.net/news/saudi-arabia-opposed-egypts-inclusion-mecca-agreement-sources-say" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Middle East Eye — エジプト加盟へのサウジの反対</div>
+                <div class="source-desc">サウジアラビアがエジプトの協定参加に反対したとする関係者の証言を伝えた記事。</div>
+                <div class="source-country">【イギリスの中東専門メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.cfr.org/articles/the-u-s-led-middle-east-order-is-over-the-mecca-agreement-proves-it" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">外交問題評議会（CFR） — 「アメリカ主導の中東秩序は終わった」</div>
+                <div class="source-desc">スティーブン・クック氏による、協定が示す中東秩序の変化についての分析記事。</div>
+                <div class="source-country">【アメリカのシンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://foreignpolicy.com/2026/08/25/mecca-pact-saud-arabia-turkey-pakistan-nato-israel-iran/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Foreign Policy — 「効果のない協定」</div>
+                <div class="source-desc">共同司令部や分担の取り決めがない点などから協定の実効性を疑問視し、3か国の軍事協力の歴史的背景にも触れた分析記事。</div>
+                <div class="source-country">【アメリカの外交専門誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.atlanticcouncil.org/dispatches/why-saudi-arabia-pakistan-and-turkey-just-signed-a-defense-pact/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Atlantic Council — 協定署名の理由</div>
+                <div class="source-desc">サウジアラビア・パキスタン・トルコが協定を結んだ理由を整理した記事。</div>
+                <div class="source-country">【アメリカのシンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.timesofisrael.com/mecca-defense-pact-isnt-meant-to-challenge-israel-at-least-not-on-the-battlefield/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Times of Israel — イスラエル側の受け止め</div>
+                <div class="source-desc">協定がイスラエルを標的にしたものではないとしつつ、イスラエル当局者の警戒を伝えた記事。</div>
+                <div class="source-country">【イスラエルのニュースメディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://arabcenterdc.org/resource/diversification-without-substitution-what-the-mecca-joint-defense-agreement-offers-saudi-arabia/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Arab Center Washington DC — 「代替なき多角化」</div>
+                <div class="source-desc">協定をサウジアラビアの「代替なき多角化」と位置づけた論考。</div>
+                <div class="source-country">【アメリカの中東研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.theweek.in/news/india/2026/08/22/jaishankar-mecca-pact-india-impact.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Week — ジャイシャンカル外相の発言</div>
+                <div class="source-desc">インド外相の協定に対する発言と、インド側の受け止めを伝えた記事。</div>
+                <div class="source-country">【インドのニュース雑誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.usnews.com/news/world/articles/2026-05-18/exclusive-pakistan-deploys-jet-squadron-thousands-of-troops-to-saudi-arabia-during-iran-war" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ロイター（U.S. News配信） — パキスタンの派兵</div>
+                <div class="source-desc">パキスタンがJF-17戦闘機部隊と兵員、防空システムをサウジアラビアに派遣したとする独自報道。</div>
+                <div class="source-country">【アメリカの通信社（ロイター配信）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.belfercenter.org/research-analysis/beyond-hype-pakistan-saudi-defense-pact-not-saudi-nuclear-umbrella-0" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ベルファーセンター — 「核の傘」ではない</div>
+                <div class="source-desc">2025年のパキスタン・サウジアラビア協定が、サウジアラビアへの核の傘を意味しないと分析するレポート。</div>
+                <div class="source-country">【アメリカの大学のシンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://english.alarabiya.net/News/saudi-arabia/2025/11/19/trump-mbs-sign-ussaudi-strategic-defense-agreement" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Arabiya — アメリカ・サウジアラビア戦略防衛協定の署名</div>
+                <div class="source-desc">2025年11月18日のアメリカ・サウジアラビア間の戦略防衛協定の署名を伝えた記事。</div>
+                <div class="source-country">【サウジアラビア系の中東メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.stripes.com/theaters/us/2026-09-18/state-department-approves-sale-of-48-f35s-to-saudi-arabia-22888413.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Stars and Stripes — F-35売却の承認</div>
+                <div class="source-desc">アメリカ国務省によるF-35戦闘機48機、243億ドル分のサウジアラビア向け売却承認を伝えた記事。</div>
+                <div class="source-country">【アメリカの軍事専門紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.trtworld.com/article/bb2cde60a01c" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">TRT World — NATO第5条との関係</div>
+                <div class="source-desc">協定とNATO第5条との関係についてトルコ側の説明を伝えた記事。</div>
+                <div class="source-country">【トルコの国営国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.chathamhouse.org/2026/08/should-egypt-join-mecca-pact" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Chatham House — エジプト加盟をめぐる論点</div>
+                <div class="source-desc">エジプトの協定参加の是非と、加盟した場合に生じうる周辺国との摩擦を論じた記事。</div>
+                <div class="source-country">【イギリスのシンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.sipri.org/sites/default/files/2026-04/2604_milex_2025.pdf" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ストックホルム国際平和研究所（SIPRI） — Fact Sheet April 2026</div>
+                <div class="source-desc">各国の2025年軍事費と対GDP比をまとめた統計資料。本記事のグラフの出典。</div>
+                <div class="source-country">【スウェーデンの軍事研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.sipri.org/sites/default/files/2026-06/yb26_summary_en_0.pdf" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ストックホルム国際平和研究所（SIPRI） — Yearbook 2026 Summary</div>
+                <div class="source-desc">2026年1月時点の世界各国の核弾頭保有数をまとめた統計資料。本記事のグラフの出典。</div>
+                <div class="source-country">【スウェーデンの軍事研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.cfr.org/articles/how-pakistan-became-the-iran-wars-unlikely-peace-negotiator" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">外交問題評議会（CFR） — パキスタンによる仲介</div>
+                <div class="source-desc">パキスタンがアメリカ・イラン戦争の停戦交渉を仲介した経緯を伝えた記事。</div>
+                <div class="source-country">【アメリカのシンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aljazeera.com/news/2026/9/9/pakistan-warns-mecca-defense-pact-will-activate-after-houthi-attacks" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Jazeera — パキスタン国防相「協定は発動する」</div>
+                <div class="source-desc">フーシ派の攻撃を受け、アシフ国防相がメッカ協定の発動に言及したことを伝えた記事。</div>
+                <div class="source-country">【カタールの国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.theweek.in/news/middle-east/2026/09/17/houthi-attack-on-mecca-why-saudi-arabia-pakistan-and-turkey-wont-activate-the-mecca-pact.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Week — メッカ方面への攻撃と協定</div>
+                <div class="source-desc">メッカ方面へのドローン攻撃後のパキスタン・トルコの反応と、協定が発動されない理由を整理した記事。</div>
+                <div class="source-country">【インドのニュース雑誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aljazeera.com/news/2026/9/24/saudi-led-coalition-says-shot-down-6-ballistic-missiles-launched-by-houthis" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Jazeera — 弾道ミサイル6発の迎撃</div>
+                <div class="source-desc">サウジアラビア主導の連合軍が、フーシ派の弾道ミサイル6発を迎撃したと発表したことを伝えた記事。</div>
+                <div class="source-country">【カタールの国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aljazeera.com/news/2026/9/25/pakistan-turkiye-edge-closer-towards-joining-saudi-war-against-houthis" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Jazeera — 3か国外相協議と軍参謀長会合</div>
+                <div class="source-desc">3か国の外相協議と、サウジアラビアが呼びかけた軍参謀長の緊急会合を伝えた記事。</div>
+                <div class="source-country">【カタールの国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.dawn.com/news/2032831/what-comes-after-riyadh-meeting-between-the-pakistani-saudi-and-turkish-military-chiefs" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Dawn — リヤドの軍参謀長会合</div>
+                <div class="source-desc">9月25日のリヤドでの3か国軍参謀長会合の共同声明と、今後の見通しを論じた記事。</div>
+                <div class="source-country">【パキスタンの英字紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.usnews.com/news/world/articles/2026-09-25/pact-with-saudi-and-pakistan-could-expand-to-muslim-world-iran-turkish-speaker-says" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ロイター（U.S. News配信） — トルコ国会議長の発言</div>
+                <div class="source-desc">トルコの国会議長が、協定はイランを含むイスラム世界に広がりうると述べたことを伝えた記事。</div>
+                <div class="source-country">【アメリカの通信社（ロイター配信）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.outlookindia.com/national/india-examines-mecca-defence-pacts-impact-on-national-security-regional-stability" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Outlook India — インド外務省の反応</div>
+                <div class="source-desc">インド外務省報道官が、協定の安全保障上の影響を検討していると述べたことを伝えた記事。</div>
+                <div class="source-country">【インドのニュース雑誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://theprint.in/opinion/pakistan-turkey-saudi-pact-diplomacy-india-military-strategy/3009197/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ThePrint — インドの軍事戦略への影響</div>
+                <div class="source-desc">協定がパキスタン指導部の判断とインドの軍事戦略に与える影響を論じた論評。</div>
+                <div class="source-country">【インドのニュースメディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aljazeera.com/news/2026/10/1/saudi-led-coalition-says-power-station-attacked-in-medina-blames-houthis" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Jazeera — メディナの変電所への攻撃</div>
+                <div class="source-desc">サウジアラビア主導の連合軍が、メディナの変電所へのドローン攻撃をフーシ派によるものと発表したことを伝えた記事。</div>
+                <div class="source-country">【カタールの国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aljazeera.com/news/2026/10/5/mecca-alliance-agrees-to-activate-collective-deterrence-measures" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Jazeera — 協定の初の発動</div>
+                <div class="source-desc">10月5日のリヤドでの緊急会合で、3か国が集団的な抑止措置の発動と部隊の展開に合意したことを伝えた記事。</div>
+                <div class="source-country">【カタールの国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.thenationalnews.com/news/gulf/2026/10/05/makkah-pact-countries-to-meet-in-riyadh-with-houthi-attacks-on-agenda/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The National — 緊急会合の共同声明</div>
+                <div class="source-desc">10月5日の緊急会合の共同声明と出席者を伝えた記事。</div>
+                <div class="source-country">【アラブ首長国連邦の英字紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aljazeera.com/news/2026/10/6/pakistan-turkiye-join-saudi-deterrence-against-houthis-what-that-means" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Jazeera — 発動は何を意味するか</div>
+                <div class="source-desc">パキスタンとトルコが実際に何を送りうるか、イランの警告、トルコ議会の批准状況を整理した記事。</div>
+                <div class="source-country">【カタールの国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://foreignpolicy.com/2026/10/06/saudi-arabia-turkey-pakistan-mutual-defense-pact-houthi-yemen-attacks/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Foreign Policy — 協定の発動</div>
+                <div class="source-desc">3か国が協定を初めて発動したことと、パキスタン国防相の発言、トルコの批准状況を伝えた記事。</div>
+                <div class="source-country">【アメリカの外交専門誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.dawn.com/news/2032088" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Dawn — 初代事務局長の任命</div>
+                <div class="source-desc">パキスタン外務省が、ナウマン・マフムード退役中将を初代事務局長に任命したと発表したことを伝えた記事（9月23日）。</div>
+                <div class="source-country">【パキスタンの英字紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.al-monitor.com/originals/2026/10/saudi-coalition-accuses-houthis-drone-attack-medina" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al-Monitor — メディナへのドローン攻撃</div>
+                <div class="source-desc">9月29日のメディナの変電所への攻撃と、10月1日の連合軍の発表を伝えた記事。</div>
+                <div class="source-country">【アメリカの中東専門メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.middleeasteye.net/news/pakistan-sent-four-planeloads-weapons-saudi-backed-government-yemen-report" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Middle East Eye — パキスタンのイエメンへの武器供与</div>
+                <div class="source-desc">パキスタンがイエメン政府軍に貨物機4機分の武器を送り、軍事顧問も現地にいるとするロイターの報道を伝えた記事。</div>
+                <div class="source-country">【イギリスの中東専門メディア】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/security/index.html">安全保障</a></div>
+          <div>2026年10月7日</div>
+          <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/security/index.html">安全保障一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  var AX = { grid: '#2a3a50', tick: '#8890a0' };
+
+  // 軍事費（2025年、億ドル）
+  (function () {
+    var ctx = document.getElementById('milexChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['インド', 'サウジアラビア', 'イスラエル', 'トルコ', 'パキスタン', 'イラン'],
+        datasets: [{
+          // 出典：SIPRI Fact Sheet April 2026, Table 1「Spending ($ b.), 2025」
+          // インド 92.1 / サウジアラビア 83.2（推定値） / イスラエル 48.3 / トルコ 30.0 / パキスタン 11.9 / イラン 7.4（いずれも10億ドル）
+          // 見出し・本文の「億ドル」に揃えるため、原数値を10倍して億ドル単位で表示（単位換算のみ）
+          data: [921, 832, 483, 300, 119, 74],
+          backgroundColor: [
+            'rgba(136,144,160,0.45)',
+            'rgba(184,120,104,0.95)',
+            'rgba(136,144,160,0.45)',
+            'rgba(184,120,104,0.95)',
+            'rgba(184,120,104,0.95)',
+            'rgba(136,144,160,0.45)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.6
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' ' + c.parsed.y.toLocaleString() + '億ドル'; } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: AX.tick, font: { size: 10 } } },
+          y: { min: 0, max: 1000, grid: { color: AX.grid }, ticks: { color: AX.tick, font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // 核弾頭の保有数（2026年1月時点）
+  (function () {
+    var ctx = document.getElementById('nukeChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['インド', 'パキスタン', 'イスラエル'],
+        datasets: [{
+          // 出典：SIPRI Yearbook 2026 Summary「World nuclear forces, January 2026」
+          // インド 190 / パキスタン 170 / イスラエル 90（弾頭数）
+          data: [190, 170, 90],
+          backgroundColor: ['rgba(136,144,160,0.45)', 'rgba(184,120,104,0.95)', 'rgba(136,144,160,0.45)'],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.5
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        indexAxis: 'y',
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' ' + c.parsed.x.toLocaleString() + '発'; } } }
+        },
+        scales: {
+          x: { min: 0, max: 220, grid: { color: AX.grid }, ticks: { color: AX.tick, font: { size: 10 } } },
+          y: { grid: { display: false }, ticks: { color: AX.tick, font: { size: 11 } } }
+        }
+      }
+    });
+  })();
+
+  // 軍事費の対GDP比（2025年、%）
+  (function () {
+    var ctx = document.getElementById('gdpChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['イスラエル', 'サウジアラビア', 'パキスタン', 'インド', 'イラン', 'トルコ'],
+        datasets: [{
+          // 出典：SIPRI Fact Sheet April 2026, Table 1「Spending as a share of GDP (%) 2025」
+          // イスラエル 7.8 / サウジアラビア 6.5（推定値） / パキスタン 2.9 / インド 2.3 / イラン 2.1 / トルコ 1.9
+          data: [7.8, 6.5, 2.9, 2.3, 2.1, 1.9],
+          backgroundColor: [
+            'rgba(136,144,160,0.45)',
+            'rgba(184,120,104,0.95)',
+            'rgba(184,120,104,0.95)',
+            'rgba(136,144,160,0.45)',
+            'rgba(136,144,160,0.45)',
+            'rgba(184,120,104,0.95)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.6
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' ' + c.parsed.y.toFixed(1) + '%'; } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: AX.tick, font: { size: 10 } } },
+          y: { min: 0, max: 9, grid: { color: AX.grid }, ticks: { color: AX.tick, font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
