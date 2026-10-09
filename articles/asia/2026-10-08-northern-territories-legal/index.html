@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2026年8月、プーチン大統領が北方領土の択捉島を初めて訪れた。北方領土は法的にどちらの領土なのか。条約・宣言・各国政府の公文書が何を定め、何を定めていないかを論点ごとに整理し、日本・ロシア・アメリカ・中国など6つの視点を並べる。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/asia/2026-10-08-northern-territories-legal/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="北方領土は誰のものか — プーチン氏の初訪問後、条約と公文書は何を定めているか — WorldView">
+  <meta property="og:description" content="2026年8月、プーチン大統領が北方領土の択捉島を初めて訪れた。北方領土は法的にどちらの領土なのか。条約・宣言・各国政府の公文書が何を定め、何を定めていないかを論点ごとに整理する。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/asia/2026-10-08-northern-territories-legal/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/northern-territories-hero-nosappu.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="北方領土は誰のものか — プーチン氏の初訪問後、条約と公文書は何を定めているか — WorldView">
+  <meta name="twitter:description" content="2026年8月、プーチン大統領が北方領土の択捉島を初めて訪れた。北方領土は法的にどちらの領土なのか。条約・宣言・各国政府の公文書が何を定め、何を定めていないかを論点ごとに整理する。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/northern-territories-hero-nosappu.jpg">
+  <title>北方領土は誰のものか — プーチン氏の初訪問後、条約と公文書は何を定めているか — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色は asia = --accent5（#9a8ab4 / 154,138,180）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url('../../../image/articles/northern-territories-hero-nosappu.jpg');
+      background-size: cover; background-position: center 45%;
+      filter: brightness(1.0) contrast(1.03) saturate(0.95);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(100deg, rgba(14,17,23,0.82) 0%, rgba(14,17,23,0.50) 46%, rgba(14,17,23,0.16) 100%),
+        linear-gradient(180deg, rgba(14,17,23,0.20) 0%, rgba(14,17,23,0.24) 45%, rgba(14,17,23,0.52) 100%);
+    }
+    .article-hero.has-image .container { position: relative; z-index: 1; width: 100%; }
+    .article-hero .article-meta,
+    .article-hero .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.65);
+    }
+    .hero-credit {
+      position: absolute; right: 1.1rem; bottom: 0.9rem; z-index: 2;
+      font-size: 0.66rem; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.52);
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75;
+      color: #b4bfcc; max-width: 580px; margin-top: 1.5rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+    }
+    .deck-accent { color: var(--accent5); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent5) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent5) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent5) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent5); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       本文パーツ（テーマ色を --accent5 に統一）
+       ========================================================== */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(154,138,180,0.06);
+      border: 1px solid rgba(154,138,180,0.22);
+      box-shadow: 0 0 40px 10px rgba(154,138,180,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent5); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent5); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent5); line-height: 1.2; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    .insight-box { border-left: 2px solid var(--border); padding-left: 1.2rem; margin-bottom: 2.2rem; }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* カード — テーマ色の淡いウォッシュで区別する */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 2.6rem 2.4rem; }
+    .article-body .perspective-card {
+      position: relative;
+      background: rgba(154,138,180,0.08);
+      border: none; border-radius: 0;
+      padding: 1.5rem 1.6rem 1.6rem;
+      transition: background 0.12s linear;
+    }
+    .article-body .perspective-card:hover { transform: none; box-shadow: none; background: rgba(154,138,180,0.13); }
+    .article-body .perspective-card::before { display: none; }
+    .article-body .perspective-card .country-header { margin-bottom: 0.9rem; display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; flex-wrap: wrap; }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .article-body .perspective-card .key-claim { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .interests { border-top: 1px solid var(--border-subtle); padding-top: 0.8rem; }
+
+    .article-body .main-content, .article-body .section { min-width: 0; }
+    .article-body .compare-table { table-layout: fixed; background: none; border: none; border-radius: 0; }
+    .article-body .compare-table th { background: none; border-bottom: 2px solid var(--accent5); color: var(--text-muted); padding: 0.7rem 0.7rem; font-size: 0.68rem; letter-spacing: 0.04em; text-transform: none; }
+    .article-body .compare-table td { border-bottom: 1px solid var(--border-subtle); padding: 0.8rem 0.7rem; font-size: 0.76rem; line-height: 1.75; color: var(--text-muted); overflow-wrap: anywhere; }
+    .article-body .compare-table td:first-child { color: var(--text); font-weight: 700; font-size: 0.8rem; }
+    .article-body .compare-table tr:hover td { background: rgba(0,0,0,0.20); }
+    @media (max-width: 760px) {
+      .article-body .compare-table, .article-body .compare-table tbody, .article-body .compare-table tr, .article-body .compare-table td { display: block; width: 100%; }
+      .article-body .compare-table colgroup, .article-body .compare-table thead { display: none; }
+      .article-body .compare-table tr { padding: 0.9rem 0; border-bottom: 1px solid var(--border-subtle); }
+      .article-body .compare-table td { border: none; padding: 0.3rem 0; }
+      .article-body .compare-table td:first-child { font-size: 0.9rem; padding-bottom: 0.5rem; }
+      .article-body .compare-table td:not(:first-child)::before { content: attr(data-label); display: block; font-size: 0.68rem; font-weight: 700; color: var(--accent5); margin-bottom: 0.1rem; }
+    }
+    .table-note { font-size: 0.72rem; color: var(--text-dim); line-height: 1.6; margin-top: 0.7rem; }
+
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent5); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+    .article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+
+    .article-body .data-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .article-body .data-card { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .data-card::before { display: none; }
+    .article-body .data-card:hover { border-color: transparent; }
+    .article-body .data-card h4 {
+      font-size: 0.95rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem; padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .chart-box { position: relative; height: 300px; }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.7rem; line-height: 1.65; }
+
+    .article-body .sources-grid { display: block; counter-reset: src; }
+    .article-body a.source-item {
+      display: flex; gap: 1rem; align-items: baseline;
+      background: none; border: none; border-radius: 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1rem 0.2rem;
+      color: inherit; text-decoration: none;
+      counter-increment: src;
+      transition: background 0.12s linear, border-color 0.12s linear;
+    }
+    .article-body a.source-item::before {
+      content: counter(src, decimal-leading-zero);
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--accent5); flex: 0 0 auto; min-width: 1.7rem;
+    }
+    .article-body a.source-item:hover { background: rgba(0,0,0,0.20); border-bottom-color: var(--accent5); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent5); outline-offset: 2px; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); }
+    .article-figure figcaption { font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* アクセシビリティ・レスポンシブ */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-hero.has-image::after {
+        background: linear-gradient(180deg, rgba(14,17,23,0.42) 0%, rgba(14,17,23,0.52) 45%, rgba(14,17,23,0.72) 100%);
+      }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .stat-strip { grid-template-columns: 1fr; }
+      .stat-strip-item { border-right: none; border-bottom: 1px solid var(--border-subtle); padding-left: 0; }
+      .stat-strip-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">アジア情勢</span>
+      <span class="date">2026年10月8日</span>
+    </div>
+    <h1 class="article-title">北方領土は誰のものか<br>— プーチン氏の初訪問後、条約と公文書は何を定めているか</h1>
+
+    <div class="hero-deck">
+      北方領土は、日本とロシアの双方が自国の領土だと主張しており、戦後80年を過ぎても平和条約が結ばれていない。8月にはプーチン大統領が初めて択捉島（えとろふとう）を訪れ、日本は強く抗議した。<span class="deck-accent">条約と公文書は、どちらの主張をどこまで裏づけているのか。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">プーチン氏が択捉島を初訪問 2026年8月13日</span>
+      <span class="hero-pill">元島民 1万7,291人 → 4,987人</span>
+      <span class="hero-pill">日ソ共同宣言から70年 10月19日</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 帰属を明確に定めた文書はあるのか</h2>
+
+          <p class="lead">北方領土とは、択捉島（えとろふとう）・国後島（くなしりとう）・色丹島（しこたんとう）・歯舞群島（はぼまいぐんとう）の四島を指す日本側の呼び方で、ロシアは「南クリール諸島」と呼ぶ。四島は1945年8月から9月にかけてソ連軍が占領して以来、ロシアが実効支配している。日本とロシアの間には、第2次世界大戦を正式に終わらせる平和条約が、いまも結ばれていない。</p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/northern-territories-kuril-map.jpg" alt="北海道東部から千島列島、カムチャツカ半島までの概念図。歯舞群島・色丹島、国後島・択捉島、ウルップ島以北を塗り分け、択捉島とウルップ島の間に1855年の国境線を示している">
+            <figcaption>北方領土（四島）と千島列島の位置。塗り分けは日本とロシアの主張の違いを示す概念図で、国境線ではない。プーチン大統領は8月12日にサハリンで演説し、13日に択捉島を初めて訪れた。概念図（生成AI）</figcaption>
+          </figure>
+
+          <p class="lead">2026年8月13日、プーチン大統領が択捉島を初めて訪れた。ロシアの大統領による四島の訪問は、2010年のメドベージェフ氏による国後島以来となる。日本は外相が駐日ロシア大使を呼んで抗議し、ロシア外務省は日本の抗議を「断じて容認できない」と退けた。</p>
+
+          <p class="lead">双方とも「歴史的にも国際法上も自国の領土だ」と主張している。この記事は、どちらかの主張を採るのではなく、条約・宣言・各国政府の公文書が何を定め、何を定めていないかを論点ごとに確認する。国際司法裁判所のような、拘束力のある判断は出ていない。</p>
+
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">日本の主張の柱</div>
+              <div class="factor-desc">1855年と1875年の条約で四島は日本領とされ、ロシアが領有したことはない。サンフランシスコ平和条約で日本が放棄した「千島列島」に、四島は含まれない。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">ロシアの主張の柱</div>
+              <div class="factor-desc">ヤルタ協定、ポツダム宣言、日本の降伏、国連憲章を根拠に、四島は第2次世界大戦の結果としてロシア領になった。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">判断を下す機関がない</div>
+              <div class="factor-desc">国際司法裁判所は、当事国が双方とも同意しなければ審理しない。日本は1972年に付託を打診したが、ソ連は拒否した。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">争点は二つに分かれる</div>
+              <div class="factor-desc">歯舞群島と色丹島は、ソ連も1956年に日本への引き渡しに同意した。残る国後島と択捉島は、「千島列島」に含まれるかどうかが分かれ目になる。</div>
+            </div>
+          </div>
+
+          <div class="article-question">
+            <p>条約と公文書は、北方領土を日本とロシアのどちらの領土と定めているのか。決着していない部分は、どこにあるのか。</p>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/northern-territories-treaty-documents.jpg" alt="机に積まれた黄ばんだ外交文書の上の万年筆と、インク壺、木製の印章">
+            <figcaption>帰属を決める根拠は、条約や宣言といった文書に求められる。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 1855年から2026年まで、文書で見る経緯</h2>
+
+          <p class="lead">四島の帰属をめぐる文書は、19世紀の国境条約、第2次世界大戦中の連合国の合意、戦後の平和条約と二国間の宣言に分かれる。文書ごとに、何が書かれたかを順に見る。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">1855年・1875年 ― 日魯通好条約と樺太千島交換条約</div>
+                <p>1855年の日魯通好条約で、日本とロシアの国境は択捉島と得撫島（うるっぷとう）の間に定められ、択捉島以南が日本領、得撫島以北がロシア領となった。1875年の樺太千島交換条約では、日本が樺太に対する権利をロシアに譲り、代わりにロシアから得撫島以北の千島18島を譲り受けた。四島は、どちらの条約でも日本側に属している。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">1941年4月・1943年11月 ― 日ソ中立条約とカイロ宣言</div>
+                <p>1941年4月、日本とソ連は互いの領土の保全を尊重する日ソ中立条約を結んだ。1943年11月のカイロ宣言は、連合国は領土の拡大を望まないとし、日本が暴力と貪欲によって奪い取った地域から、日本を退去させると定めた。ソ連は1945年4月に中立条約の不延長を通告したが、条約は1946年4月まで有効だった。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">1945年2月・7月 ― ヤルタ協定とポツダム宣言</div>
+                <p>2月、アメリカ・イギリス・ソ連の首脳が、ソ連の対日参戦と引き換えに「千島列島はソ連に引き渡される」とヤルタ協定で合意した。千島列島の範囲は定義されておらず、日本は当事国ではない。7月26日のポツダム宣言は、日本の主権を本州・北海道・九州・四国と、連合国が決定する諸小島に限ると定めた。ソ連は8月8日に、この宣言に加わった。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">1945年8月9日〜9月5日 ― ソ連が対日参戦し、四島を占領</div>
+                <p>ソ連は8月9日に、中立条約の有効期間中に対日参戦した。日本は8月14日にポツダム宣言の受諾を通告し、降伏文書への署名は9月2日に行われた。ソ連軍は8月28日から9月5日にかけて、択捉島、国後島、色丹島、歯舞群島を占領した。終戦時に四島に住んでいた約1万7,000人の日本人のうち、約半数は占領後に自ら島を脱出し、残る島民は1947〜1948年に強制退去させられ、サハリンでの抑留を経て函館に送還された。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">1951年9月8日 ― サンフランシスコ平和条約に調印</div>
+                <p>第2条(c)で、日本は「千島列島」と南樺太に対する権利を放棄した。放棄後の帰属先は書かれておらず、ソ連は調印しなかった。10月19日、外務省の西村熊雄条約局長は国会で、条約の千島列島は「北千島と南千島の両者を含む」と答弁した。ただし同じ答弁で、北千島と南千島は歴史的な事情が全く異なると述べ、歯舞群島と色丹島は千島に含まれないとアメリカ国務省が明言したとも述べている。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">1956年2月〜9月 ― 日本政府が見解を改め、アメリカが覚書で立場を示す</div>
+                <p>日本政府は2月、国後島と択捉島は放棄した千島列島に含まれないという見解に改めた。8月19日、ロンドンでダレス国務長官は重光葵外相に、ソ連が千島列島をすべて領有するなら、アメリカは沖縄にとどまり続けることになりかねないと述べた。24日の重光外相との会談で、ダレス国務長官は、国後島と択捉島が千島列島に含まれないと主張するのは難しいと述べ、含まれないとみなせる根拠があるかの調査を国務省に求めた。9月7日、アメリカは日本に覚書を渡し、歴史的事実を調べたうえで、択捉島と国後島は常に日本本土の一部だったと結論したと明記した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">1956年10月19日 ― 日ソ共同宣言</div>
+                <p>第9項で、ソ連は平和条約の締結後に歯舞群島と色丹島を日本に引き渡すことに同意した。この宣言で日本とソ連の戦争状態は終わり、国交が回復した。ただし、引き渡しが約束されたのは歯舞群島と色丹島だけで、国後島と択捉島の帰属は決まらなかった。二島の引き渡しには平和条約の締結が条件とされたが、国後島と択捉島の扱いで日ソの主張が一致せず、条約は結ばれていない。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">1991年・1993年・2018年 ― 四島の帰属を話し合いの対象と確認</div>
+                <p>1991年4月、ゴルバチョフ大統領の来日時の共同声明は、四島の帰属についての双方の立場を考慮しつつ、領土画定の問題を含む平和条約の話し合いを行うとした。日本政府は、これを四島が領土問題の対象であることを初めて文書で確認したものと位置づけている。1993年10月の東京宣言で、エリツィン大統領と細川護熙首相は、四島の帰属に関する問題を、歴史的・法的事実に立脚し、法と正義の原則を基礎に解決すると確認した。2018年には、安倍首相とプーチン大統領が、1956年の共同宣言を基礎に交渉を加速させることで合意した。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2020年7月・2022年3月 ― ロシアが憲法で割譲を禁じ、交渉を中断</div>
+                <p>2020年7月、ロシアは領土の割譲を禁じる改正憲法を発効させた。ただし、国境画定のための交渉は禁止の対象から除かれている。2022年3月21日、ロシア外務省は日本の対ロ制裁への対抗措置として、平和条約交渉の中断を発表した。ビザなし交流と共同経済活動の対話も止められた。四島への墓参は2019年を最後に行われておらず、再開の見通しは立っていない。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年8月12〜14日 ― プーチン氏が択捉島を初訪問</div>
+                <p>12日、プーチン氏はサハリン州ユジノサハリンスクで、クリール諸島（北方領土と千島列島）は国際文書でロシア領と確定していると述べ、実効支配する北方領土は「第2次世界大戦の結果による現実」だとした。日本が対ロ制裁を理由に交渉の立場を変えたとも批判した。13日に択捉島を訪れ、水産加工場、病院、学校を視察した。高市首相は「強く抗議」し、「歴史的にも国際法上も我が国固有の領土」だと述べた。14日には中国外務省が、世界反ファシズム戦争（第2次世界大戦）勝利の成果は適切に尊重、順守されるべきだとする談話を出したが、ロシア領とは明言しなかった。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年8月17日〜9月16日 ― ロシアが日本に抗議し、墓参を認めない考えを示す</div>
+                <p>8月17日、ラブロフ外相は、プーチン氏がロシア領内を訪れることへの日本の抗議は到底容認できないと述べた。そのうえで、在ロシア日本大使の武藤顕氏を外務省に呼ぶ考えを示した。9月16日には、ペスコフ大統領報道官が、日本が再開を目指すビザなしの四島墓参は、現時点では認められないと述べた。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/northern-territories-evacuation-pier.jpg" alt="桟橋で荷物を傍らに置いて船を待つ人々と、背後に停泊する客船">
+            <figcaption>終戦時に約1万7,000人が暮らしていた四島では、約半数の日本人が占領後に島を脱出し、残る島民も1947〜1948年に強制退去させられた。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 各国の視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>6つの視点 — 同じ文書を、どう読むか</h2>
+
+          <p class="lead">当事者と関係国は、同じ条約と宣言を、それぞれ違う立場から読んでいる。6つの視点を見たうえで、論点ごとに日本とロシアそれぞれの根拠と、文書が定めていないことを表で並べる。</p>
+
+          <div class="perspectives-grid">
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">ロシア政府</span>
+                <span class="stance-label stance-hostile">戦争の結果として確定</span>
+              </div>
+              <div class="key-claim">ロシアは従来、ヤルタ協定やポツダム宣言などによって、南クリール諸島は第2次世界大戦の結果としてロシア領になったと主張している。8月、外務省のザハロワ情報局長は、連合国間の合意や国連憲章によりロシアに帰属したとし、「主権や管轄権に疑いの余地はない」と述べた。ラブロフ外相は2018年に「平和条約の締結は、戦争の結果の承認を意味する」と発言している。2020年の憲法改正で、領土の割譲は禁じられた。</div>
+              <div class="interests">最大の関心：戦争の結果の承認を、平和条約の前提として日本に求めること</div>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">日本政府</span>
+                <span class="stance-label stance-supportive">固有の領土、不法占拠</span>
+              </div>
+              <div class="key-claim">1855年と1875年の条約で四島は日本領とされ、ロシアが領有したことはないとする。サンフランシスコ平和条約で放棄した千島列島は得撫島以北で、四島は含まれず、ヤルタ協定は日本が当事国ではないと主張する。一方で、1951年の国会答弁が国後島と択捉島を千島列島に含めていたことは、見解を改めた1956年の経緯とあわせて、論点として残っている。</div>
+              <div class="interests">最大の関心：四島の帰属を確認して平和条約を結ぶこと、墓参の再開</div>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">アメリカ</span>
+                <span class="stance-label stance-supportive">日本の主権を支持</span>
+              </div>
+              <div class="key-claim">1955年の国務省の電報は、ヤルタ協定は首脳の共通の目的を表明したものにすぎず、最終決定ではないとし、日本は当事国でもないと述べた。同じ電報は、ポツダム宣言が日本の領土の決定を後日に委ねているため、ソ連が単独では決められないとも述べている。1956年の覚書は、択捉島と国後島も常に日本本土の一部だったとした。一方、同年8月のダレス国務長官は、択捉島と国後島が千島列島に含まれないと主張するのは難しいとも日本側に述べている。2026年8月13日には、国務省の報道担当者が「米政府は北方領土に対する日本の主権を認めている」と述べた。</div>
+              <div class="interests">最大の関心：日本の主権を認めつつ、インド太平洋の平和と安定を損なう行動に反対すること</div>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">中国</span>
+                <span class="stance-label stance-neutral">表向きの中立から、ロシア寄りへ</span>
+              </div>
+              <div class="key-claim">中国は、1964年に毛沢東が千島列島は日本に返還されるべきだと述べたが、その後は表向き中立的な立場をとってきた。2023年には、習近平国家主席が中立の姿勢をプーチン氏に直接伝えたと報じられた。8月14日、中国外務省の報道官は、世界反ファシズム戦争勝利の成果は適切に尊重、順守されるべきだと述べた。談話はロシア領とは明言していないが、同じ時期に、中国とロシアの駐日大使は、北方領土には触れないまま、大戦の勝利の成果を歪曲、否定する行為に反対する共同文書を出した。</div>
+              <div class="interests">最大の関心：歴史問題でロシアと足並みをそろえ、日本に圧力をかけること（報道による）</div>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">元島民・根室</span>
+                <span class="stance-label stance-cautious">存命中の返還を要望</span>
+              </div>
+              <div class="key-claim">元島民は終戦時の1万7,291人から、2024年12月末には4,987人になった。平均年齢は2026年6月末で90.5歳に達している。8月のプーチン氏の訪問後、元島民らは国光外務副大臣に面会し、早期返還に向けた外交交渉を要請した。墓参は2019年を最後に行われておらず、2026年度の洋上慰霊に参加した元島民は、全日程を合わせて39人と過去最少になった。</div>
+              <div class="interests">最大の関心：存命のうちに故郷を訪れ、先祖の墓に参ること</div>
+            </div>
+
+            <div class="perspective-card">
+              <div class="country-header">
+                <span class="country-name">サハリン州と島の住民</span>
+                <span class="stance-label stance-hostile">実効支配の継続</span>
+              </div>
+              <div class="key-claim">四島を実際に治めているのは、ロシアのサハリン州である。択捉島は四島で最大の島である。プーチン氏の訪問先は水産加工場、病院、学校だった。リマレンコ知事は、住民たちが「全ては（侵攻での）勝利のために」と話していると紹介した。プーチン氏は「われわれにはそういう人たちがいる。勝利者の遺伝子だ」と応じた。同通信は、第2次世界大戦の戦勝を島の支配の根拠とする姿勢がうかがえると評している。</div>
+              <div class="interests">最大の関心：水産業を中心とした島の暮らしと、行政の継続</div>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">論点別の対照表 — 日本とロシアの根拠を並べる</div>
+          <table class="compare-table table-docs">
+            <colgroup><col style="width:14%"><col style="width:27%"><col style="width:27%"><col style="width:32%"></colgroup>
+            <thead>
+              <tr><th>論点</th><th>日本の主張の根拠</th><th>ロシアの主張の根拠</th><th>文書が定めていないこと・争点</th></tr>
+            </thead>
+            <tbody>
+                <tr><td data-label="論点">戦前の国境<br>（1855・1875年）</td><td data-label="日本の主張の根拠">1855年の条約で択捉島以南は日本領。1875年に日本が得たのは得撫島以北の千島18島で、四島がロシア領だったことはないとする</td><td data-label="ロシアの主張の根拠">戦前の国境ではなく、第2次世界大戦の結果によってロシア領になったと主張する</td><td data-label="文書が定めていないこと・争点">戦争の結果として領土が移ることを、条約がどこまで認めているか</td></tr>
+                <tr><td data-label="論点">カイロ宣言・日ソ中立条約<br>（1943年・1941年）</td><td data-label="日本の主張の根拠">カイロ宣言は、連合国の領土不拡大と、日本が暴力と貪欲によって奪い取った地域から日本を退去させることを定めた。四島はこれに当たらず、ソ連の参戦は中立条約の有効期間中だったとする</td><td data-label="ロシアの主張の根拠">現在のロシア政府の主張は、今回の調査では確認できていない</td><td data-label="文書が定めていないこと・争点">四島が、日本が暴力と貪欲によって奪い取った地域に当たるかは、宣言に書かれていない</td></tr>
+                <tr><td data-label="論点">ヤルタ協定<br>（1945年2月）</td><td data-label="日本の主張の根拠">日本は当事国でない。アメリカも、首脳の共通の目的を表明したものにすぎず、主権を移す法的な効果はないとの立場（1955年の電報、1956年の覚書）</td><td data-label="ロシアの主張の根拠">「千島列島はソ連に引き渡される」と明記された。ロシア外務省は、戦後の連合国間の合意と国連憲章により、ロシアに帰属したと主張する</td><td data-label="文書が定めていないこと・争点">千島列島の範囲は定義されていない</td></tr>
+                <tr><td data-label="論点">ポツダム宣言・降伏文書<br>（1945年7月・9月）</td><td data-label="日本の主張の根拠">アメリカは、日本の領土の決定は後日に委ねられ、ソ連が単独で決めることはできないとした</td><td data-label="ロシアの主張の根拠">日本は宣言を受諾し、9月2日の降伏文書に署名した。ソ連は8月8日に宣言に加わった。日本政府もこの点は認めている</td><td data-label="文書が定めていないこと・争点">宣言の「連合国が決定する諸小島」の範囲は、書かれていない</td></tr>
+                <tr><td data-label="論点">サンフランシスコ平和条約<br>（1951年）</td><td data-label="日本の主張の根拠">放棄した「千島列島」は得撫島以北で、四島は含まれないとする。署名していないソ連は、第25条により条約上の権利を得られない</td><td data-label="ロシアの主張の根拠">日本は「千島列島」を放棄した。放棄は署名国以外に対しても効力をもち、四島を千島列島から区別する線引きは、条約にもヤルタ協定にもないと主張する</td><td data-label="文書が定めていないこと・争点">放棄後の帰属先は書かれていない。日本政府は1951年10月、条約の千島列島に国後島と択捉島を含むと国会で答弁し、1956年に見解を改めた</td></tr>
+                <tr><td data-label="論点">国連憲章第107条</td><td data-label="日本の主張の根拠">日本政府の見解は、今回の調査では確認できていない</td><td data-label="ロシアの主張の根拠">ラブロフ外相は2019年1月、連合国が示した第2次世界大戦の結果を認める規定だと述べた</td><td data-label="文書が定めていないこと・争点">第107条は、大戦中の敵国に対して連合国政府がとった行動を憲章が妨げないと定める。領土の帰属を直接定める文言はない</td></tr>
+                <tr><td data-label="論点">歯舞群島・色丹島</td><td data-label="日本の主張の根拠">アメリカは、北海道の一部で千島ではないとした（1955年の電報）</td><td data-label="ロシアの主張の根拠">ソ連は1956年の共同宣言で、歯舞群島と色丹島を平和条約の締結後に引き渡すことに同意した。1960年には、日本からの外国軍隊の撤退を新たな条件に加えたとされる</td><td data-label="文書が定めていないこと・争点">引き渡しは平和条約の締結後とされ、条約は結ばれていない。ロシアは2020年に、憲法で領土の割譲を禁じた</td></tr>
+                <tr><td data-label="論点">国後島・択捉島</td><td data-label="日本の主張の根拠">アメリカは1956年の覚書で、常に日本本土の一部だったと明記した。1991年の日ソ共同声明と1993年の東京宣言は、四島の帰属を話し合いの対象とすることを確認した</td><td data-label="ロシアの主張の根拠">1956年の宣言が扱うのは歯舞群島と色丹島のみで、国後島と択捉島は含まない。ザハロワ情報局長は、択捉島は法的にロシアの不可分の一部だと述べた</td><td data-label="文書が定めていないこと・争点">ダレス国務長官は1956年8月、国後島と択捉島が千島列島に含まれないと主張するのは難しいと述べた。国後島と択捉島が千島列島に含まれるかが分かれ目</td></tr>
+            </tbody>
+          </table>
+          <p class="table-note">日本政府、ロシア政府、アメリカ政府の公文書と、報道・研究機関の整理にもとづき、双方の根拠を並べたもの。どちらが正しいかを示す表ではなく、国際司法裁判所などの判断でもない。</p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/northern-territories-strait-patrol.jpg" alt="荒れた海の向こうで向き合う、日本の巡視船と霧に霞む別の艦船">
+            <figcaption>四島は日本の根室半島の沖にあり、実効支配を続けるロシアと、返還を求める日本が、同じ海を挟んで向き合っている。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ — 減り続ける元島民</h2>
+
+          <p class="lead">交渉が止まっている間にも、島で生まれ育った人は減っている。元島民の人数と年齢を見る。</p>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>元島民の人数（1945年・2024年）</h4>
+              <div class="chart-box"><canvas id="residentChart"></canvas></div>
+              <p class="chart-note">単位は人。元島民は終戦時の1万7,291人から、2024年12月末の4,987人へと3割以下に減った。<br>出典：北海道新聞（2025年2月7日）</p>
+            </div>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">90.5歳</div>
+              <div class="stat-desc">元島民の平均年齢（2026年6月末）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">39人</div>
+              <div class="stat-desc">2026年度の洋上慰霊に参加した元島民の合計。過去最少</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">2022年3月</div>
+              <div class="stat-desc">ロシアが平和条約交渉の中断と、ビザなし交流などの停止を発表した月</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 争点は国後島・択捉島に絞られ、時間は日本に不利に働く</h2>
+
+          <p class="lead">※ ここから先は、ここまでの事実にもとづく筆者個人の見解です。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">文書の上で争いが残るのは、国後島と択捉島である</div>
+            <div class="insight-text">歯舞群島と色丹島は、アメリカが北海道の一部と明言し、ソ連も1956年に引き渡しに同意している。争いが残るのは、国後島と択捉島が、平和条約で日本が放棄した「千島列島」に含まれるかどうかである。1951年に政府が千島列島に含まれると答弁した事実があるため、日本の説明は一貫していないという指摘を受けやすい。一方でロシアも、ヤルタ協定が千島の範囲を定義していないことや、ソ連が平和条約に署名しなかったことを説明しきれていない。法的な決着が付かないのは、双方に弱点があるためだと考える。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">法の議論から、既成事実を積み上げる段階に移った</div>
+            <div class="insight-text">国際司法裁判所は当事国の同意がなければ審理を始めず、ロシアが付託に応じる見込みはない。ロシアは2020年に領土の割譲を憲法で禁じ、2022年に交渉を止めた。今回の訪問は、条文の解釈を争うのではなく、島を実際に治めている事実を示す動きに見える。中国が歴史問題でロシアに歩調を合わせたと報じられたことは、ロシアが国際的に孤立していないことを示す材料にもなった。当面は交渉の再開が見込めず、日本は抗議と主張を続けつつ、墓参など人道面の協議の再開を求めていくことになると予想する。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">時間の猶予は、元島民にこそ少ない</div>
+            <div class="insight-text">元島民の平均年齢は90.5歳に達した。実効支配が長引くほどロシア側の既成事実は積み上がるが、元島民は故郷を訪れる機会を失っていく。1956年の日ソ共同宣言は、10月19日で70年を迎える。日本政府の課題は、主張の正しさを文書で示し続けることに加え、交渉の窓口を残し、墓参のような人道面の往来を再開させることだと考える。</div>
+          </div>
+
+          <p class="closing">確認できたのは、国際司法裁判所などの判断がなく、法的な決着は付いていないことである。文書の裏づけの強さは、歯舞群島・色丹島と、国後島・択捉島とで異なる。</p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/northern-territories-elder-nosappu.jpg" alt="黄色い花束を抱えて荒れた海を見つめる高齢の女性の後ろ姿">
+            <figcaption>元島民の平均年齢は90歳を超えた。墓参は2019年を最後に行われていない。イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://www.kantei.go.jp/jp/105/statement/2026/0813kaiken.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">首相官邸 — 高市首相の記者会見（2026年8月13日）</div>
+                <div class="source-desc">プーチン大統領の択捉島訪問に対する「強く抗議」の表明と、日本政府の立場を示した発言。</div>
+                <div class="source-country">【日本政府】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.sakigake.jp/news/article/20260813CO0084/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">秋田魁新報（共同通信配信） — プーチン氏が北方領土初訪問</div>
+                <div class="source-desc">8月13日の訪問先と、日本側の反応を伝えた記事。</div>
+                <div class="source-country">【日本の地方紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.sakigake.jp/news/article/20260813CO0165/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">秋田魁新報（共同通信配信） — 訪問のタイミングと日本外交官の受け止め</div>
+                <div class="source-desc">訪問先の詳細と、サハリン州知事の発言などを伝えた分析記事。</div>
+                <div class="source-country">【日本の地方紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.jiji.com/jc/article?k=2026081200787&g=int" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">時事ドットコム — 北方領土、ロシア領で確定 プーチン氏、日本が「立場変更」</div>
+                <div class="source-desc">8月12日のユジノサハリンスクでの演説内容を伝えた記事。</div>
+                <div class="source-country">【日本の通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://kumanichi.com/articles/2025139" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">熊本日日新聞（共同通信配信） — ロシア、日本主張「容認できず」</div>
+                <div class="source-desc">ロシア外務省のザハロワ情報局長が、日本の抗議に反発した内容を伝えた記事。</div>
+                <div class="source-country">【日本の地方紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.sakigake.jp/news/article/20260814CO0104/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">秋田魁新報（共同通信配信） — アメリカ国務省の発言と、日ソ共同宣言後のソ連の条件</div>
+                <div class="source-desc">8月13日の国務省報道担当者の発言と、1960年にソ連が引き渡しの条件に日本からの外国軍隊の撤退を加えたとされる経緯を伝えた解説。</div>
+                <div class="source-country">【日本の地方紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.sakigake.jp/news/article/20260817CO0120/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">秋田魁新報（共同通信配信） — ロシア外相、駐ロ日本大使を呼ぶ考え</div>
+                <div class="source-desc">8月17日のラブロフ外相の発言と、駐ロ日本大使の呼び出しを伝えた記事。</div>
+                <div class="source-country">【日本の地方紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.sakigake.jp/news/article/20260819CO0106/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">秋田魁新報（共同通信配信） — 元島民が外務副大臣に要請</div>
+                <div class="source-desc">8月19日、元島民の団体が根室で国光外務副大臣と面会し、早期返還に向けた交渉を求めたことを伝えた記事。</div>
+                <div class="source-country">【日本の地方紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://webun.jp/articles/-/1093936" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">北日本新聞 webun（共同通信配信） — ペスコフ報道官、ビザなし墓参を認めない考え</div>
+                <div class="source-desc">9月16日のペスコフ大統領報道官の発言を伝えた記事（全文は有料。見出しと冒頭で確認）。</div>
+                <div class="source-country">【日本の地方紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.npr.org/2026/08/13/g-s1-138631/vladimir-putins-first-visit-to-disputed-pacific-islands-draws-tokyo-protest" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">NPR — Vladimir Putin's first visit to disputed Pacific islands draws Tokyo protest</div>
+                <div class="source-desc">訪問先（水産加工場・病院・学校）と、日本が駐日ロシア大使を呼んで抗議したことを伝えた記事。</div>
+                <div class="source-country">【アメリカの公共放送】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.internazionale.it/ultime-notizie-reuters/2026/08/13/russia-s-putin-visits-disputed-kuril-islands-samples-fish-roe-media-say" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Reuters（Internazionale配信） — Putin visits disputed Kuril Islands</div>
+                <div class="source-desc">プーチン氏の択捉島訪問と、日本の抗議を伝えた通信社の速報。</div>
+                <div class="source-country">【国際通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.nst.com.my/amp/opinion/columnists/2026/08/1510707/kuril-islands-strategic-chain-heart-russia-japan-dispute" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">New Straits Times — Kuril Islands: Strategic chain at heart of Russia-Japan dispute</div>
+                <div class="source-desc">ロシアの指導者による訪問が2回目であることと、島の戦略的な位置づけを論じた解説。</div>
+                <div class="source-country">【マレーシアの新聞】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www8.cao.go.jp/hoppo/mondai/02.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">内閣府 北方対策本部 — 北方領土問題の歴史的経緯</div>
+                <div class="source-desc">1855年の日魯通好条約から、1945年の占領と島民の退去までを整理した政府の資料。</div>
+                <div class="source-country">【日本政府】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.cas.go.jp/jp/ryodo_eg/taiou/hoppou/hoppou01-02.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">内閣官房 領土・主権対策企画調整室 — Rise of the Territorial Dispute</div>
+                <div class="source-desc">サンフランシスコ平和条約の千島列島の範囲と、1956年のアメリカの立場を整理した英文資料。</div>
+                <div class="source-country">【日本政府】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.cas.go.jp/jp/ryodo/taiou/hoppou/hoppou02-01.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">内閣官房 領土・主権対策企画調整室 — 日ソ・日ロの共同文書</div>
+                <div class="source-desc">1956年の日ソ共同宣言、1991年の日ソ共同声明、1993年の東京宣言などの内容を整理した政府の資料。</div>
+                <div class="source-country">【日本政府】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://history.state.gov/historicaldocuments/frus1955-57v23p1/d34" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">アメリカ国務省 FRUS 1955–1957年 第23巻 — 文書34（1955年7月1日の電報）</div>
+                <div class="source-desc">ヤルタ協定は最終決定ではなく日本は当事国でないこと、歯舞群島・色丹島は北海道の一部であることを記した国務省の電報。</div>
+                <div class="source-country">【アメリカ政府の外交文書集】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://history.state.gov/historicaldocuments/frus1955-57v23p1/d89" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">アメリカ国務省 FRUS 1955–1957年 第23巻 — 文書89（1956年8月19日のダレス・重光会談の記録）</div>
+                <div class="source-desc">ダレス国務長官が、ソ連が千島列島をすべて取るならアメリカは沖縄にとどまり続けることになりかねないと述べた会談の記録。</div>
+                <div class="source-country">【アメリカ政府の外交文書集】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://history.state.gov/historicaldocuments/frus1955-57v23p1/d92" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">アメリカ国務省 FRUS 1955–1957年 第23巻 — 文書92（1956年8月24日のダレス・重光会談の記録）</div>
+                <div class="source-desc">ダレス国務長官が、択捉島と国後島が千島列島に含まれないと主張するのは難しいと述べた会談の記録。</div>
+                <div class="source-country">【アメリカ政府の外交文書集】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://worldjpn.net/documents/texts/JPRU/19560907.O1E.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">「世界と日本」データベース — アメリカの覚書（1956年9月7日）</div>
+                <div class="source-desc">択捉島と国後島は「常に日本本土の一部だった」と記した覚書の英文。</div>
+                <div class="source-country">【政策研究大学院大学・東京大学東洋文化研究所のデータベース】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://worldjpn.net/documents/texts/docs/19561019.D1E.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">「世界と日本」データベース — 日ソ共同宣言（1956年10月19日）</div>
+                <div class="source-desc">歯舞群島と色丹島の引き渡しを定めた第9項を含む共同宣言の英文。</div>
+                <div class="source-country">【政策研究大学院大学・東京大学東洋文化研究所のデータベース】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://worldjpn.net/documents/texts/docs/19431127.D1E.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">「世界と日本」データベース — カイロ宣言（1943年11月27日）</div>
+                <div class="source-desc">連合国の領土不拡大と、日本が暴力と貪欲によって奪い取った地域から日本を退去させることを記した宣言の英文。</div>
+                <div class="source-country">【政策研究大学院大学・東京大学東洋文化研究所のデータベース】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://worldjpn.net/documents/texts/docs/19450211.T1E.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">「世界と日本」データベース — ヤルタ協定（1945年2月11日）</div>
+                <div class="source-desc">「千島列島はソ連に引き渡される」と記した協定の英文。</div>
+                <div class="source-country">【政策研究大学院大学・東京大学東洋文化研究所のデータベース】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.ibiblio.org/pha/policy/1945/450726a.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ポツダム宣言（1945年7月26日）</div>
+                <div class="source-desc">日本の主権を限定する第8項を含む、宣言の全文。</div>
+                <div class="source-country">【一次資料の転載】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikisource.org/wiki/Treaty_of_San_Francisco" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">サンフランシスコ平和条約（1951年9月8日） — 条文</div>
+                <div class="source-desc">千島列島の放棄を定めた第2条(c)と、署名国のみに利益を限る第25条を含む条約の全文。</div>
+                <div class="source-country">【一次資料の転載】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/a164073.htm" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">衆議院 — 質問主意書（1951年の西村条約局長答弁に言及）</div>
+                <div class="source-desc">千島列島の範囲をめぐる、1951年10月19日の西村熊雄条約局長の答弁に触れた国会の質問主意書。</div>
+                <div class="source-country">【日本の国会】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://tass.com/politics/1034925/amp" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">TASS — Japan must recognize WWII outcome to carry on peace treaty talks, says Lavrov</div>
+                <div class="source-desc">2018年12月、ラブロフ外相が「平和条約の締結は戦争の結果の承認を意味する」と述べたことを伝えた記事。</div>
+                <div class="source-country">【ロシアの国営通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://tass.com/politics/1039800/amp" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">TASS — Russia's sovereignty over Kuril Islands not negotiable, says Lavrov</div>
+                <div class="source-desc">2019年1月、ラブロフ外相が国連憲章第107条や1956年の宣言について述べた内容を伝えた記事。</div>
+                <div class="source-country">【ロシアの国営通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.spf.org/islandstudies/research/a00022r.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">笹川平和財団 島嶼研究ジャーナル — The Four Northern Islands and the San Francisco Peace Treaty</div>
+                <div class="source-desc">サンフランシスコ平和条約の「千島列島」をめぐる、ロシア側と日本側の解釈を整理した論文（塚本孝氏、2020年）。</div>
+                <div class="source-country">【日本の財団の研究誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.cnn.co.jp/world/35185204.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">CNN.co.jp — ロシアの平和条約交渉打ち切り、「断じて受け入れられず」</div>
+                <div class="source-desc">2022年3月のロシアによる交渉中断の発表と、日本政府の反応を伝えた記事。</div>
+                <div class="source-country">【アメリカのテレビ局の日本語版】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://wilsoncenter.org/blog-post/2020-amendment-russian-constitution-another-sign-putins-invasion-isnt-going-planned" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ウィルソン・センター — 2020年のロシア憲法改正</div>
+                <div class="source-desc">2020年の改正でロシア憲法に加わった領土割譲の禁止条項（第67条）を論じた記事。</div>
+                <div class="source-country">【アメリカのシンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.okinawatimes.co.jp/articles/-/1130210" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">沖縄タイムズ — 中国 したたかな外交 北方四島への立場変更</div>
+                <div class="source-desc">習近平国家主席が中立の姿勢をプーチン氏に伝えたと報じた記事（2023年4月）。</div>
+                <div class="source-country">【日本の地方紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.sakigake.jp/news/article/20260814CO0182/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">秋田魁新報（共同通信配信） — 中国外務省の談話と、在日中国大使館・ロシア大使の共同文書</div>
+                <div class="source-desc">8月14日の中国外務省の談話がロシア領と明言していないことと、中ロが歴史問題で足並みをそろえていることを伝えた記事。</div>
+                <div class="source-country">【日本の地方紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.hokkaido-np.co.jp/article/1120207/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">北海道新聞 — 元島民4987人、平均年齢89歳（2025年2月）</div>
+                <div class="source-desc">終戦時の1万7,291人と、2024年12月末の4,987人を伝えた記事。本記事のグラフの出典。</div>
+                <div class="source-country">【北海道の地方紙】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.hokkaido-np.co.jp/article/1364248/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">北海道新聞 — 北方領土洋上慰霊（2026年9月）</div>
+                <div class="source-desc">2026年9月の洋上慰霊の参加者が過去最少の39人だったことと、2026年6月末の元島民の平均年齢90.5歳を伝えた記事。</div>
+                <div class="source-country">【北海道の地方紙】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/asia/index.html">アジア情勢</a></div>
+          <div>2026年10月8日</div>
+          <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/asia/index.html">アジア情勢一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  var AX = { grid: '#2a3a50', tick: '#8890a0' };
+
+  // 元島民の人数（1945年8月・2024年12月末）
+  (function () {
+    var ctx = document.getElementById('residentChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['1945年8月（終戦時）', '2024年12月末'],
+        datasets: [{
+          label: '元島民の人数',
+          // 出典：北海道新聞（2025年2月7日）
+          //   「1945年8月の終戦時に1万7291人いた北方領土の元島民は、昨年12月末現在で4987人と3割以下になった」
+          //   → 終戦時17,291人 / 2024年12月末 4,987人
+          data: [17291, 4987],
+          backgroundColor: ['rgba(136,144,160,0.45)', 'rgba(154,138,180,0.95)'],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.45
+        }]
+      },
+      options: {
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' ' + c.parsed.y.toLocaleString() + '人'; } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: AX.tick, font: { size: 11 } } },
+          y: {
+            min: 0, max: 20000,
+            grid: { color: AX.grid },
+            ticks: { color: AX.tick, font: { size: 10 }, callback: function (v) { return v.toLocaleString(); } }
+          }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
