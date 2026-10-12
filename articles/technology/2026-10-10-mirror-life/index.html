@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="左右の形をすべて逆にした「鏡の生命」は、まだ存在しない。それでも科学者たちは、作れてしまう前に自分たちの研究に待ったをかけた。薬への期待、生態系への恐れ、規制の空白を5つの視点で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/technology/2026-10-10-mirror-life/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="鏡の生命 — 科学者が自ら研究を止めた理由 — WorldView">
+  <meta property="og:description" content="左右の形をすべて逆にした「鏡の生命」は、まだ存在しない。それでも科学者たちは、作られる前に研究へ歯止めをかけようとしている。薬への期待と生態系への恐れを、5つの視点で読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/technology/2026-10-10-mirror-life/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/mirror-life-hero-biosafety-window.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="鏡の生命 — 科学者が自ら研究を止めた理由 — WorldView">
+  <meta name="twitter:description" content="左右の形をすべて逆にした「鏡の生命」は、まだ存在しない。それでも科学者たちは、作られる前に研究へ歯止めをかけようとしている。薬への期待と生態系への恐れを、5つの視点で読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/mirror-life-hero-biosafety-window.jpg">
+  <title>鏡の生命 — 科学者が自ら研究を止めた理由 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色はテクノロジーの --accent-tech（青）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/mirror-life-hero-biosafety-window.jpg');
+      background-size: cover; background-position: center 40%;
+      filter: brightness(1.15) contrast(1.03) saturate(1.02);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.30) 0%, rgba(14,17,23,0.50) 45%, rgba(14,17,23,0.88) 100%);
+    }
+    .article-hero.has-image .container {
+      position: relative; z-index: 1; width: 100%; transform: translateY(-24px);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b6c1cd; margin-top: 1.5rem; max-width: 580px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent-tech); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent-tech) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent-tech) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent-tech) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent-tech); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       シグネチャー：フロストガラス
+       ========================================================== */
+    .article-body .perspective-card,
+    .article-body .insight-box,
+    .article-body .data-card {
+      background: rgba(56,64,78,0.35);
+      border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    /* ---- perspective-card ---- */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+    .article-body .perspective-card { padding: 1.5rem 1.6rem 1.6rem; }
+    .article-body .perspective-card:hover {
+      transform: translateY(-2px); box-shadow: var(--shadow-lg);
+      background: rgba(56,64,78,0.48); border-color: rgba(255,255,255,0.16);
+    }
+    .article-body .perspective-card::before {
+      background: linear-gradient(90deg, transparent 0%, var(--accent-tech) 50%, transparent 100%);
+    }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .article-body .compare-table {
+      background: rgba(56,64,78,0.35); border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    }
+    .article-body .compare-table th { background: rgba(255,255,255,0.04); border-bottom: 2px solid var(--accent-tech); }
+    .article-body .compare-table tr:hover td { background: rgba(255,255,255,0.05); }
+
+    /* ---- タイムライン（フラット・日付見出し統合型） ---- */
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent-tech); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+    .article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- data-card ---- */
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .article-body .data-card:hover { border-color: rgba(255,255,255,0.18); }
+    .article-body .data-card h4 {
+      font-size: 0.92rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.8rem; line-height: 1.65; }
+    .item-list { list-style: none; margin: 0; padding: 0; }
+    .item-list li { padding: 0.8rem 0; border-bottom: 1px solid var(--border-subtle); }
+    .item-list li:first-child { padding-top: 0; }
+    .item-list li:last-child { border-bottom: none; padding-bottom: 0; }
+    .item-name { font-size: 0.86rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; line-height: 1.6; }
+    .item-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.8; }
+    /* 注目の数字カード（data-gridの3枚目に全幅で置く） */
+    .article-body .data-card.spotlight-card { grid-column: 1 / -1; }
+    .mini-stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem 1.4rem; }
+    .mini-stat-num { font-size: 1.35rem; font-weight: 800; color: var(--accent-tech); line-height: 1.25; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
+    .mini-stat-desc { font-size: 0.76rem; color: var(--text-dim); line-height: 1.65; }
+
+    /* ---- 情報源 ---- */
+    .article-body .sources-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+    .article-body a.source-item {
+      background: rgba(56,64,78,0.28); border: 1px solid rgba(255,255,255,0.08);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      color: inherit; text-decoration: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .article-body a.source-item:hover { border-color: var(--accent-tech); background: rgba(56,64,78,0.42); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent-tech); outline-offset: 2px; }
+
+    /* ---- この記事の問い ---- */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(128,172,216,0.06);
+      border: 1px solid rgba(128,172,216,0.22);
+      box-shadow: 0 0 40px 10px rgba(128,172,216,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent-tech); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    /* ---- 用語の整理 ---- */
+    .term-box {
+      margin: 2.4rem 0; padding: 1.2rem 1.4rem 1.3rem;
+      background: rgba(128,172,216,0.05);
+      border: 1px solid rgba(128,172,216,0.18);
+      border-radius: var(--radius);
+    }
+    .term-box::before {
+      content: '用語の整理'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent-tech); margin-bottom: 0.7rem;
+    }
+    .term-box dl { margin: 0; }
+    .term-box dt { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-top: 0.7rem; }
+    .term-box dt:first-child { margin-top: 0; }
+    .term-box dd { margin: 0.25rem 0 0; font-size: 0.87rem; line-height: 1.8; color: var(--text-muted); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent-tech); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- 深掘り（フロストガラス） ---- */
+    .article-body .insight-box { padding: 1.4rem 1.6rem; margin-bottom: 1.6rem; }
+    .article-body .insight-box:hover { border-color: rgba(255,255,255,0.16); }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .disclaimer { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 1.6rem; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* 情報源リンクのリセット */
+    a.source-item { color: inherit; text-decoration: none; }
+    a.source-item:hover { border-color: var(--accent-tech); }
+
+    /* ==========================================================
+       アクセシビリティ・レスポンシブ
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body .timeline-content,
+      .article-body .insight-box,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .article-body .data-card.spotlight-card { grid-column: 1 / -1; }
+      .mini-stat-grid { grid-template-columns: repeat(2, 1fr); }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">テクノロジー</span>
+      <span class="date">2026年10月10日</span>
+    </div>
+    <h1 class="article-title">鏡の生命<br>— 科学者が自ら研究を止めた理由</h1>
+
+    <div class="hero-deck">
+      生命の体をつくる分子の多くは、左右の形が決まっている。その左右をすべて逆にした生物は、いまの地球にはいない。まだ誰も作っていない段階で、<span class="deck-accent">科学者たちは研究に歯止めをかけようとしている。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">科学者38人が連名で警告</span>
+      <span class="hero-pill">実現は少なくとも10年先</span>
+      <span class="hero-pill">拘束力のある規制は、まだない</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 左右が逆の生物は、なぜ警戒されるのか</h2>
+
+          <p class="lead">右手と左手は、形がそっくりなのに、重ね合わせることができない。右手用の手袋を左手にはめられないのは、このためだ。</p>
+
+          <p class="lead">分子にも、同じ関係をもつものがある。形は同じなのに重ならない2つの型があり、互いを「鏡像」と呼ぶ。この性質を<strong>キラリティー</strong>（左右性）という。19世紀にフランスのパスツールが見つけた。</p>
+
+          <p class="lead">生命は、この2つの型のうち、ほぼ片方しか使わない。タンパク質の材料であるアミノ酸はL型（左手型）、DNAやRNAの材料になる糖はD型（右手型）が中心である。なぜ片方に決まったのかは、いまも分かっていない。</p>
+
+          <p class="lead">左右をすべて逆にした分子を<strong>鏡像分子</strong>という。その鏡像分子だけでできた、自己増殖する生物が<strong>鏡の生命</strong>（鏡像生命）である。自然界には存在せず、作る研究もまだ成功していない。</p>
+
+          <div class="term-box">
+            <dl>
+              <dt>キラリティー（左右性）</dt>
+              <dd>形は同じなのに、鏡に映した姿とは重ならない性質。分子にも見られる。</dd>
+              <dt>鏡像分子</dt>
+              <dd>ある分子の、左右を逆にした分子。アミノ酸や糖などで作ることができる。</dd>
+              <dt>鏡の生命（鏡像生命）</dt>
+              <dd>体の分子がすべて鏡像で、自分で増える生物。「鏡像の部品」と区別して使われる。</dd>
+              <dt>免疫</dt>
+              <dd>体に入った病原体を見つけて排除する仕組み。病原体の分子の形を見分けて働く。</dd>
+              <dt>ファージ</dt>
+              <dd>細菌にだけ感染するウイルス。自然界で細菌の数を抑えている。</dd>
+            </dl>
+          </div>
+
+          <p class="lead">問題は、生き物を守る仕組みの多くが、分子の左右を手がかりにしていることだ。免疫は、病原体の分子の形を見分けて働く。細菌に感染するファージや、細菌を食べる微生物も、細菌の分子の形を頼りに攻撃する。左右が逆の細菌には、これらがうまく働かない恐れがある。<strong>免疫もファージなどの天敵も働きにくい細菌が広がれば、人や動植物、生態系に取り返しのつかない被害が出るかもしれない。</strong></p>
+
+          <p class="lead">一方で、鏡像分子そのものには役に立つ面がある。体内の酵素は左右を見分けて分子を分解するため、鏡像の分子は分解されにくく、薬が長持ちする。鏡像のアミノ酸を使った薬は、すでに市販されている。</p>
+
+          <div class="article-question">
+            <p>鏡の生命を作れる技術が整う前に、研究を止められるのか。薬などに役立つ研究と、生態系を壊しかねない研究を、誰が、どこで線引きするのか。</p>
+          </div>
+
+          <div class="label-eyebrow">3つの論点</div>
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">「部品」と「生物」は別の話</div>
+              <div class="factor-desc">鏡像のアミノ酸や酵素を作る研究は、薬や材料に役立つ。問題にされているのは、それらを組み上げて自己増殖する生物にすることだ。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">実現は、少なくとも10年先</div>
+              <div class="factor-desc">国連の科学諮問委員会は「少なくとも10年先」と見ている。まだ作れないからこそ、いま話し合う余地が残っている。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">ルールを決める枠組みが、まだない</div>
+              <div class="factor-desc">国際的な取り決めも、拘束力のある規制もない。研究者、研究費を出す側、政府が、それぞれの判断で動いている。</div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/mirror-life-core-snail-shells.jpg" alt="巻き方が逆の2つのカタツムリの殻を並べた接写写真。形はそっくりだが、らせんの向きが互いに鏡像になっている" loading="lazy">
+            <figcaption>巻き方が逆の2つの殻。形はそっくりでも、重ね合わせることはできない。分子にも、これと同じ関係がある。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 警告の前と後で、何が起きたか</h2>
+
+          <p class="lead">鏡像の部品を作る研究は、10年以上前から進んでいた。転機は2024年末の警告で、その後の約2年に、会議が開かれ、提言や研究費の取り決めが相次いだ。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">19世紀半ば ― パスツール、分子に左右があることを見つける</div>
+                <p>フランスのパスツールが、結晶の観察から、同じ成分なのに鏡像の関係にある2つの型が存在することを見つけた。生命が片方の型しか使わない、という謎の出発点になった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2016年5月 ― 鏡像のDNA複製酵素を、人工的に作る</div>
+                <p>中国の清華大学のチームが、鏡像のアミノ酸だけでできたDNA複製酵素を化学合成した。ティン・ジュ氏らの成果である。12塩基の鏡像DNAを18塩基に伸ばすのに約4時間かかる遅いものだったが、<strong>通常の分子と同じ試験管の中で、互いに干渉せずに働いた</strong>。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2019年 ― 鏡の細胞が作れるかを調べる研究に、研究費が出る</div>
+                <p>アメリカの国立科学財団が、鏡の細胞を作れるかを調べる研究に、4人の研究者へ計400万ドルを助成した。その一人がケイト・アダマラ氏で、のちに警告論文の著者に加わる。同氏は、危険を知って自分の研究をやめたと伝えられている。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年12月12日 ― 科学者38人が、連名で警告する</div>
+                <p>科学誌Scienceに、科学者38人の連名の論文が載った。ノーベル賞受賞者のグレッグ・ウィンター氏とジャック・ショスタク氏も含まれる。鏡の細菌は免疫を回避し、天敵にも食べられにくい恐れがあるとして、<strong>鏡の細菌を作ることを目的とする研究は認めるべきでない</strong>と訴えた。研究費を出す側にも、支援しないと明言するよう求めた。約300ページの技術報告も同時に公開された。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年1月 ― 英国政府、専門家を集めて検討する</div>
+                <p>英国政府の首席科学顧問が議長を務める専門家の円卓会議が、1月22日に開かれた。会議のメモは、鏡像の部品と、自己増殖する鏡の細胞を分けて扱うことを提案した。政府の方針ではなく、参加者の意見をまとめたものである。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年6月12〜13日 ― パリで国際会議、約100人が集まる</div>
+                <p>パスツール研究所が、鏡の生命をめぐる一連の国際会合の第1回として、パリで会議を開いた。合成生物学、免疫学、生態学、倫理の専門家や政策担当者、研究費を出す側が参加した。結論は、<strong>リスクが大きく利益は限られるので、鏡の生物は作るべきでない</strong>というものだった。この会議は、1975年に遺伝子組み換え研究のルールを決めたアシロマ会議になぞらえて報じられた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年 ― 国際機関と、研究費を出す側が態度を示す</div>
+                <p>ドイツの中央生物安全委員会が、2024年の指摘を支持する見解を出した。ユネスコの国際生命倫理委員会は、予防的な世界的モラトリアム（一時停止）を勧告した。英国研究・イノベーション機構は10月16日、悪用の恐れがある研究の指針に鏡像生物学を加えた。民間の研究財団ルネサンス・フィランソロピーは11月18日、鏡の生物を作る研究には資金を出さないと表明した。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年5月1日 ― 国連の科学諮問委員会が、政策提言を出す</div>
+                <p>国連事務総長の科学諮問委員会が政策提言を公表した。鏡像分子のリスクは低いが、<strong>自己増殖する鏡の生命のリスクは極めて高い</strong>とし、世界的な議論の場の設置と、越えてはならない線の設定を求めた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年6月 ― 「自然界では定着しにくい」とするモデル研究が出る</div>
+                <p>スペインのポンペウ・ファブラ大学のリカール・ソレ氏らが、鏡の生物は栄養の取り込みや競争で不利になり、自然界に広がる可能性は低いとするモデル研究を公開した（査読前の論文）。これに対し、2024年の論文の著者らは、天敵から逃れられる利点を過小評価していると反論している。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年8月 ― 拘束力のある規制は、まだ整っていない</div>
+                <p>科学誌Bulletin of the Atomic Scientistsの論説は、警告から2年近くたっても、新しい規制も国際的な監督機関もないと指摘した。シンガポールでも2026年秋に国際会議が計画されていたが、本稿の執筆時点で結果は確認できていない。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/mirror-life-timeline-peptide-synthesizer.jpg" alt="実験室で装置を横から見つめる研究者の写真。ガラス容器と細いチューブが並んでいる" loading="lazy">
+            <figcaption>鏡像のペプチド（アミノ酸がつながった短い分子）や酵素は、鏡像のアミノ酸を一つずつつなげる化学合成で作られる。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 5つの視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>5つの視点 — 止める側、進める側、見極める側</h2>
+
+          <p class="lead">鏡の生命をめぐる議論は、「作るか、作らないか」だけでは割り切れない。いつ止めるのか、どこまで止めるのか、誰が止めるのかで、立場が分かれる。各国の政府が公式な立場を表明している例は少なく、ここでは立場ごとに5つに整理した。それぞれの言い分のまま並べる。</p>
+
+          <div class="tabs-wrap">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-cards">カードで読む</button>
+              <button class="tab-btn" data-tab="tab-table">表で比べる</button>
+            </div>
+
+            <div class="tab-pane active" id="tab-cards">
+              <div class="perspectives-grid">
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">警告した科学者（2024年論文の著者、パリ会議の参加者）</span>
+                    <span class="stance-label stance-hostile">強く警戒</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    鏡の細菌は免疫を回避し、天敵にも食べられにくく、既存の抗生物質も効かない恐れがある。しかも、鏡像の薬や部品は、鏡の生物を作らなくても化学合成で作れる。利益が小さいのにリスクが大きいので、作ること自体を目的とする研究はやめるべきだ、という立場である。著者の一人のアダマラ氏は、自ら鏡の細胞を研究していた側の人である。
+                  </div>
+                  <div class="interests">最大の関心：技術が整う前に、作らないという共通の線を引くこと。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">区別と慎重な進め方を求める研究者（ティン・ジュ氏ら）</span>
+                    <span class="stance-label stance-cautious">事前の禁止には慎重</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    鏡像分子の研究と、鏡の生物を作ることは分けて考えるべきだと主張する。将来のリスクを理由に、いま研究を止めるのは行き過ぎになりかねない。のちに社会を支えた交流電流の研究を、普及する前に禁じるようなものだ、という趣旨の意見を科学誌Natureに寄せた。ただし、鏡の生物づくりそのものは他の人に任せたいと、Chemistry Worldの取材に答えたと伝えられている。
+                  </div>
+                  <div class="interests">最大の関心：鏡像の部品の研究を、これからも続けられること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">生態学の面から疑う研究者（ソレ氏らのモデル研究）</span>
+                    <span class="stance-label stance-neutral">懐疑的</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    鏡の生物は、天敵や免疫に狙われにくい点では有利で、餌を取り込みにくい点では不利になる。栄養となる分子にも左右があるためだ。ソレ氏らは、自然界には先に住みついている生物が多く、競争で負けて広がれないはずだ、というモデルを示した。ただし、どちらの影響が大きいかは、まだ決着していない。警告した側は、天敵から逃れられる利点が過小評価されていると反論している。
+                  </div>
+                  <div class="interests">最大の関心：警告の根拠となる想定を、生態学の面から検証すること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">国際機関と各国の政府機関（国連・ユネスコ・英国・ドイツ）</span>
+                    <span class="stance-label stance-supportive">予防的に関与</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    国連の科学諮問委員会は、世界的な議論の場と、越えてはならない線を早い段階で決めるよう求めた。ユネスコの国際生命倫理委員会は、予防的なモラトリアムを勧告している。英国政府の円卓会議のメモは、部品の研究を残すため、全面的な禁止に慎重な姿勢を示し、鏡像DNAの長さに上限を設ける案を挙げた。ドイツの委員会は、2024年の指摘を支持した。中国の軍備管理・軍縮協会も、アメリカの民間団体と共同で、国内外の枠組みづくりを求める声明を出している。
+                  </div>
+                  <div class="interests">最大の関心：実現する前に、国境を越えた枠組みを整えること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">研究費を出す側（財団・研究助成機関）</span>
+                    <span class="stance-label stance-neutral">資金で線を引く</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>核心的主張</strong>
+                    法律がなくても、資金を出さないと決めれば、研究の流れを変えられる。ルネサンス・フィランソロピーは、鏡の生物を作る研究には資金を出さないと表明した。英国研究・イノベーション機構は、鏡像生物学を悪用リスクのある研究の指針に加えた。ただし、一部の機関だけが断っても、別の資金源に移られてしまう。大手の機関が足並みをそろえる必要がある、と指摘されている。
+                  </div>
+                  <div class="interests">最大の関心：研究者が、別の資金源に移れない状態をつくること。</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-table">
+              <div style="overflow-x:auto;">
+                <table class="compare-table">
+                  <thead>
+                    <tr><th>立場</th><th>基本スタンス</th><th>主な主張</th><th>最大の関心事</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>警告した科学者</td><td>強く警戒</td><td>利益は小さくリスクは大きい。作る研究はやめるべき</td><td>作らないという共通の線</td></tr>
+                    <tr><td>区別と慎重な進め方を求める研究者</td><td>事前の禁止には慎重</td><td>部品の研究と生物づくりは別。将来のリスクで今の研究を止めない</td><td>部品の研究の継続</td></tr>
+                    <tr><td>生態学の面から疑う研究者</td><td>懐疑的</td><td>餌を取り込めず、自然界では広がりにくい</td><td>想定の検証</td></tr>
+                    <tr><td>国際機関・政府機関</td><td>予防的に関与</td><td>実現前に議論の場と越えてはならない線を決める</td><td>国境を越えた枠組み</td></tr>
+                    <tr><td>研究費を出す側</td><td>資金で線を引く</td><td>資金を出さないと決めて、研究の流れを変える</td><td>別の資金源に移れない状態</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/mirror-life-perspectives-lecture-hall.jpg" alt="講堂で登壇者の話に聞き入る研究者たちの写真。机にはノートパソコンが並び、頬杖をついたり、前のめりになったりして聞いている" loading="lazy">
+            <figcaption>どこで線を引くのか。研究者たちは、会議の場で意見を交わしている。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ・統計 ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 部品はどこまで作られ、何に使われているか</h2>
+
+          <p class="lead">鏡の生命にはまだ実体がなく、公表されている数字の多くは専門家の見積もりである。ここでは、鏡の生命に至るまでの節目と、すでに使われている鏡像分子を整理する。</p>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>鏡の生命に至るまでの4つの節目</h4>
+              <ul class="item-list">
+                <li>
+                  <div class="item-name">鏡像リボソーム</div>
+                  <div class="item-desc">タンパク質を作る細胞内の装置。これが作れれば、鏡像のタンパク質を生物のしくみで作れるようになる。</div>
+                </li>
+                <li>
+                  <div class="item-name">部品がすべて分かっている人工細胞</div>
+                  <div class="item-desc">細胞が生きるのに必要な部品を全部特定し、組み上げた人工の細胞。</div>
+                </li>
+                <li>
+                  <div class="item-name">鏡像ゲノム</div>
+                  <div class="item-desc">生物の設計図にあたる、鏡像のDNA全体。</div>
+                </li>
+                <li>
+                  <div class="item-name">自己維持できるPURE系（試験管内のタンパク質合成の仕組み）</div>
+                  <div class="item-desc">精製した部品を試験管で混ぜ、タンパク質を作らせる仕組み。その部品まで自分で作れるようになると、自己増殖に近づく。</div>
+                </li>
+              </ul>
+              <p class="chart-note">2025年6月にパスツール研究所が開いた国際会議が整理した節目。鏡像リボソームを作ることを、越えてはならない線とすべきかは、参加者の意見が割れた。会議の時点で、鏡像のリボソームや細胞内部の環境を再現できた研究室はなかった。出典：Bulletin of the Atomic Scientists（2026年8月）、パスツール研究所</p>
+            </div>
+
+            <div class="data-card">
+              <h4>鏡像分子の使い道（すでに実用・研究中）</h4>
+              <ul class="item-list">
+                <li>
+                  <div class="item-name">鏡像のアミノ酸を含む薬</div>
+                  <div class="item-desc">デガレリクスとジフェリケファリンがすでに市販されている。体の酵素に分解されにくい。</div>
+                </li>
+                <li>
+                  <div class="item-name">鏡像の核酸「シュピーゲルマー」</div>
+                  <div class="item-desc">L型の糖でできた核酸。分解酵素に強く、抗体の代わりになる薬として、企業が臨床試験を進めている。</div>
+                </li>
+                <li>
+                  <div class="item-name">鏡像ペプチドの探索</div>
+                  <div class="item-desc">鏡像のペプチドは、体の中で分解されにくく、薬の候補になる。ただし、鏡像のペプチドを大量に作って、効くものを探すことは難しい。そこで、まず標的のタンパク質のほうを鏡像にして作り、普通のペプチドの中から、その鏡像にくっつくものを選ぶ。選んだペプチドを鏡像に作り直すと、本物の標的にくっつく鏡像ペプチドになる。標的とペプチドの両方を鏡に映せば、くっつく関係はそのまま保たれるからだ。がんに効くペプチドの探索などで、研究が進んでいる。</div>
+                </li>
+                <li>
+                  <div class="item-name">材料・データ保存</div>
+                  <div class="item-desc">丈夫な材料、光や磁気に関わる素材、DNAによるデータ保存などが、応用の候補に挙がっている。</div>
+                </li>
+              </ul>
+              <p class="chart-note">いずれも鏡像の部品を化学合成で作るもので、鏡の生物は必要としない。出典：パスツール研究所、英国政府科学室、王立生物学会、企業の公表資料</p>
+            </div>
+
+            <div class="data-card spotlight-card">
+              <h4>注目の数字</h4>
+              <div class="mini-stat-grid">
+                <div class="mini-stat">
+                  <div class="mini-stat-num">38人</div>
+                  <div class="mini-stat-desc">2024年12月に、Scienceで鏡の生命への警告を連名で発表した科学者の数</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="mini-stat-num">約300ページ</div>
+                  <div class="mini-stat-desc">同時に公開された技術報告の分量。実現可能性とリスクを詳しく検討している</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="mini-stat-num">約100人</div>
+                  <div class="mini-stat-desc">2025年6月のパリでの国際会議で、ワークショップに参加した専門家や政策担当者のおよその数</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="mini-stat-num">10〜30年</div>
+                  <div class="mini-stat-desc">鏡の生命を実際に作れるようになるまでの、専門家の見積もり（王立生物学会が紹介）。国連やカーネギー国際平和財団は「少なくとも10年先」と見ており、見積もりには幅がある</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 線は、どこに引かれるのか</h2>
+
+          <p class="disclaimer">※ ここから先は、ここまでの事実にもとづく筆者個人の見解です。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">①規制の対象は「鏡の生物」に絞られ、「部品」の研究は続くだろう</div>
+            <div class="insight-text">
+              全面的な禁止を求める声は、いまのところ少ない。国連の科学諮問委員会、英国政府科学室の円卓会議のメモ、警告した科学者の多くが、鏡像の部品と鏡の生物を分けて考えている。部品の研究は、薬という現実の利益を生んでいる。一方、リスクの本体は、部品を組み上げた鏡の生物にある。止める対象を絞るほうが、利益を残したままリスクに対処できる。筆者は、今後数年のルール作りは「自己増殖する鏡の生物を作らない」という一点に収束し、<strong>鏡像のタンパク質や核酸の薬は、これまでどおり開発が進む</strong>と見ている。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">②難しいのは、ルールを決めることより、守らせることだ</div>
+            <div class="insight-text">
+              アメリカの国際平和財団の論評は、AIの助けも得た集中的な取り組みなら、5億〜10億ドルの投資で実現が早まりうると見ている。国や企業が本気で取り組めば、研究費を出さないという約束だけでは、開発を止められない。筆者は、「鏡像リボソームができた」「鏡像のDNA全体が合成できた」といった<strong>節目ごとに、研究者が公表して確認を受ける仕組み</strong>が現実的だと考える。作る行為を直接に取り締まるより、実現に近づく過程を外から確認できるようにするほうが、実際に運用しやすい。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">③「安全だと示せるまで作らない」を、原則にできるか</div>
+            <div class="insight-text">
+              生態学のモデルは、鏡の生物が広がる条件を示せても、広がらないことは保証できない。モデルの前提を変えれば、結論が変わるからだ。警告した側の「安全だと示せるまで作るべきでない」という立場は、証拠を示す責任を、作ろうとする側に負わせる考え方である。筆者は、被害が取り返しのつかないものになりうる以上、この考え方が妥当だと見る。ただし、どんな証拠で安全だと認めるのかという基準は、まだ定まっていない。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">④ルールを作る場は、科学者の会議から政府間の交渉へ移れるか</div>
+            <div class="insight-text">
+              鏡像の部品を作る研究は、中国やアメリカ、欧州などの研究者が進めてきた。ルールが一部の国だけにとどまれば、研究は規制のゆるい国へ移るだけだ。これまでの動きは、科学者が先に動き、財団と国際機関がそれに続く形だった。次は国連の枠組みや政府間の合意に進めるかどうかが問われる、と筆者は見ている。核兵器や生物兵器のような条約になるのは先の話で、まずは法的な拘束力のない行動規範から始まるだろう。
+            </div>
+          </div>
+
+          <p class="closing">
+            鏡の生命は、まだ誰も作っていない。そのため、作った場合の被害を実験で確かめることはできない。一方で、鏡の生物を作らないと決めても、いま失われる利益は小さい。研究者たちが先に立ち止まったのは、起きてからでは取り返しがつかない種類のリスクだったからである。部品の研究は薬や材料に役立つので、止めるべきものと続けるべきものを見分ける作業が、これからのルール作りの中心になる。実現が10年より早まれば、決める時間はさらに短くなるかもしれない。
+          </p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/mirror-life-analysis-forest-floor.jpg" alt="森の地面を接写した写真。黒い土の上に苔が広がり、細い根や小さな水滴が朝の光に照らされている" loading="lazy">
+            <figcaption>土の中には、無数の微生物が、互いに影響し合いながら暮らしている。もし鏡の生物が広がれば、この関係に入り込むことになる。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://www.science.org/doi/10.1126/science.ads9158" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Science — Confronting risks of mirror life</div>
+                <div class="source-desc">2024年12月に、科学者38人が連名で発表した警告論文。鏡の細菌のリスクと、研究への対応を述べている。</div>
+                <div class="source-country">【学術誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.jcvi.org/publications/confronting-risks-mirror-life" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">J. Craig Venter Institute — Confronting risks of mirror life</div>
+                <div class="source-desc">警告論文の書誌情報と、著者の所属機関による紹介。</div>
+                <div class="source-country">【研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.pasteur.fr/en/research-journal/news/mirror-life-inside-discussion" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">パスツール研究所 — Mirror Life: Inside the Discussion</div>
+                <div class="source-desc">2025年6月のパリ会議の概要。参加者、結論、議論されたリスクと利益を整理している。</div>
+                <div class="source-country">【フランスの研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://unu.edu/cpr/policy-brief/mirror-life" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">国連大学政策研究センター — Mirror Life（国連事務総長の科学諮問委員会の政策提言）</div>
+                <div class="source-desc">2026年5月1日公表。鏡像分子と鏡の生命のリスクを分け、世界的な議論の場と越えてはならない線の設定を求めた提言。</div>
+                <div class="source-country">【国連関連の研究機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.gov.uk/government/publications/mirror-life/mirror-life" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">英国政府科学室 — Mirror life（円卓会議のメモ）</div>
+                <div class="source-desc">2025年1月の専門家円卓会議の記録。部品と鏡の細胞を分けて扱う案や、期待される応用をまとめている。政府の方針ではない。</div>
+                <div class="source-country">【英国の行政機関】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://carnegieendowment.org/posts/2025/10/mirror-life-bacteria-risks-prevention" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">カーネギー国際平和財団 — 鏡像細菌のリスクと予防</div>
+                <div class="source-desc">2025年10月の論評。実現までの見積もり、研究費を出す側への提言、政策の方向性を述べている。</div>
+                <div class="source-country">【アメリカのシンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://biologist.rsb.org.uk/danger_in_the_mirror" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">王立生物学会 — Danger in the mirror</div>
+                <div class="source-desc">キラリティーの説明、研究費を出す側と英国研究・イノベーション機構の対応、応用の例をまとめた解説記事。</div>
+                <div class="source-country">【英国の学会誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://thebulletin.org/2026/08/mirror-life-is-a-mass-extinction-risk-we-dont-need-to-take/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Bulletin of the Atomic Scientists — Mirror life is a mass-extinction risk we don't need to take</div>
+                <div class="source-desc">2026年8月の論説。リスクの整理、各機関の動き、反対意見、規制が整っていない現状を紹介している。</div>
+                <div class="source-country">【アメリカの科学誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.chemistryworld.com/opinion/would-mirror-life-really-threaten-our-own/4023691.article" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Chemistry World — Would mirror life really threaten our own?</div>
+                <div class="source-desc">2026年6月の論説。鏡の生物は自然界で競争に負けるとするモデル研究を紹介している。</div>
+                <div class="source-country">【英国の化学専門誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.biorxiv.org/node/5513642" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">bioRxiv — Ecological constraints to mirror life</div>
+                <div class="source-desc">ソレ氏らによる、鏡の生物の生態学的な制約を調べたモデル研究（査読前の論文）。</div>
+                <div class="source-country">【プレプリント】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.scientificamerican.com/article/mirror-image-enzyme-copies-looking-glass-dna/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Scientific American — Mirror-Image Enzyme Copies Looking-Glass DNA</div>
+                <div class="source-desc">2016年に鏡像のDNA複製酵素が合成された成果を伝えた記事。</div>
+                <div class="source-country">【アメリカの科学誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.manchester.ac.uk/about/news/manchester-workshop-advances-technical-understanding-of-mirror-organism-precursor-technologies/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">マンチェスター大学 — 鏡像生物の前段階技術をめぐるワークショップ</div>
+                <div class="source-desc">2025年9月の技術ワークショップの報告。部品の技術と鏡の生物の距離を議論した。</div>
+                <div class="source-country">【英国の大学】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>5つの視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/technology/index.html">テクノロジー</a></div>
+          <div>2026年10月10日</div>
+          <div style="margin-top:0.5rem;">5つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/technology/index.html">テクノロジー一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+
+</body>
+</html>
