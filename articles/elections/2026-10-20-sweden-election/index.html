@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2026年9月のスウェーデン総選挙で、野党4党が3議席差で過半数を取り、極右のスウェーデン民主党は初めて後退した。それでも組閣は進んでいない。5つの立場から、結果と行き詰まりの理由を読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/elections/2026-10-20-sweden-election/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="右傾化の例外か — スウェーデンで極右が初めて後退した理由と、まだ政権ができない理由 — WorldView">
+  <meta property="og:description" content="スウェーデン総選挙で野党4党が3議席差で過半数を取り、極右は初めて後退した。それでも組閣は進んでいない。5つの立場から読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/elections/2026-10-20-sweden-election/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/sweden-election-hero-stockholm-dawn.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="右傾化の例外か — スウェーデンで極右が初めて後退した理由と、まだ政権ができない理由 — WorldView">
+  <meta name="twitter:description" content="野党4党が3議席差で過半数を取り、極右は初めて後退した。それでも組閣は進んでいない。5つの立場から読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/sweden-election-hero-stockholm-dawn.jpg">
+  <title>右傾化の例外か — スウェーデンで極右が初めて後退した理由と、まだ政権ができない理由 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ==========================================================
+       ヒーロー（案X型）— テーマ色は世論・選挙の --accent4（ベージュ）
+       ========================================================== */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/sweden-election-hero-stockholm-dawn.jpg');
+      background-size: cover; background-position: center 42%;
+      filter: brightness(1.1) contrast(1.04) saturate(1.04);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.30) 0%, rgba(14,17,23,0.50) 45%, rgba(14,17,23,0.90) 100%);
+    }
+    .article-hero.has-image .container {
+      position: relative; z-index: 1; width: 100%; transform: translateY(-24px);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b6c1cd; margin-top: 1.5rem; max-width: 600px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent4); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent4) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent4) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent4) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+
+    /* ==========================================================
+       レイアウト
+       ========================================================== */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent4); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* ==========================================================
+       シグネチャー：フロストガラス — 記事全体を貫く透明感
+       ========================================================== */
+    .article-body .perspective-card,
+    .article-body .insight-box,
+    .article-body .glossary-card,
+    .article-body .data-card {
+      background: rgba(56,64,78,0.35);
+      border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    /* ---- perspective-card ---- */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+    .article-body .perspective-card { padding: 1.5rem 1.6rem 1.6rem; }
+    .article-body .perspective-card:hover {
+      transform: translateY(-2px); box-shadow: var(--shadow-lg);
+      background: rgba(56,64,78,0.48); border-color: rgba(255,255,255,0.16);
+    }
+    .article-body .perspective-card::before {
+      background: linear-gradient(90deg, transparent 0%, var(--accent4) 50%, transparent 100%);
+    }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .article-body .compare-table {
+      background: rgba(56,64,78,0.35); border: 1px solid rgba(255,255,255,0.10);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    }
+    .article-body .compare-table th { background: rgba(255,255,255,0.04); border-bottom: 2px solid var(--accent4); }
+    .article-body .compare-table tr:hover td { background: rgba(255,255,255,0.05); }
+
+    /* ---- timeline ---- */
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent4); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+    .article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- data-card ---- */
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .article-body .data-card:hover { border-color: rgba(255,255,255,0.18); }
+    .article-body .data-card h4 {
+      font-size: 0.92rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.8rem; line-height: 1.65; }
+
+    /* ---- 情報源 ---- */
+    .article-body .sources-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+    .article-body a.source-item {
+      background: rgba(56,64,78,0.28); border: 1px solid rgba(255,255,255,0.08);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      color: inherit; text-decoration: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .article-body a.source-item:hover { border-color: var(--accent4); background: rgba(56,64,78,0.42); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent4); outline-offset: 2px; }
+
+    /* ---- この記事の問い ---- */
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(196,168,130,0.06);
+      border: 1px solid rgba(196,168,130,0.22);
+      box-shadow: 0 0 40px 10px rgba(196,168,130,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent4); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent4); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* ---- 用語解説（フロストガラス） ---- */
+    .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .article-body .glossary-card { padding: 1rem 1.2rem; }
+    .article-body .glossary-card:hover { border-color: rgba(255,255,255,0.16); }
+    .glossary-term { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .glossary-def { font-size: 0.78rem; color: var(--text-muted); line-height: 1.75; }
+
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 2.6rem; border-top: 1px solid var(--border-subtle);
+    }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.4rem; font-weight: 700; color: var(--accent4); line-height: 1.25; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    /* ---- 深掘り（フロストガラス） ---- */
+    .analysis-note { font-size: 0.84rem; color: var(--text-dim); line-height: 1.8; margin-bottom: 1.6rem; }
+    .article-body .insight-box { padding: 1.4rem 1.6rem; margin-bottom: 1.6rem; }
+    .article-body .insight-box:hover { border-color: rgba(255,255,255,0.16); }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+
+    /* 図版 */
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img {
+      width: 100%; height: auto; display: block;
+      border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .article-figure figcaption {
+      font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6;
+    }
+
+    /* ==========================================================
+       アクセシビリティ・レスポンシブ
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card,
+      .article-body .timeline-content,
+      .article-body .glossary-card,
+      .article-body .insight-box,
+      .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .glossary-grid { grid-template-columns: 1fr; gap: 0.7rem; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">世論・選挙</span>
+      <span class="date">2026年10月20日</span>
+    </div>
+    <h1 class="article-title">右傾化の例外か<br>— スウェーデンで極右が初めて後退した理由と、まだ政権ができない理由</h1>
+
+    <div class="hero-deck">
+      2026年9月のスウェーデン総選挙で、野党4党が議席の過半数を取り、極右のスウェーデン民主党は初めて議席を減らした。しかし投票から5週間たった今も、新しい政権は決まっていない。<span class="deck-accent">極右が後退したのに、なぜ左派の政権はできないのか。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">野党4党 176議席 対 右派4党 173議席</span>
+      <span class="hero-pill">スウェーデン民主党 20.5% → 17.5%</span>
+      <span class="hero-pill">組閣は10月20日時点で未了</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 極右の後退と、政権の行き詰まり</h2>
+
+          <p class="lead">2026年9月13日、スウェーデンで総選挙が行われた。社会民主党、左党、中央党、緑の党の野党4党が、349議席のうち176議席を得た。穏健党、キリスト教民主党、自由党、スウェーデン民主党の右派4党は173議席で、3議席の差だった。2022年の前回選挙では、右派側が176、野党側が173で、議席の関係はちょうど逆だった。</p>
+
+          <p class="lead">欧州では極右の伸長が目立つ。ドイツ東部のザクセン・アンハルト州では、この選挙の1週間前に行われた州議会選挙で、極右のAfD（ドイツのための選択肢）が43.8%を得た。そのなかでスウェーデンの極右は、2010年に国政へ進出して以来、初めて得票を減らした。ただし、これを「左派の勝利」と言い切ることはできない。第1党の社会民主党自身も後退しており、議席で上回った4党は、5週間たってもまとまれずにいる。</p>
+
+          <div class="article-question">
+            <p>スウェーデンの極右は、なぜ後退したのか。そして、議席で上回った側は、なぜ政権を作れないのか。</p>
+          </div>
+
+          <div class="label-eyebrow">3つの論点</div>
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">「左派の勝利」とは言い切れない</div>
+              <div class="factor-desc">社会民主党の得票率は28.0%で、1911年以降の選挙で最も低かった。議席を大きく増やしたのは、左党（+6）と緑の党（+4）だった。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">右派ブロックで後退したのは極右だけだった</div>
+              <div class="factor-desc">スウェーデン民主党は73議席から62議席に減った。一方、穏健党、キリスト教民主党、自由党はいずれも議席を増やした。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">勝った側が政権を作れない</div>
+              <div class="factor-desc">左党と中央党のどちらかが反対に回れば、右派の173票と合わせて反対が175票を超え、首相は選ばれない。左党は閣内入りを求め、中央党は左党の閣内入りに反対しており、双方の条件を同時に満たせない。</div>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">用語解説</div>
+          <div class="glossary-grid">
+            <div class="glossary-card">
+              <div class="glossary-term">ティドー合意</div>
+              <div class="glossary-def">2022年に、穏健党・キリスト教民主党・自由党の3党と、スウェーデン民主党が結んだ政策合意。スウェーデン民主党は閣外から政権を支え、移民や治安などの政策に影響力を持った。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">首相指名の仕組み</div>
+              <div class="glossary-def">議会は首相候補への「賛成」ではなく、「反対」が過半数の175票に達するかを見る。反対が175票未満なら、賛成が少なくても首相に選ばれる。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">探索任務</div>
+              <div class="glossary-def">議長が党首に与える役目。他党の支持を探り、政権が成り立つかを確かめて、議長に報告する。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">臨時選挙の規則</div>
+              <div class="glossary-def">議長が提案する首相候補が、議会で4回否決されると、臨時の総選挙を行う決まりになっている。</div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/sweden-election-core-ballot-slips.jpg" alt="投票所で党ごとに分けて積まれた投票用紙の束と、その一つに手を伸ばす手の接写" loading="lazy">
+            <figcaption>議席差は3。わずかな得票の差が、政権の行方を左右した。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 総選挙から、中央党の探索任務まで</h2>
+
+          <p class="lead">以下は、10月20日（ストックホルム時間）時点までの経過である。組閣はまだ決着していない。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2022年10月 ― 右派政権が発足、スウェーデン民主党が政策に影響</div>
+                <p>2022年の選挙では、右派ブロックが176対173で勝った。穏健党のクリステション氏が首相に就き、スウェーデン民主党は閣外から政権を支えるかわりに、移民、治安、エネルギー、医療、教育などの政策に影響力を持った。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年3月13日 ― 自由党とスウェーデン民主党が「スウェーデンの約束」を発表</div>
+                <p>右派ブロックが過半数を取れば、自由党がスウェーデン民主党の入閣を認めるという内容だった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年4月1日 ― 穏健党も、勝てばスウェーデン民主党の入閣を認めると発表</div>
+                <p>クリステション首相は、右派ブロックが選挙に勝てば、スウェーデン民主党を政権に入れ、閣僚ポストを与えると発表した。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月13日 ― 総選挙、野党4党が176議席、右派4党が173議席</div>
+                <p>社会民主党は99議席（得票率28.0%）で第1党を保ったが、8議席を失った。スウェーデン民主党は62議席（17.5%）で、第2党から第3党に下がった。投票率は84.9%で、前回より0.7ポイント高かった。選挙後、ダーラナ県ボーレンゲなどで、投票への不当な影響があったとの疑いが報じられ、警察と検察が捜査している（検察は疑いを確認していない）。選挙審査委員会には、9月25日までに1万1000通超の異議申し立てが届いた。専門家は、地域単位のやり直しも可能性が非常に低いとみており、10月20日までに委員会の決定は確認できていない。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">9月17日 ― クリステション首相が辞表を提出</div>
+                <p>右派政権は暫定政権となり、首相は後任が決まるまで職務を続けている。同じ日、中央党は、左党が閣内入りの要求を取り下げるまで、アンデション党首が呼びかけた4党協議に応じないと報じられた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">9月18日 ― 議長がアンデション氏に組閣の探索を依頼</div>
+                <p>ノルレン議長が、社会民主党のアンデション党首に任務を与えた。同じ日までに、スウェーデン民主党のオーケソン党首は、クリステション氏が組閣する場合でも閣僚ポストの要求は取り下げないと述べた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">9月28日 ― 議長選挙で左党が穏健党側に投票、アンデション氏が組閣を断念</div>
+                <p>議会の議長選挙で、左党は穏健党が推すノルレン氏に投票し、ノルレン氏が再選された。社会民主党の候補は、緑の党と中央党の支持を受けたが敗れた。アンデション氏は「現時点で政権を作る可能性はない」として、任務を議長に返した。社会民主党は左党の動きを「裏切り」と呼び、左党は事前の合意があったことを否定した。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">10月2日 ― 議長が再びアンデション氏に任務を与える</div>
+                <p>議長は、議会の議席配分も支持する政党も変わっていないとして、最初の任務をそのままアンデション氏に任せた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">10月15日 ― 議会がアンデション氏を否決（賛成99票、反対248票）</div>
+                <p>10月13日、アンデション氏は「議会が許容できる政権を作る条件が、現時点ではない」と議長に報告した。議長は、結果にかかわらず首相指名の採決を行うと決めていた。賛成は社会民主党の99票だけで、反対は248票、欠席は2だった。否決は反対が175票に達すれば成立するので、大差の否決となった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">10月19日 ― 議長が中央党のタンド・リングクヴィスト党首に探索を依頼</div>
+                <p>中央党の案は、社会民主党、緑の党、中央党、キリスト教民主党、自由党の5党による政権で、首相はアンデション氏とするものだ。左党は含まれない。党首は「自分が首相になることが目的ではない」と述べた。5党案に含まれる党から、強い支持の表明は出ていない。緑の党のヘルデン氏は「中道案は行き止まりだ」と述べた。キリスト教民主党のブッシュ党首は議長の判断を「賢明」とし、譲れない条件は減らす必要があるとした。自由党のモハムソン党首は、社会民主党や左党以外の党をまとめられるか確かめる機会だとして歓迎した。同じ日、スウェーデン民主党のオーケソン党首は、中央党党首に条件なしの対話を求める公開書簡を出したが、閣僚ポストの要求は取り下げないとした。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">10月26日（予定） ― タンド・リングクヴィスト氏の報告期限</div>
+                <p>議長は、アンデション氏を再び指名する可能性も否定していない。議長の首相提案が否決されたのは、これまでに1回である。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/sweden-election-timeline-press-night.jpg" alt="秋の夜、石造りの建物の門前で、三脚とマイクを構えて待つ記者とカメラクルー" loading="lazy">
+            <figcaption>結果が確定したあとも、政権の行方を待つ状態が続いている。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 各勢力の視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>各勢力の視点 — 勝った側にも、譲れない条件がある</h2>
+
+          <p class="lead">組閣の行き詰まりは、野党側の内部と、右派側の立ち位置の両方から生じている。緑の党（22議席）も5党案に含まれるが、ここでは、組閣の行方に大きくかかわる5党を取り上げる。</p>
+
+          <div class="tabs-wrap">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-cards">カードで読む</button>
+              <button class="tab-btn" data-tab="tab-table">表で比べる</button>
+            </div>
+
+            <div class="tab-pane active" id="tab-cards">
+              <div class="perspectives-grid">
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">社会民主党（アンデション党首）</span>
+                    <span class="stance-label stance-neutral">政権を目指すが身動きが取れない</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>公式見解</strong>
+                    第1党だが、得票率28.0%は1911年以降の選挙で最も低い。選挙では医療、学校、雇用、家計を前面に出し、組織犯罪への強硬策も掲げた。移民政策は、近年の厳しい路線を戻さないとしている。10月15日の採決で、賛成は社会民主党の99票にとどまった。
+                  </div>
+                  <div class="interests">最大の関心：左党と中央党の双方を失わずに、政権を作ること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">左党（ダードゴスタール党首）</span>
+                    <span class="stance-label stance-neutral">閣内入りが条件</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>公式見解</strong>
+                    議席は24から30に増え、得票率は8.4%だった。党は、閣内に入らなければ社会民主党政権を支えないとしている。富裕層への課税（億万長者税）も掲げる。9月28日の議長選挙では穏健党が推す候補に投票したが、事前の合意があったことは否定している。
+                  </div>
+                  <div class="interests">最大の関心：社会民主党政権の政策に、自党の主張を反映させること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">中央党（タンド・リングクヴィスト党首）</span>
+                    <span class="stance-label stance-neutral">左党とは組まない</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>公式見解</strong>
+                    得票率は7.0%、議席は25。選挙前から、スウェーデン民主党に頼る政権も、左党が閣内に入る政権も認めないと表明していた。経済政策では減税を求め、増税を掲げる社会民主党・左党・緑の党と立場が分かれる。10月19日に、議長から探索任務を受けた。
+                  </div>
+                  <div class="interests">最大の関心：極右にも左党にも依存しない、中道の政権を作ること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">穏健党（クリステション首相）</span>
+                    <span class="stance-label stance-neutral">暫定政権として留任</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>公式見解</strong>
+                    穏健党は70議席（+2）で、キリスト教民主党と自由党も議席を増やした。政権側は治安の改善を成果として強調してきた。クリステション氏は9月17日に辞表を出したが、後任が決まるまで暫定の首相を務める。10月19日には、アンデション氏を支える党の議席が過半数なのだから、その党があらゆる選択肢を探るべきだと述べた。
+                  </div>
+                  <div class="interests">最大の関心：野党側がまとまらない場合に、首相の座を維持すること。</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header">
+                    <span class="country-name">スウェーデン民主党（オーケソン党首）</span>
+                    <span class="stance-label stance-neutral">閣僚ポストを要求</span>
+                  </div>
+                  <div class="key-claim">
+                    <strong>実態</strong>
+                    得票率は20.5%から17.5%に、議席は73から62に減った。それでも、政治学者ムッデ氏の推計では、2022年の支持者の約78%はつなぎとめた。9月18日までに党首は、クリステション氏が組閣する場合でも閣僚ポストの要求は取り下げないと述べた。選挙戦では、罪を犯す人や給付で暮らす人は「歓迎されない」とする駅の広告などが報じられた。
+                  </div>
+                  <div class="interests">最大の関心：右派ブロックの中で、入閣の可能性を残すこと。</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-table">
+              <div style="overflow-x:auto;">
+                <table class="compare-table">
+                  <thead>
+                    <tr><th>立場</th><th>議席（前回比）</th><th>組閣での条件・姿勢</th><th>最大の関心事</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>社会民主党</td><td>99（−8）</td><td>左党と中央党の双方の協力を探る</td><td>どちらも失わずに政権を作る</td></tr>
+                    <tr><td>左党</td><td>30（+6）</td><td>閣内に入ることが支持の条件</td><td>自党の主張を政権に反映させる</td></tr>
+                    <tr><td>中央党</td><td>25（+1）</td><td>左党が入る内閣に反対、中道の5党案を提示</td><td>極右にも左党にも依存しない</td></tr>
+                    <tr><td>穏健党</td><td>70（+2）</td><td>暫定政権として留任、野党側にあらゆる選択肢を探るよう求める</td><td>首相の座を維持する</td></tr>
+                    <tr><td>スウェーデン民主党</td><td>62（−11）</td><td>閣僚ポストの要求を維持</td><td>右派ブロック内で入閣の可能性を残す</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/sweden-election-perspectives-corridor.jpg" alt="木製の扉が並ぶ廊下を、書類を抱えて歩く男性と、奥の窓辺を歩く人影" loading="lazy">
+            <figcaption>近い立場の4党でも、条件が合わなければ、同じ政権を組めない。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ・統計 ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 議席と得票率の変化</h2>
+
+          <p class="lead">以下は、2022年と2026年の議席数の比較と、得票率の増減である。右派ブロックの中では、スウェーデン民主党だけが減っている。</p>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>政党別の議席数（2022年と2026年）</h4>
+              <div style="position:relative;height:300px;margin-top:1rem;">
+                <canvas id="seatsChart"></canvas>
+              </div>
+              <p class="chart-note">定数は349。出典：スウェーデン選挙管理庁の結果（Wikipediaの2026年総選挙の項に掲載）。</p>
+            </div>
+
+            <div class="data-card">
+              <h4>得票率の増減（2022年比、ポイント）</h4>
+              <div style="position:relative;height:300px;margin-top:1rem;">
+                <canvas id="swingChart"></canvas>
+              </div>
+              <p class="chart-note">社会民主党とスウェーデン民主党が減り、ほかの6党は増えた。出典：同上。</p>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">右派政権が成果として挙げた指標</div>
+          <div style="overflow-x:auto;">
+            <table class="compare-table">
+              <thead>
+                <tr><th>指標</th><th>数字</th><th>出典・注記</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>暴力による死者</td>
+                  <td>92人（2024年）→ 84人（2025年）</td>
+                  <td>犯罪防止評議会。2012年以来の低水準で、2年連続の減少</td>
+                </tr>
+                <tr>
+                  <td>銃撃事件</td>
+                  <td>390件（2022年）→ 147件（2025年12月末時点）</td>
+                  <td>ロイターによる公式統計の集計。年末前の暫定値</td>
+                </tr>
+                <tr>
+                  <td>庇護申請</td>
+                  <td>2025年は前年から30%減</td>
+                  <td>ロイター。1985年以来の低水準</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="chart-note" style="margin-top:0.8rem;">これらは政権側が成果として強調した指標である。有権者がどれほど評価したかを示す調査は、確認できていない。国家警察の幹部は、ギャングへの勧誘を止める点ではあまり成功していないと述べている。</p>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">3議席</div>
+              <div class="stat-desc">野党4党（176）と右派4党（173）の差</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">1911年以降最低</div>
+              <div class="stat-desc">社会民主党の得票率28.0%は、1911年以降の選挙で最も低い</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">約78%</div>
+              <div class="stat-desc">政治学者ムッデ氏の推計で、スウェーデン民主党が維持した2022年の支持者の割合</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">84.9%</div>
+              <div class="stat-desc">投票率。前回より0.7ポイント高い</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — この先、スウェーデンの政権はどう決まるか</h2>
+
+          <p class="analysis-note">※ ここから先は、ここまでの事実にもとづく筆者個人の見解です。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">① 極右は消えたのではなく、主張が他党に広がった</div>
+            <div class="insight-text">共同通信は、野党も厳しい移民政策を掲げたため、移民が主要な争点にならなかったとの見方を伝えている。社会民主党のアンデション党首も、厳しい路線の維持を明言していた。主要政党が同じ立場を取れば、移民の厳格化だけでは、スウェーデン民主党を選ぶ理由は弱くなる。それでも同党は、政治学者ムッデ氏の推計では、2022年の支持者の約78%をつなぎとめた。私は、今回の後退を極右の退場ではなく、主張の一部が主要政党に広がった結果だと見る。後退した票の流れ先については、穏健党への流出が主因だとする論考がある（欧州進歩研究財団の媒体に掲載）。ただし、元になった調査やデータは示されていない。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">② 勝った側が割れると、政権の色は左派でなくなる</div>
+            <div class="insight-text">野党4党の過半数は、左党と中央党の双方が参加して初めて成り立つが、両党は互いの閣内入りを認めない。中央党の5党案は左党を外し、キリスト教民主党と自由党を加える。実現すれば、左党の議席増が過半数を支えたのに、政権に左党がいないことになる。ただしキリスト教民主党は9月初めに、アンデション氏に反対すると明言しており、緑の党のヘルデン氏も10月19日に中道案を「行き止まり」と評した。私は、5党案の実現は容易ではないと見る。ありうる展開は三つある。5党案が成立する、左党か中央党のどちらかが譲って4党が組む、首相提案の否決が4回続いて臨時選挙になる。現時点で、どれが有力かは判断できない。</div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">③ 一国の結果から、右傾化が止まったとは言えない</div>
+            <div class="insight-text">ドイツ東部のザクセン・アンハルト州では、同じ時期に極右が州議会選挙で43.8%を得た。スウェーデンの結果だけで、右傾化が止まったとは言えない。スウェーデンで目立つ違いは、「極右を政権に入れるか」が争点になり、右派ブロックが入閣を約束していた点だ。これは仮説にすぎないが、極右の入閣が現実味を帯びた局面では、中道寄りの有権者が警戒を強めやすいのかもしれない。確かめるには、ほかの国で同じ局面が来たときの結果を見る必要がある。</div>
+          </div>
+
+          <p class="closing">スウェーデンの総選挙は、極右が後退したことと、政権の行方がまだ見えないことを、同時に示した。10月26日の探索任務の結果と、議長の次の指名が、次の節目になる。</p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/sweden-election-analysis-dawn.jpg" alt="夜明けのストックホルム。橋を歩いて渡る通勤者たちと、水面にかかる薄い霧" loading="lazy">
+            <figcaption>日常は続くが、政権の行方はまだ決まっていない。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした報道・資料</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://en.wikipedia.org/wiki/2026_Swedish_general_election" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia（英語版） — 2026年スウェーデン総選挙</div>
+                <div class="source-desc">政党別の得票率・議席数、前回との比較、ブロック別の集計、選挙戦の争点の記録。</div>
+                <div class="source-country">【百科事典（選挙管理庁の公表値に基づく記述）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://en.wikipedia.org/wiki/2026_Swedish_government_formation" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Wikipedia（英語版） — 2026年スウェーデンの組閣</div>
+                <div class="source-desc">9月17日から10月19日までの組閣の経過、議長選挙、10月15日の採決結果の記録。</div>
+                <div class="source-country">【百科事典（報道に基づく記述）】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.tv4.se/artikel/tt-260919-valroster1-ea11dc1b/valet-slutraknat-var-tredje-riksdagsledamot-ny" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">TV4（TT通信） — 最終開票の結果</div>
+                <div class="source-desc">最終開票の党別得票率と議席数、投票率84.9%の確認。</div>
+                <div class="source-country">【スウェーデンの通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://euperspectives.eu/2026/09/sweden-election-2026-centre-left-right-win-sweden-democrats-influence/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">EU Perspectives — スウェーデンの有権者は極右を政権に入れなかった</div>
+                <div class="source-desc">スウェーデン民主党の後退、2022年の支持者を約78%維持したとする政治学者ムッデ氏の推計、ティドー合意の影響範囲の分析。</div>
+                <div class="source-country">【欧州政策の分析媒体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://foreignpolicy.com/2026/09/17/sweden-election-kristersson-resigns-social-democrats-andersson/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Foreign Policy — クリステション氏、僅差の敗北で辞任</div>
+                <div class="source-desc">辞表の提出、中央党と左党の対立、減税と増税をめぐる経済政策の違いの報道。</div>
+                <div class="source-country">【米外交専門誌】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aljazeera.com/features/2026/9/16/in-sweden-many-breathe-sigh-of-relief-as-far-right-suffers-election-losses" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Jazeera — スウェーデンで極右の敗北に安堵の声</div>
+                <div class="source-desc">スウェーデン民主党の初の後退と、選挙戦での広告や党首の発言をめぐる報道。</div>
+                <div class="source-country">【国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aljazeera.com/news/2026/9/18/swedens-left-wing-opposition-leader-begins-efforts-to-form-government" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Jazeera — 野党党首が組閣に着手</div>
+                <div class="source-desc">9月18日に議長がアンデション氏へ探索を依頼した経緯と、左党・中央党の主張。</div>
+                <div class="source-country">【国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.euronews.com/2026/09/28/swedens-social-democrat-leader-andersson-says-currently-no-possibility-to-form-government" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Euronews — アンデション氏「現時点で政権を作る可能性はない」</div>
+                <div class="source-desc">9月28日に組閣を断念した際の発言と、議長選挙の経過。</div>
+                <div class="source-country">【欧州の国際ニュース媒体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.thelocal.se/20261002/magdalena-andersson-once-again-given-job-of-building-new-swedish-government" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Local — アンデション氏、再び組閣の任務を与えられる</div>
+                <div class="source-desc">10月2日の再指名と、議長が示した「最初の任務の続き」という説明。</div>
+                <div class="source-country">【スウェーデンの英語ニュース媒体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://thelocal.se/20261013/no-end-in-sight-to-swedens-political-stalemate-a-month-after-election" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Local — 選挙から1か月、膠着の出口は見えない</div>
+                <div class="source-desc">10月13日のアンデション氏の最終報告と、採決の予定、議長の次の方針。</div>
+                <div class="source-country">【スウェーデンの英語ニュース媒体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aljazeera.com/news/2026/10/13/swedens-centre-left-leader-fails-in-second-bid-to-form-government" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Al Jazeera — 中道左派党首、2度目の組閣も失敗</div>
+                <div class="source-desc">左党と中央党の対立、議長が首相提案を4回まで行える規則の報道。</div>
+                <div class="source-country">【国際メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.aa.com.tr/en/europe/sweden-s-centre-party-leader-tasked-with-exploring-government-formation/4093620" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">アナドル通信 — 中央党党首に組閣の探索任務</div>
+                <div class="source-desc">10月19日の探索任務、5党案の構成、クリステション首相の発言、報告期限26日の報道。</div>
+                <div class="source-country">【トルコの国営通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://swedenherald.com/article/left-party-centre-party-must-choose-a-side-on-government-support" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Sweden Herald — 左党「中央党は立場を選ぶべきだ」</div>
+                <div class="source-desc">左党が閣内入りを求める理由と、中央党への要求の報道。</div>
+                <div class="source-country">【スウェーデンの英語ニュース媒体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.thelocal.se/20260127/centre-party-to-reject-any-government-reliant-on-sweden-democrats-or-left-party" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Local — 中央党、極右にも左党にも頼る政権は拒否</div>
+                <div class="source-desc">選挙前の2026年1月に、中央党が示した連立の条件の報道。</div>
+                <div class="source-country">【スウェーデンの英語ニュース媒体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.sverigesradio.se/artikel/social-democrat-leader-strict-migration-policy-to-stay" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">スウェーデン公共ラジオ — 社民党党首「厳しい移民政策は維持」</div>
+                <div class="source-desc">アンデション党首が、厳しい移民政策の維持を明言した報道。</div>
+                <div class="source-country">【スウェーデンの公共放送】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://kumanichi.com/articles/2037360" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">熊本日日新聞（共同通信配信） — スウェーデン極右、議席減</div>
+                <div class="source-desc">スウェーデン民主党の初の議席減と、移民が主要争点にならなかったとの見方。</div>
+                <div class="source-country">【日本の通信社配信】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.internazionale.it/ultime-notizie-reuters/2026/03/31/homicides-in-sweden-hit-lowest-level-in-over-a-decade-in-2025" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ロイター（Internazionale転載） — スウェーデンの殺人、2012年以来の低水準</div>
+                <div class="source-desc">犯罪防止評議会の2025年統計。暴力による死者84人、前年92人。</div>
+                <div class="source-country">【国際通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://srnnews.com/shootings-in-sweden-halved-in-2025-as-police-tackle-gang-crime/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ロイター（SRN News転載） — スウェーデンの銃撃、2025年に半減</div>
+                <div class="source-desc">2022年の390件から2025年の147件への減少と、国家警察幹部の発言。</div>
+                <div class="source-country">【国際通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.arabnews.com/node/2628899/amp" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ロイター（Arab News転載） — スウェーデンの庇護申請、約40年ぶりの低水準</div>
+                <div class="source-desc">2025年の庇護申請が前年から30%減り、1985年以来の低水準になったとの報道。</div>
+                <div class="source-country">【国際通信社】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.atlanticcouncil.org/content-series/eye-on-europes-elections/your-primer-on-swedens-upcoming-parliamentary-elections/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Atlantic Council — スウェーデン議会選挙の入門</div>
+                <div class="source-desc">2026年9月9日付。社会民主党の公約（医療・学校・雇用・家計、組織犯罪への強硬策、厳しい移民政策の維持）の整理。</div>
+                <div class="source-country">【米シンクタンク】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://feps-europe.eu/swedens-2026-election-social-democrats-lost-the-battle-but-won-the-war/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">FEPS（欧州進歩研究財団） — スウェーデン2026年選挙の分析</div>
+                <div class="source-desc">2026年9月18日付の論考。スウェーデン民主党の後退の主因を、穏健党などへの直接の流出とみる。元のデータは示されていない。</div>
+                <div class="source-country">【欧州の進歩派シンクタンクの媒体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://swedenherald.com/article/akesson-says-stigma-around-sweden-democrats-has-eased-after-election-loss" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Sweden Herald（TT通信配信） — オーケソン党首、閣僚ポストの要求を維持</div>
+                <div class="source-desc">2026年9月18日付。選挙の敗北後も、クリステション氏が組閣する場合に閣僚ポストの要求は取り下げないというオーケソン党首の発言。</div>
+                <div class="source-country">【スウェーデンの英語ニュース媒体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.thelocal.se/20260401/breaking-moderates-to-allow-far-right-sweden-democrats-into-government-if-elected" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Local — 穏健党、当選すれば極右の入閣を認めると発表</div>
+                <div class="source-desc">2026年4月1日、クリステション氏が、右派ブロックが選挙に勝てばスウェーデン民主党の入閣を認めると発表した速報。</div>
+                <div class="source-country">【スウェーデンの英語ニュース媒体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.thelocal.se/20260926/inside-sweden-what-do-we-know-so-far-about-swedens-alleged-electoral-fraud/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Local — 選挙不正の疑い、これまでに分かっていること</div>
+                <div class="source-desc">ダーラナ県ボーレンゲの疑い、警察・検察の捜査状況、選挙審査委員会への1万1000通超の異議申し立て、やり直しの可能性に関する専門家の見方。</div>
+                <div class="source-country">【スウェーデンの英語ニュース媒体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://thelocal.se/20261019/sweden-democrat-leader-invites-centre-party-to-no-strings-attached-talks" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Local — スウェーデン民主党党首、中央党に条件なしの対話を提案</div>
+                <div class="source-desc">2026年10月19日、オーケソン党首が公開書簡で中央党党首に対話を求め、閣僚ポストの要求は維持するとした報道。</div>
+                <div class="source-country">【スウェーデンの英語ニュース媒体】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.tv4.se/artikel/1Tqvmdw4BOcQl3sWps4fvM/sa-reagerar-partiledarna-pa-beskedet-logiskt" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">TV4 — 議長の決定への党首たちの反応</div>
+                <div class="source-desc">2026年10月19日、中央党党首への探索任務に対する、各党首（緑の党、キリスト教民主党、自由党、左党、社会民主党、穏健党）の発言。</div>
+                <div class="source-country">【スウェーデンの民間放送】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>各勢力の視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/elections/index.html">世論・選挙</a></div>
+          <div>2026年10月20日</div>
+          <div style="margin-top:0.5rem;">5つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/elections/index.html">世論・選挙一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 政党別の議席数（2022年と2026年）
+  (function() {
+    var ctx = document.getElementById('seatsChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['社会民主党', '穏健党', 'スウェーデン民主党', '左党', '中央党', 'キリスト教民主党', '緑の党', '自由党'],
+        datasets: [
+          {
+            label: '2022年',
+            // 出典：スウェーデン選挙管理庁の結果（Wikipedia「2026 Swedish general election」の表）
+            // 2022年の議席：S107／M68／SD73／V24／C24／KD19／MP18／L16
+            data: [107, 68, 73, 24, 24, 19, 18, 16],
+            backgroundColor: 'rgba(136,144,160,0.55)',
+            borderColor: 'transparent', borderWidth: 0, borderRadius: 3
+          },
+          {
+            label: '2026年',
+            // 出典：同上。2026年の議席：S99／M70／SD62／V30／C25／KD22／MP22／L19
+            data: [99, 70, 62, 30, 25, 22, 22, 19],
+            backgroundColor: 'rgba(196,168,130,0.85)',
+            borderColor: 'transparent', borderWidth: 0, borderRadius: 3
+          }
+        ]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: true, labels: { color: '#8890a0', font: { size: 10 }, boxWidth: 12 } },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.dataset.label + '：' + c.parsed.x + '議席'; } } }
+        },
+        scales: {
+          x: { min: 0, max: 120, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 } } },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // 得票率の増減（2022年比、ポイント）
+  (function() {
+    var ctx = document.getElementById('swingChart');
+    if (!ctx) return;
+    // 出典：Wikipedia「2026 Swedish general election」の情報ボックス（選挙管理庁の結果）
+    // 得票率の増減：S −2.31／M +0.75／SD −3.05／V +1.66／C +0.32／KD +0.83／MP +1.04／L +0.73
+    var swing = [-2.31, 0.75, -3.05, 1.66, 0.32, 0.83, 1.04, 0.73];
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['社会民主党', '穏健党', 'スウェーデン民主党', '左党', '中央党', 'キリスト教民主党', '緑の党', '自由党'],
+        datasets: [{
+          data: swing,
+          backgroundColor: swing.map(function(v) { return v < 0 ? 'rgba(136,144,160,0.7)' : 'rgba(196,168,130,0.85)'; }),
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 3, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + (c.parsed.x > 0 ? '+' : '') + c.parsed.x + 'ポイント'; } } }
+        },
+        scales: {
+          x: { min: -4, max: 2.5, grid: { color: '#2a3a50' }, ticks: { color: '#8890a0', font: { size: 10 } } },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
