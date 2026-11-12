@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2025年、世界の国際観光客は約15億2,000万人に達し、日本の訪日客も4,268万人と過去最高を更新した。ヴェネツィアの入場料、バルセロナの観光税、京都の宿泊税など、観光地は課金と規制に動いている。それは混雑を本当に減らしたのか。住民、観光業、自治体、観光客、政府の6つの視点で読み解く。">
+  <link rel="canonical" href="https://kei-code.github.io/worldview/articles/economy/2026-11-10-overtourism/">
+  <link rel="icon" type="image/svg+xml" href="../../../image/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WorldView">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="観光客が、街を追い出す日 — 世界の観光地が課金と規制に動いた理由 — WorldView">
+  <meta property="og:description" content="観光客の増加で、世界の観光地は課金と規制に動いた。それは混雑を減らしたのか。住民、観光業、自治体、観光客、政府の6つの視点で読み解く。">
+  <meta property="og:url" content="https://kei-code.github.io/worldview/articles/economy/2026-11-10-overtourism/">
+  <meta property="og:image" content="https://kei-code.github.io/worldview/image/articles/overtourism-hero-crowded-street.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="観光客が、街を追い出す日 — 世界の観光地が課金と規制に動いた理由 — WorldView">
+  <meta name="twitter:description" content="課金と規制は、本当に混雑を減らしたのか。6つの視点で読み解く。">
+  <meta name="twitter:image" content="https://kei-code.github.io/worldview/image/articles/overtourism-hero-crowded-street.jpg">
+  <title>観光客が、街を追い出す日 — 世界の観光地が課金と規制に動いた理由 — WorldView</title>
+  <link rel="stylesheet" href="../../../assets/css/common.css">
+  <link rel="stylesheet" href="../../../assets/css/article.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ヒーロー（案X型）— テーマ色は世界経済の --accent4（ベージュ） */
+    .article-hero.has-image {
+      position: relative; background: none; overflow: hidden;
+      min-height: 680px; display: flex; align-items: center;
+    }
+    .article-hero.has-image::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: url('../../../image/articles/overtourism-hero-crowded-street.jpg');
+      background-size: cover; background-position: center 42%;
+      filter: brightness(1.12) contrast(1.03) saturate(1.02);
+    }
+    .article-hero.has-image::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, rgba(14,17,23,0.30) 0%, rgba(14,17,23,0.50) 45%, rgba(14,17,23,0.88) 100%);
+    }
+    .article-hero.has-image .container {
+      position: relative; z-index: 1; width: 100%; transform: translateY(-24px);
+    }
+    .article-hero.has-image .article-meta,
+    .article-hero.has-image .article-title {
+      text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-credit {
+      position: absolute; right: 1rem; bottom: 0.6rem; z-index: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    }
+    .hero-deck {
+      font-size: 1.08rem; font-weight: 400; line-height: 1.75; letter-spacing: 0.005em;
+      color: #b6c1cd; margin-top: 1.5rem; max-width: 580px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .hero-deck .deck-accent { color: var(--accent4); font-weight: 700; }
+    .hero-pills { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero-pill {
+      font-size: 0.78rem; font-weight: 700;
+      color: color-mix(in srgb, var(--accent4) 60%, #ffffff);
+      background: color-mix(in srgb, var(--accent4) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent4) 34%, transparent);
+      padding: 0.38rem 0.75rem; border-radius: 20px;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+
+    /* レイアウト */
+    .layout { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    .lead { color: var(--text-muted); font-size: 0.92rem; line-height: 1.95; margin-bottom: 1.1rem; }
+
+    .section-title { display: block !important; }
+    .section-title .sec-num {
+      display: block; font-family: var(--font);
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--accent4); opacity: 0.65;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 0.2rem; border: none; padding: 0;
+    }
+
+    .label-eyebrow {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-dim); margin: 2.4rem 0 1rem; font-weight: 700;
+    }
+
+    /* カード — テーマ色の淡いウォッシュ */
+    .article-body .perspectives-grid { grid-template-columns: repeat(2, 1fr); gap: 2.6rem 2.4rem; }
+    .article-body .perspective-card {
+      position: relative; background: rgba(196,168,130,0.08);
+      border: none; border-radius: 0; padding: 1.5rem 1.6rem 1.6rem;
+      transition: background 0.12s linear;
+    }
+    .article-body .perspective-card:hover { transform: none; box-shadow: none; background: rgba(196,168,130,0.13); }
+    .article-body .perspective-card::before { display: none; }
+    .article-body .perspective-card .country-header { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .country-name { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.02em; }
+    .pull-quote { font-size: 0.98rem; font-weight: 600; line-height: 1.75; color: var(--text); margin-bottom: 1rem; }
+    .article-body .perspective-card .key-claim { margin-bottom: 0.9rem; }
+    .article-body .perspective-card .interests { border-top: 1px solid var(--border-subtle); padding-top: 0.8rem; }
+    .role-badge { display: block; text-align: right; margin-top: 0.9rem; font-size: 0.73rem; letter-spacing: 0.05em; color: var(--accent4); }
+
+    .article-body .compare-table { background: none; border: none; border-radius: 0; }
+    .article-body .compare-table th { background: none; border-bottom: 2px solid var(--accent4); color: var(--text-muted); }
+    .article-body .compare-table td { border-bottom: 1px solid var(--border-subtle); }
+    .article-body .compare-table tr:hover td { background: rgba(0,0,0,0.20); }
+
+    /* タイムライン（フラット・日付見出し統合型） */
+    .article-body .timeline-item { padding-bottom: 1.7rem; }
+    .article-body .timeline-item:last-child { padding-bottom: 0; }
+    .article-body .timeline-content { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .timeline-content:hover { border-color: transparent; }
+    .article-body .timeline-date { color: var(--accent4); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; }
+    .article-body .timeline-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; }
+
+    .article-body .data-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .article-body .data-card { background: none; border: none; border-radius: 0; padding: 0; }
+    .article-body .data-card::before { display: none; }
+    .article-body .data-card:hover { border-color: transparent; }
+    .article-body .data-card h4 {
+      font-size: 0.95rem; font-weight: 700; color: var(--text);
+      text-transform: none; letter-spacing: 0; line-height: 1.6;
+      margin-bottom: 1rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--border-subtle);
+    }
+    .chart-note { font-size: 0.73rem; color: var(--text-dim); margin-top: 0.7rem; line-height: 1.65; }
+
+    .article-body .sources-grid { display: block; counter-reset: src; }
+    .article-body a.source-item {
+      display: flex; gap: 1rem; align-items: baseline;
+      background: none; border: none; border-radius: 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1rem 0.2rem; color: inherit; text-decoration: none;
+      counter-increment: src;
+      transition: background 0.12s linear, border-color 0.12s linear;
+    }
+    .article-body a.source-item::before {
+      content: counter(src, decimal-leading-zero);
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--accent4); flex: 0 0 auto; min-width: 1.7rem;
+    }
+    .article-body a.source-item:hover { background: rgba(0,0,0,0.20); border-bottom-color: var(--accent4); }
+    .article-body a.source-item:focus-visible { outline: 2px solid var(--accent4); outline-offset: 2px; }
+
+    .article-question {
+      margin: 3.3rem 0; padding: 1.3rem 1.5rem 1.6rem;
+      background: rgba(196,168,130,0.06);
+      border: 1px solid rgba(196,168,130,0.22);
+      box-shadow: 0 0 40px 10px rgba(196,168,130,0.20);
+    }
+    .article-question::before {
+      content: 'この記事の問い'; display: block;
+      font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 700;
+      color: var(--accent4); margin-bottom: 0.6rem;
+    }
+    .article-question p { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .factor-card { border-left: 2px solid var(--accent4); padding-left: 1rem; }
+    .factor-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.55; }
+    .factor-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; }
+
+    .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 2.4rem; }
+    .glossary-card { padding: 0.9rem 0; border-bottom: 1px solid var(--border-subtle); }
+    .glossary-term { font-size: 0.83rem; font-weight: 700; margin-bottom: 0.28rem; }
+    .glossary-def { font-size: 0.78rem; color: var(--text-muted); line-height: 1.75; }
+
+    .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 2.6rem; border-top: 1px solid var(--border-subtle); }
+    .stat-strip-item { padding: 1.3rem 1.2rem; border-right: 1px solid var(--border-subtle); }
+    .stat-strip-item:first-child { padding-left: 0; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent4); line-height: 1.2; margin-bottom: 0.45rem; }
+    .stat-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    .insight-box { border-left: 2px solid var(--border); padding-left: 1.2rem; margin-bottom: 2.2rem; }
+    .insight-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.6; }
+    .insight-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.95; }
+    .closing { font-size: 0.9rem; color: var(--text-muted); line-height: 1.95; margin-top: 2.4rem; }
+    .opinion-note { font-size: 0.82rem; color: var(--text-dim); line-height: 1.8; margin-bottom: 1.6rem; }
+
+    .article-figure { margin: 2.75rem 0; }
+    .article-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); }
+    .article-figure figcaption { font-size: 0.76rem; color: var(--text-dim); margin-top: 0.6rem; line-height: 1.6; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .article-body .perspective-card, .article-body a.source-item { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero.has-image { min-height: 560px; }
+      .article-body .perspectives-grid { grid-template-columns: 1fr; }
+      .article-body .data-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .glossary-grid { grid-template-columns: 1fr; gap: 0; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item { border-bottom: 1px solid var(--border-subtle); }
+      .stat-strip-item:nth-child(2n) { border-right: none; }
+      .stat-strip-item:nth-child(odd) { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo"><a href="../../../index.html" style="color:inherit;"><span>World</span>View</a></div>
+  <nav class="site-nav"></nav>
+</header>
+
+<div class="article-hero has-image">
+  <span class="hero-credit">イメージ画像（生成AI）</span>
+  <div class="container">
+    <div class="article-meta">
+      <span class="tag">世界経済</span>
+      <span class="date">2026年11月10日</span>
+    </div>
+    <h1 class="article-title">観光客が、街を追い出す日<br>— 世界の観光地が課金と規制に動いた理由</h1>
+
+    <div class="hero-deck">
+      観光客が増えるほど、街は豊かになるはずだった。だが京都もヴェネツィアもバルセロナも、住民の暮らしを守るために入場料や税、立入禁止に踏み切っている。<span class="deck-accent">その対策は、混雑を本当に減らしたのだろうか。</span>
+    </div>
+
+    <div class="hero-pills">
+      <span class="hero-pill">世界の国際観光客 15.2億人</span>
+      <span class="hero-pill">訪日客 4,268万人</span>
+      <span class="hero-pill">京都の観光客 6,279万人（日本人含む）</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body" style="padding:2rem 0 4rem;">
+  <div class="container">
+    <div class="layout">
+      <div class="main-content">
+
+        <!-- ============ 01 論点 ============ -->
+        <section class="section" id="sec-core">
+          <h2 class="section-title"><span class="sec-num">01</span>論点 — 観光客が増えるほど、住む人の負担も増える</h2>
+
+          <p class="lead">国連の専門機関UN Tourismによると、2025年に世界で記録された国際観光客は約15億2,000万人で、前年より約6,000万人増えた。欧州だけで7億9,300万人にのぼり、新型コロナ禍の前の2019年を6%上回っている。</p>
+
+          <p class="lead">日本も例外ではない。2025年の訪日外国人は4,268万人で、初めて4,000万人を超えた。京都市の観光客は日本人を含めて6,279万人（うち外国人は約1,268万人）に達し、初めて6,000万人を超えた。観光客が落とすお金は、街にとって大きな収入になる。一方で、バスや道路、住宅地に押し寄せる人の数が増えれば、住民の日常に負担がかかる。</p>
+
+          <p class="lead">そこで各地の自治体は、観光客に料金を課す、人数を制限する、立入を禁じるといった手段を取り始めた。この記事は、その効果を問う。</p>
+
+          <div class="article-question">
+            <p>観光客に課金し、規制を設ければ、混雑は本当に減るのか。観光で得られる収入と、住民の暮らしの間で、各地はどこに線を引こうとしているのか。</p>
+          </div>
+
+          <div class="label-eyebrow">3つの論点</div>
+          <div class="factor-grid">
+            <div class="factor-card">
+              <div class="factor-title">観光客の数は、コロナ後に大きく戻り、2025年は過去最高水準になった</div>
+              <div class="factor-desc">世界でも日本でも、2025年は過去最高水準だった。日本では2026年に入って前年を下回る月も出ている。受け入れる街の広さや道路は、それほど増えていない。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">課金は「減らす」より「負担を分ける」ために使われる</div>
+              <div class="factor-desc">入場料や宿泊税は、混雑対策の財源にもなる。観光客を減らす効果と、財源を確保する効果は、別々に見る必要がある。</div>
+            </div>
+            <div class="factor-card">
+              <div class="factor-title">住民の側にも、観光に頼る人がいる</div>
+              <div class="factor-desc">観光客を減らせば、宿や店の収入も減る。観光客を減らすことに反対する住民と、観光に頼る住民が同じ街にいる。</div>
+            </div>
+          </div>
+
+          <div class="label-eyebrow">用語解説</div>
+          <div class="glossary-grid">
+            <div class="glossary-card">
+              <div class="glossary-term">オーバーツーリズム</div>
+              <div class="glossary-def">観光客が特定の場所に集中し、混雑やマナー違反、物価や家賃の上昇などで、住民の生活や環境に悪影響が出ること。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">宿泊税</div>
+              <div class="glossary-def">ホテルや旅館に泊まる人に、宿泊料金とは別に課される地方税。観光の整備や混雑対策の財源にあてられる。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">入場料（日帰り客課金）</div>
+              <div class="glossary-def">宿泊せずに訪れる日帰り客から集める料金。ヴェネツィアが導入した。宿泊税を払わない人にも負担を求める仕組み。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">短期賃貸（民泊）</div>
+              <div class="glossary-def">住宅を観光客向けに短期間貸し出すこと。住民向けの住宅が減り、家賃が上がる原因とされる。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">出国税（国際観光旅客税）</div>
+              <div class="glossary-def">日本から出国する人に課される税。日本人にも外国人にも同額がかかり、観光の財源にあてられる。</div>
+            </div>
+            <div class="glossary-card">
+              <div class="glossary-term">UN Tourism</div>
+              <div class="glossary-def">国連の観光分野の専門機関。世界の国際観光客数や観光収入を毎年集計して公表している。</div>
+            </div>
+          </div>
+
+          <figure class="article-figure" style="margin:2.5rem 0 0;">
+            <img src="../../../image/articles/overtourism-core-resident.jpg" alt="観光客でごった返す狭い通りを、買い物袋を提げて通り抜けようとする地元の高齢の住民" loading="lazy">
+            <figcaption>観光客の増加は、住民の日常の移動にも影響する。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 02 タイムライン ============ -->
+        <section class="section" id="sec-timeline">
+          <h2 class="section-title"><span class="sec-num">02</span>タイムライン — 回復した観光客数と、追いつかない街</h2>
+
+          <p class="lead">コロナ禍で止まった観光は2023年から戻り、2024年にはそれまでの最高を超えた。住民の側の反発や、自治体の対策は、この回復と並行して進んだ。</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2018年10月1日 ― 京都市、宿泊税を導入</div>
+                <p>1人1泊で200円から1,000円の3段階の税が始まった。使い道には混雑対策や宿泊事業者の支援が挙げられた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2019年 ― 訪日客、3,188万人で当時の過去最高</div>
+                <p>この年の訪日外国人は3,188万人で、コロナ禍の前の最高値だった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2020〜2021年 ― コロナ禍で、国際観光が止まる</div>
+                <p>2020年の国際観光客は、UN Tourismの集計で2019年より約7割減り、約11億人少なかった。日本の訪日客は2020年に411万5,900人（前年比87.1%減）、2021年には24万5,900人（同94.0%減）まで落ち込み、統計を取り始めた1964年以来で最少となった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2022〜2023年 ― 国境が開き、観光客が戻り始める</div>
+                <p>2022年の世界の国際観光客は9億人を超え、2021年の倍になったが、2019年より37%少なかった。日本の訪日客は2023年に2,507万人で、2019年より21.4%少ない水準まで戻った。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年3月 ― 京都・祇園、私道への立入を禁止</div>
+                <p>祇園の私道に観光客が入り込み、芸舞妓に写真を撮る人が群がる問題を受けて、地元の組織が私道への立入を禁じた。違反には1万円の罰金と明記した看板が、4月から多言語で設置された。住民側は「やりたくてやっているのではない」と述べている。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年4月25日 ― ヴェネツィア、日帰り客の入場料を試験導入</div>
+                <p>5ユーロを、29日間にわたって日帰り客から徴収した。初日は支払者が約1万5,700人で、見込みより5割多かった。ただし2024年の実施29日間の合計では、延べ48万5,062件、約240万ユーロにとどまった。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2024年7月 ― バルセロナで「観光客は帰れ」のデモ</div>
+                <p>参加者は警察の推計で約2,800人、主催者の発表では最大2万人とされた。一部の参加者は、ラス・ランブラスの飲食店にいた観光客に水鉄砲で水をかけた。背景には生活費の上昇と、住宅が観光客向けに貸し出されることへの不満がある。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2025年 ― 訪日客、4,268万人で過去最高</div>
+                <p>訪日客は前年より580万人以上増えた。ヴェネツィアは実施日を54日に増やし、支払者は72万3,497人、収入は542万ユーロ余りになった。同年6月には南欧の複数の都市で、反観光のデモが行われた。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年 ― 課金と規制が一斉に広がる</div>
+                <p>3月1日に京都市の宿泊税が改正され、最高額は1人1泊1万円になった。ヴェネツィアの入場料は60日間に拡大し、アムステルダムはクルーズ船の寄港を年100隻までに絞る。カタルーニャ州議会は、短期賃貸の宿泊にかかる観光税を6.25ユーロから最大12.5ユーロへ倍増する法律を可決した。日本では7月1日から出国税が1,000円から3,000円に上がっている。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年7月26日 ― スペイン・マヨルカ島のパルマで大規模デモ</div>
+                <p>地元の団体「Menys Turisme, Més Vida（観光は減らして、暮らしを）」が呼びかけ、134の社会団体が支持した。高い生活費や住宅不足、環境への負担、住民の暮らしより観光産業を優先する経済のあり方に抗議する行進である。警察の推計では約2万5,000人、主催者の発表では約7万人で、警察との衝突もあった。一方で、7月時点の報道では、スペインの反観光の抗議は前年までより比較的少ないとも伝えられている。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026年9月 ― 訪日客、2か月連続で前年を下回る</div>
+                <p>JNTOの速報では、9月の訪日客は310万3,700人で前年同月より5%少なかった。1〜9月の累計は3,073万人で、前年同期より2.9%少ない。中国からの訪日客は9月に43万800人で、44.5%減っている。JNTOは、台風による欠航と中東情勢に伴う航空券の値上がりが響いたと説明している。中国からの減少は、中国政府の渡航注意喚起と航空便の減少が背景とされる。</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/overtourism-timeline-airport.jpg" alt="荷物を持った旅行者であふれる国際空港の到着ロビー。朝の光が大きな窓から差し込んでいる" loading="lazy">
+            <figcaption>回復後の観光客は、空港や駅から一気に街へ流れ込む。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 03 6つの視点 ============ -->
+        <section class="section" id="sec-perspectives">
+          <h2 class="section-title"><span class="sec-num">03</span>6つの視点 — 住む人、稼ぐ人、決める人、訪れる人</h2>
+
+          <p class="lead">観光客の増加は、立場によってまったく違うものに見える。京都と南欧の住民、観光業、自治体、観光客、政府という6つの立場を並べる。</p>
+
+          <div class="tabs-wrap">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-cards">カードで読む</button>
+              <button class="tab-btn" data-tab="tab-table">表で比べる</button>
+            </div>
+
+            <div class="tab-pane active" id="tab-cards">
+              <div class="perspectives-grid">
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">京都の住民</span></div>
+                  <div class="pull-quote">「観光は大事だ。でも、バスにも乗れない」</div>
+                  <div class="key-claim">
+                    <strong>主な主張</strong>
+                    京都市の市民意識調査では、2024年に観光地の混雑で迷惑したと答えた人が71.4%、公共交通の混雑で迷惑したと答えた人が67.0%にのぼった。一方で、観光が京都の発展に重要だと考える市民も70.6%いる。住民は観光を否定しているのではなく、生活への負担が限度を超えることに反対している。
+                  </div>
+                  <div class="interests">最大の関心：公共交通や住宅地の混雑の緩和と、生活環境の維持。</div>
+                  <div class="role-badge">— 観光は必要、でも負担は限界</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">南欧の住民運動（バルセロナ・マヨルカ）</span></div>
+                  <div class="pull-quote">「バルセロナは売り物ではない」</div>
+                  <div class="key-claim">
+                    <strong>主な主張</strong>
+                    住宅が観光客向けの短期賃貸に転用され、住民の家賃や生活費が上がることを問題にしている。2024年のバルセロナのデモでは「観光客は帰れ」と叫ばれ、2026年7月にはマヨルカ島のパルマで、再び大規模な行進があった。課金だけでは足りず、観光客の数そのものを減らすことを求める声もある。
+                  </div>
+                  <div class="interests">最大の関心：住宅の確保と、観光客の総数の抑制。</div>
+                  <div class="role-badge">— 数そのものを減らせという要求</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">観光業・宿泊業</span></div>
+                  <div class="pull-quote">「規制は、収入の減少と違法営業の増加を招く」</div>
+                  <div class="key-claim">
+                    <strong>主な主張</strong>
+                    京都市の2025年の観光消費額は2兆474億円で、観光は地域の大きな収入源である。バルセロナで短期賃貸の許可を取り消す計画に対し、観光用アパートの業界団体は、違法営業が増えるだけだと警告している。クルーズ業界の団体は、クルーズ観光がアムステルダムに年約1億500万ユーロの経済効果をもたらしていると試算し、寄港の削減は街の収入も減らすと指摘する。
+                  </div>
+                  <div class="interests">最大の関心：収入の維持と、規制の予見可能性。</div>
+                  <div class="role-badge">— 収入が減る側</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">都市の自治体（ヴェネツィア・バルセロナ・京都）</span></div>
+                  <div class="pull-quote">「住民の生活を守りつつ、観光は止めない」</div>
+                  <div class="key-claim">
+                    <strong>主な主張</strong>
+                    ヴェネツィアは日帰り客から入場料を取り、バルセロナは短期賃貸を2028年までに廃止する計画を打ち出し、京都は宿泊税の最高額を1万円に引き上げた。いずれも、観光を完全に断たず、課金や規制で負担を分けようとしている。ただしヴェネツィアの市議会議員の一人は「実験はうまくいかなかった」と批判しており、効果の評価は割れている。
+                  </div>
+                  <div class="interests">最大の関心：財源の確保と、住民の理解を得ること。</div>
+                  <div class="role-badge">— 課金と規制で線を引く側</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">観光客</span></div>
+                  <div class="pull-quote">「払うのは構わない。ただ、払えば入れるのか」</div>
+                  <div class="key-claim">
+                    <strong>主な主張</strong>
+                    ヴェネツィアの2025年の支払者のうち、事前に5ユーロを払った人は51%、直前に10ユーロを払った人は49%だった。料金を払う人は多く、検査員によるQRコードの確認は44万5,000件超あった。他方、未払いが見つかった人も約2,500人いる。観光客にとって課金は、入場の許可というより、街への負担金として受け入れるものになっている。
+                  </div>
+                  <div class="interests">最大の関心：料金の透明さと、払ったうえでの体験の質。</div>
+                  <div class="role-badge">— 払う側、ただし混雑は変わらない</div>
+                </div>
+
+                <div class="perspective-card">
+                  <div class="country-header"><span class="country-name">日本政府</span></div>
+                  <div class="pull-quote">「増やしながら、散らす」</div>
+                  <div class="key-claim">
+                    <strong>主な主張</strong>
+                    2025年のインバウンド消費額は9兆4,559億円で、過去最高だった。政府は観光の収入を維持しながら、出国税を2026年7月から3,000円に引き上げ、オーバーツーリズム対策や地方への誘客の財源にあてる方針である。日本人にも外国人にも同額がかかるため、外国人だけに課す入国税を求める議論もある。
+                  </div>
+                  <div class="interests">最大の関心：観光収入の確保と、特定の地域への集中を和らげ、観光客を分散させること。</div>
+                  <div class="role-badge">— 増やしつつ分散させる</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-table">
+              <div style="overflow-x:auto;">
+                <table class="compare-table">
+                  <thead>
+                    <tr><th>立場</th><th>基本スタンス</th><th>最大の主張</th><th>最大の関心事</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>京都の住民</td><td>観光は必要、でも負担は限界</td><td>観光の恩恵は認めるが、混雑は耐えがたい</td><td>公共交通・住宅地の混雑緩和</td></tr>
+                    <tr><td>南欧の住民運動</td><td>数そのものを減らせという要求</td><td>住宅が観光客向けに貸し出され、住民の生活費が上がる</td><td>住宅の確保と観光客の抑制</td></tr>
+                    <tr><td>観光業・宿泊業</td><td>収入が減る側</td><td>規制は収入を減らし、違法営業を増やす</td><td>収入の維持と規制の予見可能性</td></tr>
+                    <tr><td>都市の自治体</td><td>課金と規制で線を引く側</td><td>観光を止めずに、負担を分ける</td><td>財源の確保と住民の理解</td></tr>
+                    <tr><td>観光客</td><td>払う側、ただし混雑は変わらない</td><td>料金は受け入れるが、体験の質も求める</td><td>料金の透明さと体験の質</td></tr>
+                    <tr><td>日本政府</td><td>増やしつつ分散させる</td><td>観光収入を維持し、財源を確保して分散を図る</td><td>収入の確保と地域への分散</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <figure class="article-figure" style="margin-top:2rem;">
+            <img src="../../../image/articles/overtourism-perspectives-shop.jpg" alt="家族経営の小さな土産物店の店主が、入口で商品を並べている。観光客が品物を見ている" loading="lazy">
+            <figcaption>観光客を迎える店にとって、観光は日々の収入でもある。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 04 データ・統計 ============ -->
+        <section class="section" id="sec-data">
+          <h2 class="section-title"><span class="sec-num">04</span>データ・統計 — 戻った観光客数と、減らなかったピーク</h2>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <h4>訪日外国人数の推移（日本政府観光局）</h4>
+              <div style="position:relative;height:250px;margin-top:1rem;">
+                <canvas id="inboundChart"></canvas>
+              </div>
+              <p class="chart-note">2020〜2021年はコロナ禍で大きく落ち込み、2023年以降に戻った。年ごとの発表値のみを使用し、補っていない。<br>出典：日本政府観光局（JNTO）の公表値（報道を通じて確認）</p>
+            </div>
+
+            <div class="data-card">
+              <h4>ヴェネツィア入場料 — 1日平均と、最も混んだ日の支払者数</h4>
+              <div style="position:relative;height:250px;margin-top:1rem;">
+                <canvas id="veniceChart"></canvas>
+              </div>
+              <p class="chart-note">2025年の1日平均は2024年より下がったが、最も混んだ日は平均の約2倍にあたる約2万5,000人だった。2024年の最多日の人数は公表資料で確認できず、ピーク日の年ごとの比較はできない。また2024年は29日間、2025年は54日間の実施で、対象日の数が異なる。<br>出典：Euronews（2025年9月8日）が伝えたヴェネツィア市の公表値</p>
+            </div>
+          </div>
+
+          <div class="stat-strip">
+            <div class="stat-strip-item">
+              <div class="stat-num">15.2億人</div>
+              <div class="stat-desc">世界の国際観光客（2025年、UN Tourism推計、前年比4%増）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">6,279万人</div>
+              <div class="stat-desc">京都市の観光客（2025年、日本人約5,011万人・外国人約1,268万人の合計。初めて6,000万人を超えた）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">542万€</div>
+              <div class="stat-desc">ヴェネツィアの入場料収入（2025年、支払者72万3,497人）</div>
+            </div>
+            <div class="stat-strip-item">
+              <div class="stat-num">9.46兆円</div>
+              <div class="stat-desc">日本のインバウンド消費額（2025年、観光庁集計、前年比16.4%増）</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 深掘り ============ -->
+        <section class="section" id="sec-analysis">
+          <h2 class="section-title"><span class="sec-num">05</span>深掘り — 課金は「減らす」手段なのか</h2>
+
+          <p class="opinion-note">※ ここから先は、ここまでの事実にもとづく筆者個人の見解です。</p>
+
+          <div class="insight-box">
+            <div class="insight-title">① 課金は、混雑を減らすより「負担を払ってもらう」仕組みとして定着する</div>
+            <div class="insight-text">
+              ヴェネツィアの数字を見る限り、入場料は1日平均の人数を少し下げても、最も混む日の人数を大きく減らせていない。ならば今後も、課金は混雑の解消そのものではなく、混雑がもたらす費用を観光客に分担してもらうための手段として広がっていくと考える。直前に10ユーロを払う人が半数近くいることも、料金の差だけでは行動が大きく変わらないことを示している。
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">② 混雑に効くのは、料金より人数の上限と住宅の規制</div>
+            <div class="insight-text">
+              料金は、払えば入れる仕組みである。払う人が多ければ、人数は減らない。ヴェネツィアの数字はその例にあたる。これに対し、入場できる人数に上限を設ければ、混雑は直接抑えられる。バルセロナのように観光客向けの短期賃貸をなくせば、観光客が泊まる場所そのものが減る。ただし、人数の上限や住宅の規制は、観光業や貸し手の反発が強く、合意を得るのに時間がかかる。料金は決めやすく、すぐに始められる。<strong>そのため今後数年は、まず料金で試し、効果が足りなければ上限や住宅規制に進む都市が多くなると予想する。</strong>
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-title">③ 日本は、「分散」に成功できるかが分かれ目になる</div>
+            <div class="insight-text">
+              日本は出国税の引き上げで、地方への誘客も財源にあてる方針を示している。京都のように人が集中する場所の混雑を和らげるには、観光客が別の場所へ向かう理由を作る必要がある。だが料金や案内だけで行き先が変わるとは限らず、地方側の宿泊施設や交通の整備が追いつくかどうかにも左右される。分散がうまくいかなければ、有名な観光地への課金と規制は、さらに厳しくなっていくだろう。
+            </div>
+          </div>
+
+          <p class="closing">
+            世界の国際観光は、UN Tourismが2026年も3〜4%増えると予測している。日本は2026年に前年を下回る月が出ているが、客足が一時的に鈍っても、特定の場所への集中が自然に解消するとは考えにくい。街が観光客を受け入れ続けられるかどうかは、収入を得る側と負担を受ける側が、費用の分け方に納得できる仕組みを作れるかにかかっている。
+          </p>
+
+          <figure class="article-figure">
+            <img src="../../../image/articles/overtourism-analysis-checkpoint.jpg" alt="史跡の入口で、係員が入場を管理するチケット検問所。整然と並ぶ来訪者たち" loading="lazy">
+            <figcaption>人数を管理する仕組みは、混雑を直接抑える手段の一つである。※イメージ画像（生成AI）</figcaption>
+          </figure>
+        </section>
+
+        <!-- ============ 06 情報源 ============ -->
+        <section class="section" id="sec-sources">
+          <h2 class="section-title"><span class="sec-num">06</span>情報源 — 参考にした一次資料・報道</h2>
+
+          <div class="sources-grid">
+            <a class="source-item" href="https://www.untourism.int/news/international-tourist-arrivals-up-4-in-2025-reflecting-strong-travel-demand-around-the-world" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">UN Tourism — 2025年の国際観光客は4%増</div>
+                <div class="source-desc">世界の国際観光客が約15億2,000万人、欧州が7億9,300万人に達したとする公式発表。</div>
+                <div class="source-country">【国連専門機関の公式発表】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.travelvoice.jp/20260121-159116" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">トラベルボイス — 2025年の訪日外国人数、4,268万人で過去最高</div>
+                <div class="source-desc">日本政府観光局の2025年年間推計値を伝える記事。</div>
+                <div class="source-country">【日本の観光産業ニュース】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://honichi.com/news/2022/01/24/honichigaikyaku202112/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">訪日ラボ — 2021年の訪日外国人は24万人、統計開始以来最低水準</div>
+                <div class="source-desc">JNTOの推計にもとづき、2021年の訪日客が24万5,900人で統計開始以来最少だったことを伝える記事。</div>
+                <div class="source-country">【日本の観光産業ニュース】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://honichi.com/news/2021/01/21/honichigaikyaku2020december" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">訪日ラボ — 2020年12月・2020年の訪日外客数</div>
+                <div class="source-desc">JNTOの推計にもとづき、2020年の訪日客が前年比87.1%減の411万5,900人だったことを伝える記事。</div>
+                <div class="source-country">【日本の観光産業ニュース】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.untourism.int/impact-assessment-of-the-covid-19-outbreak-on-international-tourism" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">UN Tourism — コロナ禍が国際観光に与えた影響の評価</div>
+                <div class="source-desc">2020年から2022年の国際観光客数の落ち込みと回復を示す、UN Tourismの公式ページ。</div>
+                <div class="source-country">【国連専門機関の公式ページ】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.travelvoice.jp/20261021-160712" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">トラベルボイス — 2026年9月の訪日外客数は前年同月比5%減</div>
+                <div class="source-desc">JNTOの速報にもとづき、9月の訪日客数、1〜9月の累計、中国からの訪日客の減少と要因を伝える記事。</div>
+                <div class="source-country">【日本の観光産業ニュース】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.travelvoice.jp/20260122-159119" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">トラベルボイス — 2025年のインバウンド消費額は9兆4,559億円</div>
+                <div class="source-desc">観光庁の速報値にもとづき、2025年の訪日客の消費額が過去最高だったことを伝える記事。</div>
+                <div class="source-country">【日本の観光産業ニュース】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://honichi.com/news/2026/06/30/kyoto-number-of-foreign-tourists2026/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">訪日ラボ — 京都市、2025年の外国人観光客数・宿泊数が過去最高</div>
+                <div class="source-desc">京都市の2025年の観光客数、観光消費額、宿泊客数をまとめた記事。</div>
+                <div class="source-country">【日本の観光産業ニュース】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://honichi.com/news/2025/01/21/kyoto/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">訪日ラボ — 京都市、宿泊税を最高1泊1万円に引き上げへ</div>
+                <div class="source-desc">2026年3月の宿泊税改正の方針（最高1泊1万円）を伝える記事。</div>
+                <div class="source-country">【日本の観光産業ニュース】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.city.kyoto.lg.jp/sankan/cmsfiles/contents/0000350/350186/bessi1.pdf" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">京都市 — 京都観光振興計画2025の重点指標</div>
+                <div class="source-desc">観光客による混雑で迷惑したと感じる市民の割合など、市民意識調査の結果を示した京都市の公式資料。</div>
+                <div class="source-country">【京都市の公式資料】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.timeout.com/tokyo/news/kyoto-to-limit-tourist-access-in-the-historical-gion-geisha-district-031224" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Time Out Tokyo — 京都、祇園の観光客の立入を制限</div>
+                <div class="source-desc">2024年に祇園の私道への立入を禁止し、違反に1万円の罰則を設けた経緯を伝える記事。</div>
+                <div class="source-country">【都市情報メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://cda.veneziaunica.it/en/access-fee" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">ヴェネツィア市 — 入場料（Access Fee）の公式ページ</div>
+                <div class="source-desc">2026年の入場料の金額、支払いの期限による料金差、対象日の公式カレンダー。</div>
+                <div class="source-country">【ヴェネツィア市の公式ページ】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.euronews.com/2025/09/08/venices-daytripper-fee-raised-5-million-in-2025-but-did-it-curb-overtourism" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Euronews — ヴェネツィアの入場料は2025年に約540万ユーロを集めた。混雑は減ったのか</div>
+                <div class="source-desc">2025年の支払者数、収入、1日平均の人数と最多日、批判的意見を伝える記事。</div>
+                <div class="source-country">【欧州の国際報道】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.pbs.org/newshour/world/venice-tests-5-euro-day-tripper-entry-fee-as-the-italian-city-struggles-with-overtourism" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">PBS NewsHour — ヴェネツィア、5ユーロの日帰り客入場料を試験導入</div>
+                <div class="source-desc">2024年4月の試験導入の概要と、初日の支払者数を伝える記事。</div>
+                <div class="source-country">【アメリカの公共放送】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.rte.ie/news/business/2026/0225/1560394-barcelona-doubles-tourism-tax-to-fund-housing" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">RTÉ — バルセロナ、住宅のために観光税を倍増</div>
+                <div class="source-desc">カタルーニャ州議会が、短期賃貸の宿泊にかかる観光税を倍増する法律を可決したことを伝える記事。</div>
+                <div class="source-country">【アイルランドの公共放送】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://au.news.yahoo.com/barcelona-plans-shut-holiday-apartments-142925671.html" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">Yahoo News — バルセロナ、2028年までに観光用アパートを全廃へ</div>
+                <div class="source-desc">約1万件の観光用アパートの許可を取り消す計画と、業界団体の反応を伝える記事。</div>
+                <div class="source-country">【国際ニュースの配信】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.nbcnews.com/business/travel/barcelona-protesters-throw-items-spray-travelers-water-shouting-touris-rcna160883" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">NBC News — バルセロナのデモ、「観光客は帰れ」と叫び水をかける</div>
+                <div class="source-desc">2024年7月のバルセロナの反観光デモの様子と、参加者数の推計を伝える記事。</div>
+                <div class="source-country">【アメリカの放送局】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.thelocal.es/20260727/tens-of-thousands-march-in-mallorca-in-latest-overtourism-protest-in-spain" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">The Local Spain — マヨルカ島で数万人が行進</div>
+                <div class="source-desc">2026年7月26日のパルマの大規模デモと、同年の反観光の動きの傾向を伝える記事。</div>
+                <div class="source-country">【スペインの英字メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://www.ttgmedia.com/cruise/amsterdam-to-halve-cruise-ship-numbers-from-2026-47160" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">TTG Media — アムステルダム、2026年からクルーズ船の寄港を半減</div>
+                <div class="source-desc">寄港を年100隻に絞る計画と、クルーズ業界の経済効果の試算を伝える記事。</div>
+                <div class="source-country">【旅行業界メディア】</div>
+              </div>
+            </a>
+            <a class="source-item" href="https://honichi.com/news/2026/01/06/tax-outline2026/" target="_blank" rel="noopener">
+              <div class="source-info">
+                <div class="source-name">訪日ラボ — 出国税を7月から3,000円に引き上げ</div>
+                <div class="source-desc">2026年7月1日から出国税を引き上げ、オーバーツーリズム対策などの財源にあてる方針を伝える記事。</div>
+                <div class="source-country">【日本の観光産業ニュース】</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /main-content -->
+
+      <aside class="toc-sidebar">
+        <div class="toc-title">目次</div>
+        <ul class="toc-list">
+          <li><a href="#sec-core"><span class="toc-icon">01</span>論点</a></li>
+          <li><a href="#sec-timeline"><span class="toc-icon">02</span>タイムライン</a></li>
+          <li><a href="#sec-perspectives"><span class="toc-icon">03</span>6つの視点</a></li>
+          <li><a href="#sec-data"><span class="toc-icon">04</span>データ・統計</a></li>
+          <li><a href="#sec-analysis"><span class="toc-icon">05</span>深掘り</a></li>
+          <li><a href="#sec-sources"><span class="toc-icon">06</span>情報源</a></li>
+        </ul>
+        <hr style="border-color:var(--border-subtle);margin:1.25rem 0;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">
+          <div style="margin-bottom:0.3rem;"><a href="../../../categories/economy/index.html">世界経済</a></div>
+          <div>2026年11月10日</div>
+          <div style="margin-top:0.5rem;">6つの視点を掲載</div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>WorldView — 多視点で読む世界情勢 | <a href="../../../categories/economy/index.html">世界経済一覧に戻る</a></p>
+</footer>
+
+<script src="../../../assets/js/main.js"></script>
+<script>
+  // 訪日外国人数の推移
+  (function() {
+    var ctx = document.getElementById('inboundChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2019年', '2020年', '2021年', '2022年', '2023年', '2024年', '2025年'],
+        datasets: [{
+          // 出典：日本政府観光局（JNTO）公表値（報道を通じて確認）
+          // 2019年：31,882,049人（当時の過去最高）→ 3,188万人
+          // 2020年：4,115,900人（前年比87.1%減）→ 412万人
+          // 2021年：245,900人（前年比94.0%減、統計開始以来最少）→ 25万人
+          // 2022年：3,831,900人（2023年1月発表の推計値。のちの記事では3,832,110人）→ 383万人
+          // 2023年：25,066,100人（2019年比21.4%減）→ 2,507万人
+          // 2024年：36,870,148人（報道により下3桁に差。万人単位で3,687万人）
+          // 2025年：42,683,600人（2026年1月発表の推計値、初の4,000万人超）→ 4,268万人
+          data: [3188, 412, 25, 383, 2507, 3687, 4268],
+          backgroundColor: [
+            'rgba(196,168,130,0.55)',
+            'rgba(196,168,130,0.55)',
+            'rgba(196,168,130,0.55)',
+            'rgba(196,168,130,0.55)',
+            'rgba(196,168,130,0.55)',
+            'rgba(196,168,130,0.55)',
+            'rgba(196,168,130,0.85)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.x.toLocaleString() + '万人'; } } }
+        },
+        scales: {
+          x: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v) { return v.toLocaleString() + '万人'; } }
+          },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+
+  // ヴェネツィア入場料 — 1日あたりの支払者数
+  (function() {
+    var ctx = document.getElementById('veniceChart');
+    if (!ctx) return;
+    new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['2024年 1日平均', '2025年 1日平均', '2025年 最多の日（5月2日）'],
+        datasets: [{
+          // 出典：Euronews 2025-09-08（ヴェネツィア市の公表値）
+          // 1日平均の支払者数：2024年 16,676人、2025年 13,046人
+          // 最多日：2025年5月2日（金）24,951人
+          data: [16676, 13046, 24951],
+          backgroundColor: [
+            'rgba(196,168,130,0.55)',
+            'rgba(196,168,130,0.55)',
+            'rgba(196,168,130,0.85)'
+          ],
+          borderColor: 'transparent', borderWidth: 0, borderRadius: 2, barPercentage: 0.6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        animation: false, responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.x.toLocaleString() + '人'; } } }
+        },
+        scales: {
+          x: {
+            min: 0,
+            grid: { color: '#2a3a50' },
+            ticks: { color: '#8890a0', font: { size: 10 }, callback: function(v) { return v.toLocaleString() + '人'; } }
+          },
+          y: { grid: { display: false }, ticks: { color: '#8890a0', font: { size: 10 } } }
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
